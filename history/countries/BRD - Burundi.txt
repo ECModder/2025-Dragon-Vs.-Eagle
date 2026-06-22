@@ -1,0 +1,127 @@
+﻿capital = 769
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 0
+
+IF = {
+	limit = {
+		has_dlc = "Gotterdammerung"
+	}
+	recruit_character = BRD_mwambutsa_iv
+}
+
+recruit_character = BRD_communist_guy
+recruit_character = BRD_aa2
+recruit_character = BRD_ar
+recruit_character = BRD_acd2
+recruit_character = BRD_acr
+recruit_character = BRD_coi
+recruit_character = BRD_acas
+recruit_character = BRD_awt
+recruit_character = BRD_pot
+recruit_character = BRD_nccr
+recruit_character = BRD_aco2
+recruit_character = BRD_democratic_guy
+recruit_character = BRD_ncs
+recruit_character = BRD_acgs
+recruit_character = BRD_ncm
+recruit_character = BRD_mt
+recruit_character = BRD_nt
+recruit_character = BRD_ai2
+recruit_character = BRD_fascist_guy
+recruit_character = BRD_stc
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Abanyamurenge Workers Wing" name = "AWW" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Front pour la Democratie au Burundi" name = "FRODEBU" }
+set_party_name = { ideology = progressive long_name = "Conseil National Pour la Defense de la Democratie" name = "CNDD-FDD" }
+set_party_name = { ideology = centrist long_name = "Congres National pour la Liberte" name = "CNL" }
+set_party_name = { ideology = conservative long_name = "Union pour le Progres national" name = "UPRONA" }
+set_party_name = { ideology = reactionary long_name = "Alliance des Democrates pour le Changement" name = "ADC" }
+set_party_name = { ideology = authoritarianism long_name = "Comite National de Securite" name = "CNS" }
+set_party_name = { ideology = autocracy long_name = "Force de Defense Nationale du Burundi" name = "FDNB" }
+set_party_name = { ideology = absolutism long_name = "House of Ntare Royalist Alliance" name = "Mwami" }
+set_party_name = { ideology = ultranationalism long_name = "Parti pour le Redressement National" name = "PARENA" }
+set_party_name = { ideology = fundamentalism long_name = "Eglise Catholique du Burundi Council" name = "ECB" }
+
+create_country_leader = { name = "Evariste Ndayishimiye" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Agathon Rwasa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Olivier Nkurunziza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Léonce Ngendakumana" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Gervais Ndirakobuca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Thérence Sinunguruza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Jean-Baptiste Bagaza Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Pierre Buyoya Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Prime Minister Prime Niyongabo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Crown Prince Charles Ndizeye Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Zénon Nicayenzi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Archbishop Gervais Banshimiyubusa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2020.5.20"
+	election_frequency = 84
+	elections_allowed = no
+}
+
+set_popularities = {
+	progressive = 68
+	centrist = 22
+	conservative = 6
+	revolutionary_socialism = 4
+}

@@ -1,0 +1,127 @@
+﻿capital = 274
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 15
+
+recruit_character = GHA_kwame_nkrumah
+recruit_character = GHA_acd2
+recruit_character = GHA_communist_guy
+recruit_character = GHA_acr
+recruit_character = GHA_fascist_guy
+recruit_character = GHA_aa2
+recruit_character = GHA_democratic_guy
+recruit_character = GHA_ncm
+recruit_character = GHA_nt
+recruit_character = GHA_awt
+recruit_character = GHA_ar
+recruit_character = GHA_stc
+recruit_character = GHA_ai2
+recruit_character = GHA_aco2
+recruit_character = GHA_ncs
+recruit_character = GHA_coi
+recruit_character = GHA_acgs
+recruit_character = GHA_acas
+recruit_character = GHA_pot
+recruit_character = GHA_nccr
+recruit_character = GHA_mt
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Convention People's Party - Vanguard" name = "CPP-V" }
+set_party_name = { ideology = vanguard_socialism long_name = "Socialist Movement of Ghana" name = "SMG" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Convention People's Party" name = "CPP" }
+set_party_name = { ideology = progressive long_name = "Progressive People's Party" name = "PPP" }
+set_party_name = { ideology = centrist long_name = "National Democratic Congress" name = "NDC" }
+set_party_name = { ideology = conservative long_name = "New Patriotic Party" name = "NPP" }
+set_party_name = { ideology = reactionary long_name = "National Democratic Party" name = "NDP" }
+set_party_name = { ideology = authoritarianism long_name = "Ghana National Security Council" name = "GNSC" }
+set_party_name = { ideology = autocracy long_name = "Armed Forces Revolutionary Council" name = "AFRC" }
+set_party_name = { ideology = absolutism long_name = "Asanteman Traditional Council" name = "ATC" }
+set_party_name = { ideology = ultranationalism long_name = "Ghana Nationalist Front" name = "GNF" }
+set_party_name = { ideology = fundamentalism long_name = "Christian Action League" name = "CAL" }
+
+create_country_leader = { name = "Kwame Nkrumah II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Kwesi Pratt Jr." desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Ivor Greenstreet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Brigitte Dzogbenuku" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "John Mahama" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Mahamudu Bawumia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2029.1.7" ideology = conservatism }
+create_country_leader = { name = "Alan Kyerematen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Albert Kan-Dapaah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Thomas Oppong-Peprah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Otumfuo Osei Tungtung II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Hassan Ayariga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Duncan-Williams" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2024.12.7"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 3
+	progressive = 4
+	centrist = 43
+	conservative = 45
+	reactionary = 2
+	authoritarianism = 1
+	autocracy = 0
+	absolutism = 1
+	ultranationalism = 0
+	fundamentalism = 0
+}

@@ -1,0 +1,121 @@
+﻿capital = 256 #Cheboksary
+
+#oob = "CHU_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Chuvash Republic Bolsheviks" name = "CRB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Chuvash Communist Party" name = "ChCP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Left Socialist-Revolutionaries of Cheboksary" name = "LSR-C" }
+set_party_name = { ideology = progressive long_name = "Yabloko Chuvash Sector" name = "Yabloko-Ch" }
+set_party_name = { ideology = centrist long_name = "New People of Chuvashia" name = "NP-Ch" }
+set_party_name = { ideology = conservative long_name = "United Russia Chuvash Branch" name = "UR-Ch" }
+set_party_name = { ideology = reactionary long_name = "LDPR Chuvash Section" name = "LDPR-Ch" }
+set_party_name = { ideology = authoritarianism long_name = "Administration of the Head of Chuvashia" name = "AHC" }
+set_party_name = { ideology = autocracy long_name = "Garrison Command of Cheboksary" name = "GCC" }
+set_party_name = { ideology = absolutism long_name = "Chuvash Sovereign Assembly" name = "CSA" }
+set_party_name = { ideology = ultranationalism long_name = "Chuvash National Movement Chaval" name = "Chaval" }
+set_party_name = { ideology = fundamentalism long_name = "Eparchy of Cheboksary Council" name = "ECC" }
+
+create_country_leader = { name = "Oleg Nikolayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Anatoly Aksakov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Chuvash Nationalist Core" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Valentin Shurchanov Successor" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2020.9.13"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 55
+	conservative = 25
+	reactionary = 10
+	vanguard_socialism = 8
+	progressive = 2
+}
+recruit_character = CHU_gerasim_ivanov
+
+

@@ -1,0 +1,108 @@
+﻿capital = 311
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 5
+
+recruit_character = BLZ_communist_guy
+recruit_character = BLZ_aa2
+recruit_character = BLZ_ar
+recruit_character = BLZ_acd2
+recruit_character = BLZ_acr
+recruit_character = BLZ_coi
+recruit_character = BLZ_acas
+recruit_character = BLZ_awt
+recruit_character = BLZ_pot
+recruit_character = BLZ_nccr
+recruit_character = BLZ_aco2
+recruit_character = BLZ_democratic_guy
+recruit_character = BLZ_ncs
+recruit_character = BLZ_acgs
+recruit_character = BLZ_ncm
+recruit_character = BLZ_mt
+recruit_character = BLZ_nt
+recruit_character = BLZ_ai2
+recruit_character = BLZ_fascist_guy
+recruit_character = BLZ_stc
+
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Belize Communist Movement" name = "BCM" }
+set_party_name = { ideology = revolutionary_socialism long_name = "People's Front of Belize" name = "PFB" }
+set_party_name = { ideology = progressive long_name = "People's United Party" name = "PUP" }
+set_party_name = { ideology = centrist long_name = "Belize Progressive Party" name = "BPP" }
+set_party_name = { ideology = conservative long_name = "United Democratic Party" name = "UDP" }
+set_party_name = { ideology = reactionary long_name = "Belize Alliance for Democracy" name = "BAD" }
+set_party_name = { ideology = authoritarianism long_name = "National Reform Council" name = "NRC" }
+set_party_name = { ideology = autocracy long_name = "Belize Defence Force Command" name = "BDF" }
+set_party_name = { ideology = absolutism long_name = "Belize Monarchist Association" name = "BMA" }
+set_party_name = { ideology = ultranationalism long_name = "Belizean Nationalist Union" name = "BNU" }
+set_party_name = { ideology = fundamentalism long_name = "Belize Council of Churches Wing" name = "BCC" }
+
+create_country_leader = { name = "Johnny Briceno" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Moses Shyne Barrow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Wil Maheia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Patrick Faber" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Nefretery Nancy Marin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Assad Shoman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Said Musa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Hugo Patt" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Brigadier General Azariel Loria" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "King Charles III" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Geovanni Brackett" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Pastor Howell Longsworth" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2020.11.11"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 59
+	conservative = 38
+	centrist = 3
+}

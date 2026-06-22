@@ -1,0 +1,133 @@
+﻿capital = 206 #Minsk
+
+oob = "BLR_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Kommunisticheskaya Partiya Belorussii" name = "KPB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Respublikanskaya Partiya Truda i Spravedlivosti" name = "RPTS" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Belorusskaya Partiya Levykh 'Spravedlivyy Mir'" name = "Levykh" }
+set_party_name = { ideology = progressive long_name = "Belorusskaya Social-Demokraticheskaya Partiya" name = "BSDP" }
+set_party_name = { ideology = centrist long_name = "Koordinacionnyy Sovet Belorussii" name = "KS" }
+set_party_name = { ideology = conservative long_name = "Partiya BNF" name = "BNF" }
+set_party_name = { ideology = reactionary long_name = "Liberalno-Demokraticheskaya Partiya Belorussii" name = "LDPB" }
+set_party_name = { ideology = authoritarianism long_name = "Belaya Rus" name = "BR" }
+set_party_name = { ideology = autocracy long_name = "Siloviki Sovet Bezopasnosti" name = "Sovbez" }
+set_party_name = { ideology = absolutism long_name = "House of Romanov-Gediminas League" name = "Monarchist" }
+set_party_name = { ideology = ultranationalism long_name = "Molodoy Front" name = "MF" }
+set_party_name = { ideology = fundamentalism long_name = "Belorusskaya Pravoslavnaya Cerkov Executive" name = "BPC" }
+
+create_country_leader = { name = "Alexander Lukashenko" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_lukashenko.dds" expire = "1965.1.1" ideology = personal_dictatorship }
+create_country_leader = { name = "Sviatlana Tsikhanouskaya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Oleg Gaidukevich" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Igor Karpenko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Zenon Poznyak" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Sergey Cherachen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Sergey Kalyakin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Alexei Sokolov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Nikolai Lukashenko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Denis Urbanovich" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Metropolitan Veniamin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+    ruling_party = autocracy
+    last_election = "2020.8.9"
+    election_frequency = 60
+    elections_allowed = no
+}
+
+set_popularities = {
+    autocracy = 65
+    centrist = 20
+    totalitarian_communism = 8
+    reactionary = 5
+    ultranationalism = 2
+}

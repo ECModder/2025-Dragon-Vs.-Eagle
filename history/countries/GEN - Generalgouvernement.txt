@@ -1,0 +1,206 @@
+capital = 88 # Krakow
+
+set_stability = 0.4
+set_war_support = 0.7
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+
+	naval_bomber1 = 1
+	#formation_flying = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	oil_processing = 1
+	fuel_refining = 1
+
+	tech_military_police = 1
+	tech_military_police2 = 1
+	
+}
+
+set_grand_doctrine = new_mobile_warfare
+set_grand_doctrine = new_convoy_raiding
+set_grand_doctrine = new_battlefield_support
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		tactical_bomber1 = 1
+		strategic_bomber1 = 1
+		CAS1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+	}
+}
+
+set_research_slots = 3
+set_convoys = 0
+
+1939.1.1 = {
+
+	add_political_power = 1197
+	add_command_power = 100
+
+	set_technology = {
+		CAS2 = 1
+		heavy_fighter1 = 1
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		improved_infantry_weapons = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		paratroopers = 1
+
+		#doctrines
+		#air
+		#formation_flying = 1		
+		#dive_bombing = 1
+		#direct_ground_support = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		cavity_magnatron = 1
+		mechanical_computing = 1
+		computing_machine = 1
+		basic_encryption = 1
+		basic_decryption = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		construction4 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+		dispersed_industry3 = 1
+		dispersed_industry4 = 1
+
+	}
+
+set_grand_doctrine = new_mobile_warfare
+set_grand_doctrine = new_convoy_raiding
+set_grand_doctrine = new_battlefield_support
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Polska Partia Robotnicza - Podpole" name = "PPR" }
+set_party_name = { ideology = vanguard_socialism long_name = "Gwardia Ludowa" name = "GL" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Polskie Państwo Podziemne" name = "PPP" }
+set_party_name = { ideology = progressive long_name = "Stronnictwo Ludowe - Wolność" name = "SL-W" }
+set_party_name = { ideology = centrist long_name = "Rada Główna Opiekuńcza" name = "RGO" }
+set_party_name = { ideology = conservative long_name = "Delegatura Rządu na Kraj" name = "DRK" }
+set_party_name = { ideology = reactionary long_name = "Narodowe Siły Zbrojne" name = "NSZ" }
+set_party_name = { ideology = authoritarianism long_name = "Dienststelle des Generalgouverneurs" name = "DDG" }
+set_party_name = { ideology = autocracy long_name = "Höhere SS- und Polizeiführer Ost" name = "HSSPF" }
+set_party_name = { ideology = absolutism long_name = "Militärbefehlshaber Generalgouvernement" name = "MBGG" }
+set_party_name = { ideology = ultranationalism long_name = "Nationalsozialistische Deutsche Arbeiterpartei - GG" name = "NSDAP-GG" }
+set_party_name = { ideology = fundamentalism long_name = "Rada Kościelna Generalgouvernement" name = "RKGG" }
+
+create_country_leader = { name = "Bolesław Bierut" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Władysław Gomułka" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = leninist_internationalism }
+create_country_leader = { name = "Stefan Rowecki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1943.6.30" ideology = left_populism }
+create_country_leader = { name = "Maciej Rataj" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1940.6.21" ideology = progressivism }
+create_country_leader = { name = "Adam Ronikier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = liberalism }
+create_country_leader = { name = "Cyryl Ratajski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1942.10.7" ideology = conservatism }
+create_country_leader = { name = "Tadeusz Boror-Komorowski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = constitutionalist }
+create_country_leader = { name = "Josef Bühler" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = putinism }
+create_country_leader = { name = "Friedrich-Wilhelm Krüger" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1943.11.9" ideology = military_junta }
+create_country_leader = { name = "Curt von Gottberg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = absolute_monarchy }
+create_country_leader = { name = "Hans Frank" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = national_socialist }
+create_country_leader = { name = "Abp Adam Sapieha" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1945.1.18" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = ultranationalism
+	last_election = "1939.10.26"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 1
+	vanguard_socialism = 2
+	revolutionary_socialism = 12
+	progressive = 4
+	centrist = 2
+	conservative = 10
+	reactionary = 8
+	authoritarianism = 20
+	autocracy = 15
+	absolutism = 1
+	ultranationalism = 25
+	fundamentalism = 0
+}
+recruit_character = GEN_hans_frank
+
+add_ideas = {
+	war_economy
+	extensive_conscription
+}
+
+
+

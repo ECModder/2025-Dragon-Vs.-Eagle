@@ -1,0 +1,133 @@
+﻿capital = 229 #Baku
+
+give_guarantee = TUR
+
+oob = "AZR_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		basic_light_tank = 1
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		basic_light_tank_chassis = 1
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Azarbaycan Kommunist Partiyasi" name = "AKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Azarbaycan Vahid Kommunist Partiyasi" name = "AVKP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Azarbaycan Sosial Demokrat Partiyasi" name = "ASDP" }
+set_party_name = { ideology = progressive long_name = "Respublikaçı Alternativ Partiyası" name = "REAL" }
+set_party_name = { ideology = centrist long_name = "Azarbaycan Xalq Cabhasi Partiyasi" name = "AXCP" }
+set_party_name = { ideology = conservative long_name = "Vatandas Həmrəyliyi Partiyası" name = "VHP" }
+set_party_name = { ideology = reactionary long_name = "Musavat Partiyasi" name = "Musavat" }
+set_party_name = { ideology = authoritarianism long_name = "Yeni Azarbaycan Partiyasi" name = "YAP" }
+set_party_name = { ideology = autocracy long_name = "Silahli Quvvalari Ali Komandanligi" name = "SQ" }
+set_party_name = { ideology = absolutism long_name = "National House of Romanov Restoration" name = "Romanov" }
+set_party_name = { ideology = ultranationalism long_name = "Bozgurd Partiyasi" name = "Bozgurd" }
+set_party_name = { ideology = fundamentalism long_name = "Azarbaycan Islam Partiyasi" name = "AIP" }
+
+create_country_leader = { name = "Ilham Aliyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Ali Karimli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Arif Hacili" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Ilgar Mammadov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Araz Alizadeh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Rauf Qurbanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Hajiaga Nuri" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Sabir Rustamkhanli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Colonel General Zakir Hasanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Grand Duke George Mikhailovich" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Iskander Hamidov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Elchin Aliyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2024.2.7"
+	election_frequency = 84
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 70
+	centrist = 10
+	reactionary = 5
+	conservative = 5
+	progressive = 5
+	fundamentalism = 3
+	ultranationalism = 2
+}

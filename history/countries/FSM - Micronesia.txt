@@ -1,0 +1,92 @@
+﻿capital = 684
+
+#oob = ""
+
+create_faction_from_template = faction_template_cofa
+add_to_faction = FSM
+add_to_faction = MAR
+add_to_faction = PLU
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Micronesian Communist Vanguard" name = "MCV" }
+set_party_name = { ideology = vanguard_socialism long_name = "United Island Workers Front" name = "UIWF" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Micronesian Socialist League" name = "MSL" }
+set_party_name = { ideology = progressive long_name = "Pacific Green Coalition" name = "PGC" }
+set_party_name = { ideology = centrist long_name = "Federal Democratic Alliance" name = "FDA" }
+set_party_name = { ideology = conservative long_name = "National Unity Coalition" name = "NUC" }
+set_party_name = { ideology = reactionary long_name = "Traditionalist Island Front" name = "TIF" }
+set_party_name = { ideology = authoritarianism long_name = "Federal Security Directorate" name = "FSD" }
+set_party_name = { ideology = autocracy long_name = "State Emergency Committee" name = "SEC" }
+set_party_name = { ideology = absolutism long_name = "Council of Grand Chiefs" name = "CGC" }
+set_party_name = { ideology = ultranationalism long_name = "Micronesian Sovereign Vanguard" name = "MSV" }
+set_party_name = { ideology = fundamentalism long_name = "Christian Fellowship League" name = "CFL" }
+
+create_country_leader = { name = "Wesley Simina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "David Panuelo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Peter Christian" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Manny Mori" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2025.3.4"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 1
+	progressive = 8
+	centrist = 54
+	conservative = 32
+	reactionary = 3
+	authoritarianism = 1
+	autocracy = 0
+	absolutism = 1
+	ultranationalism = 0
+	fundamentalism = 0
+}

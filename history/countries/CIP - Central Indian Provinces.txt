@@ -1,0 +1,90 @@
+﻿capital = 437 
+
+
+set_research_slots = 2
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Communist Party of India (Maoist) Central Committee" name = "CPI-Maoist" }
+set_party_name = { ideology = vanguard_socialism long_name = "Communist Party of India (Marxist) Madhya Pradesh" name = "CPI-M-MP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "All India Forward Bloc Section" name = "AIFB" }
+set_party_name = { ideology = progressive long_name = "Aam Aadmi Party Central Sector" name = "AAP-CS" }
+set_party_name = { ideology = centrist long_name = "Indian National Congress Madhya Pradesh" name = "INC-MP" }
+set_party_name = { ideology = conservative long_name = "Bharatiya Janata Party Central Unit" name = "BJP-CU" }
+set_party_name = { ideology = reactionary long_name = "Shiv Sena Central Directorate" name = "SS-CD" }
+set_party_name = { ideology = authoritarianism long_name = "Governor's Central Executive Board" name = "GCEB" }
+set_party_name = { ideology = autocracy long_name = "Central Command Indian Army Unit" name = "CCIA" }
+set_party_name = { ideology = absolutism long_name = "Scindia Maratha Dynasty Council" name = "Scindia" }
+set_party_name = { ideology = ultranationalism long_name = "Rashtriya Swayamsevak Sangh Central Unit" name = "RSS-CU" }
+set_party_name = { ideology = fundamentalism long_name = "Hindu Mahasabha Central Wing" name = "HMCW" }
+
+create_country_leader = { name = "Mohan Yadav" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Jitu Patwari" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Jyotiraditya Scindia Legacy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Naxalite Infiltration Command" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2023.11.17"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 48
+	centrist = 40
+	ultranationalism = 6
+	vanguard_socialism = 4
+	totalitarian_communism = 2
+}

@@ -1,0 +1,127 @@
+﻿capital = 539
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+recruit_character = GAB_aa2
+recruit_character = GAB_democratic_guy
+recruit_character = GAB_acgs
+recruit_character = GAB_ncm
+recruit_character = GAB_nt
+recruit_character = GAB_acas
+recruit_character = GAB_awt
+recruit_character = GAB_pot
+recruit_character = GAB_stc
+recruit_character = GAB_acd2
+recruit_character = GAB_communist_guy
+recruit_character = GAB_aco2
+recruit_character = GAB_fascist_guy
+recruit_character = GAB_coi
+recruit_character = GAB_ar
+recruit_character = GAB_nccr
+recruit_character = GAB_mt
+recruit_character = GAB_ai2
+recruit_character = GAB_ncs
+recruit_character = GAB_acr
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Gabonais" name = "PCG" }
+set_party_name = { ideology = vanguard_socialism long_name = "Mouvement d'Action Nationale" name = "MAN" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Parti Gabonais du Progrès - Gauche" name = "PGP-G" }
+set_party_name = { ideology = progressive long_name = "Union Nationale" name = "UN" }
+set_party_name = { ideology = centrist long_name = "Les Démocrates" name = "LD" }
+set_party_name = { ideology = conservative long_name = "Parti Démocratique Gabonais" name = "PDG" }
+set_party_name = { ideology = reactionary long_name = "Rassemblement pour le Gabon" name = "RPG" }
+set_party_name = { ideology = authoritarianism long_name = "Comité pour la Transition et la Restauration des Institutions" name = "CTRI" }
+set_party_name = { ideology = autocracy long_name = "Forces Armées Gabonaises" name = "FAG" }
+set_party_name = { ideology = absolutism long_name = "Conseil de la Dynastie Haut-Ogooué" name = "CDHO" }
+set_party_name = { ideology = ultranationalism long_name = "Front Nationaliste Gabonais" name = "FNG" }
+set_party_name = { ideology = fundamentalism long_name = "Ligue Islamique du Gabon" name = "LIG" }
+
+create_country_leader = { name = "Jean-Pierre Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Pierre Mamboundou Jr." desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Paul Mba Abessole" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Paulette Missambo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Raymond Ndong Sima" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Alexandre Barro Chambrier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Guy Nzouba-Ndama" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Brice Oligui Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Jean-Germain Effayong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Ali Bongo Ondimba" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Bruno Ben Moubamba" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Ismaël Oceni Ossa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2023.8.26"
+	election_frequency = 84
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 4
+	progressive = 12
+	centrist = 18
+	conservative = 15
+	reactionary = 5
+	authoritarianism = 42
+	autocracy = 2
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 0
+}

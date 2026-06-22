@@ -1,0 +1,139 @@
+﻿capital = 171
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+		naval_bomber1 = 1
+	}
+}
+
+set_convoys = 20
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Comunistas da Galiza" name = "CDG" }
+set_party_name = { ideology = vanguard_socialism long_name = "Comunidade do Proletariado Galego" name = "CPG" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bloque Nacionalista Galego - Esquerda" name = "BNG-E" }
+set_party_name = { ideology = progressive long_name = "Bloque Nacionalista Galego" name = "BNG" }
+set_party_name = { ideology = centrist long_name = "Partido dos Socialistas de Galicia" name = "PSdeG" }
+set_party_name = { ideology = conservative long_name = "Partido Popular de Galicia" name = "PPdeG" }
+set_party_name = { ideology = reactionary long_name = "Vox Galicia" name = "VOX" }
+set_party_name = { ideology = authoritarianism long_name = "Xunta de Galicia - Seguridade" name = "XGS" }
+set_party_name = { ideology = autocracy long_name = "Comandancia Militar da Coruña" name = "CMC" }
+set_party_name = { ideology = absolutism long_name = "Consello do Reino de Galicia" name = "CRG" }
+set_party_name = { ideology = ultranationalism long_name = "Forza Nacionalista Galega" name = "FNG" }
+set_party_name = { ideology = fundamentalism long_name = "Irmandade Catolica Galega" name = "ICG" }
+
+create_country_leader = { name = "Carlos Morais" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Xavier Vence" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Ana Pontón" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Luís Villares" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "José Ramón Gómez Besteiro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Alfonso Rueda" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Alberto Núñez Feijóo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Diego Calvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "General Juan Carlos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Xoán de Novoa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Álvaro Díaz-Mella" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Sean Combs..?" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2024.2.18"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 2
+	revolutionary_socialism = 10
+	progressive = 31
+	centrist = 11
+	conservative = 41
+	reactionary = 3
+	authoritarianism = 1
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 0
+}
+create_country_leader = {
+	name = "Fuco Gómez"
+	picture = GFX_portrait_Fuco_Gomez
+	expire = "1965.1.1"
+	ideology = marxism
+}
+
+create_country_leader = {
+	name = "Alfonso Daniel Castelao"
+	picture = GFX_portrait_Alfonso_Daniel_Castelao
+	expire = "1965.1.1"
+	ideology = liberalism
+}
+
+create_country_leader = {
+	name = "Vicente Martínez Risco"
+	picture = GFX_portrait_Vicente_Martinez_Risco
+	expire = "1965.1.1"
+	ideology = fascism_ideology
+}
+
+create_country_leader = {
+	name = "Santiago Casares Quiroga"
+	picture = GFX_portrait_Santiago_Casares_Quiroga
+	expire = "1965.1.1"
+	ideology = centrism
+}

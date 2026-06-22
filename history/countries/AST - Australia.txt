@@ -1,0 +1,457 @@
+﻿capital = 285
+
+oob = "AST_1936"
+set_stability = 0.8
+set_war_support = 0.3
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	basic_train = 1
+	fuel_silos = 1
+
+}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_submarine = 1
+		transport = 1
+	}
+	set_naval_oob = "AST_1936_naval_legacy"
+}
+if = {
+	limit = {
+		 has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_submarine = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		basic_cruiser_armor_scheme = 1
+		mtg_transport = 1
+	}
+	set_naval_oob = "AST_1936_naval"
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_air_oob = "AST_1936_air_bba"
+	set_technology = {
+		bba_early_transport_plane = 1
+	}
+	else = {
+		set_air_oob = "AST_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			cv_early_fighter = 1
+			cv_naval_bomber1 = 1
+			naval_bomber1 = 1
+			early_bomber = 1
+			CAS1 = 1
+			early_transport_plane = 1
+		}
+	}
+}
+
+recruit_character = AST_albanese
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	recruit_character = AST_iven_mackay #Empty char can become unit leader via FT
+}
+
+
+if = {
+	limit = {
+		has_dlc = "Together for Victory"
+	}
+	add_ideas = AST_great_depression_1
+
+	add_to_tech_sharing_group = commonwealth_research
+}
+
+give_guarantee = NZL
+give_guarantee = USA
+give_guarantee = SNG
+give_guarantee = MAL
+give_guarantee = ENG
+give_guarantee = PNG
+
+1939.1.1 = {
+	add_political_power = 1198
+	add_command_power = 100
+	oob = "AST_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AST_1939_air_bba"
+		else = {
+			set_air_oob = "AST_1939_air_legacy"
+			set_technology = {
+				fighter1 = 1
+				tactical_bomber1 = 1
+			}
+		}
+	}
+	if = {
+		limit = { has_dlc = "Together for Victory" }
+		complete_national_focus = AST_additional_militia_training
+		complete_national_focus = AST_royal_australian_artillery
+		complete_national_focus = AST_daimler_dingo
+		complete_national_focus = AST_expand_the_raaf
+		complete_national_focus = AST_cockatoo_island_shipyards
+		complete_national_focus = AST_expand_northern_presence
+		complete_national_focus = AST_standard_gauge_railway
+		complete_national_focus = AST_industries_assistance_corporation
+		complete_national_focus = AST_western_australian_government_railways
+		complete_national_focus = AST_south_australian_housing_trust
+		
+		else = {
+			#generic focuses
+			complete_national_focus = army_effort
+			complete_national_focus = equipment_effort
+			complete_national_focus = motorization_effort
+			complete_national_focus = aviation_effort
+			complete_national_focus = naval_effort
+			complete_national_focus = large_navy
+			complete_national_focus = industrial_effort
+			complete_national_focus = construction_effort
+			complete_national_focus = production_effort
+		}
+	}
+
+	add_ideas = {
+		#laws		
+		volunteer_only
+		low_economic_mobilisation
+	}
+
+	
+	set_technology = {
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+	set_grand_doctrine = grand_battleplan
+	set_grand_doctrine = new_fleet_in_being
+	set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			basic_light_tank = 1
+			improved_light_tank = 1
+			basic_medium_tank = 1
+			basic_heavy_tank = 1
+		}
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			basic_light_tank_chassis = 1
+			improved_light_tank_chassis = 1
+			basic_medium_tank_chassis = 1
+			basic_heavy_tank_chassis = 1
+		}
+	}
+	if = {
+		limit = {
+			not = {
+				has_dlc = "Man the Guns"
+			}
+		}
+		set_technology = {
+			basic_destroyer = 1
+		}
+		set_naval_oob = "AST_1939_naval_legacy"
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		set_technology = {
+			basic_ship_hull_light = 1
+			basic_light_battery = 1
+			sonar = 1
+			improved_sonar = 1
+			improved_depth_charges = 1
+		}
+		set_naval_oob = "AST_1939_naval"
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Communist Party of Australia" name = "CPA" }
+set_party_name = { ideology = vanguard_socialism long_name = "Socialist Alliance" name = "SA" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Australian Greens" name = "GRN" }
+set_party_name = { ideology = progressive long_name = "Australian Labor Party" name = "ALP" }
+set_party_name = { ideology = centrist long_name = "Australian Democrats" name = "AD" }
+set_party_name = { ideology = conservative long_name = "Liberal-National Coalition" name = "LNP" }
+set_party_name = { ideology = reactionary long_name = "Pauline Hanson's One Nation" name = "PHON" }
+set_party_name = { ideology = authoritarianism long_name = "Katter's Australian Party" name = "KAP" }
+set_party_name = { ideology = autocracy long_name = "Governor-General Executive Command" name = "GGC" }
+set_party_name = { ideology = absolutism long_name = "Australian Monarchist League" name = "AML" }
+set_party_name = { ideology = ultranationalism long_name = "Australia First Party" name = "AFP" }
+set_party_name = { ideology = fundamentalism long_name = "Christian Democratic Party" name = "CDP" }
+
+create_country_leader = { name = "Anthony Albanese" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_albanese.dds" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Peter Dutton" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Adam Bandt" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Pauline Hanson" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Bob Katter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Sam Wainwright" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Andrew Irving" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Clive Palmer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "General David Johnston" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Philip Benwell" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Jim Saleam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Lyle Shelton" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2022.5.21"
+	election_frequency = 36
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 33
+	conservative = 36
+	revolutionary_socialism = 12
+	reactionary = 7
+	centrist = 6
+	authoritarianism = 6
+}
+	set_convoys = 100
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+	
+	create_equipment_variant = {
+		name = "Sydney Class"
+		type = light_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 2
+			ship_anti_air_upgrade = 2
+		}
+	}
+	
+	create_equipment_variant = {
+		name = "Canberra Class"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_armor_upgrade = 2
+			ship_gun_upgrade = 2
+		}
+	}
+}
+
+if = {
+	limit = { has_dlc = "Man the Guns" } 
+	### Ship Variants ###
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Sydney Class"
+		type = ship_hull_cruiser_2
+		name_group = AST_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Town Class"
+		type = ship_hull_cruiser_1
+		name_group = AST_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Canberra Class"
+		type = ship_hull_cruiser_1
+		name_group = AST_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "V/W Class"
+		type = ship_hull_light_1
+		name_group = AST_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+	create_equipment_variant = {
+		name = "S Class"
+		type = ship_hull_light_1
+		name_group = AST_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+}
+
+1939.1.1 = {
+	if = {
+		limit = {
+			not = { has_dlc = "Man the Guns" }
+		}
+		create_equipment_variant = {
+			name = "Arunta Class"
+			type = destroyer_1
+			upgrades = {
+				ship_torpedo_upgrade = 2
+				destroyer_engine_upgrade = 2
+				ship_ASW_upgrade = 2
+				ship_anti_air_upgrade = 2
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		create_equipment_variant = {
+			name = "Arunta Class"
+			type = ship_hull_light_2
+			name_group = AST_DD_HISTORICAL
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_sonar_2
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_light_battery_2
+				rear_1_custom_slot = ship_depth_charge_2
+			}
+		}
+	}
+}

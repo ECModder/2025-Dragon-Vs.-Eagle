@@ -1,0 +1,644 @@
+# ============================================================
+#   		  DvE IDEOLOGYES
+#   File: common/ideologies/00_ideology.txt
+#
+#   GFX CONVENTION (define sprites in interface/*.gfx):
+#     Main ideology icon  →  GFX_ideology_[ideology]_icon
+#     Subideology icon    →  GFX_ideology_[subideology]_icon
+#
+#   To change the icon based on the sub-ideology, we will use
+#   scripted_gui or portrait_gfx in the interfaces.
+# ============================================================
+
+ideologies = {
+
+    # ============================================================
+    #   TOTALITARIAN COMMUNISM
+    #   GFX base: GFX_ideology_totalitarian_communism_icon
+    # ============================================================
+    totalitarian_communism = {
+        types = {
+            # GFX: GFX_ideology_maoism_icon
+            maoism = {}
+
+            # GFX: GFX_ideology_stalinism_icon
+            stalinism = {}
+
+            # GFX: GFX_ideology_chekist_communism_icon
+            chekist_communism = {}
+
+            # GFX: GFX_ideology_socialist_military_junta_icon
+            socialist_military_junta = {}
+
+            # GFX: GFX_ideology_jacobinism_icon
+            jacobinism = {}
+
+            # GFX: GFX_ideology_transhumanist_icon
+            transhumanist = {}
+
+            # GFX: GFX_ideology_ transhumanistanarchoprimitivism_icon
+            transhumanistanarchoprimitivism = {}
+
+            # GFX: GFX_ideology_market_socialism_icon
+            market_socialism = {}
+
+            # GFX: GFX_ideology_xi_jinping_thought_icon
+            xi_jinping_thought = {}
+
+            # GFX: GFX_ideology_left_nationalism_icon
+            left_nationalism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_TOTALCOM_1"
+            "FACTION_TOTALCOM_2"
+        }
+
+        color = { 178 16 16 }
+
+        war_impact_on_world_tension = 0.50
+        base_acceptance = -40
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            totalitarian_communism = 0.10
+            revolutionary_socialism = 0.05
+        }
+
+        ai_ideology_wanted_units_factor = 1.10
+    }
+
+
+    # ============================================================
+    #   VANGUARD SOCIALISM
+    #   GFX base: GFX_ideology_revolutionary_socialism_icon
+    # ============================================================
+    vanguard_socialism = {
+        types = {
+            # GFX: GFX_ideology_leninist_internationalism_icon
+            leninist_internationalism = {}
+
+            # GFX: GFX_ideology_trotskyism_icon
+            trotskyism = {}
+
+            # GFX: GFX_ideology_neo_sovietism_icon
+            neo_sovietism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_REVSOC_1"
+            "FACTION_REVSOC_2"
+        }
+
+        color = { 210 30 30 }
+
+        war_impact_on_world_tension = 0.40
+        base_acceptance = -30
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            revolutionary_socialism = 0.10
+            totalitarian_communism = 0.03
+            progressive = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.05
+    }
+
+    # ============================================================
+    #   REVOLUTIONARY SOCIALISM
+    #   GFX base: GFX_ideology_revolutionary_socialism_icon
+    # ============================================================
+    revolutionary_socialism = {
+        types = {
+
+            # GFX: GFX_ideology_left_baathism_icon
+            left_baathism = {}
+
+            # GFX: GFX_ideology_left_anarchist_icon
+            left_anarchist = {}
+
+            # GFX: GFX_ideology_syndicalism_icon
+            syndicalism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_REVSOC_1"
+            "FACTION_REVSOC_2"
+        }
+
+        color = { 210 30 30 }
+
+        war_impact_on_world_tension = 0.40
+        base_acceptance = -30
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            revolutionary_socialism = 0.10
+            totalitarian_communism = 0.03
+            progressive = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.05
+    }
+
+    # ============================================================
+    #   PROGRESSIVE
+    #   GFX base: GFX_ideology_progressive_icon
+    # ============================================================
+    progressive = {
+        types = {
+            # GFX: GFX_ideology_progressivism_icon
+            progressivism = {}
+
+            # GFX: GFX_ideology_reformist_socialism_icon
+            reformist_socialism = {}
+
+            # GFX: GFX_ideology_social_democracy_icon
+            social_democracy = {}
+
+            # GFX: GFX_ideology_neo_socialism_icon
+            neo_socialism = {}
+
+            # GFX: GFX_ideology_left_centrist_icon
+            left_centrist = {}
+
+            # GFX: GFX_ideology_left_populism_icon
+            left_populism = {}
+
+            # GFX: GFX_ideology_green_leftist_icon
+            green_leftist = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_PROGRESSIVE_1"
+            "FACTION_PROGRESSIVE_2"
+        }
+
+        color = { 220 60 100 }
+
+        war_impact_on_world_tension = 0.20
+        base_acceptance = -10
+
+        can_be_boosted = yes
+        can_collaborate = yes
+        can_host_government_in_exile = yes
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            progressive = 0.10
+            centrist = 0.03
+            revolutionary_socialism = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 0.95
+    }
+
+    # ============================================================
+    #   CENTRIST
+    #   GFX base: GFX_ideology_centrist_icon
+    # ============================================================
+    centrist = {
+        types = {
+            # GFX: GFX_ideology_liberal_socialdemocrat_icon
+            liberal_socialdemocrat = {}
+
+            # GFX: GFX_ideology_green_liberalism_icon
+            green_liberalism = {}
+
+            # GFX: GFX_ideology_ultra_liberalism_icon
+            ultra_liberalism = {}
+
+            # GFX: GFX_ideology_centrist_populism_icon
+            centrist_populism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_CENTRIST_1"
+            "FACTION_CENTRIST_2"
+        }
+
+        color = { 255 220 0 }
+
+        war_impact_on_world_tension = 0.15
+        base_acceptance = 0
+
+        can_be_boosted = yes
+        can_collaborate = yes
+        can_host_government_in_exile = yes
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            centrist = 0.10
+            progressive = 0.03
+            conservative = 0.03
+        }
+
+        ai_ideology_wanted_units_factor = 0.90
+    }
+
+    # ============================================================
+    #   CONSERVATIVE
+    #   GFX base: GFX_ideology_conservative_icon
+    # ============================================================
+    conservative = {
+        types = {
+            # GFX: GFX_ideology_conservatism_icon
+            conservatism = {}
+
+            # GFX: GFX_ideology_classical_liberalism_icon
+            classical_liberalism = {}
+
+            # GFX: GFX_ideology_civic_nationalism_icon
+            civic_nationalism = {}
+
+            # GFX: GFX_ideology_trumpism_icon
+            trumpism = {}
+
+            # GFX: GFX_ideology_constitutionalist_icon
+            constitutionalist = {}
+
+            # GFX: GFX_ideology_christian_democracy_icon
+            christian_democracy = {}
+
+            # GFX: GFX_ideology_classical_populism_icon
+            classical_populism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_CONSERVATIVE_1"
+            "FACTION_CONSERVATIVE_2"
+        }
+
+        color = { 30 80 180 }
+
+        war_impact_on_world_tension = 0.20
+        base_acceptance = -5
+
+        can_be_boosted = yes
+        can_collaborate = yes
+        can_host_government_in_exile = yes
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            conservative = 0.10
+            centrist = 0.03
+            reactionary = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 0.95
+    }
+
+    # ============================================================
+    #   REACTIONARY
+    #   GFX base: GFX_ideology_reactionary_icon
+    # ============================================================
+    reactionary = {
+        types = {
+            # GFX: GFX_ideology_military_democracy_icon
+            military_democracy = {}
+
+            # GFX: GFX_ideology_paleoconservatism_icon
+            paleoconservatism = {}
+
+            # GFX: GFX_ideology_traditionalismo_icon
+            traditionalismo = {}
+
+            # GFX: GFX_ideology_clericalism_icon
+            clericalism = {}
+
+            # GFX: GFX_ideology_corporatism_icon
+            corporatism = {}
+
+            # GFX: GFX_ideology_hardline_conservatism_icon
+            hardline_conservatism = {}
+
+            # GFX: GFX_ideology_paternalism_icon
+            paternalism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_REACTIONARY_1"
+            "FACTION_REACTIONARY_2"
+        }
+
+        color = { 20 40 120 }
+
+        war_impact_on_world_tension = 0.30
+        base_acceptance = -15
+
+        can_be_boosted = yes
+        can_collaborate = yes
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            reactionary = 0.10
+            conservative = 0.04
+            authoritarianism = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.00
+    }
+
+    # ============================================================
+    #   AUTHORITARIANISM
+    #   GFX base: GFX_ideology_authoritarianism_icon
+    # ============================================================
+    authoritarianism = {
+        types = {
+            # GFX: GFX_ideology_putinism_icon
+            putinism = {}
+
+            # GFX: GFX_ideology_patriotic_socialism_icon
+            patriotic_socialism = {}
+
+            # GFX: GFX_ideology_illiberal_democracy_icon
+            illiberal_democracy = {}
+
+            # GFX: GFX_ideology_oligarchy_icon
+            oligarchy = {}
+
+            # GFX: GFX_ideology_technocracy_icon
+            technocracy = {}
+
+            # GFX: GFX_ideology_guided_democracy_icon
+            guided_democracy = {}
+
+            # GFX: GFX_ideology_autocratic_liberalism_icon
+            autocratic_liberalism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_AUTH_1"
+            "FACTION_AUTH_2"
+        }
+
+        color = { 100 30 140 }
+
+        war_impact_on_world_tension = 0.40
+        base_acceptance = -25
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            authoritarianism = 0.10
+            autocracy = 0.05
+            reactionary = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.05
+    }
+
+    # ============================================================
+    #   AUTOCRACY
+    #   GFX base: GFX_ideology_autocracy_icon
+    # ============================================================
+    autocracy = {
+        types = {
+            # GFX: GFX_ideology_populist_putinism_icon
+            populist_putinism = {}
+
+            # GFX: GFX_ideology_mafia_state_icon
+            mafia_state = {}
+
+            # GFX: GFX_ideology_military_junta_icon
+            military_junta = {}
+
+            # GFX: GFX_ideology_red_army_icon
+            red_army = {}
+
+            # GFX: GFX_ideology_peoples_liberation_army_icon
+            peoples_liberation_army = {}
+
+            # GFX: GFX_ideology_us_army_icon
+            us_army = {}
+
+            # GFX: GFX_ideology_personal_dictatorship_icon
+            personal_dictatorship = {}
+
+            # GFX: GFX_ideology_theocratic_autocracy_icon
+            theocratic_autocracy = {}
+
+            # GFX: GFX_ideology_kleptocracy_icon
+            kleptocracy = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_AUTOCRACY_1"
+            "FACTION_AUTOCRACY_2"
+        }
+
+        color = { 70 20 100 }
+
+        war_impact_on_world_tension = 0.45
+        base_acceptance = -35
+
+        can_be_boosted = no
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            autocracy = 0.10
+            authoritarianism = 0.03
+            absolutism = 0.03
+        }
+
+        ai_ideology_wanted_units_factor = 1.10
+    }
+
+    # ============================================================
+    #   ABSOLUTISM
+    #   GFX base: GFX_ideology_absolutism_icon
+    # ============================================================
+    absolutism = {
+        types = {
+            # GFX: GFX_ideology_monarchism_icon
+            monarchism = {}
+
+            # GFX: GFX_ideology_casa_savoia_icon
+            casa_savoia = {}
+
+            # GFX: GFX_ideology_absolute_monarchy_icon
+            absolute_monarchy = {}
+
+            # GFX: GFX_ideology_divine_monarchy_icon
+            divine_monarchy = {}
+
+            # GFX: GFX_ideology_imperial_autocracy_icon
+            imperial_autocracy = {}
+
+            # GFX: GFX_ideology_oligarchic_monarchy_icon
+            oligarchic_monarchy = {}
+
+            # GFX: GFX_ideology_theocratic_monarchy_icon
+            theocratic_monarchy = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_ABSOLUTISM_1"
+            "FACTION_ABSOLUTISM_2"
+        }
+
+        color = { 200 170 20 }
+
+        war_impact_on_world_tension = 0.35
+        base_acceptance = -30
+
+        can_be_boosted = no
+        can_collaborate = no
+        can_host_government_in_exile = yes
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            absolutism = 0.10
+            autocracy = 0.04
+            reactionary = 0.03
+        }
+
+        ai_ideology_wanted_units_factor = 1.00
+    }
+
+    # ============================================================
+    #   ULTRANATIONALISM
+    #   GFX base: GFX_ideology_ultranationalism_icon
+    # ============================================================
+    ultranationalism = {
+        types = {
+            # GFX: GFX_ideology_neo_fascist_icon
+            neo_fascist = {}
+
+            # GFX: GFX_ideology_neo_nazist_icon
+            neo_nazist = {}
+
+            # GFX: GFX_ideology_fascist_icon
+            fascist = {}
+
+            # GFX: GFX_ideology_nationalsocialist_icon
+            nationalsocialist = {}
+
+            # GFX: GFX_ideology_nazi_maoism_icon
+            nazi_maoism = {}
+
+            # GFX: GFX_ideology_strassarite_icon
+            strassarite = {}
+
+            # GFX: GFX_ideology_national_bolshevism_icon
+            national_bolshevism = {}
+
+            # GFX: GFX_ideology_national_syndicalism_icon
+            national_syndicalism = {}
+
+            # GFX: GFX_ideology_ultranationalism_icon  (subtype)
+            ultranationalism_party = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_ULTRANATION_1"
+            "FACTION_ULTRANATION_2"
+        }
+
+        color = { 40 40 40 }
+
+        war_impact_on_world_tension = 0.60
+        base_acceptance = -50
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            ultranationalism = 0.10
+            autocracy = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.20
+    }
+# ============================================================
+    #    FUNDAMENTALISM
+    #    GFX base: GFX_ideology_fundamentalism_icon
+    # ============================================================
+    fundamentalism = {
+        types = {
+            # GFX: GFX_ideology_islamic_fundamentalism_icon
+            islamic_fundamentalism = {}
+
+            # GFX: GFX_ideology_christian_fundamentalism_icon
+            christian_fundamentalism = {}
+
+            # GFX: GFX_ideology_clerical_fascism_icon
+            clerical_fascism = {}
+
+            # GFX: GFX_ideology_religious_nationalism_icon
+            religious_nationalism = {}
+
+            # GFX: GFX_ideology_ultratraditionalism_icon
+            ultratraditionalism = {}
+
+            # GFX: GFX_ideology_theocratic_state_icon
+            theocratic_state = {}
+
+            # GFX: GFX_ideology_jihadism_icon
+            jihadism = {}
+
+            # GFX: GFX_ideology_evangelical_nationalism_icon
+            evangelical_nationalism = {}
+
+            # GFX: GFX_ideology_hindu_nationalism_icon
+            hindu_nationalism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_FUND_1"
+            "FACTION_FUND_2"
+        }
+
+        color = { 80 55 20 }
+
+        war_impact_on_world_tension = 0.55
+        base_acceptance = -45
+
+        can_be_boosted = no
+        can_collaborate = no
+        can_host_government_in_exile = no
+        can_have_operatives = yes
+        can_form_government = yes
+
+        faction_influence = {
+            fundamentalism = 0.10
+            ultranationalism = 0.03
+            absolutism = 0.02
+        }
+
+        ai_ideology_wanted_units_factor = 1.15
+    }
+
+}

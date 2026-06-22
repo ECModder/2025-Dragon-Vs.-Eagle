@@ -1,0 +1,180 @@
+﻿capital = 1043 # Pailingmiao
+
+oob = "MEN_1936"
+
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+	tech_support = 1
+	gw_artillery = 1
+}
+
+recruit_character = MEN_prince_demchugdongrub
+recruit_character = MEN_hesehn_tiemei
+recruit_character = MEN_guan_xingde
+recruit_character = MEN_kyoiji_tomonaga
+recruit_character = MEN_deng_linge
+recruit_character = MEN_hung_zhehuang
+recruit_character = MEN_nakajima_kesago
+recruit_character = MEN_yonimitsu_kasahara
+recruit_character = MEN_nalan_kang_an
+recruit_character = MEN_songgotu_zhanshan
+recruit_character = MEN_megata_toshiro
+recruit_character = MEN_yondonwangchug
+recruit_character = MEN_li_shouxin
+recruit_character = MEN_chin_yung_chang
+recruit_character = MEN_serendongrub
+recruit_character = MEN_jodbajab
+recruit_character = MEN_altanochir
+recruit_character = MEN_wang_ying
+
+IF = {
+	limit = {
+		NOT = {
+			has_dlc = "No Compromise, No Surrender"
+		}
+	}
+
+	add_ideas = {
+		MEN_pailingmiao_council_idea
+		MEN_stretched_administration_idea
+	}
+
+	recruit_character = MEN_songgotu_shangzhi
+	recruit_character = MEN_sonin_xiangying
+	recruit_character = MEN_zhao_zhanshan
+	
+	ELSE = {
+
+		set_variable = { MEN_levy_cap_max = 24 }
+		set_variable = { MEN_levy_cap_min = 0 }
+		set_variable = { MEN_levy_cap = 2 }
+		set_variable = { MEN_levy_deployed = 0 }
+		clamp_variable = {
+			var = MEN_levy_cap
+			min = MEN_levy_cap_min
+			max = MEN_levy_cap_max
+		}
+
+		division_template = {
+			name = "Mongol Levy"		
+			#division_names_group = 
+			is_locked = yes
+			force_allow_recruiting = no
+			regiments = {
+				irregular_infantry = { x = 0 y = 0 }
+				irregular_infantry = { x = 0 y = 1 }
+				irregular_infantry = { x = 1 y = 0 }
+				irregular_infantry = { x = 1 y = 1 }
+				irregular_infantry = { x = 2 y = 0 }
+				irregular_infantry = { x = 2 y = 1 }
+			}
+		}
+
+		set_country_flag = MEN_banner_system_is_active
+
+		add_ideas = {
+			MEN_mongol_banners_idea
+			MEN_pailingmiao_council_idea
+			MEN_stretched_administration_idea
+			MEN_communist_revolutionaries_idea
+			MEN_disorganized_army_idea
+		}
+
+	}	
+}
+
+1939.1.1 = {
+
+	add_to_war = {
+		targeted_alliance = JAP
+		enemy = CHI
+		hostility_reason = puppet
+	}
+	
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "MEN_1939"
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+	set_grand_doctrine = grand_battleplan
+	set_grand_doctrine = new_fleet_in_being
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+	MEN_prince_demchugdongrub = {
+		add_country_leader_role = {
+			promote_leader = yes
+			country_leader = {
+				ideology = despotism
+				expire = "1965.1.1.1"
+				traits = { MEN_borjigin_descendant } 
+			}
+		}
+	}
+
+	set_country_flag = MEN_moved_capital_to_zhangbei
+
+	set_capital = {
+		state = 611
+		remember_old_capital = yes
+	}
+
+	remove_ideas = MEN_pailingmiao_council_idea
+
+	swap_ideas = {
+		remove_idea = MEN_stretched_administration_idea
+		add_idea = MEN_stretched_administration_idea_2
+	}
+
+	add_ideas = MEN_chin_yung_chang 
+	add_ideas = MEN_wang_ying 
+
+	set_cosmetic_tag = MEN_mengjiang_autonomy
+
+	add_state_core = 616
+	add_state_core = 1040
+
+	add_ideas = MEN_true_mongol_state
+	
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	neutrality = 100
+}

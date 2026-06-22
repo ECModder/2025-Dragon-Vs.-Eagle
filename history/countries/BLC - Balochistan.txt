@@ -1,0 +1,81 @@
+﻿capital = 988 
+
+set_research_slots = 2
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Baloch Students Organization (Marxist)" name = "BSO-M" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Balochistan National Party (Awami)" name = "BNP-A" }
+set_party_name = { ideology = progressive long_name = "National Party (Balochistan)" name = "NP" }
+set_party_name = { ideology = centrist long_name = "Balochistan National Party (Mengal)" name = "BNP-M" }
+set_party_name = { ideology = conservative long_name = "Balochistan Awami Party" name = "BAP" }
+set_party_name = { ideology = reactionary long_name = "Jamhoori Wattan Party" name = "JWP" }
+set_party_name = { ideology = authoritarianism long_name = "Baloch Regional Tribal Jirga" name = "Jirga" }
+set_party_name = { ideology = autocracy long_name = "Balochistan Liberation Army Command" name = "BLA" }
+set_party_name = { ideology = absolutism long_name = "Khanate of Kalat Sovereign House" name = "Kalat" }
+set_party_name = { ideology = ultranationalism long_name = "Baloch National Movement" name = "BNM" }
+set_party_name = { ideology = fundamentalism long_name = "Jamiat Ulema-e-Islam Balochistan" name = "JUI-F" }
+
+create_country_leader = { name = "Akhtar Mengal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Abdul Quddus Bizenjo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Abdul Malik Baloch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Nawabzada Shahzain Bugti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Mir Asadullah Baloch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Dr. Allah Nazar Baloch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Javed Baloch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Sarfraz Bugti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Basheer Geb" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Mir Khan Suleman Khan Ahmedzai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Khalil Baloch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Maulana Abdul Wasey" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2024.2.8"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 35
+	conservative = 30
+	fundamentalism = 15
+	progressive = 12
+	ultranationalism = 8
+}

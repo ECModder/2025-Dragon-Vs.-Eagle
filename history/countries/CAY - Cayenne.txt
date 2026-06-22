@@ -1,0 +1,82 @@
+﻿capital = 310
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 5
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Guyanais" name = "PCG" }
+set_party_name = { ideology = vanguard_socialism long_name = "Mouvement de Décolonisation et d'Émancipation Sociale" name = "MDES" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Péyi Guyane Left Front" name = "PG-LF" }
+set_party_name = { ideology = progressive long_name = "Péyi Guyane" name = "PG" }
+set_party_name = { ideology = centrist long_name = "Guyane Rassemblement" name = "GR" }
+set_party_name = { ideology = conservative long_name = "Les Républicains de Guyane" name = "LRG" }
+set_party_name = { ideology = reactionary long_name = "Rassemblement National Guyanais" name = "RNG" }
+set_party_name = { ideology = authoritarianism long_name = "Préfecture de la Guyane" name = "PG" }
+set_party_name = { ideology = autocracy long_name = "Forces Armées en Guyane Commandement" name = "FAG" }
+set_party_name = { ideology = absolutism long_name = "Conseil de la Couronne de Cayenne" name = "CCC" }
+set_party_name = { ideology = ultranationalism long_name = "Front Libérateur de la Guyane" name = "FLG" }
+set_party_name = { ideology = fundamentalism long_name = "Diocèse de Cayenne Secrétariat" name = "DCS" }
+
+create_country_leader = { name = "Gabriel Serville" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Rodolphe Alexandre" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Davy Rimane" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Marie-Laure Phinéra-Horth" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Prefect Antoine Poussier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2021.6.27"
+	election_frequency = 72
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 45
+	centrist = 25
+	vanguard_socialism = 15
+	conservative = 10
+	reactionary = 5
+}

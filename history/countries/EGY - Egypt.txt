@@ -1,0 +1,122 @@
+﻿capital = 907
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+IF = {
+	limit = {
+		has_dlc = "Battle for the Bosporus"
+	}
+	set_technology = { camelry = 1 }
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+
+set_convoys = 20
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+		tech_trucks = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Al-Hizb al-Shuyu'i al-Misri" name = "CP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Hizb al-Tajaum'u" name = "Tagammu" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Al-Ishtirakiyeen al-Thawriyeen" name = "RS" }
+set_party_name = { ideology = progressive long_name = "Hizb al-Dustour" name = "Dustour" }
+set_party_name = { ideology = centrist long_name = "Hizb Humat al-Watan" name = "HW" }
+set_party_name = { ideology = conservative long_name = "Hizb Mustaqbal Watan" name = "MW" }
+set_party_name = { ideology = reactionary long_name = "Hizb al-Wafd" name = "Wafd" }
+set_party_name = { ideology = authoritarianism long_name = "Al-Majlis al-A'la lil-Quwwat al-Musallaha" name = "SCAF" }
+set_party_name = { ideology = autocracy long_name = "Al-Sultat al-Aksariyah" name = "MIL" }
+set_party_name = { ideology = absolutism long_name = "Al-Alakah al-Malakiyah" name = "ROYAL" }
+set_party_name = { ideology = ultranationalism long_name = "Al-Harakah al-Wataniyah" name = "MNA" }
+set_party_name = { ideology = fundamentalism long_name = "Jamā'at al-Ikhwān al-Muslimīn" name = "MB" }
+
+create_country_leader = { name = "Abdel Fattah el-Sisi" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_sisi.dds" expire = "2030.4.1" ideology = putinism }
+create_country_leader = { name = "Abdel-Sanad Yamama" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Hazem Omar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
+create_country_leader = { name = "Farid Zahran" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2023.12.12"
+	election_frequency = 72
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 2
+	progressive = 5
+	centrist = 15
+	conservative = 30
+	reactionary = 7
+	authoritarianism = 35
+	autocracy = 2
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 2
+}
+
+recruit_character = EGY_sisi

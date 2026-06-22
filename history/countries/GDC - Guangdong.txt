@@ -1,0 +1,207 @@
+﻿capital = 592 # Guangdong province, Guangzhou city
+
+set_variable = { CHI_warlord_army_political_power_gain = 0 }
+set_variable = { CHI_warlord_army_army_core_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_core_defence_factor = 0 }
+set_variable = { CHI_warlord_army_production_speed_buildings_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_defence_factor = 0 }
+set_variable = { CHI_warlord_army_special_forces_cap = 0 }
+set_variable = { CHI_warlord_army_special_forces_out_of_supply_factor = 0 }
+set_variable = { warlord_faction_influence_war_score_factor = 0 }
+set_variable = { warlord_faction_influence_contribution_factor = 0 }
+
+set_variable = { RNG_state_shintoism_surrender_limit = 0 }
+set_variable = { RNG_state_shintoism_war_support_factor = 0 }
+set_variable = { RNG_state_shintoism_pocket_penalty = 0 }
+set_variable = { RNG_state_shintoism_stability_factor = 0 }
+set_variable = { RNG_state_shintoism_army_core_defence_factor = 0 }
+set_variable = { RNG_state_shintoism_research_speed_factor = 0 }
+set_variable = { RNG_state_shintoism_recruitable_population_factor = 0 }
+set_variable = { RNG_state_shintoism_political_power_gain = 0 }
+
+oob = "GDC_1936_sea"
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "GDC_1936_air_bba"
+		set_technology = {
+			iw_small_airframe = 1
+			engines_1 = 1
+			aa_lmg = 1
+			early_bombs = 1
+			bba_early_transport_plane = 1
+		}
+	else = {
+		set_air_oob = "GDC_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+			early_transport_plane = 1
+		}
+	}
+}
+
+set_stability = 0.7
+set_war_support = 0.4
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	recruit_character = GXC_chen_jitang
+	recruit_character = GND_yu_hanmou
+}
+
+
+if = { 
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_warlord_state_idea
+	}
+}
+
+# Should not exist in the 1939 scenario 
+#1939.1.1 = {
+#
+#	add_political_power = 1198
+#	add_command_power = 100
+#
+#	if = {
+#		limit = {
+#			has_dlc = "Waking the Tiger"
+#		}
+#
+#		CHI = { add_to_faction = PREV }
+#		add_to_war = {
+#			targeted_alliance = CHI
+#			enemy = JAP
+#			hostility_reason = asked_to_join
+#		}
+#		
+#		#complete_national_focus = CHI_secure_internal_politics
+#		#complete_national_focus = CHI_cooperation_with_the_communists
+#		#complete_national_focus = CHI_land_redistribution
+#		#complete_national_focus = CHI_land_value_tax
+#		#complete_national_focus = CHI_judiciary_reforms
+#		#complete_national_focus = CHI_communist_administrators
+#		#complete_national_focus = CHI_industrial_investment
+#		#complete_national_focus = CHI_public_education_reform
+#		#complete_national_focus = CHI_local_arms_production
+#		#complete_national_focus = CHI_long_term_economic_planning
+#		#complete_national_focus = CHI_ideological_education
+#		#complete_national_focus = CHI_local_arms_development
+#		#complete_national_focus = CHI_heavy_weapons_development
+#		#complete_national_focus = CHI_public_works
+#		#complete_national_focus = CHI_labor_reform
+#		#complete_national_focus = CHI_rural_militias
+#		else = {			
+#			#generic focuses
+#			complete_national_focus = army_effort
+#			complete_national_focus = equipment_effort
+#			complete_national_focus = motorization_effort
+#			complete_national_focus = aviation_effort
+#			complete_national_focus = naval_effort
+#			complete_national_focus = flexible_navy
+#			complete_national_focus = industrial_effort
+#			complete_national_focus = construction_effort
+#			complete_national_focus = production_effort
+#		}	
+#	}
+#
+#	add_ideas = {
+#		#laws
+#		tot_economic_mobilisation
+#		service_by_requirement
+#		closed_economy
+#	}
+#	
+#	set_technology = {
+#		#doctrines
+#		air_superiority = 1
+#
+#		#electronics
+#		electronic_mechanical_engineering = 1
+#		radio = 1
+#		mechanical_computing = 1
+#		computing_machine = 1
+#		basic_encryption = 1
+#		basic_decryption = 1
+#
+#		#industry
+#		basic_machine_tools = 1
+#		improved_machine_tools = 1
+#		advanced_machine_tools = 1
+#		fuel_silos = 1
+#		construction1 = 1
+#		construction2 = 1
+#		construction3 = 1
+#		concentrated_industry = 1
+#		concentrated_industry2 = 1
+#		concentrated_industry3 = 1
+#	}
+
+#set_grand_doctrine = mass_assault
+#set_grand_doctrine = new_fleet_in_being
+#
+#	complete_special_project = {
+#		project = sp:sp_air_radar
+#	}
+#}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Zhongguo Gongsandang - Guangdong" name = "CCP-GD" }
+set_party_name = { ideology = vanguard_socialism long_name = "Zhongguo Gongsandang - Zuo" name = "CCP-Z" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Zhongguo Gongnong Dang" name = "ZGD" }
+set_party_name = { ideology = progressive long_name = "Zhongguo Minzhu Tongmeng" name = "ZMT" }
+set_party_name = { ideology = centrist long_name = "Guangdong Jingji Lengo" name = "GJL" }
+set_party_name = { ideology = conservative long_name = "Guangdong Shangye Heshui" name = "GSH" }
+set_party_name = { ideology = reactionary long_name = "Zhonghua Chuantong Hui" name = "ZCH" }
+set_party_name = { ideology = authoritarianism long_name = "Guangdong Sheng Renmin Zhengfu" name = "GSRZ" }
+set_party_name = { ideology = autocracy long_name = "Guangdong Junqu Command" name = "GJC" }
+set_party_name = { ideology = absolutism long_name = "Yue Kingdom Restoration House" name = "YKRH" }
+set_party_name = { ideology = ultranationalism long_name = "Zhonghua Minzu Weiyuanhui" name = "ZMW" }
+set_party_name = { ideology = fundamentalism long_name = "Guangdong Daojiao Association" name = "GDA" }
+
+create_country_leader = { name = "Huang Kunming" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Zhu Xiaodan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Lin Wu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Wang Weizhong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Shen Hai-xiong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Ma Xingrui" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Li Xi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Zheng Yanxiong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Chang Ding-qiu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Zhao Zi-long II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Chen Jiong-ming Jr." desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Ming Sheng" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = totalitarian_communism
+	last_election = "2023.1.15"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 85
+	vanguard_socialism = 5
+	revolutionary_socialism = 2
+	progressive = 1
+	centrist = 1
+	conservative = 3
+	reactionary = 1
+	authoritarianism = 2
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 0
+	fundamentalism = 0
+}

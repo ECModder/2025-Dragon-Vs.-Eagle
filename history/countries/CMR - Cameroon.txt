@@ -1,0 +1,113 @@
+﻿capital = 773
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+recruit_character = CMR_aa2
+recruit_character = CMR_democratic_guy
+recruit_character = CMR_acgs
+recruit_character = CMR_ncm
+recruit_character = CMR_nt
+recruit_character = CMR_acas
+recruit_character = CMR_awt
+recruit_character = CMR_pot
+recruit_character = CMR_stc
+recruit_character = CMR_acd2
+recruit_character = CMR_communist_guy
+recruit_character = CMR_aco2
+recruit_character = CMR_fascist_guy
+recruit_character = CMR_coi
+recruit_character = CMR_ar
+recruit_character = CMR_nccr
+recruit_character = CMR_mt
+recruit_character = CMR_ai2
+recruit_character = CMR_ncs
+recruit_character = CMR_acr
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Union des Populations du Cameroun (Marxiste-Léniniste)" name = "UPC-ML" }
+set_party_name = { ideology = vanguard_socialism long_name = "Union des Populations du Cameroun" name = "UPC" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Front des Forces Sociales du Cameroun" name = "FFSC" }
+set_party_name = { ideology = progressive long_name = "Social Democratic Front" name = "SDF" }
+set_party_name = { ideology = centrist long_name = "Mouvement pour la Renaissance du Cameroun" name = "MRC" }
+set_party_name = { ideology = conservative long_name = "Union Nationale pour la Démocratie et le Progrès" name = "UNDP" }
+set_party_name = { ideology = reactionary long_name = "Rassemblement Démocratique du Peuple Camerounais" name = "RDPC" }
+set_party_name = { ideology = authoritarianism long_name = "Biya Presidential Secretariat" name = "BPS" }
+set_party_name = { ideology = autocracy long_name = "Forces Armées Camerounaises Commandement" name = "FAC" }
+set_party_name = { ideology = absolutism long_name = "Conseil des Chefferies Traditionnelles" name = "CCT" }
+set_party_name = { ideology = ultranationalism long_name = "Ambazonia Liberation Governing Council" name = "ALGC" }
+set_party_name = { ideology = fundamentalism long_name = "Conseil des Imams du Cameroun" name = "CIC" }
+
+create_country_leader = { name = "Paul Biya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Maurice Kamto" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Joshua Osih" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Bello Bouba Maigari" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "General René Claude Meka" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2018.10.7"
+	election_frequency = 84
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 65
+	centrist = 15
+	conservative = 10
+	ultranationalism = 8
+	progressive = 2
+}

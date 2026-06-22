@@ -1,0 +1,96 @@
+﻿capital = 1023 #Brunei Town
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 0
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Brunei Underground Workers Core" name = "BUWC" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Parti Rakyat Brunei (Marxist)" name = "PRB-M" }
+set_party_name = { ideology = progressive long_name = "Parti Rakyat Brunei" name = "PRB" }
+set_party_name = { ideology = centrist long_name = "Parti Kesedaran Rakyat" name = "PAKAR" }
+set_party_name = { ideology = conservative long_name = "Parti Pembangunan Negara" name = "NDP" }
+set_party_name = { ideology = reactionary long_name = "Parti Perpaduan National Brunei" name = "PPNB" }
+set_party_name = { ideology = authoritarianism long_name = "Jabatan Perdana Menteri" name = "JPM" }
+set_party_name = { ideology = autocracy long_name = "Angkatan Bersenjata Diraja Brunei" name = "ABDB" }
+set_party_name = { ideology = absolutism long_name = "Sultanate of Brunei Royal Council" name = "Sultanate" }
+set_party_name = { ideology = ultranationalism long_name = "Brunei Malay Melayu Islam Beraja Front" name = "MIB" }
+set_party_name = { ideology = fundamentalism long_name = "Majlis Ugama Islam Brunei" name = "MUIB" }
+
+create_country_leader = { name = "Sultan Hassanal Bolkiah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Prince Al-Muhtadee Billah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Yassin Affandy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Awang Hatta" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "A.M. Azahari Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Zaini Ahmad" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Baharuddin Haji" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Sufri Bolkiah Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Major General Haszaimi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Haji Mohd Zain" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Abdul Rahman Faction" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Mufti Abdul Aziz Juned" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = absolutism
+	last_election = "1962.8.30"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	absolutism = 75
+	authoritarianism = 15
+	fundamentalism = 7
+	conservative = 3
+}

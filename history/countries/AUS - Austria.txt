@@ -1,0 +1,330 @@
+﻿capital = 4 # Vienna
+
+IF = {
+	limit = {
+		has_dlc = "Gotterdammerung"
+	}
+	set_oob = "AUS_ww_1936"
+	ELSE_IF = {
+		limit = {
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+		set_oob = "AUS_1936"
+	}
+}
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "AUS_1936_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			engines_1 = 1
+			aircraft_construction = 1
+			iw_small_airframe = 1
+		}
+	else = {
+		set_air_oob = "AUS_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+
+		}
+	}
+}
+
+
+### Store Austrian initial states - Used for removing German cores in Austria when German capitulates after having done successful Anschluss
+every_owned_state = {
+	limit = {
+		is_core_of = ROOT
+	}
+	add_to_array = { ROOT.AUS_initial_states = THIS }
+}
+
+
+IF = {
+	limit = { 
+		has_dlc = "Gotterdammerung"
+	}
+
+	
+
+	#setting up all the dynamic modifiers
+
+	AUS_set_austrofascism_defaults = yes
+	AUS_set_monarchy_restored_defauts = yes
+	AUS_set_farr_defaults = yes
+	AUS_set_doth_defalts = yes
+	AUS_set_aggression_defaults = yes
+	AUS_set_austromarxism_defaults = yes
+	AUS_set_peoples_army_defaults = yes
+	AUS_set_empire_restored_defaults = yes
+	AUS_set_airforce_defaults = yes
+	AUS_set_army_defaults = yes
+	AUS_set_army_monarcy_defaults = yes
+	AUS_set_navy_defaults = yes
+	AUS_set_compensation_for_guarantee_defaults = yes
+
+	#National spirits are set here
+
+	add_ideas = {
+		AUS_widespread_unemployment
+		AUS_phonix_insurance
+		AUS_recovering_from_the_depression
+	}
+
+	add_timed_idea = {
+		idea = AUS_treaty_of_saint_germain_en_laye
+		days = 1657
+	}
+
+	add_dynamic_modifier= {
+		modifier = AUS_austrofascism 
+	}	
+
+	add_opinion_modifier = {
+		target = GER
+		modifier = AUS_austrofascism_opm
+	}	
+
+	# rules are set here
+
+	country_lock_all_division_template = {
+		is_locked = yes
+		desc = AUS_cannot_train_due_to_treaty_of_saint_germain_en_laye
+	}
+
+
+	
+
+	#########################
+	##DLC-LOCKED CHARACTERS##
+	#########################
+
+	#Political
+	recruit_character = AUS_kurt_schuschnigg
+	recruit_character = AUS_karl_renner
+	recruit_character = AUS_arthur_seyss-inquart
+	recruit_character = AUS_alfred_klahr
+	recruit_character = AUS_ernst_rudiger_starhemberg
+	recruit_character = AUS_johann_koplenig
+	recruit_character = AUS_edmund_glaise_horstenau
+	recruit_character = AUS_johann_hiedler
+	recruit_character = AUS_vinzenz_schumy
+	recruit_character = AUS_wilhelm_miklas
+	recruit_character = AUS_franz_winkler
+	recruit_character = AUS_ludwig_von_mises
+	recruit_character = AUS_heimito_von_doderer
+	recruit_character = AUS_hans_pertner
+	recruit_character = AUS_johannes_of_liechtenstein
+	recruit_character = AUS_alois_of_liechtenstein
+	recruit_character = AUS_heinrich_maier
+	recruit_character = AUS_leopold_waber
+	recruit_character = AUS_viktor_kienbock
+	recruit_character = AUS_karl_polheim
+	recruit_character = AUS_marianne_pollak
+	recruit_character = AUS_bruno_kreisky
+	recruit_character = AUS_theodor_innitzer
+	recruit_character = AUS_elizabet_von_gutmann
+	recruit_character = AUS_malke_schorr
+	recruit_character = AUS_franz_koritschoner
+	recruit_character = AUS_adolf_scharf
+	recruit_character = AUS_adolf_hoch
+	recruit_character = AUS_otto_bauer 
+	recruit_character = AUS_alois_schonburg_hartenstein
+	recruit_character = AUS_julius_raab
+	recruit_character = AUS_leopold_figl
+	recruit_character = AUS_ernst_kaltenbrunner
+	recruit_character = AUS_maximilian_ronge
+	recruit_character = AUS_egon_schonhof
+	recruit_character = AUS_friedrich_mandl
+
+	#Army
+
+	recruit_character = AUS_karl_eglseer
+	recruit_character = AUS_friedrich_materna
+	recruit_character = AUS_emil_liebitzky
+	recruit_character = AUS_ludwig_von_eimannsberger
+	recruit_character = AUS_alfred_ritter_von_hubicki
+	recruit_character = AUS_valentin_feuerstein
+	recruit_character = AUS_ernst_hammer
+	recruit_character = AUS_eduard_barger
+	recruit_character = AUS_mauritz_von_wiktorin
+	recruit_character = AUS_curt_von_jesser
+	recruit_character = AUS_anton_kienbauer
+	recruit_character = AUS_julius_deutsch
+	recruit_character = AUS_alfred_jansa
+	recruit_character = AUS_wilhelm_gebauer
+	recruit_character = AUS_theodor_korner
+	recruit_character = AUS_arthur_von_pongracz
+	recruit_character = AUS_gottfried_freiherr_von_banfeld
+	recruit_character = AUS_josef_brunner
+	recruit_character = AUS_alexander_lohr
+	recruit_character = AUS_julius_yllam
+	recruit_character = AUS_wilhelm_zehner
+	recruit_character = AUS_otto_schobel
+	recruit_character = AUS_viktor_seebauer
+	recruit_character = AUS_lothar_rendulic
+	recruit_character = AUS_franz_bohme
+	recruit_character = AUS_eugen_beyer
+	recruit_character = AUS_richard_steidle
+	recruit_character = AUS_godwin_von_brumowski
+	recruit_character = AUS_johann_jacob_reverta
+
+	#Navy
+
+	recruit_character = AUS_carl_heinz_birnbacher
+	recruit_character = AUS_franz_von_keil
+
+
+
+	#scientists, commented out before we know how to handle them
+	recruit_character = AUS_herbert_wagner
+	recruit_character = AUS_eugen_sanger
+	recruit_character = AUS_hedy_lamarr
+	recruit_character = AUS_egon_schweidler
+	recruit_character = AUS_paul_eisler
+
+	#Operatives
+
+	create_operative_leader = {
+		name = AUS_erwin_von_lahousen
+		bypass_recruitment = no 
+		available_to_spy_master = yes 
+		gfx = GFX_portrait_AUS_erwin_von_lahousen 
+		traits = { operative_double_agent operative_commando }
+		nationalities = { AUS GER }
+	}
+
+	create_operative_leader = {
+		name = AUS_wilhelm_ergert
+		bypass_recruitment = no 
+		available_to_spy_master = yes 
+		gfx = GFX_portrait_AUS_wilhelm_ergert 
+		traits = { operative_double_agent operative_linguist operative_safe_cracker }
+		nationalities = { AUS GER YUG }
+	}
+
+	ELSE_IF = {
+		limit = {
+			NOT = {
+				has_dlc = "Gotterdammerung"
+			}
+		}
+
+		#########################
+		#####FREE CHARACTERS#####
+		#########################
+
+		recruit_character = AUS_kurt_schuschnigg
+		recruit_character = AUS_karl_renner
+		recruit_character = AUS_arthur_seyss-inquart
+		recruit_character = AUS_alfred_klahr
+		recruit_character = AUS_karl_eglseer
+		recruit_character = AUS_odilo_globocnik
+		recruit_character = AUS_alexander_lohr
+		recruit_character = AUS_paul_von_hegedus #complete boogus, remove?
+		recruit_character = AUS_julius_yllam
+		recruit_character = AUS_otto_meixner_von_zweienstamm #might be removed, is 80 at game start
+		recruit_character = AUS_wilhelm_zehner
+		recruit_character = AUS_josef_teufl #complete boogus, remove? 
+		recruit_character = AUS_otto_schobel
+		recruit_character = AUS_viktor_seebauer
+		recruit_character = AUS_lothar_rendulic
+		recruit_character = AUS_ernst_kaltenbrunner
+		recruit_character = AUS_eduard_freiherr
+		recruit_character = AUS_franz_bohme
+		recruit_character = AUS_eugen_beyer
+		recruit_character = AUS_julius_raab
+		recruit_character = AUS_leopold_figl
+		recruit_character = AUS_friedrich_mandl
+	}
+
+}
+
+
+set_research_slots = 3
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_engineers = 1
+	tech_support = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	basic_train = 1
+	gw_artillery = 1
+}
+
+IF = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+	}
+
+	ELSE = {
+		set_technology = {
+			gwtank = 1
+		}
+	}
+}
+
+IF = {
+	limit = { has_dlc = "La Resistance" }
+		set_technology = {
+			armored_car1 = 1
+		}
+}
+
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partei der Arbeit Osterreichs" name = "PdA" }
+set_party_name = { ideology = vanguard_socialism long_name = "Kommunistische Partei Osterreichs" name = "KPO" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Die Grunen - Die Grune Alternative" name = "GRUNE" }
+set_party_name = { ideology = progressive long_name = "Sozialdemokratische Partei Osterreichs" name = "SPO" }
+set_party_name = { ideology = centrist long_name = "NEOS - Das Neue Osterreich" name = "NEOS" }
+set_party_name = { ideology = conservative long_name = "Osterreichische Volkspartei" name = "OVP" }
+set_party_name = { ideology = reactionary long_name = "Freiheitliche Partei Osterreichs" name = "FPO" }
+set_party_name = { ideology = authoritarianism long_name = "Team Karnten" name = "TK" }
+set_party_name = { ideology = autocracy long_name = "Bundesheer Militarkommando" name = "Bundesheer" }
+set_party_name = { ideology = absolutism long_name = "Sovereign House of Habsburg-Lorraine" name = "Habsburg" }
+set_party_name = { ideology = ultranationalism long_name = "Die Heimat Osterreich" name = "HEIMAT" }
+set_party_name = { ideology = fundamentalism long_name = "Christliche Partei Osterreichs" name = "CPO" }
+
+create_country_leader = { name = "Karl Nehammer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Andreas Babler" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Herbert Kickl" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Beate Meinl-Reisinger" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Werner Kogler" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Tobias Schweiger" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Tibos Pasztory" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Gerhard Köstinger" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "General Rudolf Striedinger" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Karl von Habsburg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Patrick Poppel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Alfons Adam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2024.9.29"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 26
+	reactionary = 29
+	progressive = 21
+	centrist = 9
+	revolutionary_socialism = 8
+	vanguard_socialism = 3
+	authoritarianism = 2
+	autocracy = 1
+	absolutism = 1
+}set_stability = 0.50
+
+
+

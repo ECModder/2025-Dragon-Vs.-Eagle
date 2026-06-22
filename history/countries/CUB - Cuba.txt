@@ -1,0 +1,134 @@
+﻿capital = 315
+
+oob = "CUB_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_trucks = 1
+}
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_technology = {
+		early_fighter = 1
+
+	}
+}
+
+recruit_character = CUB_josé_agripino_barnet
+recruit_character = CUB_guillermo_cabral
+recruit_character = CUB_wenceslao_carmona
+recruit_character = CUB_gregorio_morales
+recruit_character = CUB_fidel_castro
+recruit_character = CUB_enrique_c_rolas
+recruit_character = CUB_palaez_menendez
+recruit_character = CUB_domingo_r_del_toro
+recruit_character = CUB_eduardo_chibas
+recruit_character = CUB_juan_blas_hernandez
+recruit_character = CUB_sergio_carbo
+recruit_character = CUB_fulgencio_batista
+recruit_character = CUB_rodrigo_a_fuentes
+recruit_character = CUB_sandalio_junco
+recruit_character = CUB_salvador_castaneda_castro
+recruit_character = CUB_angel_gonzalez
+recruit_character = CUB_julio_sanguily
+recruit_character = CUB_carlos_prio
+recruit_character = CUB_gerardo_machado
+recruit_character = CUB_eugenio_molinet_castro
+
+
+set_country_flag = monroe_doctrine
+set_war_support = 0.1
+set_convoys = 20
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "CUB_1939"
+	set_technology = {
+		gw_artillery = 1
+		infantry_weapons1 = 1
+		support_weapons = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista de Cuba (Fidelista)" name = "PCC-F" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista de Cuba" name = "PCC" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Frente de la Juventud Socialista" name = "FJS" }
+set_party_name = { ideology = progressive long_name = "Arco Progresista" name = "AP" }
+set_party_name = { ideology = centrist long_name = "Partido Liberal de Cuba" name = "PLC" }
+set_party_name = { ideology = conservative long_name = "Partido Demócrata Cristiano de Cuba" name = "PDCC" }
+set_party_name = { ideology = reactionary long_name = "Unión Patriótica de Cuba" name = "UNPACU" }
+set_party_name = { ideology = authoritarianism long_name = "Consejo de Estado de Cuba" name = "CEC" }
+set_party_name = { ideology = autocracy long_name = "Fuerzas Armadas Revolucionarias Mando" name = "FAR" }
+set_party_name = { ideology = absolutism long_name = "Consejo de la Real Audiencia de la Habana" name = "CRAH" }
+set_party_name = { ideology = ultranationalism long_name = "Cuba Libre Frente" name = "CLF" }
+set_party_name = { ideology = fundamentalism long_name = "Conferencia de Obispos Católicos de Cuba" name = "COCC" }
+
+create_country_leader = { name = "Miguel Díaz-Canel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Manuel Marrero Cruz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "General Álvaro López Miera" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "José Daniel Ferrer Alliance" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+
+set_politics = {
+	ruling_party = vanguard_socialism
+	last_election = "2023.3.26"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	vanguard_socialism = 80
+	totalitarian_communism = 10
+	authoritarianism = 5
+	reactionary = 5
+}
+1939.1.1 = {
+	recruit_character = CUB_federico_laredo_bru
+	promote_character = CUB_federico_laredo_bru
+	retire_character = CUB_josé_agripino_barnet
+}

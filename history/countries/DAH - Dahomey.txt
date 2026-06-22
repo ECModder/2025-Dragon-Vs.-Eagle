@@ -1,0 +1,119 @@
+﻿capital = 776
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 10
+
+recruit_character = DAH_stc
+recruit_character = DAH_aco2
+recruit_character = DAH_aa2
+recruit_character = DAH_ncs
+recruit_character = DAH_nt
+recruit_character = DAH_acas
+recruit_character = DAH_acd2
+recruit_character = DAH_democratic_guy
+recruit_character = DAH_mt
+recruit_character = DAH_ai2
+recruit_character = DAH_coi
+recruit_character = DAH_acr
+recruit_character = DAH_pot
+recruit_character = DAH_awt
+recruit_character = DAH_communist_guy
+recruit_character = DAH_ncm
+recruit_character = DAH_acgs
+recruit_character = DAH_nccr
+recruit_character = DAH_fascist_guy
+recruit_character = DAH_ar
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Kombinowana Partia Dahomeju" name = "KPD" }
+set_party_name = { ideology = vanguard_socialism long_name = "Awangarda Marksistowska" name = "AM" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Ludowy Front Wyzwolenia" name = "LFW" }
+set_party_name = { ideology = progressive long_name = "Ruch Postępu i Odnowy" name = "RPO" }
+set_party_name = { ideology = centrist long_name = "Sojusz Demokratyczny Dahomeju" name = "SDD" }
+set_party_name = { ideology = conservative long_name = "Partia Narodowo-Konserwatywna" name = "PNK" }
+set_party_name = { ideology = reactionary long_name = "Stronnictwo Tradycjonalistów" name = "ST" }
+set_party_name = { ideology = authoritarianism long_name = "Związek Wojskowy dla Stabilizacji" name = "ZWS" }
+set_party_name = { ideology = autocracy long_name = "Rada Najwyższa Państwa" name = "RNP" }
+set_party_name = { ideology = absolutism long_name = "Królestwo Abomey" name = "KA" }
+set_party_name = { ideology = ultranationalism long_name = "Ruch Czarnych Spartiatów" name = "RCS" }
+set_party_name = { ideology = fundamentalism long_name = "Rada Tradycji i Kultu Vodun" name = "RTV" }
+
+create_country_leader = { name = "Hubert Maga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Sourou-Migan Apithy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Justin Ahomadégbé-Tomêtin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Christophe Soglo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = putinism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "1960.12.11"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 2
+	vanguard_socialism = 4
+	revolutionary_socialism = 6
+	progressive = 11
+	centrist = 23
+	conservative = 31
+	reactionary = 5
+	authoritarianism = 10
+	autocracy = 2
+	absolutism = 1
+	ultranationalism = 2
+	fundamentalism = 3
+}

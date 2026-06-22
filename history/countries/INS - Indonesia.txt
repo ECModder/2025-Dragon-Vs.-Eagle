@@ -1,0 +1,158 @@
+﻿capital = 335 #Jakarta
+
+oob = "INS_1936"
+
+set_research_slots = 2
+
+# Starting tech
+# clone of Holland
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+	tech_recon = 1
+	
+	fuel_silos = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		transport = 1
+		early_submarine = 1
+		basic_destroyer = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		mtg_transport = 1
+		early_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		basic_battery = 1
+	}
+}
+
+set_convoys = 25
+set_politics = {
+	ruling_party = democratic
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	democratic = 50
+	fascism = 30
+	neutrality = 20
+}
+
+
+recruit_character = INS_a_t_van_starkenborgh_stachouwer
+recruit_character = INS_sukarno
+recruit_character = INS_amir_sjarifuddin_harahap
+recruit_character = INS_suharto
+recruit_character = INS_sutan_sjahrir
+
+
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	recruit_character = INS_hein_ter_poorten
+}
+
+1939.1.1 = {
+	add_political_power = 1198
+	add_command_power = 100
+
+	oob = "INS_1939" #straight copy of INS 1936
+
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		interwar_artillery = 1
+		interwar_antiair = 1
+		tech_recon = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			gwtank = 1
+			basic_light_tank = 1
+		}
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+		}
+	}
+}
+

@@ -1,0 +1,385 @@
+﻿capital = 10
+
+recruit_character = POL_duda
+
+oob = "POL_1936"
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "POL_1936_naval_mtg"
+	else = {
+		set_naval_oob = "POL_1936_naval_legacy"
+	}
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "POL_1936_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			engines_1 = 1
+			early_bombs = 1
+		}
+	else = {
+		set_air_oob = "POL_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+			CAS1 = 1
+		}
+	}
+}
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_recon = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	fuel_silos = 1
+	synth_oil_experiments = 1
+	basic_train = 1
+}
+
+set_grand_doctrine = grand_battleplan
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		early_submarine = 1	
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+	}
+}
+if = {
+	limit = { has_dlc = "No Step Back" }
+	set_variable = {
+		var = pol_peasant_democracy
+		value = 30
+	}
+	set_variable = {
+		var = pol_peasant_communism
+		value = 30
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "Poland: United and Ready"
+	}
+	add_ideas = {
+		uncontrolled_exports
+		POL_april_constitution_1
+		POL_looming_peasants_strike
+		POL_sanation_left_opposition_1
+		POL_sanation_right_opposition_1
+	}
+}
+
+
+85 = {
+	add_dynamic_modifier = { modifier = international_city }
+}
+
+1939.1.1 = {
+	
+	if = {
+		limit = {
+			has_dlc = "Poland: United and Ready"
+		}
+
+		complete_national_focus = POL_central_region_strategy
+		complete_national_focus = POL_expansion_of_new_towns
+		complete_national_focus = POL_start_central_industrial_region
+		complete_national_focus = POL_fill_the_railways_gaps
+		complete_national_focus = POL_plan_west
+		complete_national_focus = POL_new_military_academy
+		unlock_national_focus = POL_the_four_year_plan
+		complete_national_focus = POL_national_defence_fund
+		complete_national_focus = POL_warsaw_main_railway_station
+		complete_national_focus = POL_invest_in_the_old_polish_region
+		complete_national_focus = POL_additional_research_slot1
+		complete_national_focus = POL_army_modernisation
+		complete_national_focus = POL_modernize_congressional_factories
+		unlock_national_focus = POL_prepare_for_the_next_war
+		unlock_national_focus = POL_standardisation_of_equipment
+		unlock_national_focus = POL_modernising_the_cavalry
+
+		complete_national_focus = POL_hel_fortified_area
+		complete_national_focus = POL_silesia_fortified_area
+
+		complete_national_focus = POL_air_base_expansion 
+		complete_national_focus = POL_develop_polish_ship_building 
+
+		complete_national_focus = POL_complete_april_constitution
+		complete_national_focus = POL_polish_militarism
+		complete_national_focus = POL_consolidate_sanation_government
+
+		remove_ideas = POL_looming_peasants_strike
+	}
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+
+
+	add_ideas = {
+		#laws
+		limited_conscription
+		partial_economic_mobilisation
+	}
+	if = {
+		limit = {
+			NOT = { has_dlc = "Poland: United and Ready" }
+		}
+		add_ideas = {
+			#laws
+			limited_exports
+		}
+	}
+
+
+	
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			set_naval_oob = "POL_1939_naval_mtg"
+		else = {
+			set_naval_oob = "POL_1939_naval_legacy"
+		}
+	}
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "POL_1939_air_bba"
+			set_technology = {
+				iw_medium_airframe = 1
+				basic_medium_airframe = 1
+				engines_2 = 1
+				improved_small_airframe = 1
+				bba_early_transport_plane = 1
+			}
+		else = {
+			set_air_oob = "POL_1939_air_legacy"
+			set_technology = {
+				tactical_bomber1 = 1
+				early_transport_plane = 1
+			}
+		}
+	}
+
+	set_technology = {
+		motorised_infantry = 1
+		support_weapons = 1
+		interwar_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		synth_oil_experiments = 1
+		fuel_silos = 1
+		oil_processing = 1
+		improved_oil_processing = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		construction4 = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+		concentrated_industry3 = 1
+		concentrated_industry4 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			basic_light_tank = 1
+		}
+		set_oob = "POL_1939"
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			basic_light_tank_chassis = 1
+		}
+		set_oob = "POL_1939_nsb"
+	}
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			basic_submarine = 1
+			basic_destroyer = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			basic_ship_hull_light = 1
+			basic_light_battery = 1
+		}
+	}
+	if = {
+		limit = {
+			NOT = { has_dlc = "By Blood Alone" }
+		}
+		create_equipment_variant = {
+			name = "PZL P.43"
+			type = CAS_equipment_1
+			upgrades = {
+					plane_cas_upgrade = 0
+					plane_range_upgrade = 1
+					plane_engine_upgrade = 2
+					plane_reliability_upgrade = 1
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		create_equipment_variant = {
+			name = "PZL P.43"
+			type = small_plane_cas_airframe_1
+			modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = light_mg_2x
+				engine_type_slot = engine_1_1x
+				special_type_slot_1 = empty
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = {
+			name = "PZL P.37"
+			type = medium_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+				engine_type_slot = engine_2_2x
+				special_type_slot_1 = lmg_defense_turret
+			}
+		}
+		create_equipment_variant = {
+			name = "PZL P.46"
+			type = small_plane_cas_airframe_2
+			modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = lmg_defense_turret
+			}
+		}
+	}
+}
+
+
+set_convoys = 10
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Komunistyczna Partia Polski" name = "KPP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partia Robotnicza" name = "PR" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Polska Partia Socjalistyczna" name = "PPS" }
+set_party_name = { ideology = progressive long_name = "Lewica" name = "Lewica" }
+set_party_name = { ideology = centrist long_name = "Koalicja Obywatelska" name = "KO" }
+set_party_name = { ideology = conservative long_name = "Prawo i Sprawiedliwość" name = "PiS" }
+set_party_name = { ideology = reactionary long_name = "Konfederacja Korony Polskiej" name = "KKP" }
+set_party_name = { ideology = authoritarianism long_name = "Obóz Narodowo-Radykalny" name = "ONR" }
+set_party_name = { ideology = autocracy long_name = "Rada Ocalenia Narodowego" name = "RON" }
+set_party_name = { ideology = absolutism long_name = "Konfederacja Polski Niepodległej" name = "KPN" }
+set_party_name = { ideology = ultranationalism long_name = "Ruch Narodowy" name = "RN" }
+set_party_name = { ideology = fundamentalism long_name = "Zjednoczenie Chrześcijańsko-Narodowe" name = "ZChN" }
+
+create_country_leader = { name = "Andrzej Duda" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_duda.dds" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Donald Tusk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Robert Biedroń" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = social_democracy }
+create_country_leader = { name = "Krzysztof Bosak" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = religious_nationalism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2023.10.15"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 1
+	vanguard_socialism = 1
+	revolutionary_socialism = 3
+	progressive = 9
+	centrist = 31
+	conservative = 35
+	reactionary = 7
+	authoritarianism = 4
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 5
+	fundamentalism = 2
+}

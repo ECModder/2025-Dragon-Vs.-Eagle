@@ -1,0 +1,89 @@
+﻿capital = 286 #Saigon
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 0
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Champa Marxist Resistance" name = "CMR" }
+set_party_name = { ideology = vanguard_socialism long_name = "Front pour de Libération de la Champa (Socialiste)" name = "FLC-S" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Cham Popular Democratic Front" name = "CPDF" }
+set_party_name = { ideology = progressive long_name = "Champa Progressive Party" name = "CPP" }
+set_party_name = { ideology = centrist long_name = "Central Coast Democratic Alliance" name = "CCDA" }
+set_party_name = { ideology = conservative long_name = "Cham Traditionalist Association" name = "CTA" }
+set_party_name = { ideology = reactionary long_name = "Council of Panduranga" name = "CP" }
+set_party_name = { ideology = authoritarianism long_name = "Champa Autonomy Council" name = "CAC" }
+set_party_name = { ideology = autocracy long_name = "Cham Territorial Defense Force" name = "CTDF" }
+set_party_name = { ideology = absolutism long_name = "House of Po Rome Restoration" name = "PoRome" }
+set_party_name = { ideology = ultranationalism long_name = "Front de Libération des Hauts-Plateaux (FLHP)" name = "FLHP" }
+set_party_name = { ideology = fundamentalism long_name = "Cham Bani Council of High Clergy" name = "CBCHC" }
+
+create_country_leader = { name = "Po Dharma Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Inrasara Representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Panduranga Liberation Core" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Bani Traditionalist Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+create_country_leader = { name = "Po Rome Dynasty Successor" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "1945.1.1"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservative = 45
+	fundamentalism = 25
+	progressive = 15
+	revolutionary_socialism = 15
+}

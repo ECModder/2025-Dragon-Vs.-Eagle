@@ -1,0 +1,130 @@
+﻿capital = 318
+
+oob = "HAI_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+recruit_character = HAI_sténio_vincent
+recruit_character = HAI_jacques_roumain
+recruit_character = HAI_vilbrum_soulouque
+recruit_character = HAI_jacques_soulouque
+recruit_character = HAI_emilie_lescot
+recruit_character = HAI_pascale_b_g_guillaume
+recruit_character = HAI_charles_h_forbin
+recruit_character = HAI_andre_sainte_frederic
+recruit_character = HAI_paul_magloire
+recruit_character = HAI_georges_leger
+recruit_character = HAI_belmeau_max_pierre
+recruit_character = HAI_franck_lavaud
+recruit_character = HAI_andre_dumont
+recruit_character = HAI_antoine_levelt
+recruit_character = HAI_ernst_severe
+recruit_character = HAI_g_edouard_roy
+recruit_character = HAI_raymond_gassner
+recruit_character = HAI_luis_dabtes_bellegarde
+recruit_character = HAI_demosthenes_calixte
+recruit_character = HAI_louis_dejoie
+
+
+set_country_flag = monroe_doctrine
+set_war_support = 0.1
+set_convoys = 5
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "HAI_1939"
+	set_technology = {
+		infantry_weapons1 = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Haïtien" name = "PCH" }
+set_party_name = { ideology = vanguard_socialism long_name = "Parti de la Libération Nationale" name = "PLN" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Rassemblement des Démocrates Nationaux Progressistes" name = "RDNP" }
+set_party_name = { ideology = progressive long_name = "Fanmi Lavalas" name = "LAVALAS" }
+set_party_name = { ideology = centrist long_name = "Parti Haïtien Tèt Kale" name = "PHTK" }
+set_party_name = { ideology = conservative long_name = "Ralliement des Forces Nationales" name = "RFN" }
+set_party_name = { ideology = reactionary long_name = "Ligue Pastorale Haïtienne" name = "LPH" }
+set_party_name = { ideology = authoritarianism long_name = "Conseil Présidentiel de Transition" name = "CPT" }
+set_party_name = { ideology = autocracy long_name = "Forces Armées d'Haïti Commandement" name = "FADH" }
+set_party_name = { ideology = absolutism long_name = "Mouvement Souverainiste" name = "MS" }
+set_party_name = { ideology = ultranationalism long_name = "Front Révolutionnaire Armé (Viv Ansanm)" name = "VIV_ANSANM" }
+set_party_name = { ideology = fundamentalism long_name = "Mission Évangélique d'Haïti" name = "MEH" }
+
+create_country_leader = { name = "Jean-Baptiste Chavannes" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+create_country_leader = { name = "Jacques Roumain Jr." desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Maryse Narcisse" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = syndicalism }
+create_country_leader = { name = "Edmonde Supplice Beauzile" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Claude Joseph" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Michel Martelly" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Leslie Voltaire" desc = "POLITICS_LEADER_DESC" picture = "portrait_leslie_voltaire.dds" expire = "2035.1.1" ideology = junta_civilian_head }
+create_country_leader = { name = "Garry Conille" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy }
+create_country_leader = { name = "Normil Rameau" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = personal_dictatorship }
+create_country_leader = { name = "Jimmy Chérizier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = warlordism }
+create_country_leader = { name = "Guy Philippe" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Maxo Joseph" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2016.11.20"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 4
+	progressive = 10
+	centrist = 15
+	conservative = 10
+	reactionary = 2
+	authoritarianism = 28
+	autocracy = 5
+	absolutism = 0
+	ultranationalism = 23
+	fundamentalism = 2
+}

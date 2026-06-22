@@ -1,0 +1,202 @@
+﻿capital = 594
+
+set_variable = { CHI_warlord_army_political_power_gain = 0 }
+set_variable = { CHI_warlord_army_army_core_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_core_defence_factor = 0 }
+set_variable = { CHI_warlord_army_production_speed_buildings_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_attack_factor = 0 }
+set_variable = { CHI_warlord_army_army_infantry_defence_factor = 0 }
+set_variable = { CHI_warlord_army_special_forces_cap = 0 }
+set_variable = { CHI_warlord_army_special_forces_out_of_supply_factor = 0 }
+set_variable = { warlord_faction_influence_war_score_factor = 0 }
+set_variable = { warlord_faction_influence_contribution_factor = 0 }
+
+set_variable = { RNG_state_shintoism_surrender_limit = 0 }
+set_variable = { RNG_state_shintoism_war_support_factor = 0 }
+set_variable = { RNG_state_shintoism_pocket_penalty = 0 }
+set_variable = { RNG_state_shintoism_stability_factor = 0 }
+set_variable = { RNG_state_shintoism_army_core_defence_factor = 0 }
+set_variable = { RNG_state_shintoism_research_speed_factor = 0 }
+set_variable = { RNG_state_shintoism_recruitable_population_factor = 0 }
+set_variable = { RNG_state_shintoism_political_power_gain = 0 }
+
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	set_oob = "GXC_1936_sea"
+	else = {
+		set_oob = "GXC_1936"
+	}
+} 
+
+set_stability = 0.6
+set_war_support = 0.4
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_grand_doctrine = mass_assault
+
+IF = { 
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	ELSE = {
+		recruit_character = GXC_wang_shuming
+		recruit_character = GXC_chen_jitang
+	}
+}
+recruit_character = GXC_li_zongren
+recruit_character = GXC_liu_peng
+recruit_character = GXC_zhang_lu
+recruit_character = GXC_li_ting
+recruit_character = GXC_bai_yeung
+recruit_character = GXC_heng_lo
+recruit_character = GXC_yu_hanmou
+recruit_character = GXC_zha_zemin
+recruit_character = GXC_huo_duyi
+recruit_character = GXC_niu_keung
+recruit_character = GXC_bai_chongxi
+recruit_character = GXC_teng_qingshan
+recruit_character = GXC_do_liang
+recruit_character = GXC_huang_shaohong
+recruit_character = GXC_yang_hulin
+recruit_character = GXC_li_jishen
+recruit_character = GXC_lei_zhong
+
+
+if = {
+	limit = {
+		has_dlc = "Waking the Tiger"
+	}
+	add_ideas = {
+		PRC_government_corruption
+		CHI_ineffective_bureaucracy_warlord
+		CHI_warlord_state_idea
+	}
+}
+
+1939.1.1 = {
+	
+	oob = "GXC_1939"
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	IF = {
+		limit = {
+			NOT = {
+				has_dlc = "No Compromise, No Surrender"
+			}
+		}
+
+		CHI = { add_to_faction = PREV }
+		add_to_war = {
+			targeted_alliance = CHI
+			enemy = JAP
+			hostility_reason = asked_to_join
+		}
+
+		complete_national_focus = CHI_secure_internal_politics
+		complete_national_focus = CHI_cooperation_with_the_nationalists
+		complete_national_focus = CHI_industrial_investment
+		complete_national_focus = CHI_public_education_reform
+		complete_national_focus = CHI_long_term_economic_planning
+		complete_national_focus = CHI_technological_cooperation
+		complete_national_focus = CHI_local_arms_production
+		complete_national_focus = CHI_new_model_province
+		complete_national_focus = CHI_root_out_corruption
+		complete_national_focus = CHI_land_reform
+		complete_national_focus = CHI_reform_the_administration
+
+		ELSE = {	
+
+			CHI = { add_to_faction = PREV }
+			add_to_war = {
+				targeted_alliance = CHI
+				enemy = JAP
+				hostility_reason = asked_to_join
+			}
+			
+			complete_national_focus = CHI_sea_secure_internal_politics
+			complete_national_focus = CHI_sea_cooperation_with_the_nationalists
+			complete_national_focus = CHI_sea_develop_capital
+			complete_national_focus = CHI_sea_expand_public_education
+			complete_national_focus = CHI_sea_long_term_economic_planning
+			complete_national_focus = CHI_sea_technological_cooperation
+			complete_national_focus = CHI_sea_develop_capital_arsenal
+			complete_national_focus = CHI_sea_new_model_province
+			complete_national_focus = CHI_sea_root_out_corruption
+			complete_national_focus = CHI_sea_land_reform
+			complete_national_focus = CHI_sea_reform_the_administration
+			complete_national_focus = CHI_sea_develop_capital
+			complete_national_focus = CHI_sea_further_industrial_investment
+
+			unlock_national_focus = GXC_the_japanese_visit
+			unlock_national_focus = GXC_question_chiangs_authority
+			unlock_national_focus = GXC_the_scorched_earth_speech
+			unlock_national_focus = GXC_rumors_of_deposition
+			unlock_national_focus = GXC_denounce_chiang
+			unlock_national_focus = GXC_formation_of_the_nraja
+			unlock_national_focus = GXC_declare_opposition
+
+		}
+	}
+
+
+}
+
+
+
+set_convoys = 5
+
+set_party_name = { ideology = totalitarian_communism long_name = "Maoist Rebel Front" name = "MRF" }
+set_party_name = { ideology = vanguard_socialism long_name = "Chinese Communist Party - Guangxi Committee" name = "CCP-Guangxi" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Left-Wing Worker Solidarity" name = "LWWS" }
+set_party_name = { ideology = progressive long_name = "Democratic League of Guangxi" name = "DLG" }
+set_party_name = { ideology = centrist long_name = "Regional Autonomous Committee" name = "RAC" }
+set_party_name = { ideology = conservative long_name = "Guangxi Reform Faction" name = "GRF" }
+set_party_name = { ideology = reactionary long_name = "Traditionalist Heritage Assembly" name = "THA" }
+set_party_name = { ideology = authoritarianism long_name = "Guangxi State Development Group" name = "GSDG" }
+set_party_name = { ideology = autocracy long_name = "Guangxi Regional Security Command" name = "GRSC" }
+set_party_name = { ideology = absolutism long_name = "Zhuang Royalist League" name = "ZRL" }
+set_party_name = { ideology = ultranationalism long_name = "Greater China Patriotic Front" name = "GCPF" }
+set_party_name = { ideology = fundamentalism long_name = "Guangxi Spiritual Brotherhood" name = "GSB" }
+
+create_country_leader = { name = "Lu Ting" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+create_country_leader = { name = "Chen Gang" desc = "POLITICS_LEADER_DESC" picture = "portrait_chen_gang.dds" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Wei Dong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = syndicalism }
+create_country_leader = { name = "Huang Qiang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Lan Tianli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Ma Biao" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Lu Bing" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Liu Ning" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy }
+create_country_leader = { name = "Peng Qinghua" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = personal_dictatorship }
+create_country_leader = { name = "Wei Guoqing" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Guo Shengkun" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Cao Bochun" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = vanguard_socialism
+	last_election = "2024.12.31"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 5
+	vanguard_socialism = 65
+	revolutionary_socialism = 10
+	progressive = 4
+	centrist = 5
+	conservative = 6
+	reactionary = 2
+	authoritarianism = 2
+	autocracy = 1
+	absolutism = 0
+	ultranationalism = 0
+	fundamentalism = 0
+}

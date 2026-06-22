@@ -1,0 +1,247 @@
+﻿capital = 48
+
+#TROOPS
+oob = "BUL_1936" #VANILLA & DLC
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "BUL_1936_air_bba"
+	else = {
+		set_air_oob = "BUL_1936_air_legacy"
+	}
+}
+set_convoys = 5 #VANILLA & DLC
+
+#You don't want Bulgarian party names? Just remove these lines
+set_party_name = { # DLC
+	ideology = communism
+	name = BUL_communism_party_bulgarian
+	long_name = BUL_communism_party_bulgarian_long
+}
+set_party_name = { # DLC
+	ideology = fascism
+	name = BUL_fascism_party_bulgarian
+	long_name = BUL_fascism_party_bulgarian_long
+}
+
+
+set_technology = { #VANILLA & DLC
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	fuel_silos = 1
+	basic_train = 1
+	tech_mountaineers = 1
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	set_technology = {
+		early_fighter = 1
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Bulgarska Komunisticheska Partiya" name = "BKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Bulgarska Komunistu Soyuz" name = "BKS" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bulgarskata Levica" name = "Levicata" }
+set_party_name = { ideology = progressive long_name = "Bulgarska Socialdemokraticheska Partiya" name = "BSDP" }
+set_party_name = { ideology = centrist long_name = "Produlzhavame Promenata - Demokraticheska Bulgariya" name = "PP-DB" }
+set_party_name = { ideology = conservative long_name = "GERB" name = "GERB" }
+set_party_name = { ideology = reactionary long_name = "Vazrazhdane" name = "Vazrazhdane" }
+set_party_name = { ideology = authoritarianism long_name = "Dvizhenie za Prava i Svobodi" name = "DPS" }
+set_party_name = { ideology = autocracy long_name = "Bulgarska Armiya High Command" name = "BA" }
+set_party_name = { ideology = absolutism long_name = "House of Saxe-Coburg-Gotha-Koháry" name = "Simeon" }
+set_party_name = { ideology = ultranationalism long_name = "VMRO - Bulgarsko Nacionalno Dvizhenie" name = "VMRO" }
+set_party_name = { ideology = fundamentalism long_name = "Pravoslavna Radikalna Alternativa" name = "PRA" }
+
+create_country_leader = { name = "Boyko Borisov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Kiril Petkov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Kostadin Kostadinov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Korneliya Ninova" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Krasimir Karakachanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Delyan Peevski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Rumen Petkov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Aleksandar Paunov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Vladimir Spasov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Admiral Emil Eftimov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Tsar Simeon II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Metropolitan Nikolai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2024.10.27"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 26
+	centrist = 14
+	reactionary = 13
+	authoritarianism = 11
+	progressive = 8
+	ultranationalism = 4
+}
+	add_political_power = 1198
+	add_command_power = 100
+
+	#FOCUS AND IDEAS
+	if = { #DLC
+		limit = {
+			has_dlc = "Battle for the Bosporus"
+		}
+		complete_national_focus = BUL_power_to_the_tsar
+		complete_national_focus = BUL_dissolve_the_military_union
+		complete_national_focus = BUL_acquire_modern_tools
+		unlock_national_focus = BUL_negotiate_bulgarian_rearmament
+		complete_national_focus = BUL_the_tsars_regime
+		complete_national_focus = BUL_improve_the_road_system
+		complete_national_focus = BUL_restore_the_tarnovo_constitution
+		complete_national_focus = BUL_freedom_of_press
+		complete_national_focus = BUL_invigorate_national_industry
+		complete_national_focus = BUL_promote_bulgarian_nationalism
+		complete_national_focus = BUL_limited_womens_suffrage
+		complete_national_focus = BUL_expand_sofia_university
+		complete_national_focus = BUL_bulgarian_irredentism
+		complete_national_focus = BUL_approach_germany
+		complete_national_focus = BUL_reorganize_the_military_industry
+		complete_national_focus = BUL_illusions_of_a_non_partisan_system
+
+		#Remove Army Restrictions NS and all limitations 								Negotiate Bulgarian Rearmament
+		if = {
+			limit = {
+				has_dlc = "Arms Against Tyranny"
+			}
+			remove_ideas = BUL_army_restrictions_aat
+		}
+		if = {
+			limit = {
+				NOT = {	has_dlc = "Arms Against Tyranny" }
+			}
+			remove_ideas = BUL_army_restrictions
+		}
+		remove_ideas = BUL_zveno_ns
+		#Destroy Zveno 																 	Dissolve the Military Union
+		set_country_flag = BUL_disposed_of_zveno_generals_flag
+		set_country_flag = BUL_zveno_leaders_imprisoned_flag
+		set_country_flag = BUL_raided_zveno_supporters_flag
+		every_unit_leader = {
+			limit = {
+				has_trait = trait_BUL_zveno_member
+			}
+			retire = yes
+		}
+		set_country_flag = BUL_zveno_destroyed_flag
+		#Freedom of Press was taken more than a year ago, so clr flag 					Freedom of Press
+		clr_country_flag = BUL_freedom_of_press_flag
+		#Simulate German influence events and good relations with Bulgaria 				Approach Germany + Events
+		set_country_flag = BUL_german_aircraft_donation_flag
+		add_opinion_modifier = { 
+			target = GER
+			modifier = BUL_donated_aircraft
+		}
+
+		else = { #VANILLA
+			#generic focuses
+			complete_national_focus = army_effort
+			complete_national_focus = equipment_effort
+			complete_national_focus = motorization_effort
+			complete_national_focus = aviation_effort
+			complete_national_focus = industrial_effort
+			complete_national_focus = construction_effort
+			complete_national_focus = production_effort
+		}
+	}
+	
+	#TROOPS
+	
+
+	#TECHNOLOGY
+	set_technology = {
+		gw_artillery = 1
+		interwar_artillery = 1
+		tech_recon = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+
+		#doctrines
+		#Air
+		#force_rotation = 1
+		#fighter_baiting = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_operational_integrity
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			gwtank = 1
+			basic_light_tank = 1
+		}
+		set_oob = "BUL_1939"
+	}
+	if = {
+		limit = {
+			
+			has_dlc = "No Step Back"
+			
+		}
+		set_technology = {
+			gwtank_chassis = 1
+			basic_light_tank_chassis = 1
+		}
+		set_oob = "BUL_1939_nsb"
+	}
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BUL_1939_air_bba"
+			set_technology = {
+				bba_early_transport_plane = 1
+			}
+		else = {
+			set_air_oob = "BUL_1939_air_legacy"
+			set_technology = {
+				fighter1 = 1
+				early_bomber = 1
+				tactical_bomber1 = 1
+				early_transport_plane = 1
+			}
+		}
+	}
+
+	
+}

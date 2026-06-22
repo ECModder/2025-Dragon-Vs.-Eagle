@@ -1,0 +1,1710 @@
+﻿
+capital = 64 # Berlin/Brandeburg
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "GER_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "GER_1936_nsb"
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_land
+	value = 1.0
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.8
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_air
+	value = 0.3
+}
+
+set_grand_doctrine = new_mobile_warfare
+set_grand_doctrine = new_convoy_raiding
+set_grand_doctrine = new_battlefield_support
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "GER_1936_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			aa_cannon_1 = 1
+			engines_1 = 1
+			engines_2 = 1
+			early_bombs = 1
+			aircraft_construction = 1
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			iw_large_airframe = 1
+			air_torpedoe_1 = 1
+			bba_early_transport_plane = 1
+		}
+	else = {
+		set_air_oob = "GER_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			fighter1 = 1
+			early_bomber = 1
+			tactical_bomber1 = 1
+			strategic_bomber1 = 1
+			CAS1 = 1
+			naval_bomber1 = 1
+			early_transport_plane = 1
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+		has_dlc = "By Blood Alone"
+	}
+	set_technology = {
+					photo_reconnaisance = 1
+	}
+}
+
+starting_train_buffer = 2
+set_fuel_ratio = 0.8
+
+# starting_truck_buffer = 0.8
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	basic_train = 1
+	#formation_flying = 1
+	synth_oil_experiments = 1
+	fuel_silos = 1
+	fuel_refining = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+		basic_heavy_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+		basic_heavy_tank_chassis = 1
+		engine_tech_1 = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		basic_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+	set_naval_oob = "GER_1936_naval"
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		panzerschiffe = 1
+		pre_dreadnoughts = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		mtg_transport = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		#basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_depth_charges = 1
+		sonar = 1
+		basic_cruiser_armor_scheme = 1
+	}
+	set_naval_oob = "GER_1936_naval_mtg"
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+
+#CONSUMER GOODS INCREASE AND PENALTIES VARIABLES
+set_variable = { GER_monthly_consumer_goods_start = 0.03 } #Starting amount of monthly increasing CG for MEFO Bills 
+set_variable = { GER_change_monthly_CG_vichy_france = 0.005 } #Changing monthly CG when capitulating FRance
+set_variable = { GER_change_monthly_CG_price_controls = 0.005 } #Changing monthly CG when taking Price Controls focus
+set_variable = { GER_change_monthly_CG_occupied_states = 0.005 } #Changing monthly CG based on none-core states
+set_variable = { GER_expected_consumer_goods_penalty = 0.1} #Consumer Goods penalty when hitting 100% CGFF
+set_variable = { GER_factory_output_penalty = 0.2 } #Factory output penalty when hitting 100% CGFF
+set_variable = { GER_dockyard_output_penalty = 0.2 } #Dockyard output penalty when hitting 100% CGFF
+set_variable = { GER_reduce_russian_CG_bonus = 0 } #Used to reduce Soviet Gold Reserves if Germany has taken gold from various Soviet cities before capping them
+
+#INDUSTRAY: MEFO Bills/Economy of Conquest/Recovering Economy/Wirtschaftswunder
+#REMINDER to always update the fake NS if these numbers are altered!
+set_variable = { GER_monthly_consumer_goods_increase = GER_monthly_consumer_goods_start } #Amount of increasing CG each month
+set_variable = { GER_industrial_consumer_goods_factor = 0.1 } #Used for MEFO Bills, Economy of Conquest and Recovering Economy and Wirtschaftswunder - must correspond with the Fake MEFO Bills NS for the 1936 Bookmark
+set_variable = { GER_industrial_civilian_intel_to_others = -25 }
+set_variable = { GER_industrial_army_intel_to_others = -25 }
+set_variable = { GER_industrial_navy_intel_to_others = -25 }
+set_variable = { GER_industrial_airforce_intel_to_others = -25 }
+set_variable = { GER_industrial_production_speed_arms_factory_factor = 0.1 }
+set_variable = { GER_industrial_production_speed_dockyard_factor = 0.1 }
+set_variable = { GER_industrial_industrial_capacity_factory = 0 }
+set_variable = { GER_industrial_industrial_capacity_dockyard = 0 }
+set_variable = { GER_industrial_production_lack_of_resource_penalty_factor = 0 }
+set_variable = { GER_industrial_conversion_cost_civ_to_mil_factor = 0 }
+set_variable = { GER_industrial_industry_air_damage_factor = 0 }
+set_variable = { GER_industrial_resource_trade_cost_bonus_per_factory = 0 }
+set_variable = { GER_industrial_production_speed_buildings_factor = 0 }
+set_variable = { GER_industrial_research_speed_factor = 0 }
+set_variable = { GER_industrial_economy_cost_factor = 0 }
+set_variable = { GER_industrial_trade_laws_cost_factor = 0 }
+set_variable = { GER_recovering_economy_modifier_local_resources_factor = 0 }
+set_variable = { GER_industrial_production_factory_max_efficiency_factor = 0 }
+set_variable = { GER_industrial_production_factory_efficiency_gain_factor = 0 }
+set_variable = { GER_industrial_production_factory_start_efficiency_factor = 0 }
+set_variable = { GER_industrial_line_change_production_efficiency_factor = 0 }
+set_variable = { GER_industrial_equipment_conversion_speed = 0 }
+set_variable = { GER_industrial_consumer_goods_expected_value = 0 }
+set_variable = { GER_economic_crash_consumer_goods = 0.75 } #Amount of CGFF if the MEFO Bills gets canceled one way or another
+add_dynamic_modifier = { modifier = GER_mefo_bills_modifier }
+
+#WUNDERWAFFEN
+set_variable = { GER_wunderwaffen_special_project_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_tag_tank_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_air_helicopter_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_tag_jet_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_tag_rocket_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_commercial_nuclear_reactor_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_nuclear_bomb_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_nuclear_reactor_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_nuclear_warheads_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_tag_artillery_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_naval_modern_battleship_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_naval_modern_carrier_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_production_speed_nuclear_reactor_factor = 0 }
+set_variable = { GER_wunderwaffen_production_speed_nuclear_facility_factor = 0 }
+set_variable = { GER_wunderwaffen_production_speed_facility_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_tag_submarine_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_air_intercontinental_bomber_speed_factor = 0 }
+set_variable = { GER_wunderwaffen_sp_air_mothership_aircraft_speed_factor = 0 }
+
+#WEHRWIRTSCHAFT
+#REMINDER to always update the fake NS if these numbers are altered!
+set_variable = { GER_wehrwirtschaft_local_resources_factor = 0 }
+set_variable = { GER_wehrwirtschaft_production_speed_buildings_factor = 0 }
+set_variable = { GER_wehrwirtschaft_production_oil_factor = 0 }
+set_variable = { GER_wehrwirtschaft_production_speed_synthetic_refinery_factor = 0 }
+set_variable = { GER_wehrwirtschaft_production_speed_fuel_silo_factor = 0 }
+
+#ARMY
+#REMINDER to always update the fake NS if these numbers are altered!
+set_variable = { GER_military_army_armor_attack_factor = 0 }
+set_variable = { GER_military_army_armor_speed_factor = 0 }
+set_variable = { GER_military_org_loss_when_moving = 0 }
+set_variable = { GER_military_motorized_attack_factor = 0 }
+set_variable = { GER_military_mechanized_attack_factor = 0 }
+set_variable = { GER_military_army_infantry_attack_factor = 0 }
+set_variable = { GER_military_army_artillery_attack_factor = 0 }
+set_variable = { GER_military_army_org_factor = 0.05 }
+set_variable = { GER_military_planning_speed = 0.25 }
+set_variable = { GER_military_supply_consumption_factor = 0.15 }
+set_variable = { GER_military_equipment_capture = 0 }
+set_variable = { GER_military_initiative_factor = 0 }
+set_variable = { GER_military_army_fuel_consumption_factor = 0 }
+set_variable = { GER_military_coordination_bonus = 0 }
+set_variable = { GER_military_air_superiority_bonus_in_combat = 0 }
+set_variable = { GER_military_max_dig_in_factor = 0 }
+set_variable = { GER_military_army_artillery_defence_factor = 0 }
+set_variable = { GER_military_special_forces_cap = 0 }
+set_variable = { GER_military_acclimatization_hot_climate_gain_factor = 0 }
+set_variable = { GER_military_acclimatization_cold_climate_gain_factor = 0 }
+set_variable = { GER_military_land_doctrine_cost_factor = 0 }
+set_variable = { GER_military_modifier_army_sub_unit_militia_attack_factor = 0 }
+set_variable = { GER_military_modifier_army_sub_unit_militia_defence_factor = 0 }
+set_variable = { GER_military_modifier_army_sub_unit_militia_max_org_factor = 0 }
+set_variable = { GER_military_experience_gain_army_factor = 0 }
+set_variable = { GER_military_army_morale_factor = 0 }
+set_variable = { GER_military_mobilization_speed = 0 }
+set_variable = { GER_military_minimum_training_level = 0 }
+set_variable = { GER_military_unit_leader_as_advisor_cp_cost_factor = 0 }
+set_variable = { GER_military_command_power_gain_mult = 0 }
+add_dynamic_modifier = { modifier = GER_army_modifier }
+
+#NAVY
+#REMINDER to always update the fake NS if these numbers are altered!
+set_variable = { GER_military_naval_heavy_gun_hit_chance_factor = 0 }
+set_variable = { GER_military_screening_efficiency = 0 }
+set_variable = { GER_military_screening_without_screens = 0.1 }
+set_variable = { GER_military_navy_max_range_factor = 0 }
+set_variable = { GER_military_convoy_raiding_efficiency_factor = 0 }
+set_variable = { GER_military_naval_light_gun_hit_chance_factor = 0 }
+set_variable = { GER_military_naval_hit_chance = 0 }
+set_variable = { GER_military_naval_defense_factor = -0.1}
+add_dynamic_modifier = { modifier = GER_navy_fascist_modifier }
+
+#AIRFORCE
+#REMINDER to always update the fake NS if these numbers are altered!
+set_variable = { GER_military_air_accidents_factor = 0.10 }
+set_variable = { GER_military_air_manpower_requirement_factor = 0.10 }
+set_variable = { GER_military_air_agility_factor = 0 }
+set_variable = { GER_military_air_ace_generation_chance_factor = 0 }
+set_variable = { GER_military_air_nav_efficiency = 0 }
+set_variable = { GER_military_air_cas_efficiency = 0 }
+set_variable = { GER_military_air_strategic_bomber_bombing_factor = 0 }
+set_variable = { GER_military_air_range_factor = 0 }
+set_variable = { GER_military_air_fuel_consumption_factor = 0 }
+add_dynamic_modifier = { modifier = GER_airforce_modifier }
+
+#CROSSING THE ATLANTIC
+set_variable = { number_of_states_getting_dockyards = 0 }
+set_variable = { crossing_the_atlantic_max_states_for_dockyards = 10 }
+
+#FORT CONSTRUCTION COST
+set_variable = { GER_fort_construction_cp_cost = 25 }
+set_variable = { GER_fort_construction_pp_cost = 15 }
+set_variable = { GER_fort_construction_cp_payment = -25 }
+set_variable = { GER_fort_construction_pp_payment = -15 }
+
+set_variable = { var = ger_gateway_to_europe_influence value = 0 }
+
+set_variable = { var = wehrmacht_anger value = 0 }
+set_variable = { var = ss_anger value = 0 }
+set_variable = { GER_narvik_shipments = 0 }
+set_variable = { GER_narvik_civs = 0 }
+
+#COMMUNIST INTEL MODIFIER
+set_variable = { GER_communist_intel_drift_defence_factor = 0.2 }
+set_variable = { GER_communist_intel_communism_drift = 0.05 }
+set_variable = { GER_communist_intel_operative_slot = 0 }
+set_variable = { GER_communist_intel_stability_factor = 0 }
+set_variable = { GER_communist_intel_operation_cost = 0 }
+set_variable = { GER_communist_intel_subversive_activities_upkeep = 0 }
+set_variable = { GER_communist_intel_intel_network_gain = 0 }
+set_variable = { GER_communist_intel_decryption_factor = 0 }
+set_variable = { GER_communist_intel_encryption_factor = 0 }
+
+#POLITBÜRO MODIFIER
+set_variable = { GER_politburo_defensive_war_stability_factor = 0}
+set_variable = { GER_politburo_offensive_war_stability_factor = 0}
+set_variable = { GER_politburo_party_popularity_stability_factor = 0}
+set_variable = { GER_politburo_weekly_manpower = 0}
+set_variable = { GER_politburo_stability_factor = 0}
+set_variable = { GER_politburo_conscription = 0 }
+set_variable = { GER_politburo_democratic_drift = 0 }
+set_variable = { GER_politburo_political_power_factor = 0}
+set_variable = { GER_politburo_resistance_growth = 0 }
+set_variable = { GER_politburo_compliance_growth = 0 }
+set_variable = { GER_politburo_subjects_autonomy_gain = 0 }
+set_variable = { GER_politburo_conscription_factor = 0}
+
+#ALFRED ROSENBERG
+set_variable = { GER_alfred_rosenberg_modifier_subjects_autonomy_gain = -0.2 }
+set_variable = { GER_alfred_rosenberg_modifier_consumer_goods_factor = 0 }
+set_variable = { GER_alfred_rosenberg_modifier_production_speed_arms_factory_factor = 0 }
+set_variable = { GER_alfred_rosenberg_modifier_industrial_capacity_factory = 0 }
+set_variable = { GER_max_alfred_rosenberg_upgrades = 10 }
+set_variable = { GER_count_down_alfred_rosenberg_upgrades = GER_max_alfred_rosenberg_upgrades } #Count down variable
+set_variable = { GER_total_reichskommissariats = 0 }
+
+# SHARED R&D PROGRAMS
+set_variable = { GER_rnd_programs_modifier_research_speed_factor = 0.01 }
+set_variable = { GER_rnd_programs_modifier_allies_count = 1 }
+
+#INDUSTRIAL RELOCATTION
+set_variable = { GER_industrial_relocation_resources_country_resource_oil = 0 }
+set_variable = { GER_industrial_relocation_resources_country_resource_tungsten = 0 }
+set_variable = { GER_industrial_relocation_resources_country_resource_chromium = 0 }
+
+
+#INTEGRATE PUPPET ECONOMIES (Fascist)
+set_variable = { GER_puppet_economies_integration_cap = 3 } #Max number of decisions active
+set_variable = { GER_puppet_economies_integration_days = 365 } #Days remove for the decisions
+
+
+#MILITARY-INTELLIGENCE SERVICE
+set_variable = { GER_military_intelligence_service_operative_slot = 0 }
+set_variable = { GER_military_intelligence_service_intelligence_agency_defense = 0 }
+set_variable = { GER_military_intelligence_service_agency_upgrade_time = 0 }
+set_variable = { GER_military_intelligence_service_boost_ideology_mission_factor = 0 }
+set_variable = { GER_military_intelligence_service_master_ideology_drift = 0 }
+set_variable = { GER_military_intelligence_service_encryption_factor = 0 }
+set_variable = { GER_military_intelligence_service_decryption_factor = 0 }
+set_variable = { GER_military_intelligence_service_subversive_activites_upkeep = 0 }
+set_variable = { GER_military_intelligence_service_consumer_goods_factor = 0 }
+set_variable = { GER_military_intelligence_service_decryption_power = 0 }
+set_variable = { GER_military_intelligence_service_intel_network_gain_factor = 0 }
+set_variable = { GER_military_intelligence_root_out_resistance_effectiveness_factor = 0 }
+
+#OCCUPIED STATES VARIABLES
+set_variable = { GER_occupied_states_europe = 0 }
+set_variable = { GER_capitulated_major_countries = 0 }
+set_variable = { GER_num_of_occupied_states = 0 }
+
+#STANDARD WUNDERWAFFE BONUS
+set_variable = { GER_wunderwaffe_research_speed_bonus = 0.1 }
+
+#HITLERS BLUNDERS - COUNTER FOR OSTER CONSPIRACY
+set_variable = { GER_hitlers_blunders_variable = 0 }
+
+
+####################
+### INNER CIRCLE ###
+####################
+set_variable = { GER_inner_circle_days_to_start_focus = 75 }
+set_variable = { GER_inner_circle_random_days = 45 }
+
+
+### UI ###
+set_variable = { GER_ascended_advisor_1 = 0 } #Ascended Advisor Portrait
+set_variable = { GER_ascended_advisor_2 = 0 } #Ascended Advisor Portrait
+set_variable = { GER_ascended_advisor_3 = 0 } #Ascended Advisor Portrait
+
+### SHARED FOCUS CONTROL ###
+set_variable = { GER_wonder_weapons_focus_advisor = 0 } # To know who is completing this focus. Value = Advisor ID in the Inner Circle
+set_variable = { GER_optimize_reich_service_focus_advisor = 0 } # To know who is completing this focus. Value = Advisor ID in the Inner Circle
+set_variable = { GER_total_control_over_domestic_affairs_focus_advisor = 0 } # To know who is completing this focus. Value = Advisor ID in the Inner Circle
+
+set_variable = { GER_industrialist_prevailed = 0 } #For allowing only one Industrialist advisor to work on the ME focus
+
+
+# Starting Stats of various kinds
+set_research_slots = 4
+set_convoys = 200
+IF = {
+	limit = {
+		has_dlc = "Gotterdammerung"
+	}
+	set_stability = 0.7 # Was 0.75, but get 5% from the Reichstag
+	ELSE = {
+		set_stability = 0.75
+	}
+}
+set_war_support = 0.3
+
+
+# SETUP THE 1939 SCENARIO
+1939.1.1 = {
+
+	# Setting up the required world tension
+	add_named_threat = { 
+		threat = 40 
+		name = 1939_bookmark_threat 
+	}
+
+	# Starting Stats of various kinds for the 39 scenario
+	set_war_support = 0.7
+	add_political_power = 1000
+	add_command_power = 80
+
+	# This represents the completion of the focus Develop Heraeus Research Facilities
+	set_research_slots = 5
+	
+	# Adding Ministers and Ideas
+	add_ideas = {
+
+		# Company if no AAT
+		henschel
+
+		# Concern
+		ig_faben
+		
+		# Political Advisors
+		walther_funk
+		GER_reinhard_heydrich
+		GER_franz_seldte
+
+		# Military Advisors
+		ludwig_beck
+		gerd_von_rundstedt
+		goering
+
+		# Laws
+		war_economy
+		extensive_conscription
+
+	}
+	
+	
+	# Slovakia is set up as a subject manually
+	set_autonomy = {
+		target = SLO
+		autonomous_state = autonomy_puppet
+	}
+	give_military_access = SLO
+
+	# So that the war can fire immediately 
+	create_wargoal = {
+		type = take_state_focus
+		target = POL
+		generator = { 72 88 90 87 86 762 807 85 } # Zaolzie Krakow Kielce Lodz Poznan Katowice Gdynia Danzig
+	}
+
+	# Setup Trade with the Soviets
+	create_import = {
+		resource = oil
+		factories = 2
+		exporter = SOV
+	}
+
+	# This has already been done at this point
+	set_country_flag = GER_constructed_the_westwall
+
+	# The Abwehr has already been established at this point 
+	if = {
+		limit = {
+			has_dlc = "La Resistance"
+		}
+		create_intelligence_agency = yes
+	}
+
+	# Molotov-Ribbentrop pact effect, also has a part scripted in soviet history file, since it cannot be completed in a normal way
+	unlock_national_focus = GER_molotov_ribbentrop_pact 
+	every_other_country = {
+		limit = {
+			has_government = fascism 
+		}
+		add_opinion_modifier = { target = GER modifier = MR_pact_fascists }
+	}
+	diplomatic_relation = { country = SOV relation = non_aggression_pact }
+	add_opinion_modifier = { target = SOV modifier = MR_pact }
+	# Molotov-Ribbentrop pact end :0 
+	
+	# COMPLETING FOCUSES
+
+	# ONES THAT CAN JUST BE COMPLETED NORMALLY
+	complete_national_focus = GER_construct_the_reichsautobahn
+	complete_national_focus = GER_institute_price_controls
+	complete_national_focus = GER_fuhrerprinzip
+	complete_national_focus = GER_party_chancellor_bormann
+	complete_national_focus = GER_accelerate_the_rearmament_program
+	complete_national_focus = GER_kdf_wagen_factories
+	complete_national_focus = GER_develop_modern_maneuver_warfare
+	complete_national_focus = GER_adopt_new_panzer_doctrine
+	complete_national_focus = GER_coal_liquefaction
+	#complete_national_focus = GER_ascension_of_todt #He is getting kicked by Speer anyways
+	complete_national_focus = GER_ascension_of_speer #Since Speer kicks Todt out might as well complete his focus here
+	complete_national_focus = GER_establish_buna_werke
+	complete_national_focus = GER_expanding_the_luftwaffe
+	complete_national_focus = GER_aeronautical_research_institute
+	complete_national_focus = GER_concentrated_armament_program
+	complete_national_focus = GER_panzer_troops_school
+	complete_national_focus = GER_ascension_of_goebbels
+	complete_national_focus = GER_reorganize_the_wehrmacht
+	complete_national_focus = GER_advanced_panzer_research
+	complete_national_focus = GER_bribe_senior_officers
+	complete_national_focus = GER_befriend_japan
+
+	# ONES THAT HAVE TO BE HANDELED MANUALLY
+	unlock_national_focus = GER_remilitarize_the_rhineland
+	unlock_national_focus = GER_anti_comintern_pact
+	unlock_national_focus = GER_fortify_the_vaterland
+	unlock_national_focus = GER_anschluss
+	unlock_national_focus = GER_demand_sudetenland
+	unlock_national_focus = GER_first_vienna_award
+	unlock_national_focus = GER_fate_of_czechoslovakia
+	unlock_national_focus = GER_reassert_eastern_claims
+	unlock_national_focus = GER_danzig_or_war
+	unlock_national_focus = GER_the_four_year_plan
+	unlock_national_focus = GER_develop_heraeus_facilities
+	unlock_national_focus = GER_legion_condor
+
+	# Autarkic economy 
+	unlock_national_focus = GER_autarky_efforts
+
+	add_ideas = autarkic_economy
+
+	add_dynamic_modifier = { modifier = GER_wehrwirtschaft_modifier } 
+
+	every_other_country = {
+		limit = {
+			is_in_faction_with = PREV
+		}	
+		add_opinion_modifier = {
+			target = GER
+			modifier = GER_autarky_trade_opinion
+		}
+		GER = {
+			add_opinion_modifier = {
+				target = PREV
+				modifier = GER_german_trade_opinion
+			}
+		}
+	}
+	# END OF AUTARKIC ECONOMY
+
+	# Establish the Reichswerke 
+
+	unlock_national_focus = GER_establish_the_reichswerke
+
+	#Germany's rearmament program is tanking the economy - must correspond with the Fake MEFO Bills NS for the 1939 Bookmark
+	set_variable = { GER_industrial_consumer_goods_factor = 0.71 }
+
+	set_country_flag = GER_inactivate_price_control_measures_flag
+	
+	add_to_variable = { 
+		GER_wehrwirtschaft_local_resources_factor = 0.05
+		tooltip = local_resources_factor_tt
+	}
+
+	# END OF ESTABLISH THE REICHSWERKE
+
+
+	# These events have already happaned at this point in time
+	set_global_flag = end_of_czechoslovakia
+	set_global_flag = olympics_1936
+
+	set_variable = { 
+		var = GER_mefo_bill_counter 
+		value = 90 
+	}
+
+	# DEAL WITH INNER CIRCLE STUFF
+	# Todt completes stuff and gets kicked later
+	set_country_flag = GER_todt_was_ascended_flag #Flag to prevent AI from taking the focus again after advisor has been replaced
+	complete_national_focus = GER_form_organization_todt
+
+	# Speer takes over
+	clr_country_flag = GER_speer_was_ascended_flag #Remove flag set by the focus to start over and set a new Days value below
+	set_country_flag = { #Flag to prevent AI from taking the focus again after advisor has been replaced
+		flag = GER_speer_was_ascended_flag
+		days = 1095 # Clear after ~3 years
+		value = 1
+	}
+	complete_national_focus = GER_employ_philipp_holzmann
+	#Leave the ME focus open so player can choose
+
+	#Goebbels completes everything
+	clr_country_flag = GER_goebbels_was_ascended_flag #Remove flag set by the focus to start over and set a new Days value below
+	set_country_flag = { #Flag to prevent AI from taking the focus again after advisor has been replaced
+		flag = GER_goebbels_was_ascended_flag
+		days = 900 # Clear after ~2.5 years 
+		value = 1
+	}
+	complete_national_focus = GER_ministry_of_public_enlightenment
+	complete_national_focus = GER_fund_the_film_department
+	complete_national_focus = GER_propaganda_master
+	#Remove too much stability and WS
+	add_stability = -0.05
+	add_war_support = -0.05
+
+	#Bormann completes all three focuses (will be replaced by Himmler soon)
+	#Bormann's flag is already set by his focus, and on Historical the flag should be set permanently
+	complete_national_focus = GER_optimize_reich_labour_service
+	complete_national_focus = GER_glorify_party_rallies
+	complete_national_focus = GER_total_control_over_domestic_affairs
+	#Remove too much PP from focuses
+	add_political_power = -150
+
+	#Remove cooldown flag
+	clr_country_flag = GER_inner_circle_cd_flag
+
+	# Special Prjects already completed by ww2
+
+	complete_special_project = {
+		project = sp:sp_naval_midget_submarine
+		scientist = GER_hellmuth_walter
+		state = 56
+	}
+
+	IF = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		complete_special_project = {
+			project = sp:sp_land_flamethrower_tank
+			scientist = GER_eduard_grote
+			state = 64
+		}
+	}
+
+	
+
+	# Setup proper 1939 technologies
+	set_technology = {
+
+		# Infantry
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		improved_infantry_weapons = 1
+		support_weapons = 1
+		support_weapons2 = 1
+		paratroopers = 1
+
+		# Doctrines
+		# Air
+		#formation_flying = 1		
+		#dive_bombing = 1
+		#direct_ground_support = 1
+
+		# Electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		cavity_magnatron = 1
+		mechanical_computing = 1
+		computing_machine = 1
+		basic_encryption = 1
+		basic_decryption = 1
+
+		# Industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		oil_processing = 1
+		fuel_refining2 = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		construction4 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+		dispersed_industry3 = 1
+		dispersed_industry4 = 1
+		basic_fortification_tech = 1
+	}
+
+	set_grand_doctrine = new_mobile_warfare
+	set_grand_doctrine = new_convoy_raiding
+	set_grand_doctrine = new_battlefield_support
+	set_sub_doctrine = mobile_infantry
+	add_mastery = {
+		amount = 200
+		sub_doctrine = mobile_infantry
+	}
+	set_sub_doctrine = mission_type_tactics
+	add_mastery = {
+		amount = 100
+		sub_doctrine = mission_type_tactics
+	}
+	set_sub_doctrine = mobile_recon_and_assault
+	add_mastery = {
+		amount = 150
+		sub_doctrine = mobile_recon_and_assault
+	}
+	set_sub_doctrine = air_subdoctrine_tactical_flexibility
+	add_mastery = {
+		amount = 100
+		sub_doctrine = air_subdoctrine_tactical_flexibility
+	}
+	set_sub_doctrine = air_subdoctrine_dive_bombers
+	add_mastery = {
+		amount = 50
+		sub_doctrine = air_subdoctrine_dive_bombers
+	}
+
+	
+	complete_special_project = {
+		project = sp:sp_air_radar
+		scientist = GER_konrad_zuse
+		state = 62
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			basic_medium_tank = 1 
+		}
+		set_oob = "GER_1939"
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		set_technology = {
+			basic_medium_tank_chassis = 1 
+		}
+		set_oob = "GER_1939_nsb"
+	}
+
+	if = {
+		limit = {
+			not = {
+				has_dlc = "Man the Guns"
+			}
+		}
+		set_technology = {
+			basic_heavy_cruiser = 1
+			improved_heavy_cruiser = 1
+			improved_battleship = 1
+			early_carrier = 1
+			basic_carrier = 1
+			improved_carrier = 1
+		}
+		set_naval_oob = "GER_1939_naval_legacy"
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		set_technology = {
+			improved_ship_hull_cruiser = 1
+			basic_ship_hull_heavy = 1
+			early_ship_hull_carrier = 1
+			basic_ship_hull_carrier = 1
+			improved_heavy_battery = 1
+			basic_heavy_armor_scheme = 1
+		}
+		set_naval_oob = "GER_1939_naval_mtg"
+	}
+
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "GER_1939_air_bba"
+		else = {
+			set_air_oob = "GER_1939_air_legacy"
+			set_technology = {
+				CAS2 = 1
+				heavy_fighter1 = 1
+			}
+		}
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Deutsche Kommunistische Partei" name = "DKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Die Linke" name = "Linke" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bündnis Sahra Wagenknecht" name = "BSW" }
+set_party_name = { ideology = progressive long_name = "Bündnis 90/Die Grünen" name = "Grüne" }
+set_party_name = { ideology = centrist long_name = "Sozialdemokratische Partei Deutschlands" name = "SPD" }
+set_party_name = { ideology = conservative long_name = "Christlich Demokratische Union" name = "CDU" }
+set_party_name = { ideology = reactionary long_name = "Alternative für Deutschland" name = "AfD" }
+set_party_name = { ideology = authoritarianism long_name = "Bundesministerium der Verteidigung" name = "BMV" }
+set_party_name = { ideology = autocracy long_name = "Generalinspekteur der Bundeswehr" name = "Bundeswehr" }
+set_party_name = { ideology = absolutism long_name = "Haus Hohenzollern" name = "Hohenzollern" }
+set_party_name = { ideology = ultranationalism long_name = "Nationaldemokratische Partei Deutschland/Die Heimat" name = "NPD/Heimat" }
+set_party_name = { ideology = fundamentalism long_name = "Bündnis C - Christen für Deutschland" name = "BC" }
+
+create_country_leader = { name = "Patrik Köbele" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Martin Schirdewan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Sahra Wagenknecht" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Annalena Baerbock" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Olaf Scholz" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_scholz.dds" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Friedrich Merz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Alice Weidel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Thomas Haldenwang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy }
+create_country_leader = { name = "Carsten Breuer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Georg Friedrich von Preußen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Frank Franz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_nazism }
+create_country_leader = { name = "Karin Heepen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = christian_fundamentalism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2022.2.13"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 3
+	revolutionary_socialism = 5
+	progressive = 7
+	centrist = 29
+	conservative = 35
+	reactionary = 17
+	authoritarianism = 1
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 2
+	fundamentalism = 1
+}
+
+# Setup of National Spirits
+add_ideas = {
+	sour_loser
+	limited_exports
+	limited_conscription
+	partial_economic_mobilisation
+}
+
+# Activates the MEFO Bills Mission
+activate_mission = GER_mefo_bills_mission
+
+# Character Recruitment
+recruit_character = GER_olaf_scholz
+if = {
+	limit = {
+		has_dlc = "Gotterdammerung"
+	}
+	recruit_character = GER_jurgen_von_blumenthal
+	recruit_character = GER_hans_vogel
+	recruit_character = GER_adolf_friedrich_von_mecklenburg
+	recruit_character = GER_wilhelm_von_gayl
+	recruit_character = GER_andreas_hermes
+	recruit_character = GER_hans_luther
+	recruit_character = GER_hermann_erhardt
+	recruit_character = GER_dietrich_bonhoeffer
+	recruit_character = GER_oberste_heeresleitung_character
+	recruit_character = GER_franz_ritter_von_epp
+	recruit_character = GER_walter_ulbricht
+	if = {
+		limit = {
+			has_dlc = "La Resistance"
+		}
+		recruit_character = GER_wilhelm_zaisser
+	}
+	recruit_character = GER_otto_ruhle
+	recruit_character = GER_hermann_duncker
+	recruit_character = GER_august_thalheimer
+	recruit_character = GER_heinrich_brandler
+	recruit_character = GER_bernhard_bastlein
+	recruit_character = GER_vincenz_muller
+	recruit_character = GER_hans_kahle
+	recruit_character = GER_hans_marchwitza
+	recruit_character = GER_arno_von_lenski
+	recruit_character = GER_otto_strasser
+	recruit_character = GER_otto_grotewohl
+
+	recruit_character = GER_henrich_focke #Heli Scientist
+}
+
+if = {
+	limit = {
+		OR = {
+			has_dlc = "Gotterdammerung"
+			has_dlc = "No Step Back"
+		}
+	}
+	recruit_character = GER_karl_heinrich_emil_becker #Artillery Scientist
+}
+
+# Recruiting Starting Operatives
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	# Recruit operatives
+	GER_create_operative_nikolaus_ritter = yes
+	GER_create_operative_erich_gimpel = yes
+	GER_create_operative_fritz_duquesne = yes
+}
+
+# Creating different equipment variants
+if = {
+	limit = {
+		NOT = { has_dlc = "Man the Guns" }
+	}
+	### Ship Variants ###
+	## 1936 Start ##
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Königsberg"
+		type = light_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_gun_upgrade = 2
+			ship_anti_air_upgrade = 2
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Deutschland"
+		type = heavy_cruiser_1
+		parent_version = 0
+		upgrades = {
+			ship_reliability_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_armor_upgrade = 1
+			ship_gun_upgrade = 2
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = { #Note: There is a copy of this variant in Finnish Scripted Effects file (FIN_purchase_german_equipment_for_cw). Any changes here should also be applied there
+		name = "Leichttraktor"
+		type = light_tank_chassis_0
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_small_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 2
+		}
+		obsolete = yes
+		icon = "GFX_GER_gwtank_medium"
+	}
+	create_equipment_variant = { #Note: There is a copy of this variant in Finnish National Focus file (FIN_bring_foreign_armor_experts) and Chinese history file. Any changes here should also be applied there
+		name = "Panzer I Ausf. A"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 5
+			tank_nsb_armor_upgrade = 1
+		}
+		icon = "GFX_GER_basic_light_tank_medium"
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Neubaufahrzeug"
+		type = heavy_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_close_support_gun
+			turret_type_slot = tank_heavy_three_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+			special_type_slot_2 = secondary_turret_hmg
+			special_type_slot_3 = secondary_turret_hmg
+			special_type_slot_4 = secondary_turret_hmg
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 6
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "GFX_GER_basic_heavy_tank_medium"
+	}
+	create_equipment_variant = {
+		name = "Panzer II Ausf. A"
+		type = light_tank_chassis_2
+		design_team = mio:GER_daimler_benz_organization
+		parent_version = 0
+		obsolete = yes
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 2
+		}
+		icon = "GFX_GER_improved_light_tank_medium"
+	}
+	create_equipment_variant = {
+		name = "Panzer II"
+		type = light_tank_chassis_2
+		design_team = mio:GER_daimler_benz_organization
+		parent_version = 1
+		modules = {
+			main_armament_slot = tank_auto_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_christie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 3
+			tank_nsb_armor_upgrade = 3
+		}
+		icon = "GFX_GER_improved_light_tank_medium"
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	create_equipment_variant = {
+		name = "Deutschland"
+		type = ship_hull_cruiser_panzerschiff
+		name_group = GER_PZ_HISTORICAL
+		parent_version = 0
+		modules = {
+        	fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			rear_1_custom_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+    	}
+	}
+	create_equipment_variant = {
+		name = "Type 24"
+		type = ship_hull_light_1
+		name_group = GER_TB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Zerstörer 1934"
+		type = ship_hull_light_2
+		name_group = GER_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Zerstörer 1934A"
+		type = ship_hull_light_2
+		name_group = GER_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Type II"
+		type = ship_hull_submarine_1
+		name_group = GER_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Type VII"
+		type = ship_hull_submarine_2
+		name_group = GER_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Königsberg"
+		type = ship_hull_cruiser_1
+		name_group = GER_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_medium_battery_1
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Emden"
+		type = ship_hull_cruiser_1
+		name_group = GER_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_light_medium_battery_1
+			mid_2_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Bremse"
+		type = ship_hull_cruiser_1
+		name_group = GER_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			mid_1_custom_slot = ship_anti_air_1
+			mid_2_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Leipzig"
+		type = ship_hull_cruiser_2
+		name_group = GER_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_light_medium_battery_1
+			rear_1_custom_slot = ship_airplane_launcher_1
+		}
+	}
+	create_equipment_variant = {
+		name = "Admiral Hipper"
+		type = ship_hull_cruiser_2
+		name_group = GER_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_torpedo_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Scharnhorst"
+		type = ship_hull_heavy_2
+		name_group = GER_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bc_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Deutschland"
+		type = ship_hull_pre_dreadnought
+		name_group = GER_PZ_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+}
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "By Blood Alone"
+		}
+	}
+	create_equipment_variant = {
+		name = "Ju 86"
+		type = tac_bomber_equipment_0
+		design_team = mio:GER_junkers_organization
+		upgrades = {
+			plane_tac_bomb_upgrade = 5
+			plane_range_upgrade = 5
+			plane_engine_upgrade = 5
+			plane_reliability_upgrade = 5
+		}
+		obsolete = yes
+		icon = GFX_GER_early_bomber_medium
+	}
+	
+	create_equipment_variant = {
+		name = "Do 17"
+		type = tac_bomber_equipment_0
+		design_team = mio:GER_dornier_organization
+		upgrades = {
+			plane_tac_bomb_upgrade = 5
+			plane_range_upgrade = 1
+			plane_engine_upgrade = 1
+			plane_reliability_upgrade = 5
+		}
+		obsolete = yes
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Do 23"
+		type = medium_plane_airframe_0
+		design_team = mio:GER_dornier_organization
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = empty
+			special_type_slot_2 = empty
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		obsolete = yes
+		icon = GFX_GER_early_bomber_medium
+	}
+	create_equipment_variant = {
+		name = "Ju 86"
+		type = medium_plane_airframe_0
+		design_team = mio:GER_junkers_organization
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = empty
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = lmg_defense_turret_2x
+			special_type_slot_2 = fuel_tanks_medium
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		obsolete = yes
+		icon = GFX_GER_early_bomber_medium
+	}
+
+	create_equipment_variant = {
+		name = "He 111"
+		type = medium_plane_airframe_1
+		#design_team = mio:GER_heinkel_organization #Dornier is Medium Airframe MIO now
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_2 = empty
+			fixed_auxiliary_weapon_slot_3 = empty
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = lmg_defense_turret_2x
+			special_type_slot_2 = lmg_defense_turret_2x
+			special_type_slot_3 = empty
+			special_type_slot_4 = empty
+		}
+		icon = "GFX_GER_tactical_bomber1_medium"
+	}
+	
+	create_equipment_variant = {
+		name = "Do 17"
+		type = medium_plane_airframe_1
+		design_team = mio:GER_dornier_organization
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret_2x
+		}
+		icon = "GFX_GER_medium_plane_1_medium"
+	}
+
+	create_equipment_variant = { #Note: There is a copy of this variant in Finnish Scripted Effects file (FIN_purchase_german_equipment_for_cw). Any changes here should also be applied there
+		name = "He 51" #also covers Ar 68
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Hs 123"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = GFX_GER_cv_fighter1_medium
+	}
+	create_equipment_variant = {
+		name = "Bf 109 D"
+		type = small_plane_airframe_1
+		design_team = mio:GER_messerschmitt_organization
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_GER_fighter1_medium"
+	}
+	create_equipment_variant = {
+		name = "Ju 87"
+		type = small_plane_cas_airframe_1
+		design_team = mio:GER_junkers_organization
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = dive_brakes_small
+		}
+		icon = "GFX_GER_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "Do 22"
+		type = small_plane_naval_bomber_airframe_1
+		#design_team = mio:GER_dornier_organization #Fieseler is Naval Aircraft MIO now
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret
+			special_type_slot_2 = floats
+		}
+		icon = "GFX_GER_naval_bomber1_medium"
+	}
+}
+
+## 1939 Start ##
+1939.1.1 = {
+	if = {
+		limit = {
+			NOT = { has_dlc = "Man the Guns" }
+		}
+		# Submarines #
+		create_equipment_variant = {
+			name = "Type VIIA"
+			type = submarine_2
+			parent_version = 0
+			upgrades = {
+				ship_reliability_upgrade = 1
+				sub_engine_upgrade = 1
+				sub_stealth_upgrade = 1
+				sub_torpedo_upgrade = 1
+			}
+		}
+		# Destroyer #
+		create_equipment_variant = {
+			name = "Zerstörer 1936"
+			type = destroyer_2
+			parent_version = 0
+			upgrades = {
+				ship_torpedo_upgrade = 2
+				destroyer_engine_upgrade = 2
+				ship_ASW_upgrade = 2
+				ship_anti_air_upgrade = 2
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "Man the Guns"
+		}
+		create_equipment_variant = {
+			name = "Zerstörer 1936"
+			type = ship_hull_light_2
+			name_group = GER_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+		create_equipment_variant = {
+			name = "Bismarck"
+			type = ship_hull_heavy_2
+			name_group = GER_BB_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery_3
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_1
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = heavy_ship_engine_2
+				fixed_ship_secondaries_slot = ship_secondaries_2
+				fixed_ship_armor_slot = ship_armor_bb_2
+				front_1_custom_slot = ship_anti_air_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_secondaries_2
+				rear_1_custom_slot = ship_heavy_battery_3
+			}
+		}
+		create_equipment_variant = {
+			name = "Graf Zeppelin"
+			type = ship_hull_carrier_1
+			name_group = GER_CV_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = carrier_ship_engine_2
+				fixed_ship_secondaries_slot = ship_secondaries_1
+				front_1_custom_slot = ship_deck_space
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "No Step Back"
+		}
+		create_equipment_variant = {
+			name = "Panzer III Ausf. F"
+			type = medium_tank_chassis_1
+			parent_version = 0
+			modules = {
+				main_armament_slot = tank_small_cannon_2
+				turret_type_slot = tank_medium_three_man_tank_turret
+				suspension_type_slot = tank_torsion_bar_suspension
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = smoke_launchers
+				special_type_slot_3 = empty
+				special_type_slot_4 = empty
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 6
+				tank_nsb_armor_upgrade = 3
+			}
+			icon = "GFX_GER_basic_medium_tank_medium"
+		}
+		create_equipment_variant = {
+			name = "Panzer IV Ausf. C"
+			type = medium_tank_chassis_1
+			parent_version = 1
+			modules = {
+				main_armament_slot = tank_close_support_gun
+				turret_type_slot = tank_medium_three_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_welded_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = smoke_launchers
+				special_type_slot_3 = empty
+				special_type_slot_4 = empty
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 6
+				tank_nsb_armor_upgrade = 3
+			}
+			icon = "GFX_GER_improved_medium_tank_medium"
+		}
+		create_equipment_variant = {
+			name = "Panzer 35(t)"
+			type = light_tank_chassis_1
+			parent_version = 1
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon
+				turret_type_slot = tank_light_two_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = empty
+				special_type_slot_3 = empty
+				special_type_slot_4 = empty
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 2
+			}
+			obsolete = yes
+			icon = "GFX_CZE_basic_light_tank_medium"
+		}
+		create_equipment_variant = {
+			name = "Panzer 38(t)"
+			type = light_tank_chassis_2
+			parent_version = 1
+			modules = {
+				main_armament_slot = tank_high_velocity_cannon
+				turret_type_slot = tank_light_two_man_tank_turret
+				suspension_type_slot = tank_bogie_suspension
+				armor_type_slot = tank_riveted_armor
+				engine_type_slot = tank_gasoline_engine
+				special_type_slot_1 = tank_radio_1
+				special_type_slot_2 = smoke_launchers
+				special_type_slot_3 = empty
+				special_type_slot_4 = empty
+			}
+			upgrades = {
+				tank_nsb_engine_upgrade = 3
+				tank_nsb_armor_upgrade = 3
+			}
+			
+			icon = "GFX_CZE_improved_light_tank_medium"
+		}
+	}
+
+	if = {
+		limit = { NOT = { has_dlc = "By Blood Alone" } }
+		create_equipment_variant = {
+			name = "He 112"
+			type = fighter_equipment_1
+			upgrades = {
+				plane_gun_upgrade = 1
+				plane_range_upgrade = 1  
+				plane_engine_upgrade = 0
+				plane_reliability_upgrade = 2
+			}
+		}
+		create_equipment_variant = {
+			name = "Bf 109 E"
+			type = fighter_equipment_1
+			upgrades = {
+				plane_gun_upgrade = 2
+				plane_range_upgrade = 1  
+				plane_engine_upgrade = 2
+				plane_reliability_upgrade = 4
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		create_equipment_variant = {
+			name = "Bf 109 E"
+			type = small_plane_airframe_1
+			design_team = mio:GER_messerschmitt_organization
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+			}
+			icon = "GFX_GER_fighter1_medium"
+		}
+		create_equipment_variant = {
+			name = "Bf 110 C"
+			type = small_plane_airframe_1
+			design_team = mio:GER_messerschmitt_organization
+			modules = {
+				fixed_main_weapon_slot = light_mg_4x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+				engine_type_slot = engine_2_2x
+				special_type_slot_1 = empty
+			}
+			icon = "GFX_GER_heavy_fighter1_medium"
+		}
+		create_equipment_variant = {
+			name = "He 112"
+			type = small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = light_mg_2x
+				fixed_auxiliary_weapon_slot_1 = aircraft_cannon_1_2x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+			}
+			icon = "GFX_GER_light_plane_1_medium"
+		}
+	}
+	# Heavy Cruisers #
+	#create_equipment_variant = {
+	#	name = "Deutschland"
+	#	type = heavy_cruiser_1
+	#	parent_version = 0
+	#	upgrades = {
+	#		ship_reliability_upgrade = 1
+	#		ship_engine_upgrade = 1
+	#		ship_armor_upgrade = 1
+	#		ship_gun_upgrade = 2
+	#	}
+	#	obsolete = yes
+	#}
+}

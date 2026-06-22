@@ -1,0 +1,132 @@
+﻿capital = 230 #Yerevan, Armenia
+
+oob = "AZR_1936"
+
+set_research_slots = 4
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1 
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1 
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+
+# ==================== I gave them one more research slot ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Hayastani Komunistakan Kusaktsutyun" name = "HKK" }
+set_party_name = { ideology = vanguard_socialism long_name = "Hayastani Ashkhatavorakan Kusaktsutyun" name = "HAK" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Hay Heghapokhakan Dashnaktsutyun" name = "ARF" }
+set_party_name = { ideology = progressive long_name = "Kaghakatshakan Paymanagir" name = "KP" }
+set_party_name = { ideology = centrist long_name = "Hanrapetutyun Kusaktsutyun" name = "Republic" }
+set_party_name = { ideology = conservative long_name = "Hayastani Hanrapetakan Kusaktsutyun" name = "HHK" }
+set_party_name = { ideology = reactionary long_name = "Hayastan Dashink" name = "HD" }
+set_party_name = { ideology = authoritarianism long_name = "Pativ Unem Dashink" name = "PUD" }
+set_party_name = { ideology = autocracy long_name = "Zinvats Uzher" name = "Military" }
+set_party_name = { ideology = absolutism long_name = "Bagratuni Monarchy Association" name = "Bagratuni" }
+set_party_name = { ideology = ultranationalism long_name = "Sasna Tsrer Hamahaykakan Kusaktsutyun" name = "ST" }
+set_party_name = { ideology = fundamentalism long_name = "Hay Arakelakan Yekeghetsi Council" name = "Church" }
+
+create_country_leader = { name = "Nikol Pashinyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Robert Kocharyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Aram Sargsyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Ishkhan Saghatelyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Suren Sanosyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Yervand Kazandjian" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Tachat Sargsyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Artur Vanetsyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Edward Asryan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Aimery de Narbonne-Lara" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Garegin Chugaszyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Archbishop Bagrat Galstanyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2021.6.20"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 54
+	reactionary = 21
+	authoritarianism = 10
+	revolutionary_socialism = 10
+	totalitarian_communism = 5
+}

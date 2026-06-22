@@ -1,0 +1,261 @@
+﻿capital = 9
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "CZE_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "CZE_1936_nsb"
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "CZE_1936_air_bba"
+		set_technology = {
+			aa_lmg = 1
+			engines_1 = 1
+			engines_2 = 1
+			iw_small_airframe = 1
+			iw_medium_airframe = 1
+			early_bombs = 1
+			bba_early_transport_plane = 1
+		}
+	else = {
+		set_air_oob = "CZE_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+			CAS1 = 1
+			early_transport_plane = 1
+		}
+	}
+}
+
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_recon = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	fuel_silos = 1
+	basic_train = 1
+}
+
+recruit_character = CZE_karl_albrecht
+recruit_character = CZE_edvard_benesh
+recruit_character = CZE_jaroslav_krejchi
+recruit_character = CZE_klement_gottwald
+recruit_character = CZE_vojtyech_luzha
+recruit_character = CZE_josef_shnejdarek
+recruit_character = CZE_richard_tesarzhik
+recruit_character = CZE_sergej_vojcechovsky
+recruit_character = CZE_frantishek_havlik
+recruit_character = CZE_rudolf_viest
+recruit_character = CZE_alois_vicherek
+recruit_character = CZE_antonin_hasal
+recruit_character = CZE_jaroslav_fajfr
+recruit_character = CZE_jan_golian
+recruit_character = CZE_karel_janousek
+recruit_character = CZE_josef_frantisek
+recruit_character = CZE_ludvik_krejci
+recruit_character = CZE_karel_vaclav_petrik
+recruit_character = CZE_karel_kuttelwascher
+recruit_character = CZE_ludvik_svoboda
+recruit_character = CZE_frantisek_havel
+recruit_character = CZE_stefan_osusky
+recruit_character = CZE_ferdinand_catlos
+recruit_character = CZE_jozef_tiso
+recruit_character = CZE_vojtech_tuka
+recruit_character = CZE_konrad_henlein
+recruit_character = CZE_gustav_husak
+recruit_character = CZE_albrecht_franz
+
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+
+IF = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	CZE_create_paul_thummel_operative = yes
+}
+
+set_research_slots = 3
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Komunistická Strana Československa (Gottwaldovci)" name = "KSČ-G" }
+set_party_name = { ideology = vanguard_socialism long_name = "Komunistická Strana Čech a Moravy" name = "KSČM" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Levice" name = "LEVICE" }
+set_party_name = { ideology = progressive long_name = "Česká Pirátská Strana" name = "PIRÁTI" }
+set_party_name = { ideology = centrist long_name = "Starostové a Nezávislí" name = "STAN" }
+set_party_name = { ideology = conservative long_name = "Občanská Demokratická Strana" name = "ODS" }
+set_party_name = { ideology = reactionary long_name = "ANO 2011" name = "ANO" }
+set_party_name = { ideology = authoritarianism long_name = "Státní Rada Bezpečnosti" name = "SRB" }
+set_party_name = { ideology = autocracy long_name = "Armáda České a Slovenské Republiky" name = "ACSR" }
+set_party_name = { ideology = absolutism long_name = "Koruna Česká Monarchistické Hnutí" name = "KČ" }
+set_party_name = { ideology = ultranationalism long_name = "Svoboda a Přímá Demokracie" name = "SPD" }
+set_party_name = { ideology = fundamentalism long_name = "Česká Biskupská Konference Secretariat" name = "ČBK" }
+
+create_country_leader = { name = "Petr Fiala" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Andrej Babiš" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Petr Pavel representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Tomio Okamura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Kateřina Konečná" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2025.10.10"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	reactionary = 35
+	conservative = 28
+	centrist = 15
+	progressive = 10
+	ultranationalism = 8
+	vanguard_socialism = 4
+}
+
+if = {
+	limit = {
+		has_dlc = "Death or Dishonor"
+	}
+	add_ideas = {
+		CZE_skoda_works
+		CZE_divided_nation
+}
+	give_guarantee = YUG
+	give_guarantee = ROM
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "Tancik vz. 33"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_fixed_superstructure_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 1
+			tank_nsb_armor_upgrade = 1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "LT vz. 35"
+		type = light_tank_chassis_1
+		parent_version = 1
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 2
+		}
+	}
+	create_equipment_variant = {
+		name = "TNH"
+		type = light_tank_chassis_2
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_high_velocity_cannon
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 2
+			tank_nsb_armor_upgrade = 3
+		}
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "Avia B.534"
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+	}
+	create_equipment_variant = {
+		name = "Aero A.101"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+	create_equipment_variant = {
+		name = "Letov S-16"
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = lmg_defense_turret
+		}
+	}
+
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "Death or Dishonor" }
+	}
+	add_ideas = {
+		CZE_fortification_focus
+	}
+}
+

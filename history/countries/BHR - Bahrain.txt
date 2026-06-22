@@ -1,0 +1,94 @@
+﻿capital = 1014 # Manama
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_trucks = 1
+}
+
+IF = {
+	limit = {
+		has_dlc = "Battle for the Bosporus"
+	}
+	set_technology = { camelry = 1 }
+}
+
+set_convoys = 5
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "National Liberation Front - Bahrain" name = "NLF-B" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Progressive Democratic Tribune" name = "Minbar" }
+set_party_name = { ideology = progressive long_name = "National Democratic Action Society" name = "Waad" }
+set_party_name = { ideology = centrist long_name = "National Action Charter Council" name = "Charter" }
+set_party_name = { ideology = conservative long_name = "Al-Asalah Islamic Society" name = "Asalah" }
+set_party_name = { ideology = reactionary long_name = "Al-Minbar Islamic Society" name = "Al-Minbar" }
+set_party_name = { ideology = authoritarianism long_name = "Royal Diwan Executive" name = "Diwan" }
+set_party_name = { ideology = autocracy long_name = "Bahrain Defense Force High Command" name = "BDF" }
+set_party_name = { ideology = absolutism long_name = "House of Al-Khalifa Royal Cabinet" name = "Al-Khalifa" }
+set_party_name = { ideology = ultranationalism long_name = "Bahraini Nationalist Front" name = "BNF" }
+set_party_name = { ideology = fundamentalism long_name = "Al-Wefaq National Islamic Society" name = "Al-Wefaq" }
+
+create_country_leader = { name = "King Hamad bin Isa Al Khalifa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Prince Salman bin Hamad Al Khalifa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Ghanim Al-Buaneen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Abdulnabi Alekry" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Radhi Al-Musawi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Abduljalil Khalil" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Adel Al-Mawda" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Hassan Marzooq" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Ali Al-Fardan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Marshal Khalifa bin Ahmed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Saeed Al-Asfoor" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Sheikh Isa Qassim" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = absolutism
+	last_election = "2022.11.12"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	absolutism = 60
+	authoritarianism = 20
+	fundamentalism = 12
+	conservative = 8
+}

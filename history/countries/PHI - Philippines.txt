@@ -1,0 +1,468 @@
+﻿capital = 327
+
+IF = {
+	limit = { 
+		has_dlc = "No Compromise, No Surrender"
+	}
+	set_technology = {
+		rangers_tech = 1
+	}
+	set_oob = "PHI_1936_ncns"
+	ELSE_IF = {
+		limit = {
+			NOT = {
+				has_dlc = "No Compromise, No Surrender"
+			}
+		}
+		set_oob = "PHI_1936"
+	}
+}
+
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "PHI_1936_air_bba"
+	else = {
+		set_air_oob = "PHI_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			early_bomber = 1
+		}
+	}
+}
+
+set_stability = 0.50
+set_war_support = 0.15 
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_trucks = 1
+	tech_support = 1		
+	tech_recon = 1
+	tech_engineers = 1
+	gw_artillery = 1
+	early_ship_hull_light = 1
+	basic_battery = 1
+	basic_depth_charges = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+		has_dlc = "Arms Against Tyranny"
+	}
+		create_equipment_variant = {
+			name = "Casco Convoy"
+			type = convoy_1
+			parent_version = 0
+			design_team = mio:PHI_compania_maritima_de_cebu_organization
+			show_position = no
+			mark_older_equipment_obsolete = yes
+		}
+
+		create_equipment_variant = {
+			name = "Clemson Class"				# represents Sampson, Caldwell, Clemson, and Wickes classes
+			type = ship_hull_light_1
+			name_group = PHI_DD_HISTORICAL
+			parent_version = 0
+			design_team = mio:PHI_compania_maritima_de_cebu_organization
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+	else = {
+		create_equipment_variant = {
+			name = "Casco Convoy"
+			type = convoy_1
+			parent_version = 0
+			show_position = no
+			mark_older_equipment_obsolete = yes
+		}
+
+		create_equipment_variant = {
+			name = "Clemson Class"				# represents Sampson, Caldwell, Clemson, and Wickes classes
+			type = ship_hull_light_1
+			name_group = PHI_DD_HISTORICAL
+			parent_version = 0
+			show_position = no
+			mark_older_equipment_obsolete = yes
+			modules = {
+				fixed_ship_battery_slot = ship_light_battery_1
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = light_ship_engine_1
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+	}
+}
+
+set_convoys = 50
+
+#Dynamic modifiers 
+
+## Island Nation - Currently only positive effects, so even if non-DLC players cant upgrade it, can still give for a little flavor
+add_dynamic_modifier = { modifier = PHI_island_nation_dynamic_modifier }
+set_variable = { PHI_island_nation_convoy_retreat_speed = 0.15 }
+set_variable = { PHI_island_nation_navy_visibility = -0.05 }
+set_variable = { PHI_island_nation_industrial_capacity_dockyard = 0 }
+set_variable = { PHI_island_nation_repair_speed_factor = 0 }
+set_variable = { PHI_island_nation_naval_coordination = 0 }
+set_variable = { PHI_island_nation_navy_org_factor = 0 }
+set_variable = { PHI_island_nation_navy_max_range_factor = 0 }
+set_variable = { PHI_island_nation_experience_gain_navy = 0 }
+set_variable = { PHI_island_nation_special_forces_cap = 0 }
+set_variable = { PHI_island_nation_amphibious_invasion = 0 }
+set_variable = { PHI_island_nation_naval_invasion_capacity = 0 }
+set_variable = { PHI_island_nation_invasion_preparation = 0 }
+set_variable = { PHI_island_nation_convoy_raiding_efficiency_factor = 0 }
+set_variable = { PHI_island_nation_naval_light_gun_hit_chance_factor = 0 }
+set_variable = { PHI_island_nation_naval_speed_factor = 0 }
+set_variable = { PHI_island_nation_naval_torpedo_hit_chance_factor = 0 }
+set_variable = { PHI_island_nation_naval_torpedo_screen_penetration_factor = 0 }
+set_variable = { PHI_island_nation_air_range_factor = 0 }
+set_variable = { PHI_island_nation_supply_consumption_factor = 0 }
+
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+
+	## The Great Depression
+	add_dynamic_modifier = { modifier = PHI_the_great_depression_dynamic_modifier }
+	set_variable = { PHI_the_great_depression_political_power_gain = -0.75 }
+	set_variable = { PHI_the_great_depression_resource_gain = -0.25 }
+	set_variable = { PHI_the_great_depression_consumer_goods_factor = 0.5 }
+	set_variable = { PHI_the_great_depression_join_faction_tension = 1 }
+	set_variable = { PHI_the_great_depression_production_speed_buildings_factor = -0.25 }
+	set_variable = { PHI_the_great_depression_fuel_gain_factor = 0 }
+	set_variable = { PHI_the_great_depression_democratic_drift = 0 }
+	set_variable = { PHI_the_great_depression_conscription_factor = 0 }
+	set_variable = { PHI_the_great_depression_monthly_population = 0 }
+	set_variable = { PHI_the_great_depression_drift_defence_factor = 0 }
+	set_variable = { PHI_the_great_depression_compliance_growth = 0 }
+	set_variable = { PHI_the_great_depression_intelligence_agency_defense = 0 }
+	set_variable = { PHI_the_great_depression_production_speed_industrial_complex_factor = 0 }
+	set_variable = { PHI_the_great_depression_production_speed_infrastructure_factor = 0 }
+
+	## Philippine Army
+	add_dynamic_modifier = { modifier = PHI_philippine_army_dynamic_modifier }
+	set_variable = { PHI_philippine_army_industrial_capacity_factory = -0.90 }
+	set_variable = { PHI_philippine_army_industrial_capacity_dockyard = -0.50 }
+	set_variable = { PHI_philippine_army_conscription_factor = -0.5}
+	set_variable = { PHI_philippine_army_training_time_factor = 0.4}
+	set_variable = { PHI_philippine_army_experience_gain_army_factor = -0.8}
+	set_variable = { PHI_philippine_army_command_power_gain_mult = -0.2 }
+	set_variable = { PHI_philippine_army_heat_attrition_factor = 0 }
+	set_variable = { PHI_philippine_army_army_org_factor = 0 }
+	set_variable = { PHI_philippine_army_max_planning_factor = 0 }
+	set_variable = { PHI_philippine_army_conscription = 0 }
+
+	## American Interference
+	add_dynamic_modifier = { modifier = PHI_american_interference_dynamic_modifier }
+	set_variable = { PHI_american_interference_autonomy_gain = -0.1 }
+	set_variable = { PHI_american_interference_license_subject_master_purchase_cost = 0 }
+	set_variable = { PHI_american_interference_license_production_speed = 0}
+	set_variable = { PHI_american_interference_research_sharing_per_country_bonus = 0.2 }
+	set_variable = { PHI_american_interference_communism = 0 }
+	set_variable = { PHI_american_interference_production_speed_rail_way_factor = 0 }
+	set_variable = { PHI_american_interference_command_power_gain = 0 }
+	set_variable = { PHI_american_interference_production_speed_air_base_factor = 0 }
+
+	## Japan Aligned Ideology
+	set_variable = { PHI_japan_aligned_ideology_fascism = 0 }
+	set_variable = { PHI_japan_aligned_ideology_communism = 0 }
+	set_variable = { PHI_japan_aligned_ideology_neutrality = 0 }
+	set_variable = { PHI_japan_aligned_ideology_democratic = 0 }
+
+	## Defense Strategy
+	set_variable = { PHI_defense_strategy_max_dig_in = 0 }
+	set_variable = { PHI_defense_strategy_production_speed_bunker_factor = 0 }
+	set_variable = { PHI_defense_strategy_army_artillery_attack_factor = 0 }
+	set_variable = { PHI_defense_strategy_land_bunker_effectiveness_factor = 0 }
+
+	## Scripting variables SEA
+	set_variable = { PHI_jap_alignment_value = 0 }
+	set_variable = { PHI_amount_of_focuses_done = 0 }
+
+	## Decision variables selling convoys - need to make sure cost and negative cost are same number, just negative with a - before
+	set_variable = { PHI_convoy_vars_small_cost = 25 }
+	set_variable = { PHI_convoy_vars_small_cost_negative = -25 } 
+	set_variable = { PHI_convoy_vars_medium_cost = 50 }
+	set_variable = { PHI_convoy_vars_medium_cost_negative = -50 }
+	set_variable = { PHI_convoy_vars_large_cost = 75 }
+	set_variable = { PHI_convoy_vars_large_cost_negative = -75 }
+
+	## Decision variable for American Intervention system
+	set_variable = { PHI_american_intervention_original_timer = 365 }
+	set_variable = { PHI_american_intervention_icon_value = 70 } ## Default value
+	set_variable = { PHI_american_intervention_value_to_add = 0 }
+
+	## Army Air Corps
+	set_variable = { PHI_philippine_army_air_corps_experience_gain_air_factor = 0.05 }
+	set_variable = { PHI_philippine_army_air_corps_air_mission_efficiency = 0 }
+	set_variable = { PHI_philippine_army_air_corps_air_nav_efficiency = 0 }
+	set_variable = { PHI_philippine_army_air_corps_air_range_factor = 0 }
+
+	# Declare Military Emergency
+	set_variable = { PHI_declare_military_emergency_join_faction_tension = 0 }
+	set_variable = { PHI_declare_military_emergency_justify_war_goal_time = 0 }
+	set_variable = { PHI_declare_military_emergency_guarantee_tension = 0 }
+	set_variable = { PHI_declare_military_emergency_send_volunteers_tension = 0 }
+	set_variable = { PHI_declare_military_emergency_lend_lease_tension = 0 }
+
+	# Preemptive Strikes
+	set_variable = { PHI_preemptive_strikes_max_planning_factor = 0.10 }
+	set_variable = { PHI_preemptive_strikes_justify_war_goal_time = -0.50 }
+	set_variable = { PHI_preemptive_strikes_generate_wargoal_tension = -0.80 }
+	set_variable = { PHI_preemptive_strikes_industrial_capacity_dockyard = 0.10 }
+	set_variable = { PHI_preemptive_strikes_production_factory_start_efficiency_factor = 0.10 }
+	set_variable = { PHI_preemptive_strikes_production_factory_max_efficiency_factor = 0.0 }
+	set_variable = { PHI_preemptive_strikes_compliance_growth = 0 }
+	set_variable = { PHI_preemptive_strikes_resistance_growth = 0 }
+	set_variable = { PHI_preemptive_strikes_non_core_manpower = 0 }
+	set_variable = { PHI_preemptive_strikes_navy_org_factor = 0 }
+	set_variable = { PHI_preemptive_strikes_navy_max_range_factor = 0 }
+	set_variable = { PHI_preemptive_strikes_air_range_factor = 0 }
+	set_variable = { PHI_preemptive_strikes_air_mission_efficiency = 0 }
+	set_variable = { PHI_preemptive_strikes_industrial_capacity_factory = 0 }
+
+	# Resistance
+	set_variable = { PHI_resistance_weekly_manpower = 100 }
+}
+
+IF = {
+	limit = {
+		has_dlc = "No Compromise, No Surrender"
+	}
+	recruit_character = PHI_manuel_luis_quezon
+	recruit_character = PHI_jose_laurel
+	recruit_character = PHI_manuel_roxas
+	recruit_character = PHI_pedro_abad_santos
+	recruit_character = PHI_emilio_aguinaldo
+	recruit_character = PHI_cristanto_evangelista
+	recruit_character = PHI_artemio_ricarte
+	recruit_character = PHI_sergio_osmena
+	recruit_character = PHI_carlos_p_romulo
+	recruit_character = PHI_benigno_ramos
+	recruit_character = PHI_jose_abad_santos
+	recruit_character = PHI_josefa_llanes_escoda
+	recruit_character = PHI_juan_samulong
+	recruit_character = PHI_wendell_fertig
+	recruit_character = PHI_vicente_lava
+	recruit_character = PHI_nieves_fernandez
+	recruit_character = PHI_courtney_whitney
+	recruit_character = PHI_richard_marshall
+	recruit_character = PHI_richard_sutherland
+	recruit_character = PHI_george_grunert
+	recruit_character = PHI_lewis_c_beebe
+	recruit_character = PHI_paulino_santos
+	recruit_character = PHI_russell_volckmann
+	recruit_character = PHI_jesus_villamor
+	recruit_character = PHI_godofredo_juliano
+	recruit_character = PHI_clayton_jerome
+	recruit_character = PHI_jose_v_andrada
+	recruit_character = PHI_enrique_jurado
+	recruit_character = PHI_ramon_magsaysay
+	recruit_character = PHI_vicente_p_lim
+	recruit_character = PHI_edward_king
+	recruit_character = PHI_thomas_hart
+	recruit_character = PHI_john_wilkes
+	recruit_character = PHI_iwaichi_fujiwara
+	recruit_character = PHI_yuitsu_tsuchihashi
+	recruit_character = PHI_okawachi_denshichi
+	recruit_character = PHI_luis_taruc
+	recruit_character = USA_jonathan_wainwright
+	recruit_character = PHI_tan_malaka
+	recruit_character = PHI_napoleon_de_leon
+	recruit_character = PHI_back_soon
+	recruit_character = PHI_infante_juan_iii
+	recruit_character = PHI_emma_rotor
+	recruit_character = PHI_basilio_j_valdez
+	
+	ELSE = {
+		## Vanilla characters
+		recruit_character = PHI_jose_laurel
+		recruit_character = PHI_manuel_luis_quezon
+		recruit_character = PHI_pedro_p_baguisa
+		recruit_character = PHI_deodato_jacinto
+		recruit_character = PHI_hermano_jacinto
+		recruit_character = PHI_pelagio_cruz
+		recruit_character = PHI_jose_v_andrada
+		recruit_character = PHI_leoncio_s_tan
+		recruit_character = PHI_benito_n_ebuen
+		recruit_character = PHI_basilio_fernando
+		recruit_character = PHI_basilio_j_valdez
+		recruit_character = PHI_santiago_nuval
+		recruit_character = PHI_heraclio_alano
+		recruit_character = PHI_ramon_a_alcaraz
+		recruit_character = PHI_victor_h_dizon
+		recruit_character = PHI_edwin_andrews
+		recruit_character = PHI_eustacio_orobia
+		recruit_character = PHI_vicente_p_lim
+		recruit_character = PHI_emilio_aguinaldo
+		recruit_character = PHI_juan_samulong
+		recruit_character = PHI_sergio_osmena
+	}
+}
+
+
+
+
+
+
+1939.1.1 = {
+
+	add_political_power = 1056
+	add_command_power = 100
+	set_stability = 0.50
+	set_war_support = 0.25 
+	set_convoys = 100
+	set_grand_doctrine = superior_firepower
+	set_grand_doctrine = new_convoy_raiding
+	
+	#generic focuses
+	IF = {
+		limit = { 
+			has_dlc = "No Compromise, No Surrender"
+		}
+		complete_national_focus = PHI_align_with_the_usa
+		complete_national_focus = PHI_peg_the_peso_to_the_dollar
+		complete_national_focus = PHI_quezon_city
+		complete_national_focus = PHI_agricultural_migrants_to_hawaii
+		complete_national_focus = PHI_united_states_army_forces_in_the_far_east
+		complete_national_focus = PHI_usaffe_headquarters
+		complete_national_focus = PHI_reduce_unneccessary_expenditure
+		complete_national_focus = PHI_quezon_city_campus
+		complete_national_focus = PHI_pro_hacendados
+		complete_national_focus = PHI_national_defense_act
+		complete_national_focus = PHI_offshore_patrol
+		complete_national_focus = PHI_cavite_naval_base
+		complete_national_focus = PHI_sugar_barons
+		complete_national_focus = PHI_mindanao_transport
+		complete_national_focus = PHI_luzon_transport
+		complete_national_focus = PHI_textile_mills
+		complete_national_focus = PHI_philippine_scouts
+
+		unlock_national_focus = PHI_commonwealth_of_the_philippines
+		add_to_variable = {
+			PHI_the_great_depression_political_power_gain = 0.05
+			tooltip = political_power_gain_tt
+		}
+
+		unlock_national_focus = PHI_national_fiscal_policy
+		add_to_variable = {
+			PHI_the_great_depression_political_power_gain = 0.15
+			tooltip = political_power_gain_tt
+		}
+		add_to_variable = {
+			PHI_the_great_depression_production_speed_buildings_factor = 0.10
+			tooltip = production_speed_buildings_factor_tt
+		}
+
+		unlock_national_focus = PHI_appoint_macarthur
+		unlock_national_focus = PHI_bring_in_eisenhower
+
+		USA = {
+			USA_douglas_macarthur = { set_nationality = PHI }
+			USA_dwight_d_eisenhower = {
+				add_skill_level = 2
+			}
+		}
+
+		else = {
+			complete_national_focus = army_effort
+			complete_national_focus = equipment_effort
+			complete_national_focus = motorization_effort
+			complete_national_focus = aviation_effort
+			complete_national_focus = naval_effort
+			complete_national_focus = flexible_navy
+			complete_national_focus = industrial_effort
+			complete_national_focus = construction_effort
+			complete_national_focus = production_effort
+		}
+	}
+
+	set_technology = {
+		basic_ship_hull_light = 1
+		basic_torpedo = 1
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		concentrated_industry = 1
+		concentrated_industry2 = 1
+		concentrated_industry3 = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		infantry_weapons1 = 1
+	}
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+	oob = "PHI_1939"
+
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PHI_1936_air_bba" #no difference between 36 and 39 airforces
+		else = {
+			set_air_oob = "PHI_1936_air_legacy"
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+			create_equipment_variant = {
+				name = "Patrol Boat"
+				type = ship_hull_light_2
+				parent_version = 0
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_1
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = empty
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = light_ship_engine_2
+					fixed_ship_torpedo_slot = ship_torpedo_1
+					mid_1_custom_slot = empty
+					rear_1_custom_slot = empty
+				}
+			}
+			set_naval_oob = "PHI_1939_naval_mtg"
+		else = {
+			set_naval_oob = "PHI_1939_naval_legacy"
+		}
+	}
+
+}
+
+
+
+
+
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1935.9.15"
+	election_frequency = 72
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 82
+	fascism = 18
+}

@@ -1,0 +1,105 @@
+﻿capital = 694
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 5
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Guadeloupéen" name = "PCG" }
+set_party_name = { ideology = vanguard_socialism long_name = "Combat Ouvrier" name = "CO" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Union Populaire pour la Libération de la Guadeloupe" name = "UPLG" }
+set_party_name = { ideology = progressive long_name = "Guadeloupe Unie, Socialisme et Réalités" name = "GUSR" }
+set_party_name = { ideology = centrist long_name = "Renaissance Guadeloupe" name = "RG" }
+set_party_name = { ideology = conservative long_name = "Les Républicains - Guadeloupe" name = "LR-G" }
+set_party_name = { ideology = reactionary long_name = "Rassemblement Guadeloupéen" name = "RAG" }
+set_party_name = { ideology = authoritarianism long_name = "Préfecture de la Guadeloupe" name = "PREF" }
+set_party_name = { ideology = autocracy long_name = "Commandement Gendarmerie Guadeloupe" name = "CGG" }
+set_party_name = { ideology = absolutism long_name = "Conseil Souverain des Caraïbes" name = "CSC" }
+set_party_name = { ideology = ultranationalism long_name = "Mouvement Nationaliste Guadeloupéen" name = "MNG" }
+set_party_name = { ideology = fundamentalism long_name = "Ligue Évangélique Antillaise" name = "LEA" }
+
+create_country_leader = { name = "Félix Flémin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Jean-Marie Nomertin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Victorin Lurel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Guy Losbar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Ary Chalus" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Marie-Luce Penchard" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Justine Benin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Xavier Lefort" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Christophe Perret" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Nathanaël Delgrès" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Lucette Michaux-Chevry II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Pasteur Moïse" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2021.6.27"
+	election_frequency = 72
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 2
+	vanguard_socialism = 5
+	revolutionary_socialism = 12
+	progressive = 30
+	centrist = 32
+	conservative = 8
+	reactionary = 4
+	authoritarianism = 5
+	autocracy = 1
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 0
+}
+
+#create_country_leader = {
+#	
+#	name = "Jonas Lote"
+#	picture = "gfx//leaders//Africa//Portrait_Africa_Generic_2.dds"
+#	expire = "1965.1.1"
+#	ideology = centrism
+#	traits = {
+#		#
+#	}
+#}

@@ -1,0 +1,146 @@
+﻿capital = 231 #Tbilisi
+
+oob = "GEO_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+IF = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+IF = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1 
+	}
+}
+IF = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1 
+	}
+}
+IF = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+IF = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Sakartvelos Kommunisturi Partia" name = "SKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Sotsial-Demokratia Sakartvelos" name = "SDS" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Dzala Ertobashia - Martskhena" name = "DE-M" }
+set_party_name = { ideology = progressive long_name = "Akhalni" name = "Akhalni" }
+set_party_name = { ideology = centrist long_name = "Ertiani Natsionaluri Modzraoba" name = "ENM" }
+set_party_name = { ideology = conservative long_name = "Kartuli Otsneba" name = "KO" }
+set_party_name = { ideology = reactionary long_name = "Khalkhis Dzala" name = "KD" }
+set_party_name = { ideology = authoritarianism long_name = "Sakartvelos Tavdatsvis Zalebi" name = "STZ" }
+set_party_name = { ideology = autocracy long_name = "Ushishroebis Sabcho" name = "US" }
+set_party_name = { ideology = absolutism long_name = "Bagrationta Samepo Sakhli" name = "BSS" }
+set_party_name = { ideology = ultranationalism long_name = "Alt-Info / Konservatiuli Modzraoba" name = "AIKM" }
+set_party_name = { ideology = fundamentalism long_name = "Marthlmadidebel Eklesiismat" name = "ME" }
+
+create_country_leader = { name = "Temur Pipia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Grigol Vashadze" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Tina Bokuchava" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Nika Melia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Salome Zourabichvili" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Irakli Kobakhidze" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Irakli Garibashvili" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Anzor Chubinidze" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Giorgi Matiashvili" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Davit Bagration" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Zurab Makharadze" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "P. Ilia Diddy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2024.10.26"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 3
+	progressive = 10
+	centrist = 22
+	conservative = 45
+	reactionary = 8
+	authoritarianism = 2
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 6
+	fundamentalism = 1
+}
+
+recruit_character = GEO_noe_zhordania
+recruit_character = GEO_kandid_charkviani
+recruit_character = GEO_george_bagration
+recruit_character = GEO_giorgi_kvinitadze
+recruit_character = GEO_shalva_maglakelidze
+recruit_character = GEO_grigol_robakidze
+recruit_character = GEO_ioseb_jughashvili
+

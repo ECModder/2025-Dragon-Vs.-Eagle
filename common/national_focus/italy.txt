@@ -1,0 +1,3844 @@
+focus_tree = {
+	id = italia
+	continuous_focus_position = { x = 530 y = 4300 } 
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = ITA
+		}
+	}
+	#Make the Union Yours
+	focus = {
+		id = ITA_make_the_union_yours
+		icon = GFX_ITA_make_the_union_yours-901098
+		x = 9
+		y = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_leninist_and_trotskyist_alliance  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.02
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.01
+			}
+			
+		}
+	}
+
+	#a Loyal Administration
+	focus = {
+		id = ITA_a_loyal_administration
+		icon = GFX_focus_befriend_italy
+		x = 52
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_reorganize_the_state  }
+		completion_reward = {
+			add_political_power = 75
+			
+			
+		}
+	}
+
+	#Irredentism
+	focus = {
+		id = ITA_irredentism
+		icon = GFX_ITA_irredentism-903913
+		x = 57
+		y = 2
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_casasavoia  focus = ITA_second_march_on_rome  }
+	}
+
+	#Green New Deal
+	focus = {
+		id = ITA_green_new_deal
+		icon = GFX_ITA_green_new_deal-901108
+		x = 32
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_elly_schlein  focus = ITA_francesco_de_martino  }
+		completion_reward = {
+			add_political_power = 200
+			
+			
+		}
+	}
+
+	#National Revival
+	focus = {
+		id = ITA_national_revival
+		icon = GFX_focus_generic_italy_first
+		x = 64
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_fascismisback  }
+		completion_reward = {
+			add_war_support = 1.5
+			
+			
+		}
+	}
+
+	#Emanuele Filiberto di Savoia
+	focus = {
+		id = ITA_emanuele_filiberto_di_savoia
+		icon = GFX_ITA_emanuele_filiberto_di_savoia-901105
+		x = 54
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_restore_the_crown  }
+		completion_reward = {
+			add_stability = 2
+			
+			
+		}
+	}
+
+	#Occupied Factories
+	focus = {
+		id = ITA_occupied_factories
+		icon = GFX_ITA_occupied_factories-901095
+		x = 10
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_rooting_of_the_party  } prerequisite = { focus = ITA_make_the_union_yours  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.10
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.05
+			}
+			
+		}
+	}
+
+	#The Kingdom Reborn
+	focus = {
+		id = ITA_the_kingdom_reborn
+		icon = GFX_ITA_the_kingdom_reborn-901128
+		x = 53
+		y = 5
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_kingsparliament  focus = ITA_kingsindustry  focus = ITA_traditional_values  }
+	}
+
+	#Traditional Values
+	focus = {
+		id = ITA_traditional_values
+		icon = GFX_ITA_traditional_values-645781
+		x = 57
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_irredentism  }
+		completion_reward = {
+			add_war_support = 0.05
+			
+			
+		}
+	}
+
+	#Expand State Authority
+	focus = {
+		id = ITA_expand_state_authority
+		icon = GFX_ITA_expand_state_authority-646051
+		x = 60
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_fascismisback  }
+	}
+
+	#New jobs
+	focus = {
+		id = ITA_new_jobs
+		icon = GFX_ITA_new_jobs-901111
+		x = 32
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_green_new_deal  }
+	}
+
+	#Second March on Rome
+	focus = {
+		id = ITA_second_march_on_rome
+		icon = GFX_ITA_second_march_on_rome-901110
+		x = 62
+		y = 1
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_good_old_days  }
+		mutually_exclusive = { focus = ITA_casasavoia  }
+		completion_reward = {
+			add_political_power = 50
+			
+			add_war_support = 0.5
+			
+			
+			add_stability = -0.2
+			
+			
+		}
+	}
+
+	#Fascism is back!
+	focus = {
+		id = ITA_fascismisback
+		icon = GFX_ITA_fascismisback-901085
+		x = 62
+		y = 2
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_second_march_on_rome  }
+		completion_reward = {
+			add_stability = -10
+			
+			
+			
+		}
+	}
+
+	#Casa Savoia!
+	focus = {
+		id = ITA_casasavoia
+		icon = GFX_ITA_casasavoia-901107
+		x = 53
+		y = 1
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_good_old_days  }
+		completion_reward = {
+			add_stability = -5
+			
+			
+		}
+	}
+
+	#Good old Days
+	focus = {
+		id = ITA_good_old_days
+		icon = GFX_ITA_good_old_days-901084
+		x = 58
+		y = 0
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = ITA_democratic_spectrum  }
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+			        elections_allowed = no
+			        last_election = 2025.1.1
+			}
+		}
+	}
+
+	#Rooting of the Party
+	focus = {
+		id = ITA_rooting_of_the_party
+		icon = GFX_ITA_rooting_of_the_party-901077
+		x = 7
+		y = 2
+		cost = 7
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_leninist_and_trotskyist_alliance  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.02
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.01
+			}
+			
+		}
+	}
+
+	#Reorganize the State
+	focus = {
+		id = ITA_reorganize_the_state
+		icon = GFX_ITA_reorganize_the_state-646052
+		x = 52
+		y = 2
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_casasavoia  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#Hardline communist
+	focus = {
+		id = ITA_hardline_communist
+		icon = GFX_ITA_hardline_communist-262121
+		x = 20
+		y = 1
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_on_the_side_of_the_proletariat  }
+		mutually_exclusive = { focus = ITA_leninist_and_trotskyist_alliance  }
+		completion_reward = {
+			set_party_name = {
+			    ideology = totalitarian_communism
+			    long_name = "PdRC, PCI, OSA, CR"
+			    name = "CP"
+			}
+		}
+	}
+
+	#Leninist and Trotskyist Alliance
+	focus = {
+		id = ITA_leninist_and_trotskyist_alliance
+		icon = GFX_ITA_leninist_and_trotskyist_alliance-861684
+		x = 8
+		y = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_on_the_side_of_the_proletariat  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.02
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.01
+			}
+			
+		}
+	}
+
+	#on the Side of the Proletariat
+	focus = {
+		id = ITA_on_the_side_of_the_proletariat
+		icon = GFX_ITA_on_the_side_of_the_proletariat-860941
+		x = 13
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		mutually_exclusive = { focus = ITA_democratic_spectrum  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.05
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.05
+			}
+			
+			add_popularity = {
+			    ideology = totalitarian_communism
+			    popularity = 0.05
+			}
+		}
+	}
+
+	#the International
+	focus = {
+		id = ITA_the_international
+		icon = GFX_ITA_the_international-901017
+		x = 4
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_againstwarrevolution  focus = ITA_start_the_coup_de_main  }
+		completion_reward = {
+			set_politics = {
+				ruling_party = vanguard_socialism
+			        elections_allowed = yes
+			        last_election = 2025.1.1
+			}
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 1.00
+			}
+		}
+	}
+
+	#against war: REVOLUTION!!!
+	focus = {
+		id = ITA_againstwarrevolution
+		icon = GFX_ITA_againstwarrevolution-901014
+		x = 4
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		ai_will_do = { factor = -1 }
+		available = {
+			is_at_war = yes
+		}
+		bypass = {
+			has_government = vanguard_socialism
+			
+			
+		}
+		completion_reward = {
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.7
+			}
+		}
+	}
+
+	#Single Market Expansion
+	focus = {
+		id = ITA_single_market_expansion
+		icon = GFX_ITA_single_market_expansion-901102
+		x = 36
+		y = 13
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_strengthen_the_concept_of_unity  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			add_political_power = 50
+			
+			
+		}
+	}
+
+	#European Integration
+	focus = {
+		id = ITA_european_integration
+		icon = GFX_ITA_european_integration-900982
+		x = 35
+		y = 15
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_eu_research_program  } prerequisite = { focus = ITA_social_cohesion_fund  }
+		completion_reward = {
+			add_stability = 5
+			
+			
+		}
+	}
+
+	#start the Coup de Main
+	focus = {
+		id = ITA_start_the_coup_de_main
+		icon = GFX_ITA_start_the_coup_de_main-901015
+		x = 8
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_occupied_factories  } prerequisite = { focus = ITA_communist_demonstrations  } prerequisite = { focus = ITA_infiltration_into_the_army  }
+		available = {
+			has_party_popularity = {
+			        ideology = vanguard_socialism
+			        popularity > 0.50
+			}
+			has_war = no
+		}
+		bypass = {
+			OR = {
+				has_government = totalitarian_communism
+				has_government = vanguard_socialism
+				has_government = revolutionary_socialism
+			}
+		}
+		completion_reward = {
+			
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.70
+			}
+			
+			
+			
+		}
+	}
+
+	#Strengthen the concept of unity
+	focus = {
+		id = ITA_strengthen_the_concept_of_unity
+		icon = GFX_ITA_strengthen_the_concept_of_unity-903927
+		x = 35
+		y = 12
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_european_union  }
+		completion_reward = {
+			add_stability = 0.2
+			
+			
+		}
+	}
+
+	#European Union
+	focus = {
+		id = ITA_european_union
+		icon = GFX_ITA_european_union-903929
+		x = 35
+		y = 11
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+	}
+
+	#Digital Europe
+	focus = {
+		id = ITA_digital_europe
+		icon = GFX_ITA_digital_europe-903923
+		x = 34
+		y = 13
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ITA_strengthen_the_concept_of_unity  }
+		select_effect = {
+add_research_slot = 1
+
+
+}
+	}
+
+	#Connections in the army
+	focus = {
+		id = ITA_connections_in_the_army
+		icon = GFX_ITA_connections_in_the_army-262024
+		x = 45
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_roberto_vannacci  }
+		completion_reward = {
+			
+						army_experience = 10
+						
+						
+					
+		}
+	}
+
+	#Defend National Values
+	focus = {
+		id = ITA_defend_national_values
+		icon = GFX_ITA_defend_national_values-901003
+		x = 43
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_roberto_vannacci  }
+		completion_reward = {
+			
+						add_stability = 0.5
+						
+						
+					
+		}
+	}
+
+	#Mattei's Mediterranean Plan
+	focus = {
+		id = ITA_matteismediterraneanplan
+		icon = GFX_ITA_matteismediterraneanplan-901009
+		x = 39
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_protect_made_in_italy  }
+		completion_reward = {
+			
+						
+						
+						
+						
+						add_ideas = ITA_mediterranean_investments
+						add_ideas = {
+						    my_idea_1
+						    my_idea_2
+						}
+						
+						
+						add_political_power = 50
+						
+						
+					
+		}
+	}
+
+	#Secure the Borders
+	focus = {
+		id = ITA_secure_the_borders
+		icon = GFX_ITA_secure_the_borders-901002
+		x = 41
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_wink_at_the_army  }
+		select_effect = {
+add_war_support = 0.05
+
+add_stability = 0.03
+
+
+
+}
+	}
+
+	#Italy: Regional Power
+	focus = {
+		id = ITA_italyregionalpower
+		icon = GFX_ITA_italyregionalpower-901010
+		x = 40
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_matteismediterraneanplan  } prerequisite = { focus = ITA_secure_the_borders  }
+		ai_will_do = { factor = 1 }
+		select_effect = {
+
+
+add_war_support = 0.1
+
+add_stability = 0.05
+
+
+}
+	}
+
+	#Protect Made in Italy
+	focus = {
+		id = ITA_protect_made_in_italy
+		icon = GFX_ITA_protect_made_in_italy-901005
+		x = 39
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_consolidate_the_governament  }
+		ai_will_do = { factor = 1 }
+		select_effect = {
+
+
+add_building_construction = {
+    type = industrial_complex
+    level = 2
+    instant_build = yes
+}
+
+
+}
+	}
+
+	#Consolidate the Governament
+	focus = {
+		id = ITA_consolidate_the_governament
+		icon = GFX_ITA_consolidate_the_governament-645939
+		x = 39
+		y = 8
+		cost = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_giorgia_meloni  }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			
+						
+						add_stability = 0.05
+						
+						add_political_power = 75
+						
+						
+						
+					
+		}
+	}
+
+	#Roberto Vannacci
+	focus = {
+		id = ITA_roberto_vannacci
+		icon = GFX_ITA_roberto_vannacci-900991
+		x = 44
+		y = 7
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_futuro_nazionale  }
+	}
+
+	#Giorgia Meloni
+	focus = {
+		id = ITA_giorgia_meloni
+		icon = GFX_ITA_giorgia_meloni-900989
+		x = 40
+		y = 7
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_conservative_victory  }
+	}
+
+	#Futuro Nazionale
+	focus = {
+		id = ITA_futuro_nazionale
+		icon = GFX_ITA_futuro_nazionale-900794
+		x = 44
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_2027_election  }
+		mutually_exclusive = { focus = ITA_conservative_victory  }
+	}
+
+	#Conservative Victory
+	focus = {
+		id = ITA_conservative_victory
+		icon = GFX_ITA_conservative_victory-900788
+		x = 40
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_2027_election  }
+	}
+
+	#New National Republic
+	focus = {
+		id = ITA_new_national_republic
+		icon = GFX_ITA_new_national_republic-646072
+		x = 44
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_italian_manufacturing  focus = ITA_patriotic_to_the_end  }
+		completion_reward = {
+			
+						add_war_support = 15
+						add_stability = 10
+						
+						
+					
+		}
+	}
+
+	#the Right Side
+	focus = {
+		id = ITA_the_right_side
+		icon = GFX_ITA_the_right_side-860980
+		x = 42
+		y = 1
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_democratic_spectrum  }
+		mutually_exclusive = { focus = ITA_the_left_side  }
+	}
+
+	#Elly Schlein
+	focus = {
+		id = ITA_elly_schlein
+		icon = GFX_ITA_elly_schlein-900993
+		x = 33
+		y = 7
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_centerleft_victory  }
+		completion_reward = {
+			add_stability = 0.1
+			
+			
+		}
+	}
+
+	#Francesco De Martino
+	focus = {
+		id = ITA_francesco_de_martino
+		icon = GFX_ITA_francesco_de_martino-903737
+		x = 27
+		y = 7
+		cost = 2
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_socialist_victory  }
+		completion_reward = {
+			add_stability = 0.02
+		}
+	}
+
+	#Socialist victory
+	focus = {
+		id = ITA_socialist_victory
+		icon = GFX_ITA_socialist_victory-903721
+		x = 27
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_2027_election  }
+		available = {
+			    has_popularity = {
+			        ideology = progressive
+			        value > 0.40
+			    }
+		}
+		completion_reward = {
+			set_politics = { 
+			    ruling_party = progressive 
+			    elections_allowed = yes 
+			    last_election = 2026.5.25
+			}
+			
+		}
+	}
+
+	#Center-Left Victory
+	focus = {
+		id = ITA_centerleft_victory
+		icon = GFX_ITA_centerleft_victory-903720
+		x = 33
+		y = 6
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_2027_election  }
+		mutually_exclusive = { focus = ITA_socialist_victory  }
+		available = {
+			    has_popularity = {
+			        ideology = centrist
+			        value > 0.40
+			    }
+		}
+		completion_reward = {
+			set_politics = { 
+			    ruling_party = centrist 
+			    elections_allowed = yes 
+			    last_election = 2026.5.25
+			}
+			
+		}
+	}
+
+	#the Left Side
+	focus = {
+		id = ITA_the_left_side
+		icon = GFX_ITA_the_left_side-856404
+		x = 29
+		y = 1
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_democratic_spectrum  }
+	}
+
+	#Democratic Spectrum
+	focus = {
+		id = ITA_democratic_spectrum
+		icon = GFX_ITA_democratic_spectrum-646069
+		x = 36
+		y = 0
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		select_effect = {
+add_stability = 5
+}
+	}
+
+	#Popular Appeal
+	focus = {
+		id = ITA_popular_appeal
+		icon = GFX_ITA_popular_appeal-645760
+		x = 43
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_defend_national_values  }
+		completion_reward = {
+			
+						add_political_power = 75
+						
+						
+					
+		}
+	}
+
+	#Restore the Crown
+	focus = {
+		id = ITA_restore_the_crown
+		icon = GFX_focus_hun_elect_a_king
+		x = 54
+		y = 2
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_casasavoia  }
+		completion_reward = {
+			add_stability = 0.1
+			
+			promote_character = GER_erwin_rommel
+			  promote_character = {
+			      character = GER_erwin_rommel
+			      Ideology = neutrality
+			  }
+			
+			
+		}
+	}
+
+	#PdRC Majority
+	focus = {
+		id = ITA_pdrc_majority
+		icon = GFX_ITA_pdrc_majority-901426
+		x = 18
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_hardline_communist  }
+		mutually_exclusive = { focus = ITA_potere_al_popolo  }
+		completion_reward = {
+			set_party_name = {
+			    ideology = Communist
+			    name = PdRC
+			    long_name = Partito della Rifondazione Comunista
+			}
+			
+			
+			
+			
+			
+			
+		}
+	}
+
+	#Stakhanovism
+	focus = {
+		id = ITA_stakhanovism
+		icon = GFX_ITA_stakhanovism-901430
+		x = 17
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_controlled_union  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 2
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#People's France
+	focus = {
+		id = ITA_peoplesfrance
+		icon = GFX_focus_focus_fra_liberte_egalite_solidarite
+		x = 21
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesromania  } prerequisite = { focus = ITA_bulgarianpeoplesrepublic  }
+		completion_reward = {
+			declare_war_on = {
+			    target = FRA
+			    type = annex_everything
+			}
+			
+			
+			
+		}
+	}
+
+	#Hold conferences
+	focus = {
+		id = ITA_hold_conferences
+		icon = GFX_ITA_hold_conferences-903738
+		x = 30
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_political_debates  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = centrist
+			    popularity = 0.1
+			}
+			
+			
+		}
+	}
+
+	#Social Cohesion Fund
+	focus = {
+		id = ITA_social_cohesion_fund
+		icon = GFX_ITA_social_cohesion_fund-903922
+		x = 36
+		y = 14
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_single_market_expansion  }
+		completion_reward = {
+			add_stability = 0.05
+			
+			
+		}
+	}
+
+	#EU Research Program
+	focus = {
+		id = ITA_eu_research_program
+		icon = GFX_ITA_eu_research_program-903925
+		x = 34
+		y = 14
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ITA_digital_europe  }
+		select_effect = {
+
+
+
+
+add_research_slot = 2
+
+
+}
+	}
+
+	#Funds for Schools
+	focus = {
+		id = ITA_funds_for_schools
+		icon = GFX_focus_generic_military_academy
+		x = 30
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_elly_schlein  focus = ITA_francesco_de_martino  }
+		completion_reward = {
+			
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 4
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#King's Parliament
+	focus = {
+		id = ITA_kingsparliament
+		icon = GFX_ITA_kingsparliament-901122
+		x = 52
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_a_loyal_administration  }
+		completion_reward = {
+			add_stability = -0.1
+			
+			add_war_support = 0.1
+			
+			add_popularity = {
+			    ideology = fascism
+			    popularity = 0.2
+			}
+			
+			
+			
+		}
+	}
+
+	#King's Industry
+	focus = {
+		id = ITA_kingsindustry
+		icon = GFX_ITA_kingsindustry-901134
+		x = 54
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_emanuele_filiberto_di_savoia  }
+	}
+
+	#Gran Consiglio del Fascismo
+	focus = {
+		id = ITA_gran_consiglio_del_fascismo
+		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
+		x = 62
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_dvx_is_back  }
+		completion_reward = {
+			political_power_daily > 2
+			
+			
+		}
+	}
+
+	#The DVX is back
+	focus = {
+		id = ITA_the_dvx_is_back
+		icon = GFX_ITA_the_dvx_is_back-901256
+		x = 62
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_fascismisback  }
+		completion_reward = {
+			add_war_support = 2
+			
+			
+			
+		}
+	}
+
+	#Communist demonstrations
+	focus = {
+		id = ITA_communist_demonstrations
+		icon = GFX_ITA_communist_demonstrations-901400
+		x = 8
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_rooting_of_the_party  } prerequisite = { focus = ITA_make_the_union_yours  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.10
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.05
+			}
+			
+		}
+	}
+
+	#infiltration into the army
+	focus = {
+		id = ITA_infiltration_into_the_army
+		icon = GFX_ITA_infiltration_into_the_army-901410
+		x = 6
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_rooting_of_the_party  } prerequisite = { focus = ITA_make_the_union_yours  }
+		completion_reward = {
+			add_political_power = 10
+			
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.10
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.05
+			}
+			
+		}
+	}
+
+	#Stalinist Coup
+	focus = {
+		id = ITA_stalinist_coup
+		icon = GFX_ITA_stalinist_coup-854010
+		x = 20
+		y = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_potere_al_popolo  focus = ITA_cambiare_rotta  focus = ITA_pdrc_majority  }
+		completion_reward = {
+			set_politics = {
+				ruling_party = totalitarian_communism
+			        elections_allowed = no
+			        last_election = 2025.1.1
+			}
+		}
+	}
+
+	#Potere al Popolo
+	focus = {
+		id = ITA_potere_al_popolo
+		icon = GFX_ITA_potere_al_popolo-901427
+		x = 20
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_hardline_communist  }
+		completion_reward = {
+			set_party_name = {
+			    ideology = Communist
+			    name = PP
+			    long_name = Potere al Popolo
+			+
+			}
+			
+		}
+	}
+
+	#Cambiare Rotta
+	focus = {
+		id = ITA_cambiare_rotta
+		icon = GFX_ITA_cambiare_rotta-855851
+		x = 22
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_hardline_communist  }
+		mutually_exclusive = { focus = ITA_potere_al_popolo  }
+		completion_reward = {
+			set_party_name = {
+			    ideology = Communist
+			    name = CR-OSA
+			    long_name = Cambiare Rotta - OSA
+			}
+			
+			
+		}
+	}
+
+	#New Party, New Identity
+	focus = {
+		id = ITA_newpartynewidentity
+		icon = GFX_ITA_newpartynewidentity-901428
+		x = 20
+		y = 4
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_stalinist_coup  }
+		available = {
+			has_political_power > 100
+			
+		}
+		completion_reward = {
+			
+			
+			add_political_power = -100
+			
+			set_party_name = {
+			    ideology = Communist
+			    name = PCU
+			    long_name = Partito Comunista Unitario
+			}
+			
+			
+			
+			
+		}
+	}
+
+	#Soviet Parliament
+	focus = {
+		id = ITA_soviet_parliament
+		icon = GFX_ITA_soviet_parliament-856064
+		x = 20
+		y = 5
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_newpartynewidentity  }
+		available = {
+			has_political_power > 100
+			
+		}
+		completion_reward = {
+			add_political_power = -100
+			
+		}
+	}
+
+	#Abolish the Councils
+	focus = {
+		id = ITA_abolish_the_councils
+		icon = GFX_ITA_abolish_the_councils-856831
+		x = 17
+		y = 6
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_soviet_parliament  }
+		completion_reward = {
+			add_political_power = -100
+			
+			add_war_support = 4
+			
+			add_stability = -10
+			
+			
+			add_popularity = {
+			    ideology = Communism
+			    popularity = -10
+			}
+			
+			
+		}
+	}
+
+	#Gosplan
+	focus = {
+		id = ITA_gosplan
+		icon = GFX_ITA_gosplan-901429
+		x = 17
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_abolish_the_councils  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 2
+			    instant_build = yes
+			}
+			
+			
+		}
+	}
+
+	#Controlled Union
+	focus = {
+		id = ITA_controlled_union
+		icon = GFX_ITA_controlled_union-856311
+		x = 17
+		y = 9
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_fiveyear_plan  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 2
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Five-year plan
+	focus = {
+		id = ITA_fiveyear_plan
+		icon = GFX_ITA_fiveyear_plan-856101
+		x = 17
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_gosplan  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Social Credit Sistem
+	focus = {
+		id = ITA_social_credit_sistem
+		icon = GFX_ITA_social_credit_sistem-856493
+		x = 17
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_stakhanovism  }
+		completion_reward = {
+			
+			
+			add_political_power = 50
+			
+			
+			add_stability = 10
+			
+			add_war_support = -10
+			
+		}
+	}
+
+	#Politburo
+	focus = {
+		id = ITA_politburo
+		icon = GFX_ITA_politburo-901431
+		x = 19
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_soviet_parliament  }
+		completion_reward = {
+			add_stability = 5
+			
+		}
+	}
+
+	#Communism in one Continent
+	focus = {
+		id = ITA_communism_in_one_continent
+		icon = GFX_ITA_communism_in_one_continent-856110
+		x = 19
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_politburo  }
+		completion_reward = {
+			add_war_support = 2
+			
+			add_stability = -2
+		}
+	}
+
+	#Recreate the NKVD
+	focus = {
+		id = ITA_recreate_the_nkvd
+		icon = GFX_ITA_recreate_the_nkvd-856466
+		x = 23
+		y = 6
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_FRA_POLITICAL_VIOLENCE
+		}
+		prerequisite = { focus = ITA_soviet_parliament  }
+		completion_reward = {
+			    create_intelligence_agency = yes
+		}
+	}
+
+	#People's Army
+	focus = {
+		id = ITA_peoplesarmy
+		icon = GFX_ITA_peoplesarmy-901432
+		x = 21
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_recreate_the_nkvd  } prerequisite = { focus = ITA_politburo  } prerequisite = { focus = ITA_soviet_army  }
+		completion_reward = {
+			
+			add_manpower = 100000
+			
+			
+			add_war_support = 0.5
+			
+		}
+	}
+
+	#Overwrite Marx
+	focus = {
+		id = ITA_overwrite_marx
+		icon = GFX_ITA_overwrite_marx-856494
+		x = 19
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_communism_in_one_continent  }
+		completion_reward = {
+			add_stability = -5
+			
+			add_war_support = 5
+			
+		}
+	}
+
+	#Cooperates with PRC
+	focus = {
+		id = ITA_cooperates_with_prc
+		icon = GFX_ITA_cooperates_with_prc-856495
+		x = 19
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_overwrite_marx  }
+		completion_reward = {
+			add_opinion = {
+			    target = PRC
+			    value = 100
+			}
+			
+			
+			
+		}
+	}
+
+	#the Red Book
+	focus = {
+		id = ITA_the_red_book
+		icon = GFX_ITA_the_red_book-856498
+		x = 19
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_cooperates_with_prc  }
+		completion_reward = {
+			add_political_power = 100
+			
+		}
+	}
+
+	#Stalin Cult
+	focus = {
+		id = ITA_stalin_cult
+		icon = GFX_ITA_stalin_cult-856837
+		x = 19
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_red_book  }
+		completion_reward = {
+			add_political_power = 150
+			
+			add_war_support = 2
+			
+			add_stability = 2
+			
+		}
+	}
+
+	#People's Yugoslavia
+	focus = {
+		id = ITA_peoplesyugoslavia
+		icon = GFX_ITA_peoplesyugoslavia-856469
+		x = 21
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_peoplesarmy  } prerequisite = { focus = ITA_communism_in_one_continent  }
+		bypass = {
+			is_ally_with = SER
+		}
+		completion_reward = {
+			declare_war_on = {
+			    target = SER
+			    type = annex_everything
+				declare_war_on = {
+			    target = CRO
+			    type = annex_everything
+			}
+			
+			
+				declare_war_on = {
+			    target = SLV
+			    type = annex_everything
+			}
+			
+			
+				declare_war_on = {
+			    target = BOS
+			    type = annex_everything
+			}
+			
+			
+				declare_war_on = {
+			    target = Mac
+			    type = annex_everything
+			}
+			
+			
+				declare_war_on = {
+			    target = MNT
+			    type = annex_everything
+			}
+			
+			
+				declare_war_on = {
+			    target = ALB
+			    type = annex_everything
+			}
+			
+			
+			}
+			
+			declare_war_on = {
+			    target = YUG
+			    type = annex_everything
+			}
+			
+			
+			
+		}
+	}
+
+	#Peoples' Austria Hungary
+	focus = {
+		id = ITA_peoplesaustriahungary
+		icon = GFX_ITA_peoplesaustriahungary-856467
+		x = 23
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesarmy  } prerequisite = { focus = ITA_communism_in_one_continent  }
+		completion_reward = {
+			declare_war_on = {
+			    target = HUN
+			    type = Puppet
+			}
+			declare_war_on = {
+			    target = AUS
+			    type = annex_everything
+			}
+			
+			
+			
+		}
+	}
+
+	#Peoples' Romania
+	focus = {
+		id = ITA_peoplesromania
+		icon = GFX_ITA_peoplesromania-856488
+		x = 23
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesaustriahungary  }
+		completion_reward = {
+			declare_war_on = {
+			    target = ROM
+			    type = Puppet
+			}
+			
+			
+		}
+	}
+
+	#Bulgarian Peoples' Republic
+	focus = {
+		id = ITA_bulgarianpeoplesrepublic
+		icon = GFX_ITA_bulgarianpeoplesrepublic-856477
+		x = 21
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesaustriahungary  } prerequisite = { focus = ITA_peoplesyugoslavia  }
+		completion_reward = {
+			declare_war_on = {
+			    target = BUL
+			    type = annex_everything
+			}
+			
+			declare_war_on = {
+			    target = Gre
+			    type = annex_everything
+			}
+			
+			
+			
+		}
+	}
+
+	#a Democratic Germany
+	focus = {
+		id = ITA_a_democratic_germany
+		icon = GFX_ITA_a_democratic_germany-901805
+		x = 23
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_FRA_OCCUPATION_COST
+		}
+		prerequisite = { focus = ITA_peoplesromania  } prerequisite = { focus = ITA_bulgarianpeoplesrepublic  }
+		completion_reward = {
+			declare_war_on = {
+			    target = GER
+			    type = Puppet
+			}
+			
+			
+			
+		}
+	}
+
+	#Peoples' Spain
+	focus = {
+		id = ITA_peoplesspain
+		icon = GFX_ITA_peoplesspain-262122
+		x = 21
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesfrance  }
+		completion_reward = {
+			declare_war_on = {
+			    target = SPR
+			    type = puppet
+			}
+			
+			
+			declare_war_on = {
+			    target = SPA
+			    type = puppet
+			}
+			
+			
+			
+		}
+	}
+
+	#peoples' Czechoslovakia
+	focus = {
+		id = ITA_peoplesczechoslovakia
+		icon = GFX_ITA_peoplesczechoslovakia-646280
+		x = 23
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_a_democratic_germany  }
+		completion_reward = {
+			declare_war_on = {
+			    target = CZE
+			    type = Puppet
+			}
+			
+			
+			declare_war_on = {
+			    target = SLO
+			    type = annex_everything
+			}
+			
+			
+			
+		}
+	}
+
+	#Restore the storic allience.
+	focus = {
+		id = ITA_restore_the_storic_allience
+		icon = GFX_focus_befriend_italy
+		x = 60
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_expand_state_authority  }
+		completion_reward = {
+			
+				add_stability = 0.5
+			
+			
+		}
+	}
+
+	#Propaganda manifest.
+	focus = {
+		id = ITA_propaganda_manifest
+		icon = GFX_ITA_propaganda_manifest-645922
+		x = 64
+		y = 4
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_national_revival  }
+		completion_reward = {
+			add_political_power = 50
+			
+			add_stability = 0.5
+			
+			army_experience = 20
+			
+			
+		}
+	}
+
+	#Give Istria back you thieves!
+	focus = {
+		id = ITA_giveistriabackyouthieves
+		icon = GFX_ITA_giveistriabackyouthieves-646052
+		x = 56
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_irredentism  }
+	}
+
+	#Give Corsica back you thieves!
+	focus = {
+		id = ITA_givecorsicabackyouthieves
+		icon = GFX_ITA_givecorsicabackyouthieves-646052
+		x = 58
+		y = 3
+		cost = 3
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_irredentism  }
+	}
+
+	#Lessons from the Paris Commune
+	focus = {
+		id = ITA_lessons_from_the_paris_commune
+		icon = GFX_ITA_lessons_from_the_paris_commune-902651
+		x = 1
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_lessons_from_the_paris_commune  }
+		completion_reward = {
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#Marx, Engels, Lenin, Cervetto
+	focus = {
+		id = ITA_marxengelslenincervetto
+		icon = GFX_ITA_marxengelslenincervetto-855864
+		x = 5
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_lotta_comunista  }
+		completion_reward = {
+			add_political_power = 200
+			
+		}
+	}
+
+	#Lotta Comunista
+	focus = {
+		id = ITA_lotta_comunista
+		icon = GFX_ITA_lotta_comunista-903308
+		x = 4
+		y = 6
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_international  }
+		completion_reward = {
+			add_political_power = 100
+			
+			
+		}
+	}
+
+	#A true Leninism
+	focus = {
+		id = ITA_a_true_leninism
+		icon = GFX_ITA_a_true_leninism-856054
+		x = 4
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_marxengelslenincervetto  } prerequisite = { focus = ITA_thecouncilsinternational  }
+		completion_reward = {
+			add_stability = 8
+			
+			add_political_power = 300
+			
+			add_war_support = 10
+			
+			add_command_power = 50
+			
+		}
+	}
+
+	#the "Councils International"
+	focus = {
+		id = ITA_thecouncilsinternational
+		icon = GFX_ITA_thecouncilsinternational-855863
+		x = 3
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_lotta_comunista  }
+		completion_reward = {
+			create_faction = The Internationale
+			
+		}
+	}
+
+	#State Atheism
+	focus = {
+		id = ITA_state_atheism
+		icon = GFX_ITA_state_atheism-855879
+		x = 11
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_lotta_comunista  focus = ITA_pcr  }
+		completion_reward = {
+			add_war_support = 10
+			
+			add_stability = 2
+			
+			add_manpower = 150000
+			
+		}
+	}
+
+	#Secular State
+	focus = {
+		id = ITA_secular_state
+		icon = GFX_ITA_secular_state-856105
+		x = 9
+		y = 7
+		cost = 6
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_lotta_comunista  focus = ITA_pcr  }
+		mutually_exclusive = { focus = ITA_state_atheism  }
+	}
+
+	#Civil Weddings
+	focus = {
+		id = ITA_civil_weddings
+		icon = GFX_ITA_civil_weddings-902652
+		x = 11
+		y = 8
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_secular_state  focus = ITA_state_atheism  }
+		completion_reward = {
+			add_stability = 3
+			
+		}
+	}
+
+	#Marriage equality
+	focus = {
+		id = ITA_marriage_equality
+		icon = GFX_ITA_marriage_equality-902654
+		x = 9
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_secular_state  focus = ITA_state_atheism  }
+		mutually_exclusive = { focus = ITA_civil_weddings  }
+		completion_reward = {
+			add_stability = 10
+			
+		}
+	}
+
+	#A New Red Army
+	focus = {
+		id = ITA_a_new_red_army
+		icon = GFX_ITA_a_new_red_army-262126
+		x = 5
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_a_true_leninism  }
+		completion_reward = {
+			add_war_support = 5
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			
+			add_building_construction = {
+			    type = arms_factory
+			    level = 20
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Five year plan
+	focus = {
+		id = ITA_five_year_plan
+		icon = GFX_ITA_five_year_plan-856310
+		x = 7
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_a_true_leninism  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#General Labor Union
+	focus = {
+		id = ITA_general_labor_union
+		icon = GFX_ITA_general_labor_union-855976
+		x = 7
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_five_year_plan  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Public School
+	focus = {
+		id = ITA_public_school
+		icon = GFX_ITA_public_school-902997
+		x = 7
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ITA_general_labor_union  }
+		completion_reward = {
+			add_political_power = 100
+			
+			add_stability = 4
+			
+			add_research_slot = 2
+			
+		}
+	}
+
+	#A new building plan
+	focus = {
+		id = ITA_a_new_building_plan
+		icon = GFX_ITA_a_new_building_plan-856669
+		x = 7
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_public_school  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#a house for everyone
+	focus = {
+		id = ITA_a_house_for_everyone
+		icon = GFX_ITA_a_house_for_everyone-856654
+		x = 7
+		y = 13
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_a_new_building_plan  }
+		completion_reward = {
+			add_stability = 10
+			
+		}
+	}
+
+	#Recreate the Checka
+	focus = {
+		id = ITA_recreate_the_checka
+		icon = GFX_ITA_recreate_the_checka-856119
+		x = 5
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_CHI_INFLATION
+		}
+		prerequisite = { focus = ITA_a_new_red_army  }
+		completion_reward = {
+			create_intelligence_agency = yes
+			
+			agency_upgrade_number 10
+			
+		}
+	}
+
+	#Women in the military
+	focus = {
+		id = ITA_women_in_the_military
+		icon = GFX_ITA_women_in_the_military-856623
+		x = 5
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ITA_recreate_the_checka  }
+		completion_reward = {
+			add_manpower = 1000000
+			
+			add_war_support = 5
+			
+			add_stability = -5
+			
+		}
+	}
+
+	#Radicalize the army
+	focus = {
+		id = ITA_radicalize_the_army
+		icon = GFX_ITA_radicalize_the_army-856125
+		x = 5
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_women_in_the_military  }
+		completion_reward = {
+			army_experience = 50
+			
+			add_manpower = 10000
+			
+			add_command_power = 100
+			
+			add_war_support = 5
+			
+		}
+	}
+
+	#solidarity with the proletariat
+	focus = {
+		id = ITA_solidarity_with_the_proletariat
+		icon = GFX_ITA_solidarity_with_the_proletariat-855964
+		x = 5
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_radicalize_the_army  }
+		completion_reward = {
+			add_popularity = {   tag=RUS,JAP,PRC,ENG,USA,CSA,IWW,BRA,VEN,CUB,ARG,LBA,ALG,SAF,CAN,MEX,CEN,VIC,IND,INC,CHI,AST,PRU,COL,ETH    ideology = vanguard_socialist
+			    popularity = 0.10
+			}
+			
+			
+		}
+	}
+
+	#The importance of workers' clubs
+	focus = {
+		id = ITA_theimportanceofworkersclubs
+		icon = GFX_ITA_theimportanceofworkersclubs-855644
+		x = 1
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_a_true_leninism  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 8
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#A Council in Every City
+	focus = {
+		id = ITA_a_council_in_every_city
+		icon = GFX_ITA_a_council_in_every_city-856633
+		x = 1
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_theimportanceofworkersclubs  }
+		completion_reward = {
+			add_stability = 5
+			
+			add_political_power = 100
+			
+		}
+	}
+
+	#Revolutionary Spirit around the World
+	focus = {
+		id = ITA_revolutionary_spirit_around_the_world
+		icon = GFX_ITA_revolutionary_spirit_around_the_world-856632
+		x = 1
+		y = 12
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_a_council_in_every_city  }
+		completion_reward = {
+			add_popularity = {   tag=RUS,JAP,PRC,ENG,USA,CSA,IWW,BRA,VEN,CUB,ARG,LBA,ALG,SAF,CAN,MEX,CEN,VIC,IND,INC,CHI,AST,PRU,COL,ETH    ideology = vanguard_socialism
+			    popularity = 0.10
+			}
+			
+			
+		}
+	}
+
+	#Workers of All Countries Unite!
+	focus = {
+		id = ITA_workersofallcountriesunite
+		icon = GFX_ITA_workersofallcountriesunite-262108
+		x = 1
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_revolutionary_spirit_around_the_world  }
+		completion_reward = {
+			can_declare_war_on = RUS
+			
+			can_declare_war_on = PRC
+			
+			can_declare_war_on = USA
+			
+			can_declare_war_on = RAJ
+			
+			can_declare_war_on = BRA
+			
+			can_declare_war_on = SOV
+			
+			can_declare_war_on = ALL
+		}
+	}
+
+	#IX Congress of Council
+	focus = {
+		id = ITA_ix_congress_of_council
+		icon = GFX_ITA_ix_congress_of_council-861181
+		x = 4
+		y = 14
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_a_house_for_everyone  } prerequisite = { focus = ITA_workersofallcountriesunite  } prerequisite = { focus = ITA_solidarity_with_the_proletariat  } prerequisite = { focus = ITA_domino_effect  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.25
+			
+				add_political_power = 300
+			
+			}
+			
+			
+			
+		}
+	}
+
+	#Red Star flies Over the sky
+	focus = {
+		id = ITA_red_star_flies_over_the_sky
+		icon = GFX_ITA_red_star_flies_over_the_sky-861224
+		x = 4
+		y = 15
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_ix_congress_of_council  }
+		completion_reward = {
+			add_political_power = 1000
+			
+			set_political_party = {
+			    ideology = vanguard_socialism
+			    popularity = 1.00
+			}
+			
+			set_stability = 100
+			
+			set_war_support = 100
+		}
+	}
+
+	#the Party of Working Class
+	focus = {
+		id = ITA_the_party_of_working_class
+		icon = GFX_ITA_the_party_of_working_class-903022
+		x = 9
+		y = 9
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_a_true_leninism  }
+	}
+
+	#Intellectual Vanguard
+	focus = {
+		id = ITA_intellectual_vanguard
+		icon = GFX_ITA_intellectual_vanguard-856634
+		x = 13
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_central_committee  }
+		completion_reward = {
+			add_stability = 2
+			
+		}
+	}
+
+	#Rediscover Gramsci
+	focus = {
+		id = ITA_rediscover_gramsci
+		icon = GFX_ITA_rediscover_gramsci-856313
+		x = 13
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_intellectual_vanguard  }
+		completion_reward = {
+			add_political_power = 100
+			
+		}
+	}
+
+	#the Party for Working Class
+	focus = {
+		id = ITA_the_party_for_working_class
+		icon = GFX_focus_generic_soviet_politics
+		x = 11
+		y = 9
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_parliamentary_communism  }
+		completion_reward = {
+			add_political_power = 100
+			
+			add_stability = 2
+			
+		}
+	}
+
+	#Start Automation
+	focus = {
+		id = ITA_start_automation
+		icon = GFX_ITA_start_automation-857097
+		x = 10
+		y = 10
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_the_party_of_working_class  focus = ITA_the_party_for_working_class  }
+		completion_reward = {
+			add_research_slot = 3
+			
+		}
+	}
+
+	#The State of the Revolution
+	focus = {
+		id = ITA_the_state_of_the_revolution
+		icon = GFX_ITA_the_state_of_the_revolution-861186
+		x = 14
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_start_the_coup_de_main  }
+		mutually_exclusive = { focus = ITA_the_international  }
+		completion_reward = {
+			set_politics = {
+				ruling_party = revolutionary_socialism
+			        elections_allowed = no
+			        last_election = 2025.1.1
+			}
+			add_popularity = {
+			    ideology = vanguard_socialism
+			    popularity = 0.30
+			}
+			add_popularity = {
+			    ideology = revolutionary_socialism
+			    popularity = 0.70
+			}
+		}
+	}
+
+	#PCR
+	focus = {
+		id = ITA_pcr
+		icon = GFX_ITA_pcr-903313
+		x = 14
+		y = 6
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_state_of_the_revolution  }
+		completion_reward = {
+			
+			
+			
+			set_popularities = {
+			revolutionary_socialism=50
+			vanguard_socialism=40
+			totalitarian_communism=10
+			}
+			
+		}
+	}
+
+	#EuroCommunism
+	focus = {
+		id = ITA_eurocommunism
+		icon = GFX_ITA_eurocommunism-855883
+		x = 14
+		y = 7
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_pcr  }
+		completion_reward = {
+			
+			
+			
+			add_political_power = 50
+			
+			add_stability = 5
+			
+			
+		}
+	}
+
+	#Parliamentary Communism
+	focus = {
+		id = ITA_parliamentary_communism
+		icon = GFX_ITA_parliamentary_communism-855882
+		x = 14
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_eurocommunism  }
+		completion_reward = {
+			hold_election = yes
+			
+		}
+	}
+
+	#Central Committee
+	focus = {
+		id = ITA_central_committee
+		icon = GFX_ITA_central_committee-855887
+		x = 13
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_parliamentary_communism  }
+		completion_reward = {
+			
+			
+			add_political_power = 100
+			
+		}
+	}
+
+	#Trotskyist Constitution
+	focus = {
+		id = ITA_trotskyist_constitution
+		icon = GFX_ITA_trotskyist_constitution-903316
+		x = 15
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_parliamentary_communism  }
+		completion_reward = {
+			add_stability = 5
+			
+		}
+	}
+
+	#Hasta Siempre, Comandante
+	focus = {
+		id = ITA_hastasiemprecomandante
+		icon = GFX_ITA_hastasiemprecomandante-903319
+		x = 13
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_rediscover_gramsci  }
+		completion_reward = {
+			add_political_power = 100
+			
+		}
+	}
+
+	#Permanent revolution
+	focus = {
+		id = ITA_permanent_revolution
+		icon = GFX_ITA_permanent_revolution-262095
+		x = 15
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_trotskyist_constitution  }
+		completion_reward = {
+			
+			
+			
+			
+			
+			
+			add_war_support = 50
+		}
+	}
+
+	#A New Red Army
+	focus = {
+		id = ITA_a_new_red_army
+		icon = GFX_ITA_a_new_red_army-646246
+		x = 15
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_permanent_revolution  }
+		completion_reward = {
+			add_war_support = 5
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			
+			add_building_construction = {
+			    type = arms_factory
+			    level = 20
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#III Party Congress
+	focus = {
+		id = ITA_iii_party_congress
+		icon = GFX_ITA_iii_party_congress-903461
+		x = 20
+		y = 12
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_peoplesczechoslovakia  } prerequisite = { focus = ITA_peoplesspain  } prerequisite = { focus = ITA_stalin_cult  } prerequisite = { focus = ITA_social_credit_sistem  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			
+			add_political_power = 100
+			
+			add_command_power = 100
+			
+			
+		}
+	}
+
+	#a Workers' Army
+	focus = {
+		id = ITA_aworkersarmy
+		icon = GFX_ITA_aworkersarmy-903321
+		x = 15
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_a_new_red_army  }
+		completion_reward = {
+			add_manpower = 10000
+			army_experience = 40
+			
+			add_command_power = 30
+		}
+	}
+
+	#Export the revolution
+	focus = {
+		id = ITA_export_the_revolution
+		icon = GFX_ITA_export_the_revolution-262126
+		x = 14
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_hastasiemprecomandante  } prerequisite = { focus = ITA_aworkersarmy  }
+		completion_reward = {
+			can_declare_war_on = RUS
+			
+			can_declare_war_on = PRC
+			
+			can_declare_war_on = USA
+			
+			can_declare_war_on = RAJ
+			
+			can_declare_war_on = BRA
+			
+			can_declare_war_on = AUS
+			
+			can_declare_war_on = FRA
+			
+			can_declare_war_on = GER
+			
+			can_declare_war_on = SPR
+			
+			can_declare_war_on = POR
+			
+			can_declare_war_on = POL
+			
+			can_declare_war_on = CZE
+			
+			can_declare_war_on = ENG
+			
+			can_declare_war_on = ALL
+		}
+	}
+
+	#Automation of the Labour
+	focus = {
+		id = ITA_automation_of_the_labour
+		icon = GFX_ITA_automation_of_the_labour-903460
+		x = 10
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_a_free_internet  }
+		completion_reward = {
+			add_manpower = 1000000
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 30
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#cooperative factories
+	focus = {
+		id = ITA_cooperative_factories
+		icon = GFX_ITA_cooperative_factories-903456
+		x = 10
+		y = 11
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_start_automation  }
+		completion_reward = {
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#a Free Internet
+	focus = {
+		id = ITA_a_free_internet
+		icon = GFX_ITA_a_free_internet-903459
+		x = 10
+		y = 12
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_RESEARCH
+		}
+		prerequisite = { focus = ITA_cooperative_factories  }
+		completion_reward = {
+			add_research_slot = 2
+			
+		}
+	}
+
+	#Trotsky is Young Again
+	focus = {
+		id = ITA_trotsky_is_young_again
+		icon = GFX_ITA_trotsky_is_young_again-855634
+		x = 14
+		y = 14
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_export_the_revolution  }
+		completion_reward = {
+			set_stability = 100
+			
+			set_war_support = 100
+			
+			add_command_power = 100
+			
+		}
+	}
+
+	#a Party With a State
+	focus = {
+		id = ITA_a_party_with_a_state
+		icon = GFX_ITA_a_party_with_a_state-903463
+		x = 20
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_iii_party_congress  }
+		completion_reward = {
+			
+			
+			add_political_power = 100
+			
+			add_command_power = 100
+			
+			
+		}
+	}
+
+	#2027 Election
+	focus = {
+		id = ITA_2027_election
+		icon = GFX_ITA_2027_election-856839
+		x = 36
+		y = 5
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_hold_conferences  focus = ITA_hold_conferences  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
+		available = {
+			has_political_power > 100
+			    date > 2027.2.1
+			
+		}
+		completion_reward = {
+			add_political_power = -100
+			
+			
+		}
+	}
+
+	#Propaganda in the Neighborhoods
+	focus = {
+		id = ITA_propaganda_in_the_neighborhoods
+		icon = GFX_ITA_propaganda_in_the_neighborhoods-903727
+		x = 30
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_left_side  }
+		mutually_exclusive = { focus = ITA_propaganda_in_the_neighborhoods  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = centrist
+			    popularity = 0.1
+			}
+			
+			
+			
+		}
+	}
+
+	#Propaganda in the Neighborhoods
+	focus = {
+		id = ITA_propaganda_in_the_neighborhoods
+		icon = GFX_ITA_propaganda_in_the_neighborhoods-903792
+		x = 28
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_left_side  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = progressive
+			    popularity = 0.1
+			}
+			
+			
+			
+		}
+	}
+
+	#political debates
+	focus = {
+		id = ITA_political_debates
+		icon = GFX_ITA_political_debates-903730
+		x = 28
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = progressive
+			    popularity = 0.1
+			}
+			
+			
+		}
+	}
+
+	#political debates
+	focus = {
+		id = ITA_political_debates
+		icon = GFX_ITA_political_debates-903732
+		x = 30
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = centrist
+			    popularity = 0.1
+			}
+			
+			
+			
+		}
+	}
+
+	#Hold conferences
+	focus = {
+		id = ITA_hold_conferences
+		icon = GFX_ITA_hold_conferences-903736
+		x = 28
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_political_debates  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = progressive
+			    popularity = 0.2
+			}
+			
+		}
+	}
+
+	#I AM GIORGIA
+	focus = {
+		id = ITA_i_am_giorgia
+		icon = GFX_ITA_i_am_giorgia-903740
+		x = 41
+		y = 2
+		cost = 1
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_right_side  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = conservative
+			    popularity = 0.05
+			}
+			
+		}
+	}
+
+	#I AM A MOTHER, I AM A CHRISTIAN
+	focus = {
+		id = ITA_iamamotheriamachristian
+		icon = GFX_ITA_iamamotheriamachristian-903741
+		x = 41
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_i_am_giorgia  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = conservative
+			    popularity = 0.05
+			}
+			
+		}
+	}
+
+	#NON ME LO TOGLIERETE!
+	focus = {
+		id = ITA_nonmelotoglierete
+		icon = GFX_ITA_nonmelotoglierete-903742
+		x = 41
+		y = 4
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_iamamotheriamachristian  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = conservative
+			    popularity = 0.1
+			}
+			
+		}
+	}
+
+	#Refugees of the Lega
+	focus = {
+		id = ITA_refugees_of_the_lega
+		icon = GFX_ITA_refugees_of_the_lega-903749
+		x = 43
+		y = 2
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_the_right_side  }
+		mutually_exclusive = { focus = ITA_i_am_giorgia  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = reactionary
+			    popularity = 0.1
+			}
+			
+		}
+	}
+
+	#Fascist Sympathies
+	focus = {
+		id = ITA_fascist_sympathies
+		icon = GFX_ITA_fascist_sympathies-903753
+		x = 43
+		y = 3
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_refugees_of_the_lega  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = reactionary
+			    popularity = 0.1
+			}
+			
+		}
+	}
+
+	#Our General
+	focus = {
+		id = ITA_our_general
+		icon = GFX_ITA_our_general-903756
+		x = 43
+		y = 4
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_fascist_sympathies  }
+		completion_reward = {
+			add_popularity = {
+			    ideology = reactionary
+			    popularity = 0.2
+			}
+			
+		}
+	}
+
+	#minimum salary
+	focus = {
+		id = ITA_minimum_salary
+		icon = GFX_ITA_minimum_salary-903793
+		x = 28
+		y = 8
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_STABILITY
+		}
+		prerequisite = { focus = ITA_elly_schlein  focus = ITA_francesco_de_martino  }
+		completion_reward = {
+			add_stability = 0.1
+			
+			add_manpower = -5000
+			
+			
+			add_political_power = 2000
+			
+			
+		}
+	}
+
+	#expand the welfare state
+	focus = {
+		id = ITA_expand_the_welfare_state
+		icon = GFX_ITA_expand_the_welfare_state-903910
+		x = 28
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_minimum_salary  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 10
+			    instant_build = yes
+			}
+			
+			
+		}
+	}
+
+	#Secure the Borders
+	focus = {
+		id = ITA_secure_the_borders
+		icon = GFX_ITA_secure_the_borders-901002
+		x = 45
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_connections_in_the_army  }
+		completion_reward = {
+			{
+			add_war_support = 0.05
+			
+			add_stability = 0.03
+			
+			
+			
+			}
+		}
+	}
+
+	#Patriotic to the end
+	focus = {
+		id = ITA_patriotic_to_the_end
+		icon = GFX_ITA_patriotic_to_the_end-646051
+		x = 45
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_secure_the_borders  }
+		completion_reward = {
+			add_war_support = 0.2
+			
+			
+		}
+	}
+
+	#Italian Manufacturing
+	focus = {
+		id = ITA_italian_manufacturing
+		icon = GFX_ITA_italian_manufacturing-903916
+		x = 43
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_popular_appeal  }
+	}
+
+	#Italian Manufacturing
+	focus = {
+		id = ITA_italian_manufacturing
+		icon = GFX_ITA_italian_manufacturing-903916
+		x = 43
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_popular_appeal  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 5
+			    instant_build = yes
+			}
+			
+			add_building_construction = {
+			    type = arms_factory
+			    level = 5
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#the Empire Returns to Rome
+	focus = {
+		id = ITA_the_empire_returns_to_rome
+		icon = GFX_ITA_the_empire_returns_to_rome-903918
+		x = 62
+		y = 5
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_propaganda_manifest  focus = ITA_gran_consiglio_del_fascismo  focus = ITA_restore_the_storic_allience  focus = ITA_traditional_values  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			add_war_support = 0.5
+			
+			
+		}
+	}
+
+	#wink at the army
+	focus = {
+		id = ITA_wink_at_the_army
+		icon = GFX_ITA_wink_at_the_army-646067
+		x = 41
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_ue_nato_support  }
+		completion_reward = {
+			add_building_construction = {
+			    type = arms_factory
+			    level = 6
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#UE NATO Support
+	focus = {
+		id = ITA_ue_nato_support
+		icon = GFX_ITA_ue_nato_support-903921
+		x = 41
+		y = 8
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_giorgia_meloni  }
+		completion_reward = {
+			add_war_support = 0.2
+			
+			
+		}
+	}
+
+	#UE NATO Support
+	focus = {
+		id = ITA_ue_nato_support
+		icon = GFX_ITA_ue_nato_support-903921
+		x = 41
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_WAR_SUPPORT
+		}
+		prerequisite = { focus = ITA_giorgia_meloni  }
+		completion_reward = {
+			add_war_support = 0.2
+			
+			
+		}
+	}
+
+	#Soviet Army
+	focus = {
+		id = ITA_soviet_army
+		icon = GFX_ITA_soviet_army-856312
+		x = 21
+		y = 6
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_MANPOWER
+		}
+		prerequisite = { focus = ITA_soviet_parliament  }
+		completion_reward = {
+			
+			add_manpower = 100000
+			
+			
+			add_war_support = 0.2
+			
+		}
+	}
+
+	#Funding for Healthcare
+	focus = {
+		id = ITA_funding_for_healthcare
+		icon = GFX_ITA_funding_for_healthcare-903931
+		x = 30
+		y = 9
+		cost = 5
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_funds_for_schools  }
+		completion_reward = {
+			add_manpower = 5000
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 4
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Scala Mobile
+	focus = {
+		id = ITA_scala_mobile
+		icon = GFX_ITA_scala_mobile-903933
+		x = 28
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_expand_the_welfare_state  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 4
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Revitalizing the Mezzogiorno
+	focus = {
+		id = ITA_revitalizing_the_mezzogiorno
+		icon = GFX_ITA_revitalizing_the_mezzogiorno-646066
+		x = 30
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_funding_for_healthcare  }
+		completion_reward = {
+			add_stability = 0.5
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 5
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#Carbon neutrality
+	focus = {
+		id = ITA_carbon_neutrality
+		icon = GFX_ITA_carbon_neutrality-903934
+		x = 32
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_new_jobs  }
+		completion_reward = {
+			
+			
+			add_building_construction = {
+			    type = industrial_complex
+			    level = 5
+			    instant_build = yes
+			}
+			
+		}
+	}
+
+	#a Social-Democratic Italy
+	focus = {
+		id = ITA_a_socialdemocratic_italy
+		icon = GFX_ITA_a_socialdemocratic_italy-903939
+		x = 30
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
+		}
+		prerequisite = { focus = ITA_revitalizing_the_mezzogiorno  focus = ITA_carbon_neutrality  focus = ITA_scala_mobile  }
+		completion_reward = {
+			add_political_power = 100
+			
+			add_stability = 0.5
+			
+			
+		}
+	}
+
+	#Red Terror
+	focus = {
+		id = ITA_red_terror
+		icon = GFX_ITA_red_terror-645980
+		x = 23
+		y = 7
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_CHI_INFLATION
+		}
+		prerequisite = { focus = ITA_recreate_the_nkvd  }
+		completion_reward = {
+			add_operative_slot = 5
+			
+			harm_operative_leader = 5
+			
+			
+		}
+	}
+
+	#Revolution in France
+	focus = {
+		id = ITA_revolution_in_france
+		icon = GFX_focus_focus_fra_liberte_egalite_solidarite
+		x = 3
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_a_true_leninism  }
+		completion_reward = {
+			
+			    FRA = {
+			        leave_faction = yes
+			
+			        civil_war = {
+			            ideology = vanguard_socialism
+			            size = 0.75
+			        }
+			
+			        civil_war_target = {
+			            ITA = {
+			                add_to_faction = PREV
+			            }
+			        }
+			    }
+			    
+			
+			    declare_war_on = {
+			        target = FRA
+			        type = annex_everything
+			    }
+			
+		}
+	}
+
+	#Revolution in Germany
+	focus = {
+		id = ITA_revolution_in_germany
+		icon = GFX_ITA_revolution_in_germany-904090
+		x = 3
+		y = 11
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_revolution_in_spain  }
+		completion_reward = {
+			
+			    GER = {
+			        leave_faction = yes
+			
+			        civil_war = {
+			            ideology = vanguard_socialism
+			            size = 0.75
+			        }
+			
+			        civil_war_target = {
+			            ITA = {
+			                add_to_faction = PREV
+			            }
+			        }
+			    }
+			    
+			
+			    declare_war_on = {
+			        target = GER
+			        type = annex_everything
+			    }
+			
+		}
+	}
+
+	#Revolution in Spain
+	focus = {
+		id = ITA_revolution_in_spain
+		icon = GFX_ITA_revolution_in_spain-120
+		x = 3
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_revolution_in_france  }
+		completion_reward = {
+			    SPR = {
+			        leave_faction = yes
+			        civil_war = {
+			            ideology = vanguard_socialism
+			            size = 0.8
+			        }
+			        civil_war_target = {
+			            ITA = {
+			                add_to_faction = PREV
+			            }
+			        }
+			    }
+			    
+			    declare_war_on = {
+			        target = SPR
+			        type = annex_everything
+			    } 
+			
+			    POR = { 
+			        leave_faction = yes
+			        civil_war = {
+			            ideology = vanguard_socialism
+			            size = 0.8
+			        }
+			
+			        civil_war_target = {
+			            ITA = {
+			                add_to_faction = PREV
+			            }
+			        }
+			    }
+			  
+			    declare_war_on = {
+			        target = POR
+			        type = annex_everything
+			    }
+		}
+	}
+
+	#Revolution in Britain
+	focus = {
+		id = ITA_revolution_in_britain
+		icon = GFX_ITA_revolution_in_britain-904091
+		x = 3
+		y = 12
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_revolution_in_germany  }
+		completion_reward = {
+			
+			    ENG = {
+			        leave_faction = yes
+			
+			        civil_war = {
+			            ideology = vanguard_socialism
+			            size = 0.8
+			        }
+			
+			        civil_war_target = {
+			            ITA = {
+			                add_to_faction = PREV
+			            }
+			        }
+			    }
+			    
+			
+			    declare_war_on = {
+			        target = GER
+			        type = annex_everything
+			    }
+			
+		}
+	}
+
+	#Domino effect
+	focus = {
+		id = ITA_domino_effect
+		icon = GFX_focus_ger_great_red_menace
+		x = 3
+		y = 13
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_revolution_in_britain  }
+		completion_reward = {
+			    BEL = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    HOL = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    DEN = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    POL = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    CZE = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    NOR = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    SWE = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    SER = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    ROM = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    BUL = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    IRE = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    GRE = {
+			        leave_faction = yes
+			        set_politics = {
+			            ruling_party = vanguard_socialism
+			            elections_allowed = yes
+			        }
+			    }
+			
+			    ITA = {
+			        add_to_faction = BEL
+			        add_to_faction = HOL
+			        add_to_faction = DEN
+			        add_to_faction = POL
+			        add_to_faction = CZE
+			        add_to_faction = NOR
+			        add_to_faction = SWE
+			        add_to_faction = SER
+			        add_to_faction = ROM
+			        add_to_faction = BUL
+			        add_to_faction = IRE
+			        add_to_faction = GRE
+			    }
+			
+			declare_war_on = {
+			    target = SLV
+			    type = annex_everything
+			}
+			
+			declare_war_on = {
+			    target = CRO
+			    type = annex_everything
+			}
+			
+			declare_war_on = {
+			    target = BOS
+			    type = annex_everything
+			}
+			
+			declare_war_on = {
+			    target = ALB
+			    type = annex_everything
+			}
+			
+			
+			
+			
+		}
+	}
+
+}

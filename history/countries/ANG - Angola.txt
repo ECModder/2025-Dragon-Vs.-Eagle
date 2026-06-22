@@ -1,0 +1,102 @@
+﻿capital = 540
+
+oob = "ANG_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_mountaineers = 1
+}
+
+set_convoys = 5
+
+recruit_character = ANG_acgs
+recruit_character = ANG_ncm
+recruit_character = ANG_mt
+recruit_character = ANG_nt
+recruit_character = ANG_ai2
+recruit_character = ANG_fascist_guy
+recruit_character = ANG_stc
+recruit_character = ANG_communist_guy
+recruit_character = ANG_aa2
+recruit_character = ANG_ar
+recruit_character = ANG_acd2
+recruit_character = ANG_acr
+recruit_character = ANG_coi
+recruit_character = ANG_acas
+recruit_character = ANG_awt
+recruit_character = ANG_pot
+recruit_character = ANG_nccr
+recruit_character = ANG_aco2
+recruit_character = ANG_democratic_guy
+recruit_character = ANG_ncs
+
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#doctrines
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+	# ==================== goon ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista Angolano" name = "PCA" }
+set_party_name = { ideology = vanguard_socialism long_name = "MPLA (Marxista-Leninista)" name = "MPLA-ML" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Frente Nacional de Libertacao de Angola" name = "FNLA" }
+set_party_name = { ideology = progressive long_name = "Movimento Popular de Libertacao de Angola" name = "MPLA" }
+set_party_name = { ideology = centrist long_name = "Partido de Renovacao Social" name = "PRS" }
+set_party_name = { ideology = conservative long_name = "Uniao Nacional para a Independencia Total de Angola" name = "UNITA" }
+set_party_name = { ideology = reactionary long_name = "CASA-CE" name = "CASA-CE" }
+set_party_name = { ideology = authoritarianism long_name = "Conselho Executivo Presidencial" name = "CEP" }
+set_party_name = { ideology = autocracy long_name = "Forcas Armadas Angolanas Comando" name = "FAA" }
+set_party_name = { ideology = absolutism long_name = "Reino do Bailundo" name = "Bailundo" }
+set_party_name = { ideology = ultranationalism long_name = "Frente de Libertacao do Enclave de Cabinda" name = "FLEC" }
+set_party_name = { ideology = fundamentalism long_name = "Igreja Tocoista" name = "Tocoista" }
+
+create_country_leader = { name = "Joao Lourenco" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Adalberto Costa Junior" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2022.8.24"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 51
+	conservative = 44
+	centrist = 2
+	revolutionary_socialism = 2
+	ultranationalism = 1
+}

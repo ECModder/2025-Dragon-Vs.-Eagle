@@ -1,0 +1,138 @@
+﻿capital = 313
+
+oob = "GUA_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+	}
+}
+
+recruit_character = GUA_jorge_ubico
+recruit_character = GUA_justo_arbenz
+recruit_character = GUA_máximo_arbenz
+recruit_character = GUA_diego_barahona
+recruit_character = GUA_jorge_torriello_garrido
+recruit_character = GUA_carlos_diaz_de_leon
+recruit_character = GUA_jacopo_arbenz_guzman
+recruit_character = GUA_w_tesch_orlando
+recruit_character = GUA_r_buenaventure_pineda
+recruit_character = GUA_tomas_mendoza_urribe
+recruit_character = GUA_miguel_garcia_granados
+recruit_character = GUA_jose_ezuira_abel
+recruit_character = GUA_m_ydigaras_fuentes
+recruit_character = GUA_federico_ponce_vaides
+recruit_character = GUA_manuel_orellana
+recruit_character = GUA_francisco_javier_arana
+recruit_character = GUA_juan_arevalo_bermejo
+recruit_character = GUA_eduardo_villagran_ariza
+recruit_character = GUA_manuel_arroyo
+
+
+set_country_flag = monroe_doctrine
+set_war_support = 0.1
+set_convoys = 5
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "GUA_1939"
+	set_technology = {
+		infantry_weapons1 = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista de Guatemala" name = "PCG" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Guatemalteco del Trabajo" name = "PGT" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Unidad Revolucionaria Nacional Guatemalteca" name = "URNG-MAIZ" }
+set_party_name = { ideology = progressive long_name = "Movimiento Semilla" name = "SEMILLA" }
+set_party_name = { ideology = centrist long_name = "Cabal" name = "CABAL" }
+set_party_name = { ideology = conservative long_name = "Vamos por una Guatemala Diferente" name = "VAMOS" }
+set_party_name = { ideology = reactionary long_name = "Unidad Nacional de la Esperanza" name = "UNE" }
+set_party_name = { ideology = authoritarianism long_name = "Frente de Convergencia Nacional" name = "FCN-Nación" }
+set_party_name = { ideology = autocracy long_name = "Junta Central Militar" name = "JCM" }
+set_party_name = { ideology = absolutism long_name = "Consejo de Estado Conservador" name = "CEC" }
+set_party_name = { ideology = ultranationalism long_name = "Valor-Unionista Alianza" name = "VALOR" }
+set_party_name = { ideology = fundamentalism long_name = "Partido Visión con Valores" name = "VIVA" }
+
+create_country_leader = { name = "Amílcar Pop" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+create_country_leader = { name = "Pablo Ceto" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Sandra Morán" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = syndicalism }
+create_country_leader = { name = "Bernardo Arévalo" desc = "POLITICS_LEADER_DESC" picture = "portrait_bernardo_arevalo.dds" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Edmond Mulet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Alejandro Giammattei" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Sandra Torres" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Jimmy Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy }
+create_country_leader = { name = "Otto Pérez Molina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = personal_dictatorship }
+create_country_leader = { name = "Zury Ríos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Alfonso Portillo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Armando Castillo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2023.8.20"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 1
+	vanguard_socialism = 2
+	revolutionary_socialism = 5
+	progressive = 38
+	centrist = 12
+	conservative = 20
+	reactionary = 11
+	authoritarianism = 4
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 3
+	fundamentalism = 2
+}

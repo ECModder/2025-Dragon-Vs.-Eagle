@@ -1,0 +1,118 @@
+﻿capital = 137 #Sevastopol, should really be Simferopol but that would require more states so Sevastopol will do
+
+#oob = "CRI_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Sevastopol Bolshevik Front" name = "SBF" }
+set_party_name = { ideology = vanguard_socialism long_name = "CPRF Crimean Republican Committee" name = "CPRF-Cr" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Crimean Left Alliance" name = "CLA" }
+set_party_name = { ideology = progressive long_name = "Crimean Democratic Initiative" name = "CDI" }
+set_party_name = { ideology = centrist long_name = "A Just Russia Crimea" name = "AJR-Cr" }
+set_party_name = { ideology = conservative long_name = "United Russia Crimean Branch" name = "UR-Cr" }
+set_party_name = { ideology = reactionary long_name = "LDPR Crimean Division" name = "LDPR-Cr" }
+set_party_name = { ideology = authoritarianism long_name = "Council of Ministers of the Republic of Crimea" name = "CMRC" }
+set_party_name = { ideology = autocracy long_name = "Black Sea Fleet High Command" name = "BSF" }
+set_party_name = { ideology = absolutism long_name = "Khanate of Crimea Restoration Council" name = "KCRC" }
+set_party_name = { ideology = ultranationalism long_name = "Russian Unity Front" name = "RUF" }
+set_party_name = { ideology = fundamentalism long_name = "Simferopol and Crimea Orthodox Diocese" name = "SCOD" }
+
+create_country_leader = { name = "Sergey Aksyonov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Mikhail Razvozhayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Admiral Viktor Sokolov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Refat Chubarov representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2024.9.8"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 65
+	conservative = 20
+	reactionary = 10
+	vanguard_socialism = 5
+}

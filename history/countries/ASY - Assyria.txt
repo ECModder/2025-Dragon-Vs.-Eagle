@@ -1,0 +1,114 @@
+capital = 676 # Mosul State
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	fuel_silos = 1
+}
+
+if = {
+	limit = {
+		has_dlc = "Battle for the Bosporus"
+	}
+	set_technology = { camelry = 1 }
+}
+
+recruit_character = ASY_shimun_eshai
+recruit_character = ASY_benjamin_arsanis
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Assyrian Socialist Party" name = "ASP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Assyrian Progressive Nationalist Party" name = "APNP" }
+set_party_name = { ideology = progressive long_name = "Assyrian Democratic Organization" name = "ADO" }
+set_party_name = { ideology = centrist long_name = "Assyrian Democratic Movement" name = "Zowaa" }
+set_party_name = { ideology = conservative long_name = "Assyrian Patriotic Party" name = "APP" }
+set_party_name = { ideology = reactionary long_name = "Sons of Mesopotamia" name = "Abnaa" }
+set_party_name = { ideology = authoritarianism long_name = "Assyrian General Conference" name = "AGC" }
+set_party_name = { ideology = autocracy long_name = "Assyrian Military Council" name = "MFS" }
+set_party_name = { ideology = absolutism long_name = "Ancient Royal House Restoration" name = "Royalist" }
+set_party_name = { ideology = ultranationalism long_name = "Assyria Universal Alliance" name = "AUA" }
+set_party_name = { ideology = fundamentalism long_name = "Holy Apostolic Assyrian Synod" name = "Church" }
+
+create_country_leader = { name = "Yonadam Kanna" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Mar Awa III" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = theocracy }
+create_country_leader = { name = "Sargon Maroke" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Yakub Yaqo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ashur Sargon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Eshaya Esho" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Ninos Gewargis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Freydun Atturaya Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Ishkaya Barwar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Kino Gabriel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Prince Agha Petros Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Jonny Messo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 40
+	progressive = 20
+	fundamentalism = 15
+	ultranationalism = 15
+	vanguard_socialism = 10
+}

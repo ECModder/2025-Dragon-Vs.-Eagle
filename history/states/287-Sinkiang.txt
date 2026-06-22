@@ -1,0 +1,49 @@
+state = {
+	id = 287
+	name = "STATE_287"
+
+	history = {
+
+		owner = PRC
+		add_core_of = SIK
+		add_core_of = CHI
+		add_core_of = PRC
+
+		buildings = {
+			infrastructure = 0
+		}
+
+		1936.1.1 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender" 
+				}
+				KHM = { transfer_state = PREV }
+				add_core_of = KHM
+			}
+		}	
+
+		1938.10.25 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender" 
+				}
+				remove_core_of = KHM
+			}	
+			owner = SIK
+			controller = SIK		
+		}	
+	}
+
+
+	provinces={
+		5016 7790 8042 8086 10885 12864 
+	}
+	manpower = 28000
+	buildings_max_level_factor = 1.000
+	state_category = wasteland
+	impassable = yes 
+	force_link_ownership_to = 1042 # Khotan
+
+	local_supplies = 0.0 
+}

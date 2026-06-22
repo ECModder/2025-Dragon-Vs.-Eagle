@@ -1,0 +1,85 @@
+﻿capital = 309
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+IF = {
+	limit = {
+		# TODO JA, change this!
+		has_dlc = "Arms Against Tyranny"
+	}
+	recruit_character = SUR_guianan_indigenous_council
+}
+
+set_convoys = 5
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== Mossad is coming... ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Surinaamse Communistische Partij" name = "SCP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Nationale Democratische Partij (Left)" name = "NDP-Left" }
+set_party_name = { ideology = progressive long_name = "Nationale Partij Suriname" name = "NPS" }
+set_party_name = { ideology = centrist long_name = "Vooruitstrevende Hervormingspartij" name = "VHP" }
+set_party_name = { ideology = conservative long_name = "Algemene Bevrijdings- en Ontwikkelingspartij" name = "ABOP" }
+set_party_name = { ideology = reactionary long_name = "Nationale Democratische Partij" name = "NDP" }
+set_party_name = { ideology = authoritarianism long_name = "Pertjajah Luhur" name = "PL" }
+set_party_name = { ideology = autocracy long_name = "Militaire Raad" name = "Military" }
+set_party_name = { ideology = absolutism i long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = ultranationalism long_name = "Broederschap en Eenheid in de Politiek" name = "BEP" }
+set_party_name = { ideology = fundamentalism long_name = "no_party" name = "no_party" }
+
+create_country_leader = { name = "Chan Santokhi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Desi Bouterse" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2020.5.25"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 40
+	reactionary = 28
+	conservative = 16
+	progressive = 11
+	vanguard_socialism = 5
+}

@@ -1,0 +1,217 @@
+﻿capital = 267
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "AFG_1936"
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_oob = "AFG_1936_nsb"
+}
+
+set_technology = {
+	infantry_weapons = 1
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = { #vanilla keeps the old system, nsb afghanistan will no longer produce some of the most advanced tanks in the world
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = { 
+		gwtank_chassis = 1
+		
+	}
+}
+
+
+	recruit_character = AFG_mohammed_zahir_shah
+	recruit_character = AFG_akram_sattari
+	recruit_character = AFG_yaqub_khan
+	recruit_character = AFG_mihrdil_shahnawaz
+	recruit_character = AFG_sardar_shah_wali_khan
+	recruit_character = AFG_hares_muzafar
+	recruit_character = AFG_asadullah_seraj_khan
+	recruit_character = AFG_gholam_wali
+	recruit_character = AFG_nasirullah_husain
+	recruit_character = AFG_muhammad_amin_bughra
+	recruit_character = AFG_azam_ataullah
+	recruit_character = AFG_mohammed_daoud_khan
+	recruit_character = AFG_renato_bardolucci
+	recruit_character = AFG_ali_muhammed_khan
+	recruit_character = AFG_mohammed_etemadi_khan
+	recruit_character = AFG_aalem_daana
+	recruit_character = AFG_wazir_akbar_khan
+	recruit_character = AFG_mahmud_khan
+	recruit_character = AFG_haji_faiz_muhammed_zikeria
+	recruit_character = AFG_mohammad_hashim_khan
+	recruit_character = AFG_muhammed_nowroz
+	
+	# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Hizb-i Dimukratik-i Khalq-i Afghanistan" name = "PDPA" }
+set_party_name = { ideology = vanguard_socialism long_name = "Hezb-e Kargar-e Afghanistan" name = "HKA" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Hizb-i Wathan" name = "Wathan" }
+set_party_name = { ideology = progressive long_name = "Hizb-e Kongra-ye Melli" name = "National Congress" }
+set_party_name = { ideology = centrist long_name = "Hizb-e Rawand-e Sabz-e Afghanistan" name = "Green Trend" }
+set_party_name = { ideology = conservative long_name = "Hizb-e Islami Gulbuddin" name = "HIG" }
+set_party_name = { ideology = reactionary long_name = "Jabhe-ye Muqavemat-e Melli" name = "NRF" }
+set_party_name = { ideology = authoritarianism long_name = "Da Afghanistan Bank Council" name = "DAB" }
+set_party_name = { ideology = autocracy long_name = "Shura-ye Rahbari" name = "Quetta Shura" }
+set_party_name = { ideology = absolutism long_name = "Barakzai Monarchist League" name = "Royalist" }
+set_party_name = { ideology = ultranationalism long_name = "Afghan Mellat Party" name = "Mellat" }
+set_party_name = { ideology = fundamentalism long_name = "Tehreek-e-Taliban Afghanistan" name = "Taliban" }
+
+create_country_leader = { name = "Hibatullah Akhundzada" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Ahmad Massoud" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+
+set_politics = {
+	ruling_party = fundamentalism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	fundamentalism = 70
+	reactionary = 15
+	conservative = 10
+	totalitarian_communism = 5
+}
+	### Techs ###
+	set_technology = {
+		gw_artillery = 1
+	}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	IF = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+		}
+		#1936
+		complete_national_focus = AFG_support_king_zahir
+		complete_national_focus = AFG_expand_telegraph_network
+		complete_national_focus = AFG_biding_our_time
+		complete_national_focus = AFG_visit_foreign_capitals
+		complete_national_focus = AFG_placeholder_1
+		complete_national_focus = AFG_fruit_packing
+		complete_national_focus = AFG_ministry_of_supply
+		complete_national_focus = AFG_implement_currency_controls
+		complete_national_focus = AFG_sugar_processing
+		complete_national_focus = AFG_clear_malarial_swamps
+		 #1937
+		complete_national_focus = AFG_clear_malarial_swamps
+		complete_national_focus = AFG_infrastructure_construction
+		complete_national_focus = AFG_electrification
+		complete_national_focus = AFG_establish_radio_networks
+		#1938
+		complete_national_focus = AFG_expand_karakul_lambskin_industry
+		complete_national_focus = AFG_reform_2
+		complete_national_focus = AFG_secure_dynasty
+		complete_national_focus = AFG_maintain_neutrality
+		#1939
+		complete_national_focus = AFG_qargha_dam
+		complete_national_focus = AFG_maintain_quami
+		complete_national_focus = AFG_introduce_national_service
+		complete_national_focus = AFG_asymmetric_warfare
+
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = PER
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = IRQ
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
+	}
+	IF = {
+		limit = {
+			NOT = { has_dlc = "Graveyard of Empires" }
+		}
+		# Generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = construction_effort_2
+		complete_national_focus = production_effort_2
+		complete_national_focus = infrastructure_effort
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort		
+	}
+	
+
+	oob = "AFG_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "AFG_1939_air_bba"
+		else = {
+			set_air_oob = "AFG_1939_air_legacy"
+			set_technology = {
+				early_fighter = 1
+				CAS1 = 1
+			}
+		}
+	}
+	set_technology = {
+		
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+	set_grand_doctrine = grand_battleplan
+	set_grand_doctrine = new_fleet_in_being
+	set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+

@@ -1,0 +1,98 @@
+﻿capital = 634
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+recruit_character = SOL_awt
+recruit_character = SOL_acd2
+recruit_character = SOL_nt
+recruit_character = SOL_aco2
+recruit_character = SOL_acas
+recruit_character = SOL_acr
+recruit_character = SOL_mt
+recruit_character = SOL_stc
+recruit_character = SOL_aa2
+recruit_character = SOL_ncm
+recruit_character = SOL_communist_guy
+recruit_character = SOL_ncs
+recruit_character = SOL_pot
+recruit_character = SOL_nccr
+recruit_character = SOL_fascist_guy
+recruit_character = SOL_coi
+recruit_character = SOL_ai2
+recruit_character = SOL_democratic_guy
+recruit_character = SOL_ar
+recruit_character = SOL_acgs
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== skurr ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Solomon Islands Labour Party" name = "SILP" }
+set_party_name = { ideology = progressive long_name = "Democratic Party" name = "SIDP" }
+set_party_name = { ideology = centrist long_name = "Ownership, Unity and Responsibility Party" name = "OUR" }
+set_party_name = { ideology = conservative long_name = "People's Alliance Party" name = "PAP" }
+set_party_name = { ideology = reactionary long_name = "United Party" name = "SIUP" }
+set_party_name = { ideology = authoritarianism long_name = "Independent Coalition" name = "IND" }
+set_party_name = { ideology = autocracy long_name = "Governor General Authority" name = "Gov" }
+set_party_name = { ideology = absolutism long_name = "Monarchist League" name = "Crown" }
+set_party_name = { ideology = ultranationalism long_name = "National Action Party" name = "NAP" }
+set_party_name = { ideology = fundamentalism long_name = "Christian Democratic Alliance" name = "CDA" }
+
+create_country_leader = { name = "Jeremiah Manele" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Matthew Wale" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2024.4.17"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 40
+	progressive = 25
+	conservative = 20
+	fundamentalism = 15
+}

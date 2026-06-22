@@ -1,0 +1,118 @@
+﻿capital = 297
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 10
+
+recruit_character = EQG_ncm
+recruit_character = EQG_acd2
+recruit_character = EQG_democratic_guy
+recruit_character = EQG_fascist_guy
+recruit_character = EQG_coi
+recruit_character = EQG_ar
+recruit_character = EQG_aa2
+recruit_character = EQG_awt
+recruit_character = EQG_acgs
+recruit_character = EQG_mt
+recruit_character = EQG_nccr
+recruit_character = EQG_aco2
+recruit_character = EQG_nt
+recruit_character = EQG_communist_guy
+recruit_character = EQG_pot
+recruit_character = EQG_acas
+recruit_character = EQG_acr
+recruit_character = EQG_stc
+recruit_character = EQG_ai2
+recruit_character = EQG_ncs
+
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partido de los Trabajadores de Guinea Ecuatorial" name = "PTGE" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista de Guinea Ecuatorial" name = "PCGE" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Convergencia para la Democracia Social - Izquierda" name = "CPDS-I" }
+set_party_name = { ideology = progressive long_name = "Convergencia para la Democracia Social" name = "CPDS" }
+set_party_name = { ideology = centrist long_name = "Unión Popular" name = "UP" }
+set_party_name = { ideology = conservative long_name = "Partido Democrático de Guinea Ecuatorial" name = "PDGE" }
+set_party_name = { ideology = reactionary long_name = "Fuerza Demócrata Republicana" name = "FDR" }
+set_party_name = { ideology = authoritarianism long_name = "Junta Suprema de Seguridad Nacional" name = "JSSN" }
+set_party_name = { ideology = autocracy long_name = "Consejo Militar Supremo" name = "CMS" }
+set_party_name = { ideology = absolutism long_name = "Reino de Mongomo" name = "RM" }
+set_party_name = { ideology = ultranationalism long_name = "Acción Nacionalista de Guinea" name = "ANG" }
+set_party_name = { ideology = fundamentalism long_name = "Alianza Cristiana de Guinea" name = "ACG" }
+
+create_country_leader = { name = "Teodoro Obiang Nguema Mbasogo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Teodoro Nguema Obiang Mangue" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Andrés Esono Ondo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Buenaventura Monsuy Asumu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2022.11.20"
+	election_frequency = 84
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 3
+	progressive = 5
+	centrist = 10
+	conservative = 35
+	reactionary = 2
+	authoritarianism = 40
+	autocracy = 3
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 0
+}

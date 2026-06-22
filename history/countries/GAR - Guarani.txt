@@ -1,0 +1,126 @@
+﻿capital = 301 #Asuncion
+
+oob = "CHL_1936"
+
+### CORES = 301, 688, 957, 510, 504, 944, 503, 502
+
+IF = {
+	limit = { has_dlc = "By Blood Alone" }
+	ELSE = {
+		set_technology = {
+			early_fighter = 1
+			cv_early_fighter = 1
+		}
+	}
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+}
+
+IF = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+	}
+}
+IF = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		basic_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+	}
+}
+
+IF = {
+	limit = {
+		has_dlc = "Trial of Allegiance"
+	}
+	recruit_character = GAR_guarani_council
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Guaraní Tetã Amandaje Shuyu'i" name = "GTAS" }
+set_party_name = { ideology = vanguard_socialism long_name = "Mbarete Tetãgua" name = "MT" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Guaraní Mba'eapo Jekupyty" name = "GMJ" }
+set_party_name = { ideology = progressive long_name = "Tekojoja Guaraní" name = "TG" }
+set_party_name = { ideology = centrist long_name = "Aty Ñandeva" name = "AN" }
+set_party_name = { ideology = conservative long_name = "Aty Hekoporãva" name = "AH" }
+set_party_name = { ideology = reactionary long_name = "Teko Ymaguare" name = "TY" }
+set_party_name = { ideology = authoritarianism long_name = "Guaraní Ñangareko Atymi" name = "GNA" }
+set_party_name = { ideology = autocracy long_name = "Mburuvicha Kuéra Joaju" name = "MKJ" }
+set_party_name = { ideology = absolutism long_name = "Tuvicha Tendota" name = "TT" }
+set_party_name = { ideology = ultranationalism long_name = "Py'aguasu Sãso Zensen" name = "PSZ" }
+set_party_name = { ideology = fundamentalism long_name = "Jerovia Ymaguare Aty" name = "JYA" }
+
+create_country_leader = { name = "Estanislao López" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Marcial Gómez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Lidio Mendieta" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Teófilo Atienzo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Alberto Vázquez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Derlis Benítez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Juan Benítez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Avelino Dávalos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Fulgencio Yegros II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Mburuvicha Chivé" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Adolfo Agüero" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Pa'i Anastasio" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2023.4.30"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 1
+	vanguard_socialism = 4
+	revolutionary_socialism = 18
+	progressive = 42
+	centrist = 15
+	conservative = 10
+	reactionary = 5
+	authoritarianism = 2
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 1
+	fundamentalism = 0
+}
+
+### VARIANTS ###
+# 1936 Start #
+IF = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+}
+IF = {
+	limit = { has_dlc = "Man the Guns" }
+	create_equipment_variant = {
+		name = "Antioquia Class"				
+		type = ship_hull_light_1
+		name_group = COL_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_mine_layer_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+}

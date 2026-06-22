@@ -1,0 +1,97 @@
+﻿capital = 840
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 10
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Gumuz Red Liberation Wing" name = "GRLW" }
+set_party_name = { ideology = vanguard_socialism long_name = "Benishangul Marxist Workers Front" name = "BMWF" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Benishangul People's Liberation Movement" name = "BPLM" }
+set_party_name = { ideology = progressive long_name = "Benishangul-Gumuz Democratic Party (Left)" name = "BGDP-L" }
+set_party_name = { ideology = centrist long_name = "Benishangul-Gumuz Unity Alliance" name = "BGUA" }
+set_party_name = { ideology = conservative long_name = "Prosperity Coalition - Benishangul Branch" name = "PP-BG" }
+set_party_name = { ideology = reactionary long_name = "Berta Democratic Movement" name = "BDM" }
+set_party_name = { ideology = authoritarianism long_name = "Regional State Administrative Council" name = "RSAC" }
+set_party_name = { ideology = autocracy long_name = "Regional Security forces Directorate" name = "RSFD" }
+set_party_name = { ideology = absolutism long_name = "Traditional Sheikhdom Assembly of Asosa" name = "SAA" }
+set_party_name = { ideology = ultranationalism long_name = "Gumuz People's Democratic Movement" name = "GPDM" }
+set_party_name = { ideology = fundamentalism long_name = "Benishangul Islamic Council" name = "BIC" }
+
+create_country_leader = { name = "Ashalad Al-Hadi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Yonis Ibrahim" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Abdul-Aziz Mohammed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Gatluak Jach" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Kamal Al-Kamil" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Dawud Mohammed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Tefera Derbew" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Rijale Ahmed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Commander Mulatu Seyoum" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Sheikh Al-Asosa Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Gumuz Command Center" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Imam Ahmed Nur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2021.6.21"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	conservative = 65
+	revolutionary_socialism = 20
+	ultranationalism = 10
+	fundamentalism = 5
+}

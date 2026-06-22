@@ -1,0 +1,1193 @@
+﻿capital = 361 # Washington DC
+
+oob = "USA_1936"
+
+starting_train_buffer = 5
+
+if = {
+	limit = { has_dlc = "Man the Guns" }
+		set_naval_oob = "USA_1936_naval_mtg"
+	else = {
+		set_naval_oob = "USA_1936_naval_legacy"
+	}
+}
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "USA_1936_air_bba"
+		set_technology = {
+			iw_small_airframe = 1
+			basic_small_airframe = 1
+			iw_medium_airframe = 1
+			basic_medium_airframe = 1
+			engines_1 = 1
+			engines_2 = 1
+			aa_lmg = 1
+			early_bombs = 1
+			aircraft_construction = 1
+			air_torpedoe_1 = 1
+			bba_early_transport_plane = 1
+		}
+	else = {
+		set_air_oob = "USA_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			cv_early_fighter = 1
+			cv_naval_bomber1 = 1
+			cv_CAS1 = 1
+			naval_bomber1 = 1
+			CAS1 = 1
+			early_bomber = 1
+			early_transport_plane = 1
+		}
+	}
+}
+
+
+set_research_slots = 4
+set_stability = 0.75
+set_war_support = 0
+add_command_power = 20
+
+set_variable = { var = senators_support value = 48 }
+set_variable = { var = senators_total value = 96 }
+set_variable = { var = representatives_support value = 218 }
+set_variable = { var = representatives_total value = 435 }
+set_variable = { var = quorum_low value = 39 }
+set_variable = { var = quorum_medium value = 49 }
+set_variable = { var = quorum_high value = 58 }
+USA_recalc_congress_icon_frames = yes
+
+USA = {
+	country_event = { id = usa.50 days = 2 }
+	country_event = { id = usa.51 days = 2 }
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_trucks = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	motorised_infantry = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	marines = 1
+	basic_train = 1
+	engine_tech_1 = 1
+}
+
+set_grand_doctrine = superior_firepower
+set_grand_doctrine = new_base_strike
+
+add_breakthrough_progress = {
+	specialization = specialization_land
+	value = 0.3
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_naval
+	value = 0.8
+}
+
+add_breakthrough_progress = {
+	specialization = specialization_air
+	value = 0.4
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+	add_ideas = bureau_of_ordnance_spirit
+}
+
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		early_carrier = 1
+		basic_carrier = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		basic_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_ship_hull_carrier = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		#basic_medium_battery = 1
+		basic_heavy_battery = 1
+		basic_torpedo = 1
+		sonar = 1
+		basic_depth_charges = 1
+		basic_cruiser_armor_scheme = 1
+		basic_heavy_armor_scheme = 1
+		mtg_transport = 1
+		#improved_airplane_launcher = 1
+		basic_dp_light_battery = 1
+	}
+	add_ideas = MTG_naval_treaty_adherent
+}
+##Monroe Doctrine - We are trying to just remove the dlc check and see what, if any, things break. Will ask QA and BETAs to test new system both with and without ToA
+#IF = {
+#	limit = { has_dlc = "Trial of Allegiance" }
+	add_ideas = USA_monroe_doctrine_enforcer
+#}
+
+
+create_faction_from_template = faction_template_allies
+add_to_faction = USA
+add_to_faction = CAN
+add_to_faction = ENG
+add_to_faction = POR
+add_to_faction = SPR
+add_to_faction = FRA
+add_to_faction = ITA
+add_to_faction = FIN
+add_to_faction = SWE
+add_to_faction = NOR
+add_to_faction = ICE
+add_to_faction = HOL
+add_to_faction = BEL
+add_to_faction = LUX
+add_to_faction = GER
+add_to_faction = DEN
+add_to_faction = POL
+add_to_faction = LIT
+add_to_faction = LAT
+add_to_faction = EST
+add_to_faction = CZE
+add_to_faction = SLO
+add_to_faction = HUN
+add_to_faction = ROM
+add_to_faction = BUL
+add_to_faction = GRE
+add_to_faction = TUR
+add_to_faction = ALB
+add_to_faction = MAC
+add_to_faction = MNT
+add_to_faction = CRO
+add_to_faction = SLV
+
+# guarantees for rio pact
+give_guarantee = BRA
+give_guarantee = BAH
+give_guarantee = ARG
+give_guarantee = CHL
+give_guarantee = COL
+give_guarantee = COS
+give_guarantee = DOM
+give_guarantee = ELS
+give_guarantee = GUA
+give_guarantee = HAI
+give_guarantee = HON
+give_guarantee = PAN
+give_guarantee = PAR
+give_guarantee = PRU
+give_guarantee = TRI
+give_guarantee = URG
+
+# other guarantees
+give_guarantee = AST
+give_guarantee = NZL
+give_guarantee = PHI
+give_guarantee = JAP
+give_guarantee = KOR
+give_guarantee = SIA
+give_guarantee = BHR
+give_guarantee = EGY
+give_guarantee = ISR
+give_guarantee = JOR
+give_guarantee = KEN
+give_guarantee = KUW
+give_guarantee = MOR
+give_guarantee = PAK
+give_guarantee = QAT
+give_guarantee = SAU
+give_guarantee = CHI
+give_guarantee = TUN
+give_guarantee = PLU
+give_guarantee = FSM
+give_guarantee = MAR
+
+
+set_grand_doctrine = superior_firepower
+set_grand_doctrine = new_base_strike
+set_grand_doctrine = new_strategic_destruction
+
+set_sub_doctrine = assault_infantry
+add_mastery = {
+    amount = 25
+    sub_doctrine = assault_infantry
+}
+set_sub_doctrine = line_of_battle
+add_mastery = {
+    amount = 25
+    sub_doctrine = line_of_battle
+}
+set_sub_doctrine = air_subdoctrine_escort_fighter
+add_mastery = {
+    amount = 25
+    sub_doctrine = air_subdoctrine_escort_fighter
+}
+
+
+set_convoys = 700
+
+
+set_politics = {
+	ruling_party = democratic
+	last_election = "1932.11.8"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 80
+	fascism = 20
+}
+
+add_ideas = {
+	undisturbed_isolation
+	great_depression
+	disarmed_nation
+	free_trade
+	home_of_the_free
+}
+
+
+
+1939.1.1 = {
+	set_politics = {
+		ruling_party = democratic
+		last_election = "1936.11.3"
+		election_frequency = 48
+		elections_allowed = yes
+	}
+}
+
+recruit_character = USA_joe_biden
+
+if = {
+	limit = { not = { has_dlc = "No Compromise, No Surrender" } }
+	recruit_character = USA_jonathan_wainwright
+}
+
+if = {
+	limit = { has_dlc = "La Resistance" }
+	create_operative_leader = {
+		name = "Josephine Baker"
+		GFX = GFX_portrait_josephine_baker
+		traits = { operative_well_groomed }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { USA }
+	}
+
+	create_operative_leader = {
+		name = "Virginia Hall"
+		GFX = GFX_portrait_virginia_hall
+		traits = { operative_demolition_expert }
+		bypass_recruitment = no
+		available_to_spy_master = yes
+		female = yes
+		nationalities = { USA }
+	}
+}
+
+
+
+### VARIANTS ###
+# 1936 Start #
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	### Ship Variants ###
+	create_equipment_variant = {
+		name = "Barracuda Class"
+		type = submarine_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			sub_engine_upgrade = 1
+			sub_stealth_upgrade = 1
+			sub_torpedo_upgrade = 1
+		}
+		obsolete = yes
+	}
+
+	create_equipment_variant = {
+		name = "Farragut Class"
+		type = destroyer_1
+		upgrades = {
+			ship_torpedo_upgrade = 3
+			destroyer_engine_upgrade = 3
+			ship_ASW_upgrade = 3
+			ship_anti_air_upgrade = 3
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Portland Class"
+		type = heavy_cruiser_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_armor_upgrade = 2
+			ship_gun_upgrade = 2
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Pennsylvania Class"
+		type = battleship_1
+		upgrades = {
+			ship_reliability_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_armor_upgrade = 1
+			ship_gun_upgrade = 1
+		}
+		obsolete = yes
+	}
+
+	create_equipment_variant = {
+		name = "New Mexico Class"
+		type = battleship_1
+		upgrades = {
+			ship_reliability_upgrade = 2
+			ship_engine_upgrade = 2
+			ship_armor_upgrade = 2
+			ship_gun_upgrade = 2
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Colorado Class"
+		type = battleship_1
+		upgrades = {
+			ship_reliability_upgrade = 3
+			ship_engine_upgrade = 3
+			ship_armor_upgrade = 3
+			ship_gun_upgrade = 4
+		}
+	}
+
+	create_equipment_variant = {
+		name = "Yorktown Class"
+		type = carrier_2
+		upgrades = {
+			ship_deckspace_upgrade = 1
+			carrier_armor_upgrade = 1
+			ship_engine_upgrade = 1
+			ship_reliability_upgrade = 1
+		}
+	}
+}
+if = {
+	limit = {
+		has_dlc = "By Blood Alone"
+	}
+	create_equipment_variant = {
+		name = "P-6" #export models only
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "P-26A" # Boeing P-26 Peashooter
+		type = small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+		}
+		obsolete = yes
+		icon = "GFX_USA_light_plane_2_medium"
+	}
+	create_equipment_variant = {
+		name = "O2U" #
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_1_1x
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "SBU Corsair" #
+		type = cv_small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = dive_brakes_small
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "BM-2" #
+		type = cv_small_plane_naval_bomber_airframe_0
+		modules = {
+			fixed_main_weapon_slot = torpedo_mounting
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "A-12" #
+		type = small_plane_cas_airframe_0
+		modules = {
+			fixed_main_weapon_slot = bomb_locks
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "A-17" #
+		type = small_plane_cas_airframe_1
+		modules = {
+			fixed_main_weapon_slot = small_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = light_mg_4x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_USA_CAS1_medium"
+	}
+	create_equipment_variant = {
+		name = "P-35A" #
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_USA_light_plane_4_medium"
+	}
+	create_equipment_variant = {
+		name = "P-36A" #
+		type = small_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = light_mg_4x
+			fixed_auxiliary_weapon_slot_1 = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_light_plane_5_medium"
+	}
+	create_equipment_variant = {
+		name = "B-6A" #also covers other Keystone bombers
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret
+		}
+		obsolete = yes
+		icon = GFX_USA_early_bomber_medium
+	}
+	create_equipment_variant = {
+		name = "B-10" #
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			engine_type_slot = engine_1_2x
+			special_type_slot_1 = lmg_defense_turret
+		}
+		icon = "GFX_medium_plane_1_medium"
+	}
+	create_equipment_variant = {
+		name = "B-18" #
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = lmg_defense_turret
+		}
+		icon = "GFX_USA_early_bomber_medium"
+	}
+	create_equipment_variant = {
+		name = "P2Y" #
+		type = medium_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = bomb_locks
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = flying_boat_medium
+			special_type_slot_2 = lmg_defense_turret
+		}
+		obsolete = yes
+		icon = "GFX_USA_naval_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "PBY" #
+		type = medium_plane_airframe_1
+		modules = {
+			fixed_main_weapon_slot = medium_bomb_bay
+			fixed_auxiliary_weapon_slot_1 = torpedo_mounting
+			fixed_auxiliary_weapon_slot_2 = torpedo_mounting
+			engine_type_slot = engine_2_2x
+			special_type_slot_1 = flying_boat_medium
+			special_type_slot_2 = lmg_defense_turret
+		}
+		icon = "GFX_USA_naval_bomber1_medium"
+	}
+	create_equipment_variant = {
+		name = "F4B" #also covers F2F
+		type = cv_small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_1_1x
+			special_type_slot_1 = empty
+		}
+		obsolete = yes
+		icon = "GFX_USA_cv_fighter1_medium"
+	}
+	create_equipment_variant = {
+		name = "F3F" #
+		type = cv_small_plane_airframe_0
+		modules = {
+			fixed_main_weapon_slot = light_mg_2x
+			engine_type_slot = engine_2_1x
+			special_type_slot_1 = empty
+		}
+		icon = "GFX_USA_cv_fighter1_medium"
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	create_equipment_variant = {
+		name = "M1 Combat Car"
+		type = light_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_two_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 5
+		}
+		icon = "GFX_USA_basic_light_tank_medium"
+	}
+	create_equipment_variant = { #Note: There is a copy of this variant in Finnish National Focus file (FIN_bring_foreign_armor_experts). Any changes here should also be applied there
+		name = "M2A2"
+		type = light_tank_chassis_1
+		parent_version = 1
+		modules = {
+			main_armament_slot = tank_heavy_machine_gun
+			turret_type_slot = tank_light_one_man_tank_turret
+			suspension_type_slot = tank_bogie_suspension
+			armor_type_slot = tank_riveted_armor
+			engine_type_slot = tank_gasoline_engine
+			special_type_slot_1 = secondary_turret_hmg
+			special_type_slot_2 = tank_radio_1
+		}
+		upgrades = {
+			tank_nsb_armor_upgrade = 2
+			tank_nsb_engine_upgrade = 4
+		}
+		icon = "GFX_USA_basic_light_tank_medium"
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	# Submarines #
+	create_equipment_variant = {			# represents O/R class, S class
+		name = "S Class"
+		type = ship_hull_submarine_1
+		name_group = USA_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Barracuda Class"			# represents Barracuda, Dolphin, Cachalot classes
+		type = ship_hull_submarine_2
+		name_group = USA_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_1
+			rear_1_custom_slot = empty
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Porpoise Class"				# represents Porpoise, Shark, and Perch classes
+		type = ship_hull_submarine_2
+		name_group = USA_SS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_1
+			fixed_ship_engine_slot = sub_ship_engine_2
+			rear_1_custom_slot = empty
+		}
+	}
+	# Destroyers #
+	create_equipment_variant = {
+		name = "Clemson Class"				# represents Sampson, Caldwell, Clemson, and Wickes classes
+		type = ship_hull_light_1
+		name_group = USA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_1
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Farragut Class"				# represents Farragut, Porter, Mahan classes
+		type = ship_hull_light_1
+		name_group = USA_DD_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = dp_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_sonar_1
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = ship_torpedo_1
+			mid_1_custom_slot = ship_torpedo_1
+			rear_1_custom_slot = ship_depth_charge_1
+		}
+	}
+	# Light Cruisers #
+	create_equipment_variant = {
+		name = "Omaha Class"
+		type = ship_hull_cruiser_2
+		name_group = USA_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_light_medium_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Brooklyn Class"
+		type = ship_hull_cruiser_2
+		name_group = USA_CL_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_armor_slot = ship_armor_cruiser_3
+			fixed_ship_secondaries_slot = dp_ship_secondaries_1
+			front_1_custom_slot = ship_light_medium_battery_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_light_medium_battery_2
+		}
+	}
+	create_equipment_variant = {
+		name = "Oglala Class"				#cruiser minelayers
+		type = ship_hull_cruiser_1
+		name_group = USA_MINELAYERS_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = dp_light_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_armor_slot = empty
+			mid_1_custom_slot = empty
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_mine_layer_1
+		}
+	}
+	# Heavy Cruisers #
+	create_equipment_variant = {
+		name = "Pensacola Class"			# Pensacola and Northampton classes
+		type = ship_hull_cruiser_1
+		name_group = USA_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_1
+			mid_1_custom_slot = ship_medium_battery_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_airplane_launcher_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Portland Class"				# Portland and New Orleans classes
+		type = ship_hull_cruiser_2
+		name_group = USA_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = empty
+			rear_1_custom_slot = ship_medium_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "New Orleans Class"
+		type = ship_hull_cruiser_2
+		name_group = USA_CA_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_medium_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = cruiser_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_cruiser_2
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_medium_battery_2
+		}
+	}
+	# Heavy Cruisers #
+		create_equipment_variant = {
+			name = "Wichita Class"
+			type = ship_hull_cruiser_2
+			name_group = USA_CA_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_medium_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = cruiser_ship_engine_2
+				fixed_ship_armor_slot = ship_armor_cruiser_3
+				fixed_ship_secondaries_slot = dp_ship_secondaries_1
+				mid_1_custom_slot = ship_airplane_launcher_1
+				mid_2_custom_slot = ship_anti_air_1
+				rear_1_custom_slot = ship_medium_battery_2
+			}
+		}
+	# Battleships #
+	create_equipment_variant = {
+		name = "New York Class"					# represents Wyoming (Arkansas) and New York classes
+		type = ship_hull_heavy_1
+		name_group = USA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_1
+			front_1_custom_slot = empty
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Pennsylvania Class"				# represents Pennsylvania, Nevada, Tennessee, and New Mexico classes
+		type = ship_hull_heavy_1
+		name_group = USA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_1
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_airplane_launcher_1
+			mid_2_custom_slot = ship_secondaries_1
+			rear_1_custom_slot = ship_heavy_battery_1
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Colorado Class"				
+		type = ship_hull_heavy_1
+		name_group = USA_BB_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_heavy_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_1
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			fixed_ship_armor_slot = ship_armor_bb_2
+			front_1_custom_slot = ship_anti_air_1
+			mid_1_custom_slot = ship_secondaries_1
+			mid_2_custom_slot = ship_airplane_launcher_1
+			rear_1_custom_slot = ship_heavy_battery_2
+		}
+		obsolete = yes
+	}
+	# Carriers #
+	create_equipment_variant = {
+		name = "Lexington Class"
+		type = ship_hull_carrier_conversion_bb
+		name_group = USA_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = heavy_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_1
+			mid_1_custom_slot = ship_deck_space
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Ranger Class"
+		type = ship_hull_carrier_1
+		name_group = USA_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_1
+			fixed_ship_secondaries_slot = empty
+			front_1_custom_slot = ship_deck_space
+			
+		}
+		obsolete = yes
+	}
+	create_equipment_variant = {
+		name = "Yorktown Class"
+		type = ship_hull_carrier_1
+		name_group = USA_CV_HISTORICAL
+		parent_version = 0
+		modules = {
+			fixed_ship_deck_slot_1 = ship_deck_space
+			fixed_ship_deck_slot_2 = ship_deck_space
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = carrier_ship_engine_2
+			fixed_ship_secondaries_slot = ship_secondaries_2
+			front_1_custom_slot = ship_deck_space
+		}
+	}
+}
+
+
+# 1939 Start #
+1939.1.1 = {
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		# Ship variants #
+		create_equipment_variant = {
+			name = "Salmon Class"
+			type = submarine_2
+			upgrades = {
+				ship_reliability_upgrade = 1
+				sub_engine_upgrade = 1
+				sub_stealth_upgrade = 1
+				sub_torpedo_upgrade = 1
+			}
+		}
+		create_equipment_variant = {
+			name = "Benson & Gleaves Class"
+			type = destroyer_2
+			upgrades = {
+				ship_torpedo_upgrade = 3
+				destroyer_engine_upgrade = 3
+				ship_ASW_upgrade = 3
+				ship_anti_air_upgrade = 3
+			}
+		}
+		create_equipment_variant = {
+			name = "Wasp Class"
+			type = carrier_2
+			upgrades = {
+				ship_deckspace_upgrade = 2
+				carrier_armor_upgrade = 2
+				ship_engine_upgrade = 2
+				ship_reliability_upgrade = 2
+			}
+		}
+		# 1941
+		#create_equipment_variant = {
+		#	name = "South Dakota Class"
+		#	type = battleship_2
+		#	upgrades = {
+		#		ship_reliability_upgrade = 3
+		#		ship_engine_upgrade = 3
+		#		ship_armor_upgrade = 3
+		#		ship_gun_upgrade = 3
+		#	}
+		#}
+	}
+	if = {
+		limit = {
+			has_dlc = "By Blood Alone"
+		}
+		create_equipment_variant = {
+			name = "F2A Buffalo" #
+			type = cv_small_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = heavy_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+			}
+		}
+		create_equipment_variant = {
+			name = "Vindicator" #
+			type = cv_small_plane_cas_airframe_1
+			modules = {
+				fixed_main_weapon_slot = bomb_locks
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = dive_brakes_small
+			}
+		}
+		create_equipment_variant = {
+			name = "Devastator" #
+			type = cv_small_plane_naval_bomber_airframe_1
+			modules = {
+				fixed_main_weapon_slot = torpedo_mounting
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+			}
+		}
+		create_equipment_variant = {
+			name = "B-23" #
+			type = medium_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = medium_bomb_bay
+				engine_type_slot = engine_2_2x
+				special_type_slot_1 = lmg_defense_turret
+			}
+			icon = "GFX_USA_tactical_bomber1_medium"
+		}
+		create_equipment_variant = {
+			name = "YA-19" #
+			type = small_plane_cas_airframe_1
+			modules = {
+				fixed_main_weapon_slot = bomb_locks
+				fixed_auxiliary_weapon_slot_1 = light_mg_4x
+				engine_type_slot = engine_2_1x
+				special_type_slot_1 = empty
+			}
+			obsolete = yes
+		}
+		create_equipment_variant = {
+			name = "A-20" #
+			type = small_plane_cas_airframe_2
+			modules = {
+				fixed_main_weapon_slot = small_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = small_bomb_bay
+				fixed_auxiliary_weapon_slot_2 = heavy_mg_4x
+				engine_type_slot = engine_2_2x
+				special_type_slot_1 = hmg_defense_turret
+			}
+			icon = "GFX_USA_CAS2_medium"
+		}
+		create_equipment_variant = {
+			name = "B-17" #
+			type = large_plane_airframe_1
+			modules = {
+				fixed_main_weapon_slot = large_bomb_bay
+				fixed_auxiliary_weapon_slot_1 = large_bomb_bay
+				engine_type_slot = engine_3_4x
+				special_type_slot_1 = hmg_defense_turret_2x
+				special_type_slot_2 = hmg_defense_turret_2x
+				special_type_slot_3 = bomb_sights_1
+			}
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		# Submarines #
+		create_equipment_variant = {
+			name = "Salmon Class"				# represents Salmon and Sargo classes
+			type = ship_hull_submarine_2
+			name_group = USA_SS_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_torpedo_slot = ship_torpedo_sub_2
+				fixed_ship_engine_slot = sub_ship_engine_2
+				rear_1_custom_slot = ship_torpedo_sub_2
+			}
+		}
+		# Destroyers #
+		create_equipment_variant = {
+			name = "Sims Class"					# represents Gridley, Bagley, Benham, Sims classes
+			type = ship_hull_light_2
+			name_group = USA_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = dp_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_sonar_1
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_1
+				mid_1_custom_slot = ship_torpedo_1
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+		create_equipment_variant = {
+			name = "Benson & Gleaves Class"
+			type = ship_hull_light_3
+			name_group = USA_DD_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = dp_light_battery_2
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = ship_sonar_2
+				fixed_ship_engine_slot = light_ship_engine_2
+				fixed_ship_torpedo_slot = ship_torpedo_2
+				mid_1_custom_slot = ship_torpedo_2
+				rear_1_custom_slot = ship_depth_charge_1
+			}
+		}
+		
+		# Battleships #
+		create_equipment_variant = {
+			name = "North Carolina Class"
+			type = ship_hull_heavy_3
+			name_group = USA_BB_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_battery_slot = ship_heavy_battery_3
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = heavy_ship_engine_2
+				fixed_ship_secondaries_slot = dp_ship_secondaries_2
+				fixed_ship_armor_slot = ship_armor_bb_2
+				front_1_custom_slot = ship_heavy_battery_3
+				mid_1_custom_slot = empty
+				mid_2_custom_slot = dp_ship_secondaries_2
+				mid_3_custom_slot = empty
+				rear_1_custom_slot = ship_airplane_launcher_1
+			}
+		}
+		# Carriers #
+		create_equipment_variant = {
+			name = "Wasp Class"
+			type = ship_hull_carrier_1
+			name_group = USA_CV_HISTORICAL
+			parent_version = 0
+			modules = {
+				fixed_ship_deck_slot_1 = ship_deck_space
+				fixed_ship_deck_slot_2 = ship_deck_space
+				fixed_ship_anti_air_slot = ship_anti_air_1
+				fixed_ship_radar_slot = empty
+				fixed_ship_engine_slot = carrier_ship_engine_1
+				fixed_ship_secondaries_slot = ship_secondaries_2
+				front_1_custom_slot = ship_deck_space
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "By Blood Alone"
+			}
+		}
+		create_equipment_variant = {
+			name = "F2A Buffalo"
+			type = cv_fighter_equipment_1
+			upgrades = {
+				cv_plane_gun_upgrade = 5
+				cv_plane_range_upgrade = 0
+				plane_engine_upgrade = 2
+				plane_reliability_upgrade = 5
+			}
+		}
+		create_equipment_variant = {
+			name = "Martin M166"
+			type = tac_bomber_equipment_0
+			upgrades = {
+				plane_tac_bomb_upgrade = 2
+				plane_range_upgrade = 1
+				plane_engine_upgrade = 2
+				plane_reliability_upgrade = 3
+			}
+		}
+	}
+}

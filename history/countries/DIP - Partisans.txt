@@ -1,0 +1,99 @@
+﻿capital = 430 #East Bengal
+
+set_research_slots = 2
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+
+}
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		early_bomber = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		early_destroyer = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+	}
+}
+
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Kombinowana Partia Wolności" name = "KPW" }
+set_party_name = { ideology = vanguard_socialism long_name = "Ruch Czerwonych Partyzantów" name = "RCP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Front Wyzwolenia Robotniczego" name = "FWR" }
+set_party_name = { ideology = progressive long_name = "Sojusz Postępowych Bojowników" name = "SPB" }
+set_party_name = { ideology = centrist long_name = "Ruch Wolna Sprawa" name = "RWS" }
+set_party_name = { ideology = conservative long_name = "Związek Obrony Obywatelskiej" name = "ZOO" }
+set_party_name = { ideology = reactionary long_name = "Narodowa Straż Tradycji" name = "NST" }
+set_party_name = { ideology = authoritarianism long_name = "Rada Ocalenia Kraju" name = "ROK" }
+set_party_name = { ideology = autocracy long_name = "Wojskowy Sztab Powstańczy" name = "WSP" }
+set_party_name = { ideology = absolutism long_name = "Ruch Nowej Korony" name = "RNK" }
+set_party_name = { ideology = ultranationalism long_name = "Front Radykalnej Akcji" name = "FRA" }
+set_party_name = { ideology = fundamentalism long_name = "Święte Przymierze Bojowników" name = "ŚPB" }
+
+create_country_leader = { name = "Nestor Czarny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = putinism }
+create_country_leader = { name = "Mikołaj Wolny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Janusz Skrzydło" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
+create_country_leader = { name = "Ataman Groźny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 5
+	vanguard_socialism = 10
+	revolutionary_socialism = 15
+	progressive = 5
+	centrist = 5
+	conservative = 10
+	reactionary = 10
+	authoritarianism = 25
+	autocracy = 10
+	absolutism = 1
+	ultranationalism = 4
+	fundamentalism = 0
+}
+
+

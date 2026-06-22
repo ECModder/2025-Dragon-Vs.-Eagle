@@ -1,0 +1,112 @@
+﻿capital = 104
+
+set_research_slots = 3
+
+# Starting tech
+# clone of Yugoslavia
+set_technology = {
+	tech_support = 1		
+	tech_engineers = 1
+	tech_mountaineers = 1
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_trucks = 1
+	basic_train = 1
+}
+
+if = {
+	limit = {
+		NOT = {has_dlc = "By Blood Alone"}
+	}
+	set_technology = {
+		early_fighter = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_submarine = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Komunisticka Partija" name = "KP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Radnicka Partija" name = "RP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Demokratska Fronta" name = "DF" }
+set_party_name = { ideology = progressive long_name = "Socijaldemokratska Partija BiH" name = "SDP" }
+set_party_name = { ideology = centrist long_name = "Nasa Stranka" name = "NS" }
+set_party_name = { ideology = conservative long_name = "Stranka Demokratske Akcije" name = "SDA" }
+set_party_name = { ideology = reactionary long_name = "Savez Nezavisnih Socijaldemokrata" name = "SNSD" }
+set_party_name = { ideology = authoritarianism long_name = "Hrvatska Demokratska Zajednica BiH" name = "HDZ" }
+set_party_name = { ideology = autocracy long_name = "Oruzane Snage BiH Command" name = "OSBiH" }
+set_party_name = { ideology = absolutism long_name = "Kotromanic Royalist Pretenders" name = "Kotromanic" }
+set_party_name = { ideology = ultranationalism long_name = "Bosanski Pokret Nacionalnog Ponosa" name = "BPNP" }
+set_party_name = { ideology = fundamentalism long_name = "Islamska Zajednica u BiH Council" name = "IZ" }
+
+create_country_leader = { name = "Denis Becirovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Milorad Dodik" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Bakir Izetbegovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Edin Forto" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Zeljko Komsic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Dragan Covic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Goran Markovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Nermin Niksic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Lieutenant General Senad Masovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Prince Alexis Kotromanic Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Sanjin Musa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Husein Kavazovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2022.10.2"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 30
+	reactionary = 28
+	conservative = 22
+	authoritarianism = 12
+	centrist = 8
+}

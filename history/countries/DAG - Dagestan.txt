@@ -1,0 +1,130 @@
+﻿capital = 232 #Machakala
+
+#oob = "DAG_1936"
+
+set_research_slots = 3
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+
+if = {
+	limit = {
+		NOT = { has_dlc = "No Step Back" }
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "No Step Back"
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Komunistyczna Partia Dagestanu" name = "KPD" }
+set_party_name = { ideology = vanguard_socialism long_name = "Dagestańska Partia Robotnicza" name = "DPR" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Dagestański Front Ludowy" name = "DFL" }
+set_party_name = { ideology = progressive long_name = "Sojusz Socjaldemokratyczny" name = "SSD" }
+set_party_name = { ideology = centrist long_name = "Jedna Rosja - Skrzydło Centrowe" name = "JR-C" }
+set_party_name = { ideology = conservative long_name = "Jedna Rosja" name = "JR" }
+set_party_name = { ideology = reactionary long_name = "Obywatelski Front Kaukaski" name = "OFK" }
+set_party_name = { ideology = authoritarianism long_name = "Partia Konsolidacji Narodowej" name = "PKN" }
+set_party_name = { ideology = autocracy long_name = "Dagestańska Rada Wojskowa" name = "DRW" }
+set_party_name = { ideology = absolutism long_name = "RadaStarszych Kaukazu" name = "RSK" }
+set_party_name = { ideology = ultranationalism long_name = "Sojusz Narodowy Dagestanu" name = "SND" }
+set_party_name = { ideology = fundamentalism long_name = "Rada Najwyższa Narodów Kaukazu" name = "RNNK" }
+
+create_country_leader = { name = "Fyodor Shchukin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2031.1.1" ideology = putinism }
+create_country_leader = { name = "Magomed Ramazanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2031.1.1" ideology = conservatism }
+create_country_leader = { name = "Zaur Askenderov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2031.1.1" ideology = classical_liberalism }
+create_country_leader = { name = "Kamil Davdiev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2031.1.1" ideology = religious_nationalism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2021.9.19"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 2
+	vanguard_socialism = 2
+	revolutionary_socialism = 3
+	progressive = 5
+	centrist = 12
+	conservative = 36
+	reactionary = 4
+	authoritarianism = 22
+	autocracy = 3
+	absolutism = 1
+	ultranationalism = 2
+	fundamentalism = 6
+}
+
+recruit_character = DAG_khair_hajji_uzunsky
+recruit_character = DAG_adil_girey_takhtarov
+
+

@@ -1,0 +1,108 @@
+﻿capital = 551
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+recruit_character = SUD_coi
+recruit_character = SUD_aa2
+recruit_character = SUD_democratic_guy
+recruit_character = SUD_acd2
+recruit_character = SUD_acr
+recruit_character = SUD_fascist_guy
+recruit_character = SUD_stc
+recruit_character = SUD_ncs
+recruit_character = SUD_awt
+recruit_character = SUD_mt
+recruit_character = SUD_communist_guy
+recruit_character = SUD_ai2
+recruit_character = SUD_ar
+recruit_character = SUD_acas
+recruit_character = SUD_acgs
+recruit_character = SUD_ncm
+recruit_character = SUD_nt
+recruit_character = SUD_pot
+recruit_character = SUD_nccr
+recruit_character = SUD_aco2
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== ECModder the goat and god ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Al-Hizb al-Shuyui al-Sudani" name = "SCP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Hizb al-Ba'ath al-Arabi al-Ishtiraki" name = "Ba'ath" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Tahaluf al-Yasar al-Sudani" name = "Left Alliance" }
+set_party_name = { ideology = progressive long_name = "Quwat al-Hurriya wa al-Taghyir" name = "FFC" }
+set_party_name = { ideology = centrist long_name = "Hizb al-Umma al-Qawmi" name = "Umma" }
+set_party_name = { ideology = conservative long_name = "Al-Hizb al-Ittihadi al-Dimuqrati" name = "DUP" }
+set_party_name = { ideology = reactionary long_name = "Al-Mu'tamar al-Watani" name = "NCP" }
+set_party_name = { ideology = authoritarianism long_name = "Quwat al-Dalm al-Sari" name = "RSF" }
+set_party_name = { ideology = autocracy long_name = "Al-Majlis al-Siyadi al-Intiqali" name = "TSC" }
+set_party_name = { ideology = absolutism long_name = "Sultanat Fur" name = "Fur" }
+set_party_name = { ideology = ultranationalism long_name = "Al-Haraka al-Wataniya al-Sudaniya" name = "SNM" }
+set_party_name = { ideology = fundamentalism long_name = "Al-Haraka al-Islamiyya" name = "Islamic Movement" }
+
+create_country_leader = { name = "Abdel Fattah al-Burhan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Mohamed Hamdan Dagalo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+
+set_politics = {
+	ruling_party = autocracy
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	autocracy = 45
+	authoritarianism = 25
+	progressive = 15
+	fundamentalism = 10
+	totalitarian_communism = 5
+}

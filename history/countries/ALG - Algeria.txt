@@ -1,0 +1,108 @@
+﻿capital = 459
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+recruit_character = ALG_ar
+recruit_character = ALG_acr
+recruit_character = ALG_mt
+recruit_character = ALG_stc
+recruit_character = ALG_aa2
+recruit_character = ALG_acgs
+recruit_character = ALG_ncm
+recruit_character = ALG_nccr
+recruit_character = ALG_coi
+recruit_character = ALG_democratic_guy
+recruit_character = ALG_acd2
+recruit_character = ALG_acas
+recruit_character = ALG_communist_guy
+recruit_character = ALG_ncs
+recruit_character = ALG_awt
+recruit_character = ALG_pot
+recruit_character = ALG_fascist_guy
+recruit_character = ALG_ai2
+recruit_character = ALG_nt
+recruit_character = ALG_aco2
+
+
+set_convoys = 20
+
+1939.1.1 = {
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = large_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+# ==================== algerianistan mbappe diktator ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Algerien pour la Democratie et le Socialisme" name = "PADS" }
+set_party_name = { ideology = vanguard_socialism long_name = "Parti des Travailleurs" name = "PT" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Front des Forces Socialistes" name = "FFS" }
+set_party_name = { ideology = progressive long_name = "Rassemblement pour la Culture et la Democratie" name = "RCD" }
+set_party_name = { ideology = centrist long_name = "Rassemblement National Democratique" name = "RND" }
+set_party_name = { ideology = conservative long_name = "Front de Liberation Nationale" name = "FLN" }
+set_party_name = { ideology = reactionary long_name = "Mouvement de la Societe pour la Paix" name = "MSP" }
+set_party_name = { ideology = authoritarianism long_name = "Cercle Independent Presidentiel" name = "IND" }
+set_party_name = { ideology = autocracy long_name = "Armee Nationale Populaire Council" name = "ANP" }
+set_party_name = { ideology = absolutism long_name = "Conseil de l'Emir" name = "Abdelkader" }
+set_party_name = { ideology = ultranationalism long_name = "Front National Algerien" name = "FNA" }
+set_party_name = { ideology = fundamentalism long_name = "Front Islamique du Salut" name = "FIS" }
+
+create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Louisa Hanoune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2024.9.7"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 40
+	conservative = 35
+	reactionary = 12
+	vanguard_socialism = 8
+	fundamentalism = 5
+}

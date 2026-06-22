@@ -1,0 +1,396 @@
+﻿capital = 291 # Baghdad
+
+oob = "IRQ_1936"
+
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "IRQ_1936_air_bba"
+	else = {
+		set_air_oob = "IRQ_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+			CAS1 = 1
+		}
+	}
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	#tech_mountaineers = 1
+	tech_trucks = 1
+	gw_artillery = 1
+	fuel_silos = 1
+}
+
+set_convoys = 5
+
+if = {
+	limit = {
+		has_dlc = "Battle for the Bosporus"
+	}
+	set_technology = { camelry = 1 }
+}
+
+##### RECRUIT VANILLA CHARACTERS #####
+IF = {
+	limit = {
+		has_dlc = "Graveyard of Empires"
+	}
+	recruit_character = IRQ_yasin_al_hashimi
+	recruit_character = IRQ_ghazi_i
+}
+IF = {
+	limit = {
+		NOT = {
+			has_dlc = "Graveyard of Empires"
+		}
+	}
+	recruit_character = IRQ_ghazi_i
+	recruit_character = IRQ_yasin_al_hashimi
+}
+recruit_character = IRQ_abdul_latif_rashid
+
+##### GoE Setup #####
+
+IF = { 
+	limit = {
+		has_dlc = "Graveyard of Empires"
+	}
+	recruit_character = IRQ_abd_al_ilah
+	recruit_character = IRQ_taha_al_hashemi
+	recruit_character = IRQ_muhammad_husayn_kashif_al_ghita
+	recruit_character = PAL_amin_al_husseini
+	recruit_character = IRQ_muhammad_amin_zaki
+	recruit_character = IRQ_kamil_shabib
+	recruit_character = IRQ_salah_al_din_al_sabbagh
+	recruit_character = IRQ_jamil_abdul_wahab
+	recruit_character = IRQ_fawsi_al_kaukji
+	recruit_character = IRQ_mahmud_salman
+	recruit_character = IRQ_hikmat_suleiman
+	recruit_character = IRQ_tawfiq_al_suawaidi
+	recruit_character = IRQ_husain_al_rahhal
+	recruit_character = IRQ_max_von_oppenheim
+	recruit_character = IRQ_saib_shawkat
+	recruit_character = IRQ_ibrahim_al_ghandanfari
+	recruit_character = ARM_calouste_gulbenkian
+	recruit_character = IRQ_hussein_fawzi
+	recruit_character = IRQ_fritz_grobba
+	recruit_character = IRQ_werner_junck
+	recruit_character = IRQ_harry_george_smart
+	recruit_character = IRQ_naji_al_suwaidi
+	recruit_character = IRQ_akram_mushtak
+	recruit_character = IRQ_ahmed_barzani
+	recruit_character = IRQ_mustafa_barzani
+	recruit_character = IRQ_muhammad_ali_jawad
+	recruit_character = IRQ_maruf_al_rusafi
+
+	IRQ_salah_al_din_al_sabbagh = {
+		set_character_flag = IRQ_golden_square_char
+	}
+	IRQ_mahmud_salman = {
+		set_character_flag = IRQ_golden_square_char
+	}
+	IRQ_fahmi_said = {
+		set_character_flag = IRQ_golden_square_char
+	}
+	IRQ_kamil_shabib = {
+		set_character_flag = IRQ_golden_square_char
+	}
+
+	add_ideas = IRQ_ghazi_i
+	add_ideas = IRQ_golden_square
+	add_ideas = IRQ_anglo_iraqi_treaty
+	add_ideas = IRQ_agrarian_society
+
+	#variables for Royal Iraqi Army modifier
+
+	set_variable = { IRQ_experience_gain_army_factor = -0.03 }
+	set_variable = { IRQ_army_org_factor = -0.05 }
+	set_variable = { IRQ_army_core_defence_factor = 0 }
+	set_variable = { IRQ_army_core_attack_factor = 0 }
+	set_variable = { IRQ_army_armor_defence_factor = 0 }
+	set_variable = { IRQ_army_armor_attack_factor = 0 }
+	set_variable = { IRQ_army_artillery_attack_factor = 0 }
+	set_variable = { IRQ_army_artillery_defence_factor = 0 }
+	set_variable = { IRQ_conscription_factor = -0.05 }
+	set_variable = { IRQ_training_time_factor = 0 }
+	set_variable = { IRQ_conscription = 0 }
+	set_variable = { IRQ_army_defence_factor = 0 }
+	set_variable = { IRQ_army_attack_factor = 0 }
+	set_variable = { IRQ_special_forces_cap = 0 }
+	set_variable = { IRQ_special_forces_out_of_supply_factor = 0 }
+	set_variable = { IRQ_extra_marine_supply_grace = 0 }
+	set_variable = { IRQ_max_planning_factor = 0 }
+	set_variable = { IRQ_planning_speed = -0.1 }
+	set_variable = { IRQ_max_command_power_mult = 0 }
+	set_variable = { IRQ_command_power_gain_mult = 0 }
+	set_variable = { IRQ_acclimatization_cold_climate_gain_factor = 0 }
+	set_variable = { IRQ_acclimatization_hot_climate_gain_factor = 0.15 }
+	set_variable = { IRQ_motorized_attack_factor = 0 }
+	set_variable = { IRQ_mechanized_attack_factor = 0 }
+	set_variable = { IRQ_modifier_army_sub_unit_cavalry_attack_factor = 0 }
+	set_variable = { IRQ_modifier_army_sub_unit_cavalry_defence_factor = 0 }
+	set_variable = { IRQ_modifier_army_sub_unit_cavalry_speed_factor = 0 }
+
+	add_dynamic_modifier = {
+		modifier = IRQ_royal_army_modifier_IRQ
+	}
+
+	#Variables for Air Force Modifier 
+	set_variable = { IRQ_air_accidents_factor = -0.1 }
+	set_variable = { IRQ_air_ace_generation_chance_factor = 0 }
+	set_variable = { IRQ_air_weather_penalty = -0.05 }
+	set_variable = { IRQ_air_training_xp_gain_factor = 0 }
+	set_variable = { IRQ_air_manpower_requirement_factor = 0 }
+	set_variable = { IRQ_air_agility_factor = 0 }
+	set_variable = { IRQ_air_nav_efficiency = 0 }
+	set_variable = { IRQ_air_cas_efficiency = 0 }
+	set_variable = { IRQ_air_strategic_bomber_bombing_factor = 0 }
+	set_variable = { IRQ_air_range_factor = 0 }
+	set_variable = { IRQ_air_fuel_consumption_factor = 0 }
+	set_variable = { IRQ_air_superiority_efficiency = 0 }
+
+	#Variables for Navy
+	set_variable = { IRQ_navy_refit_speed = 0 }
+	set_variable = { IRQ_navy_repair_speed_factor = 0 }
+	set_variable = { IRQ_experience_gain_navy = 0.1 }
+	set_variable = { IRQ_mines_planting_by_fleets_factor = 0 }
+	set_variable = { IRQ_navy_anti_air_attack_factor = 0 }
+	set_variable = { IRQ_navy_spirit_category_type_cost_factor = 0 }
+	set_variable = { IRQ_convoy_retreat_speed = 0 }
+	set_variable = { IRQ_spotting_chance = 0 }
+	set_variable = { IRQ_production_speed_dockyard_factor = 0 }
+	set_variable = { IRQ_industrial_capacity_dockyard = 0 }
+	set_variable = { IRQ_extra_marine_supply_grace = 0 }
+	set_variable = { IRQ_naval_invasion_capacity = 0 }
+	set_variable = { IRQ_naval_mines_effect_reduction = 0 }
+	set_variable = { IRQ_experience_gain_navy_unit_factor = 0.1 }
+	set_variable = { IRQ_naval_coordination = 0 }
+	set_variable = { IRQ_naval_equipment_upgrade_xp_cost = 0 }
+	set_variable = { IRQ_naval_morale_factor = 0 }
+	set_variable = { IRQ_screening_efficiency = 0 }
+	set_variable = { IRQ_convoy_escort_efficiency = 0 }
+	set_variable = { IRQ_navy_capital_ship_defence_factor = 0 }
+	set_variable = { IRQ_naval_accidents_chance = 0 }
+	set_variable = { IRQ_navy_screen_defence_factor = 0 }
+	set_variable = { IRQ_production_speed_coastal_bunker_factor = 0 }
+
+	IF = {
+		limit = { has_dlc = "Arms Against Tyranny" }
+		give_market_access = ENG
+	}
+
+	ENG = {
+		add_opinion_modifier = {
+			target = IRQ
+			modifier = IRQ_anglo_iraqi_treaty_in_place_opm
+		}	
+	}
+	add_opinion_modifier = {
+		target = ENG
+		modifier = IRQ_anglo_iraqi_treaty_in_place_opm
+	}
+
+	676 = {
+		add_dynamic_modifier = { modifier = KUR_resistance_modifier }
+	}
+
+}
+
+IF = {
+	limit = {
+		NOT = {
+			has_dlc	= "Graveyard of Empires"
+		}
+	}
+	recruit_character = IRQ_abd_almalik_ibn_hisham
+	recruit_character = IRQ_ali_abn_hussein
+	recruit_character = IRQ_iskandar_al-shami
+	recruit_character = IRQ_mustafa_al_quidsi
+	recruit_character = IRQ_ali_ben_jawad
+	recruit_character = IRQ_abdullah_al-tell
+	recruit_character = IRQ_khaled_al_dalabeeh
+	recruit_character = IRQ_taha_al_ahmani
+}
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	IF = {
+		limit = {
+			has_dlc = "Graveyard of Empires"
+		}
+		#1936
+		complete_national_focus = IRQ_party_of_national_brotherhood
+		complete_national_focus = IRQ_royal_iraqi_army
+		complete_national_focus = IRQ_bakr_sidqi_coup
+		complete_national_focus = IRQ_raf_levies_focus
+		complete_national_focus = IRQ_assasination_of_sidqi
+		#1937
+		complete_national_focus = IRQ_expand_habbaniya_airbase
+		complete_national_focus = IRQ_decouple_from_the_pound
+		complete_national_focus = IRQ_found_the_iraqi_state_railways
+		complete_national_focus = IRQ_purchase_foreign_equipment
+		complete_national_focus = IRQ_independent_flight_schools
+
+		#1938
+		complete_national_focus = IRQ_infantry_focus
+		complete_national_focus = IRQ_purchase_british_aircraft
+		complete_national_focus = IRQ_strengthen_the_iraqi_dinar
+		complete_national_focus = IRQ_heavy_industry_investments
+		complete_national_focus = IRQ_local_arms_industry
+		complete_national_focus = IRQ_al_muthanna_club
+
+		#1939
+		complete_national_focus = IRQ_construct_the_kut_barrage
+		complete_national_focus = IRQ_baghdad_colleges_of_engineering_and_education
+		complete_national_focus = IRQ_found_southern_steel_plants
+		complete_national_focus = IRQ_modernization
+
+		diplomatic_relation = {
+			country = TUR
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = PER
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		diplomatic_relation = {
+			country = AFG
+			relation = non_aggression_pact
+			active = yes
+		}
+
+		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
+
+		remove_ideas = {
+			IRQ_bakr_sidqi
+			IRQ_ghazi_i
+		}
+		retire_character = IRQ_ghazi_i
+		retire_character = IRQ_bakr_sidqi
+		add_ideas = IRQ_regent_idea
+	}
+	IF = {
+		limit = {
+			NOT = { has_dlc = "Graveyard of Empires" }
+		}
+		# Generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = construction_effort_2
+		complete_national_focus = production_effort_2
+		complete_national_focus = infrastructure_effort
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort		
+	}
+	
+	oob = "IRQ_1939"
+	if = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "IRQ_1939_air_bba"
+		else = {
+			set_air_oob = "IRQ_1939_air_legacy"
+		}
+	}
+	set_technology = {
+		tech_support = 1
+		tech_recon = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		gw_artillery = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION: IRAQ ====================
+
+# 1. PARTY NAMES CONFIGURATION
+set_party_name = { ideology = totalitarian_communism long_name = "Al-Sadiqoun Bloc" name = "SADIQOUN" } # Asa'ib Ahl al-Haq's pro-Iran hardline wing
+set_party_name = { ideology = vanguard_socialism long_name = "Harakat Hoquq" name = "HOQUQ" } # Kata'ib Hezbollah's direct political wing
+set_party_name = { ideology = revolutionary_socialism long_name = "Al-Asas Iraqi Coalition" name = "ASAS" } # Shia Coordination Framework left-populist militia allies
+set_party_name = { ideology = progressive long_name = "Kurdistan Workers' Party Allies" name = "PKK_A" }
+set_party_name = { ideology = centrist long_name = "Patriotic Union of Kurdistan" name = "PUK" } # Center-left/Big Tent Kurdish party
+set_party_name = { ideology = conservative long_name = "Kurdistan Democratic Party" name = "KDP" } # Traditional/Conservative Kurdish ruling faction
+set_party_name = { ideology = reactionary long_name = "Taqaddum Movement" name = "TAQADDUM" } # Sunni regionalist/traditionalist bloc
+set_party_name = { ideology = authoritarianism long_name = "Reconstruction and Development Coalition" name = "RDC" } # Sudani's technocratic-state apparatus
+set_party_name = { ideology = autocracy long_name = "State of Law Coalition" name = "SLC" } # Maliki's centralized, autocratic network
+set_party_name = { ideology = absolutism long_name = "Supreme Islamic Iraqi Council" name = "SIIC" } # Traditional Islamist theocratic establishment
+set_party_name = { ideology = ultranationalism long_name = "Badr Organization" name = "BADR" } # Armed paramilitary/militia movement acting as a state within a state
+set_party_name = { ideology = fundamentalism long_name = "Kata'ib Sayyid al-Shuhada" name = "KSS" } # Radical militant theological front
+
+# 2. COUNTRY LEADERS CONFIGURATION
+create_country_leader = { name = "Adnan Fihan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+create_country_leader = { name = "Hassan Muanes" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Muhsin Al-Mandalawi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = syndicalism }
+create_country_leader = { name = "Shaswar Abdulwahid" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "Abdul Latif Rashid" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_rashid.dds" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Masoud Barzani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Mohamed Al-Halbousi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Mohammed Shia' al-Sudani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy } # Ruling as prime minister on Jan 1st via state administration
+create_country_leader = { name = "Nouri al-Maliki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = personal_dictatorship } # Autocratic strongman maneuvering to retake the premier seat
+create_country_leader = { name = "Humam Hamoudi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = absolute_monarchy } # Theocratic absolute Islamist framework leader
+create_country_leader = { name = "Hadi al-Amiri" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist } # Paramilitary warlord 
+create_country_leader = { name = "Abu Ala al-Walai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism } # Militant religious fundamentalist leader
+
+# 3. INITIAL POLITICS
+set_politics = {
+	ruling_party = centrist
+	last_election = "2025.11.11"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+# 4. STARTING IDEOLOGY POPULARITY
+set_popularities = {
+	totalitarian_communism = 8   # Al-Sadiqoun Bloc's massive 27-seat breakout
+	vanguard_socialism = 2       # Hoquq Movement seats
+	revolutionary_socialism = 3  # Asas Coalition seats
+	progressive = 2
+	centrist = 18                 # PUK baseline support
+	conservative = 10            # KDP traditional stronghold strength
+	reactionary = 11             # Taqaddum's large Sunni turnout share
+	authoritarianism = 5        # Sudani's top-performing coalition share
+	autocracy = 13               # Maliki's State of Law voter machine
+	absolutism = 4               # Islamist traditionalist baseline
+	ultranationalism = 15        # Massive paramilitary Badr presence and regional armed wings
+	fundamentalism = 9           # Radical combat groups and clerical militia blocks
+}
+
+}

@@ -1,0 +1,281 @@
+﻿capital = 14
+
+#oob = ""
+
+set_research_slots = 3
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	gw_artillery = 1
+	interwar_antiair = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	basic_train = 1
+}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		naval_bomber1 = 1
+		cv_early_fighter = 1
+		cv_naval_bomber1 = 1
+		early_bomber = 1
+		tactical_bomber1 = 1
+		CAS1 = 1
+		
+	}
+}
+
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+		improved_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		improved_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		basic_destroyer = 1
+		early_light_cruiser = 1
+		basic_light_cruiser = 1
+		early_heavy_cruiser = 1
+		basic_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		basic_battlecruiser = 1
+		early_carrier = 1
+		transport = 1
+	}
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		submarine_mine_laying = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		basic_ship_hull_heavy = 1
+		early_ship_hull_carrier = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		#basic_medium_battery = 1
+		basic_torpedo = 1
+		basic_depth_charges = 1
+		basic_heavy_armor_scheme = 1
+		mtg_transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "La Resistance"
+	}
+	set_technology = {
+		armored_car1 = 1
+	}
+}
+
+set_convoys = 20
+
+recruit_character = BRI_fascist_guy
+recruit_character = BRI_coi
+recruit_character = BRI_acr
+recruit_character = BRI_nccr
+recruit_character = BRI_ai2
+recruit_character = BRI_ncm
+recruit_character = BRI_acas
+recruit_character = BRI_aco2
+recruit_character = BRI_acd2
+recruit_character = BRI_pot
+recruit_character = BRI_stc
+recruit_character = BRI_aa2
+recruit_character = BRI_acgs
+recruit_character = BRI_nt
+recruit_character = BRI_communist_guy
+recruit_character = BRI_ar
+recruit_character = BRI_democratic_guy
+recruit_character = BRI_mt
+recruit_character = BRI_ncs
+recruit_character = BRI_awt
+
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+		interwar_artillery = 1
+		interwar_antitank = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+		support_weapons2 = 1
+
+		#doctrines
+		#Air
+		#force_rotation = 1
+		#fighter_baiting = 1
+		#low_echelon_support = 1
+		#dispersed_fighting = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+		basic_encryption = 1
+		basic_decryption = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		synth_oil_experiments = 1
+		fuel_refining2 = 1
+		construction1 = 1
+		construction2 = 1
+		construction3 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+		dispersed_industry3 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_operational_integrity
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+	if = {
+		limit = {
+			NOT = { has_dlc = "By Blood Alone" }
+		}
+		set_technology = {
+			fighter1 = 1
+			fighter2 = 1
+			heavy_fighter1 = 1
+			tactical_bomber2 = 1
+			strategic_bomber1 = 1
+			cv_fighter1 = 1
+			cv_CAS1 = 1
+		}
+	}
+	if = {
+		limit = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		set_technology = {
+			improved_light_tank = 1
+			basic_medium_tank = 1
+			basic_heavy_tank = 1
+		}
+	}
+	if = {
+		limit = { not = { has_dlc = "Man the Guns" } }
+		set_technology = {
+			basic_battleship = 1
+			basic_battlecruiser = 1
+		}
+	}
+	if = {
+		limit = { has_dlc = "Man the Guns" }
+		set_technology = {
+			improved_ship_hull_light = 1
+			improved_ship_hull_heavy = 1
+			basic_ship_hull_carrier = 1
+			improved_heavy_armor_scheme = 1
+			improved_light_battery = 1
+			basic_heavy_battery = 1
+			improved_ship_torpedo_launcher = 1
+		}
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Breton" name = "PCB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Emgann - Mouvement de la Gauche Indépendantiste" name = "Emgann" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Breizhistance" name = "Breizhistance" }
+set_party_name = { ideology = progressive long_name = "Union Democratique Bretonne" name = "UDB" }
+set_party_name = { ideology = centrist long_name = "Pour la Bretagne !" name = "PLB" }
+set_party_name = { ideology = conservative long_name = "Fédération Régionaliste de Bretagne" name = "FRB" }
+set_party_name = { ideology = reactionary long_name = "Rassemblement Breton" name = "RB" }
+set_party_name = { ideology = authoritarianism long_name = "Conseil de la Region Bretagne" name = "CRB" }
+set_party_name = { ideology = autocracy long_name = "Comité de Défense de l'Armorique" name = "CDA" }
+set_party_name = { ideology = absolutism long_name = "Ducal House of Brittany Restoration League" name = "Ducal" }
+set_party_name = { ideology = ultranationalism long_name = "Adsav ! Mouvement Nationaliste Breton" name = "Adsav" }
+set_party_name = { ideology = fundamentalism long_name = "Fraternité Sacerdotale Bretonne" name = "FSB" }
+
+create_country_leader = { name = "Loïg Chesnais-Girardin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Christian Troadec" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Gilles Pennelle" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Marc Le Fur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Gaël Roblin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Paul Molac" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Yannick Jadot Alliance" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Jean-Jacques Monnier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "General Eric de La Chesnais" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Prince Henri d'Orléans Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Frédéric Leuba" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Abbé Yves Le Rumeur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2021.6.27"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 40
+	centrist = 25
+	conservative = 18
+	reactionary = 12
+	ultranationalism = 5
+}

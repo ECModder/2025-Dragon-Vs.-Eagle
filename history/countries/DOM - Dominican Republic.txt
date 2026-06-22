@@ -1,0 +1,131 @@
+﻿capital = 319
+
+oob = "DOM_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	gw_artillery = 1
+	tech_trucks = 1
+}
+
+recruit_character = DOM_rafael_trujillo
+recruit_character = DOM_jacinto_gonzáles
+recruit_character = DOM_fernando_bayo
+recruit_character = DOM_horacio_cabral
+recruit_character = DOM_domingo_de_los_santos_ortiz
+recruit_character = DOM_jose_miguel_moncada
+recruit_character = DOM_humberto_rojas
+recruit_character = DOM_julio_ortega_frier
+recruit_character = DOM_frank_feliz_miranda
+recruit_character = DOM_diego_trabajo_ruiz
+recruit_character = DOM_honoracio_yuna_robles
+recruit_character = DOM_gerardo_espaillat
+recruit_character = DOM_jesus_da_costa_ruiz
+recruit_character = DOM_edgar_martinez
+recruit_character = DOM_anibal_vallejo_sosa
+recruit_character = DOM_manuel_pena_battle
+recruit_character = DOM_victor_vinas_roman
+recruit_character = DOM_elias_brache
+recruit_character = DOM_manuel_de_jesus_troncoso
+recruit_character = DOM_jacinto_bienvenido_peynado
+
+
+set_country_flag = monroe_doctrine
+set_war_support = 0.1
+set_convoys = 5
+
+1939.1.1 = {
+	
+	add_political_power = 1198
+	add_command_power = 100
+
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "DOM_1939"
+	set_technology = {
+		infantry_weapons1 = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista del Trabajo" name = "PCT" }
+set_party_name = { ideology = vanguard_socialism long_name = "Movimiento Popular Dominicano" name = "MPD" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Partido de la Liberación Dominicana - Izquierda" name = "PLD-I" }
+set_party_name = { ideology = progressive long_name = "Frente Amplio" name = "FA" }
+set_party_name = { ideology = centrist long_name = "Partido Revolucionario Moderno" name = "PRM" }
+set_party_name = { ideology = conservative long_name = "Partido de la Liberación Dominicana" name = "PLD" }
+set_party_name = { ideology = reactionary long_name = "Fuerza del Pueblo" name = "FP" }
+set_party_name = { ideology = authoritarianism long_name = "Partido Reformista Social Cristiano" name = "PRSC" }
+set_party_name = { ideology = autocracy long_name = "Junta Militar de San Isidro" name = "JMSI" }
+set_party_name = { ideology = absolutism long_name = "Movimiento Trujillista Nacional" name = "MTN" }
+set_party_name = { ideology = ultranationalism long_name = "Fuerza Nacional Progresista" name = "FNP" }
+set_party_name = { ideology = fundamentalism long_name = "Unión Demócrata Cristiana" name = "UDC" }
+
+create_country_leader = { name = "Luis Abinader" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2028.8.16" ideology = left_populism }
+create_country_leader = { name = "Leonel Fernández" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
+create_country_leader = { name = "Abel Martínez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Pelegrín Castillo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2024.5.19"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 1
+	revolutionary_socialism = 4
+	progressive = 6
+	centrist = 53
+	conservative = 13
+	reactionary = 18
+	authoritarianism = 2
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 3
+	fundamentalism = 0
+}
+
+1939.1.1 = {
+	recruit_character = DOM_jacinto_peynado
+	promote_character = DOM_jacinto_peynado
+	retire_character = DOM_rafael_trujillo
+}

@@ -1,0 +1,222 @@
+﻿capital = 302
+
+oob = "BOL_1936"
+every_core_state = {
+	ROOT = {
+		add_to_array = { cores_at_game_start = PREV }
+	}
+}
+IF = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "BOL_1936_air_bba"
+	ELSE = {
+		set_air_oob = "BOL_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+		}
+	}
+}
+
+IF = {
+	limit = {
+		has_dlc = "Trial of Allegiance"
+	}
+
+	add_timed_idea = {
+		idea = BOL_toll_of_the_chaco_war
+		days = 1400
+	}
+
+	add_ideas = BOL_era_of_national_regression
+
+	JUNO_set_shared_military_branch_defaults = yes
+}
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1		
+	tech_engineers = 1
+	gw_artillery = 1
+	tech_trucks = 1
+	fuel_silos = 1
+}
+
+IF = {
+	limit = {
+		has_dlc = "Trial of Allegiance"
+	}
+	set_politics = {
+		ruling_party = neutrality
+		last_election = "1934.11.11"
+		election_frequency = 72
+		elections_allowed = yes
+	}
+	set_popularities = {
+		neutrality = 54
+		democratic = 32
+		fascism = 14
+	}
+
+	recruit_character = BOL_jose_luis_tejada_sorzano
+	recruit_character = BOL_oscar_unzaga_de_la_vega
+	recruit_character = BOL_tomas_monje_gutierrez
+	recruit_character = BOL_gil_ibarra_juarez
+	recruit_character = BOL_gualberto_villarroel_lopez
+	recruit_character = BOL_jose_santos_quinteros
+	recruit_character = BOL_fabian_vaca_chavez
+	recruit_character = BOL_david_toro_ruilova
+	recruit_character = BOL_enrique_baldivieso_aparicio
+	recruit_character = BOL_julian_montellano_carrasco
+	recruit_character = BOL_alberto_ostria_gutierrez
+	recruit_character = BOL_enrique_finot
+	recruit_character = BOL_german_busch_beccera
+	recruit_character = BOL_Gustavo_Adolfo_Navarro
+	recruit_character = BOL_Carlos_Quintanilla
+	recruit_character = BOL_Carlos_Blanco_Galindo
+	recruit_character = BOL_Enrique_Penaranda
+	recruit_character = BOL_bernardino_bilbao_rioja
+	recruit_character = BOL_indigenous_council
+
+	ELSE = {
+		set_politics = {
+			ruling_party = neutrality
+			last_election = "1934.11.11"
+			election_frequency = 72
+			elections_allowed = yes
+		}
+
+		set_popularities = {
+			neutrality = 100
+		}
+
+		recruit_character = BOL_jose_luis_tejada_sorzano
+		recruit_character = BOL_oscar_unzaga_de_la_vega
+		recruit_character = BOL_jorge_blanco
+		recruit_character = BOL_severino_ruiztagle
+		recruit_character = BOL_eusebio_ayala
+		recruit_character = BOL_tomas_monje_gutierrez
+		recruit_character = BOL_gil_ibarra_juarez
+		recruit_character = BOL_gualberto_villarroel_lopez
+		recruit_character = BOL_jose_santos_quinteros
+		recruit_character = BOL_fabian_vaca_chavez
+		recruit_character = BOL_david_toro_ruilova
+		recruit_character = BOL_enrique_baldivieso_aparicio
+		recruit_character = BOL_roberto_hinojosa
+		recruit_character = BOL_carlos_altamirano
+		recruit_character = BOL_julian_montellano_carrasco
+		recruit_character = BOL_hector_bilbao_roja
+		recruit_character = BOL_alberto_ostria_gutierrez
+		recruit_character = BOL_enrique_finot
+		recruit_character = BOL_german_busch_beccera
+		recruit_character = BOL_jose_maria_gutierrez
+	}
+}
+
+
+set_country_flag = monroe_doctrine
+
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = construction_effort_2
+	complete_national_focus = production_effort_2
+	complete_national_focus = infrastructure_effort
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	oob = "BOL_1939"
+
+	IF = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "BOL_1939_air_bba"
+		ELSE = {
+			set_air_oob = "BOL_1939_air_legacy"
+		}
+	}
+
+	set_technology = {
+
+		interwar_artillery = 1
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+		computing_machine = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_refining = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+	# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista de Bolivia" name = "PCB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Obrero Revolucionario" name = "POR" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Movimiento al Socialismo" name = "MAS" }
+set_party_name = { ideology = progressive long_name = "Frente Para la Victoria" name = "FPV" }
+set_party_name = { ideology = centrist long_name = "Comunidad Ciudadana" name = "CC" }
+set_party_name = { ideology = conservative long_name = "Creemos" name = "Creemos" }
+set_party_name = { ideology = reactionary long_name = "Partido Demócrata Cristiano" name = "PDC" }
+set_party_name = { ideology = authoritarianism long_name = "Directorio Civil de Emergencia" name = "DCE" }
+set_party_name = { ideology = autocracy long_name = "Fuerzas Armadas de Bolivia Directorate" name = "FAB" }
+set_party_name = { ideology = absolutism long_name = "Consejo Supremo del Qullasuyu" name = "Qullasuyu" }
+set_party_name = { ideology = ultranationalism long_name = "Falange Socialista Boliviana" name = "FSB" }
+set_party_name = { ideology = fundamentalism long_name = "Unión Juvenil Cruceñista Wing" name = "UJC" }
+
+create_country_leader = { name = "Luis Arce" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Carlos Mesa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Luis Fernando Camacho" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Evo Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Chi Hyun Chung" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Ignacio Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Miguel Lora" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Jeanine Anez Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "General Gerardo Zabala" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Mallku Traditional Regency" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Johnny Fernandez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Romulo Calvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = revolutionary_socialism
+	last_election = "2020.10.18"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	revolutionary_socialism = 55
+	centrist = 29
+	conservative = 14
+	reactionary = 2
+}

@@ -1,0 +1,87 @@
+﻿capital = 690
+
+#oob = ""
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 5
+
+1939.1.1 = {
+	#generic focuses
+	complete_national_focus = army_effort
+	complete_national_focus = equipment_effort
+	complete_national_focus = motorization_effort
+	complete_national_focus = aviation_effort
+	complete_national_focus = naval_effort
+	complete_national_focus = flexible_navy
+	complete_national_focus = industrial_effort
+	complete_national_focus = construction_effort
+	complete_national_focus = production_effort
+	
+	set_technology = {
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+	}
+
+set_grand_doctrine = grand_battleplan
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "Vanguard Nationalist Socialist Party" name = "VNSP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bahamas Democratic Movement (Left)" name = "BDM-Left" }
+set_party_name = { ideology = progressive long_name = "Progressive Liberal Party" name = "PLP" }
+set_party_name = { ideology = centrist long_name = "Democratic National Alliance" name = "DNA" }
+set_party_name = { ideology = conservative long_name = "Free National Movement" name = "FNM" }
+set_party_name = { ideology = reactionary long_name = "Coalition of Independents" name = "COI" }
+set_party_name = { ideology = authoritarianism long_name = "Bahamas National Alliance Coalition" name = "BNAC" }
+set_party_name = { ideology = autocracy long_name = "Royal Bahamas Defence Force Command" name = "RBDF" }
+set_party_name = { ideology = absolutism long_name = "Monarchist League of the Bahamas" name = "ML" }
+set_party_name = { ideology = ultranationalism long_name = "Bahamian Nationalist Front" name = "BNF" }
+set_party_name = { ideology = fundamentalism long_name = "Bahamas Christian Council Political Wing" name = "BCC" }
+
+create_country_leader = { name = "Philip Davis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Michael Pintard" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Lincoln Bain" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Arinthia Komolafe" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "John McCartney" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Cassius Stuart" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Lionel Carey" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Hubert Minnis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Commodore Raymond King" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "King Charles III" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Rodney Moncur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Bishop Delton Fernander" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2021.9.16"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 53
+	conservative = 36
+	reactionary = 7
+	centrist = 4
+}

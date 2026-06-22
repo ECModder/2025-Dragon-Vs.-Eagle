@@ -1,0 +1,128 @@
+﻿capital = 830 #Bukhara
+
+#oob = "BUK_1936"
+
+set_research_slots = 2
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	infantry_weapons1 = 1
+	tech_recon = 1
+	tech_support = 1		
+	tech_engineers = 1
+	tech_military_police = 1
+	tech_mountaineers = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	paratroopers = 1
+	gw_artillery = 1
+}
+
+set_grand_doctrine = mass_assault
+set_grand_doctrine = new_fleet_in_being
+
+if = {
+	limit = {
+		NOT = { has_dlc = "By Blood Alone" }
+	}
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		early_bomber = 1
+		strategic_bomber1 = 1
+		naval_bomber1 = 1
+	}
+}
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_technology = {
+		gwtank = 1
+		basic_light_tank = 1
+	}
+}
+if = {
+	limit = {
+		
+		has_dlc = "No Step Back"
+		
+	}
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+	}
+}
+if = {
+	limit = {
+		not = { has_dlc = "Man the Guns" }
+	}
+	set_technology = {
+		early_submarine = 1
+		basic_submarine = 1
+		early_destroyer = 1
+		early_light_cruiser = 1
+		early_heavy_cruiser = 1
+		early_battleship = 1
+		early_battlecruiser = 1
+		transport = 1
+	}
+}
+if = {
+	limit = {
+		has_dlc = "Man the Guns"
+	}
+	set_technology = {
+		early_ship_hull_submarine = 1
+		basic_ship_hull_submarine = 1
+		early_ship_hull_light = 1
+		early_ship_hull_cruiser = 1
+		early_ship_hull_heavy = 1
+		mtg_transport = 1
+		basic_battery = 1
+		basic_torpedo = 1
+	}
+}
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_communism long_name = "Bukharan Communist Party" name = "BCP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Young Bukharans Left Wing" name = "YBLW" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bukharan Revolutionary Workers" name = "BRW" }
+set_party_name = { ideology = progressive long_name = "Young Bukharans Reform Movement" name = "YBRM" }
+set_party_name = { ideology = centrist long_name = "Erk Democratic Party" name = "Erk" }
+set_party_name = { ideology = conservative long_name = "Milliy Tiklanish Bukhara" name = "MT" }
+set_party_name = { ideology = reactionary long_name = "Uzbekistan Liberal Democratic Branch" name = "O'zLiDeP" }
+set_party_name = { ideology = authoritarianism long_name = "State Administrative Soviet" name = "SAS" }
+set_party_name = { ideology = autocracy long_name = "National Security Guard command" name = "NSG" }
+set_party_name = { ideology = absolutism long_name = "Emirate of Bukhara Sovereign House" name = "Emirate" }
+set_party_name = { ideology = ultranationalism long_name = "Jadid Nationalist League" name = "Jadid" }
+set_party_name = { ideology = fundamentalism long_name = "Hizb ut-Tahrir Bukhara Wing" name = "HUT" }
+
+create_country_leader = { name = "Shavkat Mirziyoyev Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Muhammad Salih" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Alisher Qodirov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Fayzulla Khodzhayev Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Abdurauf Fitrat Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Ulugbek Inoyatov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
+create_country_leader = { name = "Kakhramon Shakirov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Otabek Umarov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Lieutenant General Bakhodir Kurbanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Prince Sayyid Mir Mansur Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "Sadriddin Ayni Coalition" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Abdulaziz Mansur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2021.10.24"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 70
+	conservative = 15
+	centrist = 8
+	fundamentalism = 7
+}

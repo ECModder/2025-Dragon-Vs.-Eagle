@@ -1,0 +1,154 @@
+﻿capital = 301
+
+oob = "PAR_1936"
+every_core_state = {
+	ROOT = {
+		add_to_array = { cores_at_game_start = PREV }
+	}
+}
+IF = {
+	limit = { has_dlc = "By Blood Alone" }
+		set_air_oob = "PAR_1936_air_bba"
+	ELSE = {
+		set_air_oob = "PAR_1936_air_legacy"
+		set_technology = {
+			early_fighter = 1
+
+		}
+	}
+}
+
+set_politics = {
+	ruling_party = neutrality
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	democratic = 0
+	fascism = 40
+	neutrality = 50
+	communism = 10
+}
+
+set_research_slots = 2
+# TODO JA, add the correct dlc-requirments
+IF = {
+	limit = {
+		has_dlc = "Trial of Allegiance"
+	}
+	add_timed_idea = {
+		idea = BOL_toll_of_the_chaco_war
+		days = 1400
+	}
+	JUNO_set_shared_military_branch_defaults = yes
+}
+
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_support = 1
+	tech_trucks = 1
+	gw_artillery = 1
+}
+
+set_stability = 0.26
+
+
+set_country_flag = monroe_doctrine
+
+
+1939.1.1 = {
+
+	add_political_power = 1198
+	add_command_power = 100
+	if = {
+		limit = { has_dlc = "Trial of Allegiance" }
+		complete_national_focus = PAR_fedrerista_land_reforms #35
+		complete_national_focus = PAR_ban_vouchers #35
+		complete_national_focus = PAR_allow_unions_to_strike #35
+		complete_national_focus = PAR_allow_women_workers #70
+		complete_national_focus = PAR_central_bank_of_paraguay #70
+		complete_national_focus = PAR_a_great_charter #70
+		complete_national_focus = PAR_invite_japanese_settlers #35
+		complete_national_focus = PAR_military_pensions #35
+		complete_national_focus = PAR_chaco_war_decoration #35
+		complete_national_focus = GUAY_laissez_faire #70
+		complete_national_focus = GUAY_land_reforms #35
+		complete_national_focus = GUAY_workers_rights #70
+		complete_national_focus = PAR_urbanization #70
+		complete_national_focus = PAR_order_italian_planes #70
+		complete_national_focus = GUAY_agricultural_colonization #70
+		complete_national_focus = GUAY_beef_and_hide_industry #70
+		complete_national_focus = GUAY_wool_makers #35
+		complete_national_focus = GUAY_heavy_industry #70
+		complete_national_focus = GUAY_the_tag_economic_miracle #70
+		complete_national_focus = GUAY_exploit_mineral_wealth #35
+	}
+	if = {
+		limit = { NOT = { has_dlc = "Trial of Allegiance" }}
+		#generic focuses
+		complete_national_focus = army_effort
+		complete_national_focus = equipment_effort
+		complete_national_focus = motorization_effort
+		complete_national_focus = aviation_effort
+		complete_national_focus = construction_effort_2
+		complete_national_focus = production_effort_2
+		complete_national_focus = infrastructure_effort
+		complete_national_focus = industrial_effort
+		complete_national_focus = construction_effort
+		complete_national_focus = production_effort
+	}
+
+	
+	oob = "PAR_1939"
+
+	IF = {
+		limit = { has_dlc = "By Blood Alone" }
+			set_air_oob = "PAR_1939_air_bba"
+		ELSE = {
+			set_air_oob = "PAR_1939_air_legacy"
+			set_technology = {
+				CAS1 = 1
+			}
+		}
+	}
+
+	set_technology = {
+
+		interwar_artillery = 1
+		interwar_antiair = 1
+		infantry_weapons1 = 1
+		infantry_weapons2 = 1
+		support_weapons = 1
+
+		#doctrines
+		#air_superiority = 1
+
+		#electronics
+		electronic_mechanical_engineering = 1
+		radio = 1
+		mechanical_computing = 1
+
+		#industry
+		basic_machine_tools = 1
+		improved_machine_tools = 1
+		advanced_machine_tools = 1
+		fuel_silos = 1
+		construction1 = 1
+		construction2 = 1
+		dispersed_industry = 1
+		dispersed_industry2 = 1
+
+	}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_strategic_destruction
+
+	complete_special_project = {
+		project = sp:sp_air_radar
+	}
+
+	
+}
