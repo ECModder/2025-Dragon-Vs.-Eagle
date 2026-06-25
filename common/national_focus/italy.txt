@@ -275,7 +275,7 @@ focus_tree = {
 		mutually_exclusive = { focus = ITA_democratic_spectrum  }
 		completion_reward = {
 			set_politics = {
-				ruling_party = fascism
+				ruling_party = ultranationalism
 			        elections_allowed = no
 			        last_election = 2025.1.1
 			}
@@ -1009,9 +1009,9 @@ add_stability = 5
 		mutually_exclusive = { focus = ITA_potere_al_popolo  }
 		completion_reward = {
 			set_party_name = {
-			    ideology = Communist
+			    ideology = totalitarian_communism
 			    name = PdRC
-			    long_name = Partito della Rifondazione Comunista
+                long_name = "Partito della Rifondazione Comunista"
 			}
 			
 			
@@ -1067,7 +1067,7 @@ add_stability = 5
 
 	#Hold conferences
 	focus = {
-		id = ITA_hold_conferences
+		id = ITA_hold_conferences_progressive
 		icon = GFX_ITA_hold_conferences-903738
 		x = 30
 		y = 4
@@ -1075,7 +1075,7 @@ add_stability = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_political_debates  }
+		prerequisite = { focus = ITA_political_debates_progressive  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -1166,7 +1166,7 @@ add_research_slot = 2
 			add_war_support = 0.1
 			
 			add_popularity = {
-			    ideology = fascism
+			    ideology = ultranationalism
 			    popularity = 0.2
 			}
 			
@@ -1200,8 +1200,7 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_the_dvx_is_back  }
 		completion_reward = {
-			political_power_daily > 2
-			
+				
 			
 		}
 	}
@@ -1309,10 +1308,9 @@ add_research_slot = 2
 		prerequisite = { focus = ITA_hardline_communist  }
 		completion_reward = {
 			set_party_name = {
-			    ideology = Communist
+			    ideology = totalitarian_communism
 			    name = PP
-			    long_name = Potere al Popolo
-			+
+                long_name = "Potere al Popolo"
 			}
 			
 		}
@@ -1332,9 +1330,9 @@ add_research_slot = 2
 		mutually_exclusive = { focus = ITA_potere_al_popolo  }
 		completion_reward = {
 			set_party_name = {
-			    ideology = Communist
-			    name = CR-OSA
-			    long_name = Cambiare Rotta - OSA
+			    ideology = totalitarian_communism
+                name = "CR-OSA"
+                long_name = "Cambiare Rotta - OSA"
 			}
 			
 			
@@ -1361,9 +1359,9 @@ add_research_slot = 2
 			add_political_power = -100
 			
 			set_party_name = {
-			    ideology = Communist
+			    ideology = totalitarian_communism
 			    name = PCU
-			    long_name = Partito Comunista Unitario
+                long_name = "Partito Comunista Unitario"
 			}
 			
 			
@@ -1412,7 +1410,7 @@ add_research_slot = 2
 			
 			
 			add_popularity = {
-			    ideology = Communism
+			    ideology = totalitarian_communism
 			    popularity = -10
 			}
 			
@@ -1738,7 +1736,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = HUN
-			    type = Puppet
+			    type = puppet
 			}
 			declare_war_on = {
 			    target = AUS
@@ -1764,7 +1762,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = ROM
-			    type = Puppet
+			    type = puppet
 			}
 			
 			
@@ -1812,7 +1810,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = GER
-			    type = Puppet
+			    type = puppet
 			}
 			
 			
@@ -1862,7 +1860,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = CZE
-			    type = Puppet
+			    type = puppet
 			}
 			
 			
@@ -2246,8 +2244,7 @@ add_research_slot = 2
 		completion_reward = {
 			create_intelligence_agency = yes
 			
-			agency_upgrade_number 10
-			
+				
 		}
 	}
 
@@ -2307,7 +2304,8 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_radicalize_the_army  }
 		completion_reward = {
-			add_popularity = {   tag=RUS,JAP,PRC,ENG,USA,CSA,IWW,BRA,VEN,CUB,ARG,LBA,ALG,SAF,CAN,MEX,CEN,VIC,IND,INC,CHI,AST,PRU,COL,ETH    ideology = vanguard_socialist
+			add_popularity = {
+			    ideology = vanguard_socialism
 			    popularity = 0.10
 			}
 			
@@ -2367,11 +2365,41 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_a_council_in_every_city  }
 		completion_reward = {
-			add_popularity = {   tag=RUS,JAP,PRC,ENG,USA,CSA,IWW,BRA,VEN,CUB,ARG,LBA,ALG,SAF,CAN,MEX,CEN,VIC,IND,INC,CHI,AST,PRU,COL,ETH    ideology = vanguard_socialism
-			    popularity = 0.10
+			every_country = {
+				limit = {
+					OR = {
+						tag = RUS
+						tag = JAP
+						tag = PRC
+						tag = ENG
+						tag = USA
+						tag = CSA
+						tag = IWW
+						tag = BRA
+						tag = VEN
+						tag = CUB
+						tag = ARG
+						tag = LBA
+						tag = ALG
+						tag = SAF
+						tag = CAN
+						tag = MEX
+						tag = CEN
+						tag = VIC
+						tag = IND
+						tag = INC
+						tag = CHI
+						tag = AST
+						tag = PRU
+						tag = COL
+						tag = ETH
+					}
+				}
+				add_popularity = {
+				    ideology = vanguard_socialism
+				    popularity = 0.10
+				}
 			}
-			
-			
 		}
 	}
 
@@ -2706,7 +2734,7 @@ add_research_slot = 2
 
 	#A New Red Army
 	focus = {
-		id = ITA_a_new_red_army
+		id = ITA_a_new_red_army_2
 		icon = GFX_ITA_a_new_red_army-646246
 		x = 15
 		y = 11
@@ -2928,7 +2956,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_hold_conferences  focus = ITA_hold_conferences  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
+		prerequisite = { focus = ITA_hold_conferences_centrist  focus = ITA_hold_conferences_progressive  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
 		available = {
 			has_political_power > 100
 			    date > 2027.2.1
@@ -2943,7 +2971,7 @@ add_research_slot = 2
 
 	#Propaganda in the Neighborhoods
 	focus = {
-		id = ITA_propaganda_in_the_neighborhoods
+		id = ITA_propaganda_in_the_neighborhoods_centrist
 		icon = GFX_ITA_propaganda_in_the_neighborhoods-903727
 		x = 30
 		y = 2
@@ -2952,7 +2980,7 @@ add_research_slot = 2
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = ITA_the_left_side  }
-		mutually_exclusive = { focus = ITA_propaganda_in_the_neighborhoods  }
+		mutually_exclusive = { focus = ITA_propaganda_in_the_neighborhoods_progressive  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -2966,7 +2994,7 @@ add_research_slot = 2
 
 	#Propaganda in the Neighborhoods
 	focus = {
-		id = ITA_propaganda_in_the_neighborhoods
+		id = ITA_propaganda_in_the_neighborhoods_progressive
 		icon = GFX_ITA_propaganda_in_the_neighborhoods-903792
 		x = 28
 		y = 2
@@ -2988,7 +3016,7 @@ add_research_slot = 2
 
 	#political debates
 	focus = {
-		id = ITA_political_debates
+		id = ITA_political_debates_progressive
 		icon = GFX_ITA_political_debates-903730
 		x = 28
 		y = 3
@@ -2996,7 +3024,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods_centrist  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = progressive
@@ -3009,7 +3037,7 @@ add_research_slot = 2
 
 	#political debates
 	focus = {
-		id = ITA_political_debates
+		id = ITA_political_debates_centrist
 		icon = GFX_ITA_political_debates-903732
 		x = 30
 		y = 3
@@ -3017,7 +3045,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods_centrist  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -3031,7 +3059,7 @@ add_research_slot = 2
 
 	#Hold conferences
 	focus = {
-		id = ITA_hold_conferences
+		id = ITA_hold_conferences_centrist
 		icon = GFX_ITA_hold_conferences-903736
 		x = 28
 		y = 4
@@ -3039,7 +3067,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_political_debates  }
+		prerequisite = { focus = ITA_political_debates_centrist  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = progressive
@@ -3219,7 +3247,7 @@ add_research_slot = 2
 
 	#Secure the Borders
 	focus = {
-		id = ITA_secure_the_borders
+		id = ITA_secure_the_borders_connections
 		icon = GFX_ITA_secure_the_borders-901002
 		x = 45
 		y = 9
@@ -3229,14 +3257,8 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_connections_in_the_army  }
 		completion_reward = {
-			{
 			add_war_support = 0.05
-			
 			add_stability = 0.03
-			
-			
-			
-			}
 		}
 	}
 
@@ -3256,19 +3278,6 @@ add_research_slot = 2
 			
 			
 		}
-	}
-
-	#Italian Manufacturing
-	focus = {
-		id = ITA_italian_manufacturing
-		icon = GFX_ITA_italian_manufacturing-903916
-		x = 43
-		y = 10
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = ITA_popular_appeal  }
 	}
 
 	#Italian Manufacturing
@@ -3361,7 +3370,7 @@ add_research_slot = 2
 
 	#UE NATO Support
 	focus = {
-		id = ITA_ue_nato_support
+		id = ITA_ue_nato_support_2
 		icon = GFX_ITA_ue_nato_support-903921
 		x = 41
 		y = 10
