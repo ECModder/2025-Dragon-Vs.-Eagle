@@ -36,7 +36,7 @@ ideologies = {
             # GFX: GFX_ideology_transhumanist_icon
             transhumanist = {}
 
-            # GFX: GFX_ideology_ transhumanistanarchoprimitivism_icon
+            # GFX: GFX_ideology_transhumanistanarchoprimitivism_icon
             transhumanistanarchoprimitivism = {}
 
             # GFX: GFX_ideology_market_socialism_icon
@@ -57,17 +57,24 @@ ideologies = {
         color = { 178 16 16 }
 
         war_impact_on_world_tension = 0.50
-        base_acceptance = -40
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_declare_war_on_same_ideology = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            totalitarian_communism = 0.10
-            revolutionary_socialism = 0.05
+        modifiers = {
+            generate_wargoal_tension = 0.4
+            drift_defence_factor = 0.5
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.10
         }
 
         ai_ideology_wanted_units_factor = 1.10
@@ -98,18 +105,23 @@ ideologies = {
         color = { 210 30 30 }
 
         war_impact_on_world_tension = 0.40
-        base_acceptance = -30
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            revolutionary_socialism = 0.10
-            totalitarian_communism = 0.03
-            progressive = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.35
+            drift_defence_factor = 0.4
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.05
         }
 
         ai_ideology_wanted_units_factor = 1.05
@@ -121,7 +133,6 @@ ideologies = {
     # ============================================================
     revolutionary_socialism = {
         types = {
-
             # GFX: GFX_ideology_left_baathism_icon
             left_baathism = {}
 
@@ -140,18 +151,23 @@ ideologies = {
         color = { 210 30 30 }
 
         war_impact_on_world_tension = 0.40
-        base_acceptance = -30
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            revolutionary_socialism = 0.10
-            totalitarian_communism = 0.03
-            progressive = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.35
+            drift_defence_factor = 0.4
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.05
         }
 
         ai_ideology_wanted_units_factor = 1.05
@@ -193,18 +209,25 @@ ideologies = {
         color = { 220 60 100 }
 
         war_impact_on_world_tension = 0.20
-        base_acceptance = -10
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_guarantee_other_ideologies = yes
+            can_lower_tension = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = yes
         can_host_government_in_exile = yes
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            progressive = 0.10
-            centrist = 0.03
-            revolutionary_socialism = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.25
+            drift_defence_factor = 0.2
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.10
         }
 
         ai_ideology_wanted_units_factor = 0.95
@@ -237,18 +260,25 @@ ideologies = {
         color = { 255 220 0 }
 
         war_impact_on_world_tension = 0.15
-        base_acceptance = 0
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_guarantee_other_ideologies = yes
+            can_lower_tension = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = yes
         can_host_government_in_exile = yes
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            centrist = 0.10
-            progressive = 0.03
-            conservative = 0.03
+        modifiers = {
+            generate_wargoal_tension = 0.15
+            drift_defence_factor = 0.1
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.15
         }
 
         ai_ideology_wanted_units_factor = 0.90
@@ -290,18 +320,25 @@ ideologies = {
         color = { 30 80 180 }
 
         war_impact_on_world_tension = 0.20
-        base_acceptance = -5
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_guarantee_other_ideologies = yes
+            can_lower_tension = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = yes
         can_host_government_in_exile = yes
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            conservative = 0.10
-            centrist = 0.03
-            reactionary = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.20
+            drift_defence_factor = 0.15
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = 0.05
         }
 
         ai_ideology_wanted_units_factor = 0.95
@@ -343,18 +380,23 @@ ideologies = {
         color = { 20 40 120 }
 
         war_impact_on_world_tension = 0.30
-        base_acceptance = -15
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = yes
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            reactionary = 0.10
-            conservative = 0.04
-            authoritarianism = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.30
+            drift_defence_factor = 0.25
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.05
         }
 
         ai_ideology_wanted_units_factor = 1.00
@@ -396,18 +438,24 @@ ideologies = {
         color = { 100 30 140 }
 
         war_impact_on_world_tension = 0.40
-        base_acceptance = -25
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_declare_war_on_same_ideology = yes
+        }
 
         can_be_boosted = yes
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            authoritarianism = 0.10
-            autocracy = 0.05
-            reactionary = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.35
+            drift_defence_factor = 0.4
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.05
         }
 
         ai_ideology_wanted_units_factor = 1.05
@@ -455,18 +503,24 @@ ideologies = {
         color = { 70 20 100 }
 
         war_impact_on_world_tension = 0.45
-        base_acceptance = -35
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_declare_war_on_same_ideology = yes
+        }
 
         can_be_boosted = no
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            autocracy = 0.10
-            authoritarianism = 0.03
-            absolutism = 0.03
+        modifiers = {
+            generate_wargoal_tension = 0.40
+            drift_defence_factor = 0.5
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.10
         }
 
         ai_ideology_wanted_units_factor = 1.10
@@ -508,18 +562,23 @@ ideologies = {
         color = { 200 170 20 }
 
         war_impact_on_world_tension = 0.35
-        base_acceptance = -30
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+        }
 
         can_be_boosted = no
-        can_collaborate = no
         can_host_government_in_exile = yes
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            absolutism = 0.10
-            autocracy = 0.04
-            reactionary = 0.03
+        modifiers = {
+            generate_wargoal_tension = 0.35
+            drift_defence_factor = 0.45
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.05
         }
 
         ai_ideology_wanted_units_factor = 1.00
@@ -555,7 +614,7 @@ ideologies = {
             # GFX: GFX_ideology_national_syndicalism_icon
             national_syndicalism = {}
 
-            # GFX: GFX_ideology_ultranationalism_icon  (subtype)
+            # GFX: GFX_ideology_ultranationalism_icon (subtype)
             ultranationalism_party = {}
         }
 
@@ -567,24 +626,33 @@ ideologies = {
         color = { 40 40 40 }
 
         war_impact_on_world_tension = 0.60
-        base_acceptance = -50
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_declare_war_on_same_ideology = yes
+            can_only_justify_war_on_threat_country = no
+        }
 
         can_be_boosted = yes
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            ultranationalism = 0.10
-            autocracy = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.25
+            drift_defence_factor = 0.6
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.15
         }
 
         ai_ideology_wanted_units_factor = 1.20
     }
-# ============================================================
-    #    FUNDAMENTALISM
-    #    GFX base: GFX_ideology_fundamentalism_icon
+
+    # ============================================================
+    #   FUNDAMENTALISM
+    #   GFX base: GFX_ideology_fundamentalism_icon
     # ============================================================
     fundamentalism = {
         types = {
@@ -624,18 +692,24 @@ ideologies = {
         color = { 80 55 20 }
 
         war_impact_on_world_tension = 0.55
-        base_acceptance = -45
+
+        rules = {
+            can_force_government = yes
+            can_send_volunteers = yes
+            can_puppet = yes
+            can_declare_war_on_same_ideology = yes
+        }
 
         can_be_boosted = no
-        can_collaborate = no
         can_host_government_in_exile = no
-        can_have_operatives = yes
-        can_form_government = yes
 
-        faction_influence = {
-            fundamentalism = 0.10
-            ultranationalism = 0.03
-            absolutism = 0.02
+        modifiers = {
+            generate_wargoal_tension = 0.35
+            drift_defence_factor = 0.55
+        }
+
+        faction_modifiers = {
+            faction_trade_opinion_factor = -0.10
         }
 
         ai_ideology_wanted_units_factor = 1.15
