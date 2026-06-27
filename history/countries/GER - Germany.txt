@@ -7,13 +7,13 @@ if = {
 			has_dlc = "No Step Back"
 		}
 	}
-	set_oob = "GER_1936"
+	set_oob = "blank_placeholder"
 }
 if = {
 	limit = {
 		has_dlc = "No Step Back"
 	}
-	set_oob = "GER_1936_nsb"
+	set_oob = "blank_placeholder"
 }
 
 add_breakthrough_progress = {
@@ -439,12 +439,6 @@ set_war_support = 0.3
 # SETUP THE 1939 SCENARIO
 1939.1.1 = {
 
-	# Setting up the required world tension
-	add_named_threat = { 
-		threat = 40 
-		name = 1939_bookmark_threat 
-	}
-
 	# Starting Stats of various kinds for the 39 scenario
 	set_war_support = 0.7
 	add_political_power = 1000
@@ -479,19 +473,8 @@ set_war_support = 0.3
 	}
 	
 	
-	# Slovakia is set up as a subject manually
-	set_autonomy = {
-		target = SLO
-		autonomous_state = autonomy_puppet
-	}
 	give_military_access = SLO
 
-	# So that the war can fire immediately 
-	create_wargoal = {
-		type = take_state_focus
-		target = POL
-		generator = { 72 88 90 87 86 762 807 85 } # Zaolzie Krakow Kielce Lodz Poznan Katowice Gdynia Danzig
-	}
 
 	# Setup Trade with the Soviets
 	create_import = {
