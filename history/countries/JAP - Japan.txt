@@ -325,111 +325,6 @@ IF = {
 }
 
 
-
-#######################################
-### Setup Resistance and Compliance ###
-#######################################
-
-# East Hebei
-609 = {
-	start_resistance = yes
-	set_compliance = 15
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Dalian
-745 = {
-	start_resistance = yes
-	set_compliance = 20
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Taiwan
-524 = {
-	start_resistance = yes
-	set_compliance = 20
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Palau
-647 = {
-	start_resistance = yes
-	set_compliance = 25
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
-
-# Caroline Islands
-684 = {
-	start_resistance = yes
-	set_compliance = 25
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
-
-# Marshall Islands
-633 = {
-	start_resistance = yes
-	set_compliance = 25
-	set_resistance = 0
-	set_garrison_strength = 1.0
-}
-
-# Korea 
-
-# Heian-Koukai
-527 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Kankyou
-1028 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Keiki 
-525 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Kougen 
-1029 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Keishou 
-1030 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-# Chuusei-Zenra 
-1031 = {
-	start_resistance = yes
-	set_compliance = 5
-	set_resistance = 5
-	set_garrison_strength = 1.0
-}
-
-
-
 ###########################
 ### Starting Technology ###
 ###########################
@@ -493,7 +388,7 @@ IF = {
 		basic_light_tank = 1
 		improved_light_tank = 1
 	}
-	set_oob = "JAP_1936"
+	set_oob = "blank_placeholder"
 }
 IF = {
 	limit = {
@@ -504,7 +399,7 @@ IF = {
 		basic_light_tank_chassis = 1
 		improved_light_tank_chassis = 1
 	}
-	set_oob = "JAP_1936_nsb"
+	set_oob = "blank_placeholder"
 }
 
 IF = {
@@ -625,27 +520,28 @@ IF = {
 set_convoys = 400
 
 
-### SETUP PUPPETS ###
-
-set_autonomy = {
-	target = MAN
-	autonomous_state = autonomy_wtt_imperial_protectorate
-}
-
 
 # Setup Politics 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = progressive
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	fascism = 15
-	neutrality = 15
-	democratic = 70
+	totalitarian_communism = 10
+	vanguard_socialism = 5
+	revolutionary_socialism = 10
+	progressive = 5
+	centrist = 10
+	conservative = 10
+	reactionary = 10
+	authoritarianism = 5
+	autocracy = 10
+	absolutism = 5
+	ultranationalism = 10
+	fundamentalism = 10
 }
-
 
 ### Recruiting Characters ### 
 recruit_character = JAP_shigeru_ishiba
@@ -763,29 +659,32 @@ JAP_isoroku_yamamoto = {
 	}
 
 	set_party_name = {
-		ideology = democratic
+		ideology = progressive
 		long_name = JAP_minseito_party_long
 		name = JAP_minseito_party
 	}
 
 	# Setup Politics 
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = progressive
 		last_election = "1938.1.1"
 		election_frequency = 48
 		elections_allowed = yes
 	}
 	set_popularities = {
-		fascism = 45
-		neutrality = 45
-		democratic = 10
-		communism = 0
-	}
-
-	set_autonomy = {
-		target = MEN
-		autonomous_state = autonomy_wtt_imperial_protectorate
-	}
+	totalitarian_communism = 10
+	vanguard_socialism = 5
+	revolutionary_socialism = 10
+	progressive = 5
+	centrist = 10
+	conservative = 10
+	reactionary = 10
+	authoritarianism = 5
+	autocracy = 10
+	absolutism = 5
+	ultranationalism = 10
+	fundamentalism = 10
+}
 
 	# Kodoha coup has historical outcomes
 	retire_character = JAP_takahashi_korekiyo
@@ -884,11 +783,6 @@ JAP_isoroku_yamamoto = {
 	complete_national_focus = JAP_prepare_the_southern_front
 	complete_national_focus = JAP_crackdown_on_foreign_agents
 	complete_national_focus = JAP_strategic_offensives
-
-	declare_war_on = {
-		target = CHI
-		type = puppet_wargoal_focus
-	}
 	
 	set_technology = {
 
@@ -1009,7 +903,7 @@ add_mastery = {
 			set_technology = {
 				basic_medium_tank = 1
 			}
-			set_oob = "JAP_1939"
+			set_oob = "blank_placeholder"
 		}
 	}
 	IF = {
