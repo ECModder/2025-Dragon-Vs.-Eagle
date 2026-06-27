@@ -7,7 +7,7 @@ IF = {
 	}
 	set_oob = "CHI_1936_sea"
 	else = {
-		set_oob = "CHI_1936"
+		set_oob = "blank_placeholder"
 	}
 	if = {
 		limit = {
@@ -439,15 +439,9 @@ set_convoys = 40
 			free_trade
 			CHI_military_affairs_commission
 		}
-		set_oob = "CHI_1939"
+		set_oob = "blank_placeholder"
 	}
 	
-	set_global_flag = fall_of_nanjing
-	create_faction_from_template = faction_template_chinese_united_front
-	add_to_faction = PRC
-	remove_opinion_modifier = { target = PRC modifier = hostile_status }
-	#load_oob = "CHI_united_front"
-	set_global_flag = CHI_unite
 	
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
