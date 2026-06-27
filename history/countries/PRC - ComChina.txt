@@ -14,7 +14,7 @@
 		set_capital = {
 			state = 1032
 		}
-		set_oob = PRC_1936
+		set_oob = blank_placeholder
 	}
 }
 
@@ -344,7 +344,7 @@ add_opinion_modifier = { target = CHI modifier = hostile_status }
 		set_capital = {
 			state = 1032
 		}
-		set_oob = PRC_1939_TSR
+		set_oob = blank_placeholder
 		set_rule = { can_join_factions = yes }
 		else_if = {
 			limit = {
@@ -353,7 +353,7 @@ add_opinion_modifier = { target = CHI modifier = hostile_status }
 			set_capital = {
 				state = 1032
 			}
-			set_oob = PRC_1939
+			set_oob = blank_placeholder
 		}
 	}
 
@@ -446,12 +446,7 @@ add_opinion_modifier = { target = CHI modifier = hostile_status }
 		}
 	}
 	
-	# Chinese Popular Front effects
-	add_to_war = {
-		targeted_alliance = CHI
-		enemy = JAP
-		hostility_reason = asked_to_join
-	}
+
 	set_country_flag = PRC_joined_CHI_against_JAP
 	remove_opinion_modifier = { target = CHI modifier = hostile_status }
 	add_state_claim = 612
