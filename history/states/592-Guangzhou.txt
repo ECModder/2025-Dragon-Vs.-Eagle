@@ -11,6 +11,17 @@ state={
 
 	history={
 		owner = PRC
+		add_core_of = GXC
+		1936.1.1 = {
+			IF = {
+				limit = {
+					 has_dlc = "No Compromise, No Surrender" 
+				}
+				GDC = { transfer_state = PREV }
+				add_core_of = GDC
+				remove_core_of = GXC
+			}
+		}	
 		add_core_of = CHI
 		add_core_of = PRC
 		
@@ -33,6 +44,19 @@ state={
 
 		victory_points = {
 			12077 1 # Maoming
+		}
+
+		1938.10.25 = {
+			
+			remove_core_of = GXC
+			owner = CHI
+			
+			JAP = {
+				set_province_controller = 1047
+				set_province_controller = 7152
+				set_province_controller = 11938
+				set_province_controller = 11941
+			} 			
 		}
 	}
 

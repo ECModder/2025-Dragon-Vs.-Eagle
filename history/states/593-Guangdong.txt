@@ -14,6 +14,19 @@ state = {
 	history = {
 
 		owner = PRC
+		add_core_of = GXC
+
+		1936.1.1 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender"
+				}
+				transfer_state_to = GDC
+				add_core_of = GDC
+				remove_core_of = GXC
+			}
+		}
+		
 		add_core_of = CHI
 		add_core_of = PRC
 
@@ -38,6 +51,21 @@ state = {
 				coastal_bunker = 1
 				bunker = 1
 			}
+		}
+
+		1938.10.25 = {		
+
+			remove_core_of = GXC
+			owner = CHI
+
+			JAP = {
+				set_province_controller = 1202
+				set_province_controller = 4050
+				set_province_controller = 7108
+				set_province_controller = 9938
+				set_province_controller = 12095
+			} 
+
 		}
 
 	}

@@ -10,7 +10,19 @@ state = {
 	}
 
 	history = {
+
 		owner = RWA
+
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			transfer_state_to = COG
+			add_dynamic_modifier = {
+				modifier = COG_rwandan_separatism_modifier
+			}	
+		}
+
 		add_core_of = RWA
 
 		victory_points = {
