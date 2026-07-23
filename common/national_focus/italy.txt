@@ -1,5 +1,5 @@
-﻿focus_tree = {
-	id = italia
+focus_tree = {
+	id =  italian_focus
 	continuous_focus_position = { x = 530 y = 4300 } 
 	country = {
 		factor = 0
@@ -438,7 +438,7 @@
 		}
 		ai_will_do = { factor = -1 }
 		available = {
-			is_at_war = yes
+			has_war = yes
 		}
 		bypass = {
 			has_government = vanguard_socialism
@@ -512,7 +512,7 @@
 			        ideology = vanguard_socialism
 			        popularity > 0.50
 			}
-			has_war = no
+			NOT = { has_war = yes }
 		}
 		bypass = {
 			OR = {
@@ -709,16 +709,14 @@ add_stability = 0.05
 		prerequisite = { focus = ITA_consolidate_the_governament  }
 		ai_will_do = { factor = 1 }
 		select_effect = {
-
-
-add_building_construction = {
-    type = industrial_complex
-    level = 2
-    instant_build = yes
-}
-
-
-}
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 2
+				    instant_build = yes
+				}
+			}
+		}
 	}
 
 	#Consolidate the Governament
@@ -880,10 +878,10 @@ add_building_construction = {
 		}
 		prerequisite = { focus = ITA_2027_election  }
 		available = {
-			    has_popularity = {
-			        ideology = progressive
-			        value > 0.40
-			    }
+			has_party_popularity = {
+			    ideology = progressive
+			    popularity > 0.40
+			}
 		}
 		completion_reward = {
 			set_politics = { 
@@ -908,10 +906,10 @@ add_building_construction = {
 		prerequisite = { focus = ITA_2027_election  }
 		mutually_exclusive = { focus = ITA_socialist_victory  }
 		available = {
-			    has_popularity = {
-			        ideology = centrist
-			        value > 0.40
-			    }
+			has_party_popularity = {
+			    ideology = centrist
+			    popularity > 0.40
+			}
 		}
 		completion_reward = {
 			set_politics = { 
@@ -988,7 +986,7 @@ add_stability = 5
 			promote_character = GER_erwin_rommel
 			  promote_character = {
 			      character = GER_erwin_rommel
-			      Ideology = neutrality
+			      ideology = autocracy
 			  }
 			
 			
@@ -1011,7 +1009,7 @@ add_stability = 5
 			set_party_name = {
 			    ideology = totalitarian_communism
 			    name = PdRC
-                long_name = "Partito della Rifondazione Comunista"
+			    long_name = Partito della Rifondazione Comunista
 			}
 			
 			
@@ -1034,10 +1032,12 @@ add_stability = 5
 		}
 		prerequisite = { focus = ITA_controlled_union  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 2
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 2
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -1067,7 +1067,7 @@ add_stability = 5
 
 	#Hold conferences
 	focus = {
-		id = ITA_hold_conferences_progressive
+		id = ITA_hold_conferences
 		icon = GFX_ITA_hold_conferences-903738
 		x = 30
 		y = 4
@@ -1075,7 +1075,7 @@ add_stability = 5
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_political_debates_progressive  }
+		prerequisite = { focus = ITA_political_debates  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -1140,10 +1140,12 @@ add_research_slot = 2
 		completion_reward = {
 			
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 4
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 4
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -1200,7 +1202,8 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_the_dvx_is_back  }
 		completion_reward = {
-				
+			political_power_daily > 2
+			
 			
 		}
 	}
@@ -1310,7 +1313,7 @@ add_research_slot = 2
 			set_party_name = {
 			    ideology = totalitarian_communism
 			    name = PP
-                long_name = "Potere al Popolo"
+			    long_name = Potere al Popolo
 			}
 			
 		}
@@ -1331,8 +1334,8 @@ add_research_slot = 2
 		completion_reward = {
 			set_party_name = {
 			    ideology = totalitarian_communism
-                name = "CR-OSA"
-                long_name = "Cambiare Rotta - OSA"
+			    name = CR-OSA
+			    long_name = Cambiare Rotta - OSA
 			}
 			
 			
@@ -1361,7 +1364,7 @@ add_research_slot = 2
 			set_party_name = {
 			    ideology = totalitarian_communism
 			    name = PCU
-                long_name = "Partito Comunista Unitario"
+			    long_name = Partito Comunista Unitario
 			}
 			
 			
@@ -1430,10 +1433,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_abolish_the_councils  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 2
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 2
+				    instant_build = yes
+				}
 			}
 			
 			
@@ -1451,10 +1456,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_fiveyear_plan  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 2
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 2
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -1472,10 +1479,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_gosplan  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -1608,13 +1617,18 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_overwrite_marx  }
 		completion_reward = {
-			add_opinion = {
-			    target = PRC
-			    value = 100
+			PRC = {
+				add_opinion = {
+				    target = ITA
+				    value = 100
+				}
 			}
-			
-			
-			
+			ITA = {
+				add_opinion = {
+				    target = PRC
+				    value = 100
+				}
+			}
 		}
 	}
 
@@ -1674,44 +1688,31 @@ add_research_slot = 2
 			declare_war_on = {
 			    target = SER
 			    type = annex_everything
-				declare_war_on = {
+			}
+			declare_war_on = {
 			    target = CRO
 			    type = annex_everything
 			}
-			
-			
-				declare_war_on = {
+			declare_war_on = {
 			    target = SLV
 			    type = annex_everything
 			}
-			
-			
-				declare_war_on = {
+			declare_war_on = {
 			    target = BOS
 			    type = annex_everything
 			}
-			
-			
-				declare_war_on = {
+			declare_war_on = {
 			    target = Mac
 			    type = annex_everything
 			}
-			
-			
-				declare_war_on = {
+			declare_war_on = {
 			    target = MNT
 			    type = annex_everything
 			}
-			
-			
-				declare_war_on = {
+			declare_war_on = {
 			    target = ALB
 			    type = annex_everything
 			}
-			
-			
-			}
-			
 			declare_war_on = {
 			    target = YUG
 			    type = annex_everything
@@ -1736,7 +1737,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = HUN
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			declare_war_on = {
 			    target = AUS
@@ -1762,7 +1763,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = ROM
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			
 			
@@ -1810,7 +1811,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = GER
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			
 			
@@ -1832,13 +1833,13 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = SPR
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			
 			
 			declare_war_on = {
 			    target = SPA
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			
 			
@@ -1860,7 +1861,7 @@ add_research_slot = 2
 		completion_reward = {
 			declare_war_on = {
 			    target = CZE
-			    type = puppet
+			    type = puppet_wargoal_focus
 			}
 			
 			
@@ -2029,8 +2030,7 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_lotta_comunista  }
 		completion_reward = {
-			create_faction = The Internationale
-			
+			create_faction = "The Internationale"
 		}
 	}
 
@@ -2120,10 +2120,12 @@ add_research_slot = 2
 			air_experience = 20
 			add_manpower = 10000
 			
-			add_building_construction = {
-			    type = arms_factory
-			    level = 20
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = arms_factory
+				    level = 20
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2141,10 +2143,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_a_true_leninism  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2162,10 +2166,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_five_year_plan  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2204,10 +2210,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_public_school  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2244,7 +2252,8 @@ add_research_slot = 2
 		completion_reward = {
 			create_intelligence_agency = yes
 			
-				
+			agency_upgrade_number 10
+			
 		}
 	}
 
@@ -2325,10 +2334,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_a_true_leninism  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 8
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 8
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2749,10 +2760,12 @@ add_research_slot = 2
 			air_experience = 20
 			add_manpower = 10000
 			
-			add_building_construction = {
-			    type = arms_factory
-			    level = 20
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = arms_factory
+				    level = 20
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2856,10 +2869,12 @@ add_research_slot = 2
 		completion_reward = {
 			add_manpower = 1000000
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 30
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 30
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2877,10 +2892,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_start_automation  }
 		completion_reward = {
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -2956,7 +2973,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_hold_conferences_centrist  focus = ITA_hold_conferences_progressive  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
+		prerequisite = { focus = ITA_hold_conferences  focus = ITA_hold_conferences  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
 		available = {
 			has_political_power > 100
 			    date > 2027.2.1
@@ -2971,7 +2988,7 @@ add_research_slot = 2
 
 	#Propaganda in the Neighborhoods
 	focus = {
-		id = ITA_propaganda_in_the_neighborhoods_centrist
+		id = ITA_propaganda_in_the_neighborhoods
 		icon = GFX_ITA_propaganda_in_the_neighborhoods-903727
 		x = 30
 		y = 2
@@ -2980,7 +2997,7 @@ add_research_slot = 2
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = ITA_the_left_side  }
-		mutually_exclusive = { focus = ITA_propaganda_in_the_neighborhoods_progressive  }
+		mutually_exclusive = { focus = ITA_propaganda_in_the_neighborhoods  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -2994,7 +3011,7 @@ add_research_slot = 2
 
 	#Propaganda in the Neighborhoods
 	focus = {
-		id = ITA_propaganda_in_the_neighborhoods_progressive
+		id = ITA_propaganda_in_the_neighborhoods_2
 		icon = GFX_ITA_propaganda_in_the_neighborhoods-903792
 		x = 28
 		y = 2
@@ -3016,7 +3033,7 @@ add_research_slot = 2
 
 	#political debates
 	focus = {
-		id = ITA_political_debates_progressive
+		id = ITA_political_debates
 		icon = GFX_ITA_political_debates-903730
 		x = 28
 		y = 3
@@ -3024,7 +3041,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods_centrist  }
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = progressive
@@ -3045,7 +3062,7 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods_centrist  }
+		prerequisite = { focus = ITA_propaganda_in_the_neighborhoods  }
 		completion_reward = {
 			add_popularity = {
 			    ideology = centrist
@@ -3235,10 +3252,12 @@ add_research_slot = 2
 		completion_reward = {
 			add_stability = 0.5
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 10
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 10
+				    instant_build = yes
+				}
 			}
 			
 			
@@ -3247,7 +3266,7 @@ add_research_slot = 2
 
 	#Secure the Borders
 	focus = {
-		id = ITA_secure_the_borders_connections
+		id = ITA_secure_the_borders_2
 		icon = GFX_ITA_secure_the_borders-901002
 		x = 45
 		y = 9
@@ -3257,8 +3276,14 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_connections_in_the_army  }
 		completion_reward = {
+			{
 			add_war_support = 0.05
+			
 			add_stability = 0.03
+			
+			
+			
+			}
 		}
 	}
 
@@ -3291,19 +3316,36 @@ add_research_slot = 2
 			FOCUS_FILTER_INDUSTRY
 		}
 		prerequisite = { focus = ITA_popular_appeal  }
+	}
+
+	#Italian Manufacturing
+	focus = {
+		id = ITA_italian_manufacturing_2
+		icon = GFX_ITA_italian_manufacturing-903916
+		x = 43
+		y = 10
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_INDUSTRY
+		}
+		prerequisite = { focus = ITA_popular_appeal  }
 		completion_reward = {
 			add_stability = 0.5
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 5
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 5
+				    instant_build = yes
+				}
 			}
 			
-			add_building_construction = {
-			    type = arms_factory
-			    level = 5
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = arms_factory
+				    level = 5
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -3341,10 +3383,12 @@ add_research_slot = 2
 		}
 		prerequisite = { focus = ITA_ue_nato_support  }
 		completion_reward = {
-			add_building_construction = {
-			    type = arms_factory
-			    level = 6
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = arms_factory
+				    level = 6
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -3356,24 +3400,6 @@ add_research_slot = 2
 		icon = GFX_ITA_ue_nato_support-903921
 		x = 41
 		y = 8
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_WAR_SUPPORT
-		}
-		prerequisite = { focus = ITA_giorgia_meloni  }
-		completion_reward = {
-			add_war_support = 0.2
-			
-			
-		}
-	}
-
-	#UE NATO Support
-	focus = {
-		id = ITA_ue_nato_support_2
-		icon = GFX_ITA_ue_nato_support-903921
-		x = 41
-		y = 10
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
@@ -3421,10 +3447,12 @@ add_research_slot = 2
 		completion_reward = {
 			add_manpower = 5000
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 4
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 4
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -3444,10 +3472,12 @@ add_research_slot = 2
 		completion_reward = {
 			add_stability = 0.5
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 4
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 4
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -3467,10 +3497,12 @@ add_research_slot = 2
 		completion_reward = {
 			add_stability = 0.5
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 5
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 5
+				    instant_build = yes
+				}
 			}
 			
 		}
@@ -3490,10 +3522,12 @@ add_research_slot = 2
 		completion_reward = {
 			
 			
-			add_building_construction = {
-			    type = industrial_complex
-			    level = 5
-			    instant_build = yes
+			capital_scope = {
+				add_building_construction = {
+				    type = industrial_complex
+				    level = 5
+				    instant_build = yes
+				}
 			}
 			
 		}
