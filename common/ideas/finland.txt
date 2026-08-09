@@ -2,71 +2,232 @@ ideas = {
 	country = {
 		Equal_rights = {
 			name = Equal_rights
-			picture = GFX_idea_generic_deck_1
+			picture = generic_neutrality_drift_bonus
 			allowed = { always = yes }
-			start = yes
 			removal_cost = -1
 			modifier = {
-				stability = 0.15
+				stability_factor = 0.15
 			}
 		}
 
 		Sisu = {
 			name = Sisu
-			picture = GFX_idea_generic_deck_1
+			picture = sisu
 			allowed = { always = yes }
-			start = yes
 			removal_cost = -1
 			modifier = {
-				war_support = 0.05
-				recovery_rate = 0.05
-				division_defense = 0.05
+				war_support_factor = 0.15
+				army_attack_factor = 0.05
+				army_defence_factor = 0.05
 			}
 		}
 
 		Stagnating_Economy = {
 			name = Stagnating_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = RAJ_debt_relief
 			allowed = { always = yes }
-			start = yes
 			removal_cost = -1
 			modifier = {
 				consumer_goods_factor = 0.20
-				construction_speed = -0.15
-				civilian_factory_speed = -0.1
-				military_factory_speed = -0.1
+				production_speed_buildings_factor = -0.10
+				cic_construction_boost = -0.1
+				mic_construction_boost = -0.1
 				political_power_gain = -0.10
-				production_efficiency_factor = -0.15
+				production_factory_max_efficiency_factor = -0.2
+				industrial_capacity_factory = -0.1
+			}
+		}
+
+		Reviving_Economy = {
+			name = Reviving_Economy
+			picture = generic_devalue_currency
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = -0.10
+				cic_construction_boost = -0.05
+				mic_construction_boost = -0.05
+				political_power_gain = -0.10
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_factory = -0.1
+			}
+		}
+
+		Reviving_Economy2 = {
+			name = Reviving_Economy2
+			picture = GFX_idea_generic_deck_1
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.1
+				production_speed_buildings_factor = -0.10
+				cic_construction_boost = -0.05
+				mic_construction_boost = -0.05
+				political_power_gain = -0.10
+				production_factory_max_efficiency_factor = -0.15
+				industrial_capacity_factory = -0.1
+			}
+		}
+
+		Recovering_Economy = {
+			name = Recovering_Economy
+			picture = generic_economic_recovery
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = -0.05
+				cic_construction_boost = 0.05
+				mic_construction_boost = -0.05
+				production_factory_max_efficiency_factor = -0.05
+				industrial_capacity_factory = -0.05
+			}
+		}
+
+		Recovering_Economy2 = {
+			name = Recovering_Economy2
+			picture = generic_economic_recovery
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				cic_construction_boost = 0.05
+			}
+		}
+
+		Growing_Economy = {
+			name = Growing_Economy
+			picture = generic_mild_economic_recovery
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
+				cic_construction_boost = 0.1
+				mic_construction_boost = 0.05
+				political_power_gain = 0.05
+				production_factory_max_efficiency_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		Accelerating_Economy = {
+			name = Accelerating_Economy
+			picture = GFX_idea_generic_deck_1
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.1
+				production_speed_buildings_factor = 0.1
+				cic_construction_boost = 0.15
+				mic_construction_boost = 0.1
+				political_power_gain = 0.05
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		Expanding_Economy = {
+			name = Expanding_Economy
+			picture = generic_foreign_capital
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.1
+				cic_construction_boost = 0.2
+				mic_construction_boost = 0.15
+				political_power_gain = 0.1
+				production_factory_max_efficiency_factor = 0.15
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		Surging_Economy = {
+			name = Surging_Economy
+			picture = generic_economic_increase
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.1
+				cic_construction_boost = 0.2
+				mic_construction_boost = 0.2
+				political_power_gain = 0.15
+				production_factory_max_efficiency_factor = 0.2
+				industrial_capacity_factory = 0.15
+			}
+		}
+
+		Surging_Economy2 = {
+			name = Surging_Economy2
+			picture = generic_economic_increase
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = 0.15
+				cic_construction_boost = 0.2
+				mic_construction_boost = 0.2
+				political_power_gain = 0.2
+				production_factory_max_efficiency_factor = 0.2
+				industrial_capacity_factory = 0.15
+			}
+		}
+
+		Booming_Economy = {
+			name = Booming_Economy
+			picture = GFX_idea_generic_deck_1
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.2
+				production_speed_buildings_factor = 0.2
+				cic_construction_boost = 0.25
+				mic_construction_boost = 0.2
+				political_power_gain = 0.25
+				production_factory_max_efficiency_factor = 0.2
+				industrial_capacity_factory = 0.2
 			}
 		}
 
 		Orpon_hallitus = {
 			name = Orpon_hallitus
-			picture = GFX_idea_generic_deck_1
+			picture = generic_disjointed_gov
 			allowed = { always = yes }
-			start = yes
 			removal_cost = -1
 			modifier = {
-				stability = 0.05
-				add_political_power = 0.10
+				stability_factor = 0.05
+				political_power_gain = 0.10
 			}
 		}
 
 		Prepared_for_war = {
 			name = Prepared_for_war
-			picture = GFX_idea_generic_deck_1
+			picture = SWE_save_finland
 			allowed = { always = yes }
-			start = yes
 			removal_cost = -1
 			modifier = {
-				war_support = 0.10
-				attack_core_modifier = 0.05
-				defense_core_modifier = 0.05
+				war_support_factor = 0.10
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
 			}
 			targeted_modifier = {
-				target = RUS
-				attack_factor = 0.10
-				defense_factor = 0.10
+				tag = SOV
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
+			}
+		}
+
+		Prepare_for_future_wars = {
+			name = "Prepare for future wars"
+			picture = GFX_idea_generic_deck_1
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				add_war_support = 0.15
+				add_stability = -0.05
+				industrial_capacity_factory = 0.3
 			}
 		}
 	}
