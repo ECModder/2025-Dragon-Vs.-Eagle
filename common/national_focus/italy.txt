@@ -1190,7 +1190,7 @@ add_research_slot = 2
 		prerequisite = { focus = ITA_emanuele_filiberto_di_savoia  }
 	}
 
-	#Gran Consiglio del Fascismo
+    #Gran Consiglio del Fascismo
 	focus = {
 		id = ITA_gran_consiglio_del_fascismo
 		icon = GFX_focus_spr_the_anti_fascist_workers_revolution
@@ -1200,11 +1200,9 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_the_dvx_is_back  }
+		prerequisite = { focus = ITA_the_dvx_is_back }
 		completion_reward = {
-			political_power_daily > 2
-			
-			
+			add_political_power = 150 # Assegna PP diretto
 		}
 	}
 
@@ -1670,7 +1668,7 @@ add_research_slot = 2
 		}
 	}
 
-	#People's Yugoslavia
+#Peoples' Yugoslavia
 	focus = {
 		id = ITA_peoplesyugoslavia
 		icon = GFX_ITA_peoplesyugoslavia-856469
@@ -1680,46 +1678,31 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_peoplesarmy  } prerequisite = { focus = ITA_communism_in_one_continent  }
-		bypass = {
-			is_ally_with = SER
-		}
+		prerequisite = { focus = ITA_peoplesarmy } prerequisite = { focus = ITA_communism_in_one_continent }
 		completion_reward = {
-			declare_war_on = {
-			    target = SER
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = CRO
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = SLV
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = BOS
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = Mac
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = MNT
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = ALB
-			    type = annex_everything
-			}
-			declare_war_on = {
-			    target = YUG
-			    type = annex_everything
-			}
-			
-			
-			
+			declare_war_on = { target = SER type = annex_everything }
+			declare_war_on = { target = CRO type = annex_everything }
+			declare_war_on = { target = SLV type = annex_everything }
+			declare_war_on = { target = MAC type = annex_everything } # Corretto MAC
+			declare_war_on = { target = MNT type = annex_everything }
+			declare_war_on = { target = ALB type = annex_everything }
+		}
+	}
+
+	#Bulgarian Peoples' Republic
+	focus = {
+		id = ITA_bulgarianpeoplesrepublic
+		icon = GFX_ITA_bulgarianpeoplesrepublic-856477
+		x = 21
+		y = 9
+		cost = 10
+		search_filters = {
+			FOCUS_FILTER_ANNEXATION
+		}
+		prerequisite = { focus = ITA_peoplesaustriahungary } prerequisite = { focus = ITA_peoplesyugoslavia }
+		completion_reward = {
+			declare_war_on = { target = BUL type = annex_everything }
+			declare_war_on = { target = GRE type = annex_everything } # Corretto GRE
 		}
 	}
 
@@ -1765,33 +1748,6 @@ add_research_slot = 2
 			    target = ROM
 			    type = puppet_wargoal_focus
 			}
-			
-			
-		}
-	}
-
-	#Bulgarian Peoples' Republic
-	focus = {
-		id = ITA_bulgarianpeoplesrepublic
-		icon = GFX_ITA_bulgarianpeoplesrepublic-856477
-		x = 21
-		y = 9
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_ANNEXATION
-		}
-		prerequisite = { focus = ITA_peoplesaustriahungary  } prerequisite = { focus = ITA_peoplesyugoslavia  }
-		completion_reward = {
-			declare_war_on = {
-			    target = BUL
-			    type = annex_everything
-			}
-			
-			declare_war_on = {
-			    target = Gre
-			    type = annex_everything
-			}
-			
 			
 			
 		}
@@ -1952,11 +1908,9 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_lessons_from_the_paris_commune  }
+		prerequisite = { focus = ITA_lotta_comunista } # Corretto: collegato a Lotta Comunista
 		completion_reward = {
 			add_political_power = 100
-			
-			
 		}
 	}
 
@@ -2248,12 +2202,10 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_CHI_INFLATION
 		}
-		prerequisite = { focus = ITA_a_new_red_army  }
+		prerequisite = { focus = ITA_a_new_red_army }
 		completion_reward = {
 			create_intelligence_agency = yes
-			
-			agency_upgrade_number 10
-			
+			add_operative_slot = 1
 		}
 	}
 
@@ -2414,7 +2366,7 @@ add_research_slot = 2
 		}
 	}
 
-	#Workers of All Countries Unite!
+    #Workers of All Countries Unite!
 	focus = {
 		id = ITA_workersofallcountriesunite
 		icon = GFX_ITA_workersofallcountriesunite-262108
@@ -2424,21 +2376,12 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_revolutionary_spirit_around_the_world  }
+		prerequisite = { focus = ITA_revolutionary_spirit_around_the_world }
 		completion_reward = {
-			can_declare_war_on = RUS
-			
-			can_declare_war_on = PRC
-			
-			can_declare_war_on = USA
-			
-			can_declare_war_on = RAJ
-			
-			can_declare_war_on = BRA
-			
-			can_declare_war_on = SOV
-			
-			can_declare_war_on = ALL
+			create_wargoal = { type = annex_everything target = RUS }
+			create_wargoal = { type = annex_everything target = PRC }
+			create_wargoal = { type = annex_everything target = USA }
+			create_wargoal = { type = annex_everything target = BRA }
 		}
 	}
 
@@ -2452,18 +2395,13 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_a_house_for_everyone  } prerequisite = { focus = ITA_workersofallcountriesunite  } prerequisite = { focus = ITA_solidarity_with_the_proletariat  } prerequisite = { focus = ITA_domino_effect  }
+		prerequisite = { focus = ITA_a_house_for_everyone } prerequisite = { focus = ITA_workersofallcountriesunite } prerequisite = { focus = ITA_solidarity_with_the_proletariat } prerequisite = { focus = ITA_domino_effect }
 		completion_reward = {
 			add_popularity = {
 			    ideology = vanguard_socialism
 			    popularity = 0.25
-			
-				add_political_power = 300
-			
 			}
-			
-			
-			
+			add_political_power = 300 # Corretto: spostato all'esterno
 		}
 	}
 
@@ -2477,18 +2415,14 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_ix_congress_of_council  }
+		prerequisite = { focus = ITA_ix_congress_of_council }
 		completion_reward = {
 			add_political_power = 1000
-			
-			set_political_party = {
-			    ideology = vanguard_socialism
-			    popularity = 1.00
+			set_popularities = {
+			    vanguard_socialism = 1.0
 			}
-			
-			set_stability = 100
-			
-			set_war_support = 100
+			set_stability = 1.0
+			set_war_support = 1.0
 		}
 	}
 
@@ -2963,7 +2897,7 @@ add_research_slot = 2
 		}
 	}
 
-	#2027 Election
+  #2027 Election
 	focus = {
 		id = ITA_2027_election
 		icon = GFX_ITA_2027_election-856839
@@ -2973,16 +2907,13 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		prerequisite = { focus = ITA_hold_conferences  focus = ITA_hold_conferences  focus = ITA_nonmelotoglierete  focus = ITA_our_general  }
+		prerequisite = { focus = ITA_hold_conferences focus = ITA_nonmelotoglierete focus = ITA_our_general } # Rimosso il duplicato di hold_conferences
 		available = {
 			has_political_power > 100
-			    date > 2027.2.1
-			
+			date > 2027.2.1
 		}
 		completion_reward = {
 			add_political_power = -100
-			
-			
 		}
 	}
 
@@ -3274,16 +3205,10 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_WAR_SUPPORT
 		}
-		prerequisite = { focus = ITA_connections_in_the_army  }
+		prerequisite = { focus = ITA_connections_in_the_army }
 		completion_reward = {
-			{
 			add_war_support = 0.05
-			
 			add_stability = 0.03
-			
-			
-			
-			}
 		}
 	}
 
@@ -3315,39 +3240,21 @@ add_research_slot = 2
 		search_filters = {
 			FOCUS_FILTER_INDUSTRY
 		}
-		prerequisite = { focus = ITA_popular_appeal  }
-	}
-
-	#Italian Manufacturing
-	focus = {
-		id = ITA_italian_manufacturing_2
-		icon = GFX_ITA_italian_manufacturing-903916
-		x = 43
-		y = 10
-		cost = 10
-		search_filters = {
-			FOCUS_FILTER_INDUSTRY
-		}
-		prerequisite = { focus = ITA_popular_appeal  }
+		prerequisite = { focus = ITA_popular_appeal }
 		completion_reward = {
-			add_stability = 0.5
-			
+			add_stability = 0.05
 			capital_scope = {
 				add_building_construction = {
 				    type = industrial_complex
-				    level = 5
+				    level = 2
 				    instant_build = yes
 				}
-			}
-			
-			capital_scope = {
 				add_building_construction = {
 				    type = arms_factory
-				    level = 5
+				    level = 2
 				    instant_build = yes
 				}
 			}
-			
 		}
 	}
 
@@ -3877,11 +3784,7 @@ add_research_slot = 2
 			    target = ALB
 			    type = annex_everything
 			}
-			
-			
-			
-			
 		}
-	}
+	} # Chiusura dell'ultimo focus (ITA_domino_effect)
 
-}
+} # Chiusura della radice focus_tree
