@@ -1220,6 +1220,128 @@ focus_tree = {
 
 	}
 
+	focus = {
+		id = FIN_fund_renevable_energy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_greens_victory
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_lower_voting_age
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_fund_renevable_energy
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_stability = -0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_expand_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_animal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_legalize_cannabis
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_fund_science
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_green_welfare_state
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_legalize_cannabis
+			focus = FIN_fund_science
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Add desicions similar to ones in vanilla Thailand tree
+		}
+
+	}
+
   # Centrists
    # Social Democrats
 
@@ -1236,6 +1358,133 @@ focus_tree = {
 			has_government = democratic
 		}
 		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_accessible_and_free_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_social_democrat_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_aid_immigrants
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_promote_equal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			remove_ideas = Equal_rights
+			add_ideas = Equal_rights2
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_streghten_our_education_system
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_aid_immigrants
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_decentralize_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_promote_equal_rights
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -100
+			modify_timed_idea = {
+				idea = Academic_excellence
+				days = 215
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_fairer_taxation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_decentralize_schooling
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -100
+		}
+
+	}
+
+	focus = {
+		id = FIN_secularize_finland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_fairer_taxation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+		}
 
 	}
 
@@ -1275,7 +1524,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FIN_aid_immigrants
+		id = FIN_fund_foreign_immigration
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 20
 		y = 13
@@ -1285,8 +1534,8 @@ focus_tree = {
 			focus = FIN_kokoomus_victory
 		}
 		completion_reward = {
-			add_political_power = -75
-			add_stability = 0.05
+			add_political_power = -50
+			add_stability = -0.1
 			add_civilian_factory = 2
 		}
 
@@ -1422,10 +1671,10 @@ focus_tree = {
 		id = FIN_raise_pigouvian_tax
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 23
-		y = 15
+		y = 16
 		cost = 5
 		prerequisite = {
-			focus = FIN_strengthen_police
+			focus = FIN_raise_conscription
 		}
 		completion_reward = {
 			add_stability = -0.05
@@ -1437,12 +1686,11 @@ focus_tree = {
 	focus = {
 		id = FIN_decrease_taxes_for_elderly
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
-		x = 22
+		x = 21
 		y = 16
 		cost = 5
 		prerequisite = {
 			focus = FIN_raise_military_spending
-			focus = FIN_raise_pigouvian_tax
 		}
 		completion_reward = {
 			add_stability = 0.05
@@ -1457,7 +1705,7 @@ focus_tree = {
 		y = 17
 		cost = 5
 		prerequisite = {
-			focus = FIN_raise_military_spending
+			focus = FIN_decrease_taxes_for_elderly
 			focus = FIN_raise_pigouvian_tax
 		}
 		completion_reward = {
