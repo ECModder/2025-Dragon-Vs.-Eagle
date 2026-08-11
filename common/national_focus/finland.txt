@@ -2005,6 +2005,141 @@ focus_tree = {
 
 	}
 
+	focus = {
+		id = FIN_support_entrepreneurs
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_christian_democratic_victory
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
+			# Ind buff
+			# More desicions to stopping public debt
+		}
+
+	}
+
+	focus = {
+		id = FIN_sponsor_churches
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_support_entrepreneurs
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -75
+		}
+
+	}
+
+	focus = {
+		id = FIN_encourage_having_babies
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_sponsor_churches
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+			# Pop incrase?
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_healthcare
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_encourage_having_babies
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_desecularize_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_illegialize_abortion
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Pop boost
+		}
+
+	}
+
+	focus = {
+		id = FIN_rewrite_constitution_partly
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_desecularize_country
+			focus = FIN_illegialize_abortion
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Some desicions again
+		}
+
+	}
+
+	focus = {
+		id = FIN_roll_back_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_rewrite_constitution_partly
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 50
+			# Some desicions again
+		}
+
+	}
+
    # Army
 
 	focus = {
