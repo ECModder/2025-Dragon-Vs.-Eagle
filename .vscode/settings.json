@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd '/Users/matteo/Documents/Paradox Interactive/Hearts of Iron IV/mod/2025-Dragon-Vs\\.-Eagle' && python - <<'PY'\nfrom pathlib import Path\np = Path\\('common/national_focus/italy\\.txt'\\)\ntext = p\\.read_text\\(\\)\nline=1\nstack=0\nerrors=\\[\\]\nfor i,ch in enumerate\\(text,1\\):\n    if ch=='\\{': stack\\+=1\n    elif ch=='\\}':\n        stack-=1\n        if stack<0:\n            errors\\.append\\(\\(i, 'extra \\}'\\)\\)\n            stack=0\nif stack!=0:\n    print\\('brace imbalance', stack\\)\nelse:\n    print\\('brace balanced'\\)\nPY$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

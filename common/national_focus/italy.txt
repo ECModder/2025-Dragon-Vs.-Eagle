@@ -570,15 +570,14 @@ focus_tree = {
 		icon = GFX_ITA_digital_europe-903923
 		x = 34
 		y = 13
+		cost = 3
 		search_filters = {
 			FOCUS_FILTER_RESEARCH
 		}
 		prerequisite = { focus = ITA_strengthen_the_concept_of_unity  }
-		select_effect = {
-add_research_slot = 1
-
-
-}
+		completion_reward = {
+			add_research_slot = 1
+		}
 	}
 
 	#Connections in the army
@@ -663,14 +662,10 @@ add_research_slot = 1
 			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = ITA_wink_at_the_army  }
-		select_effect = {
-add_war_support = 0.05
-
-add_stability = 0.03
-
-
-
-}
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.03
+		}
 	}
 
 	#Italy: Regional Power
@@ -682,18 +677,15 @@ add_stability = 0.03
 		cost = 10
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
+		search_filters = {
+			FOCUS_FILTER_POLITICAL
 		}
 		prerequisite = { focus = ITA_matteismediterraneanplan  } prerequisite = { focus = ITA_secure_the_borders  }
 		ai_will_do = { factor = 1 }
-		select_effect = {
-
-
-add_war_support = 0.1
-
-add_stability = 0.05
-
-
-}
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = 0.05
+		}
 	}
 
 	#Protect Made in Italy
@@ -708,7 +700,7 @@ add_stability = 0.05
 		}
 		prerequisite = { focus = ITA_consolidate_the_governament  }
 		ai_will_do = { factor = 1 }
-		select_effect = {
+		completion_reward = {
 			capital_scope = {
 				add_building_construction = {
 				    type = industrial_complex
@@ -944,9 +936,9 @@ add_stability = 0.05
 		search_filters = {
 			FOCUS_FILTER_POLITICAL
 		}
-		select_effect = {
-add_stability = 5
-}
+		completion_reward = {
+			add_stability = 5
+		}
 	}
 
 	#Popular Appeal
