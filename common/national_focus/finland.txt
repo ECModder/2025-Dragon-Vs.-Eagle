@@ -2152,9 +2152,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			rule = {
-				has_government = neutrality
-			}
+			has_government = neutrality
 		}
 
 	}
@@ -2305,6 +2303,22 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = FIN_ruler_for_life
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_choose_new_ruler
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.15
+		}
+	}
+
    # Finns party
 
 	focus = {
@@ -2321,6 +2335,196 @@ focus_tree = {
 		}
 		completion_reward = {}
 
+	}
+
+	focus = {
+		id = FIN_subside_welfare_spending
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_finns_party_victory
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			# Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_buying_russian_oil
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_subside_welfare_spending
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+			# Add oil to helsinki
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_slowly_desecularize
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 37
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+		}
+	}
+
+	focus = {
+		id = FIN_distance_from_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 39
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			# small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_distance_from_EU
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_NATO
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_leave_EU
+		}
+	
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = -25
+			# Better relatitions with russia
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_minorities_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_slowly_desecularize
+			focus = FIN_distance_from_EU
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 75
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_pumping_fossil_fuels
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+			# Small ind temp buff
+		}
+	}
+
+	focus = {
+		id = FIN_strenghten_presidents_power
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 75
+			# Here can crown president as king
+		}
 	}
 
 	focus = {
