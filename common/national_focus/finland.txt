@@ -1664,6 +1664,136 @@ focus_tree = {
 	}
 
 	focus = {
+		id = FIN_start_decentralization
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_centrist_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_diversify_nation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_start_decentralization
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_increase_fertility
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_increase_fertility
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_timed_idea = {
+				idea = Academic_excellence
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_AI
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_double_economic_growth
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_invest_in_AI
+		}
+		completion_reward = {
+			add_stability = 0.1
+			# Ind buff
+		}
+
+	}
+
+	focus = {
+		id = FIN_improve_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_double_economic_growth
+			focus = FIN_invest_in_schooling
+		}
+		completion_reward = {
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_enforce_mandatory_conscription_for_all
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_improve_services
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_ideas = extensive_conscription
+		}
+
+	}
+
+	focus = {
 		id = FIN_fund_foreign_immigration
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 20
