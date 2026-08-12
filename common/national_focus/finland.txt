@@ -2412,6 +2412,7 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = FIN_distance_from_EU
+			focus = FIN_leave_UN
 		}
 	
 		completion_reward = {
@@ -2544,6 +2545,8 @@ focus_tree = {
 		}
 	}
 
+
+
    # Neo-Fascist
 
 	focus = {
@@ -2561,6 +2564,143 @@ focus_tree = {
 			}
 		}
 
+	}
+
+	focus = {
+		id = FIN_reinstate_finnish_markka
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_blue_and_black_victory
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_banish_them
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_enforce_stricter_immigration_laws
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = 125
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_leave_UN
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_banish_them
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_swedes_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Small ind buff
+			# Less opinion with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_remilitarize_aaland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 15
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_swedes_rights
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Almost hostile with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_support_young_families
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_UN
+			focus = FIN_remilitarize_aaland
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_teach_religions_of_old
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_support_young_families
+		}
+	
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_nationalize_whole_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_teach_religions_of_old
+		}
+	
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Ind buff
+		}
 	}
 
   # Secret
