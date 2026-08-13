@@ -3,6 +3,7 @@
 ###########################
 
 add_namespace = polandos
+add_namespace = starting_poland
 
 country_event = {
 	id = polandos.1
@@ -18,18 +19,6 @@ country_event = {
 
 
 	}
-	country_event = {
-		id = polandos.3
-	title = polandos.3.t
-	desc = polandos.3.d
-	picture = GFX_report_event_POL_chaos
-	
-	is_triggered_only = yes
-	option = {
-	name = "one day, we shall be finaly united"
-	add_political_power = -20
-	}
-	}
 
 
 }
@@ -37,11 +26,26 @@ country_event = {
 	id = polandos.2
 	title = polandos.2.t
 	desc = polandos.2.d
+	picture = GFX_report_event_POL_chaos
+	
+	is_triggered_only = yes
+	option = {
+		name = "one day, we shall be united!"
+		add_political_power = -20
+	}
+
+		}
+
+
+country_event = {
+	id = polandos.3
+	title = polandos.3.t
+	desc = polandos.3.d
 	picture = GFX_report_event_POL_era
 	
 	is_triggered_only = yes
 	option = {
-		name = "To chyba tak jak zawsze"
+		name = "PIS will make poland strong and indenpendent"
 		add_political_power = 50
 		add_stability = 0.5
 load_focus_tree = poland_pis_elect_focus
@@ -50,17 +54,16 @@ POL = {
 		}
 	}
 		option = {
-		name = "moze cos nowego"
+		name = "maybe something new?"
 		add_political_power = 50
 		add_stability = 0.5
 		load_focus_tree = poland_new_way_elect_focus
 		POL = {
 		complete_national_focus = POL_new_way
-		country_event = {id = small_content.1 days = 1 }
 		}
 		}
 			option = {
-		name = "Europa nas Potrzebuje"
+		name = "KO will help us get closer to europe"
 		add_political_power = 50
 		add_stability = 0.5
 		load_focus_tree = poland_ko_elect_focus
@@ -69,6 +72,20 @@ POL = {
 		}
 		}
 
+
+}
+country_event = {
+	id = starting_poland.1
+	title = starting_poland.1.t
+	desc = starting_poland.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = FIN
+	}
+option = {
+name = "okay thank you for telling!"
+}
 
 }
 
