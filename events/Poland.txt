@@ -1,0 +1,63 @@
+﻿###########################
+# Polish Events
+###########################
+
+add_namespace = polandos
+
+country_event = {
+	id = polandos.1
+	title = polandos.1.t
+	desc = polandos.1.d
+	picture = GFX_report_event_POL_era
+	
+	is_triggered_only = yes
+	option = {
+		name = "Polska Gurom!"
+		add_political_power = 50
+		add_stability = 0.10
+
+
+	}
+
+
+}
+country_event = {
+	id = polandos.2
+	title = polandos.2.t
+	desc = polandos.2.d
+	picture = GFX_report_event_POL_era
+	
+	is_triggered_only = yes
+	option = {
+		name = "To chyba tak jak zawsze"
+		add_political_power = 50
+		add_stability = 0.5
+load_focus_tree = poland_pis_elect_focus
+POL = {
+		complete_national_focus = POL_PIS
+		}
+	}
+		option = {
+		name = "moze cos nowego"
+		add_political_power = 50
+		add_stability = 0.5
+		load_focus_tree = poland_new_way_elect_focus
+		POL = {
+		complete_national_focus = POL_new_way
+		}
+		}
+			option = {
+		name = "Europa nas Potrzebuje"
+		add_political_power = 50
+		add_stability = 0.5
+		load_focus_tree = poland_ko_elect_focus
+		POL = {
+		complete_national_focus = POL_KO
+		}
+		}
+
+
+}
+
+
+
