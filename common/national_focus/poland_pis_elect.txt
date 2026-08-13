@@ -39,6 +39,249 @@ focus_tree = {
 			add_political_power = 40		
 			}
 	}
+		     focus = {
+		id = POL_PIS_anti_eu_one
+		icon = GFX_goal_POL_anti_eu_one
+		x = 6
+		y = 9
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+			     focus = {
+		id = POL_PIS_invest_one
+		icon = GFX
+		x = 4
+		y = 9
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+			     focus = {
+		id = POL_PIS_promise_safe
+		icon = GFX
+		x = 8
+		y = 9
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+				     focus = {
+		id = POL_PIS_invest_two
+		icon = GFX
+		x = 4
+		y = 10
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_invest_one }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+				     focus = {
+		id = POL_PIS_anti_eu_two
+		icon = GFX
+		x = 6
+		y = 10
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_anti_eu_one }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+					     focus = {
+		id = POL_PIS_speach
+		icon = GFX
+		x = 8
+		y = 10
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_promise_safe }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+							     focus = {
+		id = POL_PIS_PREPA_ONE
+		icon = GFX
+		x = 5
+		y = 11
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_invest_two focus = POL_PIS_anti_eu_two focus = POL_PIS_speach }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+							     focus = {
+		id = POL_PIS_PREPA_TWO
+		icon = GFX
+		x = 7
+		y = 11
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 0.5
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_invest_two focus = POL_PIS_anti_eu_two focus = POL_PIS_speach focus = POL_PIS_PREPA_ONE }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
+							     focus = {
+		id = POL_PIS_ELECTIONS
+		icon = GFX
+		x = 6
+		y = 13
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 0.5
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_PIS_PREPA_ONE focus = POL_PIS_PREPA_TWO }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 20		
+			}
+	}
 
 
 
