@@ -25,8 +25,11 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ITA_proletariat_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_popularity = { ideology = totalitarian_communism popularity = 0.05 }
+			set_country_flag = ITA_proletariat_done
 		}
 	}
 
@@ -43,8 +46,8 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ITA_demspec_done
+			add_stability = 5
+			set_country_flag = ITA_demspec_done
 		}
 	}
 
@@ -61,8 +64,8 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ITA_goodolddays_done
+			set_politics = { ruling_party = fascism elections_allowed = no last_election = 2025.1.1 }
+			set_country_flag = ITA_goodolddays_done
 		}
 	}
 
@@ -79,8 +82,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_alliance_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.01 }
+			set_country_flag = LT_alliance_done
 		}
 	}
 
@@ -97,8 +102,9 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_hardline_done
+			set_party_name = { ideology = totalitarian_communism name = "CP" long_name = "Partito Comunista" }
+			# NOTA: il testo indicava piu' long_name diversi (PdRC, PCI, OSA, CR) non compatibili con un solo set_party_name; ho messo un nome generico, verifica/cambia la sigla che preferisci.
+			set_country_flag = ST_hardline_done
 		}
 	}
 
@@ -114,8 +120,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_rooting_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.01 }
+			set_country_flag = LT_rooting_done
 		}
 	}
 
@@ -131,8 +139,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_union_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.01 }
+			set_country_flag = LT_union_done
 		}
 	}
 
@@ -148,8 +158,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_infiltration_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			set_country_flag = LT_infiltration_done
 		}
 	}
 
@@ -165,8 +177,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_demonstrations_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			set_country_flag = LT_demonstrations_done
 		}
 	}
 
@@ -182,8 +196,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_factories_done
+			add_political_power = 10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			set_country_flag = LT_factories_done
 		}
 	}
 
@@ -200,8 +216,8 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_coup_done
+			add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
+			set_country_flag = LT_coup_done
 		}
 	}
 
@@ -219,8 +235,9 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_warrev_done
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = yes }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
+			set_country_flag = LT_warrev_done
 		}
 	}
 
@@ -237,8 +254,10 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_staterev_done
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.3 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.7 }
+			set_country_flag = LT_staterev_done
 		}
 	}
 
@@ -249,15 +268,15 @@ focus = {
 	y = 7
 	cost = 10
 	available_if_capitulated = no
-	prerequisite = { focus = LT_warrev } 
-	prerequisite = { focus = LT_coup } 
+	prerequisite = { focus = LT_warrev focus = LT_coup }
 	
 	mutually_exclusive = { focus = LT_staterev } 
 	ai_will_do = {
 		factor = 1
 	}
 	completion_reward = {
-		add_political_power = 100
+		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
+		add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
 		set_country_flag = LT_international_done
 	}
 }
@@ -274,8 +293,11 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_pcr_done
+			set_popularities = { ideology = revolutionary_socialism popularity = 50 }
+			set_popularities = { ideology = vanguard_socialism popularity = 40 }
+			set_popularities = { ideology = totalitarian_communism popularity = 10 }
+			# NOTA: 'set_popularities' non e' un effetto vanilla standard eseguibile a runtime; se la mod non lo definisce come scripted_effect, sostituisci con blocchi add_popularity calcolando il delta dal valore attuale.
+			set_country_flag = LT_pcr_done
 		}
 	}
 
@@ -291,8 +313,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_lotta_done
+			add_political_power = 100
+			set_country_flag = LT_lotta_done
 		}
 	}
 
@@ -308,8 +330,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_councils_done
+			create_faction = "The Internationale"
+			set_country_flag = LT_councils_done
 		}
 	}
 
@@ -325,8 +347,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_marxengels_done
+			add_political_power = 200
+			set_country_flag = LT_marxengels_done
 		}
 	}
 
@@ -344,8 +366,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_atheism_done
+			add_war_support = 10
+			add_stability = 2
+			add_manpower = 150000
+			set_country_flag = LT_atheism_done
 		}
 	}
 
@@ -363,8 +387,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_secular_done
+			set_country_flag = LT_secular_done
 		}
 	}
 
@@ -380,8 +403,11 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_truelenin_done
+			add_stability = 8
+			add_political_power = 300
+			add_war_support = 10
+			add_command_power = 50
+			set_country_flag = LT_truelenin_done
 		}
 	}
 
@@ -399,8 +425,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_marriage_done
+			add_stability = 10
+			set_country_flag = LT_marriage_done
 		}
 	}
 
@@ -418,14 +444,31 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_civilwed_done
+			add_stability = 3
+			set_country_flag = LT_civilwed_done
 		}
 	}
 
 	focus = {
 		id = LT_pariscommune
 		icon = GFX_goal_pariscommune
+		x = 0
+		y = 11
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_pariscommune_done
+		}
+	}
+
+		focus = {
+		id = LT_redfra
+		icon = GFX_goal_redfra
 		x = 2
 		y = 11
 		cost = 10
@@ -435,8 +478,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_pariscommune_done
+			FRA = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			declare_war_on = { target = FRA type = annex_everything }
+			set_country_flag = LT_redfra_done
 		}
 	}
 
@@ -452,8 +496,12 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_newredarmy1_done
+			add_war_support = 5
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+			set_country_flag = LT_newredarmy1_done
 		}
 	}
 
@@ -469,8 +517,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_fiveyear_done
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = LT_fiveyear_done
 		}
 	}
 
@@ -486,8 +534,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_partyworking1_done
+			add_political_power = 100
+			add_stability = 2
+			set_country_flag = LT_partyworking1_done
 		}
 	}
 
@@ -503,15 +552,14 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_partyworking2_done
+			set_country_flag = LT_partyworking2_done
 		}
 	}
 
 	focus = {
 		id = LT_workersclubs
 		icon = GFX_goal_workersclubs
-		x = 2
+		x = 0
 		y = 12
 		cost = 10
 		available_if_capitulated = no
@@ -520,8 +568,28 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_workersclubs_done
+			add_building_construction = { type = industrial_complex level = 8 instant_build = yes }
+			set_country_flag = LT_workersclubs_done
+		}
+	}
+
+	focus = {
+		id = LT_redspa
+		icon = GFX_goal_redspa
+		x = 2
+		y = 12
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redfra }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			SPR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			POR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			declare_war_on = { target = SPA type = annex_everything }
+			declare_war_on = { target = POR type = annex_everything }
+			set_country_flag = LT_redspa_done
 		}
 	}
 
@@ -537,8 +605,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_checka_done
+			create_intelligence_agency = yes
+			# NOTA: "agency_upgrade_number 10" non e' sintassi HOI4 valida (segnalato come incerto anche nel testo originale) ed e' stato omesso.
+			set_country_flag = LT_checka_done
 		}
 	}
 
@@ -554,8 +623,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_laborunion_done
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = LT_laborunion_done
 		}
 	}
 
@@ -571,15 +640,15 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_automation_done
+			add_research_slot = 3
+			set_country_flag = LT_automation_done
 		}
 	}
 
 	focus = {
 		id = LT_councilcity
 		icon = GFX_goal_councilcity
-		x = 2
+		x = 0
 		y = 13
 		cost = 10
 		available_if_capitulated = no
@@ -588,8 +657,27 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_councilcity_done
+			add_stability = 5
+			add_political_power = 100
+			set_country_flag = LT_councilcity_done
+		}
+	}
+
+	focus = {
+		id = LT_redger
+		icon = GFX_goal_redger
+		x = 2
+		y = 13
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redspa }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			GER = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			declare_war_on = { target = GER type = annex_everything }
+			set_country_flag = LT_redger_done
 		}
 	}
 
@@ -605,8 +693,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_womenmil_done
+			add_manpower = 1000000
+			add_war_support = 5
+			add_stability = -5
+			set_country_flag = LT_womenmil_done
 		}
 	}
 
@@ -622,8 +712,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_publicschool_done
+			add_political_power = 100
+			add_stability = 4
+			add_research_slot = 2
+			set_country_flag = LT_publicschool_done
 		}
 	}
 
@@ -639,15 +731,15 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_coopfactories_done
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = LT_coopfactories_done
 		}
 	}
 
 	focus = {
 		id = LT_revspirit
 		icon = GFX_goal_revspirit
-		x = 2
+		x = 0
 		y = 14
 		cost = 10
 		available_if_capitulated = no
@@ -656,8 +748,27 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_revspirit_done
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			# NOTA: stessa nota di LT_solidarity sull'effetto limitato all'Italia.
+			set_country_flag = LT_revspirit_done
+		}
+	}
+
+	focus = {
+		id = LT_redeng
+		icon = GFX_goal_redeng
+		x = 2
+		y = 14
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redger }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ENG = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			declare_war_on = { target = ENG type = annex_everything }
+			set_country_flag = LT_redeng_done
 		}
 	}
 
@@ -673,8 +784,11 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_radicalize_done
+			army_experience = 50
+			add_manpower = 10000
+			add_command_power = 100
+			add_war_support = 5
+			set_country_flag = LT_radicalize_done
 		}
 	}
 
@@ -690,8 +804,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_buildplan_done
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = LT_buildplan_done
 		}
 	}
 
@@ -707,25 +821,47 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_freeinternet_done
+			add_research_slot = 2
+			set_country_flag = LT_freeinternet_done
 		}
 	}
 
 	focus = {
 		id = LT_workersunite
 		icon = GFX_goal_workersunite
+		x = 4
+		y = 17
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_congress }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# NOTA: 'can_declare_war_on' e' un TRIGGER, non un effetto eseguibile in completion_reward: nessun effetto applicato. Se vuoi bypassare i normali requisiti di dichiarazione guerra verso quei tag serve modificare i trigger in common/scripted_triggers.
+			set_country_flag = LT_workersunite_done
+		}
+	}
+
+	focus = {
+		id = LT_domino
+		icon = GFX_goal_domino
 		x = 2
 		y = 15
 		cost = 10
 		available_if_capitulated = no
+		prerequisite = { focus = LT_redeng }
 		prerequisite = { focus = LT_revspirit }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_workersunite_done
+			# NOTA: effetto complesso su molti paesi terzi (set_politics + add_to_faction per BEL/HOL/DEN/POL/CZE/NOR/SWE/SER/ROM/BUL/IRE/GRE). Per farlo servono blocchi tipo 'TAG = { set_politics = {...} add_to_faction = ITA }' per ciascun tag: dimmi se confermi l'elenco e se l'Italia deve annettere/puppettare o solo aggiungerli alla fazione, e li aggiungo.
+			declare_war_on = { target = SLV type = annex_everything }
+			declare_war_on = { target = CRO type = annex_everything }
+			declare_war_on = { target = BOS type = annex_everything }
+			declare_war_on = { target = ALB type = annex_everything }
+			set_country_flag = LT_domino_done
 		}
 	}
 
@@ -741,8 +877,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_solidarity_done
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			# NOTA: il testo parlava di applicare popolarita' anche a RUS/JAP/PRC ecc., ma add_popularity si applica solo al paese che esegue il focus. Applicato solo all'Italia; dimmi se vuoi che si propaghi anche ad altri paesi e aggiungo i blocchi extra.
+			set_country_flag = LT_solidarity_done
 		}
 	}
 
@@ -758,8 +895,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_house_done
+			add_stability = 10
+			set_country_flag = LT_house_done
 		}
 	}
 
@@ -775,8 +912,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_automationlabour_done
+			add_manpower = 1000000
+			add_building_construction = { type = industrial_complex level = 30 instant_build = yes }
+			set_country_flag = LT_automationlabour_done
 		}
 	}
 
@@ -787,13 +925,15 @@ focus = {
 		y = 16
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_solidarity focus = LT_workersunite focus = LT_house }
+		prerequisite = { focus = LT_solidarity focus = LT_house }
+		prerequisite = { focus = LT_domino }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_congress_done
+			add_popularity = { ideology = vanguard_socialism popularity = 0.25 }
+			add_political_power = 300
+			set_country_flag = LT_congress_done
 		}
 	}
 
@@ -801,16 +941,21 @@ focus = {
 		id = LT_redstar
 		icon = GFX_goal_redstar
 		x = 4
-		y = 17
+		y = 18
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_congress }
+		prerequisite = { focus = LT_workersunite }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_redstar_done
+			add_political_power = 1000
+			add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
+			# NOTA: 'set_political_party' non e' un effetto HOI4 valido; sostituito con add_popularity per portare vanguard_socialism verso il 100%.
+			set_stability = 1
+			set_war_support = 1
+			# NOTA: stability/war_support vanno da 0 a 1 (0%-100%) negli effetti HOI4; '100' sarebbe fuori scala, usato 1.
+			set_country_flag = LT_redstar_done
 		}
 	}
 
@@ -826,8 +971,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_eurocomm_done
+			add_political_power = 50
+			add_stability = 5
+			set_country_flag = LT_eurocomm_done
 		}
 	}
 
@@ -843,8 +989,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_parlcomm_done
+			hold_election = yes
+			set_country_flag = LT_parlcomm_done
 		}
 	}
 
@@ -860,8 +1006,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_centralcomm_done
+			add_political_power = 100
+			set_country_flag = LT_centralcomm_done
 		}
 	}
 
@@ -877,8 +1023,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_trotconst_done
+			add_stability = 5
+			set_country_flag = LT_trotconst_done
 		}
 	}
 
@@ -894,8 +1040,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_intellvanguard_done
+			add_stability = 2
+			set_country_flag = LT_intellvanguard_done
 		}
 	}
 
@@ -911,8 +1057,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_rediscovergramsci_done
+			add_political_power = 100
+			set_country_flag = LT_rediscovergramsci_done
 		}
 	}
 
@@ -928,8 +1074,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_hasta_done
+			add_political_power = 100
+			set_country_flag = LT_hasta_done
 		}
 	}
 
@@ -945,8 +1091,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_permrev_done
+			add_war_support = 50
+			set_country_flag = LT_permrev_done
 		}
 	}
 
@@ -962,8 +1108,12 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_newredarmy2_done
+			add_war_support = 5
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+			set_country_flag = LT_newredarmy2_done
 		}
 	}
 
@@ -979,8 +1129,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_workersarmy_done
+			add_manpower = 10000
+			army_experience = 40
+			add_command_power = 30
+			set_country_flag = LT_workersarmy_done
 		}
 	}
 
@@ -996,8 +1148,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_exportrev_done
+			# NOTA: come per LT_workersunite, 'can_declare_war_on' e' un trigger e non un effetto: nessun effetto applicato qui.
+			set_country_flag = LT_exportrev_done
 		}
 	}
 
@@ -1013,8 +1165,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_trotskyyoung_done
+			set_stability = 1
+			set_war_support = 1
+			add_command_power = 100
+			set_country_flag = LT_trotskyyoung_done
 		}
 	}
 
@@ -1032,8 +1186,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_pdrc_done
+			add_political_power = -100
+			set_country_flag = ST_pdrc_done
 		}
 	}
 
@@ -1051,8 +1205,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_potere_done
+			add_political_power = 100
+			set_country_flag = ST_potere_done
 		}
 	}
 
@@ -1070,8 +1224,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_cambiare_done
+			add_political_power = -100
+			# NOTA: nel testo era scritto "-00" (probabile refuso); ho usato -100 per coerenza con gli altri partiti dello stesso step.
+			set_country_flag = ST_cambiare_done
 		}
 	}
 
@@ -1087,8 +1242,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_stalincoup_done
+			set_politics = { ruling_party = totalitarian_communism elections_allowed = no last_election = 2025.1.1 }
+			# NOTA: il testo diceva "totalitarian_communist", normalizzato in "totalitarian_communism" per coerenza con le altre ideologie del documento.
+			set_country_flag = ST_stalincoup_done
 		}
 	}
 
@@ -1104,8 +1260,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_newparty_done
+			add_political_power = -100
+			set_country_flag = ST_newparty_done
 		}
 	}
 
@@ -1121,8 +1277,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_sovparl_done
+			add_political_power = -100
+			set_country_flag = ST_sovparl_done
 		}
 	}
 
@@ -1138,8 +1294,12 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_abolishcouncils_done
+			add_political_power = -100
+			add_war_support = 4
+			add_stability = -10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			# NOTA: refuso "vanguard_socialist" corretto in "vanguard_socialism".
+			set_country_flag = ST_abolishcouncils_done
 		}
 	}
 
@@ -1155,8 +1315,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_politburo_done
+			add_stability = 5
+			set_country_flag = ST_politburo_done
 		}
 	}
 
@@ -1172,8 +1332,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_nkvd_done
+			create_intelligence_agency = yes
+			set_country_flag = ST_nkvd_done
 		}
 	}
 
@@ -1189,8 +1349,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_gosplan_done
+			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			set_country_flag = ST_gosplan_done
 		}
 	}
 
@@ -1206,8 +1366,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_fiveyearplan2_done
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = ST_fiveyearplan2_done
 		}
 	}
 
@@ -1223,8 +1383,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_controlledunion_done
+			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			set_country_flag = ST_controlledunion_done
 		}
 	}
 
@@ -1240,8 +1400,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_stakhanovism_done
+			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			set_country_flag = ST_stakhanovism_done
 		}
 	}
 
@@ -1257,8 +1417,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_socialcredit_done
+			add_political_power = 50
+			add_stability = 10
+			add_war_support = -10
+			set_country_flag = ST_socialcredit_done
 		}
 	}
 
@@ -1274,8 +1436,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_commcontinent_done
+			add_war_support = 2
+			add_stability = -2
+			set_country_flag = ST_commcontinent_done
 		}
 	}
 
@@ -1291,8 +1454,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_peoplesarmy_done
+			add_manpower = 100000
+			add_war_support = 0.5
+			set_country_flag = ST_peoplesarmy_done
 		}
 	}
 
@@ -1308,8 +1472,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_overwritemarx_done
+			add_stability = -5
+			add_war_support = 5
+			set_country_flag = ST_overwritemarx_done
 		}
 	}
 
@@ -1325,8 +1490,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_cooperatesprc_done
+			add_opinion_modifier = { target = PRC modifier = ITA_cooperation_prc }
+			# NOTA: "add_opinion" non e' sintassi HOI4 valida; serve un opinion_modifier chiamato "ITA_cooperation_prc" definito in common/opinion_modifiers/ (es. con value = 100). Cambia il nome se preferisci.
+			set_country_flag = ST_cooperatesprc_done
 		}
 	}
 
@@ -1342,8 +1508,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_redbook_done
+			add_political_power = 100
+			set_country_flag = ST_redbook_done
 		}
 	}
 
@@ -1359,8 +1525,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_stalincult_done
+			add_political_power = 150
+			add_war_support = 2
+			add_stability = 2
+			set_country_flag = ST_stalincult_done
 		}
 	}
 
@@ -1376,8 +1544,15 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_peoplesyugo_done
+			declare_war_on = { target = SER type = annex_everything }
+			declare_war_on = { target = CRO type = annex_everything }
+			declare_war_on = { target = SLV type = annex_everything }
+			declare_war_on = { target = BOS type = annex_everything }
+			declare_war_on = { target = MAC type = annex_everything }
+			declare_war_on = { target = MNT type = annex_everything }
+			declare_war_on = { target = ALB type = annex_everything }
+			declare_war_on = { target = YUG type = annex_everything }
+			set_country_flag = ST_peoplesyugo_done
 		}
 	}
 
@@ -1393,8 +1568,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_peoplesaustriahun_done
+			declare_war_on = { target = HUN type = puppet_wargoal_focus }
+			declare_war_on = { target = AUS type = annex_everything }
+			set_country_flag = ST_peoplesaustriahun_done
 		}
 	}
 
@@ -1410,8 +1586,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_bulgaria_done
+			declare_war_on = { target = BUL type = annex_everything }
+			declare_war_on = { target = GRE type = annex_everything }
+			set_country_flag = ST_bulgaria_done
 		}
 	}
 
@@ -1427,8 +1604,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_romania_done
+			declare_war_on = { target = ROM type = puppet_wargoal_focus }
+			set_country_flag = ST_romania_done
 		}
 	}
 
@@ -1444,8 +1621,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_peoplesfrance_done
+			declare_war_on = { target = FRA type = annex_everything }
+			set_country_flag = ST_peoplesfrance_done
 		}
 	}
 
@@ -1461,8 +1638,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_democgermany_done
+			declare_war_on = { target = GER type = puppet_wargoal_focus }
+			set_country_flag = ST_democgermany_done
 		}
 	}
 
@@ -1478,8 +1655,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_peoplesspain_done
+			declare_war_on = { target = SPR type = annex_everything }
+			declare_war_on = { target = SPA type = puppet_wargoal_focus }
+			# NOTA: il testo diceva "declare_war_on SPR, SPA (puppet)": non era chiaro se "(puppet)" valesse solo per SPA o per entrambi. Ho messo SPR = annessa, SPA = puppet: correggi se intendevi diversamente.
+			set_country_flag = ST_peoplesspain_done
 		}
 	}
 
@@ -1495,8 +1674,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_czechoslovakia_done
+			declare_war_on = { target = CZE type = puppet_wargoal_focus }
+			declare_war_on = { target = SLO type = annex_everything }
+			set_country_flag = ST_czechoslovakia_done
 		}
 	}
 
@@ -1512,8 +1692,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_3rdcongress_done
+			add_stability = 0.5
+			add_political_power = 100
+			add_command_power = 100
+			set_country_flag = ST_3rdcongress_done
 		}
 	}
 
@@ -1529,8 +1711,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = ST_partywithstate_done
+			add_political_power = 100
+			add_command_power = 100
+			set_country_flag = ST_partywithstate_done
 		}
 	}
 
@@ -1547,8 +1730,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_leftside_done
+			set_country_flag = DS_leftside_done
 		}
 	}
 
@@ -1565,8 +1747,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_rightside_done
+			set_country_flag = DS_rightside_done
 		}
 	}
 
@@ -1652,8 +1833,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            set_country_flag = DS_holdconf1_done
-					add_popularity = { ideology = progressive popularity = 0.07 }
+			add_popularity = { ideology = centrist popularity = 0.1 }
+			set_country_flag = DS_holdconf1_done
 		}
 	}
 
@@ -1669,8 +1850,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            set_country_flag = DS_holdconf2_done
-					add_popularity = { ideology = centrist popularity = 0.07 }
+			add_popularity = { ideology = centrist popularity = 0.1 }
+			# NOTA: il testo forniva un solo 'Hold Conferences'; applicato a entrambi i nodi omonimi (DS_holdconf1 e DS_holdconf2) per coerenza, correggi se volevi un valore diverso per ciascuno.
+			set_country_flag = DS_holdconf2_done
 		}
 	}
 
@@ -1687,9 +1869,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_giorgia_done
-					add_popularity = { ideology = conservative popularity = 0.05 }
+			add_popularity = { ideology = conservative popularity = 0.05 }
+			set_country_flag = DS_giorgia_done
 		}
 	}
 
@@ -1706,9 +1887,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_refugeeslega_done
-					add_popularity = { ideology = reactionary popularity = 0.10 }
+			add_popularity = { ideology = reactionary popularity = 0.1 }
+			set_country_flag = DS_refugeeslega_done
 		}
 	}
 
@@ -1724,8 +1904,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            set_country_flag = DS_motherchristian_done
-					add_popularity = { ideology = conservative popularity = 0.05 }
+			add_popularity = { ideology = conservative popularity = 0.05 }
+			set_country_flag = DS_motherchristian_done
 		}
 	}
 
@@ -1741,9 +1921,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_fascistsymp_done
-					add_popularity = { ideology = reactionary popularity = 0.10 }
+			add_popularity = { ideology = reactionary popularity = 0.1 }
+			set_country_flag = DS_fascistsymp_done
 		}
 	}
 
@@ -1759,9 +1938,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_nonmelo_done
-					add_popularity = { ideology = conservative popularity = 0.05 }
+			add_popularity = { ideology = conservative popularity = 0.1 }
+			set_country_flag = DS_nonmelo_done
 		}
 	}
 
@@ -1777,9 +1955,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_ourgeneral_done
-					add_popularity = { ideology = reactionary popularity = 0.10 }
+			add_popularity = { ideology = reactionary popularity = 0.2 }
+			set_country_flag = DS_ourgeneral_done
 		}
 	}
 
@@ -1795,8 +1972,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_election2027_done
+			add_political_power = -100
+			set_country_flag = DS_election2027_done
 		}
 	}
 
@@ -1813,8 +1990,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_socialistvict_done
+			set_politics = { ruling_party = progressive elections_allowed = yes last_election = 2026.5.25 }
+			set_country_flag = DS_socialistvict_done
 		}
 	}
 
@@ -1831,8 +2008,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_centerleft_done
+			set_politics = { ruling_party = centrist elections_allowed = yes last_election = 2026.5.25 }
+			set_country_flag = DS_centerleft_done
 		}
 	}
 
@@ -1849,8 +2026,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_conservvict_done
+			set_country_flag = DS_conservvict_done
 		}
 	}
 
@@ -1867,8 +2043,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_futuronaz_done
+			set_country_flag = DS_futuronaz_done
 		}
 	}
 
@@ -1884,8 +2059,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_demartino_done
+			add_stability = 0.02
+			set_country_flag = DS_demartino_done
 		}
 	}
 
@@ -1901,8 +2076,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_schlein_done
+			add_stability = 0.1
+			set_country_flag = DS_schlein_done
 		}
 	}
 
@@ -1918,8 +2093,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_meloni_done
+			set_country_flag = DS_meloni_done
 		}
 	}
 
@@ -1935,8 +2109,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_vannacci_done
+			set_country_flag = DS_vannacci_done
 		}
 	}
 
@@ -1952,8 +2125,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_minsalary_done
+			add_stability = 0.1
+			add_manpower = -5000
+			add_political_power = 2000
+			set_country_flag = DS_minsalary_done
 		}
 	}
 
@@ -1969,8 +2144,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_fundsschool_done
+			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			set_country_flag = DS_fundsschool_done
 		}
 	}
 
@@ -1986,8 +2161,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_greendeal_done
+			add_political_power = 200
+			set_country_flag = DS_greendeal_done
 		}
 	}
 
@@ -2003,8 +2178,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_welfare_done
+			add_stability = 0.5
+			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			set_country_flag = DS_welfare_done
 		}
 	}
 
@@ -2020,8 +2196,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_healthcare_done
+			add_manpower = 5000
+			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			set_country_flag = DS_healthcare_done
 		}
 	}
 
@@ -2037,8 +2214,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_newjobs_done
+			set_country_flag = DS_newjobs_done
 		}
 	}
 
@@ -2054,8 +2230,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_scalamobile_done
+			add_stability = 0.5
+			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			set_country_flag = DS_scalamobile_done
 		}
 	}
 
@@ -2071,8 +2248,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_mezzogiorno_done
+			add_stability = 0.5
+			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			set_country_flag = DS_mezzogiorno_done
 		}
 	}
 
@@ -2088,8 +2266,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_carbonneutral_done
+			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			set_country_flag = DS_carbonneutral_done
 		}
 	}
 
@@ -2105,8 +2283,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_socialdemit_done
+			add_political_power = 100
+			add_stability = 0.5
+			set_country_flag = DS_socialdemit_done
 		}
 	}
 
@@ -2122,8 +2301,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_consolidate_done
+			add_stability = 0.05
+			add_political_power = 75
+			set_country_flag = DS_consolidate_done
 		}
 	}
 
@@ -2139,8 +2319,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_uenato_done
+			add_war_support = 0.2
+			set_country_flag = DS_uenato_done
 		}
 	}
 
@@ -2156,8 +2336,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_defendvalues_done
+			add_stability = 0.5
+			set_country_flag = DS_defendvalues_done
 		}
 	}
 
@@ -2173,8 +2353,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_connectionsarmy_done
+			army_experience = 10
+			set_country_flag = DS_connectionsarmy_done
 		}
 	}
 
@@ -2190,8 +2370,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_protectmade_done
+			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			set_country_flag = DS_protectmade_done
 		}
 	}
 
@@ -2207,8 +2387,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_winkarmy_done
+			add_building_construction = { type = arms_factory level = 6 instant_build = yes }
+			set_country_flag = DS_winkarmy_done
 		}
 	}
 
@@ -2224,8 +2404,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_popularappeal_done
+			add_political_power = 75
+			set_country_flag = DS_popularappeal_done
 		}
 	}
 
@@ -2241,8 +2421,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_secureborders2_done
+			add_war_support = 0.05
+			add_stability = 0.03
+			set_country_flag = DS_secureborders2_done
 		}
 	}
 
@@ -2258,8 +2439,11 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_mattei_done
+			add_ideas = ITA_mediterranean_investments
+			add_ideas = { my_idea_1 my_idea_2 }
+			add_political_power = 50
+			# NOTA: verifica che le idee "ITA_mediterranean_investments", "my_idea_1" e "my_idea_2" siano definite in common/ideas/, altrimenti il gioco da' errore al caricamento.
+			set_country_flag = DS_mattei_done
 		}
 	}
 
@@ -2275,8 +2459,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_secureborders1_done
+			add_war_support = 0.05
+			add_stability = 0.03
+			set_country_flag = DS_secureborders1_done
 		}
 	}
 
@@ -2292,8 +2477,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_italianmanuf_done
+			add_stability = 0.5
+			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			add_building_construction = { type = arms_factory level = 5 instant_build = yes }
+			set_country_flag = DS_italianmanuf_done
 		}
 	}
 
@@ -2309,8 +2496,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_patriotic_done
+			add_war_support = 0.2
+			set_country_flag = DS_patriotic_done
 		}
 	}
 
@@ -2326,8 +2513,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_italyregional_done
+			add_war_support = 0.1
+			add_stability = 0.05
+			set_country_flag = DS_italyregional_done
 		}
 	}
 
@@ -2343,8 +2531,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_newnatrep_done
+			add_war_support = 15
+			add_stability = 10
+			set_country_flag = DS_newnatrep_done
 		}
 	}
 
@@ -2361,8 +2550,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_casasavoia_done
+			add_stability = -5
+			set_country_flag = MO_casasavoia_done
 		}
 	}
 
@@ -2379,8 +2568,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_marchrome2_done
+			add_political_power = 50
+			add_war_support = 0.5
+			add_stability = -0.2
+			set_country_flag = MO_marchrome2_done
 		}
 	}
 
@@ -2396,8 +2587,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_reorgstate_done
+			add_stability = 0.05
+			set_country_flag = MO_reorgstate_done
 		}
 	}
 
@@ -2413,8 +2604,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_restorecrown_done
+			add_stability = 0.1
+			promote_character = GER_erwin_rommel
+			# NOTA: 'Ideology = neutrality' indicato nel testo originale non e' un parametro valido per promote_character in HOI4 vanilla, quindi e' stato omesso.
+			set_country_flag = MO_restorecrown_done
 		}
 	}
 
@@ -2430,8 +2623,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_irredentism_done
+			set_country_flag = MO_irredentism_done
 		}
 	}
 
@@ -2447,8 +2639,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_loyaladmin_done
+			add_political_power = 75
+			set_country_flag = MO_loyaladmin_done
 		}
 	}
 
@@ -2464,8 +2656,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_emanuele_done
+			add_stability = 2
+			set_country_flag = MO_emanuele_done
 		}
 	}
 
@@ -2481,8 +2673,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_istria_done
+			set_country_flag = MO_istria_done
 		}
 	}
 
@@ -2498,8 +2689,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_corsica_done
+			set_country_flag = MO_corsica_done
 		}
 	}
 
@@ -2515,8 +2705,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_tradvalues_done
+			add_war_support = 0.05
+			set_country_flag = MO_tradvalues_done
 		}
 	}
 
@@ -2532,8 +2722,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_kingparl_done
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_popularity = { ideology = fascism popularity = 0.2 }
+			set_country_flag = MO_kingparl_done
 		}
 	}
 
@@ -2549,8 +2741,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_kingindustry_done
+			set_country_flag = MO_kingindustry_done
 		}
 	}
 
@@ -2566,8 +2757,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_kingdomreborn_done
+			set_country_flag = MO_kingdomreborn_done
 		}
 	}
 
@@ -2583,8 +2773,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_fascismback_done
+			add_stability = -10
+			set_country_flag = MO_fascismback_done
 		}
 	}
 
@@ -2600,8 +2790,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_expandstate_done
+			set_country_flag = MO_expandstate_done
 		}
 	}
 
@@ -2617,8 +2806,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_dvxback_done
+			add_war_support = 2
+			set_country_flag = MO_dvxback_done
 		}
 	}
 
@@ -2634,8 +2823,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_natrevival_done
+			add_war_support = 1.5
+			set_country_flag = MO_natrevival_done
 		}
 	}
 
@@ -2651,8 +2840,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_restorealliance_done
+			add_stability = 0.5
+			set_country_flag = MO_restorealliance_done
 		}
 	}
 
@@ -2668,8 +2857,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_granconsiglio_done
+			add_political_power_daily = 2
+			# NOTA: verifica che "add_political_power_daily" sia un effetto valido nella tua mod/versione; nel testo originale era segnalato come incerto ("political_power_daily > 2").
+			set_country_flag = MO_granconsiglio_done
 		}
 	}
 
@@ -2685,8 +2875,10 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_propagandamanifest_done
+			add_political_power = 50
+			add_stability = 0.5
+			army_experience = 20
+			set_country_flag = MO_propagandamanifest_done
 		}
 	}
 
@@ -2702,8 +2894,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = MO_empirereturns_done
+			add_stability = 0.5
+			add_war_support = 0.5
+			set_country_flag = MO_empirereturns_done
 		}
 	}
 
