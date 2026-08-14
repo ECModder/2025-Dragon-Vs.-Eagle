@@ -149,7 +149,7 @@ focus_tree = {
 	}
 				     focus = {
 		id = POL_PIS_anti_eu_two
-		icon = GFX
+		icon = GFX_goal_POL_PIS_anti_eu_two
 		x = 6
 		y = 10
 				        available = {
@@ -217,7 +217,9 @@ focus_tree = {
         }
 
 		
-		prerequisite = { focus = POL_PIS_invest_two focus = POL_PIS_anti_eu_two focus = POL_PIS_speach }
+		prerequisite = { focus = POL_PIS_invest_two  }
+		prerequisite = { focus = POL_PIS_anti_eu_two }
+		prerequisite = { focus = POL_PIS_speach }
 		#mutually_exclusive = { focus =    }
 
 		cancel_if_invalid = yes
@@ -244,7 +246,10 @@ focus_tree = {
         }
 
 		
-		prerequisite = { focus = POL_PIS_invest_two focus = POL_PIS_anti_eu_two focus = POL_PIS_speach focus = POL_PIS_PREPA_ONE }
+		prerequisite = { focus = POL_PIS_invest_two }
+		prerequisite = { focus = POL_PIS_anti_eu_two }
+		prerequisite = { focus = POL_PIS_speach  }
+		prerequisite = { focus = POL_PIS_PREPA_ONE }
 		#mutually_exclusive = { focus =    }
 
 		cancel_if_invalid = yes
@@ -271,7 +276,8 @@ focus_tree = {
         }
 
 		
-		prerequisite = { focus = POL_PIS_PREPA_ONE focus = POL_PIS_PREPA_TWO }
+		prerequisite = { focus = POL_PIS_PREPA_ONE }
+		prerequisite = { focus = POL_PIS_PREPA_TWO }
 		#mutually_exclusive = { focus =    }
 
 		cancel_if_invalid = yes
