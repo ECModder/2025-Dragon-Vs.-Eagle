@@ -1019,7 +1019,7 @@ focus = {
 	focus = {
 		id = ST_pdrc
 		icon = GFX_goal_pdrc
-		x = 27
+		x = 26
 		y = 3
 		cost = 10
 		available_if_capitulated = no
@@ -1037,7 +1037,7 @@ focus = {
 
 	focus = {
 		id = ST_potere
-		icon = GFX_goal_potere
+		icon = GFX_goal_pap
 		x = 28
 		y = 3
 		cost = 10
@@ -1056,8 +1056,8 @@ focus = {
 
 	focus = {
 		id = ST_cambiare
-		icon = GFX_goal_cambiare
-		x = 29
+		icon = GFX_goal_cr
+		x = 30
 		y = 3
 		cost = 10
 		available_if_capitulated = no
@@ -1581,8 +1581,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_propneigh1_done
+			add_popularity = { ideology = progressive popularity = 0.17 }
 		}
 	}
 
@@ -1599,8 +1598,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = DS_propneigh2_done
+		    add_political_power = 100
+			add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
 
@@ -1617,7 +1616,7 @@ focus = {
 		}
 		completion_reward = {
 		            add_political_power = 100
-		            set_country_flag = DS_poldebate1_done
+			add_popularity = { ideology = progressive popularity = 0.07 }
 		}
 	}
 
@@ -1634,7 +1633,7 @@ focus = {
 		}
 		completion_reward = {
 		            add_political_power = 100
-		            set_country_flag = DS_poldebate2_done
+					add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
 
@@ -1651,7 +1650,7 @@ focus = {
 		}
 		completion_reward = {
 		            add_political_power = 100
-		            set_country_flag = DS_holdconf1_done
+			add_popularity = { ideology = progressive popularity = 0.07 }
 		}
 	}
 
@@ -1668,7 +1667,7 @@ focus = {
 		}
 		completion_reward = {
 		            add_political_power = 100
-		            set_country_flag = DS_holdconf2_done
+					add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
 
