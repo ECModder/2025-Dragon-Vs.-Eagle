@@ -14,7 +14,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_proletariat
-		icon = GFX_goal_Proletariat_side
+		icon = GFX_goal_proletariat_side
 		x = 19
 		y = 0
 		cost = 10
@@ -32,7 +32,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_demspec
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_demspec
 		x = 48
 		y = 0
 		cost = 10
@@ -50,7 +50,7 @@ focus_tree = {
 
 	focus = {
 		id = ITA_goodolddays
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_goodolddays
 		x = 76
 		y = 0
 		cost = 10
@@ -68,7 +68,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_alliance
-		icon = GFX_goal_lenin_trotsky
+		icon = GFX_goal_alliance
 		x = 10
 		y = 2
 		cost = 10
@@ -86,7 +86,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_hardline
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_hardline
 		x = 28
 		y = 2
 		cost = 10
@@ -104,7 +104,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_rooting
-		icon = GFX_goal_rooting_party
+		icon = GFX_goal_rooting
 		x = 9
 		y = 3
 		cost = 10
@@ -138,7 +138,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_infiltration
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_infiltration
 		x = 8
 		y = 4
 		cost = 10
@@ -156,7 +156,7 @@ focus_tree = {
 	focus = {
 		id = LT_demonstrations
 		icon = GFX_goal_demonstrations
-		x = 12
+		x = 10
 		y = 4
 		cost = 10
 		available_if_capitulated = no
@@ -172,8 +172,8 @@ focus_tree = {
 
 	focus = {
 		id = LT_factories
-		icon = GFX_goal_generic_production
-		x = 10
+		icon = GFX_goal_factories
+		x = 12
 		y = 4
 		cost = 10
 		available_if_capitulated = no
@@ -189,12 +189,13 @@ focus_tree = {
 
 	focus = {
 		id = LT_coup
-		icon = GFX_goal_generic_military_march
+		icon = GFX_goal_coup
 		x = 10
 		y = 5
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = LT_infiltration focus = LT_demonstrations focus = LT_factories}
+		mutually_exclusive = { focus = LT_warrev }
 		ai_will_do = {
 			factor = 1
 		}
@@ -206,13 +207,14 @@ focus_tree = {
 
 	focus = {
 		id = LT_warrev
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_warrev
 		x = 4
-		y = 6
+		y = 5
 		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_coup }
-		mutually_exclusive = { focus = LT_staterev }
+		available = {
+			has_war = yes
+		}
+		mutually_exclusive = { focus = LT_coup }
 		ai_will_do = {
 			factor = 1
 		}
@@ -224,13 +226,13 @@ focus_tree = {
 
 	focus = {
 		id = LT_staterev
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_staterev
 		x = 15
-		y = 6
+		y = 7
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = LT_coup }
-		mutually_exclusive = { focus = LT_warrev }
+		mutually_exclusive = { focus = LT_international }
 		ai_will_do = {
 			factor = 1
 		}
@@ -240,26 +242,29 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = LT_international
-		icon = GFX_goal_generic_communism
-		x = 4
-		y = 7
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_warrev }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-		            add_political_power = 100
-		            set_country_flag = LT_international_done
-		}
+focus = {
+	id = LT_international
+		icon = GFX_goal_international
+	x = 4
+	y = 7
+	cost = 10
+	available_if_capitulated = no
+	prerequisite = { focus = LT_warrev } 
+	prerequisite = { focus = LT_coup } 
+	
+	mutually_exclusive = { focus = LT_staterev } 
+	ai_will_do = {
+		factor = 1
 	}
+	completion_reward = {
+		add_political_power = 100
+		set_country_flag = LT_international_done
+	}
+}
 
 	focus = {
 		id = LT_pcr
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_pcr
 		x = 15
 		y = 8
 		cost = 10
@@ -276,7 +281,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_lotta
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_lotta
 		x = 4
 		y = 8
 		cost = 10
@@ -293,7 +298,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_councils
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_councils
 		x = 2
 		y = 9
 		cost = 10
@@ -310,7 +315,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_marxengels
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_marxengels
 		x = 4
 		y = 9
 		cost = 10
@@ -327,7 +332,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_atheism
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_atheism
 		x = 9
 		y = 9
 		cost = 10
@@ -346,7 +351,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_secular
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_secular
 		x = 11
 		y = 9
 		cost = 10
@@ -365,7 +370,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_truelenin
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_truelenin
 		x = 4
 		y = 10
 		cost = 10
@@ -382,7 +387,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_marriage
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_marriage
 		x = 9
 		y = 10
 		cost = 10
@@ -400,7 +405,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_civilwed
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_civilwed
 		x = 11
 		y = 10
 		cost = 10
@@ -418,7 +423,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_pariscommune
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_pariscommune
 		x = 2
 		y = 11
 		cost = 10
@@ -435,7 +440,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_newredarmy1
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_newredarmy1
 		x = 4
 		y = 11
 		cost = 10
@@ -452,7 +457,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_fiveyear
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_fiveyear
 		x = 6
 		y = 11
 		cost = 10
@@ -469,7 +474,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_partyworking1
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_partyworking1
 		x = 9
 		y = 11
 		cost = 10
@@ -486,7 +491,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_partyworking2
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_partyworking2
 		x = 11
 		y = 11
 		cost = 10
@@ -503,7 +508,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_workersclubs
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_workersclubs
 		x = 2
 		y = 12
 		cost = 10
@@ -520,7 +525,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_checka
-		icon = GFX_goal_generic_intelligence_agency_upgrade
+		icon = GFX_goal_checka
 		x = 4
 		y = 12
 		cost = 10
@@ -537,7 +542,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_laborunion
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_laborunion
 		x = 6
 		y = 12
 		cost = 10
@@ -554,7 +559,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_automation
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_automation
 		x = 10
 		y = 12
 		cost = 10
@@ -571,7 +576,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_councilcity
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_councilcity
 		x = 2
 		y = 13
 		cost = 10
@@ -588,7 +593,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_womenmil
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_womenmil
 		x = 4
 		y = 13
 		cost = 10
@@ -605,7 +610,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_publicschool
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_publicschool
 		x = 6
 		y = 13
 		cost = 10
@@ -622,7 +627,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_coopfactories
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_coopfactories
 		x = 10
 		y = 13
 		cost = 10
@@ -639,7 +644,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_revspirit
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_revspirit
 		x = 2
 		y = 14
 		cost = 10
@@ -656,7 +661,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_radicalize
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_radicalize
 		x = 4
 		y = 14
 		cost = 10
@@ -673,7 +678,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_buildplan
-		icon = GFX_goal_generic_construct_infrastructure
+		icon = GFX_goal_buildplan
 		x = 6
 		y = 14
 		cost = 10
@@ -690,7 +695,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_freeinternet
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_freeinternet
 		x = 10
 		y = 14
 		cost = 10
@@ -707,7 +712,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_workersunite
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_workersunite
 		x = 2
 		y = 15
 		cost = 10
@@ -724,7 +729,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_solidarity
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_solidarity
 		x = 4
 		y = 15
 		cost = 10
@@ -741,7 +746,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_house
-		icon = GFX_goal_generic_construct_infrastructure
+		icon = GFX_goal_house
 		x = 6
 		y = 15
 		cost = 10
@@ -758,7 +763,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_automationlabour
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_automationlabour
 		x = 10
 		y = 15
 		cost = 10
@@ -775,7 +780,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_congress
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_congress
 		x = 4
 		y = 16
 		cost = 10
@@ -792,7 +797,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_redstar
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_redstar
 		x = 4
 		y = 17
 		cost = 10
@@ -809,7 +814,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_eurocomm
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_eurocomm
 		x = 15
 		y = 9
 		cost = 10
@@ -826,7 +831,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_parlcomm
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_parlcomm
 		x = 15
 		y = 10
 		cost = 10
@@ -843,7 +848,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_centralcomm
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_centralcomm
 		x = 14
 		y = 11
 		cost = 10
@@ -860,7 +865,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_trotconst
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_trotconst
 		x = 16
 		y = 11
 		cost = 10
@@ -877,7 +882,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_intellvanguard
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_intellvanguard
 		x = 14
 		y = 12
 		cost = 10
@@ -894,7 +899,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_rediscovergramsci
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_rediscovergramsci
 		x = 14
 		y = 13
 		cost = 10
@@ -911,7 +916,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_hasta
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_hasta
 		x = 14
 		y = 14
 		cost = 10
@@ -928,7 +933,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_permrev
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_permrev
 		x = 16
 		y = 12
 		cost = 10
@@ -945,7 +950,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_newredarmy2
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_newredarmy2
 		x = 16
 		y = 13
 		cost = 10
@@ -962,7 +967,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_workersarmy
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_workersarmy
 		x = 16
 		y = 14
 		cost = 10
@@ -979,7 +984,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_exportrev
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_exportrev
 		x = 15
 		y = 15
 		cost = 10
@@ -996,7 +1001,7 @@ focus_tree = {
 
 	focus = {
 		id = LT_trotskyyoung
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_trotskyyoung
 		x = 15
 		y = 16
 		cost = 10
@@ -1013,7 +1018,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_pdrc
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_pdrc
 		x = 27
 		y = 3
 		cost = 10
@@ -1032,7 +1037,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_potere
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_potere
 		x = 28
 		y = 3
 		cost = 10
@@ -1051,7 +1056,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_cambiare
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_cambiare
 		x = 29
 		y = 3
 		cost = 10
@@ -1070,7 +1075,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_stalincoup
-		icon = GFX_goal_generic_military_march
+		icon = GFX_goal_stalincoup
 		x = 28
 		y = 4
 		cost = 10
@@ -1087,7 +1092,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_newparty
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_newparty
 		x = 28
 		y = 5
 		cost = 10
@@ -1104,7 +1109,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_sovparl
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_sovparl
 		x = 28
 		y = 6
 		cost = 10
@@ -1121,7 +1126,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_abolishcouncils
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_abolishcouncils
 		x = 26
 		y = 7
 		cost = 10
@@ -1138,7 +1143,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_politburo
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_politburo
 		x = 28
 		y = 7
 		cost = 10
@@ -1155,7 +1160,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_nkvd
-		icon = GFX_goal_generic_intelligence_agency_upgrade
+		icon = GFX_goal_nkvd
 		x = 30
 		y = 7
 		cost = 10
@@ -1172,7 +1177,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_gosplan
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_gosplan
 		x = 26
 		y = 8
 		cost = 10
@@ -1189,7 +1194,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_fiveyearplan2
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_fiveyearplan2
 		x = 26
 		y = 9
 		cost = 10
@@ -1206,7 +1211,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_controlledunion
-		icon = GFX_goal_generic_demonstrations
+		icon = GFX_goal_controlledunion
 		x = 26
 		y = 10
 		cost = 10
@@ -1223,7 +1228,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_stakhanovism
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_stakhanovism
 		x = 26
 		y = 11
 		cost = 10
@@ -1240,7 +1245,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_socialcredit
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_socialcredit
 		x = 26
 		y = 12
 		cost = 10
@@ -1257,7 +1262,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_commcontinent
-		icon = GFX_goal_generic_communism
+		icon = GFX_goal_commcontinent
 		x = 28
 		y = 8
 		cost = 10
@@ -1274,7 +1279,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_peoplesarmy
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_peoplesarmy
 		x = 30
 		y = 8
 		cost = 10
@@ -1291,7 +1296,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_overwritemarx
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_overwritemarx
 		x = 28
 		y = 9
 		cost = 10
@@ -1308,7 +1313,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_cooperatesprc
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_cooperatesprc
 		x = 28
 		y = 10
 		cost = 10
@@ -1325,7 +1330,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_redbook
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_redbook
 		x = 28
 		y = 11
 		cost = 10
@@ -1342,7 +1347,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_stalincult
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_stalincult
 		x = 28
 		y = 12
 		cost = 10
@@ -1359,7 +1364,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_peoplesyugo
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_peoplesyugo
 		x = 30
 		y = 9
 		cost = 10
@@ -1376,7 +1381,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_peoplesaustriahun
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_peoplesaustriahun
 		x = 32
 		y = 9
 		cost = 10
@@ -1393,7 +1398,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_bulgaria
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_bulgaria
 		x = 30
 		y = 10
 		cost = 10
@@ -1410,7 +1415,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_romania
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_romania
 		x = 32
 		y = 10
 		cost = 10
@@ -1427,7 +1432,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_peoplesfrance
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_peoplesfrance
 		x = 30
 		y = 11
 		cost = 10
@@ -1444,7 +1449,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_democgermany
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_democgermany
 		x = 32
 		y = 11
 		cost = 10
@@ -1461,7 +1466,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_peoplesspain
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_peoplesspain
 		x = 30
 		y = 12
 		cost = 10
@@ -1478,7 +1483,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_czechoslovakia
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_czechoslovakia
 		x = 32
 		y = 12
 		cost = 10
@@ -1495,7 +1500,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_3rdcongress
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_3rdcongress
 		x = 29
 		y = 13
 		cost = 10
@@ -1512,7 +1517,7 @@ focus_tree = {
 
 	focus = {
 		id = ST_partywithstate
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_partywithstate
 		x = 29
 		y = 14
 		cost = 10
@@ -1529,7 +1534,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_leftside
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_leftside
 		x = 44
 		y = 1
 		cost = 10
@@ -1547,7 +1552,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_rightside
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_rightside
 		x = 53
 		y = 1
 		cost = 10
@@ -1565,7 +1570,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_propneigh1
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_propneigh1
 		x = 43
 		y = 2
 		cost = 10
@@ -1583,7 +1588,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_propneigh2
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_propneigh2
 		x = 45
 		y = 2
 		cost = 10
@@ -1601,7 +1606,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_poldebate1
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_poldebate1
 		x = 43
 		y = 3
 		cost = 10
@@ -1618,7 +1623,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_poldebate2
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_poldebate2
 		x = 45
 		y = 3
 		cost = 10
@@ -1635,7 +1640,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_holdconf1
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_holdconf1
 		x = 43
 		y = 4
 		cost = 10
@@ -1652,7 +1657,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_holdconf2
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_holdconf2
 		x = 45
 		y = 4
 		cost = 10
@@ -1669,7 +1674,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_giorgia
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_giorgia
 		x = 52
 		y = 2
 		cost = 10
@@ -1687,7 +1692,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_refugeeslega
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_refugeeslega
 		x = 54
 		y = 2
 		cost = 10
@@ -1705,7 +1710,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_motherchristian
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_motherchristian
 		x = 52
 		y = 3
 		cost = 10
@@ -1722,7 +1727,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_fascistsymp
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_fascistsymp
 		x = 54
 		y = 3
 		cost = 10
@@ -1739,7 +1744,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_nonmelo
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_nonmelo
 		x = 52
 		y = 4
 		cost = 10
@@ -1756,7 +1761,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_ourgeneral
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_ourgeneral
 		x = 54
 		y = 4
 		cost = 10
@@ -1773,7 +1778,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_election2027
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_election2027
 		x = 48
 		y = 5
 		cost = 10
@@ -1790,7 +1795,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_socialistvict
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_socialistvict
 		x = 43
 		y = 6
 		cost = 10
@@ -1808,7 +1813,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_centerleft
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_centerleft
 		x = 45
 		y = 6
 		cost = 10
@@ -1826,7 +1831,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_conservvict
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_conservvict
 		x = 51
 		y = 6
 		cost = 10
@@ -1844,7 +1849,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_futuronaz
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_futuronaz
 		x = 55
 		y = 6
 		cost = 10
@@ -1862,7 +1867,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_demartino
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_demartino
 		x = 43
 		y = 7
 		cost = 10
@@ -1879,7 +1884,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_schlein
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_schlein
 		x = 45
 		y = 7
 		cost = 10
@@ -1896,7 +1901,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_meloni
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_meloni
 		x = 51
 		y = 7
 		cost = 10
@@ -1913,7 +1918,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_vannacci
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_vannacci
 		x = 55
 		y = 7
 		cost = 10
@@ -1930,7 +1935,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_minsalary
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_minsalary
 		x = 42
 		y = 8
 		cost = 10
@@ -1947,7 +1952,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_fundsschool
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_fundsschool
 		x = 44
 		y = 8
 		cost = 10
@@ -1964,7 +1969,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_greendeal
-		icon = GFX_goal_generic_construct_infrastructure
+		icon = GFX_goal_greendeal
 		x = 46
 		y = 8
 		cost = 10
@@ -1981,7 +1986,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_welfare
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_welfare
 		x = 42
 		y = 9
 		cost = 10
@@ -1998,7 +2003,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_healthcare
-		icon = GFX_goal_generic_scientific_exchange
+		icon = GFX_goal_healthcare
 		x = 44
 		y = 9
 		cost = 10
@@ -2015,7 +2020,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_newjobs
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_newjobs
 		x = 46
 		y = 9
 		cost = 10
@@ -2032,7 +2037,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_scalamobile
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_scalamobile
 		x = 42
 		y = 10
 		cost = 10
@@ -2049,7 +2054,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_mezzogiorno
-		icon = GFX_goal_generic_construct_infrastructure
+		icon = GFX_goal_mezzogiorno
 		x = 44
 		y = 10
 		cost = 10
@@ -2066,7 +2071,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_carbonneutral
-		icon = GFX_goal_generic_construct_infrastructure
+		icon = GFX_goal_carbonneutral
 		x = 46
 		y = 10
 		cost = 10
@@ -2083,7 +2088,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_socialdemit
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_socialdemit
 		x = 44
 		y = 11
 		cost = 10
@@ -2100,7 +2105,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_consolidate
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_consolidate
 		x = 50
 		y = 8
 		cost = 10
@@ -2117,7 +2122,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_uenato
-		icon = GFX_goal_generic_alliance
+		icon = GFX_goal_uenato
 		x = 52
 		y = 8
 		cost = 10
@@ -2134,7 +2139,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_defendvalues
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_defendvalues
 		x = 54
 		y = 8
 		cost = 10
@@ -2151,7 +2156,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_connectionsarmy
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_connectionsarmy
 		x = 56
 		y = 8
 		cost = 10
@@ -2168,7 +2173,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_protectmade
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_protectmade
 		x = 50
 		y = 9
 		cost = 10
@@ -2185,7 +2190,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_winkarmy
-		icon = GFX_goal_generic_army_effort
+		icon = GFX_goal_winkarmy
 		x = 52
 		y = 9
 		cost = 10
@@ -2202,7 +2207,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_popularappeal
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_popularappeal
 		x = 54
 		y = 9
 		cost = 10
@@ -2219,7 +2224,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_secureborders2
-		icon = GFX_goal_generic_defence
+		icon = GFX_goal_secureborders2
 		x = 56
 		y = 9
 		cost = 10
@@ -2236,7 +2241,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_mattei
-		icon = GFX_goal_generic_alliance
+		icon = GFX_goal_mattei
 		x = 50
 		y = 10
 		cost = 10
@@ -2253,7 +2258,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_secureborders1
-		icon = GFX_goal_generic_defence
+		icon = GFX_goal_secureborders1
 		x = 52
 		y = 10
 		cost = 10
@@ -2270,7 +2275,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_italianmanuf
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_italianmanuf
 		x = 54
 		y = 10
 		cost = 10
@@ -2287,7 +2292,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_patriotic
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_patriotic
 		x = 56
 		y = 10
 		cost = 10
@@ -2304,7 +2309,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_italyregional
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_italyregional
 		x = 51
 		y = 11
 		cost = 10
@@ -2321,7 +2326,7 @@ focus_tree = {
 
 	focus = {
 		id = DS_newnatrep
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_newnatrep
 		x = 55
 		y = 11
 		cost = 10
@@ -2338,7 +2343,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_casasavoia
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_casasavoia
 		x = 71
 		y = 2
 		cost = 10
@@ -2356,7 +2361,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_marchrome2
-		icon = GFX_goal_generic_military_march
+		icon = GFX_goal_marchrome2
 		x = 82
 		y = 2
 		cost = 10
@@ -2374,7 +2379,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_reorgstate
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_reorgstate
 		x = 70
 		y = 3
 		cost = 10
@@ -2391,7 +2396,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_restorecrown
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_restorecrown
 		x = 72
 		y = 3
 		cost = 10
@@ -2408,7 +2413,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_irredentism
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_irredentism
 		x = 76
 		y = 3
 		cost = 10
@@ -2425,7 +2430,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_loyaladmin
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_loyaladmin
 		x = 70
 		y = 4
 		cost = 10
@@ -2442,7 +2447,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_emanuele
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_emanuele
 		x = 72
 		y = 4
 		cost = 10
@@ -2459,7 +2464,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_istria
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_istria
 		x = 74
 		y = 5
 		cost = 10
@@ -2476,7 +2481,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_corsica
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_corsica
 		x = 76
 		y = 5
 		cost = 10
@@ -2493,7 +2498,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_tradvalues
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_tradvalues
 		x = 78
 		y = 5
 		cost = 10
@@ -2510,7 +2515,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_kingparl
-		icon = GFX_goal_generic_election
+		icon = GFX_goal_kingparl
 		x = 70
 		y = 5
 		cost = 10
@@ -2527,7 +2532,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_kingindustry
-		icon = GFX_goal_generic_production
+		icon = GFX_goal_kingindustry
 		x = 72
 		y = 5
 		cost = 10
@@ -2544,7 +2549,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_kingdomreborn
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_kingdomreborn
 		x = 71
 		y = 6
 		cost = 10
@@ -2561,7 +2566,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_fascismback
-		icon = GFX_goal_generic_fascism
+		icon = GFX_goal_fascismback
 		x = 82
 		y = 3
 		cost = 10
@@ -2578,7 +2583,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_expandstate
-		icon = GFX_goal_generic_political_pressure
+		icon = GFX_goal_expandstate
 		x = 80
 		y = 4
 		cost = 10
@@ -2595,7 +2600,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_dvxback
-		icon = GFX_goal_generic_fascism
+		icon = GFX_goal_dvxback
 		x = 82
 		y = 4
 		cost = 10
@@ -2612,7 +2617,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_natrevival
-		icon = GFX_goal_generic_national_unity
+		icon = GFX_goal_natrevival
 		x = 84
 		y = 4
 		cost = 10
@@ -2629,7 +2634,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_restorealliance
-		icon = GFX_goal_generic_alliance
+		icon = GFX_goal_restorealliance
 		x = 80
 		y = 5
 		cost = 10
@@ -2646,7 +2651,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_granconsiglio
-		icon = GFX_goal_generic_fascism
+		icon = GFX_goal_granconsiglio
 		x = 82
 		y = 5
 		cost = 10
@@ -2663,7 +2668,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_propagandamanifest
-		icon = GFX_goal_generic_propaganda
+		icon = GFX_goal_propagandamanifest
 		x = 84
 		y = 5
 		cost = 10
@@ -2680,7 +2685,7 @@ focus_tree = {
 
 	focus = {
 		id = MO_empirereturns
-		icon = GFX_goal_generic_more_territorial_claims
+		icon = GFX_goal_empirereturns
 		x = 82
 		y = 6
 		cost = 10
