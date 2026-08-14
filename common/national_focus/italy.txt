@@ -333,7 +333,7 @@ focus = {
 	focus = {
 		id = LT_atheism
 		icon = GFX_goal_atheism
-		x = 9
+		x = 6
 		y = 9
 		cost = 10
 		available_if_capitulated = no
@@ -352,7 +352,7 @@ focus = {
 	focus = {
 		id = LT_secular
 		icon = GFX_goal_secular
-		x = 11
+		x = 8
 		y = 9
 		cost = 10
 		available_if_capitulated = no
@@ -388,11 +388,12 @@ focus = {
 	focus = {
 		id = LT_marriage
 		icon = GFX_goal_marriage
-		x = 9
-		y = 10
+		x = 11
+		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_atheism }
+		prerequisite = { focus = LT_lotta }
+		prerequisite = { focus = LT_pcr }
 		mutually_exclusive = { focus = LT_civilwed }
 		ai_will_do = {
 			factor = 1
@@ -406,11 +407,12 @@ focus = {
 	focus = {
 		id = LT_civilwed
 		icon = GFX_goal_civilwed
-		x = 11
-		y = 10
+		x = 13
+		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_secular }
+		prerequisite = { focus = LT_lotta }
+		prerequisite = { focus = LT_pcr }
 		mutually_exclusive = { focus = LT_marriage }
 		ai_will_do = {
 			factor = 1
@@ -1581,6 +1583,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
+			set_country_flag = DS_propneigh1_done
 			add_popularity = { ideology = progressive popularity = 0.17 }
 		}
 	}
@@ -1598,7 +1601,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		    add_political_power = 100
+			set_country_flag = DS_propneigh2_done
 			add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
@@ -1615,7 +1618,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
+			set_country_flag = DS_propneigh2_done
 			add_popularity = { ideology = progressive popularity = 0.07 }
 		}
 	}
@@ -1632,7 +1635,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
+		            set_country_flag = DS_poldebate2_done
 					add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
@@ -1649,8 +1652,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
-			add_popularity = { ideology = progressive popularity = 0.07 }
+		            set_country_flag = DS_holdconf1_done
+					add_popularity = { ideology = progressive popularity = 0.07 }
 		}
 	}
 
@@ -1666,7 +1669,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
+		            set_country_flag = DS_holdconf2_done
 					add_popularity = { ideology = centrist popularity = 0.07 }
 		}
 	}
@@ -1686,6 +1689,7 @@ focus = {
 		completion_reward = {
 		            add_political_power = 100
 		            set_country_flag = DS_giorgia_done
+					add_popularity = { ideology = conservative popularity = 0.05 }
 		}
 	}
 
@@ -1704,6 +1708,7 @@ focus = {
 		completion_reward = {
 		            add_political_power = 100
 		            set_country_flag = DS_refugeeslega_done
+					add_popularity = { ideology = reactionary popularity = 0.10 }
 		}
 	}
 
@@ -1719,8 +1724,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-		            add_political_power = 100
 		            set_country_flag = DS_motherchristian_done
+					add_popularity = { ideology = conservative popularity = 0.05 }
 		}
 	}
 
@@ -1738,6 +1743,7 @@ focus = {
 		completion_reward = {
 		            add_political_power = 100
 		            set_country_flag = DS_fascistsymp_done
+					add_popularity = { ideology = reactionary popularity = 0.10 }
 		}
 	}
 
@@ -1755,6 +1761,7 @@ focus = {
 		completion_reward = {
 		            add_political_power = 100
 		            set_country_flag = DS_nonmelo_done
+					add_popularity = { ideology = conservative popularity = 0.05 }
 		}
 	}
 
@@ -1772,6 +1779,7 @@ focus = {
 		completion_reward = {
 		            add_political_power = 100
 		            set_country_flag = DS_ourgeneral_done
+					add_popularity = { ideology = reactionary popularity = 0.10 }
 		}
 	}
 
