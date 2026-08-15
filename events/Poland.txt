@@ -4,6 +4,7 @@
 
 add_namespace = polandos
 add_namespace = starting_poland
+namespace = elections
 
 country_event = {
 	id = polandos.1
@@ -94,6 +95,37 @@ name = "okay thank you for telling!"
 }
 
 }
+country_event = {
+
+    id = elections.1
+
+    title = elections.1.t
+    desc = elections.1.d
+
+    is_triggered_only = yes
+
+    option = {
+
+        name = "Lets begin"
 
 
+        set_variable = {
+            POL_candidate_A = 25
+        }
 
+        set_variable = {
+            POL_candidate_B = 25
+        }
+
+        set_variable = {
+            POL_candidate_C = 25
+        }
+
+        set_variable = {
+            POL_candidate_D = 25
+        }
+
+
+        set_country_flag = POL_elections_active
+    }
+}
