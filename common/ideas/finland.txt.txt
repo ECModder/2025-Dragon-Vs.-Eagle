@@ -2,7 +2,7 @@ ideas = {
 	country = {
 		Equal_rights = {
 			name = Equal_rights
-			picture = GFX_idea_generic_deck_1
+			picture = generic_neutrality_drift_bonus
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -10,9 +10,20 @@ ideas = {
 			}
 		}
 
+		Equal_rights2 = {
+			name = Equal_rights
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.2
+				political_power_gain = 0.1
+			}
+		}
+
 		Sisu = {
 			name = Sisu
-			picture = GFX_idea_generic_deck_1
+			picture = sisu
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -24,7 +35,7 @@ ideas = {
 
 		Stagnating_Economy = {
 			name = Stagnating_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = RAJ_debt_relief
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -40,7 +51,7 @@ ideas = {
 
 		Reviving_Economy = {
 			name = Reviving_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = generic_devalue_currency
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -72,7 +83,7 @@ ideas = {
 
 		Recovering_Economy = {
 			name = Recovering_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = generic_economic_recovery
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -87,7 +98,7 @@ ideas = {
 
 		Recovering_Economy2 = {
 			name = Recovering_Economy2
-			picture = GFX_idea_generic_deck_1
+			picture = generic_economic_recovery
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -97,7 +108,7 @@ ideas = {
 
 		Growing_Economy = {
 			name = Growing_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = generic_mild_economic_recovery
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -129,7 +140,7 @@ ideas = {
 
 		Expanding_Economy = {
 			name = Expanding_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = generic_foreign_capital
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -145,7 +156,7 @@ ideas = {
 
 		Surging_Economy = {
 			name = Surging_Economy
-			picture = GFX_idea_generic_deck_1
+			picture = generic_economic_increase
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -161,7 +172,7 @@ ideas = {
 
 		Surging_Economy2 = {
 			name = Surging_Economy2
-			picture = GFX_idea_generic_deck_1
+			picture = generic_economic_increase
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -193,7 +204,7 @@ ideas = {
 
 		Orpon_hallitus = {
 			name = Orpon_hallitus
-			picture = GFX_idea_generic_deck_1
+			picture = generic_disjointed_gov
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
@@ -204,18 +215,18 @@ ideas = {
 
 		Prepared_for_war = {
 			name = Prepared_for_war
-			picture = GFX_idea_generic_deck_1
+			picture = SWE_save_finland
 			allowed = { always = yes }
 			removal_cost = -1
 			modifier = {
-				add_war_support = 0.10
-				add_attack_core_modifier = 0.05
-				add_defense_core_modifier = 0.05
+				war_support_factor = 0.10
+				army_core_attack_factor = 0.05
+				army_core_defence_factor = 0.05
 			}
 			targeted_modifier = {
 				tag = SOV
-				add_attack_factor = 0.10
-				add_defense_factor = 0.10
+				army_attack_factor = 0.10
+				army_defence_factor = 0.10
 			}
 		}
 
@@ -228,6 +239,36 @@ ideas = {
 				add_war_support = 0.15
 				add_stability = -0.05
 				industrial_capacity_factory = 0.3
+			}
+		}
+
+		Academic_excellence = {
+			name = Academic_Excellence
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.15
+			}
+		}
+
+		Five_points = {
+			name = Five_points
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.1
+			}
+		}
+
+		Five_points1 = {
+			name = Five_points
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.1
 			}
 		}
 	}

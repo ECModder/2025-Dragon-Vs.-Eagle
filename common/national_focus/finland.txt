@@ -19,18 +19,18 @@
 
 
 focus_tree = {
-	id = FIN_focus
+	id = finnish_focus
 
-	country = {	
+	country = {
 		factor = 0
 		
 		modifier = {
-			add = 10
+			add = 20
 			tag = FIN
 		}
 	}
 	
-	default = no
+	default = yes
  # Elections
 	initial_show_position = {
 		x = 23
@@ -120,9 +120,6 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.05
 			add_political_power = 50
-        	set_variable = { secret_reveal_day = days_passed }
-        	add_to_variable = { secret_reveal_day = 105 }
-        	mark_focus_tree_layout_dirty = yes
 		}
 
 	}
@@ -145,7 +142,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.1
 			add_popularity = {
-				ideology = conservative
+				ideology = democratic
 				popularity = 0.1
 			}
 		}
@@ -169,7 +166,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = reactionary
+				ideology = democratic
 				popularity = 0.1
 			}
 
@@ -195,7 +192,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = progressive
+				ideology = democratic
 				popularity = 0.1
 			}
 
@@ -221,42 +218,8 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = progressive
+				ideology = democratic
 				popularity = 0.1
-			}
-
-
-		}
-
-	}
-
-	focus = {
-		id = FIN_electoral_deadlock
-		icon = GFX_focus_PER_strengthen_the_tudeh
-		x = 7
-		y = 4
-		cost = 5
-		prerequisite = { 
-			focus = FIN_wait_for_elections
-		}
-    	allow_branch = {
-        	has_completed_focus = FIN_wait_for_elections
-        	check_variable = {
-            	var = days_passed
-            	value = secret_reveal_day
-           	 	compare = greater_than_or_equals
-        	}
-    	}
-		mutually_exclusive = {
-			focus = FIN_side_with_kokoomus
-			focus = FIN_side_with_perussuomalaiset
-			focus = FIN_side_with_greens
-		}
-
-		completion_reward = {
-			add_popularity = {
-				ideology = conservative
-				popularity = -0.1
 			}
 
 
@@ -276,7 +239,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = centrist
+				ideology = democratic
 				popularity = 0.05
 			}
 
@@ -346,9 +309,7 @@ focus_tree = {
 		available = {
 			always = no
 		}
-        allow_branch = {
-			has_completed_focus = FIN_side_with_SDP
-		}
+        hidden = yes
 		prerequisite = { 
 			focus = FIN_side_with_SDP
 		}
@@ -495,7 +456,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.1
 			add_popularity = {
-				ideology = conservative
+				ideology = democratic
 				popularity = 0.1
 			}
 		}
@@ -519,7 +480,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = reactionary
+				ideology = democratic
 				popularity = 0.1
 			}
 
@@ -545,7 +506,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = progressive
+				ideology = democratic
 				popularity = 0.1
 			}
 
@@ -571,7 +532,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = progressive
+				ideology = democratic
 				popularity = 0.1
 			}
 
@@ -640,7 +601,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.01
 			add_popularity = {
-				ideology = conservative
+				ideology = democratic
 				popularity = -0.1
 			}
 		}
@@ -664,15 +625,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = 0.05
 			}
 			add_popularity = {
-				ideology = vanguard_socialism
-				popularity = 0.05
-			}
-			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = -0.05
 			}
 		}
@@ -694,7 +651,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = 0.1
 			}
 			add_stability = -0.05
@@ -718,11 +675,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = conservative
+				ideology = democratic
 				popularity = 0.15
 			}
 			add_stability = 0.05
@@ -745,7 +702,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = -0.20
 			}
 			add_stability = -0.15
@@ -771,19 +728,19 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = conservative
+				ideology = democratic
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = autocracy
+				ideology = neutrality
 				popularity = 0.45
 			}
 		}
@@ -803,11 +760,11 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.01
 			add_popularity = {
-				ideology = vanguard_socialism
+				ideology = communism
 				popularity = -0.1
 			}
 			add_popularity = {
-				ideology = reactionary
+				ideology = fascism
 				popularity = -0.1
 			}
 		}
@@ -830,11 +787,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = 0.05
 			}
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = -0.05
 			}
 		}
@@ -856,7 +813,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = -0.05
 			}
 			add_stability = 0.05
@@ -881,7 +838,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = ultranationalism
+				ideology = fascism
 				popularity = 0.05
 			}
 			add_stability = -0.05
@@ -903,7 +860,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = communism
 				popularity = -0.20
 			}
 			add_stability = -0.15
@@ -934,7 +891,7 @@ focus_tree = {
 					has_completed_focus = FIN_turn_a_blind_eye_on_communists
 				}
 				set_politics = {
-					ruling_party = totalitarian_communism
+					ruling_party = communism
 				}
 			}
 			else_if = {
@@ -942,7 +899,7 @@ focus_tree = {
 					has_completed_focus = FIN_arrest_radical_communists
 				}
 				set_politics = {
-					ruling_party = vanguard_socialism
+					ruling_party = democratic
 				}
 			}
 			else_if = {
@@ -950,7 +907,7 @@ focus_tree = {
 					has_completed_focus = FIN_crackdown_on_neo_fascists
 				}
 				set_politics = {
-					ruling_party = reactionary
+					ruling_party = democratic
 				}
 			}
 			else_if = {
@@ -958,7 +915,7 @@ focus_tree = {
 					has_completed_focus = FIN_turn_a_blind_eye_on_neo_fascists
 				}
 				set_politics = {
-					ruling_party = ultranationalism
+					ruling_party = fascism
 				}
 			}
 			else_if = {
@@ -966,7 +923,7 @@ focus_tree = {
 					has_completed_focus = FIN_arrest_extremists
 				}
 				set_politics = {
-					ruling_party = autocracy
+					ruling_party = neutrality
 				}
 			}
 		}
@@ -981,7 +938,7 @@ focus_tree = {
   	focus = {
 		id = FIN_coalition_rises_anew
 		icon = GFX_goal_generic_forceful_treaty
-		x = 27
+		x = 30
 		y = 3
 		cost = 0
 		available = {
@@ -989,7 +946,7 @@ focus_tree = {
 		}
 		bypass = {
 			OR = {
-				has_completed_focus = FIN_redo_old_coalition
+				has_completed_focus = FIN_restablish_old_coalition
 				has_completed_focus = FIN_elections
 			}
 		}
@@ -1030,7 +987,7 @@ focus_tree = {
             always = no
         }
 		bypass = {
-			has_government = vanguard_socialism
+			has_government = communism
 		}
 
 	}
@@ -1142,25 +1099,8 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -25
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 4
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 3
-					instant_build = yes		
-			        }
-			    add_building_construction = {
-				    type = arms_factory
-				    level = 1
-					instant_build = yes		
-			        }
-			}
+			add_civilian_factory = 3
+			add_military_factory = 1
 		}
 
 	}
@@ -1182,21 +1122,7 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 1
 			}
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 3
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 3
-					instant_build = yes		
-			        }
-			}
-			FIN_advance_industry_tier_effect = yes
+			add_civilian_factory = 3
 		}
 
 	}
@@ -1211,14 +1137,14 @@ focus_tree = {
 			focus = FIN_restart_industry
 		}
 		completion_reward = {
-			army_experience = 50
+			add_army_experience = 50
 			add_stability = -0.05
 			add_war_support = 0.15
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
 				amount = 1000
 			}
-			add_ideas = extensive_conscription
+			set_conscription_law = extensive_conscription
 		}
 
 	}
@@ -1235,7 +1161,147 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = revolutionary_socialism
+			has_government = communism
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_universal_basic_income
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_socialist_victory
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.15
+			# Ind buff
+			# Temp ind dbuff
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_wealth_tax
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_universal_basic_income
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Ind debuff goes away
+		}
+
+	}
+
+	focus = {
+		id = FIN_five_points
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_universal_basic_income
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_education
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 3
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_five_points
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_nature
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 5
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_five_points
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_health
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 3
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_education
+			focus = FIN_nature
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_work
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 5
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_education
+			focus = FIN_nature
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_health
+			focus = FIN_services
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
 		}
 
 	}
@@ -1271,21 +1337,7 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_stability = 0.15
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 3
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 3
-					instant_build = yes		
-			        }
-			}
-			FIN_advance_industry_tier_effect = yes
+			add_civilian_factory = 3
 		}
 
 	}
@@ -1302,9 +1354,131 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = progressive
+			has_government = democratic
 		}
 		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_fund_renevable_energy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_greens_victory
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_lower_voting_age
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_fund_renevable_energy
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_stability = -0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_expand_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_animal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_legalize_cannabis
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_fund_science
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_green_welfare_state
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_legalize_cannabis
+			focus = FIN_fund_science
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Add desicions similar to ones in vanilla Thailand tree
+		}
 
 	}
 
@@ -1321,14 +1495,141 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = progressive
+			has_government = democratic
 		}
 		completion_reward = {}
 
 	}
 
 	focus = {
-		id = FIN_plan_twenty_thirty
+		id = FIN_accessible_and_free_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_social_democrat_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_aid_immigrants
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_promote_equal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			remove_ideas = Equal_rights
+			add_ideas = Equal_rights2
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_streghten_our_education_system
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_aid_immigrants
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_decentralize_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_promote_equal_rights
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -100
+			modify_timed_idea = {
+				idea = Academic_excellence
+				days = 215
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_fairer_taxation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_decentralize_schooling
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -100
+		}
+
+	}
+
+	focus = {
+		id = FIN_secularize_finland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_fairer_taxation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+		}
+
+	}
+
+	focus = {
+		id = FIN_plan_2030
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 16
 		y = 13
@@ -1356,14 +1657,144 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = centrist
+			has_government = democratic
 		}
 		completion_reward = {}
 
 	}
 
 	focus = {
-		id = FIN_aid_immigrants
+		id = FIN_start_decentralization
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_centrist_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_diversify_nation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_start_decentralization
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_increase_fertility
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_increase_fertility
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_timed_idea = {
+				idea = Academic_excellence
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_AI
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_double_economic_growth
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_invest_in_AI
+		}
+		completion_reward = {
+			add_stability = 0.1
+			# Ind buff
+		}
+
+	}
+
+	focus = {
+		id = FIN_improve_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_double_economic_growth
+			focus = FIN_invest_in_schooling
+		}
+		completion_reward = {
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_enforce_mandatory_conscription_for_all
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_improve_services
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_ideas = extensive_conscription
+		}
+
+	}
+
+	focus = {
+		id = FIN_fund_foreign_immigration
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 20
 		y = 13
@@ -1373,22 +1804,9 @@ focus_tree = {
 			focus = FIN_kokoomus_victory
 		}
 		completion_reward = {
-			add_political_power = -75
-			add_stability = 0.05
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 2
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
+			add_political_power = -50
+			add_stability = -0.1
+			add_civilian_factory = 2
 		}
 
 	}
@@ -1405,7 +1823,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = conservative
+			has_government = democratic
 		}
 		completion_reward = {}
 
@@ -1442,20 +1860,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.01
 			add_political_power = 150
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 4
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 4
-					instant_build = yes		
-			        }
-			}
+			add_civilian_factory = 4
 		}
 
 	}
@@ -1527,7 +1932,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.05
             add_war_support = 0.05
-            add_ideas = extensive_conscription
+            set_conscription_law = extensive_conscription
 		}
 
 	}
@@ -1536,31 +1941,50 @@ focus_tree = {
 		id = FIN_raise_pigouvian_tax
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 23
-		y = 15
+		y = 16
 		cost = 5
 		prerequisite = {
-			focus = FIN_strengthen_police
+			focus = FIN_raise_conscription
 		}
 		completion_reward = {
 			add_stability = -0.05
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 4
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
-			FIN_advance_industry_tier_effect = yes
+            add_civilian_factory = 2
 		}
 
 	}
+
+	focus = {
+		id = FIN_decrease_taxes_for_elderly
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 21
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_raise_military_spending
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_revenable_energy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 22
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_decrease_taxes_for_elderly
+			focus = FIN_raise_pigouvian_tax
+		}
+		completion_reward = {
+			add_stability = -0.1
+			
+		}
+
+	}
+
 
   # Rightists
    # Christian Democrat
@@ -1575,9 +1999,144 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = fundamentalism
+			has_government = democratic
 		}
 		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_support_entrepreneurs
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_christian_democratic_victory
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
+			# Ind buff
+			# More desicions to stopping public debt
+		}
+
+	}
+
+	focus = {
+		id = FIN_sponsor_churches
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_support_entrepreneurs
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -75
+		}
+
+	}
+
+	focus = {
+		id = FIN_encourage_having_babies
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_sponsor_churches
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+			# Pop incrase?
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_healthcare
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_encourage_having_babies
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_desecularize_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_illegialize_abortion
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Pop boost
+		}
+
+	}
+
+	focus = {
+		id = FIN_rewrite_constitution_partly
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_desecularize_country
+			focus = FIN_illegialize_abortion
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Some desicions again
+		}
+
+	}
+
+	focus = {
+		id = FIN_roll_back_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_rewrite_constitution_partly
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 50
+			# Some desicions again
+		}
 
 	}
 
@@ -1593,7 +2152,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = authoritarianism
+			has_government = neutrality
 		}
 
 	}
@@ -1610,7 +2169,7 @@ focus_tree = {
 	
 		completion_reward = {
 			add_popularity = {
-				ideology = authoritarianism
+				ideology = neutrality
 				popularity = 0.15
 			}
 			add_stability = 0.15
@@ -1632,7 +2191,7 @@ focus_tree = {
 	
 		completion_reward = {
 			add_popularity = {
-				ideology = authoritarianism
+				ideology = neutrality
 				popularity = 0.3
 			}
 			add_stability = -0.10
@@ -1654,8 +2213,8 @@ focus_tree = {
 	
 		completion_reward = {
 			add_popularity = {
-				ideology = authoritarianism
-				popularity = -0.3
+				ideology = neutrality
+				popularity = 0.3
 			}
 			add_stability = 0.10
 			# Event to choose new party
@@ -1674,7 +2233,7 @@ focus_tree = {
 	
 		completion_reward = {
 			add_popularity = {
-				ideology = authoritarianism
+				ideology = neutrality
 				popularity = 0.1
 			}
 			add_stability = 0.05
@@ -1692,21 +2251,18 @@ focus_tree = {
 		}
 	
 		completion_reward = {
-            every_owned_state = {
-                limit = {
-                    any_neighbor_state = {
-						is_controlled_by = SOV
+			every_owned_state = {
+				limit = {
+					is_border_state = yes
+					any_neighbor_state = {
+						owner = SOV
 					}
-                }
-                add_building_construction = {
-                type = bunker
-        		level = 2
-        		instant_build = yes
-        		province = {
-            		all_provinces = yes
-            		limit_to_border = yes
-        			}
-    			}
+				}
+				add_building_construction = {
+					type = fort
+					level = 2
+					instant_build = yes
+				}
 			}
 		}
 	}
@@ -1724,23 +2280,9 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.1
 			add_war_support = 0.1
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 3
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
-			add_ideas = Prepare_for_future_wars
-			add_ideas = extensive_conscription
-			FIN_advance_industry_tier_effect = yes
+			add_military_factory = 2
+			add_national_spirit = { name = FIN_preparations_for_wars }
+			set_conscription_law = extensive_conscription
 		}
 	}
 
@@ -1751,13 +2293,29 @@ focus_tree = {
 		y = 17
 		cost = 15
 		prerequisite = {
-			focus = FIN_Fortify_borders
+			focus = FIN_fortify_borders
 			focus = FIN_prepare_for_wars
 		}
 	
 		completion_reward = {
 			add_political_power = 100
 			# Event to choose new ruler
+		}
+	}
+
+	focus = {
+		id = FIN_ruler_for_life
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_choose_new_ruler
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.15
 		}
 	}
 
@@ -1773,10 +2331,201 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = reactionary
+			has_government = democratic
 		}
 		completion_reward = {}
 
+	}
+
+	focus = {
+		id = FIN_subside_welfare_spending
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_finns_party_victory
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			# Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_buying_russian_oil
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_subside_welfare_spending
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+			# Add oil to helsinki
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_slowly_desecularize
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 37
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+		}
+	}
+
+	focus = {
+		id = FIN_distance_from_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 39
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			# small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_distance_from_EU
+			focus = FIN_leave_UN
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_NATO
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_leave_EU
+		}
+	
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = -25
+			# Better relatitions with russia
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_minorities_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_slowly_desecularize
+			focus = FIN_distance_from_EU
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 75
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_pumping_fossil_fuels
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+			# Small ind temp buff
+		}
+	}
+
+	focus = {
+		id = FIN_strenghten_presidents_power
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 75
+			# Here can crown president as king
+		}
 	}
 
 	focus = {
@@ -1796,6 +2545,8 @@ focus_tree = {
 		}
 	}
 
+
+
    # Neo-Fascist
 
 	focus = {
@@ -1808,9 +2559,148 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = ultranationalism
+			rule = {
+				has_government = fascism
+			}
 		}
 
+	}
+
+	focus = {
+		id = FIN_reinstate_finnish_markka
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_blue_and_black_victory
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_banish_them
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_enforce_stricter_immigration_laws
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = 125
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_leave_UN
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_banish_them
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_swedes_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Small ind buff
+			# Less opinion with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_remilitarize_aaland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 15
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_swedes_rights
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Almost hostile with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_support_young_families
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_UN
+			focus = FIN_remilitarize_aaland
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_teach_religions_of_old
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_support_young_families
+		}
+	
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_nationalize_whole_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_teach_religions_of_old
+		}
+	
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Ind buff
+		}
 	}
 
   # Secret
@@ -1825,11 +2715,9 @@ focus_tree = {
 		available = {
 			always = no
 		}
-        allow_branch = {
-			has_completed_focus = FIN_elections
-		}
+        hidden = yes
 		bypass = {
-			has_government = centrist
+			has_government = democratic
 		}
 		completion_reward = {}
 
@@ -1852,21 +2740,7 @@ focus_tree = {
 		cost = 5
 
 		completion_reward = {
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 4
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
-			FIN_advance_industry_tier_effect = yes
+			add_civilian_factory = 2
 		}
 
 	}
@@ -1882,22 +2756,8 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 3
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
-			FIN_advance_industry_tier_effect = yes
-		    }
+			add_civilian_factory = 2
+		}
 
 	}
 
@@ -1912,24 +2772,10 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			random_owned_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-					}
-				}
-			    add_extra_state_shared_building_slots = 2
-			    add_building_construction = {
-				    type = industrial_complex
-				    level = 2
-					instant_build = yes		
-			        }
-			}
+			add_civilian_factory = 2
 			add_stability = -0.05
-			FIN_advance_industry_tier_effect = yes
 		}
 
 	}
-
 }
+
