@@ -14,7 +14,6 @@ POL_european_bop_decisions = {
 		available = {
 			power_balance_value = {
 				id = POL_european_balance
-				value < 1.0
 			}
 		}
 
@@ -25,13 +24,15 @@ POL_european_bop_decisions = {
 		complete_effect = {
 			add_power_balance_value = {
 				id = POL_european_balance
-				value = -0.10
+				value = -0.05
+				add_stability = -0.2
 			}
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
+		days_remove = 60
 	}
 
 
@@ -49,7 +50,6 @@ POL_european_bop_decisions = {
 		available = {
 			power_balance_value = {
 				id = POL_european_balance
-				value > -1.0
 			}
 		}
 
@@ -60,12 +60,83 @@ POL_european_bop_decisions = {
 		complete_effect = {
 			add_power_balance_value = {
 				id = POL_european_balance
-				value = 0.10
+				value = 0.05
+				add_stability = 0.2
 			}
 		}
 
 		ai_will_do = {
-			factor = 1
+			factor = 10
 		}
+		days_remove = 60
+	}
+		POL_anti_euro_propaganda = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = 0.08
+				add_stability = 0.8
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
+	}
+		POL_pro_euro_propaganda = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = -0.05
+				add_political_power -0.25
+				add_stability = -0.3
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
 	}
 }
