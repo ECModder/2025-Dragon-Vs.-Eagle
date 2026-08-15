@@ -8,3 +8,4 @@ tags={
 }
 name="2025: Dragon Vs. Eagle"
 supported_version="1.17.3.0"
+replace_path="common/bookmarks"
