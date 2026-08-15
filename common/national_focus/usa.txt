@@ -13,14 +13,118 @@ tag = USA
 
 default = no
 
-continuous_focus_position = { x = 50 y = 1000 }
+continuous_focus_position = { x = 5000 y = 5000 }
 	focus = {
-		id = cant_stopping_winning
+		id = USA_cant_stopping_winning
 		icon = GFX_idea_USA_political_establishment
+		mutually_exclusive = {
+			focus = USA_Investigate_the_election
+		}
 		cost = 1
-		x = 30
+		x = 1
 		y = 0
 		completion_reward = { add_political_power = 50 }
 	}
-
+	focus = {
+		id = USA_forming_a_cabinet
+		icon = GFX_idea_USA_political_establishment
+		prerequisite = {
+			focus = USA_cant_stopping_winning
+		}
+		relative_position_id = USA_cant_stopping_winning
+		cost = 1
+		x = 1
+		y = 1
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_holding_a_victory_rally
+		icon = GFX_idea_USA_political_establishment
+		prerequisite = {
+			focus = USA_cant_stopping_winning
+		}
+		relative_position_id = USA_cant_stopping_winning
+		cost = 1
+		x = -1
+		y = 1
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_the_47th_president
+		icon = GFX_idea_USA_political_establishment
+		prerequisite = {
+			focus = USA_forming_a_cabinet
+		}
+		prerequisite = {
+			focus = USA_holding_a_victory_rally
+		}
+		relative_position_id = USA_holding_a_victory_rally
+		cost = 1
+		x = 1
+		y = 1
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_we_have_work_to_do
+		icon = GFX_idea_USA_political_establishment
+		prerequisite = {
+			focus = USA_the_47th_president
+		}
+		relative_position_id = USA_the_47th_president
+		cost = 1
+		x = -5
+		y = 10
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_Investigate_the_election
+		icon = GFX_idea_USA_political_establishment
+		relative_position_id = USA_cant_stopping_winning
+		mutually_exclusive = {
+			focus = USA_cant_stopping_winning
+		}
+		cost = 5
+		x = 5
+		y = 0
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_Leak_the_Pennsylvania_Paper
+		icon = GFX_idea_USA_political_establishment
+		relative_position_id = USA_Investigate_the_election
+		prerequisite = {
+			focus = USA_Investigate_the_election
+		}
+		cost = 5
+		x = -1
+		y = 1
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_fraud_in_the_great_lakes
+		icon = GFX_idea_USA_political_establishment
+		relative_position_id = USA_Investigate_the_election
+		prerequisite = {
+			focus = USA_Investigate_the_election
+		}
+		cost = 5
+		x = 1
+		y = 1
+		completion_reward = {  }
+	}
+	focus = {
+		id = USA_A_Surprise_Victor
+		icon = GFX_idea_USA_political_establishment
+		prerequisite = {
+			focus = USA_fraud_in_the_great_lakes
+		}
+		prerequisite = {
+			focus = USA_Leak_the_Pennsylvania_Paper
+		}
+		relative_position_id = USA_fraud_in_the_great_lakes
+		cost = 1
+		x = -1
+		y = 1
+		completion_reward = {  }
+	}
 }
