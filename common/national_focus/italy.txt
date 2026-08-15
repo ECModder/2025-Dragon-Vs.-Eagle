@@ -64,7 +64,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			set_politics = { ruling_party = fascism elections_allowed = no last_election = 2025.1.1 }
+			set_politics = { ruling_party = reactionary elections_allowed = no last_election = 2025.1.1 }
 			set_country_flag = ITA_goodolddays_done
 		}
 	}
@@ -102,8 +102,6 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			set_party_name = { ideology = totalitarian_communism name = "CP" long_name = "Partito Comunista" }
-			# NOTA: il testo indicava piu' long_name diversi (PdRC, PCI, OSA, CR) non compatibili con un solo set_party_name; ho messo un nome generico, verifica/cambia la sigla che preferisci.
 			set_country_flag = ST_hardline_done
 		}
 	}
@@ -277,6 +275,7 @@ focus = {
 	completion_reward = {
 		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
 		add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
+		set_capital = { state = 159 remember_old_capital = no }
 		set_country_flag = LT_international_done
 	}
 }
@@ -480,6 +479,7 @@ focus = {
 		completion_reward = {
 			FRA = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
 			declare_war_on = { target = FRA type = annex_everything }
+			FRA = { leave_faction = yes }
 			set_country_flag = LT_redfra_done
 		}
 	}
@@ -587,8 +587,10 @@ focus = {
 		completion_reward = {
 			SPR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
 			POR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
-			declare_war_on = { target = SPA type = annex_everything }
+			declare_war_on = { target = SPR type = annex_everything }
 			declare_war_on = { target = POR type = annex_everything }
+			SPR = { leave_faction = yes }
+			POR = { leave_faction = yes }
 			set_country_flag = LT_redspa_done
 		}
 	}
@@ -677,6 +679,7 @@ focus = {
 		completion_reward = {
 			GER = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
 			declare_war_on = { target = GER type = annex_everything }
+			GER = { leave_faction = yes }
 			set_country_flag = LT_redger_done
 		}
 	}
@@ -768,6 +771,7 @@ focus = {
 		completion_reward = {
 			ENG = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
 			declare_war_on = { target = ENG type = annex_everything }
+			ENG = { leave_faction = yes }
 			set_country_flag = LT_redeng_done
 		}
 	}
@@ -857,10 +861,10 @@ focus = {
 		}
 		completion_reward = {
 			# NOTA: effetto complesso su molti paesi terzi (set_politics + add_to_faction per BEL/HOL/DEN/POL/CZE/NOR/SWE/SER/ROM/BUL/IRE/GRE). Per farlo servono blocchi tipo 'TAG = { set_politics = {...} add_to_faction = ITA }' per ciascun tag: dimmi se confermi l'elenco e se l'Italia deve annettere/puppettare o solo aggiungerli alla fazione, e li aggiungo.
-			declare_war_on = { target = SLV type = annex_everything }
-			declare_war_on = { target = CRO type = annex_everything }
-			declare_war_on = { target = BOS type = annex_everything }
-			declare_war_on = { target = ALB type = annex_everything }
+			puppet = SLV
+			puppet = CRO
+			puppet = BOS
+			puppet = ALB
 			set_country_flag = LT_domino_done
 		}
 	}
