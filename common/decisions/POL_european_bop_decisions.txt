@@ -1,0 +1,71 @@
+POL_european_bop_decisions = {
+
+	POL_support_european_integration = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+				value < 1.0
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = -0.10
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+	POL_limit_european_integration = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+				value > -1.0
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = 0.10
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
