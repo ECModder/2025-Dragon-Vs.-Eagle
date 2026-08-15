@@ -1,8 +1,9 @@
 POL_european_balance = {
-	initial_value = 0
+	initial_value = 18
 
 	left_side = POL_pro_european
 	right_side = POL_anti_european
+	decision_category = POL_european_bop_decisions
 
 	side = {
 		id = POL_pro_european
@@ -31,11 +32,6 @@ POL_european_balance = {
 		}
 	}
 
-	range = {
-		id = POL_european_neutral
-		min = -0.2
-		max = 0.2
-	}
 
 	side = {
 		id = POL_anti_european
@@ -53,10 +49,10 @@ POL_european_balance = {
 			max = 0.6
 			}
 					range = {
-			id = POL_anti_european_strong
-			min = -0.6
-			max = -0.8
-		}
+			id = POL_anti_european
+			min = 0.6
+			max = 0.8
+			}
 
 		range = {
 			id = POL_anti_european_strong
