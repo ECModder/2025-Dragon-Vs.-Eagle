@@ -1,0 +1,42 @@
+# ============================================================
+#   DvE - loading screens / main menu backgrounds
+#
+#   This file DELIBERATELY overrides the base game's
+#   common/frontend/backgrounds/base_backgrounds.txt so that ONLY
+#   the mod's own artwork can be shown. The base file also registers
+#   17 DLC backgrounds (load_lar, load_nsb, load_bba, load_aat,
+#   load_mtg, ...) whose art the mod does not replace - listing them
+#   here would let vanilla WW2 screens appear between our own.
+#
+#   Every entry below needs, in gfx/loadingscreens/:
+#     <name>.dds        1920x1440
+#     <name>_small.dds  192x144
+#   plus a sprite "GFX_<name>_small". For load_1..load_9 those
+#   sprites come from the base game's interface/small_background.gfx;
+#   for load_10 and the dve_* ones they are declared in
+#   interface/DVE_backgrounds.gfx.
+#
+#   NOTE: if a game patch adds new vanilla backgrounds, they will NOT
+#   appear until they are added here - which is the intended behaviour.
+# ============================================================
+
+# --- original DvE set (art already replaced in gfx/loadingscreens) ---
+load_1 = {}
+load_2 = {}
+load_3 = {}
+load_4 = {}
+load_5 = {}
+load_6 = {}
+load_7 = {}
+load_8 = {}
+load_9 = {}
+load_10 = {}
+
+# --- newer DvE set ---
+dve_load_1 = {}
+dve_load_2 = {}
+dve_load_3 = {}
+dve_load_4 = {}
+dve_load_5 = {}
+dve_load_6 = {}
+dve_load_lc = {}
