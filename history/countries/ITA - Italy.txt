@@ -299,7 +299,11 @@ set_popularities = {
 
 recruit_character = ITA_sergio_mattarella
 recruit_character = ITA_giorgia_meloni
-recruit_character = ITA_guido_crosetto
+# DISABILITATO: ITA_guido_crosetto non e' definito in nessun file di
+# common/characters/, e reclutare un personaggio inesistente fa crashare
+# il paese all'avvio ("dynamic token does not exist"). Riattiva questa riga
+# dopo aver aggiunto il personaggio in common/characters/DVE_ITA.txt.
+#recruit_character = ITA_guido_crosetto
 recruit_character = ITA_roberto_vannacci
 recruit_character = ITA_elly_schlein
 recruit_character = ITA_emanuele_filiberto
