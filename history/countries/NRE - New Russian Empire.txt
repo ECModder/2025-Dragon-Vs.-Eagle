@@ -1,0 +1,50 @@
+capital = 219 # Moscow
+
+# ============================================
+# NEW RUSSIAN EMPIRE (NRE) - 2025
+# Fazione dei Bianchi e dei NazBol nella Seconda Guerra Civile Russa.
+# Non esiste all'avvio: emerge da start_civil_war / colpo di stato.
+# Sotto-percorsi previsti: Bianchi (LDPR / Chiesa Ortodossa), NazBol.
+# I partiti del vecchio regime e della sinistra risultano messi al bando.
+# ============================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_communism name = "[Banned] KPRF" long_name = "[Banned] Communist Party of the Russian Federation" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] Internatsional" long_name = "[Banned] Proletarian Internationalism" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] RCP" long_name = "[Banned] Revolutionary Communist Party" }
+set_party_name = { ideology = progressive name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = centrist name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = conservative name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = reactionary name = "[Banned] United Russia" long_name = "[Banned] United Russia" }
+set_party_name = { ideology = authoritarianism name = "[Banned] United Russia" long_name = "[Banned] United Russia" }
+set_party_name = { ideology = autocracy name = "Central Committee" long_name = "Central Committee of the Government" }
+set_party_name = { ideology = absolutism name = "NBP" long_name = "National Bolshevik Party" }
+set_party_name = { ideology = ultranationalism name = "LDPR" long_name = "Liberal Democratic Party of Russia" }
+set_party_name = { ideology = fundamentalism name = "Orthodox Church" long_name = "Russian Orthodox Church" }
+
+set_politics = {
+	ruling_party = ultranationalism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_communism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 0
+	progressive = 2
+	centrist = 3
+	conservative = 5
+	reactionary = 8
+	authoritarianism = 6
+	autocracy = 4
+	absolutism = 20
+	ultranationalism = 40
+	fundamentalism = 12
+}
+
+set_stability = 0.45
+set_war_support = 0.70
+
+set_research_slots = 4
