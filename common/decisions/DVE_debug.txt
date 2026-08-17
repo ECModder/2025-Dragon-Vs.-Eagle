@@ -100,7 +100,7 @@ DVE_debug_general_category = {
 	}
 
 	# --- ideologie: mette al potere ogni gruppo ---------------
-	DVE_debug_rule_totalitarian_communism = {
+	DVE_debug_rule_totalitarian_socialism = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { always = yes }
 		visible = {
@@ -110,8 +110,24 @@ DVE_debug_general_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			set_politics = { ruling_party = totalitarian_communism elections_allowed = no }
-			add_popularity = { ideology = totalitarian_communism popularity = 0.50 }
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_authoritarian_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.50 }
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -304,7 +320,7 @@ DVE_debug_general_category = {
 		fire_only_once = no
 		complete_effect = {
 			start_civil_war = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				size = 0.45
 				army_ratio = 0.45
 			}
