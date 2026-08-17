@@ -1291,49 +1291,29 @@ focus = {
 	focus = {
 		id = ST_pdrc
 		icon = GFX_goal_pdrc
-		x = 26
-		y = 3
+		x = 27
+		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
-		mutually_exclusive = { focus = ST_potere }
+		prerequisite = { focus = ST_stalincoup }
 		mutually_exclusive = { focus = ST_cambiare }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = -100
+			add_political_power = +100
 			set_country_flag = ST_pdrc_done
-		}
-	}
-
-	focus = {
-		id = ST_potere
-		icon = GFX_goal_pap
-		x = 28
-		y = 3
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
-		mutually_exclusive = { focus = ST_pdrc }
-		mutually_exclusive = { focus = ST_cambiare }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_country_flag = ST_potere_done
 		}
 	}
 
 	focus = {
 		id = ST_cambiare
 		icon = GFX_goal_cr
-		x = 30
-		y = 3
+		x = 29
+		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
+		prerequisite = { focus = ST_stalincoup }
 		mutually_exclusive = { focus = ST_potere }
 		mutually_exclusive = { focus = ST_pdrc }
 		ai_will_do = {
@@ -1341,6 +1321,7 @@ focus = {
 		}
 		completion_reward = {
 			add_political_power = -100
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no last_election = 2025.1.1 }
 			# NOTA: nel testo era scritto "-00" (probabile refuso); ho usato -100 per coerenza con gli altri partiti dello stesso step.
 			set_country_flag = ST_cambiare_done
 		}
@@ -1350,16 +1331,15 @@ focus = {
 		id = ST_stalincoup
 		icon = GFX_goal_stalincoup
 		x = 28
-		y = 4
+		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_pdrc focus = ST_potere focus = ST_cambiare }
+		prerequisite = { focus = ST_hardline }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no last_election = 2025.1.1 }
-			# NOTA: il testo diceva "totalitarian_communist", normalizzato in "totalitarian_socialism" per coerenza con le altre ideologie del documento.
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no last_election = 2025.1.1 }
 			set_country_flag = ST_stalincoup_done
 		}
 	}
@@ -1371,7 +1351,7 @@ focus = {
 		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_stalincoup }
+		prerequisite = { focus = ST_pdrc focus = ST_cambiare }
 		ai_will_do = {
 			factor = 1
 		}
