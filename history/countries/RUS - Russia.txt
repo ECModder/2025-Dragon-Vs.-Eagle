@@ -373,7 +373,6 @@ set_variable = { SOV_fyp_fuel_gain_factor_from_states = 0 } #-> Oil Production
 set_variable = { SOV_fyp_production_oil_factor = 0 } #-> Oil Production
 set_variable = { SOV_fyp_industry_repair_factor = 0.1 } #-> Fourth Five Year Plan
 
-add_dynamic_modifier = { modifier = SOV_second_five_year_plan_dynamic_modifier }
 
 
 #SOVIET AIRFORCE NATIONAL SPIRIT VARS
@@ -395,7 +394,6 @@ set_variable = { SOV_soviet_airforce_strategic_bomb_visibility = 0 } #-> Long Ra
 set_variable = { SOV_soviet_airforce_air_mission_efficiency = 0 } #-> The Modern War in the Skies
 set_variable = { SOV_soviet_airforce_air_nav_efficiency = 0 } #-> Expand the Morskaya Aviatsiya
 
-add_dynamic_modifier = { modifier = SOV_soviet_airforce_dynamic_modifier }
 
 
 #THE RED FLEET NATIONAL SPIRIT VARS
@@ -454,7 +452,6 @@ set_variable = { SOV_the_red_army_dig_in_speed_factor = 0 } # -> Experts in Camo
 set_variable = { SOV_the_red_army_operative_slot  = 0 } # -> Organization of the Partisans
 set_variable = { SOV_the_red_army_max_command_power_mult = 0 } # -> Depoliticize the Military
 
-add_dynamic_modifier = { modifier = SOV_the_red_army_dynamic_modifier }
 
 #THE POLITBURO SPIRIT VARS
 set_variable = { SOV_the_politburo_communism_drift = 0.05 }
@@ -736,8 +733,6 @@ add_ideas = {
 	
 	#DESIGNERS AND LAWS
 	add_ideas = {
-		stalingrad_tractor_factory
-		SOV_tula_arms_plant
 		#laws
 		war_economy
 		extensive_conscription
@@ -763,22 +758,8 @@ add_ideas = {
 
 	#ADVISORS
 	#Yagoda and Yezhov get purged -> Beriya is new Head of NKVD
-	remove_ideas = SOV_genrikh_yagoda
-	add_ideas = SOV_lavrenty_beriya #Chars cannot be added using a single add_ideas effect for all of them
-	add_ideas = vladimir_kasatonov
 
 	#PURGE NSs
-	add_timed_idea = {
-		idea = SOV_understaffed_bureaucracy
-		days = 365
-	}
-	add_ideas = {
-		SOV_anti_soviet_military_thinking_banned_army
-		SOV_purged_junior_army_officers_2
-		SOV_anti_soviet_military_thinking_banned_navy
-		SOV_purged_junior_navy_officers_1
-		SOV_anti_soviet_military_thinking_banned_airforce
-	}
 
 	SOV_remove_paranoia_effect = yes
 
@@ -1013,7 +994,6 @@ add_ideas = {
 	add_to_variable = { SOV_fyp_production_factory_efficiency_gain_factor = 0.05 }
 	add_to_variable = { SOV_fyp_consumer_goods_factor = 0.10 }
 	remove_dynamic_modifier = { modifier = SOV_second_five_year_plan_dynamic_modifier }
-	add_dynamic_modifier = { modifier = SOV_third_five_year_plan_dynamic_modifier }
 
 	#DEFENSE INDUSTRY NS
 	add_to_variable = { SOV_defense_industry_production_factory_max_efficiency_factor = 0.05 }
@@ -1033,7 +1013,6 @@ add_ideas = {
 	add_to_variable = { SOV_the_politburo_drift_defence_factor = 0.05 } 
 	add_to_variable = { SOV_the_politburo_political_power_factor = 0.05 }
 	add_to_variable = { SOV_the_politburo_max_surrender_limit_offset = 0.05 }
-	add_dynamic_modifier = { modifier = SOV_the_politburo_good_dynamic_modifier }
 	
 	if = {
 		limit = { has_dlc = "Man the Guns" }
