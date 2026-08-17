@@ -1,0 +1,136 @@
+# ============================================================
+#   DvE - National Spirits della Federazione Russa (RUS)
+#
+#   Le immagini seguono la stessa convenzione dei focus: il nome
+#   dello sprite richiama quello dello spirito, cosi' basta mettere
+#   il .dds in gfx/interface/ideas/ e dichiararlo in
+#   interface/RUS_ideas.gfx - gia' predisposto.
+#
+#   "Politicized Military" NON e' qui: resta quello vanilla
+#   (SOV_politicized_military), come richiesto.
+# ============================================================
+
+ideas = {
+	country = {
+
+		# --- il sistema di potere ---------------------------------
+		RUS_the_russian_regime = {
+			name = RUS_the_russian_regime
+			picture = RUS_the_russian_regime
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.10
+				drift_defence_factor = 0.30
+				centrist_drift = -0.02
+				progressive_drift = -0.02
+				research_speed_factor = -0.05
+			}
+		}
+
+		# --- il blocco militare guidato da Mosca ------------------
+		RUS_csto_military_alliance = {
+			name = RUS_csto_military_alliance
+			picture = RUS_csto_military_alliance
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				army_core_defence_factor = 0.05
+				send_volunteer_size = 2
+				opinion_gain_monthly_same_ideology_factor = 0.20
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# --- la guerra che consuma il paese -----------------------
+		RUS_the_war_in_ukraine = {
+			name = RUS_the_war_in_ukraine
+			picture = RUS_the_war_in_ukraine
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				war_support_factor = 0.10
+				conscription = 0.02
+				experience_gain_army_factor = 0.10
+				army_morale_factor = -0.05
+				industrial_capacity_factory = -0.05
+				monthly_population = -0.10
+			}
+		}
+
+		# --- massa, non finezza -----------------------------------
+		RUS_the_russian_army = {
+			name = RUS_the_russian_army
+			picture = RUS_the_russian_army
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				army_defence_factor = 0.10
+				max_dig_in = 2
+				army_org_factor = -0.05
+				army_speed_factor = -0.05
+				supply_consumption_factor = 0.10
+			}
+		}
+
+		# --- il prezzo di un solo cliente -------------------------
+		RUS_dependent_on_china = {
+			name = RUS_dependent_on_china
+			picture = RUS_dependent_on_china
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
+				trade_opinion_factor = 0.25
+				political_power_gain = -0.05
+				research_speed_factor = -0.03
+			}
+		}
+
+		# --- grande di facciata, fragile dentro -------------------
+		RUS_papier_mache_giant = {
+			name = RUS_papier_mache_giant
+			picture = RUS_papier_mache_giant
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				army_org_factor = -0.10
+				industrial_capacity_factory = -0.10
+				production_factory_max_efficiency_factor = -0.10
+				surrender_limit = -0.10
+				experience_loss_factor = 0.10
+			}
+		}
+
+		# --- l'ombra che nessuno ha mai sepolto -------------------
+		RUS_specter_of_the_ussr = {
+			name = RUS_specter_of_the_ussr
+			picture = RUS_specter_of_the_ussr
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+
+			modifier = {
+				totalitarian_communism_drift = 0.01
+				vanguard_socialism_drift = 0.01
+				revolutionary_socialism_drift = 0.01
+				war_support_factor = 0.05
+				stability_factor = -0.05
+			}
+		}
+	}
+}

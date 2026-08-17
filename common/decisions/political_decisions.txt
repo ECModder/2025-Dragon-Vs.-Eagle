@@ -1,0 +1,157 @@
+# ============================================================
+#   DvE - Political Actions
+#
+#   Questo file SOSTITUISCE common/decisions/political_decisions.txt
+#   del gioco base. L'originale era interamente costruito sulle vecchie
+#   ideologie vanilla (fascism / democratic / communism / neutrality),
+#   che in questa mod non esistono piu': le sue decisioni erano quindi
+#   gia' non funzionanti e producevano errori nel log.
+#
+#   Le vecchie azioni ideologiche (Anti-Fascist / Anti-Democratic /
+#   Anti-Communist / Anti-Neutrality Raids, i quattro Ban Party e le
+#   quattro Press Censorship) sono state rimosse e rimpiazzate dai
+#   quattro raid qui sotto, allineati ai 12 gruppi ideologici DvE.
+#
+#   "Improved Worker Conditions" NON e' qui: sta in
+#   common/decisions/_generic_decisions.txt del gioco base e resta
+#   invariato, come richiesto.
+# ============================================================
+
+political_actions = {
+
+	# --- sinistra radicale ---------------------------------------
+	anti_radicals_raids = {
+
+		icon = generic_civil_support
+
+		visible = {
+			NOT = { has_government = totalitarian_communism }
+			NOT = { has_government = revolutionary_socialism }
+			NOT = { has_government = vanguard_socialism }
+		}
+
+		available = {
+			OR = {
+				totalitarian_communism > 0.05
+				revolutionary_socialism > 0.05
+				vanguard_socialism > 0.05
+			}
+		}
+
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = -0.10
+			add_popularity = { ideology = totalitarian_communism popularity = -0.04 }
+			add_popularity = { ideology = revolutionary_socialism popularity = -0.03 }
+			add_popularity = { ideology = vanguard_socialism popularity = -0.02 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	# --- blocco democratico --------------------------------------
+	anti_democratic_raids = {
+
+		icon = generic_civil_support
+
+		visible = {
+			NOT = { has_government = progressive }
+			NOT = { has_government = centrist }
+			NOT = { has_government = conservative }
+		}
+
+		available = {
+			OR = {
+				conservative > 0.05
+				centrist > 0.05
+				progressive > 0.05
+			}
+		}
+
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = -0.10
+			add_popularity = { ideology = conservative popularity = -0.04 }
+			add_popularity = { ideology = centrist popularity = -0.03 }
+			add_popularity = { ideology = progressive popularity = -0.02 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	# --- destra illiberale ---------------------------------------
+	anti_illiberals_raids = {
+
+		icon = generic_civil_support
+
+		visible = {
+			NOT = { has_government = reactionary }
+			NOT = { has_government = authoritarianism }
+			NOT = { has_government = autocracy }
+		}
+
+		available = {
+			OR = {
+				reactionary > 0.05
+				authoritarianism > 0.05
+				autocracy > 0.05
+			}
+		}
+
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = -0.10
+			add_popularity = { ideology = reactionary popularity = -0.04 }
+			add_popularity = { ideology = authoritarianism popularity = -0.04 }
+			add_popularity = { ideology = autocracy popularity = -0.04 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	# --- estremismi -----------------------------------------------
+	anti_extremists_raids = {
+
+		icon = generic_civil_support
+
+		visible = {
+			NOT = { has_government = absolutism }
+			NOT = { has_government = ultranationalism }
+			NOT = { has_government = fundamentalism }
+		}
+
+		available = {
+			OR = {
+				absolutism > 0.05
+				ultranationalism > 0.05
+				fundamentalism > 0.05
+			}
+		}
+
+		cost = 50
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = -0.10
+			add_popularity = { ideology = absolutism popularity = -0.04 }
+			add_popularity = { ideology = ultranationalism popularity = -0.04 }
+			add_popularity = { ideology = fundamentalism popularity = -0.04 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
