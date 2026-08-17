@@ -338,7 +338,11 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		cost = 1
 		x = 0
 		y = 1
-		completion_reward = {  }
+		completion_reward = {
+			# concept: "+2 War support, world event, maduro gets captured"
+			add_war_support = 0.02
+			set_country_flag = venezuela_president_extracted
+		}
 	}
 	focus = {
 		id = USA_invasion_of_venezula
@@ -346,19 +350,24 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		prerequisite = {
 			focus = USA_extract_the_venezulan_president
 		}
-		available = {
-			has_country_flag = venezuela_extraction_failed
-		}
+		# NOTA: qui c'era 'available = { has_country_flag = venezuela_extraction_failed }'.
+		# Quel flag non veniva impostato da nessuna parte nel mod, quindi il focus
+		# non diventava mai disponibile (la X rossa nel tooltip). Rimosso: il
+		# concept mostra la catena lineare Maduro Operation -> invasione.
+		# Se volete davvero il ramo "estrazione fallita", serve un evento che
+		# imposti il flag, e allora l'available va rimesso.
 		relative_position_id = USA_extract_the_venezulan_president
 		cost = 1
 		x = 0
 		y = 1
-		completion_reward = { 
+		completion_reward = {
+			# concept: "Declare war -3 stability"
+			add_stability = -0.03
 			create_wargoal = {
-            type = puppet_wargoal_focus
-            target = VEN
-        }
-		 }
+				type = puppet_wargoal_focus
+				target = VEN
+			}
+		}
 	}
 	focus = {
 		id = USA_blockade_cuba

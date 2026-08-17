@@ -306,7 +306,27 @@ focus_tree = {
 		}
 	}
 
-	# --- column E: deep battle -> unified command ----------------
+	# --- column E: Belarus -> deep battle -> unified command ------
+	# Secondo ingresso di Minsk nel conflitto: qui non e' un aiuto per
+	# tirare avanti, ma un alleato inquadrato in una guerra dichiarata.
+	focus = {
+		id = RUS_draw_belarus_at_war
+		icon = GFX_goal_RUS_draw_belarus_at_war
+		x = 12
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = RUS_officially_war }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			BLR = { add_opinion_modifier = { target = RUS modifier = large_increase } }
+			add_war_support = 0.10
+			add_command_power = 50
+			army_experience = 25
+			set_country_flag = RUS_draw_belarus_at_war_done
+		}
+	}
+
 	focus = {
 		id = RUS_deep_battle_theory
 		icon = GFX_goal_RUS_deep_battle_theory
@@ -314,7 +334,7 @@ focus_tree = {
 		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = RUS_officially_war }
+		prerequisite = { focus = RUS_draw_belarus_at_war }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			army_experience = 60
