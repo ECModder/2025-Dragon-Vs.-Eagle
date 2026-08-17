@@ -1,0 +1,162 @@
+# ============================================================
+#   DvE - effetti della Seconda Guerra Civile Russa
+#
+#   Richiamato sia dal timeout della crisi di successione
+#   (common/decisions/RUS_succession_crisis.txt) sia dalla
+#   decisione di DEBUG, cosi' il comportamento e' identico.
+#
+#   PERCHE' NON start_civil_war
+#   start_civil_war accetta ideology/size/states/capital ma NON un
+#   tag: creerebbe nazioni dinamiche (D01, D02...) invece di SOV,
+#   RUR e NRE. Qui i tre tag vengono invece attivati davvero,
+#   ricevono territorio, governo, equipaggiamento e dichiarano
+#   guerra a Mosca. RUS conserva il centro, la Siberia e l'Estremo
+#   Oriente.
+#
+#   SPARTIZIONE
+#     RUR - Nord-ovest: San Pietroburgo, Carelia, Arcangelo, Murmansk
+#     SOV - Volga e Urali: il cuore industriale
+#     NRE - Sud: terre cosacche del Don e del Kuban, Caucaso, Crimea
+#     RUS - Mosca, Russia centrale, Siberia, Estremo Oriente
+# ============================================================
+
+RUS_second_civil_war_effect = {
+
+	set_country_flag = RUS_second_civil_war
+	clr_country_flag = RUS_pd_succession_open
+
+	add_stability = -0.25
+	add_war_support = 0.10
+
+	# ---------- RUR - la Repubblica (nord-ovest) ----------
+	RUR = {
+		transfer_state = 195   # Leningrado
+		transfer_state = 208   # Pskov
+		transfer_state = 213   # Murmansk
+		transfer_state = 214   # Arcangelo
+		transfer_state = 146   # Carelia
+		transfer_state = 215   # Carelia orientale
+		transfer_state = 147   # Salla
+		transfer_state = 722   # Petsamo
+		transfer_state = 244   # Gatcina
+		transfer_state = 263   # Novgorod
+		transfer_state = 264   # Tichvin
+		transfer_state = 262   # Torzhok
+		transfer_state = 247   # Tver
+		transfer_state = 879   # Kargopol
+		transfer_state = 880   # Kotlas
+		transfer_state = 763   # Kaliningrad
+
+		set_capital = { state = 195 }
+		set_politics = { ruling_party = centrist elections_allowed = yes }
+		set_popularities = {
+			totalitarian_communism = 4
+			vanguard_socialism = 2
+			revolutionary_socialism = 2
+			progressive = 18
+			centrist = 40
+			conservative = 20
+			reactionary = 4
+			authoritarianism = 4
+			autocracy = 0
+			absolutism = 1
+			ultranationalism = 3
+			fundamentalism = 2
+		}
+		set_stability = 0.45
+		set_war_support = 0.60
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 }
+		add_manpower = 120000
+	}
+
+	# ---------- SOV - i socialisti (Volga e Urali) ----------
+	SOV = {
+		transfer_state = 249   # Kazan
+		transfer_state = 250   # Ulyanovsk
+		transfer_state = 251   # Samara
+		transfer_state = 239   # Saratov
+		transfer_state = 255   # Penza
+		transfer_state = 256   # Ceboksary
+		transfer_state = 252   # Niznij Novgorod
+		transfer_state = 398   # Perm
+		transfer_state = 399   # Izevsk
+		transfer_state = 400   # Kirov
+		transfer_state = 397   # Syktyvkar
+		transfer_state = 581   # Urali settentrionali
+		transfer_state = 582   # Urali meridionali
+		transfer_state = 829   # Repubblica dei tedeschi del Volga
+		transfer_state = 833   # Mari El
+
+		set_capital = { state = 251 }
+		set_politics = { ruling_party = totalitarian_communism elections_allowed = no }
+		set_popularities = {
+			totalitarian_communism = 45
+			vanguard_socialism = 20
+			revolutionary_socialism = 15
+			progressive = 6
+			centrist = 2
+			conservative = 2
+			reactionary = 3
+			authoritarianism = 4
+			autocracy = 1
+			absolutism = 0
+			ultranationalism = 2
+			fundamentalism = 0
+		}
+		set_stability = 0.50
+		set_war_support = 0.75
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 8000 }
+		add_manpower = 180000
+	}
+
+	# ---------- NRE - i bianchi e i nazbol (sud) ----------
+	NRE = {
+		transfer_state = 218   # Rostov
+		transfer_state = 234   # Krasnodar
+		transfer_state = 235   # Stavropol
+		transfer_state = 217   # Volgograd
+		transfer_state = 236   # Astrakhan
+		transfer_state = 237   # Elista
+		transfer_state = 238   # Volgodonsk
+		transfer_state = 232   # Groznyj
+		transfer_state = 233   # Caucaso
+		transfer_state = 827   # Kabardino-Balkaria
+		transfer_state = 828   # Ossezia del Nord
+		transfer_state = 403   # Kharabali
+		transfer_state = 401   # Engels
+		transfer_state = 265   # Mikhaylovka
+		transfer_state = 137   # Crimea
+		transfer_state = 245   # Donetsk
+
+		set_capital = { state = 218 }
+		set_politics = { ruling_party = ultranationalism elections_allowed = no }
+		set_popularities = {
+			totalitarian_communism = 0
+			vanguard_socialism = 0
+			revolutionary_socialism = 0
+			progressive = 2
+			centrist = 3
+			conservative = 5
+			reactionary = 8
+			authoritarianism = 6
+			autocracy = 4
+			absolutism = 20
+			ultranationalism = 40
+			fundamentalism = 12
+		}
+		set_stability = 0.45
+		set_war_support = 0.80
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 7000 }
+		add_manpower = 150000
+	}
+
+	# ---------- la guerra ----------
+	declare_war_on = { target = RUR type = annex_everything }
+	declare_war_on = { target = SOV type = annex_everything }
+	declare_war_on = { target = NRE type = annex_everything }
+
+	# i tre ribelli si combattono anche fra loro: non e' una coalizione
+	RUR = { declare_war_on = { target = SOV type = annex_everything } }
+	RUR = { declare_war_on = { target = NRE type = annex_everything } }
+	SOV = { declare_war_on = { target = NRE type = annex_everything } }
+}

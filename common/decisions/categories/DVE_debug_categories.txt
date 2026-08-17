@@ -1,0 +1,40 @@
+# ============================================================
+#   DvE - categorie DEBUG
+#
+#   Si aprono digitando in console:   debug
+#   Si richiudono digitando di nuovo: debug
+#
+#   'is_debug = yes' e' il trigger nativo di HOI4 legato al comando
+#   di console 'debug': e' lo stesso meccanismo che il gioco usa per
+#   le proprie decisioni di test (common/decisions/_debug_decisions.txt).
+#   'is_ai = no' evita che l'IA veda o usi queste decisioni.
+# ============================================================
+
+DVE_debug_general_category = {
+
+	icon = GFX_decision_category_generic_crisis
+	priority = 1000
+	visible_when_empty = no
+
+	allowed = { always = yes }
+
+	visible = {
+		is_ai = no
+		is_debug = yes
+	}
+}
+
+DVE_debug_russia_category = {
+
+	icon = GFX_decision_category_generic_crisis
+	priority = 999
+	visible_when_empty = no
+
+	allowed = { always = yes }
+
+	visible = {
+		is_ai = no
+		is_debug = yes
+		original_tag = RUS
+	}
+}
