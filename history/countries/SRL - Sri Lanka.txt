@@ -58,8 +58,11 @@ set_party_name = { ideology = absolutism long_name = "Kandyan Royalist League" n
 set_party_name = { ideology = ultranationalism long_name = "National Freedom Front" name = "NFF" }
 set_party_name = { ideology = fundamentalism long_name = "Bodu Bala Sena" name = "BBS" }
 
-create_country_leader = { name = "Anura Kumara Dissanayake" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
-create_country_leader = { name = "Sajith Premadasa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Anura Kumara Dissanayake" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+# DvE: Anura Kumara Dissanayake guida anche il partito di governo (revolutionary_socialism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Anura Kumara Dissanayake" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Sajith Premadasa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
 
 set_politics = {
 	ruling_party = revolutionary_socialism

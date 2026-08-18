@@ -47,15 +47,29 @@ RUS_lost_war_settlement_effect = {
 	add_stability = -0.15
 	add_war_support = -0.20
 
-	# ---------- DMZ ucraina: Belgorod, Donbass, Crimea ----------
+	# ---------- l'Ucraina si riprende tutto e prende la DMZ ----------
+	#   I quattro oblast occupati nel 2022 tornano indietro, la Crimea
+	#   con loro, e la Russia cede in piu' Belgorod e Rostov come zona
+	#   smilitarizzata.
+	#   NOTA: Belgorod in HOI4 non e' uno stato a se': la sua provincia
+	#   (9449) sta dentro il 240 (Voronezh), quindi la DMZ si prende
+	#   tutto il 240.
 	UKR = {
-		transfer_state = 220   # Kursk / Belgorod - la DMZ
-		transfer_state = 245   # Donetsk
+		transfer_state = 196   # Kherson
+		transfer_state = 200   # Zaporizhzhia
+		transfer_state = 227   # Donetsk
+		transfer_state = 228   # Luhansk
 		transfer_state = 137   # Crimea
+		transfer_state = 240   # Belgorod / Voronezh - la DMZ
+		transfer_state = 218   # Rostov - la DMZ
 
-		add_state_core = 245
+		add_state_core = 196
+		add_state_core = 200
+		add_state_core = 227
+		add_state_core = 228
 		add_state_core = 137
-		add_state_claim = 220
+		add_state_claim = 240
+		add_state_claim = 218
 	}
 
 	# ---------- DMZ giapponese: Sachalin e Curili ----------
@@ -76,9 +90,13 @@ RUS_lost_war_settlement_effect = {
 	}
 
 	# Mosca non rinuncia a niente sulla carta
-	add_state_claim = 220
-	add_state_claim = 245
+	add_state_claim = 196
+	add_state_claim = 200
+	add_state_claim = 227
+	add_state_claim = 228
 	add_state_claim = 137
+	add_state_claim = 240
+	add_state_claim = 218
 	add_state_claim = 537
 	add_state_claim = 655
 	add_state_claim = 763
@@ -105,7 +123,8 @@ RUS_second_civil_war_effect = {
 		# --- sud europeo e basso Volga ---
 		transfer_state = 258   # Lipetsk
 		transfer_state = 260   # Tambov / Borisoglebsk
-		transfer_state = 240   # Voronezh
+		transfer_state = 220   # Kursk
+		transfer_state = 245   # Millerovo
 		transfer_state = 255   # Penza
 		transfer_state = 250   # Ulyanovsk
 		transfer_state = 251   # Samara
@@ -115,7 +134,6 @@ RUS_second_civil_war_effect = {
 		transfer_state = 265   # Mikhaylovka
 		transfer_state = 217   # Volgograd
 		transfer_state = 238   # Volgodonsk
-		transfer_state = 218   # Rostov
 		transfer_state = 236   # Astrakhan
 		transfer_state = 403   # Kharabali
 		transfer_state = 652   # steppa occidentale
@@ -138,6 +156,18 @@ RUS_second_civil_war_effect = {
 		load_focus_tree = { tree = SOV_civil_war_focus keep_completed = no }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 9000 }
 		add_manpower = 200000
+	}
+
+	# Voronezh e Rostov li prende solo se la guerra d'Ucraina e'
+	# andata bene: se invece e' stata persa sono la DMZ ucraina e
+	# non sono piu' roba di Mosca da spartire.
+	if = {
+		limit = { owns_state = 240 }
+		SOV = { transfer_state = 240 }
+	}
+	if = {
+		limit = { owns_state = 218 }
+		SOV = { transfer_state = 218 }
 	}
 
 	# ========================================================

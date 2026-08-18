@@ -294,11 +294,14 @@ set_grand_doctrine = new_operational_integrity
 			desc = "POLITICS_CAROL_II_DESC"
 			picture = GFX_Portrait_romania_Carol_II			
 			expire = "1965.1.1"
-			ideology = despotism
+			ideology = personalist_dictatorship
 			traits = {
 				hedonist
 				camarilla_leader
 			}
+# DvE: Carol II guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Carol II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 			id = 550
 		}
 		#ROM = {

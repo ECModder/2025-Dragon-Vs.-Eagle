@@ -100,9 +100,12 @@ set_party_name = { ideology = absolutism long_name = "Chukchi Tribal Supreme Sov
 set_party_name = { ideology = ultranationalism long_name = "Siberian Russian Nationalist Alliance" name = "SRNA" }
 set_party_name = { ideology = fundamentalism long_name = "Anadyr Orthodox Diocese Council" name = "AODC" }
 
-create_country_leader = { name = "Vladislav Kuznetsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Vladislav Kuznetsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+# DvE: Vladislav Kuznetsov guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Vladislav Kuznetsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Roman Abramovich Legacy bloc" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Chukchi Council Representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Chukchi Council Representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
 
 set_politics = {
 	ruling_party = authoritarianism

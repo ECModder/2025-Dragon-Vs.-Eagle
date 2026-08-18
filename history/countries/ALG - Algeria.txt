@@ -52,8 +52,11 @@ set_party_name = { ideology = absolutism long_name = "Conseil de l'Emir" name = 
 set_party_name = { ideology = ultranationalism long_name = "Front National Algerien" name = "FNA" }
 set_party_name = { ideology = fundamentalism long_name = "Front Islamique du Salut" name = "FIS" }
 
-create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
-create_country_leader = { name = "Louisa Hanoune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+# DvE: Abdelmadjid Tebboune guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Louisa Hanoune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
 
 set_politics = {
 	ruling_party = authoritarianism
