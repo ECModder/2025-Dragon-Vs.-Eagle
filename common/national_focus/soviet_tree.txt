@@ -1710,8 +1710,9 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_all_power_to_party }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = yes }
 			add_political_power = 80
-			add_stability = 0.03
+			add_stability = 0.30
 			set_country_flag = SOV_all_power_to_soviets_done
 		}
 	}
@@ -1728,7 +1729,7 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_all_power_to_party }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
-			add_political_power = 80
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
 			add_stability = 0.03
 			set_country_flag = SOV_all_power_to_revolution_done
 		}
@@ -1747,7 +1748,7 @@ focus_tree = {
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
-			add_stability = 0.03
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
 			set_country_flag = SOV_all_power_to_party_done
 		}
 	}

@@ -1,31 +1,31 @@
 capital = 219 # Moscow
 
 # ============================================================
-#   UNION OF SOVIET SOCIALIST REPUBLICS (SOV) - 2025
+#   ALL SOCIALIST Paths (SOV)
 #
-#   SOV non esiste all'avvio partita: e' la fazione socialista che
-#   emerge dalla Seconda Guerra Civile Russa (start_civil_war da RUS).
-#   Non possiede stati ne' core: il territorio glielo assegna
-#   l'effetto di guerra civile.
+# SOV does not exist at game start: it is the socialist faction that
+# emerges from the Second Russian Civil War (start_civil_war from RUS).
+# It has no states or cores: territory assigns it the
+# civil war effect.
 #
-#   Il vecchio contenuto di questo file (URSS 1936: purghe, piani
-#   quinquennali, rivendicazioni del Patto Molotov-Ribbentrop, OOB
-#   1936, puppet e fazione) ERA in realta' il setup della Russia
-#   moderna: e' stato spostato sul tag RUS, che ora possiede le
-#   province. Copia integrale dell'originale nello scratchpad.
+# The old content of this file (USSR 1936: purges, five-year
+# plans, demands of the Molotov-Ribbentrop Pact, OOB
+# 1936, puppet and faction) WAS actually the setup of modern
+# Russia: it has been moved to the RUS tag, which now owns the
+# provinces. Full copy of the original in the scratchpad.
 #
-#   Sotto-percorsi previsti: Stalinisti (URSS), Leninisti (RSFSR),
-#   Trotskisti (URSR), Armata Rossa.
+# Planned subpaths: Stalinists (USSR), Leninists (RSFSR),
+# Trotskyists (USSR).
 # ============================================================ 
 
 # === DvE party names ===
 set_party_name = { ideology = totalitarian_socialism name = "KPSU" long_name = "Communist Party of the Soviet Union" }
 set_party_name = { ideology = authoritarian_socialism name = "Politburo" long_name = "Political Bureau of the Central Committee of the Communist"  }
-set_party_name = { ideology = vanguard_socialism name = "Internationalist" long_name = "Internationalist" }
+set_party_name = { ideology = vanguard_socialism name = "IPKB(b)" long_name = "Internatsionalistskaya partiya Kommunisticheskaya bor'ba (b)" }
 set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Revolutionary Communist Party" }
-set_party_name = { ideology = progressive name = "ASUF" long_name = "All-Socialist United Front" }
-set_party_name = { ideology = centrist name = "PLSR" long_name = "Party of the Left Social Revolutionary" }
-set_party_name = { ideology = conservative name = "PSR" long_name = "Party of the Social Revolutionary" }
+set_party_name = { ideology = progressive name = "PLSR" long_name = "Party of the Left Social Revolutionary" }
+set_party_name = { ideology = centrist name = "PSR" long_name = "Party of the Social Revolutionary" }
+set_party_name = { ideology = conservative name = "Demokraticheskiy soyuz" long_name = "Demokraticheskiy soyuz" }
 set_party_name = { ideology = reactionary name = "Red Army" long_name = "Red Army Command" }
 set_party_name = { ideology = authoritarianism name = "Soviet Army" long_name = "Soviet Army Command" }
 set_party_name = { ideology = autocracy name = "KGB" long_name = "Central Committee of the Secret Services" }
@@ -36,21 +36,21 @@ set_party_name = { ideology = fundamentalism name = "ORC" long_name = "Orthodox 
 set_politics = {
 	ruling_party = authoritarian_socialism
 	last_election = "2025.1.1"
-	election_frequency = 48
+	election_frequency = 12
 	elections_allowed = no
 }
 
 set_popularities = {
-	totalitarian_socialism = 20
+	totalitarian_socialism = 21
 	authoritarian_socialism = 20
 	vanguard_socialism = 25
-	revolutionary_socialism = 15
+	revolutionary_socialism = 19
 	progressive = 6
 	centrist = 2
 	conservative = 2
 	reactionary = 3
-	authoritarianism = 4
-	autocracy = 1
+	authoritarianism = 0
+	autocracy = 0
 	absolutism = 0
 	ultranationalism = 2
 	fundamentalism = 0
