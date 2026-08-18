@@ -117,6 +117,73 @@ focus_tree = {
 	}
 
 	focus = {
+		id = FINw_people_want_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 17
+		y = 7
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_constitutional_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 16
+		y = 8
+		cost = 5
+		prerequisite = {
+			focus = FINw_people_want_monarchy
+			focus = FINw_kokoomus
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_absolute_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 18
+		y = 8
+		cost = 5
+		prerequisite = {
+			focus = FINw_people_want_monarchy
+			focus = FINw_christian_democrats
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_choosing_monarch
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 17
+		y = 9
+		cost = 10
+		prerequisite = {
+			focus = FINw_absolute_monarchy
+			focus = FINw_constitutional_monarchy
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
 		id = FINw_rightists
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 28
