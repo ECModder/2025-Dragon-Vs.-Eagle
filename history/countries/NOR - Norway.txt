@@ -1,5 +1,54 @@
 ﻿capital = 110 # Oslo
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Norges Kommunistiske Parti" name = "NKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Arbeidernes Kommunistparti" name = "AKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Tjen Folket - Kommunistisk Forbund" name = "Tjen Folket" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Rodt" name = "Rodt" }
+set_party_name = { ideology = progressive long_name = "Arbeiderpartiet" name = "Ap" }
+set_party_name = { ideology = centrist long_name = "Venstre" name = "V" }
+set_party_name = { ideology = conservative long_name = "Hoyre" name = "H" }
+set_party_name = { ideology = reactionary long_name = "Fremskrittspartiet" name = "FrP" }
+set_party_name = { ideology = authoritarianism long_name = "Nasjonal sikkerhetsmyndighet" name = "NSM" }
+set_party_name = { ideology = autocracy long_name = "Forsvarets overkommando" name = "Forsvarsstaben" }
+set_party_name = { ideology = absolutism long_name = "Det Kongelige Hus" name = "Kongehuset" }
+set_party_name = { ideology = ultranationalism long_name = "Alliansen - Alternativ for Norge" name = "Alliansen" }
+set_party_name = { ideology = fundamentalism long_name = "Partiet De Kristne" name = "PDK" }
+
+create_country_leader = { name = "Jonas Gahr Store" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Guri Melby" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Erna Solberg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Sylvi Listhaug" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Marie Sneve Martinussen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Tjen Folket" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Norges Kommunistiske Parti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "General Eirik Kristoffersen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Kong Harald V" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Hans Jorgen Lysglimt Johansen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Erik Selle" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Beate Gangas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2021.9.13"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 31
+	conservative = 24
+	reactionary = 18
+	centrist = 11
+	revolutionary_socialism = 8
+	fundamentalism = 4
+	totalitarian_socialism = 2
+	ultranationalism = 2
+}
+
+
+
 oob = "NOR_1936"
 
 if = {

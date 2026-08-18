@@ -1,6 +1,56 @@
 ﻿capital = 202 #Kiev
 
-oob = "UKR_1936"
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Komunistychna Partiya Ukrayiny" name = "KPU" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Sotsialistychna Partiya Ukrayiny" name = "SPU" }
+set_party_name = { ideology = vanguard_socialism long_name = "Borotba" name = "Borotba" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Livyi Rukh" name = "Livytsia" }
+set_party_name = { ideology = progressive long_name = "Holos" name = "Holos" }
+set_party_name = { ideology = centrist long_name = "Sluha Narodu" name = "Sluha Narodu" }
+set_party_name = { ideology = conservative long_name = "Yevropeyska Solidarnist" name = "YeS" }
+set_party_name = { ideology = reactionary long_name = "Vseukrayinske obyednannia Batkivshchyna" name = "Batkivshchyna" }
+set_party_name = { ideology = authoritarianism long_name = "Sluzhba Bezpeky Ukrayiny" name = "SBU" }
+set_party_name = { ideology = autocracy long_name = "Heneralnyi shtab Zbroynykh Syl" name = "ZSU" }
+set_party_name = { ideology = absolutism long_name = "Ukrainskyi Hetmanat" name = "Hetmanat" }
+set_party_name = { ideology = ultranationalism long_name = "Vseukrayinske obyednannia Svoboda" name = "Svoboda" }
+set_party_name = { ideology = fundamentalism long_name = "Pravoslavna Tserkva Ukrayiny" name = "UPTs" }
+
+create_country_leader = { name = "Volodymyr Zelensky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Petro Poroshenko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Yulia Tymoshenko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Kira Rudyk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = green_liberalism }
+create_country_leader = { name = "Yuriy Boyko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Oleh Tyahnybok" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Petro Symonenko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Borotba" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Vasyl Malyuk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "General Oleksandr Syrskyi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Metropolitan Epiphanius I" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Hetman Pavlo Skoropadskyi II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2019.7.21"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 36
+	conservative = 19
+	progressive = 12
+	reactionary = 11
+	ultranationalism = 9
+	autocracy = 6
+	fundamentalism = 4
+	totalitarian_socialism = 3
+}
+
+
+
+# DvE: schieramento 2025 sul fronte con la Russia
+oob = "UKR_2025"
 
 set_research_slots = 3
 

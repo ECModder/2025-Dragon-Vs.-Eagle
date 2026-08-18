@@ -1,0 +1,39 @@
+# ============================================================
+#   CIN - forze all'inizio della Seconda Guerra Civile Russa
+#
+# Reparti ceceni.
+#
+#   Caricato da RUS_second_civil_war_effect con load_oob.
+# ============================================================
+
+division_template = {
+	name = "Kadyrovtsy"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Territorialnoye Opolcheniye"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+	# milizia territoriale: la richiama la decisione "Richiama la milizia"
+}
+
+units = {
+	division = { location = 666 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 670 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 1455 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 3667 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 3672 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 6689 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 821
+	division = { location = 685 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 827
+	division = { location = 6674 division_template = "Kadyrovtsy" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 827
+}

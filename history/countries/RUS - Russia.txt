@@ -550,20 +550,10 @@ capital = 219 # Moscow
 
 starting_train_buffer = 3.0
 
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "No Step Back"
-		}
-	}
-	set_oob = "SOV_1936"
-}
-if = {
-	limit = {
-		has_dlc = "No Step Back"
-	}
-	set_oob = "SOV_1936_nsb"
-}
+# DvE: schieramento 2025 sul fronte ucraino. Prima qui c'erano i due
+# set_oob del 1936 (SOV_1936 / SOV_1936_nsb): set_oob sostituisce
+# l'ordine di battaglia, quindi cancellavano quello nuovo.
+set_oob = "RUS_2025"
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "SOV_1936_naval_mtg"

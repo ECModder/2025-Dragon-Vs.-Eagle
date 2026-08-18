@@ -1,5 +1,54 @@
 ﻿capital = 1061
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Kibris Komunist Partisi" name = "KKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Yeni Kibris Partisi" name = "YKP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Birlesik Kibris Partisi" name = "BKP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Toplumcu Demokrasi Partisi" name = "TDP" }
+set_party_name = { ideology = progressive long_name = "Cumhuriyetci Turk Partisi" name = "CTP" }
+set_party_name = { ideology = centrist long_name = "Demokrat Parti" name = "DP" }
+set_party_name = { ideology = conservative long_name = "Ulusal Birlik Partisi" name = "UBP" }
+set_party_name = { ideology = reactionary long_name = "Yeniden Dogus Partisi" name = "YDP" }
+set_party_name = { ideology = authoritarianism long_name = "Kibris Istihbarat Koordinasyonu" name = "MIT-K" }
+set_party_name = { ideology = autocracy long_name = "Guvenlik Kuvvetleri Komutanligi" name = "GKK" }
+set_party_name = { ideology = absolutism long_name = "Osmanli Hanedani Kibris" name = "Hanedan" }
+set_party_name = { ideology = ultranationalism long_name = "Halkin Partisi" name = "HP" }
+set_party_name = { ideology = fundamentalism long_name = "Din Isleri Baskanligi" name = "Din Isleri" }
+
+create_country_leader = { name = "Ersin Tatar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Tufan Erhurman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Fikri Ataoglu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Cemal Ozyigit" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
+create_country_leader = { name = "Izzet Izcan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Kibris Komunist Partisi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Birlesik Kibris Partisi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Yasar Kadioglu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Hasan Sertoglu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Ahmet Unsal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Erhan Arikli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Sehzade Orhan Osmanoglu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = reactionary
+	last_election = "2022.1.23"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	reactionary = 32
+	progressive = 24
+	conservative = 16
+	revolutionary_socialism = 9
+	centrist = 7
+	ultranationalism = 5
+	fundamentalism = 4
+	totalitarian_socialism = 3
+}
+
+
+
 set_technology = {
 	infantry_weapons = 1
 }

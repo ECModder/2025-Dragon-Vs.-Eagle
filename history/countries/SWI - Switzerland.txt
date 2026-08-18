@@ -1,5 +1,54 @@
 ﻿capital = 3
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Partei der Arbeit der Schweiz" name = "PdA" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Kommunistische Partei Schweiz" name = "KP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Revolutionar Marxistische Liga" name = "RML" }
+set_party_name = { ideology = revolutionary_socialism long_name = "solidariteS" name = "SolidariteS" }
+set_party_name = { ideology = progressive long_name = "Sozialdemokratische Partei der Schweiz" name = "SP" }
+set_party_name = { ideology = centrist long_name = "Grunliberale Partei" name = "GLP" }
+set_party_name = { ideology = conservative long_name = "FDP.Die Liberalen" name = "FDP" }
+set_party_name = { ideology = reactionary long_name = "Die Mitte" name = "Die Mitte" }
+set_party_name = { ideology = authoritarianism long_name = "Nachrichtendienst des Bundes" name = "NDB" }
+set_party_name = { ideology = autocracy long_name = "Chef der Armee" name = "Armeestab" }
+set_party_name = { ideology = absolutism long_name = "Haus Habsburg-Lothringen" name = "Haus Habsburg" }
+set_party_name = { ideology = ultranationalism long_name = "Schweizerische Volkspartei" name = "SVP" }
+set_party_name = { ideology = fundamentalism long_name = "Eidgenossisch-Demokratische Union" name = "EDU" }
+
+create_country_leader = { name = "Karin Keller-Sutter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Marcel Dettling" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Beat Jans" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Jurg Grossen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Gerhard Pfister" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Tamara Funiciello" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Partei der Arbeit" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Kommunistische Partei Schweiz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Korpskommandant Thomas Sussli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Christian Imark" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Daniel Frischknecht" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Christian Dussey" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2023.10.22"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 27
+	reactionary = 24
+	progressive = 18
+	centrist = 15
+	revolutionary_socialism = 7
+	fundamentalism = 4
+	totalitarian_socialism = 3
+	ultranationalism = 2
+}
+
+
+
 if = {
 	limit = { has_dlc = "By Blood Alone" }
 		set_oob = "SWI_1936_BBA"

@@ -122,6 +122,11 @@ RUS_second_civil_war_effect = {
 
 	add_stability = -0.25
 	add_war_support = 0.10
+	set_country_flag = DVE_civil_war_active
+
+	# Le 28 divisioni di riservisti mobilitate per l'Ucraina si sciolgono
+	# quando lo stato crolla: a Mosca restano le 40 di professionisti.
+	delete_unit_template_and_units = { division_template = "Strelkovaya Diviziya" }
 
 	# ========================================================
 	#   SOV / "RSR" - i socialisti
@@ -151,7 +156,6 @@ RUS_second_civil_war_effect = {
 		transfer_state = 256   # Chuvascia
 		transfer_state = 249   # Tatarstan
 		transfer_state = 399   # Udmurtia
-		transfer_state = 398   # Perm
 		transfer_state = 651   # Bashkortostan
 		transfer_state = 572   # Chelyabinsk
 		transfer_state = 573   # Zlatoust
@@ -162,6 +166,16 @@ RUS_second_civil_war_effect = {
 		transfer_state = 401   # Balakovo
 		transfer_state = 829   # Engels
 		transfer_state = 232   # Daghestan - Makhachkala
+		# --- stati che nel test restavano a Mosca ---
+		transfer_state = 218   # Rostov
+		transfer_state = 238   # Volgodonsk / Salsk
+		transfer_state = 245   # Millerovo
+		transfer_state = 235   # Stavropol
+		transfer_state = 236   # Astrakhan
+		transfer_state = 403   # Tyumen
+		transfer_state = 654   # Repubblica dell'Altai - Oyrot
+		transfer_state = 563   # Chita
+		transfer_state = 565   # Bodaybo
 		transfer_state = 329   # Tuva
 		transfer_state = 564   # Buriazia - Ulan Ude
 		transfer_state = 566   # Irkutsk
@@ -171,6 +185,8 @@ RUS_second_civil_war_effect = {
 		set_capital = { state = 195 }
 		load_focus_tree = { tree = SOV_civil_war_focus keep_completed = no }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 9000 }
+		load_oob = "SOV_civil_war"
+		set_country_flag = DVE_civil_war_active
 		add_manpower = 200000
 	}
 
@@ -181,7 +197,12 @@ RUS_second_civil_war_effect = {
 	RUR = {
 		transfer_state = 653   # Sverdlovsk
 		transfer_state = 581   # Urali settentrionali
-		transfer_state = 403   # Tyumen (comprende il Kurgan)
+		transfer_state = 397   # Komi - Syktyvkar, Pechora, Ukhta
+		transfer_state = 825   # Nenetsia - Naryan Mar
+		transfer_state = 398   # Perm
+		transfer_state = 570   # Novosibirsk
+		transfer_state = 571   # Omsk
+		transfer_state = 578   # Tomsk
 		transfer_state = 580   # Jugra - Khanty-Mansiysk
 		transfer_state = 579   # Jamalia - Salekhard
 		transfer_state = 824   # Jamalia
@@ -191,10 +212,11 @@ RUS_second_civil_war_effect = {
 		transfer_state = 878   # Tajmyr - Khatanga
 		transfer_state = 569   # Khakassia - Abakan
 		transfer_state = 40    # Altai - Barnaul
-		transfer_state = 654   # Repubblica dell'Altai
 
 		set_capital = { state = 653 }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 }
+		load_oob = "RUR_civil_war"
+		set_country_flag = DVE_civil_war_active
 		add_manpower = 120000
 	}
 
@@ -220,6 +242,8 @@ RUS_second_civil_war_effect = {
 
 		set_capital = { state = 409 }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 5000 }
+		load_oob = "NRE_civil_war"
+		set_country_flag = DVE_civil_war_active
 		add_manpower = 90000
 	}
 
@@ -233,6 +257,7 @@ RUS_second_civil_war_effect = {
 		add_state_core = 234
 		add_state_core = 233
 		set_capital = { state = 234 }
+		load_oob = "KUB_civil_war"
 		add_manpower = 20000
 	}
 
@@ -240,6 +265,7 @@ RUS_second_civil_war_effect = {
 		transfer_state = 237   # Kalmykia - Elista
 		add_state_core = 237
 		set_capital = { state = 237 }
+		load_oob = "KAL_civil_war"
 		add_manpower = 8000
 	}
 
@@ -249,6 +275,7 @@ RUS_second_civil_war_effect = {
 		transfer_state = 827   # Kabardino-Balkaria - Nalchik
 		add_state_core = 827
 		set_capital = { state = 821 }
+		load_oob = "CIN_civil_war"
 		add_manpower = 12000
 	}
 
