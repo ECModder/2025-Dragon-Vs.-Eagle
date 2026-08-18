@@ -8,26 +8,27 @@
 # Military Decision Center - Red Army vs. Soviet Army
 #
 # SOV is not playable at startup: it was born from the Russian Civil War
-# or the socialist coup. The tree loads with
+# or the socialist coup. While the civil war is being fought SOV uses
+# SOV_civil_war_focus ("Civilwar Communist Path"); this tree replaces it
+# when "If Lenin could see us..." is completed, via
 # load_focus_tree = { tree = soviet_focus keep_completed = no }
 # ============================================================
 
 focus_tree = {
 	id = soviet_focus
 
+	# NON si auto-seleziona: l'albero di partenza di SOV e'
+	# SOV_civil_war_focus (soviet_civil_war.txt). Questo viene
+	# caricato dal focus "If Lenin could see us..." a guerra
+	# civile vinta, oppure a mano con load_focus_tree.
 	country = {
 		factor = 0
-		modifier = {
-			add = 10
-			tag = SOV
-		}
 	}
 
 	default = no
 	reset_on_civilwar = no
 
 	continuous_focus_position = { x = 1200 y = 4500 }
-
 
 	focus = {
 		id = SOV_the_union_restored
