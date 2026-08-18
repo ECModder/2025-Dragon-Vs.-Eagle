@@ -348,11 +348,31 @@ DVE_debug_russia_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
+			# il trattato prima, l'albero dopo: e' l'ordine che dovra'
+			# tenere anche l'evento vero di fine guerra
+			RUS_lost_war_settlement_effect = yes
 			load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
 			set_country_flag = RUS_lost_the_war_in_ukraine
-			add_stability = -0.20
-			add_war_support = -0.20
 			add_political_power = 200
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo il trattato, senza l'albero --------------------
+	DVE_debug_peace_settlement = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = RUS_lost_war_settlement }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_lost_war_settlement_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
