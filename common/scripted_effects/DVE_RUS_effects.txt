@@ -5,31 +5,39 @@
 #
 #   1) RUS_lost_war_settlement_effect
 #      Il trattato che chiude la guerra d'Ucraina quando finisce
-#      male (sconfitta o pace bianca). Nascono le tre zone
-#      smilitarizzate della mappa: Belgorod all'Ucraina, Sachalin
-#      al Giappone, Kaliningrad sotto amministrazione ONU.
+#      male (sconfitta o pace bianca): Kursk e Belgorod all'Ucraina
+#      insieme ai territori occupati nel 2022 e alla Crimea,
+#      Sachalin e Curili al Giappone, Kaliningrad all'ONU.
 #      Va chiamato dall'evento di fine guerra, PRIMA di caricare
 #      l'albero post-sconfitta.
 #
 #   2) RUS_second_civil_war_effect
 #      Il timeout della crisi di successione
-#      (common/decisions/RUS_succession_crisis.txt). Il paese si
-#      spacca in cinque e le repubbliche caucasiche se ne vanno.
+#      (common/decisions/RUS_succession_crisis.txt).
 #
 #   PERCHE' NON start_civil_war
 #   start_civil_war accetta ideology/size/states/capital ma NON un
 #   tag: creerebbe nazioni dinamiche (D01, D02...) invece di SOV,
-#   RUR, NRE e KAM. Qui i tag vengono attivati davvero, ricevono
+#   RUR e NRE. Qui i tag vengono attivati davvero, ricevono
 #   territorio e cores e dichiarano guerra.
 #
-#   SPARTIZIONE (dalla mappa della guerra civile)
-#     RUS - Mosca, centro e nord-ovest europeo
-#     SOV - "RSR", la fascia socialista: sud europeo, basso Volga,
-#           Urali meridionali e Siberia meridionale
-#     RUR - "RDR", Siberia occidentale e centrale
-#     NRE - "RUE", Siberia settentrionale, Jacuzia, Estremo Oriente
-#     KAM - Kamchatka e Chukotka
-#     Indipendenti: KUB, KAL, DAG, NOA, CIN
+#   SPARTIZIONE (confini esatti dati dai dev)
+#     SOV "RSR" - Tver, Pskov, Novgorod, Leningrado, Carelia,
+#                 Murmansk, Daghestan, Volgograd, Saratov, Perm,
+#                 Mordovia, Chuvascia, Tatarstan, Udmurtia,
+#                 Chelyabinsk, Bashkortostan, Tuva, Buriazia,
+#                 Irkutsk, Penza, Ulyanovsk, Voronezh
+#     RUR "RDR" - Sverdlovsk, Kurgan, Tyumen, Jugra, Jamalia,
+#                 Krasnojarsk, Khakassia, Altai
+#     NRE "RUE" - Jacuzia, Magadan, Chukotka, Kamchatka,
+#                 Khabarovsk, Primorye, Oblast ebraica, Amur
+#     KUB       - Krasnodar
+#     KAL       - Kalmykia
+#     CIN       - Cecenia-Inguscezia (gia' sua) + Kabardino-Balkaria
+#     RUS       - tutto il resto
+#
+#   NOTA: il tag KAM (Kamchatka) resta definito ma non viene piu'
+#   usato: la Kamchatka e la Chukotka vanno a NRE.
 #
 #   Governo, popolarita' e stabilita' di SOV/RUR/NRE NON vengono
 #   forzati qui: restano quelli dei rispettivi file in
@@ -60,16 +68,16 @@ RUS_lost_war_settlement_effect = {
 		transfer_state = 227   # Donetsk
 		transfer_state = 228   # Luhansk
 		transfer_state = 137   # Crimea
-		transfer_state = 240   # Belgorod / Voronezh - la DMZ
-		transfer_state = 218   # Rostov - la DMZ
+		transfer_state = 220   # Kursk
+		transfer_state = 240   # Belgorod
 
 		add_state_core = 196
 		add_state_core = 200
 		add_state_core = 227
 		add_state_core = 228
 		add_state_core = 137
+		add_state_claim = 220
 		add_state_claim = 240
-		add_state_claim = 218
 	}
 
 	# ---------- DMZ giapponese: Sachalin e Curili ----------
@@ -95,8 +103,8 @@ RUS_lost_war_settlement_effect = {
 	add_state_claim = 227
 	add_state_claim = 228
 	add_state_claim = 137
+	add_state_claim = 220
 	add_state_claim = 240
-	add_state_claim = 218
 	add_state_claim = 537
 	add_state_claim = 655
 	add_state_claim = 763
@@ -106,6 +114,7 @@ RUS_lost_war_settlement_effect = {
 # ============================================================
 #   2) LA SECONDA GUERRA CIVILE RUSSA
 # ============================================================
+
 RUS_second_civil_war_effect = {
 
 	set_country_flag = RUS_second_civil_war
@@ -115,99 +124,99 @@ RUS_second_civil_war_effect = {
 	add_war_support = 0.10
 
 	# ========================================================
-	#   SOV / "RSR" - la fascia socialista
-	#   Dal Don al Baikal passando per il basso Volga e gli Urali
-	#   meridionali. E' il blocco piu' popoloso e piu' industriale.
+	#   SOV / "RSR" - i socialisti
+	#   Nord-ovest europeo (da Murmansk a Tver), medio Volga,
+	#   Urali del sud, Daghestan e la fascia Tuva-Buriazia-Irkutsk.
 	# ========================================================
 	SOV = {
-		# --- sud europeo e basso Volga ---
-		transfer_state = 258   # Lipetsk
-		transfer_state = 260   # Tambov / Borisoglebsk
-		transfer_state = 220   # Kursk
-		transfer_state = 245   # Millerovo
-		transfer_state = 255   # Penza
+		transfer_state = 213   # Murmansk
+		transfer_state = 147   # Salla
+		transfer_state = 722   # Petsamo
+		transfer_state = 216   # Carelia - Petrozavodsk
+		transfer_state = 215   # Carelia orientale
+		transfer_state = 146   # istmo careliano
+		transfer_state = 195   # Leningrado
+		transfer_state = 244   # Volkhov
+		transfer_state = 264   # Tikhvin
+		transfer_state = 208   # Luga
+		transfer_state = 263   # Novgorod
+		transfer_state = 209   # Pskov
+		transfer_state = 210   # Velikiye Luki
+		transfer_state = 247   # Tver
+		transfer_state = 246   # Rzhev
+		transfer_state = 262   # Torzhok
+		transfer_state = 260   # Voronezh
+		transfer_state = 255   # Penza (comprende la Mordovia)
 		transfer_state = 250   # Ulyanovsk
-		transfer_state = 251   # Samara
-		transfer_state = 239   # Saratov
-		transfer_state = 401   # Engels
-		transfer_state = 829   # Repubblica dei tedeschi del Volga
-		transfer_state = 265   # Mikhaylovka
+		transfer_state = 256   # Chuvascia
+		transfer_state = 249   # Tatarstan
+		transfer_state = 399   # Udmurtia
+		transfer_state = 398   # Perm
+		transfer_state = 651   # Bashkortostan
+		transfer_state = 572   # Chelyabinsk
+		transfer_state = 573   # Zlatoust
+		transfer_state = 582   # Magnitogorsk
 		transfer_state = 217   # Volgograd
-		transfer_state = 238   # Volgodonsk
-		transfer_state = 236   # Astrakhan
-		transfer_state = 403   # Kharabali
-		transfer_state = 652   # steppa occidentale
-		# --- Urali meridionali e Siberia meridionale ---
-		transfer_state = 582   # Urali meridionali
-		transfer_state = 573   # TS 15
-		transfer_state = 653   # trans-Urali
-		transfer_state = 580   # Siberia 7
-		transfer_state = 571   # TS 13
-		transfer_state = 572   # TS 14
-		transfer_state = 40    # Altai
-		transfer_state = 569   # TS 11
-		transfer_state = 654   # Altai
+		transfer_state = 265   # Mikhaylovka
+		transfer_state = 239   # Saratov
+		transfer_state = 401   # Balakovo
+		transfer_state = 829   # Engels
+		transfer_state = 232   # Daghestan - Makhachkala
 		transfer_state = 329   # Tuva
-		transfer_state = 563   # TS 5
-		transfer_state = 564   # TS 6
-		transfer_state = 565   # TS 7
+		transfer_state = 564   # Buriazia - Ulan Ude
+		transfer_state = 566   # Irkutsk
+		transfer_state = 567   # Irkutsk
+		transfer_state = 575   # Irkutsk
 
-		set_capital = { state = 217 }
+		set_capital = { state = 195 }
 		load_focus_tree = { tree = SOV_civil_war_focus keep_completed = no }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 9000 }
 		add_manpower = 200000
 	}
 
-	# Voronezh e Rostov li prende solo se la guerra d'Ucraina e'
-	# andata bene: se invece e' stata persa sono la DMZ ucraina e
-	# non sono piu' roba di Mosca da spartire.
-	if = {
-		limit = { owns_state = 240 }
-		SOV = { transfer_state = 240 }
-	}
-	if = {
-		limit = { owns_state = 218 }
-		SOV = { transfer_state = 218 }
-	}
-
 	# ========================================================
-	#   RUR / "RDR" - Siberia occidentale e centrale
+	#   RUR / "RDR" - i democratici
+	#   Urali del nord e Siberia occidentale.
 	# ========================================================
 	RUR = {
+		transfer_state = 653   # Sverdlovsk
 		transfer_state = 581   # Urali settentrionali
+		transfer_state = 403   # Tyumen (comprende il Kurgan)
+		transfer_state = 580   # Jugra - Khanty-Mansiysk
+		transfer_state = 579   # Jamalia - Salekhard
 		transfer_state = 824   # Jamalia
-		transfer_state = 579   # Siberia 6
-		transfer_state = 570   # TS 12
-		transfer_state = 577   # Siberia 4
-		transfer_state = 578   # Siberia 5
-		transfer_state = 568   # TS 10
-		transfer_state = 576   # Siberia 3
-		transfer_state = 566   # TS 8
-		transfer_state = 567   # TS 9
-		transfer_state = 575   # Siberia 2
+		transfer_state = 568   # Krasnojarsk
+		transfer_state = 576   # Krasnojarsk
+		transfer_state = 516   # Tajmyr - Dudinka
+		transfer_state = 878   # Tajmyr - Khatanga
+		transfer_state = 569   # Khakassia - Abakan
+		transfer_state = 40    # Altai - Barnaul
+		transfer_state = 654   # Repubblica dell'Altai
 
-		set_capital = { state = 577 }
+		set_capital = { state = 653 }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 }
 		add_manpower = 120000
 	}
 
 	# ========================================================
-	#   NRE / "RUE" - Siberia settentrionale ed Estremo Oriente
+	#   NRE / "RUE" - i bianchi
+	#   Jacuzia ed Estremo Oriente.
 	# ========================================================
 	NRE = {
-		transfer_state = 516   # Siberia settentrionale
-		transfer_state = 878   # Khatangsky
-		transfer_state = 574   # Siberia 1
-		transfer_state = 876   # Udachny
-		transfer_state = 644   # Jacuzia orientale
-		transfer_state = 877   # Verkhoyansk
-		transfer_state = 562   # Ochotsk
+		transfer_state = 574   # Jacuzia - Yakutsk
+		transfer_state = 644   # Jacuzia - Srednekolymsk
+		transfer_state = 876   # Jacuzia - Udachny
+		transfer_state = 877   # Jacuzia - Verkhoyansk
 		transfer_state = 874   # Magadan
+		transfer_state = 562   # Ochotsk
+		transfer_state = 822   # Chukotka - Anadyr
+		transfer_state = 875   # Chukotka - Lavrentiya
+		transfer_state = 637   # Kamchatka
+		transfer_state = 409   # Khabarovsk
+		transfer_state = 408   # Primorye - Vladivostok
 		transfer_state = 560   # Amur
 		transfer_state = 561   # Amur
-		transfer_state = 657   # stato di confine
-		transfer_state = 409   # Khabarovsk
-		transfer_state = 408   # Vladivostok
+		transfer_state = 657   # Oblast autonoma ebraica
 
 		set_capital = { state = 409 }
 		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 5000 }
@@ -215,91 +224,47 @@ RUS_second_civil_war_effect = {
 	}
 
 	# ========================================================
-	#   KAM - Kamchatka e Chukotka
-	# ========================================================
-	KAM = {
-		transfer_state = 637   # Kamchatka
-		transfer_state = 822   # Chukotka
-		transfer_state = 875   # penisola dei Chukchi
-
-		add_state_core = 637
-		add_state_core = 822
-		add_state_core = 875
-
-		set_capital = { state = 637 }
-		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 2000 }
-		add_manpower = 25000
-	}
-
-	# ========================================================
 	#   LE REPUBBLICHE DEL CAUCASO
-	#   Se ne vanno tutte insieme e non stanno con nessuno.
+	#   Se ne vanno e non stanno con nessuno.
 	# ========================================================
 	KUB = {
-		transfer_state = 234   # Krasnodar
-		transfer_state = 235   # Stavropol
+		transfer_state = 234   # Krasnodar, Novorossijsk, Maykop
+		transfer_state = 233   # costa e montagne del Kuban - Sochi
 		add_state_core = 234
-		add_state_core = 235
+		add_state_core = 233
 		set_capital = { state = 234 }
 		add_manpower = 20000
 	}
 
 	KAL = {
-		transfer_state = 237   # Elista
+		transfer_state = 237   # Kalmykia - Elista
 		add_state_core = 237
 		set_capital = { state = 237 }
 		add_manpower = 8000
 	}
 
-	DAG = {
-		transfer_state = 233   # Daghestan / montagne del Caucaso
-		add_state_core = 233
-		set_capital = { state = 233 }
-		add_manpower = 15000
-	}
-
-	NOA = {
-		transfer_state = 828   # Ossezia del Nord
-		add_state_core = 828
-		set_capital = { state = 828 }
-		add_manpower = 8000
-	}
-
+	# CIN possiede gia' lo stato 821 (Cecenia-Inguscezia) come puppet
+	# di Mosca: qui si stacca e prende la Kabardino-Balkaria.
 	CIN = {
-		transfer_state = 232   # Groznyj
-		transfer_state = 827   # Kabardino-Balkaria
-		add_state_core = 232
-		set_capital = { state = 232 }
+		transfer_state = 827   # Kabardino-Balkaria - Nalchik
+		add_state_core = 827
+		set_capital = { state = 821 }
 		add_manpower = 12000
 	}
 
 	# ========================================================
 	#   LE GUERRE
-	#   Le quattro fazioni si combattono fra loro e con Mosca.
-	#   Le repubbliche del Caucaso sono contro tutte le fazioni
-	#   ma non fra di loro.
 	# ========================================================
-
-	# NOA e CIN sono puppet integrati di RUS (history/countries/RUS - Russia.txt):
-	# finche' lo restano non possono dichiarare guerra all'overlord.
-	end_puppet = NOA
 	end_puppet = CIN
 
-	# --- Mosca contro tutti ---
 	declare_war_on = { target = SOV type = annex_everything }
 	declare_war_on = { target = RUR type = annex_everything }
 	declare_war_on = { target = NRE type = annex_everything }
-	declare_war_on = { target = KAM type = annex_everything }
 
-	# --- le fazioni fra loro ---
 	SOV = { declare_war_on = { target = RUR type = annex_everything } }
 	SOV = { declare_war_on = { target = NRE type = annex_everything } }
-	SOV = { declare_war_on = { target = KAM type = annex_everything } }
 	RUR = { declare_war_on = { target = NRE type = annex_everything } }
-	RUR = { declare_war_on = { target = KAM type = annex_everything } }
-	NRE = { declare_war_on = { target = KAM type = annex_everything } }
 
-	# --- il Caucaso contro tutte le fazioni ---
 	KUB = { declare_war_on = { target = RUS type = annex_everything } }
 	KUB = { declare_war_on = { target = SOV type = annex_everything } }
 	KUB = { declare_war_on = { target = RUR type = annex_everything } }
@@ -309,16 +274,6 @@ RUS_second_civil_war_effect = {
 	KAL = { declare_war_on = { target = SOV type = annex_everything } }
 	KAL = { declare_war_on = { target = RUR type = annex_everything } }
 	KAL = { declare_war_on = { target = NRE type = annex_everything } }
-
-	DAG = { declare_war_on = { target = RUS type = annex_everything } }
-	DAG = { declare_war_on = { target = SOV type = annex_everything } }
-	DAG = { declare_war_on = { target = RUR type = annex_everything } }
-	DAG = { declare_war_on = { target = NRE type = annex_everything } }
-
-	NOA = { declare_war_on = { target = RUS type = annex_everything } }
-	NOA = { declare_war_on = { target = SOV type = annex_everything } }
-	NOA = { declare_war_on = { target = RUR type = annex_everything } }
-	NOA = { declare_war_on = { target = NRE type = annex_everything } }
 
 	CIN = { declare_war_on = { target = RUS type = annex_everything } }
 	CIN = { declare_war_on = { target = SOV type = annex_everything } }
