@@ -1,3 +1,601 @@
 focus_tree = {
-    id = dummy
+	id = united_kingdom_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 25
+			tag = ENG
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 1200 y = 4500 }
+	focus = {
+		id = ENG_democracy_at_its_finest
+		icon = GFX_fish
+		x = 16
+		y = 1
+		cost = 2
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_labour_letdown
+		icon = GFX_fish
+		prerequisite = { focus = ENG_democracy_at_its_finest }
+		x = 16
+		y = 2
+		cost = 2
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_repair_the_failures_of_labour
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_labour_letdown }
+		x = 16
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_i_will_not_give_up
+		icon = GFX_fish
+		prerequisite = { focus = ENG_repair_the_failures_of_labour }
+		mutually_exclusive = { focus = ENG_my_work_is_done }
+		x = 14
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_make_the_promises_true
+		icon = GFX_fish
+		prerequisite = { focus = ENG_i_will_not_give_up }
+		x = 14
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_no_public_trust
+		icon = GFX_fish
+		prerequisite = { focus = ENG_make_the_promises_true }
+		x = 14
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_my_work_is_done
+		icon = GFX_fish
+		prerequisite = { focus = ENG_repair_the_failures_of_labour }
+		mutually_exclusive = { focus = ENG_i_will_not_give_up }
+		x = 19
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_new_leader_wes_streeting
+		icon = GFX_fish
+		prerequisite = { focus = ENG_my_work_is_done }
+		mutually_exclusive = { focus = ENG_the_new_leader_angela_rayner }
+		mutually_exclusive = { focus = ENG_the_new_leader_andy_burnham }
+		x = 16
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+			promote_character = ENG_wes_streeting
+		}
+	}
+
+	focus = {
+		id = ENG_health_above_all
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_new_leader_wes_streeting }
+		x = 16
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_man_for_doctors_and_nurses
+		icon = GFX_fish
+		prerequisite = { focus = ENG_health_above_all }
+		x = 16
+		y = 7
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_limit_hrt_and_gnrh
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_man_for_doctors_and_nurses }
+		x = 16
+		y = 8
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_new_leader_angela_rayner
+		icon = GFX_fish
+		prerequisite = { focus = ENG_my_work_is_done }
+		mutually_exclusive = { focus = ENG_the_new_leader_wes_streeting }
+		mutually_exclusive = { focus = ENG_the_new_leader_andy_burnham }
+		x = 19
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+			promote_character = ENG_angela_rayner
+		}
+	}
+
+	focus = {
+		id = ENG_empower_the_soft_left
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_new_leader_angela_rayner }
+		x = 19
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_build_more_houses_for_all
+		icon = GFX_fish
+		prerequisite = { focus = ENG_empower_the_soft_left }
+		x = 19
+		y = 7
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_new_iron_lady
+		icon = GFX_fish
+		prerequisite = { focus = ENG_build_more_houses_for_all }
+		x = 19
+		y = 8
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_new_leader_andy_burnham
+		icon = GFX_fish
+		prerequisite = { focus = ENG_my_work_is_done }
+		mutually_exclusive = { focus = ENG_the_new_leader_wes_streeting }
+		mutually_exclusive = { focus = ENG_the_new_leader_angela_rayner }
+		x = 22
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+			promote_character = ENG_andy_burnham
+		}
+	}
+
+	focus = {
+		id = ENG_lord_of_the_north
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_new_leader_andy_burnham }
+		x = 22
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_strengthen_pub_owners
+		icon = GFX_fish
+		prerequisite = { focus = ENG_lord_of_the_north }
+		x = 22
+		y = 7
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_power_to_no_ten_north
+		icon = GFX_fish
+		prerequisite = { focus = ENG_strengthen_pub_owners }
+		x = 22
+		y = 8
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = ENG_the_centrists
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_labour_letdown }
+		x = 8
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_comedian
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_centrists }
+		x = 8
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_common_sense_progressivism
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_comedian }
+		x = 8
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_a_britain_built_on_small_buisnesses
+		icon = GFX_fish
+		prerequisite = { focus = ENG_common_sense_progressivism }
+		x = 8
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_back_english_nationalism
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_labour_letdown }
+		x = 11
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_britain_for_the_british
+		icon = GFX_fish
+		prerequisite = { focus = ENG_back_english_nationalism }
+		x = 11
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = ENG_promise_mass_deportations
+		icon = GFX_fish
+		prerequisite = { focus = ENG_britain_for_the_british }
+		x = 11
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+	
+	focus = {
+		id = ENG_nigel_farage_the_gift_taker
+		icon = GFX_fish
+		prerequisite = { focus = ENG_promise_mass_deportations }
+		x = 11
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_a_greener_future
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_labour_letdown }
+		x = 25
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_back_green_socialism
+		icon = GFX_fish
+		prerequisite = { focus = ENG_a_greener_future }
+		mutually_exclusive = { focus = ENG_all_we_need_is_green }
+		x = 24
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_all_we_need_is_green
+		icon = GFX_fish
+		prerequisite = { focus = ENG_a_greener_future }
+		mutually_exclusive = { focus = ENG_back_green_socialism }
+		x = 26
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_promise_a_cleaner_future
+		icon = GFX_fish
+		prerequisite = { focus = ENG_all_we_need_is_green focus  = ENG_back_green_socialism }
+		x = 25
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_propose_more_civil_liberties
+		icon = GFX_fish
+		prerequisite = { focus = ENG_promise_a_cleaner_future }
+		x = 25
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_problem_of_no_nuclear_energy
+		icon = GFX_fish
+		prerequisite = { focus = ENG_propose_more_civil_liberties }
+		x = 25
+		y = 7
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+
+	focus = {
+		id = ENG_the_tories
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_labour_letdown }
+		x = 28
+		y = 3
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_the_mismanagement_of_brexit
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_tories }
+		x = 28
+		y = 4
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_lessons_learned
+		icon = GFX_fish
+		prerequisite = { focus = ENG_the_mismanagement_of_brexit }
+		x = 28
+		y = 5
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_common_sense_leadership
+		icon = GFX_fish
+		prerequisite = { focus = ENG_lessons_learned }
+		x = 28
+		y = 6
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+		}
+	}
+
+	focus = {
+		id = ENG_2029_elections
+		icon = GFX_fish
+		prerequisite = { focus = ENG_common_sense_leadership focus = ENG_the_problem_of_no_nuclear_energy focus = ENG_power_to_no_ten_north focus = ENG_the_new_iron_lady focus = ENG_limit_hrt_and_gnrh focus = ENG_no_public_trust focus = ENG_nigel_farage_the_gift_taker focus = ENG_a_britain_built_on_small_buisnesses }
+		x = 16
+		y = 10
+		cost = 5
+		ai_will_do = {
+			factor = 100
+		}
+
+		completion_reward = {
+			country_event = { id = unitedkingdom.1 }
+		}
+	}
+
+
 }
