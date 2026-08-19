@@ -96,15 +96,67 @@ set_grand_doctrine = new_strategic_destruction
 
 set_convoys = 0
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: leader di partito reali al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Nova Komunisticka Partija Jugoslavije" name = "NKPJ" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Socijalisticka Partija Srbije" name = "SPS" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partija Radikalne Levice" name = "PRL" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Marks21" name = "Marks21" }
+set_party_name = { ideology = progressive long_name = "Stranka Slobode i Pravde" name = "SSP" }
+set_party_name = { ideology = centrist long_name = "Narodni Pokret Srbije" name = "NPS" }
+set_party_name = { ideology = conservative long_name = "Srpska Napredna Stranka" name = "SNS" }
+set_party_name = { ideology = reactionary long_name = "Srpski Pokret Dveri" name = "Dveri" }
+set_party_name = { ideology = authoritarianism long_name = "Bezbednosno-informativna Agencija" name = "BIA" }
+set_party_name = { ideology = autocracy long_name = "Generalstab Vojske Srbije" name = "Generalstab" }
+set_party_name = { ideology = absolutism long_name = "Kraljevski Dom Karadordevic" name = "Karadordevic" }
+set_party_name = { ideology = ultranationalism long_name = "Srpska Radikalna Stranka" name = "SRS" }
+set_party_name = { ideology = fundamentalism long_name = "Srpska Pravoslavna Crkva" name = "SPC" }
+
+create_country_leader = { name = "Aleksandar Vucic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Dragan Djilas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Miroslav Aleksic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Ivica Dacic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Bosko Obradovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Vojislav Seselj" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Nova Komunisticka Partija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Partija Radikalne Levice" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Marks21" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Patrijarh Porfirije" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Prestolonaslednik Aleksandar II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "General Milan Mojsilovic" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Bezbednosno-informativna Agencija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 36
+	ruling_party = conservative
+	last_election = "2023.12.17"
+	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
-	centrist = 60
-	reactionary = 40
+	conservative = 44
+	progressive = 16
+	centrist = 11
+	authoritarian_socialism = 9
+	reactionary = 7
+	ultranationalism = 6
+	fundamentalism = 4
+	absolutism = 2
+	totalitarian_socialism = 1
 }
+
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 36
+#	elections_allowed = yes
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 60
+#	reactionary = 40
+#}
 
 set_stability = 0.6

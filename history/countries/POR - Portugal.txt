@@ -208,16 +208,68 @@ set_convoys = 50
 # non aveva nessun leader.
 create_country_leader = { name = "POR_antonio_de_oliveira_salazar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: leader di partito reali al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista Portugues" name = "PCP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Partido Comunista dos Trabalhadores Portugueses" name = "MRPP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista Reorganizado" name = "PCP-R" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Bloco de Esquerda" name = "BE" }
+set_party_name = { ideology = progressive long_name = "Partido Socialista" name = "PS" }
+set_party_name = { ideology = centrist long_name = "Iniciativa Liberal" name = "IL" }
+set_party_name = { ideology = conservative long_name = "Aliança Democratica - PSD" name = "PSD" }
+set_party_name = { ideology = reactionary long_name = "Centro Democratico Social" name = "CDS-PP" }
+set_party_name = { ideology = authoritarianism long_name = "Servico de Informacoes de Seguranca" name = "SIS" }
+set_party_name = { ideology = autocracy long_name = "Estado-Maior-General das Forcas Armadas" name = "EMGFA" }
+set_party_name = { ideology = absolutism long_name = "Casa Real de Braganca" name = "Casa de Braganca" }
+set_party_name = { ideology = ultranationalism long_name = "Chega" name = "Chega" }
+set_party_name = { ideology = fundamentalism long_name = "Conferencia Episcopal Portuguesa" name = "CEP" }
+
+create_country_leader = { name = "Luis Montenegro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Andre Ventura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Jose Luis Carneiro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Rui Rocha" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultra_liberalism }
+create_country_leader = { name = "Nuno Melo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Mariana Mortagua" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Paulo Raimundo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Partido Comunista Reorganizado" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Partido Comunista dos Trabalhadores" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Duarte Pio de Braganca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "General Antonio Xavier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Cardeal Manuel Clemente" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Servico de Informacoes de Seguranca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
 set_politics = {
-	ruling_party = centrist
-	last_election = "1933.3.5"
+	ruling_party = conservative
+	last_election = "2025.5.18"
 	election_frequency = 48
-	elections_allowed = no
+	elections_allowed = yes
 }
+
 set_popularities = {
-	reactionary = 10
-	centrist = 90
+	conservative = 32
+	ultranationalism = 23
+	progressive = 23
+	centrist = 6
+	revolutionary_socialism = 4
+	totalitarian_socialism = 4
+	reactionary = 4
+	fundamentalism = 2
+	absolutism = 2
 }
+
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1933.3.5"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	reactionary = 10
+#	centrist = 90
+#}
 
 1939.1.1 = {
 	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
