@@ -22,42 +22,44 @@
 # POLITICS
 # ============================================
 
-# === DvE party names ===
-# I partiti realmente esistenti nella RPC: il PCC e le otto formazioni
-# minori tollerate dal Fronte Unito, piu' le correnti e gli apparati
-# che nella mod fanno da alternativa ideologica.
-set_party_name = { ideology = totalitarian_socialism name = "CPC" long_name = "Communist Party of China" }
-set_party_name = { ideology = vanguard_socialism name = "Utopia" long_name = "Utopia Neo-Maoist Network" }
-set_party_name = { ideology = revolutionary_socialism name = "CRP" long_name = "Chinese Revolutionary Party" }
-set_party_name = { ideology = progressive name = "CDL" long_name = "China Democratic League" }
-set_party_name = { ideology = centrist name = "CNDCA" long_name = "China National Democratic Construction Association" }
-set_party_name = { ideology = conservative name = "RCCK" long_name = "Revolutionary Committee of the Chinese Kuomintang" }
-set_party_name = { ideology = reactionary name = "Taizidang" long_name = "The Princeling Faction" }
+# === Chinese parties ===
+# The actual parties in the Democratic People's Republic of China are the CCP and, in addition, the eight smaller parties subordinate to the CCP.
+# The CCP is internally divided into 5 factions (New Left, Centralist, Bolshevik, Workerist, and Reformist).
+# (of the eight smaller parties only the three largest are included: RCCK, CNDCA and CDL).
+set_party_name = { ideology = totalitarian_socialism name = "CCP(m)" long_name = "Communist Party of China - New Left" }
+set_party_name = { ideology = authoritarian_socialism name = "CCP(c)" long_name = "Communist Party of China - Centralist" }
+set_party_name = { ideology = vanguard_socialism name = "CCP(b)" long_name = "Communist Party of China - Bolsheviks" }
+set_party_name = { ideology = revolutionary_socialism name = "CCP(W)" long_name = "Communist Party of China - Workerist" }
+set_party_name = { ideology = progressive name = "CCP(r)" long_name = "Communist Party of China - Riformist" }
+set_party_name = { ideology = centrist name = "RCCK" long_name = "Revolutionary Committee of the Chinese Kuomintang" }
+set_party_name = { ideology = conservative name = "CNDCA" long_name = "China National Democratic Construction Association" }
+set_party_name = { ideology = reactionary name = "CDL" long_name = "China Democratic League" }
 set_party_name = { ideology = authoritarianism name = "Zhongyang" long_name = "Central Committee of the Communist Party" }
 set_party_name = { ideology = autocracy name = "MSS" long_name = "Ministry of State Security" }
 set_party_name = { ideology = absolutism name = "Zongshedang" long_name = "Imperial Restoration Society" }
-set_party_name = { ideology = ultranationalism name = "Huanghan" long_name = "Han Nationalist Movement" }
-set_party_name = { ideology = fundamentalism name = "Rujiao" long_name = "Confucian Revivalist Assembly" }
+set_party_name = { ideology = ultranationalism name = "PLA" long_name = "People's Liberation Army" }
+set_party_name = { ideology = fundamentalism name = "Zongshedang-B" long_name = "Imperial Buddhist Restoration Society" }
 
 set_politics = {
-	ruling_party = totalitarian_socialism
+	ruling_party = authoritarian_socialism
 	last_election = "2023.3.10"
 	election_frequency = 60
 	elections_allowed = no
 }
 
 set_popularities = {
-	totalitarian_socialism = 72
-	vanguard_socialism = 6
-	revolutionary_socialism = 1
-	progressive = 5
-	centrist = 3
-	conservative = 2
-	reactionary = 4
-	authoritarianism = 4
-	autocracy = 2
+	totalitarian_socialism = 
+	authoritarian_socialism = 
+	vanguard_socialism = 3
+	revolutionary_socialism = 2
+	progressive = 
+	centrist = 
+	conservative = 
+	reactionary = 
+	authoritarianism = 0
+	autocracy = 0
 	absolutism = 0
-	ultranationalism = 1
+	ultranationalism = 0
 	fundamentalism = 0
 }
 	set_autonomy = {
