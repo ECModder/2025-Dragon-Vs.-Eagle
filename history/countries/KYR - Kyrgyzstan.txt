@@ -1,5 +1,54 @@
 ﻿capital = 732
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Partiya Kommunistov Kyrgyzstana" name = "PKK" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Butun Kyrgyzstan" name = "Butun" }
+set_party_name = { ideology = vanguard_socialism long_name = "Ata-Meken Sotsialisttik Partiyasy" name = "Ata-Meken" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Sotsialisttik Kyimyl" name = "Sotsialisttik" }
+set_party_name = { ideology = progressive long_name = "Ata-Jurt Kyrgyzstan" name = "Ata-Jurt" }
+set_party_name = { ideology = centrist long_name = "Yntymak Partiyasy" name = "Yntymak" }
+set_party_name = { ideology = conservative long_name = "Ishenim Fraktsiyasy" name = "Ishenim" }
+set_party_name = { ideology = reactionary long_name = "Alyans Partiyasy" name = "Alliance" }
+set_party_name = { ideology = authoritarianism long_name = "Mamlekettik Kooptuuluk Komiteti" name = "GKNB" }
+set_party_name = { ideology = autocracy long_name = "Kuraldu Kuchtor Bash Shtaby" name = "Bash Shtab" }
+set_party_name = { ideology = absolutism long_name = "Manas Muraskerleri" name = "Manas" }
+set_party_name = { ideology = ultranationalism long_name = "Kyrgyz Ulutchuldar Kyimyly" name = "Kyrgyz Ulutu" }
+set_party_name = { ideology = fundamentalism long_name = "Kyrgyzstan Musulmandarynyn Dini Bashkarmasy" name = "Muftiyat" }
+
+create_country_leader = { name = "Sadyr Japarov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Akylbek Japarov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Adakhan Madumarov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = civic_nationalism }
+create_country_leader = { name = "Omurbek Tekebayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ravshan Jeenbekov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Kyrgyz Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Sotsialisttik Kyimyl" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Kamchybek Tashiev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = securocracy }
+create_country_leader = { name = "General Baktybek Bekbolotov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Kyrgyz Ulutchuldar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Mufti Abdulaziz Zakirov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Manas Muraskerleri" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2021.11.28"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 41
+	reactionary = 16
+	progressive = 13
+	authoritarianism = 11
+	centrist = 8
+	autocracy = 5
+	fundamentalism = 4
+	totalitarian_socialism = 2
+}
+
+
+
 #oob = ""
 
 # Starting tech
@@ -66,16 +115,18 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
-}
-set_popularities = {
-	centrist = 99
-	reactionary = 1
-}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 99
+#	reactionary = 1
+#}
 
 #create_country_leader = {
 #	

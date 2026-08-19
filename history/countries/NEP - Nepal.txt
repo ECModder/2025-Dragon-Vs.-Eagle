@@ -1,5 +1,55 @@
 ﻿capital = 323
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Nepal Kamyunist Party (Maobadi Kendra)" name = "NKP-Maobadi" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Nepal Kamyunist Party (Ekikrit Marksbadi-Leninbadi)" name = "NKP-UML" }
+set_party_name = { ideology = vanguard_socialism long_name = "Nepal Majdur Kisan Party" name = "Majdur" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Janata Samajbadi Party" name = "Samajbadi" }
+set_party_name = { ideology = progressive long_name = "Nepali Congress" name = "Nepali Congress" }
+set_party_name = { ideology = centrist long_name = "Rastriya Swatantra Party" name = "Rastriya Swatantra" }
+set_party_name = { ideology = conservative long_name = "Loktantrik Samajbadi Party" name = "Loktantrik" }
+set_party_name = { ideology = reactionary long_name = "Rastriya Prajatantra Party" name = "Rastriya Prajatantra" }
+set_party_name = { ideology = authoritarianism long_name = "Rastriya Anusandhan Vibhag" name = "Rastriya Anusandhan" }
+set_party_name = { ideology = autocracy long_name = "Nepali Sena Pradhan Senapati" name = "Jangi Adda" }
+set_party_name = { ideology = absolutism long_name = "Shah Rajvansh" name = "Shah" }
+set_party_name = { ideology = ultranationalism long_name = "Nepal Rastrabadi Morcha" name = "Rastrabadi" }
+set_party_name = { ideology = fundamentalism long_name = "Pashupati Kshetra Bikas Kosh" name = "Pashupati" }
+
+create_country_leader = { name = "KP Sharma Oli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Pushpa Kamal Dahal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = maoism }
+create_country_leader = { name = "Sher Bahadur Deuba" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Rabi Lamichhane" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Upendra Yadav" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Narayan Man Bijukchhe" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Nepal Majdur Kisan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Rajendra Lingden" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "General Ashok Raj Sigdel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Gyanendra Shah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Nepal Rastrabadi Morcha" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Pashupati Kshetra" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hindu_nationalism }
+
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2022.11.20"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	authoritarian_socialism = 26
+	centrist = 21
+	totalitarian_socialism = 16
+	progressive = 12
+	conservative = 9
+	reactionary = 7
+	absolutism = 5
+	fundamentalism = 3
+	vanguard_socialism = 1
+}
+
+
+
 oob = "NEP_1936"
 
 recruit_character = NEP_juddha_rana
@@ -92,12 +142,19 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-set_popularities = {
-	centrist = 100
-}
+
+# DvE: NEP_juddha_rana guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader.
+create_country_leader = { name = "NEP_juddha_rana" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 100
+#}
