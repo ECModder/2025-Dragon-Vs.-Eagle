@@ -554,6 +554,21 @@ starting_train_buffer = 3.0
 # set_oob del 1936 (SOV_1936 / SOV_1936_nsb): set_oob sostituisce
 # l'ordine di battaglia, quindi cancellavano quello nuovo.
 set_oob = "RUS_2025"
+
+# DvE: i magazzini non erano mai stati riempiti: 68 divisioni senza
+# un fucile. Questa e' la scorta della Federazione ancora intera.
+add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 25000 }
+add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 3000 }
+add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 3000 }
+add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 5000 }
+add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 3000 }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 2500 }
+add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 1500 }
+add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 1500 }
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 3000 }
+add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 600 }
+add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 300 }
+
 if = {
 	limit = { has_dlc = "Man the Guns" }
 		set_naval_oob = "SOV_1936_naval_mtg"
@@ -1857,8 +1872,8 @@ if = {
 
 # ==================== Russia ideology (if youre reading this congrats dm me) ====================
 
-create_country_leader = { name = "Gennady Zyuganov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2050.1.1" ideology = stalinism }
-create_country_leader = { name = "Gennady Zyuganov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2050.1.1" ideology = sovietism }
+create_country_leader = { name = "Gennady Zyuganov" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Zyuganov.dds" expire = "2050.1.1" ideology = stalinism }
+create_country_leader = { name = "Gennady Zyuganov" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Zyuganov.dds" expire = "2050.1.1" ideology = sovietism }
 create_country_leader = { name = "Central Soviet" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Supreme Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = trotskyism }
 create_country_leader = { name = "Nikolay Rybakov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2075.1.1" ideology = social_democracy }
@@ -1874,7 +1889,7 @@ create_country_leader = { name = "Kirill I" desc = "POLITICS_LEADER_DESC" pictur
 # === DvE party names ===
 set_party_name = { ideology = totalitarian_socialism name = "KPRF" long_name = "kommunist Party of the Russian Federation" }
 set_party_name = { ideology = authoritarian_socialism name = "KPRF" long_name = "kommunist Party of the Russian Federation" }
-set_party_name = { ideology = vanguard_socialism name = "PI" long_name = "Proletarskiy Internatsionalizm" }
+set_party_name = { ideology = vanguard_socialism name = "IPKB(b)" long_name = "Proletarskiy Internatsionalizm - Bolsheviks" }
 set_party_name = { ideology = revolutionary_socialism name = "RRP" long_name = "Revolutionary Workers Party" }
 set_party_name = { ideology = progressive name = "Just Russia" long_name = "Just Russia" }
 set_party_name = { ideology = centrist name = "Civic Platform" long_name = "Civic Platform" }

@@ -367,12 +367,14 @@ create_country_leader = { name = "Traditional Regent Council" desc = "POLITICS_L
 create_country_leader = { name = "Alejandro Biondini" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
 create_country_leader = { name = "Clerical Catholic Action Council" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
 
-set_politics = {
-	ruling_party = reactionary
-	last_election = "2023.11.19"
-	election_frequency = 48
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = reactionary
+#	last_election = "2023.11.19"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
 
 set_popularities = {
 	reactionary = 56

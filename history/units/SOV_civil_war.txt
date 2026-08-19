@@ -52,6 +52,22 @@ division_template = {
 	# milizia territoriale: la richiama la decisione "Richiama la milizia"
 }
 
+division_template = {
+	name = "Krasnaya Gvardiya"
+	division_names_group = SOV_GRD_01
+	# La Guardia Rossa: il pugno di Leningrado. Corazzata, meccanizzata
+	# e con tutto il supporto - e' la punta di lancia dei socialisti.
+	regiments = {
+		medium_armor = { x = 0 y = 0 }  medium_armor = { x = 0 y = 1 }  medium_armor = { x = 0 y = 2 }
+		mechanized   = { x = 1 y = 0 }  mechanized   = { x = 1 y = 1 }  mechanized   = { x = 1 y = 2 }
+		mechanized   = { x = 2 y = 0 }  mechanized   = { x = 2 y = 1 }
+	}
+	support = {
+		engineer  = { x = 0 y = 0 }  recon             = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+		anti_tank = { x = 0 y = 3 }  logistics_company = { x = 0 y = 4 }
+	}
+}
+
 units = {
 	division = { location = 79 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
 	division = { location = 85 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
@@ -103,4 +119,28 @@ units = {
 	division = { location = 1761 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 565
 	division = { location = 3151 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
 	division = { location = 344 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
+
+	# --- la Guardia Rossa di Leningrado ---
+	division = { name = "1ya Gvardeyskaya Krasnaya Gvardiya" location = 79 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "2ya Gvardeyskaya Krasnaya Gvardiya" location = 149 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "3ya Gvardeyskaya Krasnaya Gvardiya" location = 3151 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "4ya Gvardeyskaya Krasnaya Gvardiya" location = 6174 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "5ya Gvardeyskaya Krasnaya Gvardiya" location = 11068 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "6ya Gvardeyskaya Krasnaya Gvardiya" location = 79 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "7ya Gvardeyskaya Krasnaya Gvardiya" location = 149 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "8ya Gvardeyskaya Krasnaya Gvardiya" location = 3151 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "9ya Gvardeyskaya Krasnaya Gvardiya" location = 6174 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "10ya Gvardeyskaya Krasnaya Gvardiya" location = 11068 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+
+	# --- la Guardia Rossa di Stalingrado ---
+	division = { name = "11ya Gvardeyskaya Krasnaya Gvardiya" location = 498 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "12ya Gvardeyskaya Krasnaya Gvardiya" location = 520 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "13ya Gvardeyskaya Krasnaya Gvardiya" location = 3503 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "14ya Gvardeyskaya Krasnaya Gvardiya" location = 3529 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "15ya Gvardeyskaya Krasnaya Gvardiya" location = 3555 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "16ya Gvardeyskaya Krasnaya Gvardiya" location = 6503 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "17ya Gvardeyskaya Krasnaya Gvardiya" location = 6527 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "18ya Gvardeyskaya Krasnaya Gvardiya" location = 6541 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "19ya Gvardeyskaya Krasnaya Gvardiya" location = 9459 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "20ya Gvardeyskaya Krasnaya Gvardiya" location = 9474 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
 }

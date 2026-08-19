@@ -22,10 +22,25 @@
 # POLITICS
 # ============================================
 
+create_country_leader = { name = "Hu Angang" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_angang.dds" expire = "2050.1.1" ideology = maoism }
+create_country_leader = { name = "Xi Jinping" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_xi.dds" expire = "2050.1.1" ideology = xi_jinping_thought }
+create_country_leader = { name = "Supreme Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_central_council.dds" expire = "2500.1.1" ideology = left_communism }
+create_country_leader = { name = "Supreme Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_central_council.dds" expire = "2500.1.1" ideology = trotskyism }
+create_country_leader = { name = "Wang Wenbin" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_wenbin.dds" expire = "2075.1.1" ideology = neo_socialism }
+create_country_leader = { name = "Zheng Jianbang" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_jianbang.dds" expire = "2075.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Hao Mingjin" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_mingjin.dds" expire = "2075.1.1" ideology = civic_nationalism }
+create_country_leader = { name = "Ding Zhongli" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_zhongli.dds" expire = "2075.1.1" ideology = paternalism }
+create_country_leader = { name = "CPC Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_CPC.dds" expire = "2500.1.1" ideology = patriotic_socialism }
+create_country_leader = { name = "Ministry of State Security" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_MSS.dds" expire = "2075.1.1" ideology = peoples_liberation_army }
+create_country_leader = { name = "King's parliament" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "PLA Command" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = national_bolshevism }
+create_country_leader = { name = "Dalai Lama" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2050.1.1" ideology = religious_nationalism }
+
 # === Chinese parties ===
 # The actual parties in the Democratic People's Republic of China are the CCP and, in addition, the eight smaller parties subordinate to the CCP.
 # The CCP is internally divided into 5 factions (New Left, Centralist, Bolshevik, Workerist, and Reformist).
 # (of the eight smaller parties only the three largest are included: RCCK, CNDCA and CDL).
+#
 set_party_name = { ideology = totalitarian_socialism name = "CCP(m)" long_name = "Communist Party of China - New Left" }
 set_party_name = { ideology = authoritarian_socialism name = "CCP(c)" long_name = "Communist Party of China - Centralist" }
 set_party_name = { ideology = vanguard_socialism name = "CCP(b)" long_name = "Communist Party of China - Bolsheviks" }
@@ -47,17 +62,18 @@ set_politics = {
 	elections_allowed = no
 }
 
+
 set_popularities = {
-	totalitarian_socialism = 
-	authoritarian_socialism = 
+	totalitarian_socialism = 20
+	authoritarian_socialism = 50
 	vanguard_socialism = 3
 	revolutionary_socialism = 2
-	progressive = 
-	centrist = 
-	conservative = 
-	reactionary = 
-	authoritarianism = 0
-	autocracy = 0
+	progressive = 15
+	centrist = 5
+	conservative = 1
+	reactionary = 1
+	authoritarianism = 2
+	autocracy = 1
 	absolutism = 0
 	ultranationalism = 0
 	fundamentalism = 0

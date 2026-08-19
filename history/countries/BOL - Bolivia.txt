@@ -78,12 +78,14 @@ IF = {
 	recruit_character = BOL_indigenous_council
 
 	ELSE = {
-		set_politics = {
-			ruling_party = centrist
-			last_election = "1934.11.11"
-			election_frequency = 72
-			elections_allowed = yes
-		}
+		# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#			ruling_party = centrist
+#			last_election = "1934.11.11"
+#			election_frequency = 72
+#			elections_allowed = yes
+#		}
 
 		set_popularities = {
 	centrist = 100
@@ -206,17 +208,21 @@ create_country_leader = { name = "Mallku Traditional Regency" desc = "POLITICS_L
 create_country_leader = { name = "Johnny Fernandez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
 create_country_leader = { name = "Romulo Calvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
 
-set_politics = {
-	ruling_party = revolutionary_socialism
-	last_election = "2020.10.18"
-	election_frequency = 60
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = revolutionary_socialism
+#	last_election = "2020.10.18"
+#	election_frequency = 60
+#	elections_allowed = yes
+#}
 
-set_popularities = {
-	revolutionary_socialism = 55
-	centrist = 29
-	conservative = 14
-	reactionary = 2
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_popularities = {
+#	revolutionary_socialism = 55
+#	centrist = 29
+#	conservative = 14
+#	reactionary = 2
+#}
 }
