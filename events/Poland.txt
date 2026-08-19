@@ -4,14 +4,16 @@
 
 add_namespace = polandos
 add_namespace = starting_poland
-namespace = elections
+add_namespace = elections
+add_namespace = resistance
+
 
 country_event = {
 	id = polandos.1
 	title = polandos.1.t
 	desc = polandos.1.d
 	picture = GFX_report_event_POL_era
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "Polska Gurom!"
@@ -28,7 +30,7 @@ country_event = {
 	title = polandos.2.t
 	desc = polandos.2.d
 	picture = GFX_report_event_POL_chaos
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "one day, we shall be united!"
@@ -43,7 +45,7 @@ country_event = {
 	title = polandos.3.t
 	desc = polandos.3.d
 	picture = GFX_report_event_POL_era
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "PIS will make poland strong and indenpendent"
@@ -137,7 +139,7 @@ country_event = {
 	title = polandos.4.t
 	desc = polandos.4.d
 	picture = GFX_report_event_POL_speach
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "God, honor, homeland!"
@@ -151,7 +153,7 @@ country_event = {
 	title = polandos.5.t
 	desc = polandos.5.d
 	picture = GFX_report_event_POL_safe
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "Poland - invincible"
@@ -164,7 +166,7 @@ country_event = {
 	title = polandos.6.t
 	desc = polandos.6.d
 	picture = GFX_report_event_POL_anti_eu
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "#KeepUEAwayfromUS!"
@@ -181,7 +183,7 @@ add_power_balance_value = {
 	title = polandos.7.t
 	desc = polandos.7.d
 	picture = GFX_report_event_POL_anti_eu
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "This Is End Of UE"
@@ -197,7 +199,7 @@ add_power_balance_value = {
 	id = polandos.8
 	title = polandos.8.t
 	desc = polandos.8.d
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "The Final Countdown..."
@@ -209,7 +211,7 @@ add_power_balance_value = {
 	id = polandos.9
 	title = polandos.9.t
 	desc = polandos.9.d
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "This Is OUR victory!"
@@ -217,4 +219,90 @@ add_power_balance_value = {
 }
 
 	}
+		country_event = {
+	id = resistance.1
+	title = resistance.1.t
+	desc = resistance.1.d
 
+	is_triggered_only = yes
+	option = {
+		name = "KILL THEM ALL"
+		add_political_power = 20
+set_politics = {
+    ruling_party = ultranationalism
+    elections_allowed = no
+}
+
+		add_popularity = {
+			ideology = ultranationalism
+			popularity = 1.0
+		}
+
+    add_ideas = total_economic_mobilisation
+    add_ideas = scraping_the_barrel
+    add_ideas = closed_economy
+
+set_party_name = { ideology = ultranationalism long_name = "RECLAMATION GOVERMENT" name = "RG" }
+
+    add_manpower = 30000
+
+    85 = {
+        add_resistance_target = 25
+    }
+    10 = {
+        add_resistance_target = 25
+    }
+    86 = {
+        add_resistance_target = 25
+    }
+    87 = {
+        add_resistance_target = 25
+    }
+    88 = {
+        add_resistance_target = 25
+    }
+    97 = {
+        add_resistance_target = 25
+    }
+	    retire_country_leader = yes
+    destroy_character = POL_Andrzej_Kupis
+    destroy_character = POL_Piotr_Meczynski
+    destroy_character = POL_Marcin_Dusza
+    destroy_character = POL_Dariusz_Drozdz
+	promote_character = POL_KILL
+	load_focus_tree = poland_Resistance_focus
+}
+	option = {
+		name = "Kill all Poles!"
+		add_political_power = 20
+}
+}
+		country_event = {
+	id = resistance.2
+	title = resistance.2.t
+	desc = resistance.2.d
+
+	is_triggered_only = yes
+	option = {
+	name = "Death to all germans and russians!"
+				POL = {
+	complete_national_focus = POL_a_great_success
+	}
+	GPL = {
+	retire_country_leader = yes
+	}
+	}
+	}
+			country_event = {
+	id = resistance.3
+	title = resistance.3.t
+	desc = resistance.3.d
+
+	is_triggered_only = yes
+	option = {
+	name = "Fuck him! He is only a puppet!"
+				POL = {
+	complete_national_focus = POL_fail
+	}
+	}
+	}
