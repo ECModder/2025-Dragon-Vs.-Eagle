@@ -1,5 +1,54 @@
 ﻿capital = 330
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Mongolyn Ardyn Huvisgalt Nam" name = "MAHN" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Ardyn Zasgiin Evsel" name = "Ardchilsan Hovsgol" }
+set_party_name = { ideology = vanguard_socialism long_name = "Huvisgalt Ajilchdyn Nam" name = "Huvisgalt" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Nogoon Nam" name = "Nogoon" }
+set_party_name = { ideology = progressive long_name = "Mongol Ardyn Nam" name = "MAN" }
+set_party_name = { ideology = centrist long_name = "Irgenii Zoriin Nam" name = "Irgenii Zorig" }
+set_party_name = { ideology = conservative long_name = "Ardchilsan Nam" name = "AN" }
+set_party_name = { ideology = reactionary long_name = "Hun Nam" name = "HUN" }
+set_party_name = { ideology = authoritarianism long_name = "Tagnuulyn Yerunhii Gazar" name = "TATG" }
+set_party_name = { ideology = autocracy long_name = "Zevsegt Huchnii Yerunhii Shtab" name = "Yerunhii Shtab" }
+set_party_name = { ideology = absolutism long_name = "Chingis Haany Ur Hüükhed" name = "Chingisiin Ur" }
+set_party_name = { ideology = ultranationalism long_name = "Undesnii Evsel" name = "Undesnii Evsel" }
+set_party_name = { ideology = fundamentalism long_name = "Gandantegchinlen Hiid" name = "Gandan" }
+
+create_country_leader = { name = "Luvsannamsrain Oyun-Erdene" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ukhnaagiin Khurelsukh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Dogsomyn Odbayar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Tsogtgerel Odon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Batbold Sukhbaataryn" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Mongolian Revolutionary Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Huvisgalt Ajilchdyn Nam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Bat-Erdene Amgalanbaatar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Undesnii Evsel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Khamba Lama Choijamts" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = theocratic_state }
+create_country_leader = { name = "Chingis Haany Ur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Nogoon Nam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = green_leftist }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2024.6.28"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 38
+	conservative = 22
+	authoritarianism = 12
+	centrist = 10
+	authoritarian_socialism = 7
+	reactionary = 5
+	fundamentalism = 3
+	totalitarian_socialism = 3
+}
+
+
+
 oob = "MON_1936"
 
 # Starting tech
@@ -84,16 +133,23 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
-}
-set_popularities = {
-	centrist = 50
-	reactionary = 50
-}
+
+# DvE: MON_anandyn_amar guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader.
+create_country_leader = { name = "MON_anandyn_amar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 50
+#	reactionary = 50
+#}
 
 1939.1.1 = {
 	add_ideas = {

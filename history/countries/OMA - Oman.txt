@@ -1,5 +1,54 @@
 ﻿capital = 294
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "al-Jabha al-Sha'biya li-Tahrir Uman" name = "HSO" }
+set_party_name = { ideology = authoritarian_socialism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Jabhat Tahrir Dhofar" name = "Dhofar" }
+set_party_name = { ideology = progressive long_name = "Harakat al-Tanmiya" name = "Tanmiya" }
+set_party_name = { ideology = centrist long_name = "al-Multaqa al-Liberali" name = "Liberal" }
+set_party_name = { ideology = conservative long_name = "Majlis al-Shura" name = "Shura" }
+set_party_name = { ideology = reactionary long_name = "Jam'iyat al-Turath al-Umani" name = "Turath" }
+set_party_name = { ideology = authoritarianism long_name = "Jihaz al-Amn al-Dakhili" name = "Amn al-Dakhili" }
+set_party_name = { ideology = autocracy long_name = "Ri'asat Arkan Quwwat al-Sultan" name = "Arkan" }
+set_party_name = { ideology = absolutism long_name = "Al Said" name = "Al Said" }
+set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya al-Umaniya" name = "Wataniya" }
+set_party_name = { ideology = fundamentalism long_name = "Dar al-Ifta al-Ibadiya" name = "Ibadi" }
+
+create_country_leader = { name = "Haitham bin Tariq Al Said" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Theyazin bin Haitham" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchic_monarchy }
+create_country_leader = { name = "Sayyid Badr Al Busaidi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Khalid al-Hosni" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Grand Mufti Ahmed al-Khalili" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = theocratic_monarchy }
+create_country_leader = { name = "Harakat al-Tanmiya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Jabhat Tahrir Dhofar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Omani Communist Front" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "General Matar al-Balushi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "al-Haraka al-Wataniya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Majlis al-Shura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
+create_country_leader = { name = "Jam'iyat al-Turath" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+
+set_politics = {
+	ruling_party = absolutism
+	last_election = "2020.1.11"
+	election_frequency = 120
+	elections_allowed = no
+}
+
+set_popularities = {
+	absolutism = 62
+	conservative = 11
+	fundamentalism = 9
+	authoritarianism = 7
+	centrist = 5
+	progressive = 3
+	autocracy = 2
+	revolutionary_socialism = 1
+}
+
+
+
 oob = "OMA_1936"
 
 # Starting tech
@@ -90,12 +139,19 @@ set_grand_doctrine = new_fleet_in_being
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-set_popularities = {
-	centrist = 100
-}
+
+# DvE: OMA_said_bin_taimur guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader.
+create_country_leader = { name = "OMA_said_bin_taimur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 100
+#}

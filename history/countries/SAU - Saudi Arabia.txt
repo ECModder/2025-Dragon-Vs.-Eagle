@@ -1,5 +1,54 @@
 ﻿capital = 292
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Hizb al-Shuyui al-Saudi" name = "HSA" }
+set_party_name = { ideology = authoritarian_socialism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = vanguard_socialism long_name = "no_party" name = "no_party" }
+set_party_name = { ideology = revolutionary_socialism long_name = "al-Jabha al-Sha'biya" name = "Jabhat" }
+set_party_name = { ideology = progressive long_name = "Harakat al-Islah" name = "Islah" }
+set_party_name = { ideology = centrist long_name = "al-Tayyar al-Liberali" name = "Liberal" }
+set_party_name = { ideology = conservative long_name = "Majlis al-Shura" name = "Shura" }
+set_party_name = { ideology = reactionary long_name = "al-Sahwa al-Islamiya" name = "Sahwa" }
+set_party_name = { ideology = authoritarianism long_name = "al-Mabahith al-Amma" name = "Mabahith" }
+set_party_name = { ideology = autocracy long_name = "Ri'asat hay'at al-Arkan" name = "Ri'asat" }
+set_party_name = { ideology = absolutism long_name = "Al Saud" name = "Al Saud" }
+set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya" name = "Wataniya" }
+set_party_name = { ideology = fundamentalism long_name = "Hay'at Kibar al-Ulama" name = "Wahhabi" }
+
+create_country_leader = { name = "King Salman bin Abdulaziz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Mohammed bin Salman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+create_country_leader = { name = "Faisal bin Farhan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Khalid bin Salman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Abdulrahman al-Sudais" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Sahwa Movement" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
+create_country_leader = { name = "al-Tayyar al-Liberali" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Majlis al-Shura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
+create_country_leader = { name = "Saudi Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "al-Jabha al-Sha'biya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "al-Haraka al-Wataniya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Saudi Reform Movement" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+
+set_politics = {
+	ruling_party = absolutism
+	last_election = "1932.9.23"
+	election_frequency = 120
+	elections_allowed = no
+}
+
+set_popularities = {
+	absolutism = 57
+	fundamentalism = 16
+	autocracy = 11
+	conservative = 7
+	authoritarianism = 4
+	centrist = 3
+	ultranationalism = 1
+	revolutionary_socialism = 1
+}
+
+
+
 give_guarantee = PAK
 
 oob = "SAU_1936"
@@ -93,15 +142,22 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-set_popularities = {
-	centrist = 100
-}
+
+# DvE: SAU_abdulaziz_ibn_saud guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader.
+create_country_leader = { name = "SAU_abdulaziz_ibn_saud" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 100
+#}
 
 create_faction_from_template = faction_template_gcc
 add_to_faction = SAU

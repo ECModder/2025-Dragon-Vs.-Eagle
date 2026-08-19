@@ -1,5 +1,54 @@
 ﻿capital = 405
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Kommunisticheskaya Partiya Uzbekistana" name = "KPU" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Xalq Demokratik Partiyasi" name = "Xalq" }
+set_party_name = { ideology = vanguard_socialism long_name = "Mehnat Ittifoqi" name = "Mehnat" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Erk Demokratik Partiyasi" name = "Erk" }
+set_party_name = { ideology = progressive long_name = "Adolat Sotsial-Demokratik Partiyasi" name = "Adolat" }
+set_party_name = { ideology = centrist long_name = "Milliy Tiklanish Demokratik Partiyasi" name = "Milliy Tiklanish" }
+set_party_name = { ideology = conservative long_name = "Oʻzbekiston Liberal-Demokratik Partiyasi" name = "Liberal" }
+set_party_name = { ideology = reactionary long_name = "Ekologik Partiya" name = "Ekologik" }
+set_party_name = { ideology = authoritarianism long_name = "Davlat Xavfsizlik Xizmati" name = "SGB" }
+set_party_name = { ideology = autocracy long_name = "Qurolli Kuchlar Bosh Shtabi" name = "Bosh Shtab" }
+set_party_name = { ideology = absolutism long_name = "Temuriylar Merosi" name = "Temuriylar" }
+set_party_name = { ideology = ultranationalism long_name = "Birlik Xalq Harakati" name = "Birlik" }
+set_party_name = { ideology = fundamentalism long_name = "Oʻzbekiston Musulmonlari Idorasi" name = "Muftiyat" }
+
+create_country_leader = { name = "Shavkat Mirziyoyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Alisher Qodirov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = civic_nationalism }
+create_country_leader = { name = "Ulugbek Inoyatov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Narzullo Oblomurodov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = green_leftist }
+create_country_leader = { name = "Bahrom Abduhalimov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Uzbek Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Mehnat Ittifoqi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Bakhodir Kurbanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Islom Karimov Legacy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+create_country_leader = { name = "Birlik" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Mufti Nuriddin Kholiqnazarov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Temuriylar Merosi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2021.10.24"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 52
+	conservative = 14
+	progressive = 10
+	centrist = 8
+	reactionary = 6
+	autocracy = 5
+	fundamentalism = 3
+	totalitarian_socialism = 2
+}
+
+
+
 #oob = ""
 
 # Starting tech
@@ -44,16 +93,18 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-set_popularities = {
-	centrist = 50
-	reactionary = 50
-}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = reactionary
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 50
+#	reactionary = 50
+#}
 
 #create_country_leader = {
 #	
