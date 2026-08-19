@@ -1,0 +1,340 @@
+focus_tree = {
+	id = poland_Resistance_focus
+	country = {
+		factor = 0
+		modifier = {
+		tag = POL
+		add = 0
+		}
+	}
+	
+	default = no
+		     focus = {
+		id = POL_they_again
+		icon = GFX
+		x = 12
+		y = 8
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		#prerequisite = { focus =  }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 5
+add_stability = -0.05			
+			}
+	}
+			     focus = {
+		id = POL_partisants
+		icon = GFX
+		x = 12
+		y = 9
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_they_again }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 5
+            manpower = 25000
+			war_support = 0.05
+			}
+	}
+				     focus = {
+		id = POL_try_assasinate
+		icon = GFX
+		x = 12
+		y = 10
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_partisants }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 5
+            manpower = 25000
+			war_support = 0.05
+			    random_list = {
+        35 = {
+            country_event = resistance.2
+        }
+        65 = {
+            country_event = resistance.3
+        }
+    }
+			}
+	}
+					     focus = {
+		id = POL_a_great_success
+		icon = GFX
+		x = 10
+		y = 11
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_try_assasinate }
+		mutually_exclusive = { focus = POL_fail  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 5
+            manpower = 25000
+			war_support = 0.05
+			}
+	}
+						     focus = {
+		id = POL_fail
+		icon = GFX
+		x = 14
+		y = 11
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_try_assasinate }
+		mutually_exclusive = { focus = POL_a_great_success  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 5
+            manpower = 25000
+			war_support = 0.05
+			}
+	}
+		focus = {
+		id = POL_inflintrate
+		icon = GFX
+		x = 12
+		y = 12
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_a_great_success focus = POL_fail }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			}
+	}
+			focus = {
+		id = POL_steal_their_equipment
+		icon = GFX
+		x = 12
+		y = 13
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_inflintrate }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			}
+	}
+				focus = {
+		id = POL_hell
+		icon = GFX
+		x = 12
+		y = 14
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_steal_their_equipment }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		    10 = {
+        add_resistance_target = 25
+    }
+    85 = {
+        add_resistance_target = 25
+    }
+    86 = {
+        add_resistance_target = 25
+    }
+    87 = {
+        add_resistance_target = 25
+    }
+    88 = {
+        add_resistance_target = 25
+    }
+    90 = {
+        add_resistance_target = 25
+    }
+    92 = {
+        add_resistance_target = 25
+    }
+    97 = {
+        add_resistance_target = 25
+    }
+    98 = {
+        add_resistance_target = 25
+    }
+    762 = {
+        add_resistance_target = 25
+    }
+    807 = {
+        add_resistance_target = 25
+    }
+    5 = {
+        add_resistance_target = 25
+    }
+    63 = {
+        add_resistance_target = 25
+    }
+    66 = {
+        add_resistance_target = 25
+    }
+    67 = {
+        add_resistance_target = 25
+    }
+			}
+	}
+	focus = {
+		id = POL_rally_partisants
+		icon = GFX
+		x = 12
+		y = 16
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_inflintrate }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+		mapower = 60000
+			}
+	}
+		focus = {
+		id = POL_JUSTICE
+		icon = GFX
+		x = 12
+		y = 15
+				        available = {
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = { 
+        }
+
+		
+		prerequisite = { focus = POL_rally_partisants }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			}
+	}
+}
