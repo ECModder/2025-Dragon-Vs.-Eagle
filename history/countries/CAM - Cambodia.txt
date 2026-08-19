@@ -98,7 +98,7 @@ if = {
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Khmer Rouge Remnant faction" name = "KR" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Khmer Rouge Remnant faction" name = "KR" }
 set_party_name = { ideology = vanguard_socialism long_name = "Cambodian Communist Party" name = "CCP" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Kampuchean United Front" name = "KUF" }
 set_party_name = { ideology = progressive long_name = "Candlelight Party" name = "CP" }
@@ -111,10 +111,13 @@ set_party_name = { ideology = absolutism long_name = "Supreme Council of the Thr
 set_party_name = { ideology = ultranationalism long_name = "Khmer Power Party" name = "KPP" }
 set_party_name = { ideology = fundamentalism long_name = "Buddhist Monastic Secretariat" name = "BMS" }
 
-create_country_leader = { name = "Hun Manet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
-create_country_leader = { name = "Teav Vannol" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Hun Manet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+# DvE: Hun Manet guida anche il partito di governo (reactionary), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Hun Manet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Teav Vannol" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Norodom Chakravuth" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "King Norodom Sihamoni" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
+create_country_leader = { name = "King Norodom Sihamoni" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
 create_country_leader = { name = "General Vong Pisen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
 
 set_politics = {

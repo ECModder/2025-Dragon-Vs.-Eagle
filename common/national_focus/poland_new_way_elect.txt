@@ -1,0 +1,366 @@
+focus_tree = {
+	id = poland_new_way_elect_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+		tag = POL
+		add = 0
+		}
+	}
+		     focus = {
+		id = POL_new_way
+		icon = GFX_goal_POL_new_way
+		x = 8
+		y = 8
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		#prerequisite = { focus =  }
+		#mutually_exclusive = { focus }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_vic_way
+		icon = GFX_goal
+		x = 8
+		y = 9
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_way  }
+		#mutually_exclusive = { focus }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_euro_way_one
+		icon = GFX_goal
+		x = 6
+		y = 10
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_vic_way  }
+		mutually_exclusive = { focus = POL_new_pol_way }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		ai_will_do = { factor = 35 }
+
+		completion_reward = {
+			add_political_power = 40	
+unlock_focus = { id = POL_new_euro_two }			
+			}
+}
+		     focus = {
+		id = POL_new_pol_way
+		icon = GFX_goal
+		x = 10
+		y = 10
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_vic_way  }
+		mutually_exclusive = { focus = POL_new_euro_way_one }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		ai_will_do = { factor = 65 }
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_social
+		icon = GFX_goal
+		x = 8
+		y = 11
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_euro_way_one focus = POL_new_pol_way  }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_euro_two
+		icon = GFX_goal
+		x = 6
+		y = 12
+				        available = {
+						has_completed_focus = POL_new_euro_way_one
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+
+		allow_branch = {
+		}
+
+		
+		prerequisite = { focus = POL_new_social  }
+		mutually_exclusive = { focus = POL_new_pol_youth }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_pol_youth
+		icon = GFX_goal
+		x = 8
+		y = 12
+				        available = {
+						has_completed_focus = POL_new_pol_way
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_social  }
+		mutually_exclusive = { focus = POL_new_euro_two}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_pol_promise
+		icon = GFX_goal
+		x = 8
+		y = 13
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_pol_youth focus = POL_new_euro_two }
+		#mutually_exclusive = { focus = }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_euro_three
+		icon = GFX_goal
+		x = 6
+		y = 14
+				        available = {
+						has_completed_focus = POL_new_euro_way_one
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_pol_promise }
+		mutually_exclusive = { focus = POL_new_pol_way_last }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_pol_way_last
+		icon = GFX_goal
+		x = 8
+		y = 14
+				        available = {
+						has_completed_focus = POL_new_euro_way_one
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_pol_promise }
+		mutually_exclusive = { focus = POL_new_euro_three }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_prepare
+		icon = GFX_goal
+		x = 8
+		y = 15
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_euro_three focus = POL_new_pol_way_last  }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+		     focus = {
+		id = POL_new_elect
+		icon = GFX_goal_POL_PIS_ELECTIONS
+		x = 8
+		y = 16
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_prepare  }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40			
+			}
+}
+}

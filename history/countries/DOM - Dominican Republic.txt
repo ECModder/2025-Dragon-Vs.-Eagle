@@ -84,7 +84,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista del Trabajo" name = "PCT" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista del Trabajo" name = "PCT" }
 set_party_name = { ideology = vanguard_socialism long_name = "Movimiento Popular Dominicano" name = "MPD" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Partido de la Liberación Dominicana - Izquierda" name = "PLD-I" }
 set_party_name = { ideology = progressive long_name = "Frente Amplio" name = "FA" }
@@ -98,6 +98,9 @@ set_party_name = { ideology = ultranationalism long_name = "Fuerza Nacional Prog
 set_party_name = { ideology = fundamentalism long_name = "Unión Demócrata Cristiana" name = "UDC" }
 
 create_country_leader = { name = "Luis Abinader" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2028.8.16" ideology = left_populism }
+# DvE: Luis Abinader guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Luis Abinader" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Leonel Fernández" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
 create_country_leader = { name = "Abel Martínez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Pelegrín Castillo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
@@ -110,7 +113,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 4
 	progressive = 6

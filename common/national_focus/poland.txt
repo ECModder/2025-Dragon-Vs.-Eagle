@@ -1,3 +1,129 @@
 focus_tree = {
-    id = dummy
+	id = polish_focus
+	
+	country = {
+		factor = 1
+		
+		modifier = {
+			add = 1
+			tag = POL
+		}
+
+		modifier = {
+			add = 1
+			original_tag = POL
+		}
+	}
+	
+	default = no
+
+
+
+
+	focus = {
+		id = POL_new_golden_era
+		icon = GFX_goal_POL_new_golden_era
+		x = 8
+		y = 5
+				        available = {
+						YES
+                has_country_leader = {
+                character = POL_Andzrej_Duda
+                ruling_only = yes
+            }
+        }
+				
+				bypass = {
+
+		}
+		cost = 3
+		priority = 10
+		        allow_branch = {
+ 
+        }
+
+
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 100
+			country_event = { id = polandos.1 }				
+			}
+	}
+
+
+
+
+	
+
+     focus = {
+		id = POL_political_chaos
+		icon = GFX_goal_POL_political_chaos
+		x = 8
+		y = 6
+				        available = {
+                has_country_leader = {
+                character = POL_Andzrej_Duda
+                ruling_only = yes
+            }
+        }
+				bypass = {
+
+		}
+		cost = 3
+		priority = 10
+				        allow_branch = {
+        }
+
+		
+		prerequisite = { focus = POL_new_golden_era }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+				POL = {
+}
+
+		completion_reward = {
+			add_political_power = 40	
+country_event = { id = polandos.2 }			
+			}
+	}
+	     focus = {
+		id = POL_chose_side
+		icon = GFX_goal_POL_chose_side
+		x = 8
+		y = 7
+				        available = {
+                has_country_leader = {
+                character = POL_Andzrej_Duda
+                ruling_only = yes
+            }
+        }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {	
+						
+        }
+
+		
+		prerequisite = { focus = POL_political_chaos  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40	
+country_event = { id = polandos.3 }				
+			}
+	}
+
+
 }

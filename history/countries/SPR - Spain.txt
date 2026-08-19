@@ -17,6 +17,40 @@ if = {
 	}
 }
 
+	# ==================== CUSTOM DVE MOD INJECTION: GREAT BRITAIN ====================
+
+# 1. PARTY NAMES CONFIGURATION
+set_party_name = { ideology = totalitarian_socialism long_name = "Communist Party" name = "CPB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Internationalism Communist" name = "Internationalism" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Communist Revolutionary Party" name = "CRP" }
+set_party_name = { ideology = progressive long_name = "Socialist Party" name = "SP" }p
+set_party_name = { ideology = centrist long_name = "Liberal Party" name = "LAB" }
+set_party_name = { ideology = conservative long_name = "Conservative Party" name = "CON" }
+set_party_name = { ideology = reactionary long_name = "Reactionary Party" name = "REFORM" }
+set_party_name = { ideology = authoritarianism long_name = "Authoritarian Party" name = "JIC" }
+set_party_name = { ideology = autocracy long_name = "Autocratic Party" name = "CDS" }
+set_party_name = { ideology = absolutism long_name = "Absolutist Party" name = "WINDSOR" }
+set_party_name = { ideology = ultranationalism long_name = "British National Party" name = "BNP" }
+set_party_name = { ideology = fundamentalism long_name = "Britain First" name = "BF" }
+
+# 2. COUNTRY LEADERS CONFIGURATION
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = socialism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_starmer.dds" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy } # Head of MI5 representing intelligence state
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = monarchism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = clerical_fascism } # Clean match to your new sub-ideology!
+
+set_popularities = {
+	centrist = 80
+	reactionary = 20
+
 	recruit_character = SPR_niceto_alcala_zamora
 	recruit_character = SPR_jose_diaz
 	recruit_character = SPR_alejandro_lerroux
@@ -54,11 +88,7 @@ if = {
 	recruit_character = SPR_francisco_largo_caballero
 	recruit_character = SPA_karl_pius_von_habsburg
 	recruit_character = SPR_manuel_azana
-
-set_popularities = {
-	democratic = 80
-	fascism = 20
-	}
+}
 
 if = {
 	limit = {
@@ -141,7 +171,7 @@ if = {
 }
 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1933.2.16"
 	election_frequency = 36
 	elections_allowed = yes
@@ -190,7 +220,6 @@ if = {
 	set_global_flag = spanish_civil_war
 	set_global_flag = scw_over
 	add_timed_idea = { idea = SPA_recovering_from_civil_war days = 1095 }
-}
 
 if = {
 	limit = {

@@ -87,15 +87,15 @@ if = {
 }
 
 set_politics = {
-	ruling_party = fascism
+	ruling_party = reactionary
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 
 set_popularities = {
-	fascism = 60
-	democratic = 40
+	reactionary = 60
+	centrist = 40
 }
 
 create_country_leader = {
@@ -107,6 +107,9 @@ create_country_leader = {
 	traits = {
 		
 	}
+# DvE: Nikolay Aleksandrovich Skvortsov guida anche il partito di governo (reactionary), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Nikolay Aleksandrovich Skvortsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
 }
 
 create_country_leader = {

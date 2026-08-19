@@ -269,7 +269,7 @@ set_grand_doctrine = grand_battleplan
 
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Ya’Ityopya Kommunist Parti" name = "YKP" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Ya’Ityopya Kommunist Parti" name = "YKP" }
 set_party_name = { ideology = vanguard_socialism long_name = "YeItyopya Hezbawi Abiyotawi Ganbar" name = "EHAG" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Tigray People's Liberation Front" name = "TPLF" }
 set_party_name = { ideology = progressive long_name = "Oromo Liberation Front" name = "OLF" }
@@ -283,6 +283,9 @@ set_party_name = { ideology = ultranationalism long_name = "Amhara Fano Movement
 set_party_name = { ideology = fundamentalism long_name = "Ustaz Yahya Movement" name = "UYM" }
 
 create_country_leader = { name = "Abiy Ahmed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+# DvE: Abiy Ahmed guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Abiy Ahmed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Berhanu Nega" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Debretsion Gebremichael" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Shimelis Abdisa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
@@ -295,7 +298,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 1
+	totalitarian_socialism = 1
 	vanguard_socialism = 4
 	revolutionary_socialism = 18
 	progressive = 12

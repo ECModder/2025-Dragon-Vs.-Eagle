@@ -1,5 +1,55 @@
 ﻿capital = 49
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Turkiye Komunist Partisi" name = "TKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Vatan Partisi" name = "VP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Turkiye Isci Partisi" name = "TIP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Emek Partisi" name = "EMEP" }
+set_party_name = { ideology = progressive long_name = "Halklarin Esitlik ve Demokrasi Partisi" name = "DEM" }
+set_party_name = { ideology = centrist long_name = "IYI Parti" name = "IYI" }
+set_party_name = { ideology = conservative long_name = "Cumhuriyet Halk Partisi" name = "CHP" }
+set_party_name = { ideology = reactionary long_name = "Adalet ve Kalkinma Partisi" name = "AKP" }
+set_party_name = { ideology = authoritarianism long_name = "Milli Istihbarat Teskilati" name = "MIT" }
+set_party_name = { ideology = autocracy long_name = "Genelkurmay Baskanligi" name = "TSK" }
+set_party_name = { ideology = absolutism long_name = "Osmanli Hanedani" name = "Hanedan" }
+set_party_name = { ideology = ultranationalism long_name = "Milliyetci Hareket Partisi" name = "MHP" }
+set_party_name = { ideology = fundamentalism long_name = "Yeniden Refah Partisi" name = "YRP" }
+
+create_country_leader = { name = "Recep Tayyip Erdogan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Ozgur Ozel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Musavat Dervisoglu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Tuncer Bakirhan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
+create_country_leader = { name = "Erkan Bas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Kemal Okuyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Dogu Perincek" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Devlet Bahceli" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Fatih Erbakan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "General Metin Gurak" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Ibrahim Kalin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Dundar Ali Osman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = reactionary
+	last_election = "2023.5.28"
+	election_frequency = 60
+	elections_allowed = yes
+}
+
+set_popularities = {
+	reactionary = 34
+	progressive = 24
+	conservative = 13
+	ultranationalism = 10
+	fundamentalism = 7
+	revolutionary_socialism = 5
+	authoritarianism = 3
+	totalitarian_socialism = 2
+	authoritarian_socialism = 2
+}
+
+
+
 give_guarantee = AZR
 
 	set_autonomy = {
@@ -261,7 +311,7 @@ if = {
 	add_command_power = 100
 
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = centrist
 		last_election = "1939.2.8"
 		election_frequency = 60
 		elections_allowed = yes
@@ -455,14 +505,13 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1935.2.8"
 	elections_allowed = yes
 }
 set_popularities = {
-	democratic = 50
-	neutrality = 10
-	fascism = 40
+	centrist = 60
+	reactionary = 40
 }
 
 set_convoys = 20

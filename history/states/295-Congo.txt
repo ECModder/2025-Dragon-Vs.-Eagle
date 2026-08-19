@@ -5,7 +5,19 @@ state = {
 	state_category = rural
 
 	history = {
+
 		owner = COG
+
+		IF = {
+			limit = {
+				has_dlc = "Gotterdammerung"
+			}
+			transfer_state_to = COG
+			add_dynamic_modifier = {
+				modifier = COG_state_loyal_to_belgium_modifier
+			}
+		}
+
 		buildings = {
 			infrastructure = 2
 			industrial_complex = 1

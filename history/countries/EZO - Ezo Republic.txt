@@ -55,7 +55,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Ezo Kyōsanto" name = "EK" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Ezo Kyōsanto" name = "EK" }
 set_party_name = { ideology = vanguard_socialism long_name = "Hakodate Rōdōsha Zensen" name = "HRZ" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Ezo Shakaishugi Dōmei" name = "ESD" }
 set_party_name = { ideology = progressive long_name = "Kita Nihon Minshu-tō" name = "KNM" }
@@ -69,6 +69,9 @@ set_party_name = { ideology = ultranationalism long_name = "Shinshū Hokusei-tai
 set_party_name = { ideology = fundamentalism long_name = "Hokkaido Shintō-ren" name = "HSR" }
 
 create_country_leader = { name = "Enomoto Takeaki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1908.10.26" ideology = military_democracy }
+# DvE: Enomoto Takeaki guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Enomoto Takeaki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Otori Keisuke" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1911.6.15" ideology = conservatism }
 create_country_leader = { name = "Hijikata Toshizō" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1925.1.1" ideology = putinism }
 create_country_leader = { name = "Jules Brunet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1911.8.12" ideology = constitutionalist }
@@ -81,7 +84,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 2
+	totalitarian_socialism = 2
 	vanguard_socialism = 4
 	revolutionary_socialism = 8
 	progressive = 12

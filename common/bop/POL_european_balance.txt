@@ -1,0 +1,140 @@
+POL_european_balance = {
+	initial_value = 0.18
+
+	left_side = POL_pro_european
+	right_side = POL_anti_european
+	decision_category = POL_european_bop_decisions
+
+	side = {
+		id = POL_pro_european
+		icon = GFX_POL_euro_side
+
+		range = {
+			id = POL_pro_european_strong
+			min = -1.0
+			max = -0.8
+						modifier = {
+			        consumer_goods_factor = -0.25
+        production_speed_civ_factory_factor = 0.13
+        research_speed_factor = 0.10
+		trade_opinion_factor = 0.20
+		war_support_factor = -0.10
+		army_org_factor = 0.15
+		industrial_capacity_factory = 0.05
+		}
+		}
+				range = {
+			id = POL_pro_european_strong_two
+			min = -0.8
+			max = -0.6
+						modifier = {
+			        consumer_goods_factor = -0.15
+        production_speed_civ_factory_factor = 0.07
+        research_speed_factor = 0.06
+		trade_opinion_factor = 0.15
+		war_support_factor = -0.08
+		army_org_factor = 0.10
+		}
+		}
+
+		range = {
+			id = POL_pro_european
+			min = -0.6
+			max = -0.4
+						modifier = {
+			        consumer_goods_factor = -0.05
+        production_speed_civ_factory_factor = 0.05
+        research_speed_factor = 0.04
+		trade_opinion_factor = 0.10
+		war_support_factor = -0.05
+		army_org_factor = 0.08
+		}
+		}
+				range = {
+			id = POL_pro_european
+			min = -0.4
+			max = -0.0
+			modifier = {
+			        consumer_goods_factor = -0.03
+        production_speed_civ_factory_factor = 0.03
+        research_speed_factor = 0.02
+		trade_opinion_factor = 0.05
+		war_support_factor = -0.02
+		army_org_factor = 0.05
+		}
+		}
+	}
+
+
+	side = {
+		id = POL_anti_european
+		icon = GFX_POL_pol_side
+
+
+		range = {
+			id = POL_anti_european
+			min = 0.0
+			max = 0.4
+						    modifier = {
+        production_factory_max_efficiency_factor = 0.01
+        production_speed_buildings_factor = 0.01
+        production_speed_mil_factory_factor = 0.02
+		stability_factor = 0.02
+		war_support_factor = 0.02
+		trade_opinion_factor = -0.02
+		political_power_gain = -0.04
+		research_speed_factor = -0.02
+		}
+		}
+		range = {
+			id = POL_anti_european
+			min = 0.4
+			max = 0.6
+						    modifier = {
+        production_factory_max_efficiency_factor = 0.02
+        production_speed_buildings_factor = 0.05
+        production_speed_mil_factory_factor = 0.05
+		stability_factor = 0.05
+		war_support_factor = 0.05
+		trade_opinion_factor = -0.04
+		political_power_gain = -0.06
+		research_speed_factor = -0.05
+		}
+			}
+					range = {
+			id = POL_anti_european_two
+			min = 0.6
+			max = 0.8
+						    modifier = {
+        production_factory_max_efficiency_factor = 0.08
+        production_speed_buildings_factor = 0.10
+        production_speed_mil_factory_factor = 0.08
+		stability_factor = 0.08
+		war_support_factor = 0.07
+		trade_opinion_factor = -0.06
+		political_power_gain = -0.08
+		research_speed_factor = -0.07
+		}
+			}
+
+		range = {
+			id = POL_anti_european_strong
+			min = 0.8
+			max = 1.0
+						    modifier = {
+        production_factory_max_efficiency_factor = 0.12
+        production_speed_buildings_factor = 0.15
+        production_speed_mil_factory_factor = 0.12
+		production_speed_civ_factory_factor = 0.08
+		training_time_factor = -0.15
+		stability_factor = 0.12
+		war_support_factor = 0.10
+		industrial_capacity_factory = 0.05
+		trade_opinion_factor = -0.10
+		consumer_goods_factor = 0.05
+		political_power_gain = -0.10
+		research_speed_factor = -0.10
+		}
+		}
+	}
+	}

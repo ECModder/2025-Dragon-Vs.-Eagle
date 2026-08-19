@@ -62,6 +62,38 @@ USA = {
 	country_event = { id = usa.51 days = 2 }
 }
 
+create_country_leader = { name = "Jackson Daniel Hinkle" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_hinkle.dds" expire = "2100.1.1" ideology = jacobinism }
+create_country_leader = { name = "Gloria Estela La Riva" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_riva.dds" expire = "2070.1.1" ideology = sovietism }
+create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = trotskyism }
+create_country_leader = { name = "Alexandria Ocasio-Cortez" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_AOC.dds" expire = "2120.1.1" ideology = social_democracy }
+create_country_leader = { name = "kamala harris" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_harris.dds" expire = "2075.1.1" ideology = ultra_liberalism }
+create_country_leader = { name = "J.D. Vance" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_vance.dds" expire = "2075.1.1" ideology = americanism }
+create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2045.1.1" ideology = paternalism }
+create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2500.1.1" ideology = oligarchy }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = putinism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_dds" expire = "2075.1.1" ideology = fascist }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = religious_nationalism }
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "ACP" long_name = "American Communist Party (Maga Communists)" }
+set_party_name = { ideology = authoritarian_socialism name = "PSL - " long_name = "Party for Socialism and Liberation" }
+set_party_name = { ideology = vanguard_socialism name = "I-CS" long_name = "Internationalism - Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "RCA" long_name = "Revolutionary Communist of America" }
+set_party_name = { ideology = progressive name = "Dem-DSA" long_name = "Democratic Socialists of America" }
+set_party_name = { ideology = centrist name = "Dem-Lib" long_name = "Democratic Party" }
+set_party_name = { ideology = conservative name = "GOP" long_name = "Republican Party" }
+set_party_name = { ideology = reactionary name = "GOP" long_name = "Republican Party" }
+set_party_name = { ideology = authoritarianism name = "GOP" long_name = "Republican Party" }
+set_party_name = { ideology = autocracy name = "FBI-CIA" long_name = "FBI-CIA" }
+set_party_name = { ideology = absolutism name = "NSM" long_name = "National Socialist Movement" }
+set_party_name = { ideology = ultranationalism name = "PF" long_name = "Patriot Front" }
+set_party_name = { ideology = fundamentalism name = "ELCA" long_name = "Evangelical Lutheran Church in America" }
+
+
+
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -277,7 +309,7 @@ set_politics = {
 	elections_allowed = yes
 }
 set_popularities = {
-	totalitarian_communism = 1
+	totalitarian_socialism = 1
 	vanguard_socialism = 2
 	revolutionary_socialism = 1
 	progressive = 25
@@ -303,7 +335,7 @@ add_ideas = {
 
 1939.1.1 = {
 	set_politics = {
-		ruling_party = democratic
+		ruling_party = centrist
 		last_election = "1936.11.3"
 		election_frequency = 48
 		elections_allowed = yes

@@ -11,15 +11,21 @@ state={
 	state_category = city
 
 	history={
-		owner = SOV
+		# DvE: Donetsk e' territorio occupato dalla Russia dal 2022,
+		# quindi a inizio partita (1.1.2025) e' di RUS. Torna all'Ucraina
+		# con RUS_lost_war_settlement_effect se la guerra finisce male.
+		owner = RUS
 		buildings = {
 			infrastructure = 3 #was: 5
 		}
 		victory_points = {
 			6474 10
 		}
+		add_core_of = RUS
 		add_core_of = SOV
-		add_claim_by = UKR
+		add_core_of = RUR
+		add_core_of = NRE
+		add_core_of = UKR
 	}
 
 	provinces={

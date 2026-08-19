@@ -13,10 +13,10 @@
 ideologies = {
 
     # ============================================================
-    #   TOTALITARIAN COMMUNISM
-    #   GFX base: GFX_ideology_totalitarian_communism_icon
+    #   TOTALITARIAN SOCIALISM
+    #   GFX base: GFX_ideology_totalitarian_socialism_icon
     # ============================================================
-    totalitarian_communism = {
+    totalitarian_socialism = {
         types = {
             # GFX: GFX_ideology_maoism_icon
             maoism = {}
@@ -27,26 +27,17 @@ ideologies = {
             # GFX: GFX_ideology_chekist_communism_icon
             chekist_communism = {}
 
-            # GFX: GFX_ideology_socialist_military_junta_icon
-            socialist_military_junta = {}
-
             # GFX: GFX_ideology_jacobinism_icon
             jacobinism = {}
 
-            # GFX: GFX_ideology_transhumanist_icon
-            transhumanist = {}
-
-            # GFX: GFX_ideology_transhumanistanarchoprimitivism_icon
+            # GFX: GFX_ideology_ transhumanistanarchoprimitivism_icon
             transhumanistanarchoprimitivism = {}
 
-            # GFX: GFX_ideology_market_socialism_icon
-            market_socialism = {}
+            # GFX: GFX_ideology_juche_icon
+            juche = {}
 
-            # GFX: GFX_ideology_xi_jinping_thought_icon
-            xi_jinping_thought = {}
-
-            # GFX: GFX_ideology_left_nationalism_icon
-            left_nationalism = {}
+            # GFX: GFX_ideology_Pol_Pot_Thought_icon
+            Pol_Pot_Thought = {}
         }
 
         dynamic_faction_names = {
@@ -54,30 +45,83 @@ ideologies = {
             "FACTION_TOTALCOM_2"
         }
 
-        color = { 178 16 16 }
+        color = { 100 0 0 }
 
         war_impact_on_world_tension = 0.50
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_declare_war_on_same_ideology = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.4
-            drift_defence_factor = 0.5
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.10
-        }
 
         ai_ideology_wanted_units_factor = 1.10
+    }
+
+    # ============================================================
+    #   AUTHORITARIAN SOCIALISM
+    #   GFX base: GFX_ideology_authoritarian_socialism_group
+    #
+    #   Il socialismo di stato "gestionale": partito unico, mercato
+    #   tollerato, niente rivoluzione permanente. Sta fra il
+    #   totalitarismo e l'avanguardismo.
+    #   NOTA: ogni sottoideologia puo' stare in UN SOLO gruppo. Qui
+    #   dentro ci sono anche transhumanist e left_nationalism, che
+    #   quindi NON devono ricomparire sotto totalitarian_socialism.
+    # ============================================================
+    authoritarian_socialism = {
+        types = {
+            # GFX: GFX_ideology_sovietism_icon
+            sovietism = {}
+
+            # GFX: GFX_ideology_authoritarian_communism_icon
+            authoritarian_communism = {}
+
+            # GFX: GFX_ideology_Workerism_icon
+            Workerism = {}
+
+            # GFX: GFX_ideology_transhumanist_icon
+            transhumanist = {}
+
+             # GFX: GFX_ideology_socialist_military_junta_icon
+            socialist_military_junta = {}
+
+            # GFX: GFX_ideology_left_nationalism_icon
+            left_nationalism = {}
+
+            # GFX: GFX_ideology_market_socialism_icon
+            market_socialism = {}
+
+            # GFX: GFX_ideology_xi_jinping_thought_icon
+            xi_jinping_thought = {}
+
+            # GFX: GFX_ideology_DDR_icon
+            Deutsche_Communism = {}
+
+            # GFX: GFX_ideology_deutsche_conservatorist_socialism_icon
+            deutsche_conservatorist_socialism = {}
+
+            # GFX: GFX_ideology_maximalism_icon
+            maximalism = {}
+
+            # GFX: GFX_ideology_anarchoprimitivism_icon
+            anarchoprimitivism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_AUTHSOC_1"
+            "FACTION_AUTHSOC_2"
+        }
+
+        color = { 150 25 25 }
+
+        war_impact_on_world_tension = 0.45
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+
+
+        ai_ideology_wanted_units_factor = 1.08
     }
 
 
@@ -89,9 +133,9 @@ ideologies = {
         types = {
             # GFX: GFX_ideology_leninist_internationalism_icon
             leninist_internationalism = {}
-
-            # GFX: GFX_ideology_trotskyism_icon
-            trotskyism = {}
+        
+            # GFX: GFX_ideology_left_communism_icon
+            left_communism = {}
 
             # GFX: GFX_ideology_neo_sovietism_icon
             neo_sovietism = {}
@@ -102,27 +146,14 @@ ideologies = {
             "FACTION_REVSOC_2"
         }
 
-        color = { 210 30 30 }
+        color = { 204 0 0 }
 
         war_impact_on_world_tension = 0.40
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.35
-            drift_defence_factor = 0.4
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.05
-        }
 
         ai_ideology_wanted_units_factor = 1.05
     }
@@ -133,6 +164,10 @@ ideologies = {
     # ============================================================
     revolutionary_socialism = {
         types = {
+
+            # GFX: GFX_ideology_trotskyism_icon
+            trotskyism = {}
+
             # GFX: GFX_ideology_left_baathism_icon
             left_baathism = {}
 
@@ -141,6 +176,14 @@ ideologies = {
 
             # GFX: GFX_ideology_syndicalism_icon
             syndicalism = {}
+            # GFX: GFX_ideology_nasserism_icon
+            nasserism = {}
+
+            # GFX: GFX_ideology_zapatismo_icon
+            zapatismo = {}
+
+            # GFX: GFX_ideology_socialism_icon
+            socialism = {}
         }
 
         dynamic_faction_names = {
@@ -148,27 +191,14 @@ ideologies = {
             "FACTION_REVSOC_2"
         }
 
-        color = { 210 30 30 }
+        color = { 255 51 51 }
 
         war_impact_on_world_tension = 0.40
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.35
-            drift_defence_factor = 0.4
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.05
-        }
 
         ai_ideology_wanted_units_factor = 1.05
     }
@@ -206,29 +236,14 @@ ideologies = {
             "FACTION_PROGRESSIVE_2"
         }
 
-        color = { 220 60 100 }
+        color = { 100 255 100 }
 
         war_impact_on_world_tension = 0.20
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_guarantee_other_ideologies = yes
-            can_lower_tension = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = yes
         can_host_government_in_exile = yes
 
-        modifiers = {
-            generate_wargoal_tension = 0.25
-            drift_defence_factor = 0.2
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = 0.10
-        }
 
         ai_ideology_wanted_units_factor = 0.95
     }
@@ -250,6 +265,8 @@ ideologies = {
 
             # GFX: GFX_ideology_centrist_populism_icon
             centrist_populism = {}
+            # GFX: GFX_ideology_social_liberal_icon
+            social_liberal = {}
         }
 
         dynamic_faction_names = {
@@ -261,25 +278,10 @@ ideologies = {
 
         war_impact_on_world_tension = 0.15
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_guarantee_other_ideologies = yes
-            can_lower_tension = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = yes
         can_host_government_in_exile = yes
 
-        modifiers = {
-            generate_wargoal_tension = 0.15
-            drift_defence_factor = 0.1
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = 0.15
-        }
 
         ai_ideology_wanted_units_factor = 0.90
     }
@@ -302,6 +304,9 @@ ideologies = {
             # GFX: GFX_ideology_trumpism_icon
             trumpism = {}
 
+            # GFX: GFX_ideology_americanism_icon
+            americanism = {}
+
             # GFX: GFX_ideology_constitutionalist_icon
             constitutionalist = {}
 
@@ -310,6 +315,8 @@ ideologies = {
 
             # GFX: GFX_ideology_classical_populism_icon
             classical_populism = {}
+            # GFX: GFX_ideology_national_liberalism_icon
+            national_liberalism = {}
         }
 
         dynamic_faction_names = {
@@ -317,29 +324,14 @@ ideologies = {
             "FACTION_CONSERVATIVE_2"
         }
 
-        color = { 30 80 180 }
+        color = { 40 150 255 }
 
         war_impact_on_world_tension = 0.20
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_guarantee_other_ideologies = yes
-            can_lower_tension = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = yes
         can_host_government_in_exile = yes
 
-        modifiers = {
-            generate_wargoal_tension = 0.20
-            drift_defence_factor = 0.15
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = 0.05
-        }
 
         ai_ideology_wanted_units_factor = 0.95
     }
@@ -370,6 +362,9 @@ ideologies = {
 
             # GFX: GFX_ideology_paternalism_icon
             paternalism = {}
+
+            # GFX: GFX_ideology_conservative_zionist_icon
+            conservative_zionist = {}
         }
 
         dynamic_faction_names = {
@@ -381,23 +376,10 @@ ideologies = {
 
         war_impact_on_world_tension = 0.30
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = yes
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.30
-            drift_defence_factor = 0.25
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.05
-        }
 
         ai_ideology_wanted_units_factor = 1.00
     }
@@ -408,9 +390,6 @@ ideologies = {
     # ============================================================
     authoritarianism = {
         types = {
-            # GFX: GFX_ideology_putinism_icon
-            putinism = {}
-
             # GFX: GFX_ideology_patriotic_socialism_icon
             patriotic_socialism = {}
 
@@ -435,28 +414,14 @@ ideologies = {
             "FACTION_AUTH_2"
         }
 
-        color = { 100 30 140 }
+        color = { 90 90 90 }
 
         war_impact_on_world_tension = 0.40
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_declare_war_on_same_ideology = yes
-        }
-
         can_be_boosted = yes
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.35
-            drift_defence_factor = 0.4
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.05
-        }
 
         ai_ideology_wanted_units_factor = 1.05
     }
@@ -467,8 +432,26 @@ ideologies = {
     # ============================================================
     autocracy = {
         types = {
-            # GFX: GFX_ideology_populist_putinism_icon
-            populist_putinism = {}
+            # GFX: GFX_ideology_putinism_icon
+            putinism = {}
+
+            # GFX: GFX_ideology_securocracy_icon
+            securocracy = {}
+
+            # GFX: GFX_ideology_military_dictatorship_icon
+            military_dictatorship = {}
+
+            # GFX: GFX_ideology_personalist_dictatorship_icon
+            personalist_dictatorship = {}
+
+            # GFX: GFX_ideology_theocratic_dictatorship_icon
+            theocratic_dictatorship = {}
+
+            # GFX: GFX_ideology_technocratic_dictatorship_icon
+            technocratic_dictatorship = {}
+
+            # GFX: GFX_ideology_corporatocracy_icon
+            corporatocracy = {}
 
             # GFX: GFX_ideology_mafia_state_icon
             mafia_state = {}
@@ -488,6 +471,9 @@ ideologies = {
             # GFX: GFX_ideology_personal_dictatorship_icon
             personal_dictatorship = {}
 
+            # GFX: GFX_ideology_soviet_army_icon
+            soviet_army = {}
+
             # GFX: GFX_ideology_theocratic_autocracy_icon
             theocratic_autocracy = {}
 
@@ -500,28 +486,14 @@ ideologies = {
             "FACTION_AUTOCRACY_2"
         }
 
-        color = { 70 20 100 }
+        color = { 200 50 150 }
 
         war_impact_on_world_tension = 0.45
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_declare_war_on_same_ideology = yes
-        }
-
         can_be_boosted = no
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.40
-            drift_defence_factor = 0.5
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.10
-        }
 
         ai_ideology_wanted_units_factor = 1.10
     }
@@ -559,27 +531,14 @@ ideologies = {
             "FACTION_ABSOLUTISM_2"
         }
 
-        color = { 200 170 20 }
+        color = { 150 50 200 }
 
         war_impact_on_world_tension = 0.35
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-        }
-
         can_be_boosted = no
+        can_collaborate = no
         can_host_government_in_exile = yes
 
-        modifiers = {
-            generate_wargoal_tension = 0.35
-            drift_defence_factor = 0.45
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.05
-        }
 
         ai_ideology_wanted_units_factor = 1.00
     }
@@ -614,8 +573,14 @@ ideologies = {
             # GFX: GFX_ideology_national_syndicalism_icon
             national_syndicalism = {}
 
-            # GFX: GFX_ideology_ultranationalism_icon (subtype)
+            # GFX: GFX_ideology_ultranationalist_socialism_icon
+            ultranationalist_socialism = {}
+
+            # GFX: GFX_ideology_ultranationalism_icon  (subtype)
             ultranationalism_party = {}
+            
+            # GFX: GFX_ideology_Kahanism_icon  (subtype)
+            Kahanism = {}
         }
 
         dynamic_faction_names = {
@@ -623,36 +588,20 @@ ideologies = {
             "FACTION_ULTRANATION_2"
         }
 
-        color = { 40 40 40 }
+        color = { 133 94 21 }
 
         war_impact_on_world_tension = 0.60
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_declare_war_on_same_ideology = yes
-            can_only_justify_war_on_threat_country = no
-        }
-
         can_be_boosted = yes
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.25
-            drift_defence_factor = 0.6
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.15
-        }
 
         ai_ideology_wanted_units_factor = 1.20
     }
-
-    # ============================================================
-    #   FUNDAMENTALISM
-    #   GFX base: GFX_ideology_fundamentalism_icon
+# ============================================================
+    #    FUNDAMENTALISM
+    #    GFX base: GFX_ideology_fundamentalism_icon
     # ============================================================
     fundamentalism = {
         types = {
@@ -689,28 +638,14 @@ ideologies = {
             "FACTION_FUND_2"
         }
 
-        color = { 80 55 20 }
+        color = { 255 165 0 }
 
         war_impact_on_world_tension = 0.55
 
-        rules = {
-            can_force_government = yes
-            can_send_volunteers = yes
-            can_puppet = yes
-            can_declare_war_on_same_ideology = yes
-        }
-
         can_be_boosted = no
+        can_collaborate = no
         can_host_government_in_exile = no
 
-        modifiers = {
-            generate_wargoal_tension = 0.35
-            drift_defence_factor = 0.55
-        }
-
-        faction_modifiers = {
-            faction_trade_opinion_factor = -0.10
-        }
 
         ai_ideology_wanted_units_factor = 1.15
     }

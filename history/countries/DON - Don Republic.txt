@@ -66,7 +66,7 @@ if = {
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Donskoy Oblastnoy Komitet KPRF" name = "DOM-KPRF" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Donskoy Oblastnoy Komitet KPRF" name = "DOM-KPRF" }
 set_party_name = { ideology = vanguard_socialism long_name = "Kazachya Krasnaya Gvardiya" name = "KKG" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Trudovaya Kazachya Partiya" name = "TKP" }
 set_party_name = { ideology = progressive long_name = "Donskoy Demokraticheskiy Soyuz" name = "DDS" }
@@ -80,6 +80,9 @@ set_party_name = { ideology = ultranationalism long_name = "Russkiy Front Dona" 
 set_party_name = { ideology = fundamentalism long_name = "Pravoslavnoye Bratstvo Dona" name = "PBD" }
 
 create_country_leader = { name = "Nikolay Kozitsyn" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+# DvE: Nikolay Kozitsyn guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Nikolay Kozitsyn" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Viktor Vodolatsky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
 create_country_leader = { name = "Vitaly Vodolazsky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
 create_country_leader = { name = "Mikhail Sholokhov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1984.2.21" ideology = leninist_internationalism }
@@ -92,7 +95,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 3
+	totalitarian_socialism = 3
 	vanguard_socialism = 5
 	revolutionary_socialism = 4
 	progressive = 2

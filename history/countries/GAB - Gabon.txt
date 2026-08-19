@@ -78,7 +78,7 @@ set_grand_doctrine = new_strategic_destruction
 
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Gabonais" name = "PCG" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Parti Communiste Gabonais" name = "PCG" }
 set_party_name = { ideology = vanguard_socialism long_name = "Mouvement d'Action Nationale" name = "MAN" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Parti Gabonais du Progrès - Gauche" name = "PGP-G" }
 set_party_name = { ideology = progressive long_name = "Union Nationale" name = "UN" }
@@ -91,11 +91,14 @@ set_party_name = { ideology = absolutism long_name = "Conseil de la Dynastie Hau
 set_party_name = { ideology = ultranationalism long_name = "Front Nationaliste Gabonais" name = "FNG" }
 set_party_name = { ideology = fundamentalism long_name = "Ligue Islamique du Gabon" name = "LIG" }
 
-create_country_leader = { name = "Jean-Pierre Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Jean-Pierre Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
+# DvE: Jean-Pierre Nguema guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Jean-Pierre Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Pierre Mamboundou Jr." desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Paul Mba Abessole" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
 create_country_leader = { name = "Paulette Missambo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
-create_country_leader = { name = "Raymond Ndong Sima" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Raymond Ndong Sima" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = social_liberal }
 create_country_leader = { name = "Alexandre Barro Chambrier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Guy Nzouba-Ndama" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
 create_country_leader = { name = "Brice Oligui Nguema" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
@@ -112,7 +115,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 4
 	progressive = 12

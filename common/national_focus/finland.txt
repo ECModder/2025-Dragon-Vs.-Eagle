@@ -1,3 +1,2781 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWERS}
+### search_filters = {FOCUS_FILTER_POLITICAL_CHARACTER}
+### search_filters = {FOCUS_FILTER_MILITARY_CHARACTER}
+### search_filters = {FOCUS_FILTER_INTERNATIONAL_TRADE}
+
+
+
 focus_tree = {
-    id = dummy
+	id = finnish_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = FIN
+		}
+	}
+	
+	default = yes
+ # Elections
+	initial_show_position = {
+		x = 23
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1050 }
+
+	focus = {
+		id = FIN_orpon_hallitus
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = FIN_deepen_ties_with_EU
+		icon = GFX_focus_generic_the_council_of_europe
+		x = 7
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = FIN_orpon_hallitus
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+
+	}
+
+	focus = {
+		id = FIN_combat_gang_violence
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 9
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = FIN_orpon_hallitus
+		}
+
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_strenghten_nato_contribution
+		icon = GFX_focus_generic_democratic_europe
+		x = 11
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = FIN_orpon_hallitus
+		}
+
+		completion_reward = {
+			add_political_power = 50
+		}
+
+	}
+
+  # Waiting for elections
+
+	focus = {
+		id = FIN_wait_for_elections
+		icon = GFX_focus_hol_the_foundations_of_defense
+		x = 2
+		y = 3
+		cost = 5
+		prerequisite = { 
+			focus = FIN_deepen_ties_with_EU
+			focus = FIN_combat_gang_violence
+			focus = FIN_strenghten_nato_contribution
+		}
+		mutually_exclusive = {
+			focus = FIN_broken_coalition
+		}
+
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_kokoomus
+		icon = GFX_goal_support_democracy
+		x = -1
+		y = 4
+		cost = 5
+		prerequisite = { 
+			focus = FIN_wait_for_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_perussuomalaiset
+			focus = FIN_side_with_greens
+			focus = FIN_side_with_SDP
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_perussuomalaiset
+		icon = GFX_focus_FIN_right_wing_policies
+		x = 1
+		y = 4
+		cost = 5
+		prerequisite = { 
+			focus = FIN_wait_for_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus
+			focus = FIN_side_with_greens
+			focus = FIN_side_with_SDP
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_greens
+		icon = GFX_focus_generic_farmland
+		x = 3
+		y = 4
+		cost = 5
+		prerequisite = { 
+			focus = FIN_wait_for_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus
+			focus = FIN_side_with_perussuomalaiset
+			focus = FIN_side_with_SDP
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_SDP
+		icon = GFX_focus_PER_strengthen_the_tudeh
+		x = 5
+		y = 4
+		cost = 5
+		prerequisite = { 
+			focus = FIN_wait_for_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus
+			focus = FIN_side_with_perussuomalaiset
+			focus = FIN_side_with_greens
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_coalition_with_centrists
+		icon = GFX_goal_support_democracy
+		x = -2
+		y = 5
+		cost = 5
+		prerequisite = { 
+			focus = FIN_side_with_kokoomus
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.05
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_redo_old_coalition
+		icon = GFX_SOV_bring_old_trotskyists_back_ccp_2d_sov_compatibility
+		x = 0
+		y = 5
+		cost = 5
+		prerequisite = { 
+			focus = FIN_side_with_kokoomus
+            focus = FIN_side_with_perussuomalaiset
+		}
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_a_grand_coalition
+		icon = GFX_SOV_call_for_aid_ccp_2d_sov_compatibility
+		x = 2
+		y = 5
+		cost = 5
+		prerequisite = { 
+            focus = FIN_side_with_kokoomus
+            focus = FIN_side_with_perussuomalaiset
+			focus = FIN_side_with_greens
+            focus = FIN_side_with_SDP
+		}
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+
+	}
+
+	focus = {
+		id = FIN_leftist_coalition
+		icon = GFX_focus_generic_communist
+		x = 4
+		y = 5
+		cost = 5
+		prerequisite = { 
+			focus = FIN_side_with_greens
+		}
+
+		completion_reward = {
+			add_stability = 0.15
+		}
+
+	}
+
+	focus = {
+		id = FIN_leftist_empowerment
+		icon = GFX_focus_FIN_the_second_finnish_civil_war
+		x = 6
+		y = 5
+		cost = 5
+		available = {
+			always = no
+		}
+        hidden = yes
+		prerequisite = { 
+			focus = FIN_side_with_SDP
+		}
+
+		completion_reward = {
+			add_stability = -0.15
+            # Flips to Socialism
+		}
+
+	}
+
+	focus = {
+		id = FIN_elections
+		icon = GFX_focus_generic_election
+		x = 2
+		y = 6
+		cost = 5
+		available = {
+			always = no
+		}
+		prerequisite = { 
+			focus = FIN_coalition_with_centrists
+			focus = FIN_redo_old_coalition
+			focus = FIN_establish_a_grand_coalition
+			focus = FIN_leftist_coalition
+			focus = FIN_leftist_empowerment
+			# After IRL "election" day
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = FIN_coalition_with_centrists
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_redo_old_coalition
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_establish_a_grand_coalition
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_leftist_coalition
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_leftist_empowerment
+				}
+				add_stability = -0.1
+			}
+		}
+
+	}
+
+   # Coalition collapses
+
+	focus = {
+		id = FIN_broken_coalition
+		icon = GFX_goal_generic_forceful_treaty
+		x = 16
+		y = 3
+		cost = 5
+		prerequisite = { 
+			focus = FIN_deepen_ties_with_EU
+			focus = FIN_combat_gang_violence
+			focus = FIN_strenghten_nato_contribution
+		}
+		mutually_exclusive = {
+			focus = FIN_wait_for_elections
+		}
+
+		completion_reward = {
+			add_stability = -0.15
+			add_political_power = -100
+		}
+
+	}
+
+	focus = {
+		id = FIN_rising_tensions
+		icon = GFX_focus_PER_stage_mass_protests
+		x = 16
+		y = 4
+		cost = 5
+		available = {
+			always = no
+		}
+		prerequisite = { 
+			focus = FIN_broken_coalition
+		}
+
+		completion_reward = {
+			add_stability = -0.01
+		}
+
+	}
+
+   # Snap elections
+
+	focus = {
+		id = FIN_schedule_snap_elections
+		icon = GFX_focus_hol_the_foundations_of_defense
+		x = 11
+		y = 5
+		cost = 5
+		prerequisite = { 
+			focus = FIN_rising_tensions
+		}
+		mutually_exclusive = {
+			focus = FIN_looming_coup
+		}
+
+		completion_reward = {
+			add_stability = 0.005
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_kokoomus_snap
+		icon = GFX_goal_support_democracy
+		x = 8
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_schedule_snap_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_perussuomalaiset_snap
+			focus = FIN_side_with_greens_snap
+			focus = FIN_side_with_SDP_snap
+		}
+
+		completion_reward = {
+			add_stability = 0.1
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_perussuomalaiset_snap
+		icon = GFX_focus_FIN_right_wing_policies
+		x = 10
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_schedule_snap_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus_snap
+			focus = FIN_side_with_greens_snap
+			focus = FIN_side_with_SDP_snap
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_greens_snap
+		icon = GFX_focus_generic_farmland
+		x = 12
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_schedule_snap_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus_snap
+			focus = FIN_side_with_perussuomalaiset_snap
+			focus = FIN_side_with_SDP_snap
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_side_with_SDP_snap
+		icon = GFX_focus_FIN_suomalainen_sosialismi
+		x = 14
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_schedule_snap_elections
+		}
+		mutually_exclusive = {
+			focus = FIN_side_with_kokoomus_snap
+			focus = FIN_side_with_perussuomalaiset_snap
+			focus = FIN_side_with_greens_snap
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_snap_elections
+		icon = GFX_focus_generic_election
+		x = 11
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_side_with_kokoomus_snap
+			focus = FIN_side_with_perussuomalaiset_snap
+			focus = FIN_side_with_greens_snap
+			focus = FIN_side_with_SDP_snap
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					has_completed_focus = FIN_side_with_kokoomus_snap
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_side_with_perussuomalaiset_snap
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_side_with_SDP_snap
+				}
+				add_stability = 0.1
+			}
+			if = {
+				limit = {
+					has_completed_focus = FIN_side_with_greens_snap
+				}
+				add_stability = 0.1
+			}
+		}
+
+	}
+
+  # Looming coup
+
+	focus = {
+		id = FIN_looming_coup
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 21
+		y = 5
+		cost = 5
+		prerequisite = { 
+			focus = FIN_rising_tensions
+		}
+		mutually_exclusive = {
+			focus = FIN_schedule_snap_elections
+		}
+
+		completion_reward = {
+			add_stability = -0.01
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.1
+			}
+		}
+
+	}
+
+   # Communism
+
+	focus = {
+		id = FIN_crackdown_on_right_wing_extremists
+		icon = GFX_focus_generic_communism_anti_fascism
+		x = 20
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_looming_coup
+		}
+		mutually_exclusive = {
+			focus = FIN_crackdown_on_left_wing_extremists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_turn_a_blind_eye_on_communists
+		icon = GFX_goal_support_communism
+		x = 17
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_crackdown_on_right_wing_extremists
+		}
+		mutually_exclusive = {
+			focus = FIN_arrest_radical_communists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = 0.1
+			}
+			add_stability = -0.05
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_arrest_radical_communists
+		icon = GFX_focus_generic_social_democracy
+		x = 19
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_crackdown_on_right_wing_extremists
+		}
+		mutually_exclusive = {
+			focus = FIN_turn_a_blind_eye_on_communists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.15
+			}
+			add_stability = 0.05
+			add_political_power = 50
+			add_stability = 0.01
+		}
+
+	}
+
+	focus = {
+		id = FIN_arrest_right_wing_extremists
+		icon = GFX_focus_NOR_arrest_quisling
+		x = 19
+		y = 8
+		cost = 5
+		prerequisite = { 
+			focus = FIN_turn_a_blind_eye_on_communists
+			focus = FIN_arrest_radical_communists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.20
+			}
+			add_stability = -0.15
+		}
+
+	}
+
+   # Military Coup
+
+	focus = {
+		id = FIN_prepare_a_military_coup
+		icon = GFX_SOV_great_commander_ccp_2d_sov_compatibility
+		x = 21
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_looming_coup
+		}
+		mutually_exclusive = {
+			focus = FIN_crackdown_on_right_wing_extremists
+			focus = FIN_crackdown_on_left_wing_extremists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = democratic
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.45
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_arrest_extremists
+		icon = GFX_focus_mex_arrest_general_cedillo
+		x = 21
+		y = 8
+		cost = 5
+		prerequisite = { 
+			focus = FIN_prepare_a_military_coup
+		}
+
+		completion_reward = {
+			add_stability = -0.01
+			add_popularity = {
+				ideology = communism
+				popularity = -0.1
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.1
+			}
+		}
+	}
+
+   # Fascism
+
+	focus = {
+		id = FIN_crackdown_on_left_wing_extremists
+		icon = GFX_focus_GER_end_european_communism
+		x = 22
+		y = 6
+		cost = 5
+		prerequisite = { 
+			focus = FIN_looming_coup
+		}
+		mutually_exclusive = {
+			focus = FIN_crackdown_on_right_wing_extremists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_popularity = {
+				ideology = communism
+				popularity = -0.05
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_crackdown_on_neo_fascists
+		icon = GFX_focus_generic_anti_fascist_diplomacy
+		x = 23
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_crackdown_on_left_wing_extremists
+		}
+		mutually_exclusive = {
+			focus = FIN_turn_a_blind_eye_on_neo_fascists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+			add_stability = 0.05
+
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_turn_a_blind_eye_on_neo_fascists
+		icon = GFX_focus_generic_fascist_troops
+		x = 25
+		y = 7
+		cost = 5
+		prerequisite = { 
+			focus = FIN_crackdown_on_left_wing_extremists
+		}
+		mutually_exclusive = {
+			focus = FIN_crackdown_on_neo_fascists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.05
+			}
+			add_stability = -0.05
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_arrest_left_wing_extremists
+		icon = GFX_focus_ger_bulwark_against_bolshevism
+		x = 23
+		y = 8
+		cost = 5
+		prerequisite = { 
+			focus = FIN_turn_a_blind_eye_on_neo_fascists
+			focus = FIN_crackdown_on_neo_fascists
+		}
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism
+				popularity = -0.20
+			}
+			add_stability = -0.15
+		}
+
+	}
+
+   # Coup
+
+	focus = {
+		id = FIN_coup
+		icon = GFX_SOV_left_opposition_coup_ccp_2d_sov_compatibility
+		x = 21
+		y = 9
+		cost = 5
+		prerequisite = { 
+			focus = FIN_prepare_a_military_coup
+			focus = FIN_arrest_extremists
+			focus = FIN_arrest_left_wing_extremists
+			focus = FIN_arrest_right_wing_extremists
+		}
+
+		completion_reward = {
+			add_stability = 0.01
+			add_stability = -0.5
+			if = {
+				limit = {
+					has_completed_focus = FIN_turn_a_blind_eye_on_communists
+				}
+				set_politics = {
+					ruling_party = communism
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_arrest_radical_communists
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_crackdown_on_neo_fascists
+				}
+				set_politics = {
+					ruling_party = democratic
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_turn_a_blind_eye_on_neo_fascists
+				}
+				set_politics = {
+					ruling_party = fascism
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_arrest_extremists
+				}
+				set_politics = {
+					ruling_party = neutrality
+				}
+			}
+		}
+	}
+
+
+
+
+ # Parties
+  # Old Coalition
+
+  	focus = {
+		id = FIN_coalition_rises_anew
+		icon = GFX_goal_generic_forceful_treaty
+		x = 30
+		y = 3
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			OR = {
+				has_completed_focus = FIN_restablish_old_coalition
+				has_completed_focus = FIN_elections
+			}
+		}
+		completion_reward = {}
+
+	}
+
+  	focus = {
+		id = FIN_grand_coalition
+		icon = GFX_goal_generic_forceful_treaty
+		x = 30
+		y = 3
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			OR = {
+				has_completed_focus = FIN_establish_a_grand_coalition
+				has_completed_focus = FIN_elections
+			}
+		}
+		completion_reward = {}
+
+	}
+
+  # Leftists
+   # Communists
+	
+
+	focus = {
+		id = FIN_communist_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 0
+		y = 12
+		cost = 0
+        available = {
+            always = no
+        }
+		bypass = {
+			has_government = communism
+		}
+
+	}
+
+	focus = {
+		id = FIN_dissolve_democratic_institutions
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 0
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_communist_victory
+			focus = FIN_rewrite_constitution
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_rewrite_constitution
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 2
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_communist_victory
+			focus = FIN_socialist_victory
+		}
+		completion_reward = {
+			add_political_power = -50
+			# Get events regarding constitution, having different bonuses
+		}
+
+	}
+
+	focus = {
+		id = FIN_withdraw_from_NATO
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 2
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_rewrite_constitution
+		}
+		bypass = {
+			# Not in NATO
+		}
+		completion_reward = {
+			add_political_power = -125
+			add_war_support = -0.05
+			# Leave NATO
+		}
+
+	}
+
+	focus = {
+		id = FIN_withdraw_from_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 0
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_dissolve_democratic_institutions
+			focus = FIN_rewrite_constitution
+		}
+		bypass = {
+			# Not in EU
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Leave EU
+		}
+
+	}
+
+	focus = {
+		id = FIN_land_reform
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = -1
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_withdraw_from_EU
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 1
+            }
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_tax_rich
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 1
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_withdraw_from_EU
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_civilian_factory = 3
+			add_military_factory = 1
+		}
+
+	}
+
+	focus = {
+		id = FIN_restart_industry
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 0
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_land_reform
+			focus = FIN_tax_rich
+		}
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			add_civilian_factory = 3
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_revolutionary_army
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 0
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_restart_industry
+		}
+		completion_reward = {
+			add_army_experience = 50
+			add_stability = -0.05
+			add_war_support = 0.15
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+			}
+			set_conscription_law = extensive_conscription
+		}
+
+	}
+
+   # Socialists
+
+	focus = {
+		id = FIN_socialist_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = communism
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_universal_basic_income
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_socialist_victory
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.15
+			# Ind buff
+			# Temp ind dbuff
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_wealth_tax
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_universal_basic_income
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Ind debuff goes away
+		}
+
+	}
+
+	focus = {
+		id = FIN_five_points
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_universal_basic_income
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_education
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 3
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_five_points
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_nature
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 5
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_five_points
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_health
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 3
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_education
+			focus = FIN_nature
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_work
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 5
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_education
+			focus = FIN_nature
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 4
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_health
+			focus = FIN_services
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.05
+			add_ideas = Five_points
+		}
+
+	}
+
+	focus = {
+		id = FIN_aim_for_net_zero_emissions
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 6
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_socialist_victory
+			focus = FIN_greens_victory
+		}
+		completion_reward = {
+			add_political_power = -100
+			add_stability = 0.05
+			# Add small desicions to achieve it
+		}
+
+	}
+
+	focus = {
+		id = FIN_achieve_net_zero_emissions
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 6
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_aim_for_net_zero_emissions
+			# Completed desicions
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.15
+			add_civilian_factory = 3
+		}
+
+	}
+
+   # Greens
+
+	focus = {
+		id = FIN_greens_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_fund_renevable_energy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_greens_victory
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_lower_voting_age
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_fund_renevable_energy
+		}
+		completion_reward = {
+			add_political_power = 25
+			add_stability = -0.05
+			# Add more desicions to minigame
+		}
+
+	}
+
+	focus = {
+		id = FIN_expand_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_animal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_lower_voting_age
+		}
+		completion_reward = {
+			add_political_power = -25
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_legalize_cannabis
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 7
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_fund_science
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 9
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_expand_lbtq_rights
+			focus = FIN_establish_animal_rights
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.1
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_green_welfare_state
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 8
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_legalize_cannabis
+			focus = FIN_fund_science
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Add desicions similar to ones in vanilla Thailand tree
+		}
+
+	}
+
+  # Centrists
+   # Social Democrats
+
+	focus = {
+		id = FIN_social_democrat_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_accessible_and_free_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_social_democrat_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_aid_immigrants
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_promote_equal_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_accessible_and_free_services
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			remove_ideas = Equal_rights
+			add_ideas = Equal_rights2
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_streghten_our_education_system
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 13
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_aid_immigrants
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			add_timed_idea = {
+				idea = Academic_excellence
+				days = 180
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_decentralize_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 15
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_promote_equal_rights
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -100
+			modify_timed_idea = {
+				idea = Academic_excellence
+				days = 215
+			}
+
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_fairer_taxation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_decentralize_schooling
+			focus = FIN_streghten_our_education_system
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -100
+		}
+
+	}
+
+	focus = {
+		id = FIN_secularize_finland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 14
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_fairer_taxation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+		}
+
+	}
+
+	focus = {
+		id = FIN_plan_2030
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 16
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_social_democrat_victory
+			focus = FIN_centrist_victory
+		}
+		completion_reward = {
+			add_political_power = 50
+			# Add small desicions to achieve it (Slightly different depending on party)
+		}
+
+	}
+
+   # Centrists
+
+	focus = {
+		id = FIN_centrist_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_start_decentralization
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_centrist_victory
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_diversify_nation
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_start_decentralization
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -25
+		}
+
+	}
+
+	focus = {
+		id = FIN_increase_fertility
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_schooling
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 17
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_increase_fertility
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_timed_idea = {
+				idea = Academic_excellence
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_AI
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_diversify_nation
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_double_economic_growth
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 19
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_invest_in_AI
+		}
+		completion_reward = {
+			add_stability = 0.1
+			# Ind buff
+		}
+
+	}
+
+	focus = {
+		id = FIN_improve_services
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_double_economic_growth
+			focus = FIN_invest_in_schooling
+		}
+		completion_reward = {
+			add_stability = 0.1
+		}
+
+	}
+
+	focus = {
+		id = FIN_enforce_mandatory_conscription_for_all
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 18
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_improve_services
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_ideas = extensive_conscription
+		}
+
+	}
+
+	focus = {
+		id = FIN_fund_foreign_immigration
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 20
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_centrist_victory
+			focus = FIN_kokoomus_victory
+		}
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.1
+			add_civilian_factory = 2
+		}
+
+	}
+
+   # Kokoomus
+
+	focus = {
+		id = FIN_kokoomus_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 22
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_start_stopping_public_debt
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 24
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_kokoomus_victory
+			focus = FIN_christian_democratic_victory
+		}
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+			# Add small desicions to achieve it, with having to choose minimum 5 "debuffs" to the country, like cutting social programs, increasing taxes, etc.
+		}
+
+	}
+
+	focus = {
+		id = FIN_stop_public_debt
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 24
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_start_stopping_public_debt
+			# Completed 5 desicions
+		}
+		completion_reward = {
+			add_stability = 0.01
+			add_political_power = 150
+			add_civilian_factory = 4
+		}
+
+	}
+
+	focus = {
+		id = FIN_cut_welfare_spending
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 22
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_start_stopping_public_debt
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 50
+			every_owned_state = {
+				limit = {
+					is_core_of = ROOT
+				}
+                add_extra_state_shared_building_slots = 1
+            }
+			# Adds new desicion to start stopping public debt
+		}
+
+	}
+
+	focus = {
+		id = FIN_strengthen_police
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 22
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_cut_welfare_spending
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = -50
+		}
+
+	}
+
+	focus = {
+		id = FIN_raise_military_spending
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 21
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_strengthen_police
+		}
+		completion_reward = {
+			add_political_power = -50
+            add_war_support = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_raise_conscription
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 23
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_strengthen_police
+		}
+		completion_reward = {
+			add_stability = -0.05
+            add_war_support = 0.05
+            set_conscription_law = extensive_conscription
+		}
+
+	}
+
+	focus = {
+		id = FIN_raise_pigouvian_tax
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 23
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_raise_conscription
+		}
+		completion_reward = {
+			add_stability = -0.05
+            add_civilian_factory = 2
+		}
+
+	}
+
+	focus = {
+		id = FIN_decrease_taxes_for_elderly
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 21
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_raise_military_spending
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_revenable_energy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 22
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_decrease_taxes_for_elderly
+			focus = FIN_raise_pigouvian_tax
+		}
+		completion_reward = {
+			add_stability = -0.1
+			
+		}
+
+	}
+
+
+  # Rightists
+   # Christian Democrat
+
+	focus = {
+		id = FIN_christian_democratic_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_support_entrepreneurs
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_christian_democratic_victory
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 25
+			# Ind buff
+			# More desicions to stopping public debt
+		}
+
+	}
+
+	focus = {
+		id = FIN_sponsor_churches
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_support_entrepreneurs
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -75
+		}
+
+	}
+
+	focus = {
+		id = FIN_encourage_having_babies
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_sponsor_churches
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+			# Pop incrase?
+		}
+
+	}
+
+	focus = {
+		id = FIN_invest_in_healthcare
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_encourage_having_babies
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_desecularize_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 25
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = 0.1
+			add_political_power = 25
+		}
+
+	}
+
+	focus = {
+		id = FIN_illegialize_abortion
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 27
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_invest_in_healthcare
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Pop boost
+		}
+
+	}
+
+	focus = {
+		id = FIN_rewrite_constitution_partly
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_desecularize_country
+			focus = FIN_illegialize_abortion
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = -50
+			# Some desicions again
+		}
+
+	}
+
+	focus = {
+		id = FIN_roll_back_lbtq_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 26
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_rewrite_constitution_partly
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_political_power = 50
+			# Some desicions again
+		}
+
+	}
+
+   # Army
+
+	focus = {
+		id = FIN_army_coup
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = neutrality
+		}
+
+	}
+
+	focus = {
+		id = FIN_establish_emergency_government
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_army_coup
+		}
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.15
+			}
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = FIN_reinforce_military_rule
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 31
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_emergency_government
+		}
+		mutually_exclusive = {
+			focus = FIN_return_to_democracy
+		}
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.3
+			}
+			add_stability = -0.10
+		}
+	}
+
+	focus = {
+		id = FIN_return_to_democracy
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 33
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_establish_emergency_government
+		}
+		mutually_exclusive = {
+			focus = FIN_reinforce_military_rule
+		}
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.3
+			}
+			add_stability = 0.10
+			# Event to choose new party
+		}
+	}
+
+	focus = {
+		id = FIN_write_new_constitution
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 15
+		cost = 10
+		prerequisite = {
+			focus = FIN_reinforce_military_rule
+		}
+	
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality
+				popularity = 0.1
+			}
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FIN_Fortify_borders
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 31
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_write_new_constitution
+		}
+	
+		completion_reward = {
+			every_owned_state = {
+				limit = {
+					is_border_state = yes
+					any_neighbor_state = {
+						owner = SOV
+					}
+				}
+				add_building_construction = {
+					type = fort
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FIN_prepare_for_wars
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 33
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_write_new_constitution
+		}
+	
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_military_factory = 2
+			add_national_spirit = { name = FIN_preparations_for_wars }
+			set_conscription_law = extensive_conscription
+		}
+	}
+
+	focus = {
+		id = FIN_choose_new_ruler
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 17
+		cost = 15
+		prerequisite = {
+			focus = FIN_fortify_borders
+			focus = FIN_prepare_for_wars
+		}
+	
+		completion_reward = {
+			add_political_power = 100
+			# Event to choose new ruler
+		}
+	}
+
+	focus = {
+		id = FIN_ruler_for_life
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 32
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_choose_new_ruler
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.15
+		}
+	}
+
+   # Finns party
+
+	focus = {
+		id = FIN_finns_party_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+	focus = {
+		id = FIN_subside_welfare_spending
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_finns_party_victory
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			# Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_buying_russian_oil
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_subside_welfare_spending
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 50
+			# Add oil to helsinki
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_slowly_desecularize
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 37
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -25
+		}
+	}
+
+	focus = {
+		id = FIN_distance_from_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 39
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_continue_buying_russian_oil
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = -50
+			# small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_EU
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_distance_from_EU
+			focus = FIN_leave_UN
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = -50
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_leave_NATO
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_leave_EU
+		}
+	
+		completion_reward = {
+			add_war_support = -0.05
+			add_political_power = -25
+			# Better relatitions with russia
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_minorities_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 16
+		cost = 10
+		prerequisite = {
+			focus = FIN_slowly_desecularize
+			focus = FIN_distance_from_EU
+		}
+	
+		completion_reward = {
+			add_stability = -0.05
+			add_political_power = 75
+			# Small ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_continue_pumping_fossil_fuels
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 17
+		cost = 5
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+			# Small ind temp buff
+		}
+	}
+
+	focus = {
+		id = FIN_strenghten_presidents_power
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 38
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_minorities_rights
+		}
+	
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.1
+			add_political_power = 75
+			# Here can crown president as king
+		}
+	}
+
+	focus = {
+		id = FIN_enforce_stricter_immigration_laws
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 13
+		cost = 5
+		prerequisite = {
+			focus = FIN_finns_party_victory
+			focus = FIN_blue_and_black_victory
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+		}
+	}
+
+
+
+   # Neo-Fascist
+
+	focus = {
+		id = FIN_blue_and_black_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+		bypass = {
+			rule = {
+				has_government = fascism
+			}
+		}
+
+	}
+
+	focus = {
+		id = FIN_reinstate_finnish_markka
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 13
+		cost = 10
+		prerequisite = {
+			focus = FIN_blue_and_black_victory
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Small Ind buff
+		}
+	}
+
+	focus = {
+		id = FIN_banish_them
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 14
+		cost = 5
+		prerequisite = {
+			focus = FIN_enforce_stricter_immigration_laws
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = 125
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_leave_UN
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 41
+		y = 15
+		cost = 5
+		prerequisite = {
+			focus = FIN_banish_them
+		}
+	
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = FIN_strip_away_swedes_rights
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 14
+		cost = 10
+		prerequisite = {
+			focus = FIN_reinstate_finnish_markka
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Small ind buff
+			# Less opinion with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_remilitarize_aaland
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 43
+		y = 15
+		cost = 10
+		prerequisite = {
+			focus = FIN_strip_away_swedes_rights
+		}
+	
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Almost hostile with sweden
+		}
+	}
+
+	focus = {
+		id = FIN_support_young_families
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 16
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_UN
+			focus = FIN_remilitarize_aaland
+		}
+	
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_teach_religions_of_old
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 17
+		cost = 10
+		prerequisite = {
+			focus = FIN_support_young_families
+		}
+	
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# more population
+		}
+	}
+
+	focus = {
+		id = FIN_nationalize_whole_country
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 42
+		y = 18
+		cost = 10
+		prerequisite = {
+			focus = FIN_teach_religions_of_old
+		}
+	
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.05
+			# Ind buff
+		}
+	}
+
+  # Secret
+   # Swedes party
+
+	focus = {
+		id = FIN_swedes_party_victory
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 46
+		y = 12
+		cost = 0
+		available = {
+			always = no
+		}
+        hidden = yes
+		bypass = {
+			has_government = democratic
+		}
+		completion_reward = {}
+
+	}
+
+
+
+
+
+
+
+
+ # Industry
+
+	focus = {
+		id = FIN_recover_from_pandemic
+		icon = GFX_focus_generic_monetary_union
+		x = 35
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_civilian_factory = 2
+		}
+
+	}
+
+	focus = {
+		id = FIN_create_new_jobs_industry
+		icon = GFX_focus_SOV_organize_wreckers
+		x = 34
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = FIN_recover_from_pandemic
+		}
+
+		completion_reward = {
+			add_civilian_factory = 2
+		}
+
+	}
+
+	focus = {
+		id = FIN_raise_taxes
+		icon = GFX_focus_generic_monetary_union
+		x = 36
+		y = 2
+		cost = 5
+		prerequisite = { 
+			focus = FIN_recover_from_pandemic
+		}
+
+		completion_reward = {
+			add_civilian_factory = 2
+			add_stability = -0.05
+		}
+
+	}
 }
+

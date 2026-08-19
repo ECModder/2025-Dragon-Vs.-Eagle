@@ -47,16 +47,15 @@ IF = {
 		has_dlc = "Trial of Allegiance"
 	}
 	set_politics = {
-		ruling_party = neutrality
+		ruling_party = centrist
 		last_election = "1934.11.11"
 		election_frequency = 72
 		elections_allowed = yes
 	}
 	set_popularities = {
-		neutrality = 54
-		democratic = 32
-		fascism = 14
-	}
+	centrist = 86
+	reactionary = 14
+}
 
 	recruit_character = BOL_jose_luis_tejada_sorzano
 	recruit_character = BOL_oscar_unzaga_de_la_vega
@@ -80,15 +79,15 @@ IF = {
 
 	ELSE = {
 		set_politics = {
-			ruling_party = neutrality
+			ruling_party = centrist
 			last_election = "1934.11.11"
 			election_frequency = 72
 			elections_allowed = yes
 		}
 
 		set_popularities = {
-			neutrality = 100
-		}
+	centrist = 100
+}
 
 		recruit_character = BOL_jose_luis_tejada_sorzano
 		recruit_character = BOL_oscar_unzaga_de_la_vega
@@ -181,7 +180,7 @@ set_grand_doctrine = new_strategic_destruction
 	}
 
 	# ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista de Bolivia" name = "PCB" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista de Bolivia" name = "PCB" }
 set_party_name = { ideology = vanguard_socialism long_name = "Partido Obrero Revolucionario" name = "POR" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Movimiento al Socialismo" name = "MAS" }
 set_party_name = { ideology = progressive long_name = "Frente Para la Victoria" name = "FPV" }
@@ -194,17 +193,17 @@ set_party_name = { ideology = absolutism long_name = "Consejo Supremo del Qullas
 set_party_name = { ideology = ultranationalism long_name = "Falange Socialista Boliviana" name = "FSB" }
 set_party_name = { ideology = fundamentalism long_name = "Unión Juvenil Cruceñista Wing" name = "UJC" }
 
-create_country_leader = { name = "Luis Arce" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
-create_country_leader = { name = "Carlos Mesa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Luis Arce" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Carlos Mesa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Luis Fernando Camacho" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Evo Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Chi Hyun Chung" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
-create_country_leader = { name = "Ignacio Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Evo Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
+create_country_leader = { name = "Chi Hyun Chung" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Ignacio Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Miguel Lora" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Jeanine Anez Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Jeanine Anez Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
 create_country_leader = { name = "General Gerardo Zabala" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Mallku Traditional Regency" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
-create_country_leader = { name = "Johnny Fernandez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Mallku Traditional Regency" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Johnny Fernandez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
 create_country_leader = { name = "Romulo Calvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
 
 set_politics = {
@@ -219,4 +218,5 @@ set_popularities = {
 	centrist = 29
 	conservative = 14
 	reactionary = 2
+}
 }

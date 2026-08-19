@@ -84,7 +84,7 @@ if = {
 	}
 }
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Grozny Marxist Under-Cell" name = "GMUC" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Grozny Marxist Under-Cell" name = "GMUC" }
 set_party_name = { ideology = vanguard_socialism long_name = "Vainakh Communist League" name = "VCL" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Socialist Vainakh Movement" name = "SVM" }
 set_party_name = { ideology = progressive long_name = "Democratic Vainakh Party" name = "DVP" }
@@ -97,10 +97,13 @@ set_party_name = { ideology = absolutism long_name = "Imamate of the Caucasus Re
 set_party_name = { ideology = ultranationalism long_name = "Chechen Republic of Ichkeria Govt-in-Exile" name = "CRI" }
 set_party_name = { ideology = fundamentalism long_name = "Spiritual Administration of Muslims of Chechnya" name = "SAMC" }
 
-create_country_leader = { name = "Ramzan Kadyrov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
+create_country_leader = { name = "Ramzan Kadyrov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+# DvE: Ramzan Kadyrov guida anche il partito di governo (reactionary), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Ramzan Kadyrov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
 create_country_leader = { name = "Mahmud-Ali Kalimatov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
 create_country_leader = { name = "Mufti Salakh Mezhiev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
-create_country_leader = { name = "Akhmed Zakayev Representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Akhmed Zakayev Representation" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
 
 set_politics = {
 	ruling_party = reactionary

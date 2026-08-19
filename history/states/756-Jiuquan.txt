@@ -10,6 +10,7 @@ state={
 	history={
 
 		owner = PRC
+		add_core_of = XSM
 		add_core_of = CHI
 		add_core_of = PRC
 
@@ -28,6 +29,19 @@ state={
 				}
 			}
 		}
+
+		1936.1.1 = {
+			IF = {
+				limit = {
+					has_dlc = "No Compromise, No Surrender" 
+				}
+				GSM = { transfer_state = PREV }
+				add_core_of = GSM
+				remove_core_of = XSM
+			}
+		}
+
+
 	}
 
 	local_supplies = 0.0 

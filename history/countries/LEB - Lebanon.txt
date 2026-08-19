@@ -81,49 +81,56 @@ set_politics = {
 	election_frequency = 48
 	elections_allowed = yes
 }
+
+# ============================================
+# POLITICS & CHARACTERS
+# ============================================
+
+set_party_name = { ideology = totalitarian_socialism name = "CPL" long_name = "Communist Party of Lebanon" }
+set_party_name = { ideology = vanguard_socialism name = "al'umamia" long_name = "al'umamia (internationalism)" }
+set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Revolutionary Communist Party" }
+set_party_name = { ideology = progressive name = "FPM" long_name = "Free Patriotic Movement" }
+set_party_name = { ideology = centrist name = "Lebanese Parliament" long_name = "Parliament" }
+set_party_name = { ideology = conservative name = "LF" long_name = "Lebanese Forces" }
+set_party_name = { ideology = reactionary name = "FM" long_name = "Future Movement" }
+set_party_name = { ideology = authoritarianism name = "LS" long_name = "Lebanese Socialists" }
+set_party_name = { ideology = autocracy name = "AM" long_name = "Amal Movement" }
+set_party_name = { ideology = absolutism name = "Kataeb" long_name = "Lebanese Phalanges" }
+set_party_name = { ideology = ultranationalism name = "SSNP" long_name = "Syrian Social Nationalist Party" }
+set_party_name = { ideology = fundamentalism name = "Hezbollah" long_name = "Hezbollah" }
+
+create_country_leader = { name = "Lebanese Parliament" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_parliament.dds" expire = "2100.1.1" ideology = stalinism }
+# DvE: Lebanese Parliament guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Lebanese Parliament" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "worker's councils" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_workers_council.dds" expire = "2100.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Lebanese Parliament" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_parliament.dds" expire = "2100.1.1" ideology = trotskyism }
+create_country_leader = { name = "Gebran Bassil" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_gebran_bassil.dds" expire = "2045.1.1" ideology = reformist_socialism }
+# NOTA: il leader centrist_populism e' gestito dal personaggio LEB_Parliament
+# (common/characters/LEB.txt, reclutato in fondo a questo file). Un
+# create_country_leader qui creerebbe un secondo leader per la stessa
+# sottoideologia e il gioco non saprebbe quale mostrare.
+create_country_leader = { name = "Samir Geagea" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_samir_geagea.dds" expire = "2045.1.1" ideology = conservatism }
+create_country_leader = { name = "Saad El-Hariri" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_saad_elhariri.dds" expire = "2045.1.1" ideology = paternalism }
+create_country_leader = { name = "Nabih Berri" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_nabih_berri.dds" expire = "2045.1.1" ideology = guided_democracy }
+create_country_leader = { name = "Taymur Jumblat" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_taymur_jumblatt.dds" expire = "2100.1.1" ideology = patriotic_socialism }
+create_country_leader = { name = "Lebanese Parliament" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_parliament.dds" expire = "2100.1.1" ideology = monarchism }
+create_country_leader = { name = "Rabih Banat" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_rabih_banat.dds" expire = "2100.1.1" ideology = national_syndicalism }
+create_country_leader = { name = "Naiim Qassem" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_naiim_qassem.dds" expire = "2055.1.1" ideology = islamic_fundamentalism }
+
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 0
-	revolutionary_socialism = 6
-	progressive = 16
-	centrist = 21
-	conservative = 24
-	reactionary = 0
-	authoritarianism = 0
-	autocracy = 0
-	absolutism = 33
-	ultranationalism = 0
-	fundamentalism = 0
+	revolutionary_socialism = 0
+	progressive = 11
+	centrist = 22
+	conservative = 20
+	reactionary = 12
+	authoritarianism = 4
+	autocracy = 12
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 18
 }
 
-recruit_character = LEB_abdallah_beyhum
-
-create_country_leader = {
-	name = "Pierre Gemayel"
-	desc = ""
-	picture = GFX_portrait_Pierre_Gemayel
-	ideology = fascism_ideology
-	traits = {
-		#
-	}
-}
-
-create_country_leader = {
-	name = "Melick Yarad"
-	desc = ""
-	picture = GFX_portrait_Melick_Yarad
-	ideology = despotism
-	traits = {
-		#
-	}
-}
-
-create_country_leader = {
-	name = "Rami Sarraff"
-	desc = ""
-	picture = GFX_portrait_Rami_Sarraff
-	ideology = leninism
-	traits = {
-		#
-	}
-}
+recruit_character = LEB_Parliament

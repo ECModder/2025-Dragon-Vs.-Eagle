@@ -67,21 +67,24 @@ set_grand_doctrine = grand_battleplan
 	}
 }
 set_politics = {
-	ruling_party = neutrality
+	ruling_party = centrist
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	neutrality = 100
+	centrist = 100
 }
 
 create_country_leader = {
 	name = "Eduardo Tsonga"
 	picture = GFX_portrait_Eduardo_Tsonga
 	expire = "1965.1.1"
-	ideology = despotism
+	ideology = personalist_dictatorship
 	traits = {
 		#
 	}
+# DvE: Eduardo Tsonga guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Eduardo Tsonga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 }

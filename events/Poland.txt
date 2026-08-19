@@ -1,0 +1,220 @@
+﻿###########################
+# Polish Events
+###########################
+
+add_namespace = polandos
+add_namespace = starting_poland
+namespace = elections
+
+country_event = {
+	id = polandos.1
+	title = polandos.1.t
+	desc = polandos.1.d
+	picture = GFX_report_event_POL_era
+	
+	is_triggered_only = yes
+	option = {
+		name = "Polska Gurom!"
+		add_political_power = 50
+		add_stability = 0.10
+
+
+	}
+
+
+}
+country_event = {
+	id = polandos.2
+	title = polandos.2.t
+	desc = polandos.2.d
+	picture = GFX_report_event_POL_chaos
+	
+	is_triggered_only = yes
+	option = {
+		name = "one day, we shall be united!"
+		add_political_power = -20
+	}
+
+		}
+
+
+country_event = {
+	id = polandos.3
+	title = polandos.3.t
+	desc = polandos.3.d
+	picture = GFX_report_event_POL_era
+	
+	is_triggered_only = yes
+	option = {
+		name = "PIS will make poland strong and indenpendent"
+		add_political_power = 50
+		add_stability = 0.5
+		hidden_effect = {
+load_focus_tree = poland_pis_elect_focus
+POL = {
+		complete_national_focus = POL_PIS
+		}
+		}
+		ai_will_do = { factor = 70 }
+	}
+		option = {
+		name = "maybe something new?"
+		add_political_power = 50
+		add_stability = 0.5
+		hidden_effect = {
+		load_focus_tree = poland_new_way_elect_focus
+		POL = {
+		complete_national_focus = POL_new_way
+		}
+		}
+		ai_will_do = { factor = 15 }
+		}
+			option = {
+		name = "KO will help us get closer to europe"
+		add_political_power = 50
+		add_stability = 0.5
+		hidden_effect = {
+		load_focus_tree = poland_ko_elect_focus
+		POL = {
+		complete_national_focus = POL_KO
+		}
+		}
+		ai_will_do = { factor = 15 }
+		}
+
+
+}
+country_event = {
+	id = starting_poland.1
+	title = starting_poland.1.t
+	desc = starting_poland.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	trigger = {
+		tag = POL
+	}
+option = {
+name = "Thank you!"
+}
+
+}
+country_event = {
+
+    id = elections.1
+
+    title = elections.1.t
+    desc = elections.1.d
+
+    is_triggered_only = yes
+
+    option = {
+
+        name = "Lets begin"
+
+
+        set_variable = {
+            POL_candidate_A = 25
+        }
+
+        set_variable = {
+            POL_candidate_B = 25
+        }
+
+        set_variable = {
+            POL_candidate_C = 25
+        }
+
+        set_variable = {
+            POL_candidate_D = 25
+        }
+
+
+        set_country_flag = POL_elections_active
+    }
+}
+country_event = {
+	id = polandos.4
+	title = polandos.4.t
+	desc = polandos.4.d
+	picture = GFX_report_event_POL_speach
+	
+	is_triggered_only = yes
+	option = {
+		name = "God, honor, homeland!"
+		add_political_power = 20
+		add_stability = 0.05
+	}
+
+		}
+		country_event = {
+	id = polandos.5
+	title = polandos.5.t
+	desc = polandos.5.d
+	picture = GFX_report_event_POL_safe
+	
+	is_triggered_only = yes
+	option = {
+		name = "Poland - invincible"
+		add_political_power = 20
+	}
+
+		}
+				country_event = {
+	id = polandos.6
+	title = polandos.6.t
+	desc = polandos.6.d
+	picture = GFX_report_event_POL_anti_eu
+	
+	is_triggered_only = yes
+	option = {
+		name = "#KeepUEAwayfromUS!"
+		add_political_power = 20
+add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.05
+}
+	}
+
+		}
+						country_event = {
+	id = polandos.7
+	title = polandos.7.t
+	desc = polandos.7.d
+	picture = GFX_report_event_POL_anti_eu
+	
+	is_triggered_only = yes
+	option = {
+		name = "This Is End Of UE"
+		add_political_power = 20
+add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.15
+}
+}
+	}
+
+	country_event = {
+	id = polandos.8
+	title = polandos.8.t
+	desc = polandos.8.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "The Final Countdown..."
+		add_political_power = 20
+}
+
+	}
+		country_event = {
+	id = polandos.9
+	title = polandos.9.t
+	desc = polandos.9.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "This Is OUR victory!"
+		add_political_power = 20
+}
+
+	}
+

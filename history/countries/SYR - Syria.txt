@@ -75,15 +75,14 @@ set_grand_doctrine = new_strategic_destruction
 
 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	democratic = 50
-	fascism = 20
-	neutrality = 30
+	centrist = 80
+	reactionary = 20
 }
 
 recruit_character = SYR_mehemed_ali_abed
@@ -93,17 +92,20 @@ create_country_leader = {
 	name = "Antun Saadeh"
 	desc = ""
 	picture = GFX_portrait_Antun_Saadeh
-	ideology = fascism_ideology
+	ideology = fascist
 	traits = {
 		#
 	}
+# DvE: Antun Saadeh guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Antun Saadeh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 }
 
 create_country_leader = {
 	name = "Khalid Bakdash"
 	desc = ""
 	picture = GFX_portrait_Khalid_Bakdash
-	ideology = leninism
+	ideology = leninist_internationalism
 	traits = {
 		#
 	}

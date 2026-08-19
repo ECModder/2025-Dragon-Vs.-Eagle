@@ -1,0 +1,308 @@
+focus_tree = {
+	
+	id = poland_ko_elect_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+		tag = POL
+		add = 0
+		}
+	}
+	
+	default = no
+	
+			     focus = {
+		id = POL_KO
+		icon = GFX_goal_POL_KO
+		x = 10
+		y = 8
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		#prerequisite = { focus = }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+				     focus = {
+		id = POL_KO_rafal
+		icon = GFX_goal
+		x = 10
+		y = 9
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+					     focus = {
+		id = POL_KO_help_tusk
+		icon = GFX_goal
+		x = 10
+		y = 10
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_rafal }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+	
+	
+						     focus = {
+		id = POL_KO_influence
+		icon = GFX_goal
+		x = 10
+		y = 11
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_help_tusk }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+						     focus = {
+		id = POL_KO_eu_pro_one
+		icon = GFX_goal
+		x = 8
+		y = 11
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_help_tusk }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+							     focus = {
+		id = POL_KO_eu_pro_two
+		icon = GFX_goal
+		x = 8
+		y = 12
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_eu_pro_one }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+								     focus = {
+		id = POL_KO_invest
+		icon = GFX_goal
+		x = 10
+		y = 12
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_influence }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+									     focus = {
+		id = POL_KO_ger_support
+		icon = GFX_goal
+		x = 8
+		y = 14
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 1
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_invest}
+		prerequisite = { focus = POL_KO_eu_pro_two }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+										     focus = {
+		id = POL_KO_prepare
+		icon = GFX_goal
+		x = 8
+		y = 15
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 0.5
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_ger_support  }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+		    focus = {
+		id = POL_KO_ELECT
+		icon = GFX_goal_POL_PIS_ELECTIONS
+		x = 8
+		y = 16
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 0.5
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_KO_prepare  }
+		#mutually_exclusive = { focus =    }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40		
+			}
+	}
+	}

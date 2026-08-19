@@ -153,7 +153,7 @@ if = {
 		set_value = -0.45 #Adding FIN_sisu_2 idea below
 	}
 	#SISU NS
-	add_ideas = FIN_sisu_2
+	add_ideas = Sisu
 }
 
 
@@ -180,7 +180,7 @@ set_party_name = {
 	long_name = FIN_neutrality_party_kokoomus_long
 }
 
-recruit_character = FIN_stubb
+recruit_character = FIN_Stubb
 
 if = {
 	limit = {
@@ -596,8 +596,9 @@ set_grand_doctrine = new_operational_integrity
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Kommunistinen Työväenpuolue" name = "KTP" }
-set_party_name = { ideology = vanguard_socialism long_name = "Suomen Kommunistinen Puolue" name = "SKP" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Kommunistinen Työväenpuolue" name = "KTP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Suomen Kommunistinen Puolue" name = "KTP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Proletariaatin internationalismi" name = "PI" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Vasemmistoliitto" name = "Vas" }
 set_party_name = { ideology = progressive long_name = "Vihreä Liitto" name = "Vihr" }
 set_party_name = { ideology = centrist long_name = "Suomen Sosialidemokraattinen Puolue" name = "SDP" }
@@ -609,7 +610,7 @@ set_party_name = { ideology = absolutism long_name = "Suomen Monarkistinen Liitt
 set_party_name = { ideology = ultranationalism long_name = "Perussuomalaiset" name = "PS" }
 set_party_name = { ideology = fundamentalism long_name = "Suomen Kristillisdemokraatit" name = "KD" }
 
-create_country_leader = { name = "Hannu Harju" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Hannu Harju" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
 create_country_leader = { name = "Juha-Pekka Väisänen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Li Andersson" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
 create_country_leader = { name = "Sofia Virta" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
@@ -629,7 +630,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 7
 	progressive = 7
@@ -641,6 +642,15 @@ set_popularities = {
 	absolutism = 0
 	ultranationalism = 20
 	fundamentalism = 4
+}
+
+add_ideas = {
+	limited_conscription
+	Equal_rights
+	Sisu
+	Stagnating_Economy
+	Orpon_hallitus
+	Prepared_for_war
 }
 #Event for Svinhufvud's Term Ending
 country_event = { id = AAT_finland_political.02 days = 426 }
@@ -772,4 +782,3 @@ if = {
 		}
 	}
 }
-

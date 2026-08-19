@@ -1,0 +1,44 @@
+FIN_advance_industry_tier_effect = {
+    add_to_variable = { FIN_industry_upgrade_counter = 1 }
+    
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 1 } }
+        swap_ideas = { remove_idea = Stagnating_Economy add_idea = Reviving_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 2 } }
+        swap_ideas = { remove_idea = Reviving_Economy add_idea = Reviving_Economy2 }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 3 } }
+        swap_ideas = { remove_idea = Reviving_Economy2 add_idea = Recovering_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 4 } }
+        swap_ideas = { remove_idea = Recovering_Economy add_idea = Recovering_Economy2 }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 5 } }
+        swap_ideas = { remove_idea = Recovering_Economy2 add_idea = Growing_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 6 } }
+        swap_ideas = { remove_idea = Growing_Economy add_idea = Accelerating_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 7 } }
+        swap_ideas = { remove_idea = Accelerating_Economy add_idea = Expanding_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 8 } }
+        swap_ideas = { remove_idea = Expanding_Economy add_idea = Surging_Economy }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 9 } }
+        swap_ideas = { remove_idea = Surging_Economy add_idea = Surging_Economy2 }
+    }
+    if = {
+        limit = { check_variable = { FIN_industry_upgrade_counter = 9 } }
+        swap_ideas = { remove_idea = Surging_Economy2 add_idea = Booming_Economy }
+    }
+}

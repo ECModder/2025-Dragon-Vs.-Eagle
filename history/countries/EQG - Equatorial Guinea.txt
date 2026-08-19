@@ -77,7 +77,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Partido de los Trabajadores de Guinea Ecuatorial" name = "PTGE" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido de los Trabajadores de Guinea Ecuatorial" name = "PTGE" }
 set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista de Guinea Ecuatorial" name = "PCGE" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Convergencia para la Democracia Social - Izquierda" name = "CPDS-I" }
 set_party_name = { ideology = progressive long_name = "Convergencia para la Democracia Social" name = "CPDS" }
@@ -91,6 +91,9 @@ set_party_name = { ideology = ultranationalism long_name = "Acción Nacionalista
 set_party_name = { ideology = fundamentalism long_name = "Alianza Cristiana de Guinea" name = "ACG" }
 
 create_country_leader = { name = "Teodoro Obiang Nguema Mbasogo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+# DvE: Teodoro Obiang Nguema Mbasogo guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Teodoro Obiang Nguema Mbasogo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Teodoro Nguema Obiang Mangue" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
 create_country_leader = { name = "Andrés Esono Ondo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
 create_country_leader = { name = "Buenaventura Monsuy Asumu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
@@ -103,7 +106,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 3
 	progressive = 5

@@ -1,5 +1,54 @@
 ﻿capital = 70
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Komunisticna partija Slovenije" name = "KPS" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Zdruzena levica" name = "ZL" }
+set_party_name = { ideology = vanguard_socialism long_name = "Rdeca akcija" name = "Rdeci" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Levica" name = "Levica" }
+set_party_name = { ideology = progressive long_name = "Socialni demokrati" name = "SD" }
+set_party_name = { ideology = centrist long_name = "Gibanje Svoboda" name = "GS" }
+set_party_name = { ideology = conservative long_name = "Slovenska demokratska stranka" name = "SDS" }
+set_party_name = { ideology = reactionary long_name = "Nova Slovenija" name = "NSi" }
+set_party_name = { ideology = authoritarianism long_name = "Slovenska obvescevalno-varnostna agencija" name = "SOVA" }
+set_party_name = { ideology = autocracy long_name = "Generalstab Slovenske vojske" name = "GS SV" }
+set_party_name = { ideology = absolutism long_name = "Habsburska dediscina" name = "Habsburzani" }
+set_party_name = { ideology = ultranationalism long_name = "Slovenska nacionalna stranka" name = "SNS" }
+set_party_name = { ideology = fundamentalism long_name = "Slovenska katoliska cerkev" name = "SKC" }
+
+create_country_leader = { name = "Robert Golob" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Janez Jansa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Matjaz Han" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Matej Tonin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Asta Vrecko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Komunisticna partija Slovenije" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Rdeca akcija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Zmago Jelincic Plemeniti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Generalmajor Robert Glavas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Joze Podlogar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Nadskof Stanislav Zore" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Nadvojvoda Karl von Habsburg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2022.4.24"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 33
+	reactionary = 26
+	progressive = 13
+	revolutionary_socialism = 9
+	conservative = 8
+	ultranationalism = 5
+	fundamentalism = 3
+	totalitarian_socialism = 3
+}
+
+
+
 
 
 
@@ -137,12 +186,12 @@ set_grand_doctrine = new_battlefield_support
 }
 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1933.3.5"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	fascism = 5
-	democratic = 95
+	reactionary = 5
+	centrist = 95
 }
