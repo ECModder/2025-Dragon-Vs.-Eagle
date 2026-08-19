@@ -338,16 +338,68 @@ add_opinion_modifier = {
 # non aveva nessun leader.
 create_country_leader = { name = "HUN_miklos_horthy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: leader di partito reali al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Magyar Munkaspart" name = "Munkaspart" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Magyar Szocialista Munkaspart" name = "MSZMP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Voros Front" name = "Voros Front" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Szikra Mozgalom" name = "Szikra" }
+set_party_name = { ideology = progressive long_name = "Demokratikus Koalicio" name = "DK" }
+set_party_name = { ideology = centrist long_name = "Tisztelet es Szabadsag Part" name = "Tisza" }
+set_party_name = { ideology = conservative long_name = "Keresztenydemokrata Neppart" name = "KDNP" }
+set_party_name = { ideology = reactionary long_name = "Fidesz - Magyar Polgari Szovetseg" name = "Fidesz" }
+set_party_name = { ideology = authoritarianism long_name = "Alkotmanyvedelmi Hivatal" name = "AH" }
+set_party_name = { ideology = autocracy long_name = "Magyar Honvedseg Parancsnoksaga" name = "Honved" }
+set_party_name = { ideology = absolutism long_name = "Habsburg-Lotharingiai Haz" name = "Habsburg" }
+set_party_name = { ideology = ultranationalism long_name = "Mi Hazank Mozgalom" name = "Mi Hazank" }
+set_party_name = { ideology = fundamentalism long_name = "Magyar Katolikus Puspoki Konferencia" name = "MKPK" }
+
+create_country_leader = { name = "Viktor Orban" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Peter Magyar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Zsolt Semjen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Ferenc Gyurcsany" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Laszlo Toroczkai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Andras Feher" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Magyar Munkaspart" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Voros Front" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Magyar Szocialista Munkaspart" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Karl von Habsburg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "General Gabor Boroendi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Erdo Peter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Alkotmanyvedelmi Hivatal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
 set_politics = {
-	ruling_party = centrist
-	last_election = "1935.3.31"
+	ruling_party = reactionary
+	last_election = "2022.4.3"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
-	centrist = 69
-	reactionary = 31
+	reactionary = 38
+	centrist = 30
+	progressive = 10
+	ultranationalism = 8
+	conservative = 6
+	fundamentalism = 3
+	authoritarianism = 2
+	totalitarian_socialism = 2
+	absolutism = 1
 }
+
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1935.3.31"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 69
+#	reactionary = 31
+#}
 
 # RECRUITING HUNGARIAN CHARACTERS
 IF = {

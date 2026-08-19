@@ -364,16 +364,54 @@ create_country_leader = { name = "Carol II" desc = "POLITICS_LEADER_DESC" pictur
 	}
 }
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: leader di partito reali al 2025.
+create_country_leader = { name = "Ilie Bolojan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Sorin Grindeanu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Dominic Fritz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "George Simion" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Diana Sosoaca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Anamaria Gavrila" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "General Gheorghita Vlad" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Custodele Coroanei Margareta" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Patriarhul Daniel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Partidul Comunist Roman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Partidul Socialist al Muncii" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Partidul Socialist Roman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Demos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+
 set_politics = {
-	ruling_party = centrist
-	last_election = "1933.12.20"
+	ruling_party = conservative
+	last_election = "2024.12.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
+
 set_popularities = {
-	centrist = 80
-	reactionary = 20
+	conservative = 26
+	progressive = 24
+	reactionary = 21
+	centrist = 13
+	ultranationalism = 8
+	fundamentalism = 3
+	authoritarianism = 2
+	totalitarian_socialism = 2
+	absolutism = 1
 }
+
+
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1933.12.20"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 80
+#	reactionary = 20
+#}
 
 ### VARIANTS ###
 # 1936 Start #
