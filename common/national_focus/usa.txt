@@ -67,19 +67,32 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		cost = 1
 		x = 1
 		y = 1
-		completion_reward = {  }
+		completion_reward = {  
+			set_ruling_party = reactionary
+			hidden_effect = {
+				load_focus_tree = {
+					tree = 2024_republican_tree
+					keep_completed = yes
+				}
+			}
+		}
 	}
+### 2024 Republican Tree ###
+focus_tree = {
+	id = 2024_republican_tree
+}
+country = {
+	factor = 0
+}
 	focus = {
 		id = USA_we_have_work_to_do
 		icon = GFX_idea_USA_political_establishment
-		prerequisite = {
-			focus = USA_the_47th_president
+		cost = 0.2
+		x = -6
+		y = 6
+		completion_reward = {  
+			custom_effect_tooltip = trumps_presidenecy_tt
 		}
-		relative_position_id = USA_the_47th_president
-		cost = 1
-		x = -5
-		y = 5
-		completion_reward = {  }
 	}
 	focus = {
 		id = USA_fulfilling_our_promises
@@ -88,10 +101,12 @@ continuous_focus_position = { x = 5000 y = 5000 }
 			focus = USA_we_have_work_to_do
 		}
 		relative_position_id = USA_we_have_work_to_do
-		cost = 1
+		cost = 2
 		x = 0
 		y = 1
-		completion_reward = {  }
+		completion_reward = {  
+			add_political_power = 50
+		}
 	}
 	focus = {
 		id = USA_expand_ice
@@ -100,10 +115,12 @@ continuous_focus_position = { x = 5000 y = 5000 }
 			focus = USA_fulfilling_our_promises
 		}
 		relative_position_id = USA_fulfilling_our_promises
-		cost = 1
+		cost = 3
 		x = -2
 		y = 1
-		completion_reward = {  }
+		completion_reward = {  
+			add_stability = -0.03
+		}
 	}
 	focus = {
 		id = USA_appoint_the_border_czar
@@ -112,10 +129,15 @@ continuous_focus_position = { x = 5000 y = 5000 }
 			focus = USA_expand_ice
 		}
 		relative_position_id = USA_expand_ice
-		cost = 1
+		cost = 3
 		x = 1
 		y = 1
-		completion_reward = {  }
+		completion_reward = {  
+			add_to_variable = {
+				maga_influence = 3
+			}
+			custom_effect_tooltip = medium_maga_increase_tt
+		}
 	}
 	focus = {
 		id = USA_send_ice_to_major_cities
@@ -124,7 +146,7 @@ continuous_focus_position = { x = 5000 y = 5000 }
 			focus = USA_expand_ice
 		}
 		relative_position_id = USA_expand_ice
-		cost = 1
+		cost = 3
 		x = -1
 		y = 1
 		completion_reward = {  }
@@ -163,7 +185,9 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		cost = 1
 		x = -15	
 		y = 1
-		completion_reward = {  }
+		completion_reward = { 
+			add_political_power = 50
+		 }
 	}
 	focus = {
 		id = USA_our_backyard
@@ -175,7 +199,9 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		cost = 1
 		x = -13
 		y = 1
-		completion_reward = {  }
+		completion_reward = { 
+			add_political_power = 50
+		 }
 	}
 	focus = {
 		id = USA_the_black_heart
@@ -187,7 +213,9 @@ continuous_focus_position = { x = 5000 y = 5000 }
 		cost = 1
 		x = 5
 		y = 2
-		completion_reward = {  }
+		completion_reward = {  
+			add_political_power = 50
+		}
 	}
 	focus = {
 		id = USA_destroying_the_axis_of_evil
