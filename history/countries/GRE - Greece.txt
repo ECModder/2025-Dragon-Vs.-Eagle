@@ -161,163 +161,25 @@ set_grand_doctrine = new_strategic_destruction
 		}
 	}
 
-
-# DvE: GRE_konstantinos_demertzis guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "GRE_konstantinos_demertzis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: leader di partito reali al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Kommounistiko Komma Elladas" name = "KKE" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Nea Aristera" name = "Nea Aristera" }
-set_party_name = { ideology = vanguard_socialism long_name = "Antikapitalistiki Aristeri Synergasia" name = "Antarsya" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Metopo Evropaikis Realistikis Anypakois" name = "MeRA25" }
-set_party_name = { ideology = progressive long_name = "Panellinio Sosialistiko Kinima" name = "PASOK" }
-set_party_name = { ideology = centrist long_name = "Synaspismos Rizospastikis Aristeras" name = "SYRIZA" }
-set_party_name = { ideology = conservative long_name = "Nea Dimokratia" name = "ND" }
-set_party_name = { ideology = reactionary long_name = "Elliniki Lysi" name = "Elliniki Lysi" }
-set_party_name = { ideology = authoritarianism long_name = "Ethniki Ypiresia Pliroforion" name = "EYP" }
-set_party_name = { ideology = autocracy long_name = "Geniko Epiteleio Ethnikis Amynas" name = "GEETHA" }
-set_party_name = { ideology = absolutism long_name = "Vasiliki Oikogeneia tis Ellados" name = "Vasiliki Oikogeneia" }
-set_party_name = { ideology = ultranationalism long_name = "Niki" name = "Niki" }
-set_party_name = { ideology = fundamentalism long_name = "Ekklisia tis Ellados" name = "Ekklisia" }
-
-create_country_leader = { name = "Kyriakos Mitsotakis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Nikos Androulakis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Sokratis Famellos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Kyriakos Velopoulos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-create_country_leader = { name = "Dimitris Koutsoumbas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Yanis Varoufakis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
-create_country_leader = { name = "Alexis Charitsis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
-create_country_leader = { name = "Antarsya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Dimitris Natsios" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Archiepiskopos Ieronymos II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
-create_country_leader = { name = "Pavlos of Greece" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "General Dimitrios Choupis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Ethniki Ypiresia Pliroforion" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-
 set_politics = {
-	ruling_party = conservative
-	last_election = "2023.6.25"
-	election_frequency = 48
-	elections_allowed = yes
+	ruling_party = centrist
+	last_election = "1935.6.9"
+	election_frequency = 7
+	elections_allowed = yes 
 }
-
 set_popularities = {
-	conservative = 34
-	progressive = 15
-	centrist = 14
-	reactionary = 11
-	revolutionary_socialism = 8
-	totalitarian_socialism = 8
-	ultranationalism = 6
-	fundamentalism = 3
-	authoritarianism = 1
+	centrist = 81
+	reactionary = 19
 }
-
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1935.6.9"
-#	election_frequency = 7
-#	elections_allowed = yes 
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 81
-#	reactionary = 19
-#}
 
 set_stability = 0.72
 set_war_support = 0.23
 set_convoys = 80
 
 
-if = { 
-	limit = { has_dlc = "Battle for the Bosporus" }
-	recruit_character = GRE_konstantinos_demertzis
-	recruit_character = GRE_nikos_zachariadis
-	recruit_character = GRE_george_mercouris
-	recruit_character = GRE_alexandros_papagos
-	recruit_character = GRE_charalambos_katsimitros
-	recruit_character = GRE_markos_drakos
-	recruit_character = GRE_alexandros_sakellariou
-	recruit_character = GRE_konstantinos_ventiris
-	recruit_character = GRE_nikolaos_plastiras
-	recruit_character = GRE_napoleon_zervas
-	recruit_character = GRE_vasilios_tsarpalis
-	recruit_character = GRE_dimitrios_oikonomou
-	recruit_character = GRE_panagiotis_gazis
-	recruit_character = GRE_nikos_beloyannis
-	recruit_character = GRE_petros_voulgaris
-	recruit_character = GRE_spyridon_avgeris
-	recruit_character = GRE_georgios_tsolakoglou
-	recruit_character = GRE_aris_velouchiotis
-	recruit_character = GRE_epameinondas_kavvadias
-	recruit_character = GRE_marinos_mitralexis
-	recruit_character = GRE_georgios_kosmas
-	recruit_character = GRE_konstantinos_tsaldaris
-	recruit_character = GRE_ioannis_metaxas
-	recruit_character = GRE_markos_vafiadis
-	recruit_character = GRE_aristeidis_dimitratos
-	recruit_character = GRE_xenophon_giosmas
-	recruit_character = GRE_georgios_papandreou
-	recruit_character = GRE_sophoklis_venizelos
-	recruit_character = GRE_dimitris_glinos
-	recruit_character = GRE_aristotle_onassis
-	recruit_character = GRE_dimitrios_holevas
-	recruit_character = GRE_emmanouil_tsouderos
-	recruit_character = GRE_konstantinos_maniadakis
-	recruit_character = GRE_eleftherios_venizelos
-	recruit_character = GRE_theodoros_pangalos # Empty character -> Can become unit leader later
-	recruit_character = GRE_dimitrios_psarros # Empty character -> Can become unit leader later
-	recruit_character = GRE_panagiotis_demestichas # Empty character -> Can become unit leader later
-	recruit_character = GRE_georgios_kosmidis
-	recruit_character = GRE_stylianos_gonatas
-}
 
-if = {
-	limit = { NOT = { has_dlc = "Battle for the Bosporus" } }
-	recruit_character = GRE_ioannis_metaxas
-	recruit_character = GRE_markos_vafiadis
-	recruit_character = GRE_konstantinos_tsaldaris
-	recruit_character = GRE_georgios_kosmidis
-	recruit_character = GRE_markos_drakos
-	recruit_character = GRE_nikolaos_plastiras
-	recruit_character = GRE_napoleon_zervas
-	recruit_character = GRE_konstantinos_ventiris
-	recruit_character = GRE_nikos_beloyannis
-	recruit_character = GRE_alexandros_sakellariou
-	recruit_character = GRE_panagiotis_gazis
-	recruit_character = GRE_petros_voulgaris
-	recruit_character = GRE_eleftherios_venizelos
-	recruit_character = GRE_vasilios_tsarpalis
-	recruit_character = GRE_aristeidis_moraitinis
-	recruit_character = GRE_aris_velouchiotis
-	recruit_character = GRE_damaskinos
-	recruit_character = GRE_evripidis_bakirtris
-	recruit_character = GRE_georgios_papandreou
-}
 
-if = {
-	limit = {
-		AND = {
-			has_dlc = "La Resistance"
-			has_dlc = "Battle for the Bosporus"
-		}
-	}
-	create_operative_leader = {
-		name = "Patrick Leigh Fermor"
-		GFX = GFX_portrait_eng_patrick_fermor
-		traits = { operative_tough operative_commando }
-		bypass_recruitment = no
-		available_to_spy_master = yes
-		female = no
-		nationalities = { ENG GRE }
-	}
-	recruit_character = GRE_father_dimistrios
-}
+
 
 
 ### VARIANTS ###

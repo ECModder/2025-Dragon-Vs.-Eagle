@@ -1,55 +1,5 @@
 ﻿capital = 586 #Almaty
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Kommunisticheskaya Partiya Kazakhstana" name = "KPK" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Auyl Halyktyk-Demokratiyalyk Partiyasy" name = "Auyl" }
-set_party_name = { ideology = vanguard_socialism long_name = "Sotsial-Demokraticheskaya Partiya" name = "SDPK" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Qazaqstan Halyq Partiyasy" name = "QHP" }
-set_party_name = { ideology = progressive long_name = "Respublica Partiyasy" name = "Respublica" }
-set_party_name = { ideology = centrist long_name = "Aq Jol Demokratiyalyk Partiyasy" name = "Aq Jol" }
-set_party_name = { ideology = conservative long_name = "Amanat Partiyasy" name = "Amanat" }
-set_party_name = { ideology = reactionary long_name = "Baytaq Partiyasy" name = "Baytaq" }
-set_party_name = { ideology = authoritarianism long_name = "Komitet Natsionalnoy Bezopasnosti" name = "KNB" }
-set_party_name = { ideology = autocracy long_name = "Qarulы Kushter Bas Shtaby" name = "Qorgan" }
-set_party_name = { ideology = absolutism long_name = "Alash Orda Kenesi" name = "Alash Orda" }
-set_party_name = { ideology = ultranationalism long_name = "Ult Tagdyry Qozgalysy" name = "Ult Tagdyry" }
-set_party_name = { ideology = fundamentalism long_name = "Qazaqstan Musylmandary Dini Basqarmasy" name = "Muftiyat" }
-
-create_country_leader = { name = "Kassym-Jomart Tokayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-create_country_leader = { name = "Askhat Rakhimzhanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Aidos Sarym" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = civic_nationalism }
-create_country_leader = { name = "Yermurat Bapi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Nurlan Auesbayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = reformist_socialism }
-create_country_leader = { name = "Zhambyl Akhmetbekov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Kazakh Communist League" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "General Ruslan Zhaksylykov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Nursultan Nazarbayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
-create_country_leader = { name = "Naghyz Ult Tagdyry" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Mufti Nauryzbay Taganuly" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "Alash Orda" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-
-set_politics = {
-	ruling_party = authoritarianism
-	last_election = "2023.3.19"
-	election_frequency = 60
-	elections_allowed = no
-}
-
-set_popularities = {
-	authoritarianism = 47
-	conservative = 16
-	progressive = 11
-	reactionary = 8
-	centrist = 7
-	autocracy = 5
-	totalitarian_socialism = 3
-	fundamentalism = 2
-	ultranationalism = 1
-}
-
-
-
 oob = "KAZ_1936"
 
 set_research_slots = 3
@@ -136,19 +86,17 @@ if = {
 	}
 }
 
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = reactionary
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = no
-#}
+set_politics = {
+	ruling_party = reactionary
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
 
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	reactionary = 60
-#	centrist = 40
-#}
+set_popularities = {
+	reactionary = 60
+	centrist = 40
+}
 
 create_country_leader = {
 	name = "Nikolay Aleksandrovich Skvortsov"
@@ -175,26 +123,7 @@ create_country_leader = {
 	}
 }
 
-recruit_character = KAZ_awt
-recruit_character = KAZ_acd2
-recruit_character = KAZ_nt
-recruit_character = KAZ_aco2
-recruit_character = KAZ_acas
-recruit_character = KAZ_acr
-recruit_character = KAZ_mt
-recruit_character = KAZ_stc
-recruit_character = KAZ_aa2
-recruit_character = KAZ_ncm
-recruit_character = KAZ_communist_guy
-recruit_character = KAZ_ncs
-recruit_character = KAZ_pot
-recruit_character = KAZ_nccr
-recruit_character = KAZ_fascist_guy
-recruit_character = KAZ_coi
-recruit_character = KAZ_ai2
-recruit_character = KAZ_democratic_guy
-recruit_character = KAZ_ar
-recruit_character = KAZ_acgs
+
 
 
 

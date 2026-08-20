@@ -1,54 +1,5 @@
 ﻿capital = 671 #Hanoi
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Dang Cong san Viet Nam" name = "DCS" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Doan Thanh nien Cong san Ho Chi Minh" name = "Doan" }
-set_party_name = { ideology = vanguard_socialism long_name = "Lien doan Vo san" name = "Vo san" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Tong Lien doan Lao dong" name = "Cong doan" }
-set_party_name = { ideology = progressive long_name = "Dang Dan chu Viet Nam" name = "Dan chu" }
-set_party_name = { ideology = centrist long_name = "Dang Xa hoi Viet Nam" name = "Xa hoi" }
-set_party_name = { ideology = conservative long_name = "Mat tran To quoc" name = "Mat tran" }
-set_party_name = { ideology = reactionary long_name = "Hoi Cuu chien binh" name = "Cuu chien binh" }
-set_party_name = { ideology = authoritarianism long_name = "Bo Cong an" name = "Bo Cong an" }
-set_party_name = { ideology = autocracy long_name = "Bo Tong Tham muu QDNDVN" name = "Bo Tong Tham muu" }
-set_party_name = { ideology = absolutism long_name = "Hoang toc Nguyen" name = "Nguyen" }
-set_party_name = { ideology = ultranationalism long_name = "Viet Tan" name = "Viet Tan" }
-set_party_name = { ideology = fundamentalism long_name = "Giao hoi Phat giao Viet Nam" name = "Phat giao" }
-
-create_country_leader = { name = "To Lam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
-create_country_leader = { name = "Pham Minh Chinh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = xi_jinping_thought }
-create_country_leader = { name = "Luong Cuong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Tran Thanh Man" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Nguyen Xuan Phuc" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Vietnamese Communist League" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Lien doan Vo san" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Bui Thanh Son" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Viet Tan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Thich Tri Quang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = theocratic_state }
-create_country_leader = { name = "Nguyen Phuc Buu Chanh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Tong Lien doan Lao dong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
-
-set_politics = {
-	ruling_party = authoritarian_socialism
-	last_election = "2021.5.23"
-	election_frequency = 60
-	elections_allowed = no
-}
-
-set_popularities = {
-	authoritarian_socialism = 56
-	totalitarian_socialism = 14
-	progressive = 9
-	autocracy = 7
-	conservative = 6
-	vanguard_socialism = 4
-	centrist = 2
-	fundamentalism = 2
-}
-
-
-
 oob = "VIN_1936"
 
 set_research_slots = 3
@@ -142,24 +93,17 @@ if = {
 	}
 }
 
-
-# DvE: VIN_bao_dai guida anche il partito di governo (totalitarian_socialism), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "VIN_bao_dai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = totalitarian_socialism
-#	last_election = "1933.2.16"
-#	election_frequency = 36
-#	elections_allowed = no
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 40
-#	reactionary = 5
-#	totalitarian_socialism = 55
-#}
+set_politics = {
+	ruling_party = totalitarian_socialism
+	last_election = "1933.2.16"
+	election_frequency = 36
+	elections_allowed = no
+}
+set_popularities = {
+	centrist = 40
+	reactionary = 5
+	totalitarian_socialism = 55
+}
 
 #NOTICE# please watch out for spelling, im using Vietnamese names as they spell them, game might not support these characters!
 
@@ -174,9 +118,7 @@ create_country_leader = { name = "VIN_bao_dai" desc = "POLITICS_LEADER_DESC" pic
 #	}
 #}
 
-recruit_character = VIN_bao_dai
-recruit_character = VIN_ngo_dinh_diem
-recruit_character = VIN_ho_chi_minh
+
 
 
 

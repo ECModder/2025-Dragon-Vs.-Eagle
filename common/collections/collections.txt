@@ -1,0 +1,30 @@
+########################################
+
+ ##   ##  #  # #  # ### ###  ### ###  ##     
+#  # #  # #  # ## #  #  #  #  #  #   #       
+#    #  # #  # # ##  #  ###   #  ##   #      
+#  # #  # #  # #  #  #  #  #  #  #     #     
+ ##   ##   ##  #  #  #  #  # ### ### ## 
+
+########################################     
+
+world_at_peace_countries = {
+	input = game:all_countries
+	operators = {
+		limit = {
+			has_war = no 
+		}
+	}
+	name = COLLECTION_COUNTRIES_AT_PEACE
+}
+
+countries_china = {
+	input = game:all_countries
+	name = COLLECTION_COUNTRIES_CHINA
+	operators = {
+		limit = {
+			WTT_is_chinese_country = yes 
+		}
+	}
+}
+

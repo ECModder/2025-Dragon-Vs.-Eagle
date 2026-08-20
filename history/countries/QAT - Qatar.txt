@@ -1,53 +1,5 @@
 ﻿capital = 765 # Doha
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Hizb al-Shuyui al-Qatari" name = "HSQ" }
-set_party_name = { ideology = authoritarian_socialism long_name = "no_party" name = "no_party" }
-set_party_name = { ideology = vanguard_socialism long_name = "no_party" name = "no_party" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Hizb al-Umma al-Qatari" name = "Umma" }
-set_party_name = { ideology = progressive long_name = "Harakat al-Taghyir" name = "Taghyir" }
-set_party_name = { ideology = centrist long_name = "al-Nadi al-Liberali" name = "Liberal" }
-set_party_name = { ideology = conservative long_name = "Majlis al-Shura" name = "Shura" }
-set_party_name = { ideology = reactionary long_name = "al-Tayyar al-Muhafiz" name = "Muhafizun" }
-set_party_name = { ideology = authoritarianism long_name = "Jihaz Amn al-Dawla" name = "Amn al-Dawla" }
-set_party_name = { ideology = autocracy long_name = "Ri'asat Arkan al-Quwwat al-Musallaha" name = "Arkan" }
-set_party_name = { ideology = absolutism long_name = "Al Thani" name = "Al Thani" }
-set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya al-Qatariya" name = "Wataniya" }
-set_party_name = { ideology = fundamentalism long_name = "Wizarat al-Awqaf" name = "Awqaf" }
-
-create_country_leader = { name = "Tamim bin Hamad Al Thani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Mohammed bin Abdulrahman Al Thani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Hamad bin Khalifa Al Thani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchic_monarchy }
-create_country_leader = { name = "Hassan al-Thawadi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
-create_country_leader = { name = "Yusuf al-Qaradawi Legacy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "al-Nadi al-Liberali" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Harakat al-Taghyir" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "General Salem al-Nabet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Qatari Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "al-Haraka al-Wataniya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "al-Tayyar al-Muhafiz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-create_country_leader = { name = "Majlis al-Shura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-
-set_politics = {
-	ruling_party = absolutism
-	last_election = "1995.6.27"
-	election_frequency = 120
-	elections_allowed = no
-}
-
-set_popularities = {
-	absolutism = 61
-	conservative = 12
-	authoritarianism = 10
-	fundamentalism = 7
-	autocracy = 5
-	centrist = 3
-	progressive = 2
-}
-
-
-
 #oob = ""
 
 # Starting tech
@@ -67,15 +19,15 @@ set_convoys = 5
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -100,18 +52,16 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = yes
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 98
-#	reactionary = 2
-#}
+set_politics = {
+	ruling_party = centrist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	centrist = 98
+	reactionary = 2
+}
 
 #create_country_leader = {
 #	

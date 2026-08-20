@@ -1,54 +1,5 @@
 ﻿capital = 670 #today Vientiane in 1945 Luang Prabang sel proclaimed indie Laos 
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Phak Pasason Pativat Lao - Sai Kongthap" name = "Kongthap" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Phak Pasason Pativat Lao" name = "PPPL" }
-set_party_name = { ideology = vanguard_socialism long_name = "Sahaphan Kammakon Lao" name = "Kammakon" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Kongthap Pathet Lao" name = "Pathet Lao" }
-set_party_name = { ideology = progressive long_name = "Naeo Lao Sang Sat" name = "Naeo Lao" }
-set_party_name = { ideology = centrist long_name = "Khana Setthakit Mai" name = "Setthakit" }
-set_party_name = { ideology = conservative long_name = "Sapha Heng Sat" name = "Sapha" }
-set_party_name = { ideology = reactionary long_name = "Khana Anurak Vatthanatham" name = "Anurak" }
-set_party_name = { ideology = authoritarianism long_name = "Kom Pongkan Khwam Sangop" name = "Kom Pongkan" }
-set_party_name = { ideology = autocracy long_name = "Kongbanchakan Yai" name = "Kongbanchakan" }
-set_party_name = { ideology = absolutism long_name = "Rasavong Lan Xang" name = "Lan Xang" }
-set_party_name = { ideology = ultranationalism long_name = "Khabuan Lao Sang Sat" name = "Lao Sang Sat" }
-set_party_name = { ideology = fundamentalism long_name = "Ongkan Phutthasasana Lao" name = "Sangkha" }
-
-create_country_leader = { name = "Thongloun Sisoulith" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
-create_country_leader = { name = "Sonexay Siphandone" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = xi_jinping_thought }
-create_country_leader = { name = "Pany Yathotou" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Bounthong Chitmany" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Chansamone Chanyalath" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Sahaphan Kammakon Lao" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Khamtay Legacy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
-create_country_leader = { name = "Khana Setthakit Mai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Soukan Mahalath" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Rasavong Lan Xang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Khabuan Lao Sang Sat" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Phra Sangkharat" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = theocratic_state }
-
-set_politics = {
-	ruling_party = authoritarian_socialism
-	last_election = "2021.2.22"
-	election_frequency = 60
-	elections_allowed = no
-}
-
-set_popularities = {
-	authoritarian_socialism = 58
-	totalitarian_socialism = 15
-	autocracy = 8
-	progressive = 7
-	conservative = 5
-	vanguard_socialism = 4
-	absolutism = 2
-	fundamentalism = 1
-}
-
-
-
 oob = "LAO_1936"
 
 set_research_slots = 3
@@ -146,27 +97,18 @@ if = {
 	}
 }
 
+set_politics = {
+	ruling_party = totalitarian_socialism
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
 
-# DvE: LAO_sisavang_vong guida anche il partito di governo (totalitarian_socialism), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "LAO_sisavang_vong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+set_popularities = {
+	centrist = 45
+	reactionary = 10
+	totalitarian_socialism = 45
+}
 
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = totalitarian_socialism
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = no
-#}
 
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 45
-#	reactionary = 10
-#	totalitarian_socialism = 45
-#}
-
-recruit_character = LAO_sisavang_vong
-recruit_character = LAO_kou_voravong
-recruit_character = LAO_souphanouvong
 

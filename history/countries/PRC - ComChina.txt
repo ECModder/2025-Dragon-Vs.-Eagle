@@ -36,7 +36,6 @@ create_country_leader = { name = "King's parliament" desc = "POLITICS_LEADER_DES
 create_country_leader = { name = "PLA Command" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = national_bolshevism }
 create_country_leader = { name = "Dalai Lama" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2050.1.1" ideology = religious_nationalism }
 
-
 # === Chinese parties ===
 # The actual parties in the Democratic People's Republic of China are the CCP and, in addition, the eight smaller parties subordinate to the CCP.
 # The CCP is internally divided into 5 factions (New Left, Centralist, Bolshevik, Workerist, and Reformist).
@@ -116,81 +115,7 @@ set_war_support = 0.5
 #Always recruit
 recruit_character = PRC_xi_jinping
 
-IF = { #Recruit only if we have the dlc
-	limit = {
-		has_dlc = "No Compromise, No Surrender"
-	}
 
-	recruit_character = PRC_zhang_wentian
-	recruit_character = PRC_zhang_guotao 
-	recruit_character = PRC_wang_ming
-	recruit_character = PRC_bo_gu
-	recruit_character = PRC_he_long  
-	recruit_character = PRC_wang_shiwei
-	recruit_character = PRC_ren_bishi
-	recruit_character = PRC_wang_jiaxiang
-	recruit_character = PRC_mao_zemin
-	recruit_character = PRC_wu_han
-	recruit_character = PRC_xu_teli
-	recruit_character = PRC_zuo_quan
-	recruit_character = PRC_chen_changhao
-	recruit_character = PRC_deng_zihiu
-	recruit_character = PRC_qian_sanqiang
-	recruit_character = PRC_he_zehui
-	recruit_character = PRC_qian_xuesan
-	recruit_character = PRC_guotao_and_mao
-	recruit_character = PRC_li_zhen
-	recruit_character = PRC_li_lisan
-	recruit_character = PRC_chang_qiankun
-	recruit_character = PRC_yang_zhicheng
-	recruit_character = PRC_he_cheng
-	recruit_character = PRC_xie_juezai
-	recruit_character = PRC_liu_yalou
-	recruit_character = PRC_liu_yuti
-	recruit_character = PRC_cai_chang
-	recruit_character = PRC_wu_yuzhang
-	recruit_character = PRC_chen_yun
-	recruit_character = PRC_chen_tanqiu
-	recruit_character = PRC_li_xiannian
-	recruit_character = PRC_chen_shaomin
-	recruit_character = PRC_deng_yingchao
-	recruit_character = PRC_bo_yibo
-	recruit_character = PRC_lin_boqu
-	recruit_character = PRC_shao_shiping
-	recruit_character = PRC_chu_qing
-	recruit_character = PRC_pavel_mif
-	recruit_character = PRC_yang_shangkun
-	recruit_character = PRC_luo_shunchu
-	recruit_character = PRC_deng_fa
-	recruit_character = PRC_zhang_dingcheng
-	recruit_character = PRC_lu_sheng
-	recruit_character = PRC_rao_shoukun
-	recruit_character = PRC_zhang_yunyi
-	recruit_character = PRC_xiao_ke
-	recruit_character = PRC_ye_ting
-	recruit_character = PRC_luo_ronghuan
-	recruit_character = PRC_cheng_zihua
-	recruit_character = PRC_zhang_qinqiu
-	recruit_character = PRC_su_zhenhua
-	recruit_character = PRC_wang_shusheng
-	recruit_character = PRC_ulanhu
-	recruit_character = PRC_zhang_zongxun
-
-	1046 = {
-		add_dynamic_modifier = { modifier = PRC_the_yulin_garrison }
-	}
-
-	ELSE = { #Recruit only if we do NOT have the dlc
-		recruit_character = PRC_lin_bojiu
-		recruit_character = PRC_gao_qiu
-		recruit_character = PRC_ma_jin
-		recruit_character = PRC_liang_shen
-		recruit_character = PRC_deng_ye_peng
-		recruit_character = PRC_hsia_tian
-		recruit_character = PRC_zhang_wei
-		recruit_character = PRC_he_yuandang
-	}
-}
 
 
 save_global_event_target_as = WTT_communist_china

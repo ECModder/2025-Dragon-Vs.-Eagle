@@ -31,22 +31,7 @@ set_technology = {
 	tech_mountaineers = 1
 }
 
-IF = {
-	limit = {
-		has_dlc = "No Compromise, No Surrender"
-	}
-	recruit_character = KHM_ma_hushan
-	recruit_character = XSM_ma_hongbin
-	recruit_character = KHM_ma_zhancang
-	recruit_character = KHM_mahmut_muhiti
-	add_ideas = {
-		SIK_battle_for_sinkiang
-	}
-	set_rule = { can_join_factions = no }
-	XSM_ma_hongbin = {
-		set_character_flag = can_flip_to_prc
-	}
-}
+
 
 add_ideas = {
 	PRC_government_corruption
@@ -71,33 +56,33 @@ add_ideas = {
 		#	hostility_reason = asked_to_join
 		#}
 		
-		#complete_national_focus = CHI_secure_internal_politics
-		#complete_national_focus = CHI_cooperation_with_the_communists
-		#complete_national_focus = CHI_land_redistribution
-		#complete_national_focus = CHI_land_value_tax
-		#complete_national_focus = CHI_judiciary_reforms
-		#complete_national_focus = CHI_communist_administrators
-		#complete_national_focus = CHI_industrial_investment
-		#complete_national_focus = CHI_public_education_reform
-		#complete_national_focus = CHI_local_arms_production
-		#complete_national_focus = CHI_long_term_economic_planning
-		#complete_national_focus = CHI_ideological_education
-		#complete_national_focus = CHI_local_arms_development
-		#complete_national_focus = CHI_heavy_weapons_development
-		#complete_national_focus = CHI_public_works
-		#complete_national_focus = CHI_labor_reform
-		#complete_national_focus = CHI_rural_militias
+		##complete_national_focus = CHI_secure_internal_politics
+		##complete_national_focus = CHI_cooperation_with_the_communists
+		##complete_national_focus = CHI_land_redistribution
+		##complete_national_focus = CHI_land_value_tax
+		##complete_national_focus = CHI_judiciary_reforms
+		##complete_national_focus = CHI_communist_administrators
+		##complete_national_focus = CHI_industrial_investment
+		##complete_national_focus = CHI_public_education_reform
+		##complete_national_focus = CHI_local_arms_production
+		##complete_national_focus = CHI_long_term_economic_planning
+		##complete_national_focus = CHI_ideological_education
+		##complete_national_focus = CHI_local_arms_development
+		##complete_national_focus = CHI_heavy_weapons_development
+		##complete_national_focus = CHI_public_works
+		##complete_national_focus = CHI_labor_reform
+		##complete_national_focus = CHI_rural_militias
 		else = {			
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = flexible_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = flexible_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}	
 	}
 
@@ -141,11 +126,6 @@ set_grand_doctrine = new_strategic_destruction
 		project = sp:sp_air_radar
 	}
 }
-
-
-# DvE: KHM_ma_hushan guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "KHM_ma_hushan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 
 set_politics = {
 	ruling_party = centrist

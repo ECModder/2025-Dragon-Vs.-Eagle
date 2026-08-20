@@ -107,26 +107,26 @@ if = {
 			has_dlc = "La Resistance"
 		}
 
-		complete_national_focus = POR_estado_novo
+		#complete_national_focus = POR_estado_novo
 		unlock_national_focus = POR_support_the_spanish_nationalists
-		complete_national_focus = POR_portuguese_legion
-		complete_national_focus = POR_observation_mission
+		#complete_national_focus = POR_portuguese_legion
+		#complete_national_focus = POR_observation_mission
 		unlock_national_focus = POR_send_assistance
-		complete_national_focus = POR_army_reorganization
-		complete_national_focus = POR_metropolitan_army
-		complete_national_focus = POR_corpo_do_estado_maior
-		complete_national_focus = POR_second_navy_reequipment
-		complete_national_focus = POR_a_powerful_merchant_marine
-		complete_national_focus = POR_merchant_marine_protection
-		complete_national_focus = POR_arsenal_do_alfeite
-		complete_national_focus = POR_continue_the_public_works
-		complete_national_focus = POR_instituto_superior_tecnico
-		complete_national_focus = POR_roads_bridges_and_dams
-		complete_national_focus = POR_ogme
-		complete_national_focus = POR_food_industries
-		complete_national_focus = POR_textile_industry
-		complete_national_focus = POR_colonial_assimilation_policy
-		complete_national_focus = POR_portuguese_artillery
+		#complete_national_focus = POR_army_reorganization
+		#complete_national_focus = POR_metropolitan_army
+		#complete_national_focus = POR_corpo_do_estado_maior
+		#complete_national_focus = POR_second_navy_reequipment
+		#complete_national_focus = POR_a_powerful_merchant_marine
+		#complete_national_focus = POR_merchant_marine_protection
+		#complete_national_focus = POR_arsenal_do_alfeite
+		#complete_national_focus = POR_continue_the_public_works
+		#complete_national_focus = POR_instituto_superior_tecnico
+		#complete_national_focus = POR_roads_bridges_and_dams
+		#complete_national_focus = POR_ogme
+		#complete_national_focus = POR_food_industries
+		#complete_national_focus = POR_textile_industry
+		#complete_national_focus = POR_colonial_assimilation_policy
+		#complete_national_focus = POR_portuguese_artillery
 
 		SPA = {
 			add_opinion_modifier = {
@@ -138,15 +138,15 @@ if = {
 
 		else = {
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = large_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = large_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}
 	}
 		
@@ -203,73 +203,16 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 set_convoys = 50
-
-# DvE: POR_antonio_de_oliveira_salazar guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "POR_antonio_de_oliveira_salazar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: leader di partito reali al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista Portugues" name = "PCP" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Partido Comunista dos Trabalhadores Portugueses" name = "MRPP" }
-set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista Reorganizado" name = "PCP-R" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Bloco de Esquerda" name = "BE" }
-set_party_name = { ideology = progressive long_name = "Partido Socialista" name = "PS" }
-set_party_name = { ideology = centrist long_name = "Iniciativa Liberal" name = "IL" }
-set_party_name = { ideology = conservative long_name = "Aliança Democratica - PSD" name = "PSD" }
-set_party_name = { ideology = reactionary long_name = "Centro Democratico Social" name = "CDS-PP" }
-set_party_name = { ideology = authoritarianism long_name = "Servico de Informacoes de Seguranca" name = "SIS" }
-set_party_name = { ideology = autocracy long_name = "Estado-Maior-General das Forcas Armadas" name = "EMGFA" }
-set_party_name = { ideology = absolutism long_name = "Casa Real de Braganca" name = "Casa de Braganca" }
-set_party_name = { ideology = ultranationalism long_name = "Chega" name = "Chega" }
-set_party_name = { ideology = fundamentalism long_name = "Conferencia Episcopal Portuguesa" name = "CEP" }
-
-create_country_leader = { name = "Luis Montenegro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Andre Ventura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Jose Luis Carneiro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Rui Rocha" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultra_liberalism }
-create_country_leader = { name = "Nuno Melo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-create_country_leader = { name = "Mariana Mortagua" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
-create_country_leader = { name = "Paulo Raimundo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Partido Comunista Reorganizado" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Partido Comunista dos Trabalhadores" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
-create_country_leader = { name = "Duarte Pio de Braganca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "General Antonio Xavier" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Cardeal Manuel Clemente" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
-create_country_leader = { name = "Servico de Informacoes de Seguranca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-
 set_politics = {
-	ruling_party = conservative
-	last_election = "2025.5.18"
+	ruling_party = centrist
+	last_election = "1933.3.5"
 	election_frequency = 48
-	elections_allowed = yes
+	elections_allowed = no
 }
-
 set_popularities = {
-	conservative = 32
-	ultranationalism = 23
-	progressive = 23
-	centrist = 6
-	revolutionary_socialism = 4
-	totalitarian_socialism = 4
-	reactionary = 4
-	fundamentalism = 2
-	absolutism = 2
+	reactionary = 10
+	centrist = 90
 }
-
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1933.3.5"
-#	election_frequency = 48
-#	elections_allowed = no
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	reactionary = 10
-#	centrist = 90
-#}
 
 1939.1.1 = {
 	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
@@ -290,78 +233,7 @@ set_popularities = {
 set_convoys = 100
 set_stability = 0.75
 
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
 
-	recruit_character = POR_antonio_de_oliveira_salazar
-	recruit_character = POR_bento_goncalves
-	recruit_character = POR_rolao_preto
-	recruit_character = POR_jose_norton_de_matos
-	recruit_character = POR_jose_vicente_de_freitas
-	recruit_character = POR_luis_augusto_ferreira_martins
-	recruit_character = POR_raul_augusto_esteves
-	recruit_character = POR_jose_mendes_cabecadas
-	recruit_character = POR_julio_botelho_moniz
-	recruit_character = POR_humberto_delgado
-	recruit_character = POR_vieira_da_rocha
-	recruit_character = POR_manuel_ortins_torres_de_bettencourt
-	recruit_character = POR_antonio_oscar_carmona
-	recruit_character = POR_manuel_quintao_meireles
-	recruit_character = POR_jaime_afreixo
-	recruit_character = POR_americo_tomas
-	recruit_character = POR_domingos_oliveira
-	recruit_character = POR_manuel_gouveia
-	recruit_character = POR_jose_filipe_de_barros_rodrigues
-	recruit_character = POR_francisco_da_costa_gomes
-	recruit_character = POR_jose_manuel_sarmento_de_beires
-	recruit_character = POR_francisco_craveiro_lopes
-	recruit_character = POR_alvaro_cunhal
-	recruit_character = POR_francisco_da_cunha_leal
-	recruit_character = POR_bento_de_jesus_caraca
-	recruit_character = POR_jaime_cortesao
-	recruit_character = POR_alberto_monsaraz
-	recruit_character = POR_maria_lamas
-	recruit_character = POR_joao_de_azevedo_coutinho
-	recruit_character = POR_duarte_jose_pacheco
-	recruit_character = POR_manuel_goncalves_cerejeira
-	recruit_character = POR_jose_adriano_pequito_rebelo
-	recruit_character = POR_jose_hipolito_raposo
-	recruit_character = POR_joao_francisco_de_barbosa_azevedo
-	recruit_character = POR_alfredo_da_silva
-	recruit_character = POR_fernando_dos_santos_costa
-	recruit_character = POR_augusto_de_vasconcelos
-	recruit_character = POR_agostinho_lourenco
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "La Resistance" }
-	}
-
-	recruit_character = POR_antonio_de_oliveira_salazar
-	recruit_character = POR_bento_goncalves
-	recruit_character = POR_rolao_preto
-	recruit_character = POR_jose_norton_de_matos
-	recruit_character = POR_jose_vicente_de_freitas
-	recruit_character = POR_jose_manuel_sarmento_de_beires
-	recruit_character = POR_manuel_ortins_torres_de_bettencourt
-	recruit_character = POR_humberto_carmona
-	recruit_character = POR_lobato_guerra
-	recruit_character = POR_humberto_delgado
-	recruit_character = POR_manuel_gouveia
-	recruit_character = POR_jaime_afreixo
-	recruit_character = POR_americo_tomas
-	recruit_character = POR_manuel_quintao_meireles
-	recruit_character = POR_jose_filipe_de_barros_rodrigues
-	recruit_character = POR_jose_adriano_rebelo_pequito
-	recruit_character = POR_francisco_craveiro_lopes
-	recruit_character = POR_jaime_cortesao
-	recruit_character = POR_raul_brandao
-	recruit_character = POR_augusto_de_vasconcelos
-	recruit_character = POR_jose_hipolito_raposo
-}
 
 ### VARIANTS ###
 # 1936 Start #

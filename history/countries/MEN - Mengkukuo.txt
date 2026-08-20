@@ -9,80 +9,9 @@ set_technology = {
 	gw_artillery = 1
 }
 
-recruit_character = MEN_prince_demchugdongrub
-recruit_character = MEN_hesehn_tiemei
-recruit_character = MEN_guan_xingde
-recruit_character = MEN_kyoiji_tomonaga
-recruit_character = MEN_deng_linge
-recruit_character = MEN_hung_zhehuang
-recruit_character = MEN_nakajima_kesago
-recruit_character = MEN_yonimitsu_kasahara
-recruit_character = MEN_nalan_kang_an
-recruit_character = MEN_songgotu_zhanshan
-recruit_character = MEN_megata_toshiro
-recruit_character = MEN_yondonwangchug
-recruit_character = MEN_li_shouxin
-recruit_character = MEN_chin_yung_chang
-recruit_character = MEN_serendongrub
-recruit_character = MEN_jodbajab
-recruit_character = MEN_altanochir
-recruit_character = MEN_wang_ying
 
-IF = {
-	limit = {
-		NOT = {
-			has_dlc = "No Compromise, No Surrender"
-		}
-	}
 
-	add_ideas = {
-		MEN_pailingmiao_council_idea
-		MEN_stretched_administration_idea
-	}
 
-	recruit_character = MEN_songgotu_shangzhi
-	recruit_character = MEN_sonin_xiangying
-	recruit_character = MEN_zhao_zhanshan
-	
-	ELSE = {
-
-		set_variable = { MEN_levy_cap_max = 24 }
-		set_variable = { MEN_levy_cap_min = 0 }
-		set_variable = { MEN_levy_cap = 2 }
-		set_variable = { MEN_levy_deployed = 0 }
-		clamp_variable = {
-			var = MEN_levy_cap
-			min = MEN_levy_cap_min
-			max = MEN_levy_cap_max
-		}
-
-		division_template = {
-			name = "Mongol Levy"		
-			#division_names_group = 
-			is_locked = yes
-			force_allow_recruiting = no
-			regiments = {
-				irregular_infantry = { x = 0 y = 0 }
-				irregular_infantry = { x = 0 y = 1 }
-				irregular_infantry = { x = 1 y = 0 }
-				irregular_infantry = { x = 1 y = 1 }
-				irregular_infantry = { x = 2 y = 0 }
-				irregular_infantry = { x = 2 y = 1 }
-			}
-		}
-
-		set_country_flag = MEN_banner_system_is_active
-
-		add_ideas = {
-			MEN_mongol_banners_idea
-			MEN_pailingmiao_council_idea
-			MEN_stretched_administration_idea
-			MEN_communist_revolutionaries_idea
-			MEN_disorganized_army_idea
-		}
-
-	}	
-}
 
 1939.1.1 = {
 
@@ -96,15 +25,15 @@ IF = {
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	oob = "MEN_1939"
 	
@@ -168,11 +97,6 @@ IF = {
 	add_ideas = MEN_true_mongol_state
 	
 }
-
-
-# DvE: MEN_prince_demchugdongrub guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "MEN_prince_demchugdongrub" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 
 set_politics = {
 	ruling_party = centrist

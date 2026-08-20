@@ -1,54 +1,5 @@
 ﻿capital = 656 # Kuwait City
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Hizb al-Shuyui al-Kuwaiti" name = "HSK" }
-set_party_name = { ideology = authoritarian_socialism long_name = "no_party" name = "no_party" }
-set_party_name = { ideology = vanguard_socialism long_name = "al-Tahaluf al-Watani al-Taqaddumi" name = "Taqaddumi" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Kutlat al-Amal al-Sha'bi" name = "Sha'b" }
-set_party_name = { ideology = progressive long_name = "Kutlat al-Adala wal-Salam" name = "Adala" }
-set_party_name = { ideology = centrist long_name = "al-Tahaluf al-Liberali" name = "Liberal" }
-set_party_name = { ideology = conservative long_name = "al-Kutla al-Wataniya" name = "Watani" }
-set_party_name = { ideology = reactionary long_name = "al-Tajammu al-Salafi" name = "Salafi" }
-set_party_name = { ideology = authoritarianism long_name = "Jihaz Amn al-Dawla" name = "Amn al-Dawla" }
-set_party_name = { ideology = autocracy long_name = "Ri'asat al-Arkan al-Amma" name = "Arkan" }
-set_party_name = { ideology = absolutism long_name = "Al Sabah" name = "Al Sabah" }
-set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya" name = "Wataniya" }
-set_party_name = { ideology = fundamentalism long_name = "al-Haraka al-Dusturiya al-Islamiya" name = "Ikhwan" }
-
-create_country_leader = { name = "Mishal Al-Ahmad Al-Jaber Al-Sabah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Ahmad Abdullah Al-Ahmad Al-Sabah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchic_monarchy }
-create_country_leader = { name = "Marzouq Al-Ghanim" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Ahmed Al-Sadoun" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Osama Al-Shaheen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "al-Tahaluf al-Watani al-Taqaddumi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Kuwaiti Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "General Khaled Al-Sabah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "al-Tajammu al-Salafi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
-create_country_leader = { name = "al-Haraka al-Wataniya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Kutlat al-Amal al-Sha'bi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
-create_country_leader = { name = "Jihaz Amn al-Dawla" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = securocracy }
-
-set_politics = {
-	ruling_party = absolutism
-	last_election = "2024.4.4"
-	election_frequency = 48
-	elections_allowed = no
-}
-
-set_popularities = {
-	absolutism = 49
-	conservative = 16
-	fundamentalism = 12
-	centrist = 10
-	progressive = 6
-	authoritarianism = 4
-	autocracy = 2
-	ultranationalism = 1
-}
-
-
-
 #oob = ""
 
 # Starting tech
@@ -66,39 +17,19 @@ IF = {
 
 set_convoys = 5
 
-recruit_character = KUW_ahmad_al_sabah
-recruit_character = KUW_pot
-recruit_character = KUW_aco2
-recruit_character = KUW_mt
-recruit_character = KUW_ar
-recruit_character = KUW_fascist_guy
-recruit_character = KUW_acd2
-recruit_character = KUW_ncm
-recruit_character = KUW_ai2
-recruit_character = KUW_acas
-recruit_character = KUW_democratic_guy
-recruit_character = KUW_aa2
-recruit_character = KUW_awt
-recruit_character = KUW_coi
-recruit_character = KUW_stc
-recruit_character = KUW_acgs
-recruit_character = KUW_nccr
-recruit_character = KUW_ncs
-recruit_character = KUW_nt
-recruit_character = KUW_communist_guy
-recruit_character = KUW_acr
+
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -123,22 +54,15 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-
-# DvE: KUW_ahmad_al_sabah guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "KUW_ahmad_al_sabah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = yes
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 98
-#	reactionary = 2
-#}
+set_politics = {
+	ruling_party = centrist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+set_popularities = {
+	centrist = 98
+	reactionary = 2
+}
 
 
