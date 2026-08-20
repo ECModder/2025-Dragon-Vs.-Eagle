@@ -1,0 +1,269 @@
+# ============================================================
+#   DvE - LE RIVOLUZIONI ROSSE DELL'ALBERO ITALIANO
+#
+#   Usati dai focus LT_redfra, LT_redspa, LT_redger, LT_redeng
+#   (common/national_focus/italy.txt).
+#
+#   PERCHE' NON start_civil_war
+#   start_civil_war accetta ideology/size/states/capital ma NON un
+#   tag: creerebbe nazioni dinamiche (D01, D02...) invece di FSR,
+#   SPA, GDR e SRB. Come per la guerra civile russa
+#   (DVE_RUS_effects.txt) i tag vengono attivati davvero: ricevono
+#   territorio e cores, spostano la capitale e dichiarano guerra.
+#
+#   Il trasferimento passa sempre da every_owned_state con un
+#   limit: cosi' si spostano SOLO gli stati che il paese possiede
+#   ancora al momento del focus. Un 'transfer_state' diretto li
+#   prenderebbe a chiunque li possieda, rubandoli a terzi se nel
+#   frattempo il paese e' stato invaso.
+#
+#   Governo, popolarita' e stabilita' dei tag socialisti NON
+#   vengono forzati qui: restano quelli dei rispettivi file in
+#   history/countries/, cosi' basta modificare quelli.
+# ============================================================
+
+
+# ============================================================
+#   FRANCIA -> FSR (LT_redfra)
+#   La rivoluzione prende Parigi, il nord industriale, l'est e la
+#   valle del Rodano. Il governo si rifugia in Aquitania.
+#   20 stati su 26 metropolitani (~77%, era size = 0.75).
+# ============================================================
+ITA_red_france_effect = {
+
+	FRA = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 1     # France
+					state = 14    # Brittany
+					state = 15    # Normandy
+					state = 16    # Ile de France - Parigi
+					state = 17    # Alsace-Lorraine
+					state = 18    # Champagne
+					state = 20    # Franche-Comte
+					state = 21    # Bouches-du-Rhone
+					state = 24    # Centre
+					state = 25    # Limousin
+					state = 26    # Bourgogne
+					state = 27    # Champagne 2
+					state = 28    # Alsace
+					state = 29    # Pas de Calais
+					state = 30    # Loire
+					state = 32    # Rhone-Alpes
+					state = 33    # Centre sud
+					state = 735   # Savoy
+					state = 785   # Picardy
+					state = 851   # Var
+				}
+			}
+			add_core_of = FSR
+			FSR = { transfer_state = PREV }
+		}
+
+		# quel che resta del governo si sposta a Bordeaux
+		if = {
+			limit = {
+				NOT = { owns_state = 16 }
+				owns_state = 19
+			}
+			set_capital = { state = 19 }
+		}
+	}
+
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			if = {
+				limit = { owns_state = 16 }
+				set_capital = { state = 16 }
+			}
+			declare_war_on = { target = FRA type = annex_everything }
+		}
+	}
+}
+
+
+# ============================================================
+#   SPAGNA -> SPA (LT_redspa)
+#   Madrid, la Catalogna, i Paesi Baschi, le Asturie e tutto il
+#   centro-sud. Il governo ripiega in Galizia.
+#   18 stati su 22 (~82%, era size = 0.8).
+#
+#   NOTA: il Portogallo (POR) resta con start_civil_war e quindi
+#   con un tag dinamico, perche' nella lista non c'era un tag
+#   socialista portoghese. Dimmene uno e lo converto anche lui.
+# ============================================================
+ITA_red_spain_effect = {
+
+	SPR = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 41    # Madrid
+					state = 165   # Catalonia
+					state = 166   # Western Aragon
+					state = 167   # Valencia
+					state = 168   # Murcia
+					state = 169   # Sevilla
+					state = 172   # Navarre
+					state = 173   # Granada
+					state = 174   # Leon
+					state = 175   # Ciudad Real
+					state = 176   # Burgos
+					state = 788   # Salamanca
+					state = 789   # Cordoba
+					state = 790   # Asturias
+					state = 791   # Valladolid
+					state = 792   # Basque Country
+					state = 793   # Guadalajara
+					state = 794   # Eastern Aragon
+				}
+			}
+			add_core_of = SPA
+			SPA = { transfer_state = PREV }
+		}
+
+		# il governo ripiega su La Coruna
+		if = {
+			limit = {
+				NOT = { owns_state = 41 }
+				owns_state = 171
+			}
+			set_capital = { state = 171 }
+		}
+	}
+
+	if = {
+		limit = { country_exists = SPA }
+		SPA = {
+			if = {
+				limit = { owns_state = 41 }
+				set_capital = { state = 41 }
+			}
+			declare_war_on = { target = SPR type = annex_everything }
+		}
+	}
+}
+
+
+# ============================================================
+#   GERMANIA -> GDR (LT_redger)
+#   Berlino, tutto il nord, la Sassonia e la Renania-Ruhr. Al
+#   governo restano la Baviera e il sud-ovest.
+#   24 stati su 33 (~73%, era size = 0.75).
+# ============================================================
+ITA_red_germany_effect = {
+
+	GER = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 42    # Rhineland
+					state = 51    # Moselland
+					state = 54    # Bayreuth
+					state = 55    # Nassau
+					state = 56    # Weser-Ems
+					state = 57    # Westfalen
+					state = 58    # Schleswig-Holstein
+					state = 59    # Ost-Hannover
+					state = 60    # Sud-Hannover
+					state = 61    # Mecklenburg
+					state = 62    # Pommern
+					state = 64    # Brandenburg
+					state = 65    # Sachsen
+					state = 909   # South Schleswig
+					state = 1123  # Frankfurt
+					state = 1124  # Saarland
+					state = 1125  # Berlin
+					state = 1126  # Ostberlin
+					state = 1127  # Pfalz
+					state = 1128  # Rheinhessen
+					state = 1129  # Sudhessen
+					state = 1131  # Dresden
+					state = 1132  # Magdeburg
+					state = 1133  # Sachsen-Anhalt
+				}
+			}
+			add_core_of = GDR
+			GDR = { transfer_state = PREV }
+		}
+
+		# il governo ripiega su Monaco
+		if = {
+			limit = {
+				NOT = { owns_state = 1125 }
+				owns_state = 1121
+			}
+			set_capital = { state = 1121 }
+		}
+	}
+
+	if = {
+		limit = { country_exists = GDR }
+		GDR = {
+			if = {
+				limit = { owns_state = 1125 }
+				set_capital = { state = 1125 }
+			}
+			declare_war_on = { target = GER type = annex_everything }
+		}
+	}
+}
+
+
+# ============================================================
+#   BRITANNIA -> SRB (LT_redeng)
+#   Londra, tutto il nord industriale, la Scozia e il Galles. Al
+#   governo restano il sud-est, la Cornovaglia, l'Anglia orientale
+#   e l'Irlanda del Nord.
+#   15 stati su 19 metropolitani (~79%, era size = 0.8).
+# ============================================================
+ITA_red_britain_effect = {
+
+	ENG = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 120   # Scottish Highlands
+					state = 121   # Scottish Lowlands
+					state = 122   # Wales
+					state = 126   # Greater London Area
+					state = 128   # West Midlands
+					state = 129   # East Midlands
+					state = 130   # Yorkshire
+					state = 131   # Northern England
+					state = 132   # North-west England
+					state = 133   # Strathclyde
+					state = 136   # Aberdeenshire
+					state = 338   # Gloucestershire
+					state = 931   # Cumbria
+					state = 932   # Isle of Man
+					state = 933   # Shetland
+				}
+			}
+			add_core_of = SRB
+			SRB = { transfer_state = PREV }
+		}
+
+		# il governo ripiega sul sud-est
+		if = {
+			limit = {
+				NOT = { owns_state = 126 }
+				owns_state = 127
+			}
+			set_capital = { state = 127 }
+		}
+	}
+
+	if = {
+		limit = { country_exists = SRB }
+		SRB = {
+			if = {
+				limit = { owns_state = 126 }
+				set_capital = { state = 126 }
+			}
+			declare_war_on = { target = ENG type = annex_everything }
+		}
+	}
+}

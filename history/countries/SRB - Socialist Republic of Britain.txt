@@ -1,0 +1,53 @@
+capital = 126
+
+# ============================================================
+#   SOCIALIST REPUBLIC OF BRITAIN (SRB)
+#
+#   Puppet socialista britannico.
+#   Non esiste a inizio partita: nasce da eventi/decisioni.
+# ============================================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "CPGB" long_name = "Communist Party of Great Britain" }
+set_party_name = { ideology = authoritarian_socialism name = "General Council" long_name = "General Council of the Trades Union Congress" }
+set_party_name = { ideology = vanguard_socialism name = "SWP" long_name = "Socialist Workers Party" }
+set_party_name = { ideology = revolutionary_socialism name = "Syndicalist Union" long_name = "Syndicalist Union of Britain" }
+set_party_name = { ideology = progressive name = "Labour Left" long_name = "Labour Left" }
+set_party_name = { ideology = centrist name = "Labour" long_name = "Labour Party" }
+set_party_name = { ideology = conservative name = "Tories" long_name = "Conservative and Unionist Party" }
+set_party_name = { ideology = reactionary name = "Imperial League" long_name = "Imperial Maritime League" }
+set_party_name = { ideology = authoritarianism name = "Army Council" long_name = "Army Council" }
+set_party_name = { ideology = autocracy name = "MI5" long_name = "The Security Service" }
+set_party_name = { ideology = absolutism name = "Royalists" long_name = "Royalist Restoration League" }
+set_party_name = { ideology = ultranationalism name = "British Union" long_name = "British Union" }
+set_party_name = { ideology = fundamentalism name = "Anglican Assembly" long_name = "Anglican Assembly" }
+
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 7
+	authoritarian_socialism = 44
+	vanguard_socialism = 5
+	revolutionary_socialism = 8
+	progressive = 9
+	centrist = 8
+	conservative = 7
+	reactionary = 3
+	authoritarianism = 3
+	autocracy = 0
+	absolutism = 3
+	ultranationalism = 3
+	fundamentalism = 0
+}
+
+set_stability = 0.60
+set_war_support = 0.60
+set_research_slots = 3
+
+# === leader ===
+create_country_leader = { name = "General Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_general_council.dds" expire = "2100.1.1" ideology = Workerism }
