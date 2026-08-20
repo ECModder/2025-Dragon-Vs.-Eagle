@@ -1,0 +1,57 @@
+capital = 112
+
+# ============================================================
+#   PORTUGUESE SOCIALIST REPUBLIC (PRS)
+#
+#   Puppet socialista portoghese. Nasce dal focus italiano
+#   LT_redspa, insieme alla Spagna socialista (SPA).
+#
+#   NOTA: il tag richiesto era PSR, gia' occupato dalla
+#   Philippine Second Republic. Si usa PRS.
+#   Non esiste a inizio partita: nasce da eventi/decisioni.
+# ============================================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "PCP" long_name = "Partido Comunista Portugues" }
+set_party_name = { ideology = authoritarian_socialism name = "Comite Central" long_name = "Comite Central do PCP" }
+set_party_name = { ideology = vanguard_socialism name = "MRPP" long_name = "Movimento Reorganizativo do Partido do Proletariado" }
+set_party_name = { ideology = revolutionary_socialism name = "CGTP" long_name = "Confederacao Geral dos Trabalhadores Portugueses" }
+set_party_name = { ideology = progressive name = "Bloco" long_name = "Bloco de Esquerda" }
+set_party_name = { ideology = centrist name = "PS" long_name = "Partido Socialista" }
+set_party_name = { ideology = conservative name = "PSD" long_name = "Partido Social Democrata" }
+set_party_name = { ideology = reactionary name = "CDS-PP" long_name = "Centro Democratico Social" }
+set_party_name = { ideology = authoritarianism name = "MFA" long_name = "Movimento das Forcas Armadas" }
+set_party_name = { ideology = autocracy name = "PIDE" long_name = "Policia Internacional e de Defesa do Estado" }
+set_party_name = { ideology = absolutism name = "Causa Real" long_name = "Movimento Miguelista" }
+set_party_name = { ideology = ultranationalism name = "Movimento Nacional" long_name = "Movimento Nacional Portugues" }
+set_party_name = { ideology = fundamentalism name = "Episcopado" long_name = "Conferencia Episcopal Portuguesa" }
+
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 13
+	authoritarian_socialism = 44
+	vanguard_socialism = 5
+	revolutionary_socialism = 7
+	progressive = 8
+	centrist = 8
+	conservative = 6
+	reactionary = 3
+	authoritarianism = 3
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 2
+	fundamentalism = 1
+}
+
+set_stability = 0.60
+set_war_support = 0.60
+set_research_slots = 3
+
+# === leader ===
+create_country_leader = { name = "Comite Central" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_comite_central.dds" expire = "2100.1.1" ideology = sovietism }

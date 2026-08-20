@@ -89,10 +89,6 @@ ITA_red_france_effect = {
 #   Madrid, la Catalogna, i Paesi Baschi, le Asturie e tutto il
 #   centro-sud. Il governo ripiega in Galizia.
 #   18 stati su 22 (~82%, era size = 0.8).
-#
-#   NOTA: il Portogallo (POR) resta con start_civil_war e quindi
-#   con un tag dinamico, perche' nella lista non c'era un tag
-#   socialista portoghese. Dimmene uno e lo converto anche lui.
 # ============================================================
 ITA_red_spain_effect = {
 
@@ -264,6 +260,56 @@ ITA_red_britain_effect = {
 				set_capital = { state = 126 }
 			}
 			declare_war_on = { target = ENG type = annex_everything }
+		}
+	}
+}
+
+
+# ============================================================
+#   PORTOGALLO -> PRS (LT_redspa, insieme alla Spagna)
+#   Lisbona, Porto, Santarem e l'Alentejo. Al governo restano la
+#   Guarda, nell'interno conservatore del nord-est, e le isole
+#   atlantiche, dove ripiega la capitale.
+#   4 stati su 7 (~57% per numero, ma e' tutto il peso del paese:
+#   Madeira e Azzorre sono un ridotto simbolico).
+#
+#   NOTA: il tag richiesto era PSR, gia' occupato dalla Philippine
+#   Second Republic. Si usa PRS.
+# ============================================================
+ITA_red_portugal_effect = {
+
+	POR = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 112   # Lisbon
+					state = 179   # Beja
+					state = 180   # Porto
+					state = 795   # Santarem
+				}
+			}
+			add_core_of = PRS
+			PRS = { transfer_state = PREV }
+		}
+
+		# il governo ripiega sulla Guarda
+		if = {
+			limit = {
+				NOT = { owns_state = 112 }
+				owns_state = 181
+			}
+			set_capital = { state = 181 }
+		}
+	}
+
+	if = {
+		limit = { country_exists = PRS }
+		PRS = {
+			if = {
+				limit = { owns_state = 112 }
+				set_capital = { state = 112 }
+			}
+			declare_war_on = { target = POR type = annex_everything }
 		}
 	}
 }
