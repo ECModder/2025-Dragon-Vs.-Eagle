@@ -2,16 +2,15 @@ DVE_puppet_alignment_category = {
 
 	icon = GFX_decision_category_generic_political_actions
 	priority = 80
-	visible_when_empty = no
+
+	# visible_when_empty = yes di proposito: cosi' la categoria si vede
+	# anche prima di avere satelliti, invece di sparire senza spiegazione.
+	visible_when_empty = yes
 
 	allowed = {
 		OR = { tag = ITA  tag = SOV }
 	}
 
-	# Il controllo "ha almeno un satellite" NON va qui: lo fa gia' il
-	# target_trigger di ogni decisione. Se lo mettevo anche qui la
-	# categoria spariva del tutto quando i satelliti erano membri di
-	# fazione invece che puppet veri.
 	visible = {
 		OR = {
 			has_government = vanguard_socialism
