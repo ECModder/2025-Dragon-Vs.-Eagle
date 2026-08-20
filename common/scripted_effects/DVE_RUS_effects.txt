@@ -124,6 +124,16 @@ RUS_second_civil_war_effect = {
 	add_war_support = 0.10
 	set_country_flag = DVE_civil_war_active
 
+	# Con il paese che si spacca il governo passa ai servizi:
+	# Bortnikov e l'FSB al posto della presidenza personale di Putin.
+	set_politics = {
+		ruling_party = authoritarianism
+		elections_allowed = no
+	}
+	add_popularity = { ideology = authoritarianism popularity = 0.25 }
+	add_popularity = { ideology = autocracy popularity = -0.15 }
+	add_popularity = { ideology = reactionary popularity = -0.10 }
+
 	# Le 28 divisioni di riservisti mobilitate per l'Ucraina si sciolgono
 	# quando lo stato crolla: a Mosca restano le 40 di professionisti.
 	delete_unit_template_and_units = { division_template = "Strelkovaya Diviziya" }
@@ -482,4 +492,13 @@ RUS_second_civil_war_effect = {
 	CIN = { declare_war_on = { target = SOV type = annex_everything } }
 	CIN = { declare_war_on = { target = RUR type = annex_everything } }
 	CIN = { declare_war_on = { target = NRE type = annex_everything } }
+
+	# ========================================================
+	#   CON CHI STA MOSCA
+	#   Due ore dopo lo scoppio il governo deve decidere: restare
+	#   solo contro tutti e tre, o fare pace con una fazione e
+	#   combattere le altre due al suo fianco.
+	#   (events/DVE_civil_war_events.txt)
+	# ========================================================
+	country_event = { id = dve_civilwar.1 hours = 2 }
 }

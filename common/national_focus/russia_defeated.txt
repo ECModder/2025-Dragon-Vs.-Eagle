@@ -185,6 +185,14 @@ focus_tree = {
 			add_stability = -0.15
 			add_political_power = 100
 			set_country_flag = RUS_pd_putin_is_dead
+			# Putin non c'e' piu': il potere passa dal cerchio personale
+			# all'apparato, e Medvedev si ritrova presidente.
+			set_politics = {
+				ruling_party = reactionary
+				elections_allowed = no
+			}
+			add_popularity = { ideology = reactionary popularity = 0.20 }
+			add_popularity = { ideology = autocracy popularity = -0.20 }
 			set_country_flag = RUS_pd_did_they_shoot_him_done
 		}
 	}
