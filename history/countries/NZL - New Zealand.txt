@@ -108,27 +108,27 @@ give_guarantee = ENG
 	
 	if = {
 		limit = { has_dlc = "Together for Victory" }
-		complete_national_focus = NZL_army_reforms
-		complete_national_focus = NZL_charlton_automatic_rifle
-		complete_national_focus = NZL_domestic_arms_industry
-		complete_national_focus = NZL_expand_the_nzpaf
-		complete_national_focus = NZL_form_the_rnzaf
-		complete_national_focus = NZL_national_roads_board
-		complete_national_focus = NZL_new_zealand_steel
-		complete_national_focus = NZL_taranaki_oil
-		complete_national_focus = NZL_bureau_of_industry 
+		#complete_national_focus = NZL_army_reforms
+		#complete_national_focus = NZL_charlton_automatic_rifle
+		#complete_national_focus = NZL_domestic_arms_industry
+		#complete_national_focus = NZL_expand_the_nzpaf
+		#complete_national_focus = NZL_form_the_rnzaf
+		#complete_national_focus = NZL_national_roads_board
+		#complete_national_focus = NZL_new_zealand_steel
+		#complete_national_focus = NZL_taranaki_oil
+		#complete_national_focus = NZL_bureau_of_industry 
 		
 		else = {
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = large_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = large_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}
 	}
 
@@ -232,12 +232,14 @@ set_popularities = {
 set_convoys = 70
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = centrist
-		last_election = "1938.10.15"
-		election_frequency = 60
-		elections_allowed = yes
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1938.10.15"
+#		election_frequency = 60
+#		elections_allowed = yes
+#	}
 
 	# Didn't take office until '40, added for flavor
 	promote_character = NZL_peter_fraser

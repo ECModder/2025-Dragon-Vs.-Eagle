@@ -310,33 +310,35 @@ if = {
 	add_political_power = 1198
 	add_command_power = 100
 
-	set_politics = {
-		ruling_party = centrist
-		last_election = "1939.2.8"
-		election_frequency = 60
-		elections_allowed = yes
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1939.2.8"
+#		election_frequency = 60
+#		elections_allowed = yes
+#	}
 
 	if = {
 		limit = { has_dlc = "Battle for the Bosporus" }
-		complete_national_focus = TUR_the_montreux_convention
-		complete_national_focus = TUR_continue_the_policy_of_etatism
-		complete_national_focus = TUR_hava_okulu
-		complete_national_focus = TUR_ratify_the_six_arrows
-		complete_national_focus = TUR_peace_at_home
-		complete_national_focus = TUR_turkish_state_railways
-		complete_national_focus = TUR_the_second_five_year_plan
-		complete_national_focus = TUR_treaty_of_saadabad
-		complete_national_focus = TUR_the_sanayiciler
-		complete_national_focus = TUR_learning_from_the_great_war
-		complete_national_focus = TUR_the_guardians_of_kemalism
-		complete_national_focus = TUR_assess_our_future
-		complete_national_focus = TUR_the_hatay_issue
-		complete_national_focus = TUR_turk_ulusu
-		complete_national_focus = TUR_cooperate_with_the_debt_council
-		complete_national_focus = TUR_utilize_foreign_capital
-		complete_national_focus = TUR_modernising_the_army
-		complete_national_focus = TUR_expand_the_air_bases
+		#complete_national_focus = TUR_the_montreux_convention
+		#complete_national_focus = TUR_continue_the_policy_of_etatism
+		#complete_national_focus = TUR_hava_okulu
+		#complete_national_focus = TUR_ratify_the_six_arrows
+		#complete_national_focus = TUR_peace_at_home
+		#complete_national_focus = TUR_turkish_state_railways
+		#complete_national_focus = TUR_the_second_five_year_plan
+		#complete_national_focus = TUR_treaty_of_saadabad
+		#complete_national_focus = TUR_the_sanayiciler
+		#complete_national_focus = TUR_learning_from_the_great_war
+		#complete_national_focus = TUR_the_guardians_of_kemalism
+		#complete_national_focus = TUR_assess_our_future
+		#complete_national_focus = TUR_the_hatay_issue
+		#complete_national_focus = TUR_turk_ulusu
+		#complete_national_focus = TUR_cooperate_with_the_debt_council
+		#complete_national_focus = TUR_utilize_foreign_capital
+		#complete_national_focus = TUR_modernising_the_army
+		#complete_national_focus = TUR_expand_the_air_bases
 		remove_ideas = {
 			civilian_economy
 			TUR_kemalist_army_officers_limited_power_loyal
@@ -382,15 +384,15 @@ if = {
 	if = {
 		limit = { NOT = { has_dlc = "Battle for the Bosporus" } }
 		#generic focuses
-		complete_national_focus = army_effort
-		complete_national_focus = equipment_effort
-		complete_national_focus = motorization_effort
-		complete_national_focus = aviation_effort
-		complete_national_focus = naval_effort
-		complete_national_focus = large_navy
-		complete_national_focus = industrial_effort
-		complete_national_focus = construction_effort
-		complete_national_focus = production_effort
+		#complete_national_focus = army_effort
+		#complete_national_focus = equipment_effort
+		#complete_national_focus = motorization_effort
+		#complete_national_focus = aviation_effort
+		#complete_national_focus = naval_effort
+		#complete_national_focus = large_navy
+		#complete_national_focus = industrial_effort
+		#complete_national_focus = construction_effort
+		#complete_national_focus = production_effort
 
 		add_ideas = {
 			partial_economic_mobilisation
@@ -435,7 +437,7 @@ if = {
 			has_dlc = "Graveyard of Empires"
 		}
 
-		complete_national_focus = SSB_the_saadabad_pact
+		#complete_national_focus = SSB_the_saadabad_pact
 		set_country_flag = SSB_is_saadabad_leader
 		add_dynamic_modifier = { modifier = SSB_saadabad_pact }
 
@@ -504,11 +506,13 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1935.2.8"
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1935.2.8"
+#	elections_allowed = yes
+#}
 set_popularities = {
 	centrist = 60
 	reactionary = 40
@@ -518,117 +522,10 @@ set_convoys = 20
 set_stability = 0.5
 set_war_support = 0.3
 
-if = {
-	limit = { has_dlc = "Battle for the Bosporus" }
-	recruit_character = TUR_mustafa_kemal_ataturk
-	recruit_character = TUR_sefik_husnu
-	recruit_character = TUR_celal_bayar
-	recruit_character = TUR_mehmet_recep_peker
-	recruit_character = TUR_fevzi_cakmak
-	recruit_character = TUR_fahrettin_altay
-	recruit_character = TUR_kazim_orbay
-	recruit_character = TUR_cemil_cahit_toydemir
-	recruit_character = TUR_izzettin_chalishlar
-	recruit_character = TUR_kazim_karabekir
-	recruit_character = TUR_mustafa_muglali
-	recruit_character = TUR_mehmet_salih_omurtak
-	recruit_character = TUR_hayrullah_fisek
-	recruit_character = TUR_mehmet_nuri_yamut
-	recruit_character = TUR_sadik_altincan
-	recruit_character = TUR_sukru_okan
-	recruit_character = TUR_mehmet_ali_ulgen
-	recruit_character = TUR_abdurrahman_gurman
-	recruit_character = TUR_fakhri_pasha
-	recruit_character = TUR_refet_bele
-	recruit_character = TUR_zeki_dogan
-	recruit_character = TUR_sabiha_gokcen
-	recruit_character = TUR_ali_fuat_cebesoy
-	recruit_character = TUR_vecihi_hurkus
-	recruit_character = TUR_ali_ihsan_sabis
-	recruit_character = TUR_rauf_orbay
-	recruit_character = TUR_izzettin_calislar
-	recruit_character = TUR_ahmet_ali_celikten
-	recruit_character = TUR_mehmet_fahri_engin
-	recruit_character = TUR_muzaffer_goksenin
-	recruit_character = TUR_halil_kut
-	recruit_character = TUR_mumtaz_okmen
-	recruit_character = TUR_riza_nur
-	recruit_character = TUR_nejdet_sancar
-	recruit_character = TUR_kazim_ozalp
-	recruit_character = TUR_sukru_saracoglu_prime_minister
-	recruit_character = TUR_adnan_menderes
-	recruit_character = TUR_nuri_demirag_prime_minister
-	recruit_character = TUR_hasan_saka
-	recruit_character = TUR_hilmi_uran
-	recruit_character = TUR_fethi_okyar
-	recruit_character = TUR_sukru_saracoglu
-	recruit_character = TUR_halide_edib_adivar
-	recruit_character = TUR_sevket_sureyya_aydemir
-	recruit_character = TUR_mehmet_emin_yurdakul
-	recruit_character = TUR_nuri_demirag
-	recruit_character = TUR_nuri_killigil
-	recruit_character = TUR_said_i_nursi
-	recruit_character = TUR_ismet_inonu
-	recruit_character = TUR_nihal_atsiz
-	recruit_character = TUR_zeki_velidi_togan
-	recruit_character = TUR_nazim_hikmet
 
-	recruit_character = TUR_ahmet_fevzi_pasha # Ottoman Sultanate general. Not available at game start
-	recruit_character = TUR_refet_pasha # Ottoman Sultanate general. Not available at game start
-	recruit_character = TUR_mehmet_esat_pasha # Ottoman Sultanate general. Not available at game start
-	recruit_character = TUR_halife_abdulmecid_efendi #Empty Character that can become Country Leader via event.
-	recruit_character = GER_hans_von_luck #Foreign General. Not available at game start
-	recruit_character = GER_wilhelm_ritter_von_thoma #Foreign General. Not available at game start
-	recruit_character = ITA_ferdinando_umberto_filippo_adalberto #Foreign Admiral. Not available at game start
-	recruit_character = TUR_durrushehvar_i #Empty char. Can become country leader later
-	recruit_character = TUR_abdulmejid_ii #Empty char. Can become country leader later
-	recruit_character = TUR_hazi_aslanov #Empty Char. Can become unit leader later
-}
 
-if = {
-	limit = { NOT = { has_dlc = "Battle for the Bosporus" } }
-	recruit_character = TUR_ismet_inonu
-	recruit_character = TUR_mustafa_kemal_ataturk
-	recruit_character = TUR_sefik_husnu
-	recruit_character = TUR_celal_bayar
-	recruit_character = TUR_fevzi_cakmak
-	recruit_character = TUR_cemil_cahit_toydemir
-	recruit_character = TUR_rauf_orbay
-	recruit_character = TUR_memduh_tagmac
-	recruit_character = TUR_abdurrahman_gurman
-	recruit_character = TUR_mehmet_ali_ulgen
-	recruit_character = TUR_sabiha_gokcen
-	recruit_character = TUR_mehmet_gunaltay
-	recruit_character = TUR_ali_fuat_cebesoy
-	recruit_character = TUR_refik_saydam
-	recruit_character = TUR_erkan_gataly
-	recruit_character = TUR_ali_orlungat
-	recruit_character = TUR_mehmet_salih_omurtak
-	recruit_character = TUR_nazmi_solok
-	recruit_character = TUR_hassan_saka
-	recruit_character = TUR_kazim_ozalp
-	recruit_character = TUR_mumtaz_okmen
-	recruit_character = TUR_kazim_orbay
-}
 
-if = {
-	limit = {
-		AND = {
-			has_dlc = "La Resistance"
-			has_dlc = "Battle for the Bosporus"
-		}
-	}
-	recruit_character = TUR_elyesa_bazna
-	create_operative_leader = {
-		name = "Ruzi Nazar"
-		GFX = "GFX_portrait_tur_ruzi_nazar"
-		traits = { operative_tough operative_commando }
-		bypass_recruitment = no
-		available_to_spy_master = yes
-		female = no
-		nationalities = { TUR SOV KAZ }
-	}
-}
+
 
 ### VARIANTS ###
 # 1936 Start #

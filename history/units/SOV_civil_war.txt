@@ -52,55 +52,95 @@ division_template = {
 	# milizia territoriale: la richiama la decisione "Richiama la milizia"
 }
 
+division_template = {
+	name = "Krasnaya Gvardiya"
+	division_names_group = SOV_GRD_01
+	# La Guardia Rossa: il pugno di Leningrado. Corazzata, meccanizzata
+	# e con tutto il supporto - e' la punta di lancia dei socialisti.
+	regiments = {
+		medium_armor = { x = 0 y = 0 }  medium_armor = { x = 0 y = 1 }  medium_armor = { x = 0 y = 2 }
+		mechanized   = { x = 1 y = 0 }  mechanized   = { x = 1 y = 1 }  mechanized   = { x = 1 y = 2 }
+		mechanized   = { x = 2 y = 0 }  mechanized   = { x = 2 y = 1 }
+	}
+	support = {
+		engineer  = { x = 0 y = 0 }  recon             = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+		anti_tank = { x = 0 y = 3 }  logistics_company = { x = 0 y = 4 }
+	}
+}
+
 units = {
 	division = { location = 79 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
-	division = { location = 149 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
-	division = { location = 3151 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
-	division = { location = 6174 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
-	division = { location = 11068 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
-	division = { location = 85 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 150 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 344 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 3143 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 3176 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 3323 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 6022 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 6122 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 6203 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 6245 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 6346 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 9046 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 9144 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 9256 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 11084 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 11154 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 11250 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
-	division = { location = 498 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 520 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 3503 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 3529 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 3555 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 6503 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 6527 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 6541 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 9459 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 9474 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 9504 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 9530 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 11447 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 11474 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
-	division = { location = 11484 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
+	division = { location = 85 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
+	division = { location = 8 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 263
+	division = { location = 15 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 213
+	division = { location = 40 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 216
+	division = { location = 228 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 249
+	division = { location = 286 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 250
+	division = { location = 298 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 251
+	division = { location = 227 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 652
+	division = { location = 498 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
 	division = { location = 326 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
+	division = { location = 585 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 218
+	division = { location = 683 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 232
+	division = { location = 714 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 235
+	division = { location = 618 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 236
+	division = { location = 1233 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 572
+	division = { location = 273 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 651
+	division = { location = 1387 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 403
+	division = { location = 1676 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 329
+	division = { location = 4781 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 654
+	division = { location = 1696 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 564
+	division = { location = 1707 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 566
+	division = { location = 1672 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 563
+	division = { location = 1666 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 565
+	division = { location = 149 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
+	division = { location = 150 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
+	division = { location = 71 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 263
+	division = { location = 74 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 213
+	division = { location = 90 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 216
+	division = { location = 260 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 249
+	division = { location = 345 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 250
+	division = { location = 338 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 251
+	division = { location = 1210 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 652
+	division = { location = 520 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 217
 	division = { location = 353 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 433 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 483 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 578 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3304 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3316 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3343 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3426 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3465 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3477 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 3578 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
-	division = { location = 6328 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 239
+	division = { location = 6445 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 218
+	division = { location = 700 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 232
+	division = { location = 731 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 235
+	division = { location = 757 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 236
+	division = { location = 1292 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 572
+	division = { location = 291 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 651
+	division = { location = 1880 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 403
+	division = { location = 1877 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 329
+	division = { location = 4800 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 654
+	division = { location = 1762 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 564
+	division = { location = 1727 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 566
+	division = { location = 1826 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 563
+	division = { location = 1761 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 565
+	division = { location = 3151 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 195
+	division = { location = 344 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 247
+
+	# --- la Guardia Rossa di Leningrado ---
+	division = { name = "1ya Gvardeyskaya Krasnaya Gvardiya" location = 79 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "2ya Gvardeyskaya Krasnaya Gvardiya" location = 149 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "3ya Gvardeyskaya Krasnaya Gvardiya" location = 3151 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "4ya Gvardeyskaya Krasnaya Gvardiya" location = 6174 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "5ya Gvardeyskaya Krasnaya Gvardiya" location = 11068 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "6ya Gvardeyskaya Krasnaya Gvardiya" location = 79 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "7ya Gvardeyskaya Krasnaya Gvardiya" location = 149 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "8ya Gvardeyskaya Krasnaya Gvardiya" location = 3151 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "9ya Gvardeyskaya Krasnaya Gvardiya" location = 6174 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+	division = { name = "10ya Gvardeyskaya Krasnaya Gvardiya" location = 11068 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 195
+
+	# --- la Guardia Rossa di Stalingrado ---
+	division = { name = "11ya Gvardeyskaya Krasnaya Gvardiya" location = 498 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "12ya Gvardeyskaya Krasnaya Gvardiya" location = 520 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "13ya Gvardeyskaya Krasnaya Gvardiya" location = 3503 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "14ya Gvardeyskaya Krasnaya Gvardiya" location = 3529 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "15ya Gvardeyskaya Krasnaya Gvardiya" location = 3555 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "16ya Gvardeyskaya Krasnaya Gvardiya" location = 6503 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "17ya Gvardeyskaya Krasnaya Gvardiya" location = 6527 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "18ya Gvardeyskaya Krasnaya Gvardiya" location = 6541 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "19ya Gvardeyskaya Krasnaya Gvardiya" location = 9459 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
+	division = { name = "20ya Gvardeyskaya Krasnaya Gvardiya" location = 9474 division_template = "Krasnaya Gvardiya" start_experience_factor = 0.80 start_equipment_factor = 1.00 }   # stato 217
 }

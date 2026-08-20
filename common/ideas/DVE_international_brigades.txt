@@ -1,0 +1,35 @@
+# ============================================================
+#   DvE - Brigate Internazionali
+#
+#   Modificatore per i paesi che mandano volontari a SOV quando
+#   scoppia la Seconda Guerra Civile Russa.
+#
+#   ATTENZIONE: questi tre modificatori valgono per CHI MANDA i
+#   volontari, non per chi li riceve. Metterli su SOV non serve a
+#   niente: vanno su Cina, Vietnam, Laos, Cuba, Venezuela,
+#   Nicaragua ed Eritrea.
+#     send_volunteer_size               quante divisioni per invio
+#     send_volunteer_divisions_required quante te ne servono prima
+#     send_volunteers_tension           tensione richiesta per i volontari
+#     lend_lease_tension                tensione richiesta per il prestito d'uso
+# ============================================================
+
+ideas = {
+
+	country = {
+
+		international_brigades = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				send_volunteer_size = 3
+				send_volunteer_divisions_required = -1.00
+				send_volunteers_tension = -1.00   # volontari a qualunque tensione
+				lend_lease_tension = -1.00        # prestito d'uso a qualunque tensione
+			}
+		}
+	}
+}

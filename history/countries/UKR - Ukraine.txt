@@ -52,6 +52,21 @@ set_popularities = {
 # DvE: schieramento 2025 sul fronte con la Russia
 oob = "UKR_2025"
 
+# DvE: scorte per le 40 brigate sul fronte: poche corazzate,
+# molta fanteria e controcarro, come nella realta'.
+add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 14000 }
+add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 600 }
+add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 400 }
+add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 2200 }
+add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 1400 }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1200 }
+add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 1600 }
+add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 700 }
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 1600 }
+add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 180 }
+add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 90 }
+
+
 set_research_slots = 3
 
 # Starting tech
@@ -149,19 +164,16 @@ set_popularities = {
 	fundamentalism = 5
 }
 
-set_politics = {
-	ruling_party = reactionary
-	last_election = "2019.3.31"
-	election_frequency = 260
-	elections_allowed = Yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = reactionary
+#	last_election = "2019.3.31"
+#	election_frequency = 260
+#	elections_allowed = Yes
+#}
 
-recruit_character = UKR_mykhailo_omelianovych_pavlenko
-recruit_character = UKR_stepan_bandera
-recruit_character = UKR_nikita_krushchyov
-recruit_character = UKR_kost_levytsky
-recruit_character = IA_olga_taratuta 
-recruit_character = UKR_pavlo_shandruk 
+
 
 
 

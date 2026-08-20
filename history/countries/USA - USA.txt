@@ -345,20 +345,18 @@ add_ideas = {
 
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = centrist
-		last_election = "1936.11.3"
-		election_frequency = 48
-		elections_allowed = yes
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1936.11.3"
+#		election_frequency = 48
+#		elections_allowed = yes
+#	}
 }
 
 recruit_character = USA_joe_biden
 
-if = {
-	limit = { not = { has_dlc = "No Compromise, No Surrender" } }
-	recruit_character = USA_jonathan_wainwright
-}
 
 if = {
 	limit = { has_dlc = "La Resistance" }

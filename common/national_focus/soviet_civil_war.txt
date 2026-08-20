@@ -46,7 +46,7 @@ focus_tree = {
 			# stalinisti, leninisti, trotskisti e consiliaristi nella
 			# stessa trincea: dura finche' dura
 			add_political_power = 120
-			add_stability = 0.05
+			add_stability = 0.15
 			add_war_support = 0.10
 			add_popularity = { ideology = totalitarian_socialism popularity = 0.02 }
 			add_popularity = { ideology = authoritarian_socialism popularity = 0.02 }
@@ -74,6 +74,11 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 1000
+        		producer = ROOT
+    		}
 			set_country_flag = SOV_cw_against_the_whites_done
 		}
 	}
@@ -93,11 +98,17 @@ focus_tree = {
 		completion_reward = {
 			add_command_power = 100
 			army_experience = 25
+			add_stability = 0.05
 			add_tech_bonus = {
 				name = SOV_cw_centralized_command_center
 				bonus = 0.50
 				uses = 1
 				category = land_doctrine
+			}
+			add_equipment_to_stockpile = {
+        		type = support_equipment_3
+        		amount = 723
+        		producer = ROOT
 			}
 			set_country_flag = SOV_cw_centralized_command_center_done
 		}
@@ -135,9 +146,36 @@ focus_tree = {
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_manpower = 60000
+			add_stability = 0.05
 			army_experience = 30
-			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 3000 }
-			add_political_power = 50
+			add_equipment_to_stockpile = { 
+			type = infantry_equipment_1 
+			amount = 3000 
+			}
+			every_country = {
+				limit = {
+					OR = { tag = PRC tag = VIN tag = LAO tag = CUB tag = VEN tag = NIC tag = ERI tag = NKO }
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = "SOV"
+					value = 1000
+				}
+			}
+			create_unit = {
+				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+				owner = ROOT
+				count = 6
+				prioritize_location = 79   # Leningrado
+				allow_spawning_on_enemy_provs = no
+			}
+			create_unit = {
+				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+				owner = ROOT
+				count = 10
+				prioritize_location = 217   # Stalingrad
+				allow_spawning_on_enemy_provs = yes
+			}
 			set_country_flag = SOV_cw_permit_international_brigades_done
 		}
 	}
@@ -168,6 +206,26 @@ focus_tree = {
 				uses = 1
 				category = infantry_weapons
 			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        	type = motorized_equipment_1
+        	amount = 1000
+        	producer = ROOT
+    		}
 			set_country_flag = SOV_cw_new_putilov_workshops_done
 		}
 	}
@@ -183,8 +241,16 @@ focus_tree = {
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			# si spara con quello che c'e', anche col fucile del nonno
-			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 8000 }
-			add_equipment_to_stockpile = { type = support_equipment_1 amount = 500 }
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = 8000 
+				producer = ROOT
+				}
+			add_equipment_to_stockpile = { 
+				type = support_equipment_1 
+				amount = 500 
+				producer = ROOT
+				}
 			army_experience = 20
 			set_country_flag = SOV_cw_every_weapon_must_be_used_done
 		}
@@ -204,7 +270,27 @@ focus_tree = {
 			add_ideas = war_economy
 			add_stability = -0.10
 			add_war_support = 0.10
-			add_political_power = 80
+			add_political_power = 280
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        	type = motorized_equipment_1
+        	amount = 1000
+        	producer = ROOT
+    		}
 			set_country_flag = SOV_cw_war_communism_once_again_done
 		}
 	}
@@ -291,6 +377,11 @@ focus_tree = {
 			add_political_power = 100
 			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
 			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 2000
+        		producer = ROOT
+    		}
 			set_country_flag = SOV_cw_revolutionary_fervor_done
 		}
 	}
@@ -316,6 +407,11 @@ focus_tree = {
 				uses = 1
 				category = land_doctrine
 			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 10000
+        		producer = ROOT
+    		}
 			set_country_flag = SOV_cw_revolutionary_vanguard_army_done
 		}
 	}

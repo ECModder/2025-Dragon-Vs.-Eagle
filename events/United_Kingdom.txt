@@ -1,0 +1,137 @@
+add_namespace = unitedkingdom
+
+
+country_event = {
+	id = unitedkingdom.1 #2029 Election Left or Right
+	title = unitedkingdom.1.t
+	desc = unitedkingdom.1.d
+	picture = GFX_fish
+
+	is_triggered_only = yes
+	option = {
+		name = unitedkingdom.1.a #Left
+		country_event = { id = unitedkingdom.2 }
+	}
+	option = {
+		name = unitedkingdom.1.b #Right
+		country_event = { id = unitedkingdom.3 }
+	}
+
+}
+
+country_event = {
+	id = unitedkingdom.2 #2029 Election Right
+	title = unitedkingdom.2.t
+	desc = unitedkingdom.2.d
+	picture = GFX_fish
+
+	is_triggered_only = yes
+	option = {
+		name = unitedkingdom.2.a #Tories
+		set_politics = {
+    			ruling_party = conservative
+    			elections_allowed = yes
+		}
+		add_popularity = {
+    			ideology = conservative
+    			popularity = 0.15
+		}
+
+	}
+	option = {
+		name = unitedkingdom.2.b #Reform
+		set_politics = {
+    			ruling_party = reactionary
+    			elections_allowed = yes
+		}
+		add_popularity = {
+    			ideology = reactionary
+    			popularity = 0.15
+		}
+
+	}	
+}
+
+country_event = {
+	id = unitedkingdom.3 #2029 Election Left
+	title = unitedkingdom.3.t
+	desc = unitedkingdom.3.d
+	picture = GFX_fish
+
+	is_triggered_only = yes
+	option = {
+		name = unitedkingdom.3.a #Lib Dems
+		promote_character = ENG_ed_davey
+		add_popularity = {
+    			ideology = centrist
+    			popularity = 0.15
+		}
+
+	}
+	option = {
+		name = unitedkingdom.3.b #Labour
+		add_popularity = {
+    			ideology = centrist
+    			popularity = 0.15
+		}
+
+	}
+	option = {
+		name = unitedkingdom.3.c #Greens
+		country_event = { id = unitedkingdom.4 }
+
+	}	
+	option = {
+		name = unitedkingdom.3.e #Your Party
+		set_politics = {
+    			ruling_party = revolutionary_socialism
+    			elections_allowed = yes
+		}
+		add_popularity = {
+    			ideology = revolutionary_socialism
+    			popularity = 0.15
+		}
+
+	}
+}
+
+country_event = {
+	id = unitedkingdom.4 #Green Party Leader
+	title = unitedkingdom.4.t
+	desc = unitedkingdom.4.d
+	picture = GFX_fish
+
+	is_triggered_only = yes
+	option = {
+		name = unitedkingdom.4.a
+		if = {
+			limit = {
+				has_completed_focus = ENG_all_we_need_is_green
+			}
+			promote_character = ENG_adrian_ramsay
+
+			add_popularity = {
+    				ideology = centrist
+    				popularity = 0.15
+			}
+			set_party_name = {
+    				ideology = centrist
+    				long_name = ENG_centrist_party_greens_long
+    				name = ENG_centrist_party_greens
+			}
+		}
+		else_if = {
+			limit = {
+				has_completed_focus = ENG_back_green_socialism
+			}
+			set_politics = {
+    				ruling_party = progressive
+    				elections_allowed = yes
+			}
+			add_popularity = {
+    				ideology = progressive
+    				popularity = 0.15
+			}	
+		}
+	}
+}

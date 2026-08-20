@@ -1,0 +1,88 @@
+# ============================================================
+#   ITALIA - schieramento 1.1.2025
+#
+#   Undici brigate di manovra piu' tre dei Carabinieri.
+#     4  corazzate
+#     6  fanteria motorizzata
+#     1  alpina
+#     3  Carabinieri (con la Military Police nel supporto:
+#        fanno anche polizia militare nei territori occupati)
+#
+#   Il file di storia italiano richiamava gia' ITA_2025 e
+#   ITA_2025_nsb, ma nessuno dei due esisteva: l'Italia partiva
+#   letteralmente senza esercito.
+# ============================================================
+
+division_template = {
+	name = "Brigata Corazzata"
+	division_names_group = ITA_ARM_01
+	regiments = {
+		medium_armor = { x = 0 y = 0 }  medium_armor = { x = 0 y = 1 }  medium_armor = { x = 0 y = 2 }
+		mechanized   = { x = 1 y = 0 }  mechanized   = { x = 1 y = 1 }  mechanized   = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigata di Fanteria Motorizzata"
+	division_names_group = ITA_MOT_01
+	regiments = {
+		motorized  = { x = 0 y = 0 }  motorized  = { x = 0 y = 1 }  motorized  = { x = 0 y = 2 }
+		mechanized = { x = 1 y = 0 }  mechanized = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }  anti_tank = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigata Alpina"
+	division_names_group = ITA_MNT_01
+	regiments = {
+		mountaineers = { x = 0 y = 0 }  mountaineers = { x = 0 y = 1 }  mountaineers = { x = 0 y = 2 }
+		mountaineers = { x = 1 y = 0 }  mountaineers = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigata Carabinieri"
+	division_names_group = ITA_GAR_01
+	regiments = {
+		infantry  = { x = 0 y = 0 }  infantry  = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }  motorized = { x = 1 y = 1 }
+	}
+	support = {
+		military_police = { x = 0 y = 0 }   # e' il motivo per cui esistono:
+		engineer        = { x = 0 y = 1 }   # ordine pubblico nei territori occupati
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+units = {
+	# --- corazzate ---
+	division = { name = "Brigata Corazzata Ariete" location = 3604  division_template = "Brigata Corazzata" start_experience_factor = 0.65 start_equipment_factor = 0.90 }   # Padova
+	division = { name = "Brigata di Cavalleria Pozzuolo del Friuli" location = 6626 division_template = "Brigata Corazzata" start_experience_factor = 0.60 start_equipment_factor = 0.90 }   # Trieste
+	division = { name = "Brigata Corazzata Centauro" location = 6606 division_template = "Brigata Corazzata" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # Bologna
+	division = { name = "Brigata Corazzata Acqui" location = 883  division_template = "Brigata Corazzata" start_experience_factor = 0.55 start_equipment_factor = 0.85 }
+
+	# --- fanteria motorizzata ---
+	division = { name = "Brigata Bersaglieri Garibaldi" location = 819  division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.60 start_equipment_factor = 0.90 }   # Napoli
+	division = { name = "Brigata Granatieri di Sardegna" location = 9904  division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.60 start_equipment_factor = 0.90 }   # Roma
+	division = { name = "Brigata Meccanizzata Sassari" location = 9772  division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Sassari
+	division = { name = "Brigata Meccanizzata Aosta" location = 10074 division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Palermo
+	division = { name = "Brigata Meccanizzata Pinerolo" location = 11837  division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Taranto
+	division = { name = "Brigata Aeromobile Friuli" location = 9907 division_template = "Brigata di Fanteria Motorizzata" start_experience_factor = 0.60 start_equipment_factor = 0.85 }
+
+	# --- alpini ---
+	division = { name = "Brigata Alpina Julia" location = 11598 division_template = "Brigata Alpina" start_experience_factor = 0.70 start_equipment_factor = 0.85 }
+
+	# --- Carabinieri ---
+	division = { name = "1a Brigata Mobile Carabinieri" location = 9904  division_template = "Brigata Carabinieri" start_experience_factor = 0.50 start_equipment_factor = 0.80 }   # Roma
+	division = { name = "2a Brigata Mobile Carabinieri" location = 3780  division_template = "Brigata Carabinieri" start_experience_factor = 0.50 start_equipment_factor = 0.80 }   # Milano
+	division = { name = "Brigata Carabinieri Tuscania" location = 6780  division_template = "Brigata Carabinieri" start_experience_factor = 0.55 start_equipment_factor = 0.80 }   # Torino
+}

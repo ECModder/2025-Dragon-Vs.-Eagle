@@ -377,6 +377,22 @@ DVE_debug_russia_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	# --- apre il menu della guerra civile ---------------------
+	DVE_debug_open_cw_menu = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_civil_war_active
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	# --- torna all'albero iniziale ----------------------------
 	DVE_debug_reload_starting_tree = {
 		icon = GFX_decision_generic_form_nation
