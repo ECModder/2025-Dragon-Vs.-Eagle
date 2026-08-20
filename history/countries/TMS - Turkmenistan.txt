@@ -1,54 +1,5 @@
 ﻿capital = 584
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Kommunisticheskaya Partiya Turkmenistana" name = "KPT" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Halk Maslahaty Prezidiumy" name = "Halk Maslahaty" }
-set_party_name = { ideology = vanguard_socialism long_name = "Zahmet Birleshigi" name = "Zahmet" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Watan Halk Fronty" name = "Watan Front" }
-set_party_name = { ideology = progressive long_name = "Agrar Partiya" name = "Agrar" }
-set_party_name = { ideology = centrist long_name = "Senagatchylar we Telekechiler Partiyasy" name = "Senagatchylar" }
-set_party_name = { ideology = conservative long_name = "Turkmenistanyn Demokratik Partiyasy" name = "TDP" }
-set_party_name = { ideology = reactionary long_name = "Yashlar Guramasy" name = "Yashlar" }
-set_party_name = { ideology = authoritarianism long_name = "Milli Howpsuzlyk Ministrligi" name = "MHM" }
-set_party_name = { ideology = autocracy long_name = "Yaragly Guychleriň Bash Shtaby" name = "Bash Shtab" }
-set_party_name = { ideology = absolutism long_name = "Turkmenbashy Mirasy" name = "Turkmenbashy" }
-set_party_name = { ideology = ultranationalism long_name = "Milli Galkynysh Hereketi" name = "Milli Galkynysh" }
-set_party_name = { ideology = fundamentalism long_name = "Turkmenistanyn Muftiyaty" name = "Muftiyat" }
-
-create_country_leader = { name = "Serdar Berdimuhamedow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
-create_country_leader = { name = "Gurbanguly Berdimuhamedow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-create_country_leader = { name = "Ata Serdarow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Durdygylych Orazow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Rejep Bazarow" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = reformist_socialism }
-create_country_leader = { name = "Turkmen Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Zahmet Birleshigi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "General Begench Gundogdyyew" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Milli Galkynysh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Mufti Yalkap Hojagulyyew" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "Turkmenbashy Mirasy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Yashlar Guramasy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-
-set_politics = {
-	ruling_party = autocracy
-	last_election = "2022.3.12"
-	election_frequency = 84
-	elections_allowed = no
-}
-
-set_popularities = {
-	autocracy = 58
-	authoritarianism = 18
-	conservative = 9
-	progressive = 5
-	reactionary = 4
-	centrist = 3
-	fundamentalism = 2
-	totalitarian_socialism = 1
-}
-
-
-
 #oob = ""
 
 # Starting tech
@@ -60,15 +11,15 @@ set_convoys = 5
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -93,18 +44,16 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = reactionary
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = no
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 40
-#	reactionary = 60
-#}
+set_politics = {
+	ruling_party = reactionary
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	centrist = 40
+	reactionary = 60
+}
 
 #create_country_leader = {
 #	

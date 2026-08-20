@@ -1,54 +1,5 @@
 ﻿capital = 658 # Abu Dhabi
 
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: questo file non aveva nomi di partito ne' leader al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Hizb al-Shuyui al-Imarati" name = "HSI" }
-set_party_name = { ideology = authoritarian_socialism long_name = "no_party" name = "no_party" }
-set_party_name = { ideology = vanguard_socialism long_name = "no_party" name = "no_party" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Hizb al-Ummah" name = "Ummah" }
-set_party_name = { ideology = progressive long_name = "Jam'iyat al-Islah" name = "Islah" }
-set_party_name = { ideology = centrist long_name = "al-Multaqa al-Liberali" name = "Liberal" }
-set_party_name = { ideology = conservative long_name = "al-Majlis al-Ittihadi" name = "Ittihadi" }
-set_party_name = { ideology = reactionary long_name = "Jam'iyat al-Turath" name = "Turath" }
-set_party_name = { ideology = authoritarianism long_name = "Jihaz Amn al-Dawla" name = "Amn al-Dawla" }
-set_party_name = { ideology = autocracy long_name = "al-Qiyada al-Amma lil-Quwwat al-Musallaha" name = "Qiyada" }
-set_party_name = { ideology = absolutism long_name = "Al Nahyan" name = "Al Nahyan" }
-set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya al-Imaratiya" name = "Wataniya" }
-set_party_name = { ideology = fundamentalism long_name = "al-Hay'a al-Amma lil-Shu'un al-Islamiya" name = "Awqaf" }
-
-create_country_leader = { name = "Mohamed bin Zayed Al Nahyan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Mohammed bin Rashid Al Maktoum" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchic_monarchy }
-create_country_leader = { name = "Tahnoun bin Zayed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = securocracy }
-create_country_leader = { name = "Abdullah bin Zayed" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Saqr Ghobash" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
-create_country_leader = { name = "al-Multaqa al-Liberali" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Jam'iyat al-Islah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "General Issa al-Mazrouei" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Hizb al-Ummah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Emirati Communist Party" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "al-Haraka al-Wataniya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Jam'iyat al-Turath" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-
-set_politics = {
-	ruling_party = absolutism
-	last_election = "1971.12.2"
-	election_frequency = 120
-	elections_allowed = no
-}
-
-set_popularities = {
-	absolutism = 59
-	authoritarianism = 13
-	conservative = 10
-	autocracy = 8
-	fundamentalism = 5
-	centrist = 3
-	progressive = 1
-	ultranationalism = 1
-}
-
-
-
 #oob = ""
 
 # Starting tech
@@ -65,39 +16,20 @@ IF = {
 
 set_convoys = 5
 
-recruit_character = UAE_stc
-recruit_character = UAE_aco2
-recruit_character = UAE_aa2
-recruit_character = UAE_ncs
-recruit_character = UAE_nt
-recruit_character = UAE_acas
-recruit_character = UAE_acd2
-recruit_character = UAE_democratic_guy
-recruit_character = UAE_mt
-recruit_character = UAE_ai2
-recruit_character = UAE_coi
-recruit_character = UAE_acr
-recruit_character = UAE_pot
-recruit_character = UAE_awt
-recruit_character = UAE_communist_guy
-recruit_character = UAE_ncm
-recruit_character = UAE_acgs
-recruit_character = UAE_nccr
-recruit_character = UAE_fascist_guy
-recruit_character = UAE_ar
+
 
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -122,17 +54,15 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1936.1.1"
-#	election_frequency = 48
-#	elections_allowed = no
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 80
-#	reactionary = 20
-#}
+set_politics = {
+	ruling_party = centrist
+	last_election = "1936.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	centrist = 80
+	reactionary = 20
+}
 
 

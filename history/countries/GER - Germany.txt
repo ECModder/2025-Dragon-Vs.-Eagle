@@ -509,27 +509,27 @@ set_war_support = 0.3
 	# COMPLETING FOCUSES
 
 	# ONES THAT CAN JUST BE COMPLETED NORMALLY
-	complete_national_focus = GER_construct_the_reichsautobahn
-	complete_national_focus = GER_institute_price_controls
-	complete_national_focus = GER_fuhrerprinzip
-	complete_national_focus = GER_party_chancellor_bormann
-	complete_national_focus = GER_accelerate_the_rearmament_program
-	complete_national_focus = GER_kdf_wagen_factories
-	complete_national_focus = GER_develop_modern_maneuver_warfare
-	complete_national_focus = GER_adopt_new_panzer_doctrine
-	complete_national_focus = GER_coal_liquefaction
-	#complete_national_focus = GER_ascension_of_todt #He is getting kicked by Speer anyways
-	complete_national_focus = GER_ascension_of_speer #Since Speer kicks Todt out might as well complete his focus here
-	complete_national_focus = GER_establish_buna_werke
-	complete_national_focus = GER_expanding_the_luftwaffe
-	complete_national_focus = GER_aeronautical_research_institute
-	complete_national_focus = GER_concentrated_armament_program
-	complete_national_focus = GER_panzer_troops_school
-	complete_national_focus = GER_ascension_of_goebbels
-	complete_national_focus = GER_reorganize_the_wehrmacht
-	complete_national_focus = GER_advanced_panzer_research
-	complete_national_focus = GER_bribe_senior_officers
-	complete_national_focus = GER_befriend_japan
+	#complete_national_focus = GER_construct_the_reichsautobahn
+	#complete_national_focus = GER_institute_price_controls
+	#complete_national_focus = GER_fuhrerprinzip
+	#complete_national_focus = GER_party_chancellor_bormann
+	#complete_national_focus = GER_accelerate_the_rearmament_program
+	#complete_national_focus = GER_kdf_wagen_factories
+	#complete_national_focus = GER_develop_modern_maneuver_warfare
+	#complete_national_focus = GER_adopt_new_panzer_doctrine
+	#complete_national_focus = GER_coal_liquefaction
+	##complete_national_focus = GER_ascension_of_todt #He is getting kicked by Speer anyways
+	#complete_national_focus = GER_ascension_of_speer #Since Speer kicks Todt out might as well complete his focus here
+	#complete_national_focus = GER_establish_buna_werke
+	#complete_national_focus = GER_expanding_the_luftwaffe
+	#complete_national_focus = GER_aeronautical_research_institute
+	#complete_national_focus = GER_concentrated_armament_program
+	#complete_national_focus = GER_panzer_troops_school
+	#complete_national_focus = GER_ascension_of_goebbels
+	#complete_national_focus = GER_reorganize_the_wehrmacht
+	#complete_national_focus = GER_advanced_panzer_research
+	#complete_national_focus = GER_bribe_senior_officers
+	#complete_national_focus = GER_befriend_japan
 
 	# ONES THAT HAVE TO BE HANDELED MANUALLY
 	unlock_national_focus = GER_remilitarize_the_rhineland
@@ -598,7 +598,7 @@ set_war_support = 0.3
 	# DEAL WITH INNER CIRCLE STUFF
 	# Todt completes stuff and gets kicked later
 	set_country_flag = GER_todt_was_ascended_flag #Flag to prevent AI from taking the focus again after advisor has been replaced
-	complete_national_focus = GER_form_organization_todt
+	#complete_national_focus = GER_form_organization_todt
 
 	# Speer takes over
 	clr_country_flag = GER_speer_was_ascended_flag #Remove flag set by the focus to start over and set a new Days value below
@@ -607,7 +607,7 @@ set_war_support = 0.3
 		days = 1095 # Clear after ~3 years
 		value = 1
 	}
-	complete_national_focus = GER_employ_philipp_holzmann
+	#complete_national_focus = GER_employ_philipp_holzmann
 	#Leave the ME focus open so player can choose
 
 	#Goebbels completes everything
@@ -617,18 +617,18 @@ set_war_support = 0.3
 		days = 900 # Clear after ~2.5 years 
 		value = 1
 	}
-	complete_national_focus = GER_ministry_of_public_enlightenment
-	complete_national_focus = GER_fund_the_film_department
-	complete_national_focus = GER_propaganda_master
+	#complete_national_focus = GER_ministry_of_public_enlightenment
+	#complete_national_focus = GER_fund_the_film_department
+	#complete_national_focus = GER_propaganda_master
 	#Remove too much stability and WS
 	add_stability = -0.05
 	add_war_support = -0.05
 
 	#Bormann completes all three focuses (will be replaced by Himmler soon)
 	#Bormann's flag is already set by his focus, and on Historical the flag should be set permanently
-	complete_national_focus = GER_optimize_reich_labour_service
-	complete_national_focus = GER_glorify_party_rallies
-	complete_national_focus = GER_total_control_over_domestic_affairs
+	#complete_national_focus = GER_optimize_reich_labour_service
+	#complete_national_focus = GER_glorify_party_rallies
+	#complete_national_focus = GER_total_control_over_domestic_affairs
 	#Remove too much PP from focuses
 	add_political_power = -150
 
@@ -864,51 +864,7 @@ activate_mission = GER_mefo_bills_mission
 
 # Character Recruitment
 recruit_character = GER_olaf_scholz
-if = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	recruit_character = GER_jurgen_von_blumenthal
-	recruit_character = GER_hans_vogel
-	recruit_character = GER_adolf_friedrich_von_mecklenburg
-	recruit_character = GER_wilhelm_von_gayl
-	recruit_character = GER_andreas_hermes
-	recruit_character = GER_hans_luther
-	recruit_character = GER_hermann_erhardt
-	recruit_character = GER_dietrich_bonhoeffer
-	recruit_character = GER_oberste_heeresleitung_character
-	recruit_character = GER_franz_ritter_von_epp
-	recruit_character = GER_walter_ulbricht
-	if = {
-		limit = {
-			has_dlc = "La Resistance"
-		}
-		recruit_character = GER_wilhelm_zaisser
-	}
-	recruit_character = GER_otto_ruhle
-	recruit_character = GER_hermann_duncker
-	recruit_character = GER_august_thalheimer
-	recruit_character = GER_heinrich_brandler
-	recruit_character = GER_bernhard_bastlein
-	recruit_character = GER_vincenz_muller
-	recruit_character = GER_hans_kahle
-	recruit_character = GER_hans_marchwitza
-	recruit_character = GER_arno_von_lenski
-	recruit_character = GER_otto_strasser
-	recruit_character = GER_otto_grotewohl
 
-	recruit_character = GER_henrich_focke #Heli Scientist
-}
-
-if = {
-	limit = {
-		OR = {
-			has_dlc = "Gotterdammerung"
-			has_dlc = "No Step Back"
-		}
-	}
-	recruit_character = GER_karl_heinrich_emil_becker #Artillery Scientist
-}
 
 # Recruiting Starting Operatives
 if = {

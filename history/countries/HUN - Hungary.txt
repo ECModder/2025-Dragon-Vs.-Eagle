@@ -333,202 +333,16 @@ add_opinion_modifier = {
 }
 
 # SETUP HUNGARIAN POLITICS
-
-# DvE: HUN_miklos_horthy guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader.
-create_country_leader = { name = "HUN_miklos_horthy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: leader di partito reali al 2025.
-set_party_name = { ideology = totalitarian_socialism long_name = "Magyar Munkaspart" name = "Munkaspart" }
-set_party_name = { ideology = authoritarian_socialism long_name = "Magyar Szocialista Munkaspart" name = "MSZMP" }
-set_party_name = { ideology = vanguard_socialism long_name = "Voros Front" name = "Voros Front" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Szikra Mozgalom" name = "Szikra" }
-set_party_name = { ideology = progressive long_name = "Demokratikus Koalicio" name = "DK" }
-set_party_name = { ideology = centrist long_name = "Tisztelet es Szabadsag Part" name = "Tisza" }
-set_party_name = { ideology = conservative long_name = "Keresztenydemokrata Neppart" name = "KDNP" }
-set_party_name = { ideology = reactionary long_name = "Fidesz - Magyar Polgari Szovetseg" name = "Fidesz" }
-set_party_name = { ideology = authoritarianism long_name = "Alkotmanyvedelmi Hivatal" name = "AH" }
-set_party_name = { ideology = autocracy long_name = "Magyar Honvedseg Parancsnoksaga" name = "Honved" }
-set_party_name = { ideology = absolutism long_name = "Habsburg-Lotharingiai Haz" name = "Habsburg" }
-set_party_name = { ideology = ultranationalism long_name = "Mi Hazank Mozgalom" name = "Mi Hazank" }
-set_party_name = { ideology = fundamentalism long_name = "Magyar Katolikus Puspoki Konferencia" name = "MKPK" }
-
-create_country_leader = { name = "Viktor Orban" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-create_country_leader = { name = "Peter Magyar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Zsolt Semjen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
-create_country_leader = { name = "Ferenc Gyurcsany" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Laszlo Toroczkai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Andras Feher" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
-create_country_leader = { name = "Magyar Munkaspart" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Voros Front" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Magyar Szocialista Munkaspart" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
-create_country_leader = { name = "Karl von Habsburg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "General Gabor Boroendi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Erdo Peter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
-create_country_leader = { name = "Alkotmanyvedelmi Hivatal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-
 set_politics = {
-	ruling_party = reactionary
-	last_election = "2022.4.3"
+	ruling_party = centrist
+	last_election = "1935.3.31"
 	election_frequency = 48
 	elections_allowed = yes
 }
-
 set_popularities = {
-	reactionary = 38
-	centrist = 30
-	progressive = 10
-	ultranationalism = 8
-	conservative = 6
-	fundamentalism = 3
-	authoritarianism = 2
-	totalitarian_socialism = 2
-	absolutism = 1
+	centrist = 69
+	reactionary = 31
 }
-
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = centrist
-#	last_election = "1935.3.31"
-#	election_frequency = 48
-#	elections_allowed = yes
-#}
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	centrist = 69
-#	reactionary = 31
-#}
-
-# RECRUITING HUNGARIAN CHARACTERS
-IF = {
-	limit = {
-		NOT = {
-			has_dlc = "Gotterdammerung"
-		}
-	}
-	recruit_character = HUN_miklos_horthy
-	recruit_character = HUN_matyas_rakosi
-	recruit_character = HUN_arpad_szakasits
-	recruit_character = HUN_geza_lakatos
-	recruit_character = HUN_ivan_hindy
-	recruit_character = HUN_karoly_beregfy
-	recruit_character = HUN_lajos_veress
-	recruit_character = HUN_ferenc_feketehalmyczeydner
-	recruit_character = HUN_istvan_szechenyi
-	recruit_character = HUN_francois_deak
-	recruit_character = HUN_gyorgy_jendrassik
-	recruit_character = HUN_jeno_ratz
-	recruit_character = HUN_henrik_werth
-	recruit_character = HUN_hugo_sonyi
-	recruit_character = HUN_ferenc_szombathelyi
-	recruit_character = HUN_gusztav_jany
-	recruit_character = HUN_dezso_laszlo
-	recruit_character = HUN_reszo_kastner
-	recruit_character = HUN_shvoy_kalman
-	recruit_character = HUN_sandor_magyarossy
-	recruit_character = HUN_bela_rakosi
-	recruit_character = HUN_kalman_kanya
-	recruit_character = HUN_jozsef_szell
-	recruit_character = HUN_vilmos_roder
-	recruit_character = HUN_zoltan_tildy
-	recruit_character = HUN_laszlo_rajk
-	recruit_character = HUN_kalman_daranyi
-	recruit_character = HUN_lajos_remenyi_schneller
-	recruit_character = HUN_gusztav_gratz
-	recruit_character = HUN_gyula_gombos_de_jakfa
-	recruit_character = HUN_otto_von_habsburg
-	recruit_character = HUN_franz_friedrich
-	recruit_character = HUN_franz_anton_bach
-}
-IF = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	recruit_character = HUN_miklos_horthy
-	recruit_character = HUN_matyas_rakosi
-	recruit_character = HUN_arpad_szakasits
-	recruit_character = HUN_geza_lakatos
-	recruit_character = HUN_ivan_hindy
-	recruit_character = HUN_karoly_beregfy
-	recruit_character = HUN_lajos_veress
-	recruit_character = HUN_ferenc_feketehalmyczeydner
-	recruit_character = HUN_gyorgy_jendrassik
-	recruit_character = HUN_jeno_ratz
-	recruit_character = HUN_henrik_werth
-	recruit_character = HUN_hugo_sonyi
-	recruit_character = HUN_ferenc_szombathelyi
-	recruit_character = HUN_gusztav_jany
-	recruit_character = HUN_dezso_laszlo
-	recruit_character = HUN_shvoy_kalman
-	recruit_character = HUN_sandor_magyarossy
-	recruit_character = HUN_kalman_kanya
-	recruit_character = HUN_jozsef_szell
-	recruit_character = HUN_vilmos_roder
-	recruit_character = HUN_zoltan_tildy
-	recruit_character = HUN_laszlo_rajk
-	recruit_character = HUN_kalman_daranyi
-	recruit_character = HUN_lajos_remenyi_schneller
-	recruit_character = HUN_gusztav_gratz
-	recruit_character = HUN_gyula_gombos_de_jakfa
-	recruit_character = HUN_otto_von_habsburg
-	recruit_character = HUN_franz_friedrich
-	recruit_character = HUN_bela_kun
-	recruit_character = HUN_joseph_august_von_habsburg
-	recruit_character = HUN_istvan_horthy
-	recruit_character = HUN_ferenc_szalasi
-	recruit_character = HUN_mihaly_karolyi
-	recruit_character = HUN_janos_zichy
-	recruit_character = HUN_carl_wilhelm
-	recruit_character = HUN_vilmos_nagy
-	recruit_character = HUN_jozsef_bajnoczy
-	recruit_character = HUN_karoly_bartha
-	recruit_character = HUN_dome_sztojay
-	recruit_character = HUN_laszlo_hary
-	recruit_character = HUN_jeno_oszkar_ruszkay
-	recruit_character = HUN_janos_voros
-	recruit_character = HUN_lajos_csatay
-	recruit_character = HUN_sandor_gyorffy_bengyel
-	recruit_character = HUN_zoltan_decleva
-	recruit_character = HUN_elemer_gorondy_novak
-	recruit_character = HUN_bela_miklos
-	recruit_character = HUN_kocsard_janky
-	recruit_character = HUN_antal_freiherr
-	recruit_character = HUN_bela_imredy
-	recruit_character = HUN_pal_teleki
-	recruit_character = HUN_ferenc_fischer
-	recruit_character = HUN_erno_gero
-	recruit_character = HUN_fidel_palffy
-	recruit_character = HUN_istvan_friedrich
-	recruit_character = HUN_magdolna_purgly
-	recruit_character = HUN_sandor_garbai
-	recruit_character = HUN_istvan_bethlen
-	recruit_character = HUN_gyula_kadar
-	recruit_character = HUN_imre_nagy
-	recruit_character = HUN_miklos_horthy_jr
-	recruit_character = HUN_pal_kiraly
-	recruit_character = HUN_janos_kadar
-	recruit_character = HUN_lennart_bernadotte
-	recruit_character = HUN_pal_pronay
-	recruit_character = HUN_imre_kemeri_nagy
-	recruit_character = HUN_jusztinian_seredi
-	recruit_character = HUN_vasyl_vyshyvanyi
-	recruit_character = HUN_jozsef_kelen
-	recruit_character = HUN_hermann_pokorny
-	recruit_character = HUN_dezso_magos
-	recruit_character = HUN_kalman_hardy
-	recruit_character = HUN_franz_anton_bach
-	recruit_character = HUN_hermann_goring
-	recruit_character = HUN_asboth_oszkar # Helis only exist if you have the dlc
-}
-
-#Scientists always recruited
-recruit_character = HUN_nicholas_straussler
-recruit_character = HUN_leo_szilard
-recruit_character = HUN_john_von_neumann
-recruit_character = HUN_edward_teller
-recruit_character = HUN_laszlo_varga
 
 
 # HIRES THE STARTING PM
@@ -597,23 +411,23 @@ add_breakthrough_progress = {
 			limit = {
 				has_dlc = "Death or Dishonor"
 			}
-			complete_national_focus = HUN_economic_intervention
-			complete_national_focus = HUN_secret_rearmament
-			complete_national_focus = HUN_war_games
-			complete_national_focus = HUN_theoretical_air_efforts
-			complete_national_focus = HUN_trade_deal_with_germany
-			complete_national_focus = HUN_joint_aluminum_mining_company
-			complete_national_focus = HUN_reaffirm_territorial_claims
-			complete_national_focus = HUN_announce_the_gyor_program
-			complete_national_focus = HUN_civilian_industry
-			complete_national_focus = HUN_reintegrate_the_railroads
-			complete_national_focus = HUN_invite_foreign_investors
-			complete_national_focus = HUN_bled_agreement
-			complete_national_focus = HUN_army_maneuvers
-			complete_national_focus = HUN_establish_the_air_force
-			complete_national_focus = HUN_demand_southern_slovakia
-			complete_national_focus = HUN_mobile_focus
-			complete_national_focus = HUN_license_foreign_designs
+			#complete_national_focus = HUN_economic_intervention
+			#complete_national_focus = HUN_secret_rearmament
+			#complete_national_focus = HUN_war_games
+			#complete_national_focus = HUN_theoretical_air_efforts
+			#complete_national_focus = HUN_trade_deal_with_germany
+			#complete_national_focus = HUN_joint_aluminum_mining_company
+			#complete_national_focus = HUN_reaffirm_territorial_claims
+			#complete_national_focus = HUN_announce_the_gyor_program
+			#complete_national_focus = HUN_civilian_industry
+			#complete_national_focus = HUN_reintegrate_the_railroads
+			#complete_national_focus = HUN_invite_foreign_investors
+			#complete_national_focus = HUN_bled_agreement
+			#complete_national_focus = HUN_army_maneuvers
+			#complete_national_focus = HUN_establish_the_air_force
+			#complete_national_focus = HUN_demand_southern_slovakia
+			#complete_national_focus = HUN_mobile_focus
+			#complete_national_focus = HUN_license_foreign_designs
 			
 			#Handle this manually
 			unlock_national_focus = HUN_renounce_the_treaty_of_trianon
@@ -692,24 +506,24 @@ add_breakthrough_progress = {
 		# COMPLETING FOCUSES
 
 		# ONES THAT CAN JUST BE COMPLETED NORMALLY
-		complete_national_focus = wuw_HUN_continue_the_regency
-		complete_national_focus = wuw_HUN_strengthen_horthys_reign
-		complete_national_focus = wuw_HUN_economic_intervention
-		complete_national_focus = wuw_HUN_reintigrate_the_imperial_railroads
-		complete_national_focus = wuw_HUN_hold_war_games
-		complete_national_focus = wuw_HUN_expand_the_ganz_muvek
-		complete_national_focus = wuw_HUN_pass_statute_xix
-		complete_national_focus = wuw_HUN_undercover_air_maneuvers
-		complete_national_focus = wuw_HUN_spur_on_the_trianon_trauma
-		complete_national_focus = wuw_HUN_promote_increased_urbanization
-		complete_national_focus = wuw_HUN_absolute_rule_of_the_national_unity_party
-		complete_national_focus = wuw_HUN_reestablish_the_rongyos_garda
-		complete_national_focus = wuw_HUN_the_hungarian_life_and_renewal_party
-		complete_national_focus = wuw_HUN_make_the_magyar_legiero_known
-		complete_national_focus = wuw_HUN_act_of_defense
-		complete_national_focus = wuw_HUN_initiate_army_maneuvers
-		complete_national_focus = wuw_HUN_form_the_gyorshadtest
-		complete_national_focus = wuw_HUN_invest_in_ludovica_academy
+		#complete_national_focus = wuw_HUN_continue_the_regency
+		#complete_national_focus = wuw_HUN_strengthen_horthys_reign
+		#complete_national_focus = wuw_HUN_economic_intervention
+		#complete_national_focus = wuw_HUN_reintigrate_the_imperial_railroads
+		#complete_national_focus = wuw_HUN_hold_war_games
+		#complete_national_focus = wuw_HUN_expand_the_ganz_muvek
+		#complete_national_focus = wuw_HUN_pass_statute_xix
+		#complete_national_focus = wuw_HUN_undercover_air_maneuvers
+		#complete_national_focus = wuw_HUN_spur_on_the_trianon_trauma
+		#complete_national_focus = wuw_HUN_promote_increased_urbanization
+		#complete_national_focus = wuw_HUN_absolute_rule_of_the_national_unity_party
+		#complete_national_focus = wuw_HUN_reestablish_the_rongyos_garda
+		#complete_national_focus = wuw_HUN_the_hungarian_life_and_renewal_party
+		#complete_national_focus = wuw_HUN_make_the_magyar_legiero_known
+		#complete_national_focus = wuw_HUN_act_of_defense
+		#complete_national_focus = wuw_HUN_initiate_army_maneuvers
+		#complete_national_focus = wuw_HUN_form_the_gyorshadtest
+		#complete_national_focus = wuw_HUN_invest_in_ludovica_academy
 
 		# ONES THAT HAVE TO BE HANDELED MANUALLY
 		unlock_national_focus = wuw_HUN_secret_rearmament
