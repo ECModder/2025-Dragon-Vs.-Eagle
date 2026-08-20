@@ -197,15 +197,15 @@ ideas = {
 
 			modifier = {
 				trade_opinion_factor = 0.25
-				democratic_acceptance = -300
-				communism_acceptance = 100
+				#f = -300
+				#f = 100
 				#custom_modifier_tooltip = SOV_shocked_by_surprise_attack_cant_join_factions_tt
 			}
 		}
 		
 		TO_nato_ratified = {
 
-			picture = generic_democratic_drift_bonus
+			picture = generic_#f_bonus
 
 			removal_cost = -1
 
@@ -215,7 +215,7 @@ ideas = {
 
 			modifier = {
 				operative_slot = 1
-				communism_acceptance = -15
+				#f = -15
 			}
 		}
 		
@@ -225,9 +225,7 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 
 			removal_cost = -1
 
@@ -235,7 +233,7 @@ ideas = {
 
 			
 			modifier = {
-				fascism_drift = 0.1
+				#f = 0.1
 			}
 		}
 		MTG_TEST_NAVAL_IDEA = { #MTG_TODO_GABRIEL: remove before shipping
@@ -262,9 +260,7 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 
 			removal_cost = -1
 
@@ -272,7 +268,7 @@ ideas = {
 			
 			modifier = {
 				#justify_war_goal_time = -0.25
-				communism_drift = 0.1
+				#f = 0.1
 			}
 		}
 
@@ -282,17 +278,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_fascism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				fascism_drift = 0.1
-				fascism_acceptance = 65
+				#f = 0.1
+				#f = 65
 			}
 		}
 
@@ -302,17 +296,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_fascism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				fascism_drift = 0.25
-				fascism_acceptance = 150
+				#f = 0.25
+				#f = 150
 				drift_defence_factor = -0.25
 
 			}
@@ -325,17 +317,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_communism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				communism_drift = 0.1
-				communism_acceptance = 85
+				#f = 0.1
+				#f = 85
 			}
 		}
 
@@ -346,17 +336,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = democratic
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_democratic_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				democratic_drift = 0.1
-				democratic_acceptance = 85
+				#f = 0.1
+				#f = 85
 			}
 		}
 		
@@ -365,17 +353,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = neutrality
-			}
+			
 
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
 			
 			modifier = {
-				neutrality_drift = 0.1
-				neutrality_acceptance = 85
+				#f = 0.1
+				#f = 85
 			}
 		}
 
@@ -387,17 +373,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_fascism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				fascism_drift = 0.1
-				fascism_acceptance = 35
+				#f = 0.1
+				#f = 35
 			}
 		}
 		
@@ -408,17 +392,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_communism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				communism_drift = 0.1
-				communism_acceptance = 35
+				#f = 0.1
+				#f = 35
 			}
 		}
 
@@ -429,17 +411,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = democratic
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_democratic_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				democratic_drift = 0.1
-				democratic_acceptance = 35
+				#f = 0.1
+				#f = 35
 			}
 		}
 
@@ -450,17 +430,15 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = neutrality
-			}
+			
 
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
 			
 			modifier = {
-				neutrality_drift = 0.1
-				neutrality_acceptance = 35
+				#f = 0.1
+				#f = 35
 			}
 		}
 		
@@ -473,16 +451,16 @@ ideas = {
 				OR = {
 					AND = {
 						tag = GER
-						has_government = fascism
+						#f
 						SOV = {
-							has_government = communism
+							#f
 						}
 					}
 					AND = {
 						tag = SOV
-						has_government = communism
+						#f
 						GER = {
-							has_government = fascism
+							#f
 						}
 					}
 				}
@@ -521,8 +499,8 @@ ideas = {
 			
 			modifier = {
 				custom_modifier_tooltip = GER_dimantle_faction_tt
-				communism_acceptance = 100
-				fascism_acceptance = 100
+				#f = 100
+				#f = 100
 			}
 		}
 		
@@ -533,16 +511,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_communism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				communism_drift = 0.1
+				#f = 0.1
 			}
 		}
 		# from decision
@@ -553,16 +529,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_communism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				communism_drift = 0.1
+				#f = 0.1
 				research_speed_factor = 0.035
 			}
 		}
@@ -594,16 +568,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_fascism_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				fascism_drift = 0.1
+				#f = 0.1
 				experience_gain_army = 0.1
 			}
 		}
@@ -615,16 +587,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = democratic
-			}
+			
 
 			removal_cost = -1
 
-			picture = generic_democratic_drift_bonus
+			picture = generic_#f_bonus
 			
 			modifier = {
-				democratic_drift = 0.1
+				#f = 0.1
 				stability_factor = 0.1
 			}
 		}
@@ -634,16 +604,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = neutrality
-			}
+			
 
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
 			
 			modifier = {
-				neutrality_drift = 0.1
+				#f = 0.1
 				mobilization_speed = 0.15
 			}
 		}
@@ -674,16 +642,14 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 		
 			removal_cost = -1
 
 			picture = generic_pp_unity_bonus
 
 			modifier = {
-				democratic_drift = -0.02
+				#f = -0.02
 			}
 		}
 	
@@ -694,13 +660,11 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = democratic
-			}
+			
 			
 			removal_cost = -1
 
-			picture = generic_democratic_drift_bonus
+			picture = generic_#f_bonus
 	
 			modifier = {
 				trade_opinion_factor = 0.2
@@ -714,9 +678,7 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = fascism
-			}
+			
 			
 			removal_cost = -1
 
@@ -737,8 +699,8 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = communism
-					has_government = fascism
+					#f
+					#f
 				}
 			}
 			
@@ -761,8 +723,8 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = communism
-					has_government = fascism
+					#f
+					#f
 				}
 			}
 			
@@ -785,8 +747,8 @@ ideas = {
 
 			allowed_civil_war = {
 				OR = {
-					has_government = communism
-					has_government = fascism
+					#f
+					#f
 				}
 			}
 			
@@ -833,9 +795,7 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = communism
-			}
+			
 			
 			removal_cost = -1
 
@@ -853,9 +813,7 @@ ideas = {
 				always = no
 			}
 
-			allowed_civil_war = {
-				has_government = neutrality
-			}
+			
 
 			cancel = {
 				has_war = yes
@@ -982,12 +940,12 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT = {
-					has_government = communism
+					#f
 				}
 			}
 
 			modifier = {
-				communism_drift = -0.05
+				#f = -0.05
 			}
 		}
 
@@ -1001,12 +959,12 @@ ideas = {
 
 			allowed_civil_war = {
 				NOT = {
-					has_government = fascism
+					#f
 				}
 			}
 
 			modifier = {
-				fascism_drift = -0.05
+				#f = -0.05
 			}
 		}
 

@@ -1,0 +1,24 @@
+faction_goal_building_up_guam = {
+	name = building_up_guam_goal_name
+	description = building_up_guam_goal_desc
+	category = short_term
+	group = FOCUS_FILTER_CONSOLIDATION
+	visible = {
+		FROM = { tag = USA}
+	}
+	cancel = { 
+		FROM = { NOT = { controls_state = 638 } }
+	}
+	completed = {
+		638 = { naval_base > 2 }
+	}
+	complete_effect = {
+		add_faction_power_projection = 100 
+		custom_effect_tooltip = THE_FACTION_LEADER
+		add_faction_initiative = 1
+		add_war_support = 0.02
+	}
+	ai_will_do = {
+		base = 10
+	}
+}
