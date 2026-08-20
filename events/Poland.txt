@@ -250,7 +250,16 @@ id = POL_european_balance
     add_ideas = closed_economy
 
 set_party_name = { ideology = ultranationalism long_name = "RECLAMATION GOVERMENT" name = "RG" }
-
+set_party_name = { ideology = revolutionary_socialism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = progressive long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = centrist long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = conservative long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = reactionary long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = authoritarianism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = autocracy long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = absolutism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = fundamentalism long_name = POL_outlawed_party_long name = POL_outlawed_party } 
+set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_long name = POL_outlawed_party } 
     add_manpower = 30000
 
     85 = {
@@ -313,3 +322,49 @@ set_party_name = { ideology = ultranationalism long_name = "RECLAMATION GOVERMEN
 	}
 	}
 	}
+			country_event = {
+	id = polandos.10
+	title = polandos.10.t
+	desc = polandos.10.d
+
+	is_triggered_only = yes
+	option = {
+		name = "everyone! Vote for him!"
+		add_political_power = 20
+}
+
+	}
+				country_event = {
+	id = polandos.11
+	title = polandos.11.t
+	desc = polandos.11.d
+
+	is_triggered_only = yes
+	option = {
+		name = "#lestbeclosertoeurope!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = -0.05
+}
+}
+
+	}
+	country_event = {
+	id = polandos.12
+	title = polandos.12.t
+	desc = polandos.12.d
+
+	is_triggered_only = yes
+	option = {
+		name = "WE NEED TO HIDE EVERYTHING!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = -0.12
+}
+add_stability = -0.10
+}
+
+	}
+	

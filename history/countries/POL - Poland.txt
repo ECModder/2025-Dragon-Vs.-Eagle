@@ -1,7 +1,6 @@
 ﻿capital = 10
 
-set_party_name = { ideology = totalitarian_socialism long_name = "Komunistyczna Partia Polski" name = "KPP" }
-set_party_name = { ideology = vanguard_socialism long_name = "Partia Robotnicza" name = "PR" }
+set_party_name = { ideology = totalitarian_socialism long_name = POL_outlawed_party_long name = POL_outlawed_party }
 set_party_name = { ideology = revolutionary_socialism long_name = "Polska Partia Socjalistyczna" name = "PPS" }
 set_party_name = { ideology = progressive long_name = "Lewica" name = "Lewica" }
 set_party_name = { ideology = centrist long_name = "Koalicja Obywatelska" name = "KO" }
@@ -11,7 +10,8 @@ set_party_name = { ideology = authoritarianism long_name = "Obóz Narodowo-Radyk
 set_party_name = { ideology = autocracy long_name = "Rada Ocalenia Narodowego" name = "RON" }
 set_party_name = { ideology = absolutism long_name = "Konfederacja Polski Niepodległej" name = "KPN" }
 set_party_name = { ideology = ultranationalism long_name = "Ruch Narodowy" name = "RN" }
-set_party_name = { ideology = fundamentalism long_name = "Zjednoczenie Chrześcijańsko-Narodowe" name = "ZChN" }
+set_party_name = { ideology = fundamentalism long_name = "Zjednoczenie Chrześcijańsko-Narodowe" name = "ZChN" } 
+set_party_name = { ideology = revolutionary_socialism long_name = POL_BANNED_party_long name = POL_BANNED_party } 
 
 
 	add_ideas = {
@@ -19,64 +19,27 @@ set_party_name = { ideology = fundamentalism long_name = "Zjednoczenie Chrześci
 		POL_anti_ukr_support
 		POL_new_heart
 	}
-# ==================== CUSTOM DVE MOD INJECTION ====================
-# DvE: leader di partito reali al 2025.
-create_country_leader = { name = "Donald Tusk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Jaroslaw Kaczynski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-create_country_leader = { name = "Wladyslaw Kosiniak-Kamysz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
-create_country_leader = { name = "Wlodzimierz Czarzasty" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Adrian Zandberg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
-create_country_leader = { name = "Krzysztof Bosak" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Komunistyczna Partia Polski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Partia Robotnicza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Oboz Narodowo-Radykalny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
-create_country_leader = { name = "General Wieslaw Kukula" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Konfederacja Polski Niepodleglej" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Arcybiskup Tadeusz Wojda" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
-
 set_politics = {
-	ruling_party = centrist
-	last_election = "2023.10.15"
-	election_frequency = 48
+	ruling_party = conservative
+	last_election = "2020.8.6"
+	election_frequency = 58
 	elections_allowed = yes
 }
 
 set_popularities = {
-	centrist = 31
-	conservative = 28
-	ultranationalism = 13
-	progressive = 9
-	reactionary = 8
-	revolutionary_socialism = 4
-	fundamentalism = 4
-	authoritarianism = 2
 	totalitarian_socialism = 1
+	vanguard_socialism = 1
+	revolutionary_socialism = 3
+	progressive = 9
+	centrist = 31
+	conservative = 35
+	reactionary = 7
+	authoritarianism = 4
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 5
+	fundamentalism = 2
 }
-
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_politics = {
-#	ruling_party = conservative
-#	last_election = "2020.8.6"
-#	election_frequency = 58
-#	elections_allowed = yes
-#}
-
-# DvE: disattivato - sovrascriveva il governo del 2025.
-#set_popularities = {
-#	totalitarian_socialism = 1
-#	vanguard_socialism = 1
-#	revolutionary_socialism = 3
-#	progressive = 9
-#	centrist = 31
-#	conservative = 35
-#	reactionary = 7
-#	authoritarianism = 4
-#	autocracy = 1
-#	absolutism = 1
-#	ultranationalism = 5
-#	fundamentalism = 2
-#}
 
 # leaders #
 recruit_character = POL_Andzrej_Duda
