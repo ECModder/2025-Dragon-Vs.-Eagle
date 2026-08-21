@@ -56,7 +56,7 @@ if = {
 
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Kombinowana Partia Wolności" name = "KPW" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Kombinowana Partia Wolności" name = "KPW" }
 set_party_name = { ideology = vanguard_socialism long_name = "Ruch Czerwonych Partyzantów" name = "RCP" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Front Wyzwolenia Robotniczego" name = "FWR" }
 set_party_name = { ideology = progressive long_name = "Sojusz Postępowych Bojowników" name = "SPB" }
@@ -70,6 +70,9 @@ set_party_name = { ideology = ultranationalism long_name = "Front Radykalnej Akc
 set_party_name = { ideology = fundamentalism long_name = "Święte Przymierze Bojowników" name = "ŚPB" }
 
 create_country_leader = { name = "Nestor Czarny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = putinism }
+# DvE: Nestor Czarny guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Nestor Czarny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Mikołaj Wolny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
 create_country_leader = { name = "Janusz Skrzydło" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
 create_country_leader = { name = "Ataman Groźny" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
@@ -82,7 +85,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 5
+	totalitarian_socialism = 5
 	vanguard_socialism = 10
 	revolutionary_socialism = 15
 	progressive = 5

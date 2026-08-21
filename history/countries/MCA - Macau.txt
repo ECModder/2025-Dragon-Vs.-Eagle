@@ -1,5 +1,54 @@
 ﻿capital = 729
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = totalitarian_socialism long_name = "Macau Communist Committee" name = "MCC" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Liaison Office of the Central People's Government" name = "Liaison Office" }
+set_party_name = { ideology = vanguard_socialism long_name = "Macau Workers' Vanguard" name = "MWV" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Macau Labour Front" name = "MLF" }
+set_party_name = { ideology = progressive long_name = "New Macau Association" name = "ANM" }
+set_party_name = { ideology = centrist long_name = "Macau United Citizens Association" name = "UPM" }
+set_party_name = { ideology = conservative long_name = "Union for Development" name = "UPD" }
+set_party_name = { ideology = reactionary long_name = "Macau Federation of Trade Unions" name = "FAOM" }
+set_party_name = { ideology = authoritarianism long_name = "Gabinete do Chefe do Executivo" name = "Chefe do Executivo" }
+set_party_name = { ideology = autocracy long_name = "Macau Garrison of the PLA" name = "PLA Macau" }
+set_party_name = { ideology = absolutism long_name = "Restauracao Portuguesa de Macau" name = "Restauracao" }
+set_party_name = { ideology = ultranationalism long_name = "Macau Patriotic Front" name = "MPF" }
+set_party_name = { ideology = fundamentalism long_name = "Conselho dos Templos de Macau" name = "Templos" }
+
+create_country_leader = { name = "Sam Hou Fai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Ho Iat Seng" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = technocracy }
+create_country_leader = { name = "Kou Hoi In" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Sulu Sou" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Agnes Lam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Leong Sun Iok" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Macau Communist Committee" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Liaison Office" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = xi_jinping_thought }
+create_country_leader = { name = "General Xu Yong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2024.10.13"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 44
+	conservative = 18
+	authoritarian_socialism = 12
+	progressive = 10
+	centrist = 8
+	reactionary = 5
+	autocracy = 2
+	totalitarian_socialism = 1
+}
+
+
+
+
+
+
+
 set_technology = {
 	infantry_weapons = 1
 }
@@ -10,14 +59,16 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 
-set_politics = {
-	ruling_party = totalitarian_communism
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = totalitarian_socialism
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
 set_popularities = {
 	centrist = 24
-	totalitarian_communism = 75
+	totalitarian_socialism = 75
 	reactionary = 1
 }

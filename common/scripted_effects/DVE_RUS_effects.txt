@@ -1,0 +1,504 @@
+# ============================================================
+#   DvE - la fine della Russia
+#
+#   Due effetti, in sequenza cronologica.
+#
+#   1) RUS_lost_war_settlement_effect
+#      Il trattato che chiude la guerra d'Ucraina quando finisce
+#      male (sconfitta o pace bianca): Kursk e Belgorod all'Ucraina
+#      insieme ai territori occupati nel 2022 e alla Crimea,
+#      Sachalin e Curili al Giappone, Kaliningrad all'ONU.
+#      Va chiamato dall'evento di fine guerra, PRIMA di caricare
+#      l'albero post-sconfitta.
+#
+#   2) RUS_second_civil_war_effect
+#      Il timeout della crisi di successione
+#      (common/decisions/RUS_succession_crisis.txt).
+#
+#   PERCHE' NON start_civil_war
+#   start_civil_war accetta ideology/size/states/capital ma NON un
+#   tag: creerebbe nazioni dinamiche (D01, D02...) invece di SOV,
+#   RUR e NRE. Qui i tag vengono attivati davvero, ricevono
+#   territorio e cores e dichiarano guerra.
+#
+#   SPARTIZIONE (confini esatti dati dai dev)
+#     SOV "RSR" - Tver, Pskov, Novgorod, Leningrado, Carelia,
+#                 Murmansk, Daghestan, Volgograd, Saratov, Perm,
+#                 Mordovia, Chuvascia, Tatarstan, Udmurtia,
+#                 Chelyabinsk, Bashkortostan, Tuva, Buriazia,
+#                 Irkutsk, Penza, Ulyanovsk, Voronezh
+#     RUR "RDR" - Sverdlovsk, Kurgan, Tyumen, Jugra, Jamalia,
+#                 Krasnojarsk, Khakassia, Altai
+#     NRE "RUE" - Jacuzia, Magadan, Chukotka, Kamchatka,
+#                 Khabarovsk, Primorye, Oblast ebraica, Amur
+#     KUB       - Krasnodar
+#     KAL       - Kalmykia
+#     CIN       - Cecenia-Inguscezia (gia' sua) + Kabardino-Balkaria
+#     RUS       - tutto il resto
+#
+#   NOTA: il tag KAM (Kamchatka) resta definito ma non viene piu'
+#   usato: la Kamchatka e la Chukotka vanno a NRE.
+#
+#   Governo, popolarita' e stabilita' di SOV/RUR/NRE NON vengono
+#   forzati qui: restano quelli dei rispettivi file in
+#   history/countries/, cosi' basta modificare quelli.
+# ============================================================
+
+
+# ============================================================
+#   1) IL TRATTATO - le tre zone smilitarizzate
+# ============================================================
+RUS_lost_war_settlement_effect = {
+
+	set_country_flag = RUS_lost_war_settlement
+
+	add_stability = -0.15
+	add_war_support = -0.20
+
+	# ---------- l'Ucraina si riprende tutto e prende la DMZ ----------
+	#   I quattro oblast occupati nel 2022 tornano indietro, la Crimea
+	#   con loro, e la Russia cede in piu' Belgorod e Rostov come zona
+	#   smilitarizzata.
+	#   NOTA: Belgorod in HOI4 non e' uno stato a se': la sua provincia
+	#   (9449) sta dentro il 240 (Voronezh), quindi la DMZ si prende
+	#   tutto il 240.
+	UKR = {
+		transfer_state = 196   # Kherson
+		transfer_state = 200   # Zaporizhzhia
+		transfer_state = 227   # Donetsk
+		transfer_state = 228   # Luhansk
+		transfer_state = 137   # Crimea
+		transfer_state = 220   # Kursk
+		transfer_state = 240   # Belgorod
+
+		add_state_core = 196
+		add_state_core = 200
+		add_state_core = 227
+		add_state_core = 228
+		add_state_core = 137
+		add_state_claim = 220
+		add_state_claim = 240
+	}
+
+	# ---------- DMZ giapponese: Sachalin e Curili ----------
+	JAP = {
+		transfer_state = 537   # Sachalin del sud
+		transfer_state = 655   # Sachalin del nord
+		transfer_state = 555   # Curili
+		add_state_claim = 537
+		add_state_claim = 655
+		add_state_claim = 555
+	}
+
+	# ---------- zona di sicurezza ONU di Kaliningrad ----------
+	UNK = {
+		transfer_state = 763   # Konigsberg
+		add_state_core = 763
+		set_capital = { state = 763 }
+	}
+
+	# Mosca non rinuncia a niente sulla carta
+	add_state_claim = 196
+	add_state_claim = 200
+	add_state_claim = 227
+	add_state_claim = 228
+	add_state_claim = 137
+	add_state_claim = 220
+	add_state_claim = 240
+	add_state_claim = 537
+	add_state_claim = 655
+	add_state_claim = 763
+}
+
+
+# ============================================================
+#   2) LA SECONDA GUERRA CIVILE RUSSA
+# ============================================================
+
+RUS_second_civil_war_effect = {
+
+	set_country_flag = RUS_second_civil_war
+	clr_country_flag = RUS_pd_succession_open
+
+	add_stability = -0.25
+	add_war_support = 0.10
+	set_country_flag = DVE_civil_war_active
+
+	# Con il paese che si spacca il governo passa ai servizi:
+	# Bortnikov e l'FSB al posto della presidenza personale di Putin.
+	set_politics = {
+		ruling_party = authoritarianism
+		elections_allowed = no
+	}
+	add_popularity = { ideology = authoritarianism popularity = 0.25 }
+	add_popularity = { ideology = autocracy popularity = -0.15 }
+	add_popularity = { ideology = reactionary popularity = -0.10 }
+
+	# Le 28 divisioni di riservisti mobilitate per l'Ucraina si sciolgono
+	# quando lo stato crolla: a Mosca restano le 40 di professionisti.
+	delete_unit_template_and_units = { division_template = "Strelkovaya Diviziya" }
+
+	# I depositi cadono con le province: Mosca svuota i magazzini e
+	# riparte con la stessa quota delle altre, un terzo di quella di SOV.
+	add_equipment_to_stockpile = { type = infantry_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = motorized_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = artillery_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = support_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = fighter_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = CAS_equipment_1 amount = -999999 }
+	add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1666 }
+	add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 833 }
+	add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 833 }
+	add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 1666 }
+	add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 333 }
+	add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 333 }
+	add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 333 }
+	add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 333 }
+	add_equipment_to_stockpile = { type = support_equipment_1 amount = 333 }
+	add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 83 }
+	add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 83 }
+
+	# ========================================================
+	#   SOV / "RSR" - i socialisti
+	#   Nord-ovest europeo (da Murmansk a Tver), medio Volga,
+	#   Urali del sud, Daghestan e la fascia Tuva-Buriazia-Irkutsk.
+	# ========================================================
+	SOV = {
+		transfer_state = 213   # Murmansk
+		transfer_state = 147   # Salla
+		transfer_state = 722   # Petsamo
+		transfer_state = 216   # Carelia - Petrozavodsk
+		transfer_state = 215   # Carelia orientale
+		transfer_state = 146   # istmo careliano
+		transfer_state = 195   # Leningrado
+		transfer_state = 244   # Volkhov
+		transfer_state = 264   # Tikhvin
+		transfer_state = 208   # Luga
+		transfer_state = 263   # Novgorod
+		transfer_state = 209   # Pskov
+		transfer_state = 210   # Velikiye Luki
+		transfer_state = 247   # Tver
+		transfer_state = 246   # Rzhev
+		transfer_state = 260   # Voronezh
+		transfer_state = 255   # Penza (comprende la Mordovia)
+		transfer_state = 250   # Ulyanovsk
+		transfer_state = 256   # Chuvascia
+		transfer_state = 249   # Tatarstan
+		transfer_state = 399   # Udmurtia
+		transfer_state = 651   # Bashkortostan
+		transfer_state = 572   # Chelyabinsk
+		transfer_state = 573   # Zlatoust
+		transfer_state = 582   # Magnitogorsk
+		transfer_state = 217   # Volgograd
+		transfer_state = 265   # Mikhaylovka
+		transfer_state = 239   # Saratov
+		transfer_state = 401   # Balakovo
+		transfer_state = 829   # Engels
+		transfer_state = 232   # Daghestan - Makhachkala
+		transfer_state = 251   # Kuybyshev / Samara
+		transfer_state = 652   # Orenburg
+		# --- stati che nel test restavano a Mosca ---
+		transfer_state = 218   # Rostov
+		transfer_state = 238   # Volgodonsk / Salsk
+		transfer_state = 245   # Millerovo
+		transfer_state = 235   # Stavropol
+		transfer_state = 236   # Astrakhan
+		transfer_state = 403   # Tyumen
+		transfer_state = 654   # Repubblica dell'Altai - Oyrot
+		transfer_state = 563   # Chita
+		transfer_state = 565   # Bodaybo
+		transfer_state = 329   # Tuva
+		transfer_state = 564   # Buriazia - Ulan Ude
+		transfer_state = 566   # Irkutsk
+		transfer_state = 567   # Irkutsk
+		transfer_state = 575   # Irkutsk
+
+		set_capital = { state = 195 }
+		load_focus_tree = { tree = SOV_civil_war_focus keep_completed = no }
+		load_oob = "SOV_civil_war"
+		set_country_flag = DVE_civil_war_active
+		add_manpower = 200000
+
+		set_technology = {
+			infantry_weapons = 1
+			infantry_weapons1 = 1
+			militia_tech = 1   # serve: 'militia' e' active = no senza
+			motorised_infantry = 1
+			mechanised_infantry = 1
+			basic_light_tank = 1
+			basic_medium_tank = 1
+			gw_artillery = 1
+			interwar_artillery = 1
+			interwar_antitank = 1
+			interwar_antiair = 1
+			tech_support = 1
+			tech_engineers = 1
+			tech_recon = 1
+			tech_logistics_company = 1
+			tech_military_police = 1
+			early_fighter = 1
+		}
+		if = {
+			limit = { has_dlc = "No Step Back" }
+			set_technology = {
+				gwtank_chassis = 1
+				basic_light_tank_chassis = 1
+				basic_medium_tank_chassis = 1
+			}
+		}
+
+		# dotazione piena: SOV e' la fazione meglio armata, tre volte le altre
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 5000 }
+		add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 2500 }
+		add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 2500 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 5000 }
+		add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 1000 }
+		add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 1000 }
+		add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 1000 }
+		add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 1000 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 1000 }
+		add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 250 }
+		add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 250 }
+	}
+
+	# ========================================================
+	#   RUR / "RDR" - i democratici
+	#   Urali del nord e Siberia occidentale.
+	# ========================================================
+	RUR = {
+		transfer_state = 653   # Sverdlovsk
+		transfer_state = 581   # Urali settentrionali
+		transfer_state = 397   # Komi - Syktyvkar
+		transfer_state = 262   # Pechora
+		transfer_state = 577   # Surgut
+		transfer_state = 825   # Nenetsia - Naryan Mar
+		transfer_state = 398   # Perm
+		transfer_state = 570   # Novosibirsk
+		transfer_state = 571   # Omsk
+		transfer_state = 578   # Tomsk
+		transfer_state = 580   # Jugra - Khanty-Mansiysk
+		transfer_state = 579   # Jamalia - Salekhard
+		transfer_state = 824   # Jamalia
+		transfer_state = 568   # Krasnojarsk
+		transfer_state = 576   # Krasnojarsk
+		transfer_state = 516   # Tajmyr - Dudinka
+		transfer_state = 878   # Tajmyr - Khatanga
+		transfer_state = 569   # Khakassia - Abakan
+		transfer_state = 40    # Altai - Barnaul
+
+		set_capital = { state = 653 }
+		load_oob = "RUR_civil_war"
+		set_country_flag = DVE_civil_war_active
+		add_manpower = 120000
+
+		set_technology = {
+			infantry_weapons = 1
+			infantry_weapons1 = 1
+			militia_tech = 1   # serve: 'militia' e' active = no senza
+			motorised_infantry = 1
+			mechanised_infantry = 1
+			basic_light_tank = 1
+			basic_medium_tank = 1
+			gw_artillery = 1
+			interwar_artillery = 1
+			interwar_antitank = 1
+			interwar_antiair = 1
+			tech_support = 1
+			tech_engineers = 1
+			tech_recon = 1
+			tech_logistics_company = 1
+			tech_military_police = 1
+			early_fighter = 1
+		}
+		if = {
+			limit = { has_dlc = "No Step Back" }
+			set_technology = {
+				gwtank_chassis = 1
+				basic_light_tank_chassis = 1
+				basic_medium_tank_chassis = 1
+			}
+		}
+
+		# un terzo della dotazione sovietica
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1666 }
+		add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 833 }
+		add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 833 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 1666 }
+		add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 83 }
+		add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 83 }
+	}
+
+	# ========================================================
+	#   NRE / "RUE" - i bianchi
+	#   Jacuzia ed Estremo Oriente.
+	# ========================================================
+	NRE = {
+		transfer_state = 574   # Jacuzia - Yakutsk
+		transfer_state = 644   # Jacuzia - Srednekolymsk
+		transfer_state = 876   # Jacuzia - Udachny
+		transfer_state = 877   # Jacuzia - Verkhoyansk
+		transfer_state = 874   # Magadan
+		transfer_state = 562   # Ochotsk
+		transfer_state = 822   # Chukotka - Anadyr
+		transfer_state = 875   # Chukotka - Lavrentiya
+		transfer_state = 637   # Kamchatka
+		transfer_state = 409   # Khabarovsk
+		transfer_state = 408   # Primorye - Vladivostok
+		transfer_state = 560   # Amur
+		transfer_state = 561   # Amur
+		transfer_state = 657   # Oblast autonoma ebraica
+
+		set_capital = { state = 409 }
+		load_oob = "NRE_civil_war"
+		set_country_flag = DVE_civil_war_active
+		add_manpower = 90000
+
+		set_technology = {
+			infantry_weapons = 1
+			infantry_weapons1 = 1
+			militia_tech = 1   # serve: 'militia' e' active = no senza
+			motorised_infantry = 1
+			mechanised_infantry = 1
+			basic_light_tank = 1
+			basic_medium_tank = 1
+			gw_artillery = 1
+			interwar_artillery = 1
+			interwar_antitank = 1
+			interwar_antiair = 1
+			tech_support = 1
+			tech_engineers = 1
+			tech_recon = 1
+			tech_logistics_company = 1
+			tech_military_police = 1
+			early_fighter = 1
+		}
+		if = {
+			limit = { has_dlc = "No Step Back" }
+			set_technology = {
+				gwtank_chassis = 1
+				basic_light_tank_chassis = 1
+				basic_medium_tank_chassis = 1
+			}
+		}
+
+		# un terzo della dotazione sovietica
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1666 }
+		add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 833 }
+		add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 833 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 1666 }
+		add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 333 }
+		add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 83 }
+		add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 83 }
+	}
+
+	# ========================================================
+	#   LE REPUBBLICHE DEL CAUCASO
+	#   Se ne vanno e non stanno con nessuno.
+	# ========================================================
+	KUB = {
+		transfer_state = 234   # Krasnodar, Novorossijsk, Maykop
+		transfer_state = 233   # costa e montagne del Kuban - Sochi
+		add_state_core = 234
+		add_state_core = 233
+		set_capital = { state = 234 }
+		load_oob = "KUB_civil_war"
+		add_manpower = 20000
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1200 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 200 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 150 }
+	}
+
+	KAL = {
+		transfer_state = 237   # Kalmykia - Elista
+		add_state_core = 237
+		set_capital = { state = 237 }
+		load_oob = "KAL_civil_war"
+		add_manpower = 8000
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1200 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 200 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 150 }
+	}
+
+	# CIN possiede gia' lo stato 821 (Cecenia-Inguscezia) come puppet
+	# di Mosca: qui si stacca e prende la Kabardino-Balkaria.
+	CIN = {
+		transfer_state = 827   # Kabardino-Balkaria - Nalchik
+		add_state_core = 827
+		set_capital = { state = 821 }
+		load_oob = "CIN_civil_war"
+		add_manpower = 12000
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 1200 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 200 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 150 }
+	}
+
+	# ========================================================
+	#   LE GUERRE
+	# ========================================================
+	# I sette paesi socialisti si offrono di mandare volontari a SOV
+	# (common/scripted_effects/DVE_international_brigades.txt)
+	SOV_international_brigades_effect = yes
+
+	# ========================================================
+	#   IL CSTO SI SVUOTA
+	#   Nessuno resta in un'alleanza militare con un paese che si
+	#   sta sparando addosso: alla fine nel patto c'e' solo Mosca.
+	# ========================================================
+	remove_from_faction = BLR
+	remove_from_faction = KAZ
+	remove_from_faction = KYR
+	remove_from_faction = TAJ
+	remove_from_faction = ARM
+	remove_from_faction = ABK
+	remove_from_faction = TNS
+	remove_from_faction = NOA
+	remove_from_faction = CIN
+
+	end_puppet = CIN
+
+	declare_war_on = { target = SOV type = annex_everything }
+	declare_war_on = { target = RUR type = annex_everything }
+	declare_war_on = { target = NRE type = annex_everything }
+
+	SOV = { declare_war_on = { target = RUR type = annex_everything } }
+	SOV = { declare_war_on = { target = NRE type = annex_everything } }
+	RUR = { declare_war_on = { target = NRE type = annex_everything } }
+
+	KUB = { declare_war_on = { target = RUS type = annex_everything } }
+	KUB = { declare_war_on = { target = SOV type = annex_everything } }
+	KUB = { declare_war_on = { target = RUR type = annex_everything } }
+	KUB = { declare_war_on = { target = NRE type = annex_everything } }
+
+	KAL = { declare_war_on = { target = RUS type = annex_everything } }
+	KAL = { declare_war_on = { target = SOV type = annex_everything } }
+	KAL = { declare_war_on = { target = RUR type = annex_everything } }
+	KAL = { declare_war_on = { target = NRE type = annex_everything } }
+
+	CIN = { declare_war_on = { target = RUS type = annex_everything } }
+	CIN = { declare_war_on = { target = SOV type = annex_everything } }
+	CIN = { declare_war_on = { target = RUR type = annex_everything } }
+	CIN = { declare_war_on = { target = NRE type = annex_everything } }
+
+	# ========================================================
+	#   CON CHI STA MOSCA
+	#   Due ore dopo lo scoppio il governo deve decidere: restare
+	#   solo contro tutti e tre, o fare pace con una fazione e
+	#   combattere le altre due al suo fianco.
+	#   (events/DVE_civil_war_events.txt)
+	# ========================================================
+	country_event = { id = dve_civilwar.1 hours = 2 }
+}

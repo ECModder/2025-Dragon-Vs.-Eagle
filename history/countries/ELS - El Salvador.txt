@@ -15,27 +15,7 @@ if = {
 	}
 }
 
-recruit_character = ELS_maximiliano_hernández_martínez
-recruit_character = ELS_victoriano_ubico
-recruit_character = ELS_benito_ubico
-recruit_character = ELS_bartolomé_vasconcelos
-recruit_character = ELS_hector_escobar_serrano
-recruit_character = ELS_milton_andrade_cabrera
-recruit_character = ELS_humbert_aberle
-recruit_character = ELS_horacio_carnejo_ibanez
-recruit_character = ELS_osmin_aguirre_y_salinas
-recruit_character = ELS_reinaldo_galindo_pohl
-recruit_character = ELS_mauro_espinola_castro
-recruit_character = ELS_jose_angel_castillo
-recruit_character = ELS_manuel_de_jesus_cordova
-recruit_character = ELS_augustin_farabundo_marti
-recruit_character = ELS_manuel_jose_maria_lemus_lopez
-recruit_character = ELS_raul_rodolfi_sanchez
-recruit_character = ELS_ricardo_abrego_abrego
-recruit_character = ELS_humberto_costa
-recruit_character = ELS_oscar_a_bolanos
-recruit_character = ELS_salvador_castaneda_castro
-recruit_character = ELS_jose_maria_cuellar
+
 
 
 set_country_flag = monroe_doctrine
@@ -47,15 +27,15 @@ set_convoys = 5
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	oob = "ELS_1939"
 	set_technology = {
@@ -91,7 +71,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista Salvadoreño" name = "PCS" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista Salvadoreño" name = "PCS" }
 set_party_name = { ideology = vanguard_socialism long_name = "Frente Farabundo Martí para la Liberación Nacional" name = "FMLN" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Vamos - Izquierda" name = "VAMOS-I" }
 set_party_name = { ideology = progressive long_name = "Nuestro Tiempo" name = "NT" }
@@ -105,6 +85,9 @@ set_party_name = { ideology = ultranationalism long_name = "Cruzada Pro-Patria" 
 set_party_name = { ideology = fundamentalism long_name = "Partido Demócrata Cristiano" name = "PDC" }
 
 create_country_leader = { name = "Nayib Bukele" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2029.6.1" ideology = putinism }
+# DvE: Nayib Bukele guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Nayib Bukele" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Carlos Calleja" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Manuel Flores" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Claudia Ortiz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
@@ -117,7 +100,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 4
 	revolutionary_socialism = 3
 	progressive = 5

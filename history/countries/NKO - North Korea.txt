@@ -1,5 +1,53 @@
 ﻿capital = 527
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Choson Rodongdang" name = "Juche" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Choson Rodongdang Chungangwiwonhoe" name = "Rodongdang" }
+set_party_name = { ideology = vanguard_socialism long_name = "Kimilsungjuui-Kimjongiljuui Yonguso" name = "Kimilsungjuui" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Chollima Undong" name = "Chollima" }
+set_party_name = { ideology = progressive long_name = "Choson Sahoeminjudang" name = "Sahoeminju" }
+set_party_name = { ideology = centrist long_name = "Chondoist Chongudang" name = "Chondoist" }
+set_party_name = { ideology = conservative long_name = "Kimilsung-Kimjongil Chongnyon Tongmaeng" name = "Chongnyon" }
+set_party_name = { ideology = reactionary long_name = "Nongop Kunjung Tongmaeng" name = "Nongopgun" }
+set_party_name = { ideology = authoritarianism long_name = "Kukka Powiseong" name = "Kukka Powibu" }
+set_party_name = { ideology = autocracy long_name = "Choson Inmingun Chongchammobu" name = "Chongchamo" }
+set_party_name = { ideology = absolutism long_name = "Paektu Hyoltong" name = "Paektu" }
+set_party_name = { ideology = ultranationalism long_name = "Kangsong Taeguk Undong" name = "Kangsong" }
+set_party_name = { ideology = fundamentalism long_name = "Chondogyo Chungang" name = "Chondogyo" }
+
+create_country_leader = { name = "Kim Jong-un" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = juche }
+create_country_leader = { name = "Choe Ryong-hae" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Kim Tok-hun" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Pak Thae-song" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Kim Yong-dae" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ryu Mi-yong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = reformist_socialism }
+create_country_leader = { name = "No Kwang-chol" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Ri Chang-dae" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = securocracy }
+create_country_leader = { name = "Kim Yo-jong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+create_country_leader = { name = "Paektu Hyoltong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Kangsong Taeguk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Chondogyo Chungang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+
+set_politics = {
+	ruling_party = totalitarian_socialism
+	last_election = "2019.3.10"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 61
+	authoritarian_socialism = 17
+	autocracy = 9
+	vanguard_socialism = 5
+	absolutism = 4
+	progressive = 2
+	ultranationalism = 2
+}
+
+
+
 # Starting tech
 set_technology = {
 	infantry_weapons = 1
@@ -10,14 +58,16 @@ set_grand_doctrine = mass_assault
 
 set_convoys = 5
 
-set_politics = {
-	ruling_party = totalitarian_communism
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
-set_popularities = {
-	centrist = 10
-	reactionary = 40
-	totalitarian_communism = 50
-}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_politics = {
+#	ruling_party = totalitarian_socialism
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
+# DvE: disattivato - sovrascriveva il governo del 2025.
+#set_popularities = {
+#	centrist = 10
+#	reactionary = 40
+#	totalitarian_socialism = 50
+#}

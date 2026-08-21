@@ -1,0 +1,332 @@
+# ============================================================
+#   DvE - la guerra civile giorno per giorno
+#
+#   Menu comune alle quattro fazioni principali: RUS, SOV, RUR e
+#   NRE. Si apre con la bandiera DVE_civil_war_active, che
+#   RUS_second_civil_war_effect mette a tutte e quattro (e che si
+#   puo' alzare a mano con la decisione di DEBUG).
+#
+#   Tutto costa punti politici: in guerra civile il tempo del
+#   governo e' la risorsa che scarseggia davvero.
+#
+#   La milizia usa il template "Territorialnoye Opolcheniye", che
+#   esiste in tutti gli ordini di battaglia delle quattro fazioni
+#   (history/units/*_civil_war.txt e RUS_2025.txt). Le unita'
+#   nascono nella capitale della fazione, indicata esplicitamente.
+# ============================================================
+
+DVE_civil_war_category = {
+
+	# ==========================================================
+	#   MILIZIA TERRITORIALE
+	# ==========================================================
+	# ==========================================================
+	#   MILIZIA TERRITORIALE
+	#
+	#   Meccanica presa da Kaiserredux (ACW_Recruitment_Decisions):
+	#     - la decisione e' MIRATA su uno stato che controlli, non
+	#       generica: scegli tu da dove chiamare gli uomini
+	#     - non e' istantanea, ci mette dei giorni (days_remove).
+	#       Alla scadenza scatta remove_effect e la milizia compare
+	#       nello stato da cui l'hai chiamata
+	#     - una bandiera di paese impedisce di averne due in corso
+	#       insieme: si recluta in un posto alla volta
+	#     - una bandiera di stato con @ROOT segna lo stato come gia'
+	#       spremuto, cosi' ogni provincia da' uomini una volta sola
+	#     - il template viene creato al volo se non esiste
+	#       (division_template dentro un hidden_effect), quindi non
+	#       dipende piu' dall'ordine di battaglia
+	# ==========================================================
+	DVE_cw_raise_militia = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		# Senza state_target = yes il gioco non riconosce la decisione come
+		# mirata su uno stato e non la mostra proprio: era il motivo per cui
+		# "Raise the Territorial Militia" spariva dal menu.
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+
+		target_array = ROOT.owned_states
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = { has_state_flag = DVE_militia_raised_@ROOT }
+			}
+		}
+
+		available = {
+			has_political_power > 24
+			has_manpower > 2999
+			NOT = { has_country_flag = DVE_is_raising_militia }
+		}
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cancel_trigger = {
+			NOT = { has_country_flag = DVE_civil_war_active }
+		}
+
+		cost = 25
+		fire_only_once = no
+		days_remove = 15
+
+		complete_effect = {
+			set_country_flag = DVE_is_raising_militia
+			FROM = { set_state_flag = DVE_militia_raising_@ROOT }
+		}
+
+		remove_effect = {
+			clr_country_flag = DVE_is_raising_militia
+			FROM = {
+				clr_state_flag = DVE_militia_raising_@ROOT
+				set_state_flag = DVE_militia_raised_@ROOT
+			}
+			add_manpower = -3000
+			add_war_support = 0.02
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Territorialnoye Opolcheniye" } }
+					division_template = {
+						name = "Territorialnoye Opolcheniye"
+						division_names_group = SOV_GAR_01
+						regiments = {
+							militia = { x = 0 y = 0 }  militia = { x = 0 y = 1 }  militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }  militia = { x = 1 y = 1 }  militia = { x = 1 y = 2 }
+						}
+					}
+				}
+				FROM = {
+					create_unit = {
+						division = "name = \"Opolcheniye\" division_template = \"Territorialnoye Opolcheniye\" start_experience_factor = 0.10 start_equipment_factor = 0.50"
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+					create_unit = {
+						division = "name = \"Opolcheniye\" division_template = \"Territorialnoye Opolcheniye\" start_experience_factor = 0.10 start_equipment_factor = 0.50"
+						owner = ROOT
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = { base = 30 }
+	}
+
+	# --- la leva di massa resta generale, ma occupa lo stesso slot ---
+	DVE_cw_mass_levy = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = {
+			has_political_power > 119
+			has_manpower > 19999
+			NOT = { has_country_flag = DVE_is_raising_militia }
+		}
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cancel_trigger = {
+			NOT = { has_country_flag = DVE_civil_war_active }
+		}
+
+		cost = 120
+		fire_only_once = no
+		days_remove = 20
+
+		complete_effect = {
+			set_country_flag = DVE_is_raising_militia
+		}
+
+		remove_effect = {
+			clr_country_flag = DVE_is_raising_militia
+			add_manpower = -20000
+			add_stability = -0.05
+			add_war_support = 0.05
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Territorialnoye Opolcheniye" } }
+					division_template = {
+						name = "Territorialnoye Opolcheniye"
+						division_names_group = SOV_GAR_01
+						regiments = {
+							militia = { x = 0 y = 0 }  militia = { x = 0 y = 1 }  militia = { x = 0 y = 2 }
+							militia = { x = 1 y = 0 }  militia = { x = 1 y = 1 }  militia = { x = 1 y = 2 }
+						}
+					}
+				}
+				capital_scope = {
+					create_unit = {
+						division = "name = \"Opolcheniye\" division_template = \"Territorialnoye Opolcheniye\" start_experience_factor = 0.05 start_equipment_factor = 0.40"
+						owner = ROOT
+						count = 5
+						allow_spawning_on_enemy_provs = yes
+					}
+				}
+			}
+		}
+
+		ai_will_do = { base = 20 }
+	}
+
+	# ==========================================================
+	#   REQUISIZIONI
+	# ==========================================================
+	DVE_cw_requisition_food = {
+
+		icon = GFX_decision_generic_arrest
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 39 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 40
+		fire_only_once = no
+		days_re_enable = 15
+
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 2000 }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 200 }
+			add_stability = -0.06
+		}
+
+		ai_will_do = { base = 25 }
+	}
+
+	DVE_cw_seize_industry = {
+
+		icon = GFX_decision_generic_construction
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 69 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 70
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			capital_scope = {
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_stability = -0.04
+		}
+
+		ai_will_do = { base = 15 }
+	}
+
+	DVE_cw_seize_transport = {
+
+		icon = GFX_decision_generic_construction
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 34 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 20
+
+		complete_effect = {
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 400 }
+			add_equipment_to_stockpile = { type = train_equipment_1 amount = 20 }
+			add_stability = -0.03
+		}
+
+		ai_will_do = { base = 15 }
+	}
+
+	# ==========================================================
+	#   CONSENSO
+	#   Ogni fazione spinge le proprie ideologie.
+	# ==========================================================
+	DVE_cw_rally_support = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 59 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 15
+
+		complete_effect = {
+			if = {
+				limit = { tag = SOV }
+				add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+				add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+				add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+				add_popularity = { ideology = revolutionary_socialism popularity = 0.02 }
+			}
+			else_if = {
+				limit = { tag = RUR }
+				add_popularity = { ideology = progressive popularity = 0.04 }
+				add_popularity = { ideology = centrist popularity = 0.04 }
+				add_popularity = { ideology = conservative popularity = 0.03 }
+			}
+			else_if = {
+				limit = { tag = RUS }
+				add_popularity = { ideology = reactionary popularity = 0.04 }
+				add_popularity = { ideology = authoritarianism popularity = 0.04 }
+				add_popularity = { ideology = autocracy popularity = 0.03 }
+			}
+			else_if = {
+				limit = { tag = NRE }
+				add_popularity = { ideology = absolutism popularity = 0.04 }
+				add_popularity = { ideology = ultranationalism popularity = 0.04 }
+				add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			}
+			add_stability = 0.03
+		}
+
+		ai_will_do = { base = 25 }
+	}
+
+	# ==========================================================
+	#   ORDINE PUBBLICO
+	# ==========================================================
+	DVE_cw_shoot_deserters = {
+
+		icon = GFX_decision_generic_arrest
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 44 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 45
+		fire_only_once = no
+		days_re_enable = 20
+
+		complete_effect = {
+			add_war_support = 0.06
+			add_stability = -0.05
+			army_experience = 15
+		}
+
+		ai_will_do = { base = 10 }
+	}
+
+	DVE_cw_open_the_arsenals = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+
+		available = { has_political_power > 99 }
+		visible = { has_country_flag = DVE_civil_war_active }
+
+		cost = 100
+		fire_only_once = yes
+
+		complete_effect = {
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 12000 }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 300 }
+			army_experience = 25
+		}
+
+		ai_will_do = { base = 40 }
+	}
+}

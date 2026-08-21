@@ -1,0 +1,53 @@
+capital = 608
+
+# ============================================================
+#   CHINESE COMMUNIST REPUBLIC (CCR)
+#
+#   maoist Fazione of the Chinese CivilWar.
+#   Non esiste a inizio partita: nasce da eventi/decisioni.
+# ============================================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "CCP(l)" long_name = "CCP - New Left" }
+set_party_name = { ideology = authoritarian_socialism name = "CCP(c)" long_name = "CCP - Centralist" }
+set_party_name = { ideology = vanguard_socialism name = "Soviet Politburo" long_name = "Politburo of the Chinese Soviet" }
+set_party_name = { ideology = revolutionary_socialism name = "Red Guards" long_name = "Red Guard Movement" }
+set_party_name = { ideology = progressive name = "Democratic League" long_name = "China Democratic League" }
+set_party_name = { ideology = centrist name = "Revolutionary Kuomintang" long_name = "Revolutionary Committee of the Kuomintang" }
+set_party_name = { ideology = conservative name = "Kuomintang" long_name = "Kuomintang" }
+set_party_name = { ideology = reactionary name = "Beiyang Clique" long_name = "Beiyang Restorationists" }
+set_party_name = { ideology = authoritarianism name = "General Staff" long_name = "PLA General Staff Department" }
+set_party_name = { ideology = autocracy name = "MSS" long_name = "Ministry of State Security" }
+set_party_name = { ideology = absolutism name = "Qing Restoration" long_name = "Qing Restoration Society" }
+set_party_name = { ideology = ultranationalism name = "Blue Shirts" long_name = "Blue Shirts Society" }
+set_party_name = { ideology = fundamentalism name = "Taiping Society" long_name = "Taiping Restoration Society" }
+
+set_politics = {
+	ruling_party = totalitarian_socialism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 50
+	authoritarian_socialism = 10
+	vanguard_socialism = 12
+	revolutionary_socialism = 5
+	progressive = 3
+	centrist = 3
+	conservative = 4
+	reactionary = 2
+	authoritarianism = 6
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 5
+	fundamentalism = 0
+}
+
+set_stability = 0.60
+set_war_support = 0.60
+set_research_slots = 3
+
+# === leader ===
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_central_committee.dds" expire = "2100.1.1" ideology = maoism }

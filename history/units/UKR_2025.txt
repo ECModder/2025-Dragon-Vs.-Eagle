@@ -1,0 +1,107 @@
+# ============================================================
+#   UCRAINA - schieramento 1.1.2025
+#
+#   40 brigate lungo il fronte con la Russia, dal confine di Sumy
+#   fino a Mykolaiv. La composizione segue i rapporti di forza
+#   reali (Statista, terreno): poche unita' corazzate, molta
+#   fanteria e difesa territoriale.
+# ============================================================
+
+division_template = {
+	name = "Okrema Mekhanizovana Bryhada"
+	division_names_group = UKR_MEC_01
+	regiments = {
+		mechanized = { x = 0 y = 0 }  mechanized = { x = 0 y = 1 }  mechanized = { x = 0 y = 2 }
+		motorized  = { x = 1 y = 0 }  motorized  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Okrema Motopikhotna Bryhada"
+	division_names_group = UKR_MOT_01
+	regiments = {
+		motorized = { x = 0 y = 0 }  motorized = { x = 0 y = 1 }  motorized = { x = 0 y = 2 }
+		infantry  = { x = 1 y = 0 }  infantry  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  anti_tank = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Okrema Pikhotna Bryhada"
+	division_names_group = UKR_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  anti_tank = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Bryhada Terytorialnoi Oborony"
+	division_names_group = UKR_GAR_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Okrema Tankova Bryhada"
+	division_names_group = UKR_MEC_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }  light_armor = { x = 0 y = 1 }
+		mechanized  = { x = 1 y = 0 }  mechanized  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = { location = 418 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 3409 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 3508 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 3531 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 6530 division_template = "Okrema Tankova Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 6554 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 9531 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 9556 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 11397 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 11461 division_template = "Okrema Tankova Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 11541 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 418 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
+	division = { location = 453 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 472 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 486 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 6423 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 9419 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 9433 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 9463 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 9479 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 11422 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
+	division = { location = 463 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 501 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 522 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 3225 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 3455 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 3520 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 6565 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 9477 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
+	division = { location = 409 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
+	division = { location = 574 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
+	division = { location = 3403 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
+	division = { location = 3755 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
+	division = { location = 6597 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
+	division = { location = 511 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
+	division = { location = 559 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
+	division = { location = 3557 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
+	division = { location = 238 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
+	division = { location = 546 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
+	division = { location = 3480 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
+}

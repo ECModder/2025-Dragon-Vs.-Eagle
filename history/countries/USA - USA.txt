@@ -55,12 +55,35 @@ set_variable = { var = representatives_total value = 435 }
 set_variable = { var = quorum_low value = 39 }
 set_variable = { var = quorum_medium value = 49 }
 set_variable = { var = quorum_high value = 58 }
+set_variable = { var = USA.libertarian_influence value = 15	}
+set_variable = { var = USA.maga_influence value = 40	}
+set_variable = { var = USA.centre_republicans_influence value = 25 }
+set_variable = { var = USA.monarchist_influence value = 3	}
+set_variable = { var = USA.fascist_influence value = 5	}
+set_variable = { var = USA.us_army_influence value = 4	}
+set_variable = { var = USA.neo_liberal_influence value = 35	}
+set_variable = { var = USA.progressive_influence value = 25	}
+set_variable = { var = USA.socialist_influence value = 15	}
+set_variable = { var = USA.communist_influence value = 8	}
+set_variable = { var = USA.anarchist_influence value = 2	}
 USA_recalc_congress_icon_frames = yes
 
-USA = {
-	country_event = { id = usa.50 days = 2 }
-	country_event = { id = usa.51 days = 2 }
-}
+
+create_country_leader = { name = "Jackson Daniel Hinkle" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_hinkle.dds" expire = "2100.1.1" ideology = jacobinism }
+create_country_leader = { name = "Gloria Estela La Riva" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_riva.dds" expire = "2070.1.1" ideology = sovietism }
+create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = trotskyism }
+create_country_leader = { name = "Alexandria Ocasio-Cortez" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_AOC.dds" expire = "2120.1.1" ideology = social_democracy }
+create_country_leader = { name = "kamala harris" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_harris.dds" expire = "2075.1.1" ideology = ultra_liberalism }
+create_country_leader = { name = "J.D. Vance" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_vance.dds" expire = "2075.1.1" ideology = americanism }
+create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2045.1.1" ideology = paternalism }
+create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2500.1.1" ideology = oligarchy }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = putinism }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_dds" expire = "2075.1.1" ideology = fascist }
+create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = religious_nationalism }
+
+
 
 # Starting tech
 set_technology = {
@@ -271,20 +294,20 @@ set_convoys = 700
 
 
 set_politics = {
-	ruling_party = progressive
-	last_election = "1932.11.8"
+	ruling_party = centrist
+	last_election = "2024.11.8"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	totalitarian_communism = 1
+	totalitarian_socialism = 1
 	vanguard_socialism = 2
 	revolutionary_socialism = 1
-	progressive = 25
-	centrist = 21
+	progressive = 10
+	centrist = 36
 	conservative = 13
-	reactionary = 13
-	authoritarianism = 19
+	reactionary = 28
+	authoritarianism = 4
 	autocracy = 2
 	absolutism = 1
 	ultranationalism = 1
@@ -302,20 +325,18 @@ add_ideas = {
 
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = centrist
-		last_election = "1936.11.3"
-		election_frequency = 48
-		elections_allowed = yes
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1936.11.3"
+#		election_frequency = 48
+#		elections_allowed = yes
+#	}
 }
 
 recruit_character = USA_joe_biden
 
-if = {
-	limit = { not = { has_dlc = "No Compromise, No Surrender" } }
-	recruit_character = USA_jonathan_wainwright
-}
 
 if = {
 	limit = { has_dlc = "La Resistance" }

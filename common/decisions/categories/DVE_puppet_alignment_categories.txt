@@ -1,0 +1,20 @@
+DVE_puppet_alignment_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 80
+
+	# visible_when_empty = yes di proposito: cosi' la categoria si vede
+	# anche prima di avere satelliti, invece di sparire senza spiegazione.
+	visible_when_empty = yes
+
+	allowed = {
+		OR = { tag = ITA  tag = SOV }
+	}
+
+	visible = {
+		OR = {
+			has_government = vanguard_socialism
+			has_government = revolutionary_socialism
+		}
+	}
+}

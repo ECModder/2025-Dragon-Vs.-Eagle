@@ -13,10 +13,10 @@
 ideologies = {
 
     # ============================================================
-    #   TOTALITARIAN COMMUNISM
-    #   GFX base: GFX_ideology_totalitarian_communism_icon
+    #   TOTALITARIAN SOCIALISM
+    #   GFX base: GFX_ideology_totalitarian_socialism_icon
     # ============================================================
-    totalitarian_communism = {
+    totalitarian_socialism = {
         types = {
             # GFX: GFX_ideology_maoism_icon
             maoism = {}
@@ -27,41 +27,17 @@ ideologies = {
             # GFX: GFX_ideology_chekist_communism_icon
             chekist_communism = {}
 
-            # GFX: GFX_ideology_socialist_military_junta_icon
-            socialist_military_junta = {}
-
             # GFX: GFX_ideology_jacobinism_icon
             jacobinism = {}
 
-            # GFX: GFX_ideology_transhumanist_icon
-            transhumanist = {}
-
             # GFX: GFX_ideology_ transhumanistanarchoprimitivism_icon
             transhumanistanarchoprimitivism = {}
-
-            # GFX: GFX_ideology_market_socialism_icon
-            market_socialism = {}
-
-            # GFX: GFX_ideology_xi_jinping_thought_icon
-            xi_jinping_thought = {}
-
-            # GFX: GFX_ideology_left_nationalism_icon
-            left_nationalism = {}
 
             # GFX: GFX_ideology_juche_icon
             juche = {}
 
             # GFX: GFX_ideology_Pol_Pot_Thought_icon
             Pol_Pot_Thought = {}
-
-            # GFX: GFX_ideology_DDR_icon
-            Deutsche_Communism = {}
-
-            # GFX: GFX_ideology_maximalism_icon
-            maximalism = {}
-
-            # GFX: GFX_ideology_anarchoprimitivism_icon
-            anarchoprimitivism = {}
         }
 
         dynamic_faction_names = {
@@ -79,6 +55,73 @@ ideologies = {
 
 
         ai_ideology_wanted_units_factor = 1.10
+    }
+
+    # ============================================================
+    #   AUTHORITARIAN SOCIALISM
+    #   GFX base: GFX_ideology_authoritarian_socialism_group
+    #
+    #   Il socialismo di stato "gestionale": partito unico, mercato
+    #   tollerato, niente rivoluzione permanente. Sta fra il
+    #   totalitarismo e l'avanguardismo.
+    #   NOTA: ogni sottoideologia puo' stare in UN SOLO gruppo. Qui
+    #   dentro ci sono anche transhumanist e left_nationalism, che
+    #   quindi NON devono ricomparire sotto totalitarian_socialism.
+    # ============================================================
+    authoritarian_socialism = {
+        types = {
+            # GFX: GFX_ideology_sovietism_icon
+            sovietism = {}
+
+            # GFX: GFX_ideology_authoritarian_communism_icon
+            authoritarian_communism = {}
+
+            # GFX: GFX_ideology_Workerism_icon
+            Workerism = {}
+
+            # GFX: GFX_ideology_transhumanist_icon
+            transhumanist = {}
+
+             # GFX: GFX_ideology_socialist_military_junta_icon
+            socialist_military_junta = {}
+
+            # GFX: GFX_ideology_left_nationalism_icon
+            left_nationalism = {}
+
+            # GFX: GFX_ideology_market_socialism_icon
+            market_socialism = {}
+
+            # GFX: GFX_ideology_xi_jinping_thought_icon
+            xi_jinping_thought = {}
+
+            # GFX: GFX_ideology_DDR_icon
+            Deutsche_Communism = {}
+
+            # GFX: GFX_ideology_deutsche_conservatorist_socialism_icon
+            deutsche_conservatorist_socialism = {}
+
+            # GFX: GFX_ideology_maximalism_icon
+            maximalism = {}
+
+            # GFX: GFX_ideology_anarchoprimitivism_icon
+            anarchoprimitivism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_AUTHSOC_1"
+            "FACTION_AUTHSOC_2"
+        }
+
+        color = { 150 25 25 }
+
+        war_impact_on_world_tension = 0.45
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = no
+
+
+        ai_ideology_wanted_units_factor = 1.08
     }
 
 
@@ -133,6 +176,7 @@ ideologies = {
 
             # GFX: GFX_ideology_syndicalism_icon
             syndicalism = {}
+
             # GFX: GFX_ideology_nasserism_icon
             nasserism = {}
 
@@ -222,6 +266,7 @@ ideologies = {
 
             # GFX: GFX_ideology_centrist_populism_icon
             centrist_populism = {}
+
             # GFX: GFX_ideology_social_liberal_icon
             social_liberal = {}
         }
@@ -261,6 +306,9 @@ ideologies = {
             # GFX: GFX_ideology_trumpism_icon
             trumpism = {}
 
+            # GFX: GFX_ideology_americanism_icon
+            americanism = {}
+
             # GFX: GFX_ideology_constitutionalist_icon
             constitutionalist = {}
 
@@ -269,6 +317,7 @@ ideologies = {
 
             # GFX: GFX_ideology_classical_populism_icon
             classical_populism = {}
+            
             # GFX: GFX_ideology_national_liberalism_icon
             national_liberalism = {}
         }
@@ -364,7 +413,7 @@ ideologies = {
         }
 
         dynamic_faction_names = {
-            "FACTION_AUTH_1"
+            "FACTION_AUTH_1"  
             "FACTION_AUTH_2"
         }
 

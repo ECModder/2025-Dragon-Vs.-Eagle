@@ -1,0 +1,65 @@
+capital = 219 # Moscow
+
+# ============================================
+# NEW RUSSIAN EMPIRE (NRE) - 2025
+# Fazione dei Bianchi e dei NazBol nella Seconda Guerra Civile Russa.
+# Non esiste all'avvio: emerge da start_civil_war / colpo di stato.
+# Sotto-percorsi previsti: Bianchi (LDPR / Chiesa Ortodossa), NazBol.
+# I partiti del vecchio regime e della sinistra risultano messi al bando.
+# ============================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] KPRF" long_name = "[Banned] Communist Party of the Russian Federation" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] International" long_name = "[Banned] Proletarian Internationalism" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] RCP" long_name = "[Banned] Revolutionary Communist Party" }
+set_party_name = { ideology = progressive name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = centrist name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = conservative name = "[Banned] NFM" long_name = "[Banned] National Freedom Movement" }
+set_party_name = { ideology = reactionary name = "[Banned] United Russia" long_name = "[Banned] United Russia" }
+set_party_name = { ideology = authoritarianism name = "[Banned] United Russia" long_name = "[Banned] United Russia" }
+set_party_name = { ideology = autocracy name = "Central Committee" long_name = "Central Committee of the Government" }
+set_party_name = { ideology = absolutism name = "NBP" long_name = "National Bolshevik Party" }
+set_party_name = { ideology = ultranationalism name = "LDPR" long_name = "Liberal Democratic Party of Russia" }
+set_party_name = { ideology = fundamentalism name = "Orthodox Church" long_name = "Russian Orthodox Church" }
+
+
+create_country_leader = { name = "[Banned] National Front" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = conservatism }
+create_country_leader = { name = "[Banned] Just Russia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = social_democracy }
+create_country_leader = { name = "[Banned] KPRF" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = stalinism }
+create_country_leader = { name = "[Banned] International" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "[Banned] RCP" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = trotskyism }
+create_country_leader = { name = "Boris Nadezhdin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = social_liberal }
+create_country_leader = { name = "General Sergey Surovikin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = military_junta }
+create_country_leader = { name = "Konstantin Malofeyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Vyacheslav Volodin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070" ideology = illiberal_democracy }
+create_country_leader = { name = "Whites' Army Command" desc = "POLITICS_LEADER_DESC" picture = "portrait_white_transitionary_council.dds" expire = "2170.1.1" ideology = securocracy }
+create_country_leader = { name = "Aleksandr Dugin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = national_bolshevism }
+create_country_leader = { name = "Grand Duke Georgi Mikhailovich" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = imperial_autocracy }
+create_country_leader = { name = "Patriarch Kirill" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2070.1.1" ideology = religious_nationalism }
+
+set_politics = {
+	ruling_party = ultranationalism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 0
+	progressive = 2
+	centrist = 3
+	conservative = 5
+	reactionary = 8
+	authoritarianism = 6
+	autocracy = 4
+	absolutism = 20
+	ultranationalism = 40
+	fundamentalism = 12
+}
+
+set_stability = 0.45
+set_war_support = 0.70
+
+set_research_slots = 4

@@ -31,15 +31,15 @@ set_convoys = 20
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = large_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 		tech_support = 1
@@ -79,7 +79,7 @@ set_grand_doctrine = new_strategic_destruction
 
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Al-Hizb al-Shuyu'i al-Misri" name = "CP" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Al-Hizb al-Shuyu'i al-Misri" name = "CP" }
 set_party_name = { ideology = vanguard_socialism long_name = "Hizb al-Tajaum'u" name = "Tagammu" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Al-Ishtirakiyeen al-Thawriyeen" name = "RS" }
 set_party_name = { ideology = progressive long_name = "Hizb al-Dustour" name = "Dustour" }
@@ -93,6 +93,9 @@ set_party_name = { ideology = ultranationalism long_name = "Al-Harakah al-Watani
 set_party_name = { ideology = fundamentalism long_name = "Jamā'at al-Ikhwān al-Muslimīn" name = "MB" }
 
 create_country_leader = { name = "Abdel Fattah el-Sisi" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_sisi.dds" expire = "2030.4.1" ideology = putinism }
+# DvE: Abdel Fattah el-Sisi guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Abdel Fattah el-Sisi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Abdel-Sanad Yamama" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Hazem Omar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
 create_country_leader = { name = "Farid Zahran" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
@@ -105,7 +108,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 2
 	progressive = 5
@@ -119,4 +122,4 @@ set_popularities = {
 	fundamentalism = 2
 }
 
-recruit_character = EGY_sisi
+

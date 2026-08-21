@@ -1,5 +1,54 @@
 ﻿capital = 802
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Partia Komuniste e Kosoves" name = "PKK" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Partia Socialiste e Kosoves" name = "PS" }
+set_party_name = { ideology = vanguard_socialism long_name = "Levizja Revolucionare" name = "LR" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Alternativa" name = "Alternativa" }
+set_party_name = { ideology = progressive long_name = "Levizja Vetevendosje" name = "VV" }
+set_party_name = { ideology = centrist long_name = "Aleanca per Ardhmerine e Kosoves" name = "AAK" }
+set_party_name = { ideology = conservative long_name = "Lidhja Demokratike e Kosoves" name = "LDK" }
+set_party_name = { ideology = reactionary long_name = "Partia Demokratike e Kosoves" name = "PDK" }
+set_party_name = { ideology = authoritarianism long_name = "Agjencia Kosovare e Inteligjences" name = "AKI" }
+set_party_name = { ideology = autocracy long_name = "Shtabi i Pergjithshem i FSK" name = "FSK" }
+set_party_name = { ideology = absolutism long_name = "Shtepia e Kastrioteve" name = "Kastrioti" }
+set_party_name = { ideology = ultranationalism long_name = "Levizja Kombetare Shqiptare" name = "LKS" }
+set_party_name = { ideology = fundamentalism long_name = "Bashkesia Islame e Kosoves" name = "BIK" }
+
+create_country_leader = { name = "Albin Kurti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = left_populism }
+create_country_leader = { name = "Vjosa Osmani" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Lumir Abdixhiku" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Memli Krasniqi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Ramush Haradinaj" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Partia Socialiste e Kosoves" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Partia Komuniste e Kosoves" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Levizja Revolucionare" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Gjeneral Bashkim Jashari" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Petrit Ajeti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Myftiu Naim Ternava" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Princi Leka II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2025.2.9"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 38
+	conservative = 19
+	reactionary = 16
+	centrist = 10
+	ultranationalism = 7
+	fundamentalism = 5
+	authoritarian_socialism = 3
+	totalitarian_socialism = 2
+}
+
+
+
 set_research_slots = 3
 
 # Starting tech
@@ -68,14 +117,16 @@ if = {
 	}
 }
 
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
 
 set_popularities = {
 	centrist = 80
-	totalitarian_communism = 20
+	totalitarian_socialism = 20
 }

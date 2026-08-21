@@ -1,5 +1,54 @@
 ﻿capital = 1061
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Pridnestrovskaya Kommunisticheskaya Partiya" name = "PMRKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Obnovlenie" name = "OS" }
+set_party_name = { ideology = vanguard_socialism long_name = "Trudovoy Front" name = "TR" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Proryv" name = "Proryv" }
+set_party_name = { ideology = progressive long_name = "Sotsialisticheskaya Partiya Pridnestrovya" name = "SPP" }
+set_party_name = { ideology = centrist long_name = "Grazhdanskoye Deystviye" name = "GD" }
+set_party_name = { ideology = conservative long_name = "Respublika" name = "RP" }
+set_party_name = { ideology = reactionary long_name = "Patrioty Pridnestrovya" name = "PP" }
+set_party_name = { ideology = authoritarianism long_name = "Ministerstvo gosudarstvennoy bezopasnosti" name = "MGB" }
+set_party_name = { ideology = autocracy long_name = "Generalnyy shtab Vooruzhennykh Sil PMR" name = "GSh" }
+set_party_name = { ideology = absolutism long_name = "Kholding Sheriff" name = "Sheriff" }
+set_party_name = { ideology = ultranationalism long_name = "Russkoye Yedinstvo" name = "RN" }
+set_party_name = { ideology = fundamentalism long_name = "Pravoslavnaya Tiraspolskaya Yeparkhiya" name = "PPTs" }
+
+create_country_leader = { name = "Vadim Krasnoselsky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Aleksandr Korshunov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
+create_country_leader = { name = "Yevgeny Shevchuk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Oleg Khorzhan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Sotsialisticheskaya Partiya Pridnestrovya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Trudovoy Front" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Oleg Obruchkov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Ruslan Mova" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = securocracy }
+create_country_leader = { name = "Yepiskop Savva" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Russkoye Yedinstvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Grazhdanskoye Deystviye" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Respublika" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2020.11.29"
+	election_frequency = 60
+	elections_allowed = no
+}
+
+set_popularities = {
+	authoritarianism = 41
+	authoritarian_socialism = 16
+	conservative = 13
+	autocracy = 11
+	totalitarian_socialism = 8
+	ultranationalism = 6
+	centrist = 3
+	fundamentalism = 2
+}
+
+
+
 set_technology = {
 	infantry_weapons = 1
 }
@@ -10,12 +59,14 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 
-set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = reactionary
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = no
+#}
 set_popularities = {
 	centrist = 25
 	reactionary = 75

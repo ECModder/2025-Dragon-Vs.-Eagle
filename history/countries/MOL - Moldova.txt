@@ -1,5 +1,54 @@
 ﻿capital = 78
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Partidul Comunistilor din Republica Moldova" name = "PCRM" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Partidul Socialistilor din Republica Moldova" name = "PSRM" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partidul Renastere" name = "Renastere" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Miscarea Nationala Alternativa" name = "MNAM" }
+set_party_name = { ideology = progressive long_name = "Partidul Actiune si Solidaritate" name = "PAS" }
+set_party_name = { ideology = centrist long_name = "Platforma Demnitate si Adevar" name = "PPDA" }
+set_party_name = { ideology = conservative long_name = "Partidul Liberal Democrat din Moldova" name = "PLDM" }
+set_party_name = { ideology = reactionary long_name = "Partidul Sansa" name = "Sansa" }
+set_party_name = { ideology = authoritarianism long_name = "Serviciul de Informatii si Securitate" name = "SIS" }
+set_party_name = { ideology = autocracy long_name = "Marele Stat Major al Armatei Nationale" name = "Marele Stat Major" }
+set_party_name = { ideology = absolutism long_name = "Casa Regala a Romaniei" name = "Casa Regala" }
+set_party_name = { ideology = ultranationalism long_name = "Partidul National" name = "PN" }
+set_party_name = { ideology = fundamentalism long_name = "Biserica Ortodoxa din Moldova" name = "BOM" }
+
+create_country_leader = { name = "Maia Sandu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Igor Dodon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Vladimir Voronin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Ion Ceban" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Renato Usatii" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Ilan Sor" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = kleptocracy }
+create_country_leader = { name = "Partidul Renastere" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Eduard Ohladciuc" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Alexandru Musteata" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Mitropolitul Vladimir" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Regele Mihai II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Octavian Ticu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+
+set_politics = {
+	ruling_party = centrist
+	last_election = "2024.11.3"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	centrist = 38
+	authoritarian_socialism = 19
+	progressive = 12
+	conservative = 9
+	totalitarian_socialism = 8
+	autocracy = 6
+	fundamentalism = 4
+	ultranationalism = 4
+}
+
+
+
 #oob = ""
 
 # Starting tech
@@ -9,38 +58,19 @@ set_technology = {
 
 set_convoys = 5
 
-recruit_character = MOL_acas
-recruit_character = MOL_acgs
-recruit_character = MOL_ncm
-recruit_character = MOL_nt
-recruit_character = MOL_pot
-recruit_character = MOL_nccr
-recruit_character = MOL_aco2
-recruit_character = MOL_coi
-recruit_character = MOL_aa2
-recruit_character = MOL_democratic_guy
-recruit_character = MOL_acd2
-recruit_character = MOL_acr
-recruit_character = MOL_fascist_guy
-recruit_character = MOL_stc
-recruit_character = MOL_ncs
-recruit_character = MOL_awt
-recruit_character = MOL_mt
-recruit_character = MOL_communist_guy
-recruit_character = MOL_ai2
-recruit_character = MOL_ar
+
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -65,12 +95,14 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
 set_popularities = {
 	centrist = 69
 	reactionary = 31
@@ -81,7 +113,7 @@ set_popularities = {
 #	name = "Jonas Lote"
 #	picture = "gfx//leaders//Africa//Portrait_Africa_Generic_2.dds"
 #	expire = "1965.1.1"
-#	ideology = centrism
+#	ideology = social_liberal
 #	traits = {
 #		#
 #	}

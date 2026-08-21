@@ -1,0 +1,239 @@
+# ============================================================
+#   DvE - allineamento dei satelliti
+#
+#   Quando l'Italia o l'Unione Sovietica governano con un'ideologia
+#   rivoluzionaria impongono ai propri satelliti lo stesso partito
+#   e lo stesso organo dirigente che hanno in patria.
+#
+#   NOTA SULLA SCELTA TECNICA
+#   La prima versione era una decisione MIRATA (target_array).
+#   Non funzionava: con target_array = ROOT.subjects restavano
+#   fuori i satelliti che stanno in fazione ma non sono puppet
+#   formali, e con ROOT.allies restavano fuori i puppet di un paese
+#   che non ha fazione. In entrambi i casi la lista dei bersagli
+#   era vuota e - con visible_when_empty = no - spariva l'intera
+#   categoria dal menu.
+#   Ora non c'e' targeting: la decisione agisce su TUTTI i
+#   satelliti in un colpo solo, siano essi puppet o membri di
+#   fazione. Cosi' la categoria e' sempre visibile e la decisione
+#   e' semplicemente grigia finche' non hai satelliti da allineare.
+# ============================================================
+
+DVE_puppet_alignment_category = {
+
+	ITA_align_puppet_vanguard = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = ITA }
+
+		visible = { has_government = vanguard_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				NOT = { has_government = vanguard_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = vanguard_socialism }
+				}
+				set_party_name = { ideology = vanguard_socialism name = "Internationalism" long_name = "Internationalism - Communist Struggle" }
+				create_country_leader = {
+					name = "Worker's Councils"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = leninist_internationalism
+				}
+				add_popularity = { ideology = vanguard_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = vanguard_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	ITA_align_puppet_revolutionary = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = ITA }
+
+		visible = { has_government = revolutionary_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				NOT = { has_government = revolutionary_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = revolutionary_socialism }
+				}
+				set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Revolutionary Communist Party" }
+				create_country_leader = {
+					name = "Central Councils"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = trotskyism
+				}
+				add_popularity = { ideology = revolutionary_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = revolutionary_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	SOV_align_puppet_vanguard = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		visible = { has_government = vanguard_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				NOT = { has_government = vanguard_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = vanguard_socialism }
+				}
+				set_party_name = { ideology = vanguard_socialism name = "IPKB(b)" long_name = "Internatsionalistskaya partiya Kommunisticheskaya bor'ba (b)" }
+				create_country_leader = {
+					name = "Central Soviet"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = leninist_internationalism
+				}
+				add_popularity = { ideology = vanguard_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = vanguard_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	SOV_align_puppet_revolutionary = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		visible = { has_government = revolutionary_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+				OR = {
+					is_subject_of = ROOT
+					is_in_faction_with = ROOT
+				}
+				NOT = { has_government = revolutionary_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = revolutionary_socialism }
+				}
+				set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Revolutionary Communist Party" }
+				create_country_leader = {
+					name = "Central Councils"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = trotskyism
+				}
+				add_popularity = { ideology = revolutionary_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = revolutionary_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+}

@@ -252,24 +252,26 @@ if = {
 # POLITICS & CHARACTERS
 # ============================================
 
-set_party_name = { ideology = totalitarian_communism name = "Unione Comunista" long_name = "Partito della Rifondazione Comunista, PCI, PaP, CRosa" }
+set_party_name = { ideology = totalitarian_socialism name = "PdRC, PCI" long_name = "Partito della Rifondazione Comunista, nPCI" }
+set_party_name = { ideology = authoritarian_socialism name = "CR OSA, PaP" long_name = "Potere al Popolo, Cambiare Rotta OSA" }
 set_party_name = { ideology = vanguard_socialism name = "Lotta Comunista" long_name = "Lotta Comunista (Internationalism)" }
 set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "Partito Comunista Rivoluzionario" }
 set_party_name = { ideology = progressive name = "PSI" long_name = "Avanti Partito Socialista Italiano" }
-set_party_name = { ideology = centrist name = "PD, AVS, M5S" long_name = "Partito Democratico, Verdi e Sinistra, M5S, +E, IV" }
-set_party_name = { ideology = conservative name = "FdI, FI, LN" long_name = "Fratelli d'Italia, Forza Italia, Lega" }
+set_party_name = { ideology = centrist name = "Campo Largo" long_name = "Partito Democratico, Verdi e Sinistra, Movimento 5Stelle, +E, IV" }
+set_party_name = { ideology = conservative name = "Centro-Destra" long_name = "Fratelli d'Italia, Forza Italia, Lega" }
 set_party_name = { ideology = reactionary name = "FN" long_name = "Futuro Nazionale" }
-set_party_name = { ideology = authoritarianism name = "FN" long_name = "Forza Nuova" }
+set_party_name = { ideology = authoritarianism name = "Lega" long_name = "Lega Nord" }
 set_party_name = { ideology = autocracy name = "FF.AA." long_name = "Forze Armate Italiane" }
 set_party_name = { ideology = absolutism name = "Casa Savoia" long_name = "Partito Nazionale Monarchico" }
 set_party_name = { ideology = ultranationalism name = "CP-FN" long_name = "CasaPound - Forza Nuova" }
 set_party_name = { ideology = fundamentalism name = "PP" long_name = "Partito Pontificio" }
 
 create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Committee.dds" expire = "2100.1.1" ideology = stalinism }
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Committee.dds" expire = "2100.1.1" ideology = maoism }
 create_country_leader = { name = "Workers' Councils" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_workers_council.dds" expire = "2100.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2100.1.1" ideology = trotskyism }
 create_country_leader = { name = "Enzo Maraio" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_enzo_maraio.dds" expire = "2045.1.1" ideology = neo_socialism }
-create_country_leader = { name = "Elly Schlein" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_elly_schlein.dds" expire = "2045.1.1" ideology = social_democracy }
+create_country_leader = { name = "Elly Schlein" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_elly_schlein.dds" expire = "2045.1.1" ideology = social_liberal }
 create_country_leader = { name = "Giorgia Meloni" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_giorgia_meloni.dds" expire = "2045.1.1" ideology = classical_populism }
 create_country_leader = { name = "Roberto Vannacci" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_roberto_vannacci.dds" expire = "2045.1.1" ideology = paternalism }
 create_country_leader = { name = "Grand Governing Leadership" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_grand_governing_leadership.dds" expire = "2100.1.1" ideology = neo_fascist }
@@ -283,15 +285,16 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 2
-	vanguard_socialism = 17
-	revolutionary_socialism = 7
+	totalitarian_socialism = 2
+	authoritarian_socialism = 3
+	vanguard_socialism = 2
+	revolutionary_socialism = 3
 	progressive = 8
-	centrist = 27
-	conservative = 26
+	centrist = 34
+	conservative = 31
 	reactionary = 7
 	authoritarianism = 3
-	autocracy = 0
+	autocracy = 4
 	absolutism = 0
 	ultranationalism = 3
 	fundamentalism = 0
@@ -299,7 +302,11 @@ set_popularities = {
 
 recruit_character = ITA_sergio_mattarella
 recruit_character = ITA_giorgia_meloni
-recruit_character = ITA_guido_crosetto
+# DISABILITATO: ITA_guido_crosetto non e' definito in nessun file di
+# common/characters/, e reclutare un personaggio inesistente fa crashare
+# il paese all'avvio ("dynamic token does not exist"). Riattiva questa riga
+# dopo aver aggiunto il personaggio in common/characters/DVE_ITA.txt.
+#recruit_character = ITA_guido_crosetto
 recruit_character = ITA_roberto_vannacci
 recruit_character = ITA_elly_schlein
 recruit_character = ITA_emanuele_filiberto

@@ -7,40 +7,20 @@ set_technology = {
 
 set_convoys = 0
 
-recruit_character = CAR_awt
-recruit_character = CAR_acd2
-recruit_character = CAR_nt
-recruit_character = CAR_aco2
-recruit_character = CAR_acas
-recruit_character = CAR_acr
-recruit_character = CAR_mt
-recruit_character = CAR_stc
-recruit_character = CAR_aa2
-recruit_character = CAR_ncm
-recruit_character = CAR_communist_guy
-recruit_character = CAR_ncs
-recruit_character = CAR_pot
-recruit_character = CAR_nccr
-recruit_character = CAR_fascist_guy
-recruit_character = CAR_coi
-recruit_character = CAR_ai2
-recruit_character = CAR_democratic_guy
-recruit_character = CAR_ar
-recruit_character = CAR_acgs
 
 
 1939.1.1 = {
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = large_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 		tech_support = 1
@@ -78,7 +58,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Parti Communiste Centrafricain" name = "PCC" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Parti Communiste Centrafricain" name = "PCC" }
 set_party_name = { ideology = vanguard_socialism long_name = "Mouvement de Libération du Peuple Centrafricain (Marxiste)" name = "MLPC-M" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Front Populaire pour le Redressement" name = "FPR" }
 set_party_name = { ideology = progressive long_name = "Mouvement de Libération du Peuple Centrafricain" name = "MLPC" }
@@ -91,8 +71,11 @@ set_party_name = { ideology = absolutism long_name = "Empire Centrafricain Resta
 set_party_name = { ideology = ultranationalism long_name = "Front Patriotique pour le Progrès" name = "FPP" }
 set_party_name = { ideology = fundamentalism long_name = "Coalition des Groupes Anti-Balaka" name = "CGAB" }
 
-create_country_leader = { name = "Faustin-Archange Touadéra" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
-create_country_leader = { name = "Anicet-Georges Dologuélé" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
+create_country_leader = { name = "Faustin-Archange Touadéra" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+# DvE: Faustin-Archange Touadéra guida anche il partito di governo (reactionary), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Faustin-Archange Touadéra" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Anicet-Georges Dologuélé" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Martin Ziguélé" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
 create_country_leader = { name = "Jean-Serge Bokassa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
 create_country_leader = { name = "General Zephirin Mamadou" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }

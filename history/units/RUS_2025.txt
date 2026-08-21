@@ -1,0 +1,149 @@
+# ============================================================
+#   RUSSIA - schieramento 1.1.2025
+#
+#   68 divisioni lungo lo stesso fronte, dal Kursk alla Crimea.
+#   Rispetto all'Ucraina: sei volte i reparti corazzati e
+#   l'artiglieria, coerente con i rapporti di forza reali.
+# ============================================================
+
+division_template = {
+	name = "Tankovaya Diviziya"
+	division_names_group = SOV_ARM_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }  light_armor = { x = 0 y = 1 }  light_armor = { x = 0 y = 2 }
+		mechanized  = { x = 1 y = 0 }  mechanized  = { x = 1 y = 1 }  mechanized  = { x = 1 y = 2 }
+		motorized   = { x = 2 y = 0 }  motorized   = { x = 2 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Motostrelkovaya Diviziya"
+	division_names_group = SOV_INF_01
+	regiments = {
+		mechanized = { x = 0 y = 0 }  mechanized = { x = 0 y = 1 }  mechanized = { x = 0 y = 2 }
+		motorized  = { x = 1 y = 0 }  motorized  = { x = 1 y = 1 }  motorized  = { x = 1 y = 2 }
+		light_armor = { x = 2 y = 0 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }  anti_tank = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Motostrelkovaya Brigada"
+	division_names_group = SOV_INF_02
+	regiments = {
+		motorized = { x = 0 y = 0 }  motorized = { x = 0 y = 1 }  motorized = { x = 0 y = 2 }
+		infantry  = { x = 1 y = 0 }  infantry  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Strelkovaya Diviziya"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Artilleriyskaya Brigada"
+	division_names_group = SOV_GAR_01
+	regiments = {
+		artillery_brigade = { x = 0 y = 0 }  artillery_brigade = { x = 0 y = 1 }
+		artillery_brigade = { x = 1 y = 0 }  motorized         = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Territorialnoye Opolcheniye"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+	# milizia territoriale: la richiama la decisione "Richiama la milizia"
+}
+
+units = {
+	division = { location = 502 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3421 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3449 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3466 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3479 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3491 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 6420 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 6474 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 6493 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 6776 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 502 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3421 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3449 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 3466 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 227
+	division = { location = 523 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 547 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 570 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 6505 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 6519 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 9446 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 9461 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 9476 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 11487 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 11513 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 523 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 547 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 228
+	division = { location = 429 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 588 division_template = "Motostrelkovaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 3399 division_template = "Artilleriyskaya Brigada" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 3767 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 6596 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 9571 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 9729 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 11405 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 11700 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 429 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 200
+	division = { location = 568 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 721 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 737 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 767 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 3573 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 6771 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 9712 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 11715 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 196
+	division = { location = 473 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 534 division_template = "Tankovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 3492 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 6432 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 6481 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 6517 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 6577 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 9424 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 9449 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 9489 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 240
+	division = { location = 457 division_template = "Motostrelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 558 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 580 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 3554 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 3580 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 6254 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 220
+	division = { location = 705 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 137
+	division = { location = 3686 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 137
+	division = { location = 3722 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 137
+	division = { location = 6704 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 137
+	division = { location = 6724 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 137
+	division = { location = 449 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 245
+	division = { location = 484 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 245
+	division = { location = 500 division_template = "Strelkovaya Diviziya" start_experience_factor = 0.60 start_equipment_factor = 0.85 }   # stato 245
+}

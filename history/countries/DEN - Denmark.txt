@@ -45,115 +45,6 @@ IF = {
 	}
 }
 
-#### COUNTRY LEADERS ####
-recruit_character = DEN_thorvald_stauning
-recruit_character = DEN_knud_bach
-recruit_character = DEN_knud_bach_2
-recruit_character = DEN_knud_bach_3
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_christian_x
-	recruit_character = DEN_freedom_council
-}
-recruit_character = DEN_aksel_larsen
-recruit_character = DEN_frits_clausen
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_werner_best
-}
-
-#### MILITARY LEADERS and ADVISORS ####
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_erik_with
-}
-recruit_character = DEN_william_wain_prior
-recruit_character = DEN_ebbe_gortz
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_frederik_christian_essemann
-	recruit_character = DEN_carl_jacobsen
-	recruit_character = DEN_christian_peder_kryssing
-	recruit_character = DEN_erik_leschly
-	recruit_character = DEN_erik_moller
-	recruit_character = DEN_paul_ramm
-	recruit_character = DEN_charles_henry_rye
-}
-recruit_character = DEN_christian_frederik_von_schalburg
-recruit_character = DEN_hjalmar_rechnitzer
-recruit_character = DEN_aage_vedel
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_emmanuel_briand_de_crevecoeur
-	recruit_character = DEN_christian_evers
-}
-recruit_character = DEN_carl_hammerich
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_paul_ipsen
-	recruit_character = DEN_prince_frederik
-	recruit_character = DEN_frederik_ix
-	recruit_character = DEN_christian_forslev
-	recruit_character = DEN_asger_grandjean
-	recruit_character = DEN_aage_falking
-}
-recruit_character = DEN_hans_a_rolsted
-recruit_character = DEN_kaj_birksted
-recruit_character = DEN_poul_sommer
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_johan_von_stemann
-	recruit_character = DEN_peter_horn
-}
-recruit_character = DEN_paul_sommer
-recruit_character = DEN_hans_lunding
-
-#### POLITICAL ADVISORS ####
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_peter_rochegune_munch
-	recruit_character = DEN_christmas_moller
-	recruit_character = DEN_vilhelm_buhl
-	recruit_character = DEN_erik_scavenius
-	recruit_character = DEN_jorgen_jorgensen
-}
-recruit_character = DEN_knud_kristensen
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-}
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = DEN_hans_hedtoft
-	recruit_character = DEN_arnold_peter_moller
-	recruit_character = DEN_alsing_andersen
-	recruit_character = DEN_karl_kristian_steincke
-	recruit_character = DEN_niels_bohr
-	recruit_character = DEN_cay_lembcke
-	recruit_character = DEN_emil_strobech
-}
-recruit_character = DEN_ejnar_warum
-recruit_character = DEN_viggo_kampman
-
 
 
 set_research_slots = 3
@@ -387,7 +278,7 @@ if = {
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Danmarks Kommunistiske Parti - Marxist-Leninister" name = "DKP-ML" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Danmarks Kommunistiske Parti - Marxist-Leninister" name = "DKP-ML" }
 set_party_name = { ideology = vanguard_socialism long_name = "Danmarks Kommunistiske Parti" name = "DKP" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Socialistisk Folkeparti" name = "SF" }
 set_party_name = { ideology = progressive long_name = "Enhedslisten" name = "EL" }
@@ -413,7 +304,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 1
+	totalitarian_socialism = 1
 	vanguard_socialism = 1
 	revolutionary_socialism = 8
 	progressive = 12
@@ -433,23 +324,27 @@ set_popularities = {
 		limit = {
 			has_dlc = "Arms Against Tyranny"
 		}
-		set_politics = {
-			ruling_party = centrist
-			last_election = "1939.4.3"
-			election_frequency = 42
-			elections_allowed = yes
-		}
+		# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#			ruling_party = centrist
+#			last_election = "1939.4.3"
+#			election_frequency = 42
+#			elections_allowed = yes
+#		}
 	}
 	if = {
 		limit = {
 			NOT = { has_dlc = "Arms Against Tyranny" }
 		}
-		set_politics = {
-			ruling_party = centrist
-			last_election = "1939.10.22"
-			election_frequency = 48
-			elections_allowed = yes
-		}
+		# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#			ruling_party = centrist
+#			last_election = "1939.10.22"
+#			election_frequency = 48
+#			elections_allowed = yes
+#		}
 	}
 	
 
@@ -471,40 +366,40 @@ set_popularities = {
 		limit = {
 			has_dlc = "Arms Against Tyranny"
 		}
-		complete_national_focus = DEN_kanslergadeforliget
-		complete_national_focus = DEN_industrial_investments
-		complete_national_focus = DEN_public_works
-		complete_national_focus = DEN_agricultural_subsidies
-		complete_national_focus = DEN_support_schleswigian_farmers
-		complete_national_focus = DEN_devalue_the_krone	
-		complete_national_focus = DEN_trade_with_britain
-		complete_national_focus = DEN_trade_with_germany
-		complete_national_focus = DEN_declare_neutrality
-		complete_national_focus = DEN_political_unity
-		complete_national_focus = DEN_policy_of_disarmament
-		complete_national_focus = DEN_social_stability
-		complete_national_focus = DEN_sign_forsvarsforliget
-		complete_national_focus = DEN_welcome_foreign_scientists
-		complete_national_focus = DEN_stockpile_oil
-		complete_national_focus = DEN_expand_vaernepligten
-		complete_national_focus = DEN_build_motorveje
-		complete_national_focus = DEN_expand_ubadsvabnet
-		complete_national_focus = DEN_limited_market_regulations
-		complete_national_focus = DEN_import_machinery_and_material
-		complete_national_focus = DEN_sikkerhedspolitiet
-		complete_national_focus = DEN_modernize_agricultural_machinery
-		complete_national_focus = DEN_modernize_industrial_machinery
+		#complete_national_focus = DEN_kanslergadeforliget
+		#complete_national_focus = DEN_industrial_investments
+		#complete_national_focus = DEN_public_works
+		#complete_national_focus = DEN_agricultural_subsidies
+		#complete_national_focus = DEN_support_schleswigian_farmers
+		#complete_national_focus = DEN_devalue_the_krone	
+		#complete_national_focus = DEN_trade_with_britain
+		#complete_national_focus = DEN_trade_with_germany
+		#complete_national_focus = DEN_declare_neutrality
+		#complete_national_focus = DEN_political_unity
+		#complete_national_focus = DEN_policy_of_disarmament
+		#complete_national_focus = DEN_social_stability
+		#complete_national_focus = DEN_sign_forsvarsforliget
+		#complete_national_focus = DEN_welcome_foreign_scientists
+		#complete_national_focus = DEN_stockpile_oil
+		#complete_national_focus = DEN_expand_vaernepligten
+		#complete_national_focus = DEN_build_motorveje
+		#complete_national_focus = DEN_expand_ubadsvabnet
+		#complete_national_focus = DEN_limited_market_regulations
+		#complete_national_focus = DEN_import_machinery_and_material
+		#complete_national_focus = DEN_sikkerhedspolitiet
+		#complete_national_focus = DEN_modernize_agricultural_machinery
+		#complete_national_focus = DEN_modernize_industrial_machinery
 	}
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 
 	
 	oob = "DEN_1939"

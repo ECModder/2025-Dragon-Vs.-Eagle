@@ -29,15 +29,15 @@ set_convoys = 5
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = large_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 		tech_support = 1
@@ -85,24 +85,25 @@ set_popularities = {
 	reactionary = 20
 }
 
-recruit_character = SYR_mehemed_ali_abed
-recruit_character = SYR_hashim_al_atassi
 
 create_country_leader = {
 	name = "Antun Saadeh"
 	desc = ""
 	picture = GFX_portrait_Antun_Saadeh
-	ideology = fascism_ideology
+	ideology = fascist
 	traits = {
 		#
 	}
+# DvE: Antun Saadeh guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Antun Saadeh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 }
 
 create_country_leader = {
 	name = "Khalid Bakdash"
 	desc = ""
 	picture = GFX_portrait_Khalid_Bakdash
-	ideology = leninism
+	ideology = leninist_internationalism
 	traits = {
 		#
 	}

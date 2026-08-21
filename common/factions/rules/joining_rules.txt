@@ -1,0 +1,17 @@
+joining_rule_has_no_offensive_war = {
+	type = joining_rules
+	ai_will_do = {
+		base = 0
+		modifier = {
+			add = 2
+			NOT = { tag = ENG }
+			NOT = { tag = USA }
+		}
+	}
+	trigger = {
+		has_offensive_war = no
+	}
+	modifier = {
+		defensive_war_stability_factor = 0.15
+	}
+}

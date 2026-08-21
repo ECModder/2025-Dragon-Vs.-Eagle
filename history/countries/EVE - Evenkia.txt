@@ -87,7 +87,7 @@ if = {
 	}
 }
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Evenkiyskiy Okrug KPRF" name = "EO-KPRF" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Evenkiyskiy Okrug KPRF" name = "EO-KPRF" }
 set_party_name = { ideology = vanguard_socialism long_name = "Krasnaya Gvardiya Tunguski" name = "KGT" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Soyuz Promyslovikov i Rabochikh" name = "SPR" }
 set_party_name = { ideology = progressive long_name = "Evenkiyskiy Demokraticheskiy Soyuz" name = "EDS" }
@@ -101,6 +101,9 @@ set_party_name = { ideology = ultranationalism long_name = "Russkiy Front Tury" 
 set_party_name = { ideology = fundamentalism long_name = "Pravoslavnoye Bratstvo Severa" name = "PBS" }
 
 create_country_leader = { name = "Innokenty Vasilyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+# DvE: Innokenty Vasilyev guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Innokenty Vasilyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 create_country_leader = { name = "Pyotr Suvorov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
 create_country_leader = { name = "Anatoly Amosov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Vasily Nemtsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
@@ -113,7 +116,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 4
+	totalitarian_socialism = 4
 	vanguard_socialism = 6
 	revolutionary_socialism = 15
 	progressive = 8
