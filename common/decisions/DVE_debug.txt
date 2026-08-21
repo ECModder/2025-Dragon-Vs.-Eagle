@@ -471,3 +471,134 @@ DVE_debug_russia_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+# ============================================================
+#   CINA - guerra civile
+#   La spartizione degli stati sta in
+#   common/scripted_effects/DVE_CHN_effects.txt ed e' PROVVISORIA:
+#   sono assegnati solo i 29 stati identificabili per nome, gli
+#   altri (quelli chiamati "China 1"..."China 19") restano a PRC.
+# ============================================================
+DVE_debug_china_category = {
+
+	# --- la guerra civile completa -----------------------------
+	# Spartizione + eserciti + dichiarazioni di guerra.
+	DVE_debug_china_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = CHN_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- fa nascere una fazione alla volta, senza guerra -------
+	# Serve a controllare bandiera, partiti, leader e ideologia
+	# di un singolo tag facendo tag-switch, senza far scoppiare
+	# tutto il resto.
+	DVE_debug_china_spawn_ccr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_CCR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_csr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_CSR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_pxa = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_PXA_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_pta = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_PTA_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo gli eserciti -------------------------------------
+	# Da usare dopo gli spawn singoli, che il territorio lo danno
+	# ma le divisioni no.
+	DVE_debug_china_armies = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_army_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- annulla tutto -----------------------------------------
+	# La Cina si riprende i quattro tag e i loro cores, cosi' la
+	# prova si puo' rifare da capo. Le divisioni gia' create NON
+	# spariscono: restano ai tag, che pero' non hanno piu' terra.
+	DVE_debug_china_reset = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

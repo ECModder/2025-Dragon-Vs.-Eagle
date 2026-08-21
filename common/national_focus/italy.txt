@@ -476,7 +476,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			FRA = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			ITA_red_france_effect = yes			# FRA si spacca: il nord industriale diventa FSR
 			declare_war_on = { target = FRA type = annex_everything }
 			FRA = { leave_faction = yes }
 			set_country_flag = LT_redfra_done
@@ -626,8 +626,8 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			SPR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
-			POR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			ITA_red_spain_effect = yes			# SPR si spacca: Madrid e il centro-sud diventano SPA
+			ITA_red_portugal_effect = yes			# POR si spacca: la terraferma diventa PRS
 			declare_war_on = { target = SPR type = annex_everything }
 			declare_war_on = { target = POR type = annex_everything }
 			SPR = { leave_faction = yes }
@@ -732,7 +732,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			GER = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			ITA_red_germany_effect = yes			# GER si spacca: Berlino e il nord diventano GDR
 			declare_war_on = { target = GER type = annex_everything }
 			GER = { leave_faction = yes }
 			set_country_flag = LT_redger_done
@@ -838,7 +838,7 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			ENG = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			ITA_red_britain_effect = yes			# ENG si spacca: Londra e il nord diventano SRB
 			declare_war_on = { target = ENG type = annex_everything }
 			ENG = { leave_faction = yes }
 			set_country_flag = LT_redeng_done
@@ -948,6 +948,10 @@ focus = {
 			puppet = CRO
 			puppet = BOS
 			puppet = ALB
+			puppet = BEL
+			puppet = HOL
+			puppet = SER
+			puppet = AUS
 			set_country_flag = LT_domino_done
 		}
 	}
