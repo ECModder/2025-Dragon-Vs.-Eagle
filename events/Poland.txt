@@ -6,6 +6,7 @@ add_namespace = polandos
 add_namespace = starting_poland
 add_namespace = elections
 add_namespace = resistance
+add_namespace = request
 
 
 country_event = {
@@ -326,6 +327,7 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
 	id = polandos.10
 	title = polandos.10.t
 	desc = polandos.10.d
+	picture = GFX_report_event_POL_rafal 
 
 	is_triggered_only = yes
 	option = {
@@ -338,6 +340,7 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
 	id = polandos.11
 	title = polandos.11.t
 	desc = polandos.11.d
+	picture = GFX_report_event_POL_pro_eu 
 
 	is_triggered_only = yes
 	option = {
@@ -354,6 +357,7 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
 	id = polandos.12
 	title = polandos.12.t
 	desc = polandos.12.d
+	picture = GFX_report_event_POL_pro_eu 
 
 	is_triggered_only = yes
 	option = {
@@ -364,6 +368,122 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
     value = -0.12
 }
 add_stability = -0.10
+}
+
+	}
+country_event = {
+	id = request.1
+	title = request.1.t
+	desc = request.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "please, agree!"
+
+		GER = {
+			country_event = { id = request.2 days = 2 }
+		}
+
+		add_political_power = 20
+	}
+}
+
+country_event = {
+	id = request.2
+	title = request.2.t
+	desc = request.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "agree!"
+
+		POL = {
+			country_event = {
+				id = request.3
+			}
+		}
+
+		add_political_power = 20
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = "NAH"
+
+		POL = {
+			country_event = {
+				day = 1
+				id = request.4
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+	country_event = {
+	id = request.3
+	title = request.3.t
+	desc = request.3.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "YAY!"
+		add_political_power = 20
+}
+	}
+	country_event = {
+	id = request.4
+	title = request.4.t
+	desc = request.4.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Unfortunate..."
+		add_political_power = 20
+}
+	}
+		country_event = {
+	id = polandos.13
+	title = polandos.13.t
+	desc = polandos.13.d
+	picture = GFX_report_event_POL_donald_and_trzask 
+
+	is_triggered_only = yes
+	option = {
+		name = "Thanks Donald"
+		add_political_power = 20
+}
+
+	}
+			country_event = {
+	id = polandos.14
+	title = polandos.14.t
+	desc = polandos.14.d 
+
+	is_triggered_only = yes
+	option = {
+		name = "Who Will Win?"
+		add_political_power = 20
+}
+
+	}
+			country_event = {
+	id = polandos.15
+	title = polandos.15.t
+	desc = polandos.15.d
+
+	is_triggered_only = yes
+	option = {
+		name = "They Are Easy to use!"
+		add_political_power = 20
 }
 
 	}
