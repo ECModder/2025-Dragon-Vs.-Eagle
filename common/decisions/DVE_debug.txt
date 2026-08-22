@@ -74,8 +74,12 @@ DVE_debug_general_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
-			add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+			# add_building_construction vuole uno scope di stato,
+			# non di paese: senza capital_scope il gioco lo scarta
+			capital_scope = {
+				add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+				add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+			}
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -389,6 +393,26 @@ DVE_debug_russia_category = {
 		fire_only_once = no
 		complete_effect = {
 			set_country_flag = DVE_civil_war_active
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- la catena del Sovnarkom ------------------------------
+	# Riprogramma tutta la catena da adesso, senza aspettare la
+	# guerra civile: Sovnarkom a +3 giorni, le tre correnti a
+	# +10, +11 e +12.
+	DVE_debug_sovnarkom_chain = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = SOV }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			clr_country_flag = SOV_sovnarkom_scheduled
+			SOV_sovnarkom_chain_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
