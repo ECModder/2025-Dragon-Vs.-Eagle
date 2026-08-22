@@ -1,0 +1,186 @@
+# ============================================================
+#   DvE - IL SOVNARKOM E LE TRE CORRENTI
+#
+#   FASE 0 - Formazione
+#     dve_sovnarkom.1  Sovnarkom Restored
+#     Tre giorni dopo lo scoppio della guerra civile.
+#
+#   TUTTI I RITARDI SONO CONTATI DALLO SCOPPIO DELLA GUERRA
+#   CIVILE, non uno dall'altro: li programma in blocco
+#   SOV_sovnarkom_chain_effect
+#   (common/scripted_effects/DVE_sovnarkom_effects.txt).
+#
+#   FASE 1 - Consolidamento (una per corrente)
+#     dve_sovnarkom.2  The Return of the Soyuz       +10 giorni
+#     dve_sovnarkom.3  The Vanguard Reorganizes      +11 giorni
+#     dve_sovnarkom.4  The Flowering of Levoradikaly +12 giorni
+#
+#   Ogni corrente puo' essere assecondata o tenuta a bada. Chi la
+#   asseconda le da' popolarita' e alza una country flag
+#   (SOV_backed_stalinists / _leninists / _trotskyists), che serve
+#   piu' avanti per sapere chi ha in mano l'apparato.
+#
+#   NOTA: titoli e testi sono quelli dati dai dev. Gli effetti
+#   delle opzioni non erano specificati: quelli qui sotto sono una
+#   proposta, si cambiano senza toccare il resto.
+# ============================================================
+
+add_namespace = dve_sovnarkom
+
+
+
+# ============================================================
+#   SENTINELLA (nascosto)
+#   La catena parte gia' da RUS_second_civil_war_effect, ma solo
+#   per quella strada. Questo evento la fa partire comunque SOV
+#   venga al mondo - altro effetto, console, debug - purche' non
+#   sia gia' stata programmata.
+#   La flag SOV_sovnarkom_scheduled evita il doppio innesco.
+# ============================================================
+country_event = {
+	id = dve_sovnarkom.0
+	title = dve_sovnarkom.0.t
+	desc = dve_sovnarkom.0.d
+	hidden = yes
+
+	fire_only_once = yes
+
+	trigger = {
+		tag = SOV
+		exists = yes
+		NOT = { has_country_flag = SOV_sovnarkom_scheduled }
+	}
+
+	mean_time_to_happen = { days = 1 }
+
+	immediate = { SOV_sovnarkom_chain_effect = yes }
+
+	option = { name = dve_sovnarkom.0.a }
+}
+
+# ============================================================
+#   FASE 0 - Sovnarkom Restored
+# ============================================================
+country_event = {
+	id = dve_sovnarkom.1
+	title = dve_sovnarkom.1.t
+	desc = dve_sovnarkom.1.d
+	picture = GFX_report_event_communist_leader
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { set_country_flag = SOV_sovnarkom_restored }
+	}
+
+	option = {
+		name = dve_sovnarkom.1.a
+		ai_chance = { factor = 100 }
+
+		add_political_power = 75
+		add_stability = 0.05
+	}
+}
+
+
+# ============================================================
+#   FASE 1 - gli stalinisti (totalitarian_socialism)
+# ============================================================
+country_event = {
+	id = dve_sovnarkom.2
+	title = dve_sovnarkom.2.t
+	desc = dve_sovnarkom.2.d
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	# --- assecondare la KPRF ---
+	option = {
+		name = dve_sovnarkom.2.a
+		ai_chance = { factor = 50 }
+
+		set_country_flag = SOV_backed_stalinists
+		add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+		add_popularity = { ideology = vanguard_socialism popularity = -0.03 }
+		add_popularity = { ideology = revolutionary_socialism popularity = -0.03 }
+		add_war_support = 0.05
+		add_political_power = -50
+	}
+
+	# --- il Sovnarkom resta sopra le correnti ---
+	option = {
+		name = dve_sovnarkom.2.b
+		ai_chance = { factor = 50 }
+
+		add_stability = 0.05
+		add_political_power = 40
+	}
+}
+
+
+# ============================================================
+#   FASE 1 - i leninisti (vanguard_socialism)
+# ============================================================
+country_event = {
+	id = dve_sovnarkom.3
+	title = dve_sovnarkom.3.t
+	desc = dve_sovnarkom.3.d
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+
+	# --- consegnare loro l'apparato ---
+	option = {
+		name = dve_sovnarkom.3.a
+		ai_chance = { factor = 50 }
+
+		set_country_flag = SOV_backed_leninists
+		add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+		add_popularity = { ideology = totalitarian_socialism popularity = -0.03 }
+		add_popularity = { ideology = revolutionary_socialism popularity = -0.03 }
+		add_stability = 0.05
+		add_political_power = -50
+	}
+
+	option = {
+		name = dve_sovnarkom.3.b
+		ai_chance = { factor = 50 }
+
+		add_stability = 0.05
+		add_political_power = 40
+	}
+}
+
+
+# ============================================================
+#   FASE 1 - i trotskisti (revolutionary_socialism)
+# ============================================================
+country_event = {
+	id = dve_sovnarkom.4
+	title = dve_sovnarkom.4.t
+	desc = dve_sovnarkom.4.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	# --- ridare l'Armata Rossa ai commissari ---
+	option = {
+		name = dve_sovnarkom.4.a
+		ai_chance = { factor = 50 }
+
+		set_country_flag = SOV_backed_trotskyists
+		add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+		add_popularity = { ideology = totalitarian_socialism popularity = -0.03 }
+		add_popularity = { ideology = vanguard_socialism popularity = -0.03 }
+		army_experience = 25
+		add_political_power = -50
+	}
+
+	option = {
+		name = dve_sovnarkom.4.b
+		ai_chance = { factor = 50 }
+
+		add_stability = 0.05
+		add_political_power = 40
+	}
+}

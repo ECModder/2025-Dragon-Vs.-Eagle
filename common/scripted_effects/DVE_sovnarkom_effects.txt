@@ -1,0 +1,33 @@
+# ============================================================
+#   DvE - la catena del Sovnarkom
+#
+#   Tutti e quattro gli eventi sono ancorati allo STESSO istante:
+#   lo scoppio della guerra civile. Non sono concatenati fra loro,
+#   cosi' se uno slitta o viene rilanciato gli altri non si
+#   spostano.
+#
+#     +3  giorni   dve_sovnarkom.1  Sovnarkom Restored
+#     +10 giorni   dve_sovnarkom.2  The Return of the Soyuz       (stalinisti)
+#     +11 giorni   dve_sovnarkom.3  The Vanguard Reorganizes      (leninisti)
+#     +12 giorni   dve_sovnarkom.4  The Flowering of Levoradikaly (trotskisti)
+#
+#   Le tre correnti arrivano dieci giorni dopo lo scoppio, una al
+#   giorno nell'ordine voluto: prima gli stalinisti, poi i
+#   leninisti, poi i trotskisti.
+#
+#   Va chiamato in scope SOV. Lo fanno due strade:
+#     - RUS_second_civil_war_effect (la guerra civile vera)
+#     - dve_sovnarkom.0, l'evento sentinella, se SOV nasce in
+#       qualunque altro modo
+#   La flag SOV_sovnarkom_scheduled impedisce il doppio innesco.
+# ============================================================
+
+SOV_sovnarkom_chain_effect = {
+
+	set_country_flag = SOV_sovnarkom_scheduled
+
+	country_event = { id = dve_sovnarkom.1 days = 3 }    # Sovnarkom Restored
+	country_event = { id = dve_sovnarkom.2 days = 10 }   # stalinisti
+	country_event = { id = dve_sovnarkom.3 days = 11 }   # leninisti
+	country_event = { id = dve_sovnarkom.4 days = 12 }   # trotskisti
+}
