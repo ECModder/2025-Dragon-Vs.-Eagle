@@ -31,5 +31,28 @@ ideas = {
 				lend_lease_tension = -1.00        # prestito d'uso a qualunque tensione
 			}
 		}
+
+		# ------------------------------------------------------
+		#   Solidarieta' socialista - PERMANENTE, da inizio partita
+		#
+		#   I paesi socialisti mandano volontari e prestito d'uso a
+		#   chi vogliono senza aspettare che il mondo si incendi.
+		#   Le leggi economiche (closed_economy vale +40%) alzano la
+		#   tensione richiesta: -100% la azzera comunque.
+		#
+		#   Si somma a international_brigades, che resta il bonus
+		#   temporaneo della guerra civile russa.
+		# ------------------------------------------------------
+		DVE_socialist_solidarity = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				send_volunteers_tension = -1.00   # volontari a qualunque tensione
+				lend_lease_tension = -1.00        # prestito d'uso a qualunque tensione
+			}
+		}
 	}
 }

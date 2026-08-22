@@ -1,0 +1,30 @@
+# ============================================================
+#   DvE - on_actions
+#
+#   SOLIDARIETA' SOCIALISTA
+#   I paesi socialisti che esistono gia' a inizio partita ricevono
+#   DVE_socialist_solidarity, che toglie il requisito di tensione
+#   mondiale per volontari e prestito d'uso
+#   (common/ideas/DVE_international_brigades.txt).
+#
+#   I tag socialisti che nascono durante la partita - SOV, GDR,
+#   FSR, SRB, SPA, SSR, YUG, GSR, PRS, CSR, CCR, PXA, PTA - non
+#   sono qui: la ricevono dai rispettivi file in history/countries/,
+#   che girano comunque a inizio partita anche per i tag dormienti.
+# ============================================================
+
+on_actions = {
+
+	on_startup = {
+		effect = {
+			PRC = { add_ideas = DVE_socialist_solidarity }   # Cina
+			VIN = { add_ideas = DVE_socialist_solidarity }   # Vietnam
+			LAO = { add_ideas = DVE_socialist_solidarity }   # Laos
+			CUB = { add_ideas = DVE_socialist_solidarity }   # Cuba
+			VEN = { add_ideas = DVE_socialist_solidarity }   # Venezuela
+			NIC = { add_ideas = DVE_socialist_solidarity }   # Nicaragua
+			ERI = { add_ideas = DVE_socialist_solidarity }   # Eritrea
+			NKO = { add_ideas = DVE_socialist_solidarity }   # Corea del Nord
+		}
+	}
+}
