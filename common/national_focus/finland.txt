@@ -404,9 +404,6 @@ focus_tree = {
 		x = 16
 		y = 4
 		cost = 5
-		available = {
-			always = no
-		}
 		prerequisite = { 
 			focus = FIN_broken_coalition
 		}
@@ -601,7 +598,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.01
 			add_popularity = {
-				ideology = democratic
+				ideology = conservative
 				popularity = -0.1
 			}
 		}
@@ -625,11 +622,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = communism
+				ideology = totalitarian_communism
 				popularity = 0.05
 			}
 			add_popularity = {
-				ideology = fascism
+				ideology = ultranationalism
 				popularity = -0.05
 			}
 		}
@@ -651,7 +648,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = communism
+				ideology = totalitarian_communism
 				popularity = 0.1
 			}
 			add_stability = -0.05
@@ -675,12 +672,12 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = communism
+				ideology = totalitarian_communism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = democratic
-				popularity = 0.15
+				ideology = conservative
+				popularity = 0.1
 			}
 			add_stability = 0.05
 			add_political_power = 50
@@ -690,7 +687,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FIN_arrest_right_wing_extremists
+		id = FIN_arrest_right_wing_politicians
 		icon = GFX_focus_NOR_arrest_quisling
 		x = 19
 		y = 8
@@ -702,7 +699,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = fascism
+				ideology = reactionary
 				popularity = -0.20
 			}
 			add_stability = -0.15
@@ -728,19 +725,19 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = communism
+				ideology = totalitarian_communism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = fascism
+				ideology = ultranationalism
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = democratic
+				ideology = conservative
 				popularity = -0.15
 			}
 			add_popularity = {
-				ideology = neutrality
+				ideology = authoritarianism
 				popularity = 0.45
 			}
 		}
@@ -787,11 +784,11 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = fascism
+				ideology = ultranationalism
 				popularity = 0.05
 			}
 			add_popularity = {
-				ideology = communism
+				ideology = totalitarian_communism
 				popularity = -0.05
 			}
 		}
@@ -813,8 +810,12 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = fascism
-				popularity = -0.05
+				ideology = ultranationalism
+				popularity = -0.15
+			}
+			add_popularity = {
+				ideology = conservative
+				popularity = 0.1
 			}
 			add_stability = 0.05
 
@@ -838,7 +839,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = fascism
+				ideology = ultranationalism
 				popularity = 0.05
 			}
 			add_stability = -0.05
@@ -848,7 +849,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FIN_arrest_left_wing_extremists
+		id = FIN_arrest_left_wing_politicians
 		icon = GFX_focus_ger_bulwark_against_bolshevism
 		x = 23
 		y = 8
@@ -860,7 +861,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = communism
+				ideology = vanguard_socialism
 				popularity = -0.20
 			}
 			add_stability = -0.15
@@ -879,43 +880,19 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_prepare_a_military_coup
 			focus = FIN_arrest_extremists
-			focus = FIN_arrest_left_wing_extremists
-			focus = FIN_arrest_right_wing_extremists
+			focus = FIN_arrest_left_wing_politicians
+			focus = FIN_arrest_right_wing_politicians
 		}
 
 		completion_reward = {
 			add_stability = 0.01
-			add_stability = -0.5
+			add_stability = -0.05
 			if = {
 				limit = {
 					has_completed_focus = FIN_turn_a_blind_eye_on_communists
 				}
 				set_politics = {
-					ruling_party = communism
-				}
-			}
-			else_if = {
-				limit = {
-					has_completed_focus = FIN_arrest_radical_communists
-				}
-				set_politics = {
-					ruling_party = democratic
-				}
-			}
-			else_if = {
-				limit = {
-					has_completed_focus = FIN_crackdown_on_neo_fascists
-				}
-				set_politics = {
-					ruling_party = democratic
-				}
-			}
-			else_if = {
-				limit = {
-					has_completed_focus = FIN_turn_a_blind_eye_on_neo_fascists
-				}
-				set_politics = {
-					ruling_party = fascism
+					ruling_party = totalitarian_communism
 				}
 			}
 			else_if = {
@@ -923,7 +900,31 @@ focus_tree = {
 					has_completed_focus = FIN_arrest_extremists
 				}
 				set_politics = {
-					ruling_party = neutrality
+					ruling_party = authoritarianism
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_arrest_radical_communists
+				}
+				set_politics = {
+					ruling_party = vanguard_socialism
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_crackdown_on_neo_fascists
+				}
+				set_politics = {
+					ruling_party = reactionary
+				}
+			}
+			else_if = {
+				limit = {
+					has_completed_focus = FIN_turn_a_blind_eye_on_neo_fascists
+				}
+				set_politics = {
+					ruling_party = ultranationalism
 				}
 			}
 		}
@@ -987,7 +988,7 @@ focus_tree = {
             always = no
         }
 		bypass = {
-			has_government = communism
+			has_government = totalitarian_communism
 		}
 
 	}
@@ -1122,7 +1123,14 @@ focus_tree = {
 				}
 				add_extra_state_shared_building_slots = 1
 			}
-			add_civilian_factory = 3
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+				}
+			}
+			FIN_advance_industry_tier_effect = yes
 		}
 
 	}
@@ -1161,7 +1169,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = communism
+			has_government = vanguard_socialism
 		}
 
 	}
@@ -1337,7 +1345,14 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_stability = 0.15
-			add_civilian_factory = 3
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+				}
+			}
+			FIN_advance_industry_tier_effect = yes
 		}
 
 	}
@@ -1354,7 +1369,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = progressive
 		}
 		completion_reward = {}
 
@@ -1495,7 +1510,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = revolutionary_socialism
 		}
 		completion_reward = {}
 
@@ -1657,7 +1672,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = centrist
 		}
 		completion_reward = {}
 
@@ -1823,7 +1838,8 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = conservative
+			has_completed_focus = FIN_elections
 		}
 		completion_reward = {}
 
@@ -1860,7 +1876,14 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.01
 			add_political_power = 150
-			add_civilian_factory = 4
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+				}
+			}
+			FIN_advance_industry_tier_effect = yes
 		}
 
 	}
@@ -1999,7 +2022,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = fundamentalism
 		}
 		completion_reward = {}
 
@@ -2152,7 +2175,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = neutrality
+			has_government = authoritarianism
 		}
 
 	}
@@ -2280,9 +2303,15 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.1
 			add_war_support = 0.1
-			add_military_factory = 2
-			add_national_spirit = { name = FIN_preparations_for_wars }
-			set_conscription_law = extensive_conscription
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+				}
+			}
+			add_ideas = { name = FIN_preparations_for_wars }
+			add_ideas = extensive_conscription
 		}
 	}
 
@@ -2331,7 +2360,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			has_government = democratic
+			has_government = reactionary
 		}
 		completion_reward = {}
 
@@ -2350,6 +2379,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.05
 			# Ind buff
+			FIN_advance_industry_tier_effect = yes
 		}
 	}
 
@@ -2559,9 +2589,7 @@ focus_tree = {
 			always = no
 		}
 		bypass = {
-			rule = {
-				has_government = fascism
-			}
+			has_government = ultranationalism
 		}
 
 	}
@@ -2700,6 +2728,7 @@ focus_tree = {
 			add_political_power = -25
 			add_stability = -0.05
 			# Ind buff
+			FIN_advance_industry_tier_effect = yes
 		}
 	}
 
@@ -2715,9 +2744,11 @@ focus_tree = {
 		available = {
 			always = no
 		}
-        hidden = yes
+        allow_branch = {
+			has_completed_focus = FIN_orpon_hallitus
+		}
 		bypass = {
-			has_government = democratic
+			has_government = conservatism
 		}
 		completion_reward = {}
 
@@ -2740,7 +2771,14 @@ focus_tree = {
 		cost = 5
 
 		completion_reward = {
-			add_civilian_factory = 2
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
+			FIN_advance_industry_tier_effect = yes
 		}
 
 	}
@@ -2756,7 +2794,13 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_civilian_factory = 2
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+				}
+			}
 		}
 
 	}
@@ -2772,7 +2816,13 @@ focus_tree = {
 		}
 
 		completion_reward = {
-			add_civilian_factory = 2
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+				}
+			}
 			add_stability = -0.05
 		}
 
