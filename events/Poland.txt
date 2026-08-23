@@ -4,13 +4,18 @@
 
 add_namespace = polandos
 add_namespace = starting_poland
+add_namespace = elections
+add_namespace = resistance
+add_namespace = request
+add_namespace = intervention
+
 
 country_event = {
 	id = polandos.1
 	title = polandos.1.t
 	desc = polandos.1.d
 	picture = GFX_report_event_POL_era
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "Polska Gurom!"
@@ -27,7 +32,7 @@ country_event = {
 	title = polandos.2.t
 	desc = polandos.2.d
 	picture = GFX_report_event_POL_chaos
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "one day, we shall be united!"
@@ -42,7 +47,7 @@ country_event = {
 	title = polandos.3.t
 	desc = polandos.3.d
 	picture = GFX_report_event_POL_era
-	
+
 	is_triggered_only = yes
 	option = {
 		name = "PIS will make poland strong and indenpendent"
@@ -54,6 +59,7 @@ POL = {
 		complete_national_focus = POL_PIS
 		}
 		}
+		ai_will_do = { factor = 70 }
 	}
 		option = {
 		name = "maybe something new?"
@@ -65,6 +71,7 @@ POL = {
 		complete_national_focus = POL_new_way
 		}
 		}
+		ai_will_do = { factor = 15 }
 		}
 			option = {
 		name = "KO will help us get closer to europe"
@@ -76,6 +83,7 @@ POL = {
 		complete_national_focus = POL_KO
 		}
 		}
+		ai_will_do = { factor = 15 }
 		}
 
 
@@ -87,13 +95,414 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 	trigger = {
-		tag = FIN
+		tag = POL
 	}
 option = {
-name = "okay thank you for telling!"
+name = "Thank you!"
 }
 
 }
+country_event = {
+
+    id = elections.1
+
+    title = elections.1.t
+    desc = elections.1.d
+
+    is_triggered_only = yes
+
+    option = {
+
+        name = "Lets begin"
 
 
+        set_variable = {
+            POL_candidate_A = 25
+        }
 
+        set_variable = {
+            POL_candidate_B = 25
+        }
+
+        set_variable = {
+            POL_candidate_C = 25
+        }
+
+        set_variable = {
+            POL_candidate_D = 25
+        }
+
+
+        set_country_flag = POL_elections_active
+    }
+}
+country_event = {
+	id = polandos.4
+	title = polandos.4.t
+	desc = polandos.4.d
+	picture = GFX_report_event_POL_speach
+
+	is_triggered_only = yes
+	option = {
+		name = "God, honor, homeland!"
+		add_political_power = 20
+		add_stability = 0.05
+	}
+
+		}
+		country_event = {
+	id = polandos.5
+	title = polandos.5.t
+	desc = polandos.5.d
+	picture = GFX_report_event_POL_safe
+
+	is_triggered_only = yes
+	option = {
+		name = "Poland - invincible"
+		add_political_power = 20
+	}
+
+		}
+				country_event = {
+	id = polandos.6
+	title = polandos.6.t
+	desc = polandos.6.d
+	picture = GFX_report_event_POL_anti_eu
+
+	is_triggered_only = yes
+	option = {
+		name = "#KeepUEAwayfromUS!"
+		add_political_power = 20
+add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.05
+}
+	}
+
+		}
+						country_event = {
+	id = polandos.7
+	title = polandos.7.t
+	desc = polandos.7.d
+	picture = GFX_report_event_POL_anti_eu
+
+	is_triggered_only = yes
+	option = {
+		name = "This Is End Of UE"
+		add_political_power = 20
+add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.15
+}
+}
+	}
+
+	country_event = {
+	id = polandos.8
+	title = polandos.8.t
+	desc = polandos.8.d
+
+	is_triggered_only = yes
+	option = {
+		name = "The Final Countdown..."
+		add_political_power = 20
+}
+
+	}
+		country_event = {
+	id = polandos.9
+	title = polandos.9.t
+	desc = polandos.9.d
+
+	is_triggered_only = yes
+	option = {
+		name = "This Is OUR victory!"
+		add_political_power = 20
+}
+
+	}
+		country_event = {
+	id = resistance.1
+	title = resistance.1.t
+	desc = resistance.1.d
+
+	is_triggered_only = yes
+	option = {
+		name = "KILL THEM ALL"
+		add_political_power = 20
+set_politics = {
+    ruling_party = ultranationalism
+    elections_allowed = no
+}
+
+		add_popularity = {
+			ideology = ultranationalism
+			popularity = 1.0
+		}
+		remove_ideas = POL_divided_country
+		remove_ideas = POL_anti_ukr_support
+		remove_ideas = POL_new_heart
+		remove_decision_category = POL_european_bop_decisions
+remove_power_balance = {
+id = POL_european_balance
+}
+
+    add_ideas = total_economic_mobilisation
+    add_ideas = scraping_the_barrel
+    add_ideas = closed_economy
+
+set_party_name = { ideology = ultranationalism long_name = "RECLAMATION GOVERMENT" name = "RG" }
+set_party_name = { ideology = revolutionary_socialism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = progressive long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = centrist long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = conservative long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = reactionary long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = authoritarianism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = autocracy long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = absolutism long_name = POL_outlawed_party_long name = POL_outlawed_party }
+set_party_name = { ideology = fundamentalism long_name = POL_outlawed_party_long name = POL_outlawed_party } 
+set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_long name = POL_outlawed_party } 
+    add_manpower = 30000
+
+    85 = {
+        add_resistance_target = 25
+    }
+    10 = {
+        add_resistance_target = 25
+    }
+    86 = {
+        add_resistance_target = 25
+    }
+    87 = {
+        add_resistance_target = 25
+    }
+    88 = {
+        add_resistance_target = 25
+    }
+    97 = {
+        add_resistance_target = 25
+    }
+	    retire_country_leader = yes
+    destroy_character = POL_Andrzej_Kupis
+    destroy_character = POL_Piotr_Meczynski
+    destroy_character = POL_Marcin_Dusza
+    destroy_character = POL_Dariusz_Drozdz
+	promote_character = POL_KILL
+	load_focus_tree = poland_Resistance_focus
+}
+	option = {
+		name = "Kill all Poles!"
+		add_political_power = 20
+}
+}
+		country_event = {
+	id = resistance.2
+	title = resistance.2.t
+	desc = resistance.2.d
+
+	is_triggered_only = yes
+	option = {
+	name = "Death to all germans and russians!"
+				POL = {
+	complete_national_focus = POL_a_great_success
+	}
+	GPL = {
+	retire_country_leader = yes
+	}
+	}
+	}
+			country_event = {
+	id = resistance.3
+	title = resistance.3.t
+	desc = resistance.3.d
+
+	is_triggered_only = yes
+	option = {
+	name = "Fuck him! He is only a puppet!"
+				POL = {
+	complete_national_focus = POL_fail
+	}
+	}
+	}
+			country_event = {
+	id = polandos.10
+	title = polandos.10.t
+	desc = polandos.10.d
+	picture = GFX_report_event_POL_rafal 
+
+	is_triggered_only = yes
+	option = {
+		name = "everyone! Vote for him!"
+		add_political_power = 20
+}
+
+	}
+				country_event = {
+	id = polandos.11
+	title = polandos.11.t
+	desc = polandos.11.d
+	picture = GFX_report_event_POL_pro_eu 
+
+	is_triggered_only = yes
+	option = {
+		name = "#lestbeclosertoeurope!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = -0.05
+}
+}
+
+	}
+	country_event = {
+	id = polandos.12
+	title = polandos.12.t
+	desc = polandos.12.d
+	picture = GFX_report_event_POL_pro_eu 
+
+	is_triggered_only = yes
+	option = {
+		name = "WE NEED TO HIDE EVERYTHING!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = -0.12
+}
+add_stability = -0.10
+}
+
+	}
+country_event = {
+	id = request.1
+	title = request.1.t
+	desc = request.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "please, agree!"
+
+		GER = {
+			country_event = { id = request.2 days = 2 }
+		}
+
+		add_political_power = 20
+	}
+}
+
+country_event = {
+	id = request.2
+	title = request.2.t
+	desc = request.2.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "agree!"
+
+		POL = {
+			country_event = {
+				id = request.3
+			}
+		}
+
+		add_political_power = 20
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	option = {
+		name = "NAH"
+
+		POL = {
+			country_event = {
+				day = 1
+				id = request.4
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+	country_event = {
+	id = request.3
+	title = request.3.t
+	desc = request.3.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "YAY!"
+		add_political_power = 20
+}
+	}
+	country_event = {
+	id = request.4
+	title = request.4.t
+	desc = request.4.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Unfortunate..."
+		add_political_power = 20
+}
+	}
+		country_event = {
+	id = polandos.13
+	title = polandos.13.t
+	desc = polandos.13.d
+	picture = GFX_report_event_POL_donald_and_trzask 
+
+	is_triggered_only = yes
+	option = {
+		name = "Thanks Donald"
+		add_political_power = 20
+}
+
+	}
+			country_event = {
+	id = polandos.14
+	title = polandos.14.t
+	desc = polandos.14.d 
+
+	is_triggered_only = yes
+	option = {
+		name = "Who Will Win?"
+		add_political_power = 20
+}
+
+	}
+			country_event = {
+	id = polandos.15
+	title = polandos.15.t
+	desc = polandos.15.d
+
+	is_triggered_only = yes
+	option = {
+		name = "They Are Easy to use!"
+		add_political_power = 20
+}
+
+	}
+country_event = {
+	id = intervention.1
+	title = intervention.1.t
+	desc = intervention.1.d
+
+	is_triggered_only = yes
+	option = {
+		name = "This is OUR city!"
+		add_political_power = 20
+		add_stability = 0.025
+}
+	option = {
+		name = "We should stay out of there"
+		add_political_power = -20
+}
+
+	}
+	
