@@ -492,16 +492,45 @@ country_event = {
 	id = intervention.1
 	title = intervention.1.t
 	desc = intervention.1.d
+	trigger = {
+		NOT = { country_exists = UKR }
+	}
 
 	is_triggered_only = yes
 	option = {
 		name = "This is OUR city!"
 		add_political_power = 20
 		add_stability = 0.025
+		ai_will_do = { factor = 25 }
+		transfer_state = 91
+		country_event = { id = intervention.2 days = 1 }
 }
 	option = {
 		name = "We should stay out of there"
 		add_political_power = -20
+		ai_will_do = { factor = 75 }
+}
+
+	}
+	country_event = {
+	id = intervention.2
+	title = intervention.2.t
+	desc = intervention.2.d
+
+	is_triggered_only = yes
+	option = {
+		name = "Lets hope this is a good decision..."
+		
+		UKK = {
+			transfer_state = 91
+		}
+		91 = {
+			add_core_of = UKK
+		}
+		
+		POL = {
+			puppet = UKK
+		}
 }
 
 	}
