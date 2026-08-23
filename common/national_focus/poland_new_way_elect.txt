@@ -94,7 +94,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power = 40	
-unlock_focus = { id = POL_new_euro_two }			
+set_country_flag = POL_new_way_euro			
 			}
 }
 		     focus = {
@@ -171,8 +171,6 @@ unlock_focus = { id = POL_new_euro_two }
 		cost = 1
 		priority = 10
 
-		allow_branch = {
-		}
 
 		
 		prerequisite = { focus = POL_new_social  }
@@ -181,7 +179,9 @@ unlock_focus = { id = POL_new_euro_two }
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+visible = {
+			has_country_flag = POL_new_way_euro
+		}
 		completion_reward = {
 			add_political_power = 40			
 			}

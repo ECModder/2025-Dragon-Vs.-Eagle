@@ -1,0 +1,414 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWERS}
+### search_filters = {FOCUS_FILTER_POLITICAL_CHARACTER}
+### search_filters = {FOCUS_FILTER_MILITARY_CHARACTER}
+### search_filters = {FOCUS_FILTER_INTERNATIONAL_TRADE}
+
+
+
+focus_tree = {
+	id = finnish_focus_victory
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = FIN
+		}
+	}
+	
+	default = no
+ # Elections
+	initial_show_position = {
+		x = 23
+		y = 0
+	}
+
+	continuous_focus_position = { x = 1700 y = 400 }
+
+	focus = {
+		id = FINw_victory
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 20
+		y = 1
+		cost = 5
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_leftists
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_centrists
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 7
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_kokoomus
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 11
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_christian_democrats
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 29
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_people_want_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 20
+		y = 7
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_constitutional_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 19
+		y = 8
+		cost = 5
+		prerequisite = {
+			focus = FINw_people_want_monarchy
+			focus = FINw_kokoomus
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_absolute_monarchy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 21
+		y = 8
+		cost = 5
+		prerequisite = {
+			focus = FINw_people_want_monarchy
+			focus = FINw_christian_democrats
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_choosing_monarch
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 20
+		y = 9
+		cost = 10
+		prerequisite = {
+			focus = FINw_absolute_monarchy
+			focus = FINw_constitutional_monarchy
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+		# Choose with desision
+	}
+
+	focus = {
+		id = FINw_foreign_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 10
+		cost = 10
+		prerequisite = {
+			focus = FINw_choosing_monarch
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_horthy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_foreign_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+		# Hidden
+	}
+
+	focus = {
+		id = FINw_von_hesse
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_foreign_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_bernadotte
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 11
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_foreign_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_romanov
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 15
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_foreign_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_habsburg
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 18
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_foreign_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_our_own_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 27
+		y = 10
+		cost = 10
+		prerequisite = {
+			focus = FINw_choosing_monarch
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+		# Next focus decided by ruling party
+	}
+
+	focus = {
+		id = FINw_communist_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 22
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_our_own_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_leftist_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 25
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_our_own_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_neutral_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 27
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_our_own_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+		# Mannerheim grandchildren?
+	}
+
+	focus = {
+		id = FINw_rightist_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 29
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_our_own_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_fascist_one
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 32
+		y = 11
+		cost = 10
+		prerequisite = {
+			focus = FINw_our_own_one
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_rightists
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 33
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = FINw_swedes_party
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 38
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = FINw_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+}

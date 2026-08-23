@@ -1,0 +1,173 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWERS}
+### search_filters = {FOCUS_FILTER_POLITICAL_CHARACTER}
+### search_filters = {FOCUS_FILTER_MILITARY_CHARACTER}
+### search_filters = {FOCUS_FILTER_INTERNATIONAL_TRADE}
+
+
+
+focus_tree = {
+	id = sami_focus
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = SMI
+		}
+	}
+	
+	default = yes
+ # Elections
+	initial_show_position = {
+		x = 20
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 50 }
+
+	focus = {
+		id = SMI_freedom
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 1
+		cost = 5
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_fate_of_our_politics
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_freedom
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_prepare_elections
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_fate_of_our_politics
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_communist_coup
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 7
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_prepare_elections
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_free_elections
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_prepare_elections
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_emerengy_powers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 11
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_fate_of_our_politics
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = SMI_ruler_for_life
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 11
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_emerengy_powers
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = SMI_shift_to_ultranationalism
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_emerengy_powers
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+		}
+	}
+}
