@@ -589,6 +589,55 @@ DVE_debug_china_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	DVE_debug_china_spawn_sik = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_SIK_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_tib = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_TIB_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- i vicini si servono: Russia, Mongolia, Corea, Rep. Cinese ---
+	DVE_debug_china_occupations = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_occupy_RUS_effect = yes
+			CHN_occupy_MON_effect = yes
+			CHN_occupy_KOR_effect = yes
+			CHN_occupy_CHI_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	# --- solo gli eserciti -------------------------------------
 	# Da usare dopo gli spawn singoli, che il territorio lo danno
 	# ma le divisioni no.
