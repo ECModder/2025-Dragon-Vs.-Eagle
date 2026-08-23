@@ -72,7 +72,7 @@ focus_tree = {
 	focus = {
 		id = SMI_prepare_elections
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 9
+		x = 8
 		y = 3
 		cost = 10
 
@@ -89,9 +89,9 @@ focus_tree = {
 	focus = {
 		id = SMI_communist_coup
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 7
+		x = 4
 		y = 4
-		cost = 10
+		cost = 5
 
 		prerequisite = {
 			focus = SMI_prepare_elections
@@ -106,9 +106,9 @@ focus_tree = {
 	focus = {
 		id = SMI_free_elections
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 9
+		x = 8
 		y = 4
-		cost = 10
+		cost = 5
 
 		prerequisite = {
 			focus = SMI_prepare_elections
@@ -123,7 +123,7 @@ focus_tree = {
 	focus = {
 		id = SMI_emerengy_powers
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 11
+		x = 12
 		y = 3
 		cost = 10
 
@@ -140,7 +140,7 @@ focus_tree = {
 	focus = {
 		id = SMI_ruler_for_life
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 11
+		x = 12
 		y = 4
 		cost = 10
 
@@ -155,9 +155,129 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SMI_drive_to_sea
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 5
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_ruler_for_life
+			focus = SMI_shift_to_ultranationalism
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Starts a limited war against Norway, Better success, more land
+			# Gets capitulated, becomes a puppet of norway
+			# Goes to a stalemate, White peace
+			# Does well, get Norwegian Lapland
+			# Capitulates norway, take all of the "corridor" to sweden and Norwegian puppet
+		}
+		# You can try again after a while if not wanted result
+	}
+
+	focus = {
+		id = SMI_expand_our_grip_to_murmansk
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_drive_to_sea
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Desicions to start a revolt in Murmansk and annex them
+		}
+	}
+
+	focus = {
+		id = SMI_demand_lappland
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 7
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_expand_our_grip_to_murmansk
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Demand Lappland from sweden, on refusal, ability to start a limited war
+		}
+	}
+
+	focus = {
+		id = SMI_crown_our_king
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 8
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_demand_lappland
+			focus = SMI_ruler_for_life
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = -0.05
+			# Demand Lappland from sweden, on refusal, ability to start a limited war
+		}
+	}
+
+	focus = {
+		id = SMI_reclaim_our_old_lands
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 16
+		y = 8
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_demand_lappland
+			focus = SMI_shift_to_ultranationalism
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = 0.05
+			add_war_support = 0.15
+			add_state_core = 929
+			add_state_core = 147
+			add_state_core = 215
+		}
+	}
+
+	focus = {
+		id = SMI_sapmi_united
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 9
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_crown_our_king
+			focus = SMI_reclaim_our_old_lands
+		}
+		
+		completion_reward = {
+			add_political_power = 125
+			add_stability = 0.2
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
 		id = SMI_shift_to_ultranationalism
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 13
+		x = 16
 		y = 4
 		cost = 10
 
@@ -170,4 +290,157 @@ focus_tree = {
 			add_stability = -0.05
 		}
 	}
+
+ # Industry
+
+	focus = {
+		id = SMI_kickstart_our_industry
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 23
+		y = 1
+		cost = 10
+		
+		completion_reward = {
+			add_political_power = 25
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 3
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 3
+                	instant_build = yes
+            	}
+        	}
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 1
+            	add_building_construction = {
+                	type = arms_factory
+                	level = 1
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_extract_our_resources
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 21
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_kickstart_our_industry
+		}
+		
+		completion_reward = {
+			add_stability = -0.05
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 3
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_iron_in_sweden
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 20
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_extract_our_resources
+		}
+
+		available = {
+			owns_state = 666
+		}
+		
+		completion_reward = {
+			add_stability = -0.05
+			add_resource = {
+				type = steel
+				amount = 16
+				state = 666
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_oil_from_sea
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 22
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_extract_our_resources
+		}
+
+		available = {
+			controls_state = 925
+		}
+		
+		completion_reward = {
+			add_stability = -0.05
+			add_resource = {
+				type = steel
+				amount = 16
+				state = 666
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_minerals_from_Murmansk
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 21
+		y = 4
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_extract_our_resources
+		}
+
+		available = {
+			controls_state = 213
+		}
+		
+		completion_reward = {
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 3
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 1
+                	instant_build = yes
+            	}
+        	}
+			add_resource = {
+				type = chromium
+				amount = 8
+				state = 666
+			}
+		}
+	}
 }
+
