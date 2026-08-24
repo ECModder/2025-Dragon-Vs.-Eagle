@@ -52,7 +52,7 @@ country_event = {
 	option = {
 		name = "PIS will make poland strong and indenpendent"
 		add_political_power = 50
-		add_stability = 0.5
+		add_stability = 0.05
 		hidden_effect = {
 load_focus_tree = poland_pis_elect_focus
 POL = {
@@ -60,11 +60,12 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 70 }
+		custom_effect_tooltip = NEW_FOCUSES		
 	}
 		option = {
 		name = "maybe something new?"
 		add_political_power = 50
-		add_stability = 0.5
+		add_stability = 0.05
 		hidden_effect = {
 		load_focus_tree = poland_new_way_elect_focus
 		POL = {
@@ -72,11 +73,12 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 15 }
+        custom_effect_tooltip = NEW_FOCUSES_three		
 		}
 			option = {
 		name = "KO will help us get closer to europe"
 		add_political_power = 50
-		add_stability = 0.5
+		add_stability = 0.05
 		hidden_effect = {
 		load_focus_tree = poland_ko_elect_focus
 		POL = {
@@ -84,6 +86,7 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 15 }
+		custom_effect_tooltip = NEW_FOCUSES_two	
 		}
 
 
@@ -528,9 +531,23 @@ country_event = {
 			add_core_of = UKK
 		}
 		
-		POL = {
-			puppet = UKK
-		}
+set_autonomy = {
+				target = UKK
+				autonomy_state = autonomy_colony
+				freedom_level = 38
+			}
+}
+
+	}
+	country_event = {
+	id = polandos.16
+	title = polandos.16.t
+	desc = polandos.16.d
+
+	is_triggered_only = yes
+	option = {
+		name = "New Era for Poland!"
+		add_political_power = 20
 }
 
 	}
