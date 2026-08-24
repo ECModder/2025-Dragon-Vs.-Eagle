@@ -548,7 +548,204 @@ set_autonomy = {
 	option = {
 		name = "New Era for Poland!"
 		add_political_power = 20
+				add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.03
+}
 }
 
+	}
+		country_event = {
+	id = polandos.17
+	title = polandos.17.t
+	desc = polandos.17.d
+
+	is_triggered_only = yes
+	option = {
+		name = "But we cant be TOO close"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = -0.03
+}
+}
+
+	}
+			country_event = {
+	id = polandos.19
+	title = polandos.19.t
+	desc = polandos.19.d
+
+	is_triggered_only = yes
+	option = {
+		name = "§B my perfect victory! §!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.03
+}
+}
+
+	}
+				country_event = {
+	id = polandos.18
+	title = polandos.18.t
+	desc = polandos.18.d
+
+	is_triggered_only = yes
+	option = {
+		name = "New Era For Poland"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.03
+}
+}
+
+	}
+		country_event = {
+	id = request.5
+	title = request.5.t
+	desc = request.5.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "let's hope they agree"
+		add_political_power = 20
+		GER = {
+		country_event = { id = request.6 days = 1 }
+		}
+		FRA = { country_event = { id = request.9 days = 1 } }
+		ITA = { country_event = { id = request.12 days = 1 } }
+}
+	}
+			country_event = {
+	id = request.6
+	title = request.6.t
+	desc = request.6.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Okay!"
+		add_political_power = 20
+		POL = {
+		country_event = { id = request.7  days = 1 }
+}
+ai_will_do = { factor = 60 }
+}
+	option = {
+		name = "NAH"
+		add_political_power = 20
+		POL = { country_event = { id = request.8 days = 1 } }
+		ai_will_do = { factor = 40 }
+}
+}
+	country_event = {
+	id = request.7
+	title = request.7.t
+	desc = request.7.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "YAY!"
+		add_political_power = 20
+}
+	}
+	country_event = {
+	id = request.8
+	title = request.8.t
+	desc = request.8.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Meh..."
+		add_political_power = -20
+}
+	}
+				country_event = {
+	id = request.9
+	title = request.9.t
+	desc = request.9.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Okay!"
+		add_political_power = 20
+		POL = {
+		country_event = { id = request.10  days = 1 }
+}
+ai_will_do = { factor = 60 }
+}
+	option = {
+		name = "NAH"
+		add_political_power = 20
+		POL = { country_event = { id = request.11 days = 1 } }
+		ai_will_do = { factor = 40 }
+}
+}
+		country_event = {
+	id = request.10
+	title = request.10.t
+	desc = request.10.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "YAY!"
+		add_political_power = 20
+}
+}
+			country_event = {
+	id = request.11
+	title = request.11.t
+	desc = request.11.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Meh..."
+		add_political_power = -20
+}
+	}
+	country_event = {
+	id = request.12
+	title = request.12.t
+	desc = request.12.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Okay!"
+		add_political_power = 20
+		POL = {
+		country_event = { id = request.13  days = 1 }
+}
+ai_will_do = { factor = 60 }
+}
+	option = {
+		name = "NAH"
+		add_political_power = 20
+		POL = { country_event = { id = request.14 days = 1 } }
+		ai_will_do = { factor = 40 }
+}
+}
+	country_event = {
+	id = request.13
+	title = request.13.t
+	desc = request.13.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "YAY!"
+		add_political_power = 20
+}
+	}
+		country_event = {
+	id = request.14
+	title = request.14.t
+	desc = request.14.d
+	
+	is_triggered_only = yes
+	option = {
+		name = "Meh..."
+		add_political_power = -20
+}
 	}
 	
