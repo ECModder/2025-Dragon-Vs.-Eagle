@@ -1,1 +1,15 @@
-
+on_startup = {
+    effect = {
+        every_country = {
+            limit = { original_tag = EGY }
+            set_variable = { egypt_capital_progress = 74 }
+            set_variable = { egypt_active_decisions_count = 0 }
+            
+            # Phase 1 Usage Trackers (Red = max 1, Yellow = max 2, Green = no limit needed)
+            set_variable = { egypt_p1_d1_used = 0 } # Red (Once)
+            set_variable = { egypt_p1_d2_used = 0 } # Red (Once)
+            set_variable = { egypt_p1_d3_used = 0 } # Red (Once)
+            set_variable = { egypt_p1_d4_used = 0 } # Red (Once)
+        }
+    }
+}
