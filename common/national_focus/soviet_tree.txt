@@ -59,6 +59,11 @@ focus_tree = {
 		completion_reward = {
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
 			set_country_flag = SOV_economic_decision_center_done
 		}
 	}
@@ -76,6 +81,11 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_market_socialism }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+		add_building_construction = {
+					type = industrial_complex
+					level = 20
+					instant_build = yes
+				}
 			add_ideas = idea_SOV_socialization_of_production
 			add_political_power = 100
 			set_country_flag = SOV_socialization_of_production_done
@@ -95,6 +105,11 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_market_socialism }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+		add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+		}
 			add_ideas = idea_SOV_collectivization_of_production
 			add_political_power = 100
 			set_country_flag = SOV_collectivization_of_production_done
@@ -114,6 +129,11 @@ focus_tree = {
 		mutually_exclusive = { focus = SOV_market_socialism }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+			}
 			add_ideas = idea_SOV_state_capitalism
 			add_political_power = 100
 			set_country_flag = SOV_state_capitalism_done
@@ -149,6 +169,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_socialization_of_production }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_from_each_abilities_done
@@ -165,6 +190,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_socialization_of_production }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_workspace_democracy_done
@@ -181,6 +211,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_socialization_of_production }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_socialization_of_factories_done
@@ -198,7 +233,7 @@ focus_tree = {
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_ideas = idea_SOV_to_each_needs
-			add_political_power = 100
+			add_political_power = -100
 			set_country_flag = SOV_to_each_needs_done
 		}
 	}
@@ -213,6 +248,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_workspace_democracy }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_peer_to_peer_economy_done
@@ -229,6 +269,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_socialization_of_factories }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
 			add_ideas = idea_SOV_agricultural_communes
 			add_political_power = 100
 			set_country_flag = SOV_agricultural_communes_done
@@ -277,6 +322,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_revive_ogas }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
 			set_country_flag = SOV_unified_computer_network_done
@@ -309,6 +359,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_investments_in_ai }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+			add_building_construction = {
+					type = arms_factory
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
 			set_country_flag = SOV_smart_production_chains_done
@@ -325,6 +380,11 @@ focus_tree = {
 		prerequisite = { focus = SOV_unified_computer_network }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+				add_building_construction = {
+					type = arms_factory
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_ai_reviewed_planning_done
@@ -373,6 +433,16 @@ focus_tree = {
 		prerequisite = { focus = SOV_ai_reviewed_planning }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
 			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			set_country_flag = SOV_variable_production_quotas_done
@@ -421,6 +491,16 @@ focus_tree = {
 		prerequisite = { focus = SOV_variable_production_quotas }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
 			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
 			set_country_flag = SOV_automation_of_industry_done
@@ -453,6 +533,16 @@ focus_tree = {
 		prerequisite = { focus = SOV_supercomputer_each_council focus = SOV_automation_of_industry focus = SOV_full_ecological_transition }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
+				add_building_construction = {
+					type = arms_factory
+					level = 10
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
 			add_ideas = idea_SOV_full_blown_digital_marxism
 			add_political_power = 150
 			set_country_flag = SOV_full_blown_digital_marxism_done
@@ -1440,7 +1530,7 @@ focus_tree = {
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
-			add_stability = 0.03
+			add_stability = 0.05
 			add_ideas = idea_SOV_state_of_the_councils
 			set_country_flag = SOV_state_of_the_councils_done
 		}
