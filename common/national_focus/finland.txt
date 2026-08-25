@@ -1875,7 +1875,7 @@ focus_tree = {
 			# Completed 5 desicions
 		}
 		completion_reward = {
-			add_stability = 0.01
+			add_stability = 0.1
 			add_political_power = 150
 			random_owned_state = {
 				add_extra_state_shared_building_slots = 5
@@ -1899,8 +1899,8 @@ focus_tree = {
 			focus = FIN_start_stopping_public_debt
 		}
 		completion_reward = {
-			add_stability = -0.1
-			add_political_power = 50
+			add_stability = -0.05
+			add_political_power = 75
 			every_owned_state = {
 				limit = {
 					is_core_of = ROOT
@@ -1939,7 +1939,18 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -50
-            add_war_support = 0.05
+            add_war_support = 0.1
+			army_experience = 75
+			add_tech_bonus = {
+				bonus = 0.5
+				uses = 2
+				category = infantry_weapons
+			}
+			add_tech_bonus = {
+				bonus = 0.3
+				uses = 1
+				category = land_doctrine
+			}
 		}
 
 	}
