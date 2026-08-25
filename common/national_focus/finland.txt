@@ -142,7 +142,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = 0.1
 			add_popularity = {
-				ideology = democratic
+				ideology = conservative
 				popularity = 0.1
 			}
 		}
@@ -166,7 +166,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = democratic
+				ideology = reactionary
 				popularity = 0.1
 			}
 
@@ -192,7 +192,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = democratic
+				ideology = progressive
 				popularity = 0.1
 			}
 
@@ -218,7 +218,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = democratic
+				ideology = revolutionary_socialism
 				popularity = 0.1
 			}
 
@@ -306,14 +306,12 @@ focus_tree = {
 		x = 6
 		y = 5
 		cost = 5
-		available = {
-			always = no
+        allow_branch = {
+			has_completed_focus = FIN_side_with_SDP
 		}
-        hidden = yes
 		prerequisite = { 
 			focus = FIN_side_with_SDP
 		}
-
 		completion_reward = {
 			add_stability = -0.15
             # Flips to Socialism
@@ -878,7 +876,6 @@ focus_tree = {
 		y = 9
 		cost = 5
 		prerequisite = { 
-			focus = FIN_prepare_a_military_coup
 			focus = FIN_arrest_extremists
 			focus = FIN_arrest_left_wing_politicians
 			focus = FIN_arrest_right_wing_politicians
@@ -886,7 +883,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_stability = 0.01
-			add_stability = -0.05
+			add_stability = -0.5
 			if = {
 				limit = {
 					has_completed_focus = FIN_turn_a_blind_eye_on_communists
@@ -1084,7 +1081,7 @@ focus_tree = {
 				}
                 add_extra_state_shared_building_slots = 1
             }
-			add_stability = 0.05
+			add_stability = 0.15
 		}
 
 	}
@@ -1145,8 +1142,8 @@ focus_tree = {
 			focus = FIN_restart_industry
 		}
 		completion_reward = {
-			add_army_experience = 50
-			add_stability = -0.05
+			army_experience = 50
+			add_stability = 0.1
 			add_war_support = 0.15
 			add_equipment_to_stockpile = {
 				type = infantry_equipment
