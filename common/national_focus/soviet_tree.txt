@@ -1428,6 +1428,9 @@ focus_tree = {
 			add_political_power = 80
 			add_stability = 0.03
 			set_country_flag = SOV_political_decision_congress_done
+			# Da qui parte la catena delle sei decisioni politiche,
+			# una ogni 3 giorni (events/DVE_sov_political_congress.txt)
+			country_event = { id = dve_sovpol.1 days = 3 }
 		}
 	}
 
@@ -1439,12 +1442,12 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_political_decision_congress }
-		mutually_exclusive = { focus = SOV_parliamentary_communism }
-		mutually_exclusive = { focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_state_of_the_councils }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_state_of_the_councils
 			set_country_flag = SOV_state_of_the_councils_done
 		}
 	}
@@ -1457,12 +1460,12 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_political_decision_congress }
-		mutually_exclusive = { focus = SOV_state_of_the_councils }
-		mutually_exclusive = { focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_parliamentary_communism }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_parliamentary_communism
 			set_country_flag = SOV_parliamentary_communism_done
 		}
 	}
@@ -1475,12 +1478,12 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_political_decision_congress }
-		mutually_exclusive = { focus = SOV_state_of_the_councils }
-		mutually_exclusive = { focus = SOV_parliamentary_communism }
+		available = { has_country_flag = SOV_choice_SOV_bureaucracy_at_the_helm }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_bureaucracy_at_the_helm
 			set_country_flag = SOV_bureaucracy_at_the_helm_done
 		}
 	}
@@ -1492,13 +1495,13 @@ focus_tree = {
 		y = 3
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_state_of_the_councils }
-		mutually_exclusive = { focus = SOV_workers_unions_planning }
-		mutually_exclusive = { focus = SOV_cadre_bureaucratic_planning }
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_workers_council_planning }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 50
 			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			add_ideas = idea_SOV_workers_council_planning
 			set_country_flag = SOV_workers_council_planning_done
 		}
 	}
@@ -1510,13 +1513,13 @@ focus_tree = {
 		y = 3
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_parliamentary_communism }
-		mutually_exclusive = { focus = SOV_workers_council_planning }
-		mutually_exclusive = { focus = SOV_cadre_bureaucratic_planning }
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_workers_unions_planning }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 50
 			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			add_ideas = idea_SOV_workers_unions_planning
 			set_country_flag = SOV_workers_unions_planning_done
 		}
 	}
@@ -1528,13 +1531,13 @@ focus_tree = {
 		y = 3
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_bureaucracy_at_the_helm }
-		mutually_exclusive = { focus = SOV_workers_council_planning }
-		mutually_exclusive = { focus = SOV_workers_unions_planning }
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_cadre_bureaucratic_planning }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 50
 			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			add_ideas = idea_SOV_cadre_bureaucratic_planning
 			set_country_flag = SOV_cadre_bureaucratic_planning_done
 		}
 	}
@@ -1546,13 +1549,13 @@ focus_tree = {
 		y = 4
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_workers_council_planning }
-		mutually_exclusive = { focus = SOV_strong_supreme_soviet }
-		mutually_exclusive = { focus = SOV_recreation_of_politburo }
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_democratic_centralism }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_democratic_centralism
 			set_country_flag = SOV_democratic_centralism_done
 		}
 	}
@@ -1564,13 +1567,13 @@ focus_tree = {
 		y = 4
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_workers_unions_planning }
-		mutually_exclusive = { focus = SOV_democratic_centralism }
-		mutually_exclusive = { focus = SOV_recreation_of_politburo }
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_strong_supreme_soviet }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_strong_supreme_soviet
 			set_country_flag = SOV_strong_supreme_soviet_done
 		}
 	}
@@ -1582,13 +1585,13 @@ focus_tree = {
 		y = 4
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_cadre_bureaucratic_planning }
-		mutually_exclusive = { focus = SOV_democratic_centralism }
-		mutually_exclusive = { focus = SOV_strong_supreme_soviet }
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_recreation_of_politburo }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_recreation_of_politburo
 			set_country_flag = SOV_recreation_of_politburo_done
 		}
 	}
@@ -1600,13 +1603,13 @@ focus_tree = {
 		y = 5
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_democratic_centralism }
-		mutually_exclusive = { focus = SOV_nkvd_model }
-		mutually_exclusive = { focus = SOV_kgb_model }
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_cheka_model }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_research_slot = 1
 			add_political_power = 50
+			add_ideas = idea_SOV_cheka_model
 			set_country_flag = SOV_cheka_model_done
 		}
 	}
@@ -1618,13 +1621,13 @@ focus_tree = {
 		y = 5
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_strong_supreme_soviet }
-		mutually_exclusive = { focus = SOV_cheka_model }
-		mutually_exclusive = { focus = SOV_kgb_model }
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_nkvd_model }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_research_slot = 1
 			add_political_power = 50
+			add_ideas = idea_SOV_nkvd_model
 			set_country_flag = SOV_nkvd_model_done
 		}
 	}
@@ -1636,13 +1639,13 @@ focus_tree = {
 		y = 5
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_recreation_of_politburo }
-		mutually_exclusive = { focus = SOV_cheka_model }
-		mutually_exclusive = { focus = SOV_nkvd_model }
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_kgb_model }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_research_slot = 1
 			add_political_power = 50
+			add_ideas = idea_SOV_kgb_model
 			set_country_flag = SOV_kgb_model_done
 		}
 	}
@@ -1654,13 +1657,13 @@ focus_tree = {
 		y = 6
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_cheka_model }
-		mutually_exclusive = { focus = SOV_ideologicheskiy_otdel }
-		mutually_exclusive = { focus = SOV_otdel_propagandy }
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_restart_agitprop }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_restart_agitprop
 			set_country_flag = SOV_restart_agitprop_done
 		}
 	}
@@ -1672,13 +1675,13 @@ focus_tree = {
 		y = 6
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_nkvd_model }
-		mutually_exclusive = { focus = SOV_restart_agitprop }
-		mutually_exclusive = { focus = SOV_otdel_propagandy }
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_ideologicheskiy_otdel }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_ideologicheskiy_otdel
 			set_country_flag = SOV_ideologicheskiy_otdel_done
 		}
 	}
@@ -1690,13 +1693,13 @@ focus_tree = {
 		y = 6
 		cost = 8
 		available_if_capitulated = no
-		prerequisite = { focus = SOV_kgb_model }
-		mutually_exclusive = { focus = SOV_restart_agitprop }
-		mutually_exclusive = { focus = SOV_ideologicheskiy_otdel }
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_otdel_propagandy }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			add_stability = 0.03
+			add_ideas = idea_SOV_otdel_propagandy
 			set_country_flag = SOV_otdel_propagandy_done
 		}
 	}
@@ -1709,6 +1712,7 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_soviets }
 		mutually_exclusive = { focus = SOV_all_power_to_revolution }
 		mutually_exclusive = { focus = SOV_all_power_to_party }
 		ai_will_do = { factor = 2 }
@@ -1716,6 +1720,7 @@ focus_tree = {
 			set_politics = { ruling_party = vanguard_socialism elections_allowed = yes }
 			add_political_power = 80
 			add_stability = 0.30
+			add_ideas = idea_SOV_all_power_to_soviets
 			set_country_flag = SOV_all_power_to_soviets_done
 		}
 	}
@@ -1728,12 +1733,14 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_revolution }
 		mutually_exclusive = { focus = SOV_all_power_to_soviets }
 		mutually_exclusive = { focus = SOV_all_power_to_party }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
 			add_stability = 0.03
+			add_ideas = idea_SOV_all_power_to_revolution
 			set_country_flag = SOV_all_power_to_revolution_done
 		}
 	}
@@ -1746,12 +1753,14 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_party }
 		mutually_exclusive = { focus = SOV_all_power_to_soviets }
 		mutually_exclusive = { focus = SOV_all_power_to_revolution }
 		ai_will_do = { factor = 2 }
 		completion_reward = {
 			add_political_power = 80
 			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_ideas = idea_SOV_all_power_to_party
 			set_country_flag = SOV_all_power_to_party_done
 		}
 	}
