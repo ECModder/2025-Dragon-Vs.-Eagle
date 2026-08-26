@@ -1,0 +1,75 @@
+# ============================================================
+#   DvE - tratti dei consiglieri politici russi
+#
+#   Uno per consigliere. I valori di deriva sono quelli dati dai
+#   dev: si sommano ogni settimana alla popolarita' dell'ideologia
+#   indicata, finche' il consigliere resta in carica.
+#
+#   Il nome del modificatore e' <gruppo_ideologico>_drift, e i
+#   gruppi sono i tredici di common/ideologies/00_ideologies.txt.
+# ============================================================
+
+leader_traits = {
+
+	# --- Gennady Zyuganov, KPRF ---
+	DVE_kprf_chairman = {
+		random = no
+		sprite = 13
+		totalitarian_socialism_drift = 0.01
+		authoritarian_socialism_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Comitato di Fabbrica, IPKB ---
+	DVE_factory_committee = {
+		random = no
+		sprite = 13
+		vanguard_socialism_drift = 0.02
+		revolutionary_socialism_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Sergej Mironov, Russia Giusta ---
+	DVE_just_russia_leader = {
+		random = no
+		sprite = 13
+		progressive_drift = 0.01
+		centrist_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Aleksej Zuravlev, Rodina ---
+	DVE_rodina_leader = {
+		random = no
+		sprite = 13
+		conservative_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Vladimir Yakushev, Russia Unita ---
+	DVE_united_russia_apparatus = {
+		random = no
+		sprite = 13
+		autocracy_drift = 0.01
+		authoritarianism_drift = 0.01
+		reactionary_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Leonid Slutsky, Russia Unita ---
+	DVE_united_russia_hardliner = {
+		random = no
+		sprite = 13
+		ultranationalism_drift = 0.01
+		fundamentalism_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Eduard Limonov, NBP ---
+	DVE_nbp_leader = {
+		random = no
+		sprite = 13
+		absolutism_drift = 0.01
+		ai_will_do = { factor = 1 }
+	}
+}

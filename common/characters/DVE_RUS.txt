@@ -1,0 +1,203 @@
+# ============================================================
+#   DvE - generali e consiglieri politici russi
+#
+#   I ritratti sono 57x77 in gfx/leaders/RUS/: e' la misura dello
+#   slot piccolo, quella che si vede nel pannello dei consiglieri e
+#   nella lista dei comandanti.
+#
+#   I tratti dei consiglieri stanno in
+#   common/country_leader/DVE_RUS_advisor_traits.txt.
+#
+#   Vengono reclutati in history/countries/RUS - Russia.txt.
+# ============================================================
+
+characters = {
+
+	# ==========================================================
+	#   I GENERALI
+	# ==========================================================
+
+	# Ministro della Difesa: un amministratore, non un comandante
+	# di campo. I tratti dicono esattamente questo.
+	RUS_sergey_shoigu = {
+		name = RUS_sergey_shoigu
+		portraits = {
+			army = { small = "gfx/leaders/RUS/RUS_shoigu_small.dds" }
+		}
+		corps_commander = {
+			traits = { politically_connected organizer }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 4
+			legacy_id = -1
+		}
+	}
+
+	# Capo di Stato Maggiore Generale
+	RUS_valery_gerasimov = {
+		name = RUS_valery_gerasimov
+		portraits = {
+			army = { small = "gfx/leaders/RUS/RUS_gerasimov_small.dds" }
+		}
+		field_marshal = {
+			traits = { organizer career_officer defensive_doctrine }
+			skill = 4
+			attack_skill = 3
+			defense_skill = 4
+			planning_skill = 4
+			logistics_skill = 3
+			legacy_id = -1
+		}
+	}
+
+	# Primo vice capo di Stato Maggiore
+	RUS_nikolai_bogdanovsky = {
+		name = RUS_nikolai_bogdanovsky
+		portraits = {
+			army = { small = "gfx/leaders/RUS/RUS_bogdanovsky_small.dds" }
+		}
+		corps_commander = {
+			traits = { career_officer trait_cautious }
+			skill = 3
+			attack_skill = 2
+			defense_skill = 4
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1
+		}
+	}
+
+	# Capo della Direzione Operativa Principale
+	RUS_sergei_rudskoy = {
+		name = RUS_sergei_rudskoy
+		portraits = {
+			army = { small = "gfx/leaders/RUS/RUS_rudskoy_small.dds" }
+		}
+		corps_commander = {
+			traits = { organizer infantry_officer }
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 4
+			logistics_skill = 2
+			legacy_id = -1
+		}
+	}
+
+	# Capo della Direzione Organizzativa e di Mobilitazione:
+	# e' l'uomo che trova gli uomini
+	RUS_yevgeny_burdinsky = {
+		name = RUS_yevgeny_burdinsky
+		portraits = {
+			army = { small = "gfx/leaders/RUS/RUS_burdinsky_small.dds" }
+		}
+		corps_commander = {
+			traits = { logistics_wizard organizer }
+			skill = 2
+			attack_skill = 1
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 4
+			legacy_id = -1
+		}
+	}
+
+
+	# ==========================================================
+	#   I CONSIGLIERI POLITICI
+	#   Uno per partito. Ognuno spinge le ideologie del suo.
+	# ==========================================================
+
+	RUS_gennady_zyuganov = {
+		name = RUS_gennady_zyuganov
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_zyuganov_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_gennady_zyuganov
+			traits = { DVE_kprf_chairman }
+			cost = 150
+		}
+	}
+
+	RUS_factory_committee = {
+		name = RUS_factory_committee
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_factory_committee_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_factory_committee
+			traits = { DVE_factory_committee }
+			cost = 150
+		}
+	}
+
+	RUS_sergey_mironov = {
+		name = RUS_sergey_mironov
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_mironov_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_sergey_mironov
+			traits = { DVE_just_russia_leader }
+			cost = 150
+		}
+	}
+
+	RUS_aleksey_zhuravlyov = {
+		name = RUS_aleksey_zhuravlyov
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_zhuravlyov_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_aleksey_zhuravlyov
+			traits = { DVE_rodina_leader }
+			cost = 150
+		}
+	}
+
+	RUS_vladimir_yakushev = {
+		name = RUS_vladimir_yakushev
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_yakushev_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_vladimir_yakushev
+			traits = { DVE_united_russia_apparatus }
+			cost = 150
+		}
+	}
+
+	RUS_leonid_slutsky = {
+		name = RUS_leonid_slutsky
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_slutsky_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_leonid_slutsky
+			traits = { DVE_united_russia_hardliner }
+			cost = 150
+		}
+	}
+
+	RUS_eduard_limonov = {
+		name = RUS_eduard_limonov
+		portraits = {
+			civilian = { small = "gfx/leaders/RUS/RUS_limonov_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = RUS_eduard_limonov
+			traits = { DVE_nbp_leader }
+			cost = 150
+		}
+	}
+}
