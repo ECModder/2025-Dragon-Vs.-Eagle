@@ -1,0 +1,91 @@
+# ============================================================
+#   NRE - forze all'inizio della Seconda Guerra Civile Russa
+#
+# NRE nasce dal Distretto Orientale e dalle formazioni cosacche:
+# meno numeroso ma con la flotta del Pacifico alle spalle.
+#
+#   Caricato da RUS_second_civil_war_effect con load_oob.
+# ============================================================
+
+division_template = {
+	name = "Kazachya Diviziya"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Dobrovolcheskiy Korpus"
+	division_names_group = SOV_INF_02
+	regiments = {
+		motorized = { x = 0 y = 0 }  motorized = { x = 0 y = 1 }  motorized = { x = 0 y = 2 }
+		infantry  = { x = 1 y = 0 }  infantry  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Tankovaya Brigada"
+	division_names_group = SOV_ARM_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }  light_armor = { x = 0 y = 1 }
+		mechanized  = { x = 1 y = 0 }  mechanized  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Territorialnoye Opolcheniye"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+	# milizia territoriale: la richiama la decisione "Richiama la milizia"
+}
+
+units = {
+	division = { location = 725 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 409
+	division = { location = 664 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 408
+	division = { location = 1748 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 574
+	division = { location = 1819 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 644
+	division = { location = 1722 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 876
+	division = { location = 1745 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 877
+	division = { location = 1865 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 874
+	division = { location = 1714 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 562
+	division = { location = 1823 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 637
+	division = { location = 4744 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 822
+	division = { location = 13204 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 875
+	division = { location = 1724 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 560
+	division = { location = 1730 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 561
+	division = { location = 675 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 657
+	division = { location = 739 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 409
+	division = { location = 681 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 408
+	division = { location = 1795 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 574
+	division = { location = 4006 division_template = "Tankovaya Brigada" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 644
+	division = { location = 2853 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 876
+	division = { location = 2877 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 877
+	division = { location = 10540 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 874
+	division = { location = 1805 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 562
+	division = { location = 1839 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 637
+	division = { location = 5264 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 822
+	division = { location = 13254 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 875
+	division = { location = 1772 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 560
+	division = { location = 1739 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 561
+	division = { location = 1802 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 657
+	division = { location = 753 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 409
+	division = { location = 810 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 408
+	division = { location = 1852 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 574
+	division = { location = 4229 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 644
+	division = { location = 3184 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 876
+	division = { location = 4878 division_template = "Dobrovolcheskiy Korpus" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 877
+	division = { location = 12683 division_template = "Kazachya Diviziya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 874
+}

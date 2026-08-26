@@ -1,0 +1,500 @@
+# ============================================================
+#   SOVIET UNION (SOV) - "Civilwar Communist Path"
+#
+#   Questo e' l'albero DI PARTENZA del tag SOV: quello che il
+#   giocatore ha davanti mentre combatte la Seconda Guerra Civile
+#   Russa contro RUS, RUR e NRE.
+#
+#   L'ultimo focus, "If Lenin could see us...", si sblocca solo a
+#   guerra civile vinta (Mosca in mano e nessuna guerra aperta con
+#   gli altri tre tag) e sostituisce questo albero con quello
+#   principale:
+#       load_focus_tree = { tree = soviet_focus keep_completed = no }
+#
+#   L'albero principale (soviet_focus, in soviet_tree.txt) NON si
+#   carica piu' da solo: viene caricato solo da qui.
+# ============================================================
+
+focus_tree = {
+	id = SOV_civil_war_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SOV
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 200 y = 1400 }
+
+	# ========================================================
+	#   IL FRONTE UNITO
+	# ========================================================
+	focus = {
+		id = SOV_cw_strange_united_front
+		icon = GFX_goal_SOV_cw_strange_united_front
+		x = 6
+		y = 0
+		cost = 4
+		available_if_capitulated = yes
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			# stalinisti, leninisti, trotskisti e consiliaristi nella
+			# stessa trincea: dura finche' dura
+			add_political_power = 120
+			add_stability = 0.15
+			add_war_support = 0.10
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.02 }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.02 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.02 }
+			create_unit = {
+				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+				owner = ROOT
+				count = 10
+				prioritize_location = 217   # Stalingrad
+				allow_spawning_on_enemy_provs = yes
+			}
+			set_country_flag = SOV_cw_strange_united_front_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_against_the_whites
+		icon = GFX_goal_SOV_cw_against_the_whites
+		x = 6
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_strange_united_front }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.10
+			army_experience = 30
+			add_tech_bonus = {
+				name = SOV_cw_against_the_whites
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 1000
+        		producer = ROOT
+    		}
+						add_tech_bonus = {
+				name = SOV_cw_new_putilov_workshops
+				bonus = 0.50
+				uses = 1
+				category = infantry_weapons
+			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 1998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 1650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = medium_tank_equipment_2
+        		amount = 2650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = motorized_equipment_1
+        		amount = 5000
+        		producer = ROOT
+    		}
+			add_equipment_to_stockpile = {
+        		type = support_equipment_3
+        		amount = 6023
+        		producer = ROOT
+			}
+			set_country_flag = SOV_cw_against_the_whites_done
+		}
+	}
+
+	# ========================================================
+	#   RAMO SINISTRO - IL COMANDO
+	# ========================================================
+	focus = {
+		id = SOV_cw_centralized_command_center
+		icon = GFX_goal_SOV_cw_centralized_command_center
+		x = 2
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_against_the_whites }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_command_power = 100
+			army_experience = 25
+			add_stability = 0.05
+			add_tech_bonus = {
+				name = SOV_cw_centralized_command_center
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			add_equipment_to_stockpile = {
+        		type = support_equipment_3
+        		amount = 1723
+        		producer = ROOT
+			}
+			set_country_flag = SOV_cw_centralized_command_center_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_political_commissars
+		icon = GFX_goal_SOV_cw_political_commissars
+		x = 2
+		y = 3
+		cost = 6
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_centralized_command_center }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			# il commissario tiene in linea il reparto, ma qualcuno
+			# finisce al muro per l'esempio
+			add_war_support = 0.08
+			add_stability = -0.05
+			army_experience = 40
+			add_political_power = 60
+			set_country_flag = SOV_cw_political_commissars_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_permit_international_brigades
+		icon = GFX_goal_SOV_cw_permit_international_brigades
+		x = 2
+		y = 4
+		cost = 6
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_political_commissars }
+		prerequisite = { focus = SOV_cw_every_weapon_must_be_used }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 60000
+			add_stability = 0.05
+			army_experience = 30
+			add_equipment_to_stockpile = { 
+			type = infantry_equipment_1 
+			amount = 3000 
+			}
+			every_country = {
+				limit = {
+					OR = { tag = PRC tag = VIN tag = LAO tag = CUB tag = VEN tag = NIC tag = ERI tag = NKO }
+				}
+				add_ai_strategy = {
+					type = send_volunteers_desire
+					id = "SOV"
+					value = 1000
+				}
+			}
+			create_unit = {
+				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+				owner = ROOT
+				count = 6
+				prioritize_location = 79   # Leningrado
+				allow_spawning_on_enemy_provs = no
+			}
+			create_unit = {
+				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+				owner = ROOT
+				count = 10
+				prioritize_location = 217   # Stalingrad
+				allow_spawning_on_enemy_provs = yes
+			}
+			set_country_flag = SOV_cw_permit_international_brigades_done
+		}
+	}
+
+	# ========================================================
+	#   RAMO CENTRALE - LA PRODUZIONE
+	# ========================================================
+	focus = {
+		id = SOV_cw_new_putilov_workshops
+		icon = GFX_goal_SOV_cw_new_putilov_workshops
+		x = 6
+		y = 2
+		cost = 6
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_against_the_whites }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			capital_scope = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			add_tech_bonus = {
+				name = SOV_cw_new_putilov_workshops
+				bonus = 0.50
+				uses = 1
+				category = infantry_weapons
+			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        	type = motorized_equipment_1
+        	amount = 1000
+        	producer = ROOT
+    		}
+			set_country_flag = SOV_cw_new_putilov_workshops_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_every_weapon_must_be_used
+		icon = GFX_goal_SOV_cw_every_weapon_must_be_used
+		x = 6
+		y = 3
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_new_putilov_workshops }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			# si spara con quello che c'e', anche col fucile del nonno
+			add_equipment_to_stockpile = { 
+				type = infantry_equipment_1 
+				amount = 8000 
+				producer = ROOT
+				}
+			add_equipment_to_stockpile = { 
+				type = support_equipment_1 
+				amount = 500 
+				producer = ROOT
+				}
+			army_experience = 20
+			set_country_flag = SOV_cw_every_weapon_must_be_used_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_war_communism_once_again
+		icon = GFX_goal_SOV_cw_war_communism_once_again
+		x = 6
+		y = 4
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_every_weapon_must_be_used }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			# requisizioni, razionamento e fucilazioni: 1918 di nuovo
+			add_ideas = war_economy
+			add_stability = -0.10
+			add_war_support = 0.10
+			add_political_power = 280
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        	type = motorized_equipment_1
+        	amount = 1000
+        	producer = ROOT
+    		}
+			set_country_flag = SOV_cw_war_communism_once_again_done
+		}
+	}
+
+	# ========================================================
+	#   RAMO DESTRO - GLI UOMINI
+	# ========================================================
+	focus = {
+		id = SOV_cw_red_guards
+		icon = GFX_goal_SOV_cw_red_guards
+		x = 10
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_against_the_whites }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 80000
+			add_war_support = 0.05
+			army_experience = 20
+			set_country_flag = SOV_cw_red_guards_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_conscription_for_women
+		icon = GFX_goal_SOV_cw_conscription_for_women
+		x = 10
+		y = 3
+		cost = 6
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_red_guards }
+		prerequisite = { focus = SOV_cw_new_putilov_workshops }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = extensive_conscription
+			add_manpower = 100000
+			add_stability = -0.03
+			set_country_flag = SOV_cw_conscription_for_women_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_workers_army
+		icon = GFX_goal_SOV_cw_workers_army
+		x = 10
+		y = 4
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_conscription_for_women }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 120000
+			army_experience = 40
+			add_war_support = 0.05
+			add_tech_bonus = {
+				name = SOV_cw_workers_army
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			set_country_flag = SOV_cw_workers_army_done
+		}
+	}
+
+	# ========================================================
+	#   LA SPINTA FINALE
+	#   Entrambi chiedono tutti e tre i rami.
+	# ========================================================
+	focus = {
+		id = SOV_cw_revolutionary_fervor
+		icon = GFX_goal_SOV_cw_revolutionary_fervor
+		x = 4
+		y = 5
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_permit_international_brigades }
+		prerequisite = { focus = SOV_cw_war_communism_once_again }
+		prerequisite = { focus = SOV_cw_workers_army }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_war_support = 0.15
+			add_stability = 0.05
+			add_political_power = 100
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 2000
+        		producer = ROOT
+    		}
+			set_country_flag = SOV_cw_revolutionary_fervor_done
+		}
+	}
+
+	focus = {
+		id = SOV_cw_revolutionary_vanguard_army
+		icon = GFX_goal_SOV_cw_revolutionary_vanguard_army
+		x = 8
+		y = 5
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SOV_cw_permit_international_brigades }
+		prerequisite = { focus = SOV_cw_war_communism_once_again }
+		prerequisite = { focus = SOV_cw_workers_army }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			army_experience = 80
+			add_command_power = 100
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 5000 }
+			add_tech_bonus = {
+				name = SOV_cw_revolutionary_vanguard_army
+				bonus = 1.00
+				uses = 1
+				category = land_doctrine
+			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_3
+        		amount = 10000
+        		producer = ROOT
+    		}
+			set_country_flag = SOV_cw_revolutionary_vanguard_army_done
+		}
+	}
+
+	# ========================================================
+	#   LA CHIUSURA - si passa all'albero principale
+	#
+	#   "prerequisites: Civil War Won by SOV. Unlock the Main
+	#   Focustree": disponibile solo con Mosca in mano e nessuna
+	#   guerra aperta con gli altri tre tag russi.
+	# ========================================================
+	focus = {
+		id = SOV_cw_if_lenin_could_see_us
+		icon = GFX_goal_SOV_cw_if_lenin_could_see_us
+		x = 6
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cw_revolutionary_fervor }
+		prerequisite = { focus = SOV_cw_revolutionary_vanguard_army }
+
+		available = {
+			owns_state = 219   # Mosca
+			NOT = { has_war_with = RUS }
+			NOT = { has_war_with = RUR }
+			NOT = { has_war_with = NRE }
+		}
+
+		ai_will_do = { factor = 20 }
+
+		completion_reward = {
+			set_capital = { state = 219 }
+			add_political_power = 200
+			add_stability = 0.10
+			add_war_support = 0.10
+			army_experience = 50
+			add_research_slot = 1
+			set_country_flag = SOV_civil_war_won
+			set_country_flag = SOV_cw_if_lenin_could_see_us_done
+			load_focus_tree = { tree = soviet_focus keep_completed = no }
+		}
+	}
+}

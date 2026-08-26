@@ -89,7 +89,7 @@ if = {
 	}
 }
 
-recruit_character = AST_albanese
+recruit_character = AST_Albanese
 
 if = {
 	limit = {
@@ -132,28 +132,28 @@ give_guarantee = PNG
 	}
 	if = {
 		limit = { has_dlc = "Together for Victory" }
-		complete_national_focus = AST_additional_militia_training
-		complete_national_focus = AST_royal_australian_artillery
-		complete_national_focus = AST_daimler_dingo
-		complete_national_focus = AST_expand_the_raaf
-		complete_national_focus = AST_cockatoo_island_shipyards
-		complete_national_focus = AST_expand_northern_presence
-		complete_national_focus = AST_standard_gauge_railway
-		complete_national_focus = AST_industries_assistance_corporation
-		complete_national_focus = AST_western_australian_government_railways
-		complete_national_focus = AST_south_australian_housing_trust
+		#complete_national_focus = AST_additional_militia_training
+		#complete_national_focus = AST_royal_australian_artillery
+		#complete_national_focus = AST_daimler_dingo
+		#complete_national_focus = AST_expand_the_raaf
+		#complete_national_focus = AST_cockatoo_island_shipyards
+		#complete_national_focus = AST_expand_northern_presence
+		#complete_national_focus = AST_standard_gauge_railway
+		#complete_national_focus = AST_industries_assistance_corporation
+		#complete_national_focus = AST_western_australian_government_railways
+		#complete_national_focus = AST_south_australian_housing_trust
 		
 		else = {
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = large_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = large_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}
 	}
 
@@ -252,7 +252,7 @@ give_guarantee = PNG
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Communist Party of Australia" name = "CPA" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Communist Party of Australia" name = "CPA" }
 set_party_name = { ideology = vanguard_socialism long_name = "Socialist Alliance" name = "SA" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Australian Greens" name = "GRN" }
 set_party_name = { ideology = progressive long_name = "Australian Labor Party" name = "ALP" }
@@ -267,15 +267,15 @@ set_party_name = { ideology = fundamentalism long_name = "Christian Democratic P
 
 create_country_leader = { name = "Anthony Albanese" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_albanese.dds" expire = "1965.1.1" ideology = social_democracy }
 create_country_leader = { name = "Peter Dutton" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Adam Bandt" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = democratic_socialism }
-create_country_leader = { name = "Pauline Hanson" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = right_wing_populism }
-create_country_leader = { name = "Bob Katter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = liberalism }
-create_country_leader = { name = "Sam Wainwright" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Adam Bandt" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
+create_country_leader = { name = "Pauline Hanson" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Bob Katter" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Sam Wainwright" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Andrew Irving" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Clive Palmer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
+create_country_leader = { name = "Clive Palmer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
 create_country_leader = { name = "General David Johnston" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Philip Benwell" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolutism }
-create_country_leader = { name = "Jim Saleam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism }
+create_country_leader = { name = "Philip Benwell" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Jim Saleam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
 create_country_leader = { name = "Lyle Shelton" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
 
 set_politics = {
@@ -294,7 +294,6 @@ set_popularities = {
 	authoritarianism = 6
 }
 	set_convoys = 100
-}
 
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }

@@ -1,0 +1,3358 @@
+# ============================================================
+#   SOVIET UNION (SOV) - albero completo
+#
+# "All Communist Tree": 3 decision-making centers that start from the same root.
+# Political Decision Congress - the institutional backbone and
+# then the three "All Power to..."
+# Economic Decision Center - four exclusive economic models
+# Military Decision Center - Red Army vs. Soviet Army
+#
+# SOV is not playable at startup: it was born from the Russian Civil War
+# or the socialist coup. While the civil war is being fought SOV uses
+# SOV_civil_war_focus; this tree replaces it
+# when "If Lenin could see us..." is completed, via
+# load_focus_tree = { tree = soviet_focus keep_completed = no }
+# ============================================================
+
+focus_tree = {
+	id = soviet_focus
+
+	# NON si auto-seleziona: l'albero di partenza di SOV e'
+	# SOV_civil_war_focus (soviet_civil_war.txt). Questo viene
+	# caricato dal focus "If Lenin could see us..." a guerra
+	# civile vinta, oppure a mano con load_focus_tree.
+	country = {
+		factor = 0
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 1200 y = 4500 }
+
+	focus = {
+		id = SOV_the_union_restored
+		icon = GFX_goal_SOV_the_union_restored
+		x = 56
+		y = 0
+		cost = 12
+		available_if_capitulated = no
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 300
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_research_slot = 1
+			set_country_flag = SOV_the_union_restored_done
+		}
+	}
+
+	focus = {
+		id = SOV_economic_decision_center
+		icon = GFX_goal_SOV_economic_decision_center
+		x = 19
+		y = 1
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_union_restored }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			set_country_flag = SOV_economic_decision_center_done
+		}
+	}
+
+	focus = {
+		id = SOV_socialization_of_production
+		icon = GFX_goal_SOV_socialization_of_production
+		x = 3
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_decision_center }
+		mutually_exclusive = { focus = SOV_collectivization_of_production }
+		mutually_exclusive = { focus = SOV_state_capitalism }
+		mutually_exclusive = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+		capital_scope = {
+			add_extra_state_shared_building_slots = 20
+			add_building_construction = { type = industrial_complex level = 20 instant_build = yes }
+		}
+			add_ideas = idea_SOV_socialization_of_production
+			add_political_power = 100
+			set_country_flag = SOV_socialization_of_production_done
+		}
+	}
+
+	focus = {
+		id = SOV_collectivization_of_production
+		icon = GFX_goal_SOV_collectivization_of_production
+		x = 14
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_decision_center }
+		mutually_exclusive = { focus = SOV_socialization_of_production }
+		mutually_exclusive = { focus = SOV_state_capitalism }
+		mutually_exclusive = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+		capital_scope = {
+			add_extra_state_shared_building_slots = 8
+			add_building_construction = { type = industrial_complex level = 8 instant_build = yes }
+		}
+			add_ideas = idea_SOV_collectivization_of_production
+			add_political_power = 100
+			set_country_flag = SOV_collectivization_of_production_done
+		}
+	}
+
+	focus = {
+		id = SOV_state_capitalism
+		icon = GFX_goal_SOV_state_capitalism
+		x = 25
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_decision_center }
+		mutually_exclusive = { focus = SOV_socialization_of_production }
+		mutually_exclusive = { focus = SOV_collectivization_of_production }
+		mutually_exclusive = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			}
+			add_ideas = idea_SOV_state_capitalism
+			add_political_power = 100
+			set_country_flag = SOV_state_capitalism_done
+		}
+	}
+
+	focus = {
+		id = SOV_market_socialism
+		icon = GFX_goal_SOV_market_socialism
+		x = 36
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_decision_center }
+		mutually_exclusive = { focus = SOV_socialization_of_production }
+		mutually_exclusive = { focus = SOV_collectivization_of_production }
+		mutually_exclusive = { focus = SOV_state_capitalism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_market_socialism
+			add_political_power = 100
+			set_country_flag = SOV_market_socialism_done
+		}
+	}
+
+	focus = {
+		id = SOV_from_each_abilities
+		icon = GFX_goal_SOV_from_each_abilities
+		x = 0
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_socialization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_from_each_abilities_done
+		}
+	}
+
+	focus = {
+		id = SOV_workspace_democracy
+		icon = GFX_goal_SOV_workspace_democracy
+		x = 3
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_socialization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_workspace_democracy_done
+		}
+	}
+
+	focus = {
+		id = SOV_socialization_of_factories
+		icon = GFX_goal_SOV_socialization_of_factories
+		x = 6
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_socialization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_socialization_of_factories_done
+		}
+	}
+
+	focus = {
+		id = SOV_to_each_needs
+		icon = GFX_goal_SOV_to_each_needs
+		x = 0
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_from_each_abilities }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_to_each_needs
+			add_political_power = -100
+			set_country_flag = SOV_to_each_needs_done
+		}
+	}
+
+	focus = {
+		id = SOV_peer_to_peer_economy
+		icon = GFX_goal_SOV_peer_to_peer_economy
+		x = 3
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_workspace_democracy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_peer_to_peer_economy_done
+		}
+	}
+
+	focus = {
+		id = SOV_agricultural_communes
+		icon = GFX_goal_SOV_agricultural_communes
+		x = 6
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_socialization_of_factories }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_ideas = idea_SOV_agricultural_communes
+			add_political_power = 100
+			set_country_flag = SOV_agricultural_communes_done
+		}
+	}
+
+	focus = {
+		id = SOV_revive_ogas
+		icon = GFX_goal_SOV_revive_ogas
+		x = 3
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_peer_to_peer_economy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_revive_ogas_done
+		}
+	}
+
+	focus = {
+		id = SOV_investments_in_ai
+		icon = GFX_goal_SOV_investments_in_ai
+		x = 0
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revive_ogas }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_investments_in_ai_done
+		}
+	}
+
+	focus = {
+		id = SOV_unified_computer_network
+		icon = GFX_goal_SOV_unified_computer_network
+		x = 3
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revive_ogas }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_unified_computer_network_done
+		}
+	}
+
+	focus = {
+		id = SOV_eco_data_network
+		icon = GFX_goal_SOV_eco_data_network
+		x = 6
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revive_ogas }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_eco_data_network_done
+		}
+	}
+
+	focus = {
+		id = SOV_smart_production_chains
+		icon = GFX_goal_SOV_smart_production_chains
+		x = 0
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_investments_in_ai }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+			}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_smart_production_chains_done
+		}
+	}
+
+	focus = {
+		id = SOV_ai_reviewed_planning
+		icon = GFX_goal_SOV_ai_reviewed_planning
+		x = 3
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_unified_computer_network }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+				}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_ai_reviewed_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_green_quota_algorithms
+		icon = GFX_goal_SOV_green_quota_algorithms
+		x = 6
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_eco_data_network }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_green_quota_algorithms_done
+		}
+	}
+
+	focus = {
+		id = SOV_decentralize_the_system
+		icon = GFX_goal_SOV_decentralize_the_system
+		x = 0
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_smart_production_chains }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_decentralize_the_system_done
+		}
+	}
+
+	focus = {
+		id = SOV_variable_production_quotas
+		icon = GFX_goal_SOV_variable_production_quotas
+		x = 3
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_ai_reviewed_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 20
+					add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+				}
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+				}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_variable_production_quotas_done
+		}
+	}
+
+	focus = {
+		id = SOV_cybernetic_energy_grid
+		icon = GFX_goal_SOV_cybernetic_energy_grid
+		x = 6
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_green_quota_algorithms }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_cybernetic_energy_grid_done
+		}
+	}
+
+	focus = {
+		id = SOV_supercomputer_each_council
+		icon = GFX_goal_SOV_supercomputer_each_council
+		x = 0
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_decentralize_the_system }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_supercomputer_each_council_done
+		}
+	}
+
+	focus = {
+		id = SOV_automation_of_industry
+		icon = GFX_goal_SOV_automation_of_industry
+		x = 3
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_variable_production_quotas }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 20
+					add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+				}
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+				}
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_automation_of_industry_done
+		}
+	}
+
+	focus = {
+		id = SOV_full_ecological_transition
+		icon = GFX_goal_SOV_full_ecological_transition
+		x = 6
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cybernetic_energy_grid }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_stability = 0.08
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = SOV_full_ecological_transition_done
+		}
+	}
+
+	focus = {
+		id = SOV_full_blown_digital_marxism
+		icon = GFX_goal_SOV_full_blown_digital_marxism
+		x = 3
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_supercomputer_each_council focus = SOV_automation_of_industry focus = SOV_full_ecological_transition }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+				}
+				capital_scope = {
+					add_extra_state_shared_building_slots = 5
+					add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+				}
+			add_ideas = idea_SOV_full_blown_digital_marxism
+			add_political_power = 150
+			set_country_flag = SOV_full_blown_digital_marxism_done
+		}
+	}
+
+	focus = {
+		id = SOV_nationalize_private_enterprises
+		icon = GFX_goal_SOV_nationalize_private_enterprises
+		x = 11
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collectivization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_nationalize_private_enterprises_done
+		}
+	}
+
+	focus = {
+		id = SOV_state_unions_economy
+		icon = GFX_goal_SOV_state_unions_economy
+		x = 14
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collectivization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_state_unions_economy_done
+		}
+	}
+
+	focus = {
+		id = SOV_work_coercion
+		icon = GFX_goal_SOV_work_coercion
+		x = 17
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collectivization_of_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_work_coercion_done
+		}
+	}
+
+	focus = {
+		id = SOV_seize_the_wealth
+		icon = GFX_goal_SOV_seize_the_wealth
+		x = 11
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_nationalize_private_enterprises }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_seize_the_wealth_done
+		}
+	}
+
+	focus = {
+		id = SOV_militarization_of_economy
+		icon = GFX_goal_SOV_militarization_of_economy
+		x = 14
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_unions_economy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_militarization_of_economy_done
+		}
+	}
+
+	focus = {
+		id = SOV_labor_mobilization
+		icon = GFX_goal_SOV_labor_mobilization
+		x = 17
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_work_coercion }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.06
+			set_country_flag = SOV_labor_mobilization_done
+		}
+	}
+
+	focus = {
+		id = SOV_collective_economic_outlook
+		icon = GFX_goal_SOV_collective_economic_outlook
+		x = 14
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_seize_the_wealth focus = SOV_militarization_of_economy focus = SOV_labor_mobilization }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_collective_economic_outlook_done
+		}
+	}
+
+	focus = {
+		id = SOV_continue_five_year_plans
+		icon = GFX_goal_SOV_continue_five_year_plans
+		x = 12
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collective_economic_outlook }
+		mutually_exclusive = { focus = SOV_a_digital_trotsky }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_continue_five_year_plans
+			add_political_power = 100
+			set_country_flag = SOV_continue_five_year_plans_done
+		}
+	}
+
+	focus = {
+		id = SOV_a_digital_trotsky
+		icon = GFX_goal_SOV_a_digital_trotsky
+		x = 16
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collective_economic_outlook }
+		mutually_exclusive = { focus = SOV_continue_five_year_plans }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_a_digital_trotsky
+			add_political_power = 100
+			set_country_flag = SOV_a_digital_trotsky_done
+		}
+	}
+
+	focus = {
+		id = SOV_centralize_economic_planning
+		icon = GFX_goal_SOV_centralize_economic_planning
+		x = 11
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_continue_five_year_plans focus = SOV_a_digital_trotsky }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_centralize_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_network_of_computer_servers
+		icon = GFX_goal_SOV_network_of_computer_servers
+		x = 14
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_continue_five_year_plans focus = SOV_a_digital_trotsky }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_network_of_computer_servers_done
+		}
+	}
+
+	focus = {
+		id = SOV_comrades_in_a_digital_world
+		icon = GFX_goal_SOV_comrades_in_a_digital_world
+		x = 17
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_continue_five_year_plans focus = SOV_a_digital_trotsky }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_comrades_in_a_digital_world_done
+		}
+	}
+
+	focus = {
+		id = SOV_fight_corruption_apparatus
+		icon = GFX_goal_SOV_fight_corruption_apparatus
+		x = 11
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_centralize_economic_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_fight_corruption_apparatus_done
+		}
+	}
+
+	focus = {
+		id = SOV_advanced_economic_planning
+		icon = GFX_goal_SOV_advanced_economic_planning
+		x = 14
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_network_of_computer_servers }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_advanced_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_investments_in_singularity
+		icon = GFX_goal_SOV_investments_in_singularity
+		x = 17
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_comrades_in_a_digital_world }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_investments_in_singularity_done
+		}
+	}
+
+	focus = {
+		id = SOV_radical_redistribution
+		icon = GFX_goal_SOV_radical_redistribution
+		x = 11
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_fight_corruption_apparatus }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_radical_redistribution_done
+		}
+	}
+
+	focus = {
+		id = SOV_integrated_advanced_search
+		icon = GFX_goal_SOV_integrated_advanced_search
+		x = 14
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_advanced_economic_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_integrated_advanced_search_done
+		}
+	}
+
+	focus = {
+		id = SOV_digital_meritocratic_socialism
+		icon = GFX_goal_SOV_digital_meritocratic_socialism
+		x = 17
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_investments_in_singularity }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_digital_meritocratic_socialism_done
+		}
+	}
+
+	focus = {
+		id = SOV_true_trotskyist_revolution
+		icon = GFX_goal_SOV_true_trotskyist_revolution
+		x = 14
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_radical_redistribution focus = SOV_integrated_advanced_search focus = SOV_digital_meritocratic_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_true_trotskyist_revolution
+			add_political_power = 150
+			set_country_flag = SOV_true_trotskyist_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_economic_sovereignty
+		icon = GFX_goal_SOV_economic_sovereignty
+		x = 22
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_capitalism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_economic_sovereignty_done
+		}
+	}
+
+	focus = {
+		id = SOV_reinstates_gosplan
+		icon = GFX_goal_SOV_reinstates_gosplan
+		x = 25
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_capitalism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_reinstates_gosplan_done
+		}
+	}
+
+	focus = {
+		id = SOV_cult_of_industrialization
+		icon = GFX_goal_SOV_cult_of_industrialization
+		x = 28
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_capitalism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_cult_of_industrialization_done
+		}
+	}
+
+	focus = {
+		id = SOV_ads_comecon
+		icon = GFX_goal_SOV_ads_comecon
+		x = 22
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_sovereignty }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_ads_comecon_done
+		}
+	}
+
+	focus = {
+		id = SOV_nationalize_all_industries
+		icon = GFX_goal_SOV_nationalize_all_industries
+		x = 25
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_reinstates_gosplan }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_nationalize_all_industries_done
+		}
+	}
+
+	focus = {
+		id = SOV_comprehensive_work_planning
+		icon = GFX_goal_SOV_comprehensive_work_planning
+		x = 28
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cult_of_industrialization }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_comprehensive_work_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_repeal_liberal_reforms
+		icon = GFX_goal_SOV_repeal_liberal_reforms
+		x = 25
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_ads_comecon focus = SOV_nationalize_all_industries focus = SOV_comprehensive_work_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_repeal_liberal_reforms_done
+		}
+	}
+
+	focus = {
+		id = SOV_revitalize_russian_periphery
+		icon = GFX_goal_SOV_revitalize_russian_periphery
+		x = 22
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_repeal_liberal_reforms }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_revitalize_russian_periphery_done
+		}
+	}
+
+	focus = {
+		id = SOV_tackle_demographic_collapse
+		icon = GFX_goal_SOV_tackle_demographic_collapse
+		x = 25
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_repeal_liberal_reforms }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_tackle_demographic_collapse_done
+		}
+	}
+
+	focus = {
+		id = SOV_end_landlordism
+		icon = GFX_goal_SOV_end_landlordism
+		x = 28
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_repeal_liberal_reforms }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_end_landlordism_done
+		}
+	}
+
+	focus = {
+		id = SOV_food_self_sufficiency
+		icon = GFX_goal_SOV_food_self_sufficiency
+		x = 22
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revitalize_russian_periphery }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_stability = 0.08
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = SOV_food_self_sufficiency_done
+		}
+	}
+
+	focus = {
+		id = SOV_centralized_work_assignment
+		icon = GFX_goal_SOV_centralized_work_assignment
+		x = 25
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_tackle_demographic_collapse }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_centralized_work_assignment_done
+		}
+	}
+
+	focus = {
+		id = SOV_tolerate_the_shopkeepers
+		icon = GFX_goal_SOV_tolerate_the_shopkeepers
+		x = 28
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_end_landlordism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_tolerate_the_shopkeepers_done
+		}
+	}
+
+	focus = {
+		id = SOV_quantity_over_quality
+		icon = GFX_goal_SOV_quantity_over_quality
+		x = 22
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_food_self_sufficiency }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_quantity_over_quality_done
+		}
+	}
+
+	focus = {
+		id = SOV_eliminate_unemployment
+		icon = GFX_goal_SOV_eliminate_unemployment
+		x = 25
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_centralized_work_assignment }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_eliminate_unemployment_done
+		}
+	}
+
+	focus = {
+		id = SOV_solidify_party_cadres
+		icon = GFX_goal_SOV_solidify_party_cadres
+		x = 28
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_tolerate_the_shopkeepers }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_solidify_party_cadres_done
+		}
+	}
+
+	focus = {
+		id = SOV_bring_stalinkas_back
+		icon = GFX_goal_SOV_bring_stalinkas_back
+		x = 22
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_quantity_over_quality }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_bring_stalinkas_back_done
+		}
+	}
+
+	focus = {
+		id = SOV_skyrocketing_quotas
+		icon = GFX_goal_SOV_skyrocketing_quotas
+		x = 25
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_eliminate_unemployment }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_skyrocketing_quotas_done
+		}
+	}
+
+	focus = {
+		id = SOV_rewards_heavy_industry
+		icon = GFX_goal_SOV_rewards_heavy_industry
+		x = 28
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_solidify_party_cadres }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_rewards_heavy_industry_done
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_economy_as_god_teaches
+		icon = GFX_goal_SOV_socialist_economy_as_god_teaches
+		x = 25
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_bring_stalinkas_back focus = SOV_skyrocketing_quotas focus = SOV_rewards_heavy_industry }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_socialist_economy_as_god_teaches
+			add_political_power = 150
+			set_country_flag = SOV_socialist_economy_as_god_teaches_done
+		}
+	}
+
+	focus = {
+		id = SOV_belt_and_road
+		icon = GFX_goal_SOV_belt_and_road
+		x = 33
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_belt_and_road_done
+		}
+	}
+
+	focus = {
+		id = SOV_nep_restarts
+		icon = GFX_goal_SOV_nep_restarts
+		x = 36
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_nep_restarts_done
+		}
+	}
+
+	focus = {
+		id = SOV_red_consumer_market
+		icon = GFX_goal_SOV_red_consumer_market
+		x = 39
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_market_socialism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_red_consumer_market_done
+		}
+	}
+
+	focus = {
+		id = SOV_chinese_investors
+		icon = GFX_goal_SOV_chinese_investors
+		x = 33
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_belt_and_road }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_chinese_investors_done
+		}
+	}
+
+	focus = {
+		id = SOV_let_some_get_rich
+		icon = GFX_goal_SOV_let_some_get_rich
+		x = 36
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_nep_restarts }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_let_some_get_rich_done
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_consumerism
+		icon = GFX_goal_SOV_socialist_consumerism
+		x = 39
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_red_consumer_market }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_socialist_consumerism_done
+		}
+	}
+
+	focus = {
+		id = SOV_economic_union_with_china
+		icon = GFX_goal_SOV_economic_union_with_china
+		x = 36
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_chinese_investors focus = SOV_let_some_get_rich focus = SOV_socialist_consumerism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_economic_union_with_china_done
+		}
+	}
+
+	focus = {
+		id = SOV_private_home_ownership
+		icon = GFX_goal_SOV_private_home_ownership
+		x = 33
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_union_with_china }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_private_home_ownership_done
+		}
+	}
+
+	focus = {
+		id = SOV_red_stock_exchange
+		icon = GFX_goal_SOV_red_stock_exchange
+		x = 36
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_union_with_china }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_red_stock_exchange_done
+		}
+	}
+
+	focus = {
+		id = SOV_meritocratic_system
+		icon = GFX_goal_SOV_meritocratic_system
+		x = 39
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_economic_union_with_china }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_meritocratic_system_done
+		}
+	}
+
+	focus = {
+		id = SOV_professional_chinese_specialists
+		icon = GFX_goal_SOV_professional_chinese_specialists
+		x = 33
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_private_home_ownership }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_professional_chinese_specialists_done
+		}
+	}
+
+	focus = {
+		id = SOV_state_co_owned_enterprises
+		icon = GFX_goal_SOV_state_co_owned_enterprises
+		x = 36
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_red_stock_exchange }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_state_co_owned_enterprises_done
+		}
+	}
+
+	focus = {
+		id = SOV_export_raw_materials
+		icon = GFX_goal_SOV_export_raw_materials
+		x = 39
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_meritocratic_system }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_export_raw_materials_done
+		}
+	}
+
+	focus = {
+		id = SOV_join_the_wto
+		icon = GFX_goal_SOV_join_the_wto
+		x = 33
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_professional_chinese_specialists }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_join_the_wto_done
+		}
+	}
+
+	focus = {
+		id = SOV_a_pragmatic_approach
+		icon = GFX_goal_SOV_a_pragmatic_approach
+		x = 36
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_co_owned_enterprises }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_a_pragmatic_approach_done
+		}
+	}
+
+	focus = {
+		id = SOV_investing_heavy_economy
+		icon = GFX_goal_SOV_investing_heavy_economy
+		x = 39
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_export_raw_materials }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_investing_heavy_economy_done
+		}
+	}
+
+	focus = {
+		id = SOV_new_russian_tech_sector
+		icon = GFX_goal_SOV_new_russian_tech_sector
+		x = 33
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_join_the_wto }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_new_russian_tech_sector_done
+		}
+	}
+
+	focus = {
+		id = SOV_state_corporatism
+		icon = GFX_goal_SOV_state_corporatism
+		x = 36
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_a_pragmatic_approach }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_state_corporatism_done
+		}
+	}
+
+	focus = {
+		id = SOV_military_overproduction
+		icon = GFX_goal_SOV_military_overproduction
+		x = 39
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_investing_heavy_economy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.06
+			set_country_flag = SOV_military_overproduction_done
+		}
+	}
+
+	focus = {
+		id = SOV_new_factory_of_the_world
+		icon = GFX_goal_SOV_new_factory_of_the_world
+		x = 36
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_new_russian_tech_sector focus = SOV_state_corporatism focus = SOV_military_overproduction }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_new_factory_of_the_world
+			add_political_power = 150
+			set_country_flag = SOV_new_factory_of_the_world_done
+		}
+	}
+
+# ============================ Political Decision Congress ===============================
+
+	focus = {
+		id = SOV_political_decision_congress
+		icon = GFX_goal_SOV_political_decision_congress
+		x = 56
+		y = 1
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_union_restored }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_political_decision_congress_done
+			# Da qui parte la catena delle sei decisioni politiche,
+			# una ogni 3 giorni (events/DVE_sov_political_congress.txt)
+			country_event = { id = dve_sovpol.1 days = 3 }
+		}
+	}
+
+	focus = {
+		id = SOV_state_of_the_councils
+		icon = GFX_goal_SOV_state_of_the_councils
+		x = 52
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_political_decision_congress }
+		available = { has_country_flag = SOV_choice_SOV_state_of_the_councils }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.05
+			add_ideas = idea_SOV_state_of_the_councils
+			set_country_flag = SOV_state_of_the_councils_done
+		}
+	}
+
+	focus = {
+		id = SOV_parliamentary_communism
+		icon = GFX_goal_SOV_parliamentary_communism
+		x = 56
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_political_decision_congress }
+		available = { has_country_flag = SOV_choice_SOV_parliamentary_communism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_parliamentary_communism
+			set_country_flag = SOV_parliamentary_communism_done
+		}
+	}
+
+	focus = {
+		id = SOV_bureaucracy_at_the_helm
+		icon = GFX_goal_SOV_bureaucracy_at_the_helm
+		x = 60
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_political_decision_congress }
+		available = { has_country_flag = SOV_choice_SOV_bureaucracy_at_the_helm }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_bureaucracy_at_the_helm
+			set_country_flag = SOV_bureaucracy_at_the_helm_done
+		}
+	}
+
+	focus = {
+		id = SOV_workers_council_planning
+		icon = GFX_goal_SOV_workers_council_planning
+		x = 52
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_workers_council_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 50
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_ideas = idea_SOV_workers_council_planning
+			set_country_flag = SOV_workers_council_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_workers_unions_planning
+		icon = GFX_goal_SOV_workers_unions_planning
+		x = 56
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_workers_unions_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 50
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_ideas = idea_SOV_workers_unions_planning
+			set_country_flag = SOV_workers_unions_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_cadre_bureaucratic_planning
+		icon = GFX_goal_SOV_cadre_bureaucratic_planning
+		x = 60
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_state_of_the_councils focus = SOV_parliamentary_communism focus = SOV_bureaucracy_at_the_helm }
+		available = { has_country_flag = SOV_choice_SOV_cadre_bureaucratic_planning }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 50
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_ideas = idea_SOV_cadre_bureaucratic_planning
+			set_country_flag = SOV_cadre_bureaucratic_planning_done
+		}
+	}
+
+	focus = {
+		id = SOV_democratic_centralism
+		icon = GFX_goal_SOV_democratic_centralism
+		x = 52
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_democratic_centralism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_democratic_centralism
+			set_country_flag = SOV_democratic_centralism_done
+		}
+	}
+
+	focus = {
+		id = SOV_strong_supreme_soviet
+		icon = GFX_goal_SOV_strong_supreme_soviet
+		x = 56
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_strong_supreme_soviet }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_strong_supreme_soviet
+			set_country_flag = SOV_strong_supreme_soviet_done
+		}
+	}
+
+	focus = {
+		id = SOV_recreation_of_politburo
+		icon = GFX_goal_SOV_recreation_of_politburo
+		x = 60
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_workers_council_planning focus = SOV_workers_unions_planning focus = SOV_cadre_bureaucratic_planning }
+		available = { has_country_flag = SOV_choice_SOV_recreation_of_politburo }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_recreation_of_politburo
+			set_country_flag = SOV_recreation_of_politburo_done
+		}
+	}
+
+	focus = {
+		id = SOV_cheka_model
+		icon = GFX_goal_SOV_cheka_model
+		x = 52
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_cheka_model }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_research_slot = 1
+			add_political_power = 50
+			add_ideas = idea_SOV_cheka_model
+			set_country_flag = SOV_cheka_model_done
+		}
+	}
+
+	focus = {
+		id = SOV_nkvd_model
+		icon = GFX_goal_SOV_nkvd_model
+		x = 56
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_nkvd_model }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_research_slot = 1
+			add_political_power = 50
+			add_ideas = idea_SOV_nkvd_model
+			set_country_flag = SOV_nkvd_model_done
+		}
+	}
+
+	focus = {
+		id = SOV_kgb_model
+		icon = GFX_goal_SOV_kgb_model
+		x = 60
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_democratic_centralism focus = SOV_strong_supreme_soviet focus = SOV_recreation_of_politburo }
+		available = { has_country_flag = SOV_choice_SOV_kgb_model }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_research_slot = 1
+			add_political_power = 50
+			add_ideas = idea_SOV_kgb_model
+			set_country_flag = SOV_kgb_model_done
+		}
+	}
+
+	focus = {
+		id = SOV_restart_agitprop
+		icon = GFX_goal_SOV_restart_agitprop
+		x = 52
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_restart_agitprop }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_restart_agitprop
+			set_country_flag = SOV_restart_agitprop_done
+		}
+	}
+
+	focus = {
+		id = SOV_ideologicheskiy_otdel
+		icon = GFX_goal_SOV_ideologicheskiy_otdel
+		x = 56
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_ideologicheskiy_otdel }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_ideologicheskiy_otdel
+			set_country_flag = SOV_ideologicheskiy_otdel_done
+		}
+	}
+
+	focus = {
+		id = SOV_otdel_propagandy
+		icon = GFX_goal_SOV_otdel_propagandy
+		x = 60
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cheka_model focus = SOV_nkvd_model focus = SOV_kgb_model }
+		available = { has_country_flag = SOV_choice_SOV_otdel_propagandy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.03
+			add_ideas = idea_SOV_otdel_propagandy
+			set_country_flag = SOV_otdel_propagandy_done
+		}
+	}
+
+	focus = {
+		id = SOV_all_power_to_soviets
+		icon = GFX_goal_SOV_all_power_to_soviets
+		x = 48
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_soviets }
+		mutually_exclusive = { focus = SOV_all_power_to_revolution }
+		mutually_exclusive = { focus = SOV_all_power_to_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = yes }
+			add_political_power = 80
+			add_stability = 0.30
+			add_ideas = idea_SOV_all_power_to_soviets
+			set_country_flag = SOV_all_power_to_soviets_done
+		}
+	}
+
+	focus = {
+		id = SOV_all_power_to_revolution
+		icon = GFX_goal_SOV_all_power_to_revolution
+		x = 56
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_revolution }
+		mutually_exclusive = { focus = SOV_all_power_to_soviets }
+		mutually_exclusive = { focus = SOV_all_power_to_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_stability = 0.03
+			add_ideas = idea_SOV_all_power_to_revolution
+			set_country_flag = SOV_all_power_to_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_all_power_to_party
+		icon = GFX_goal_SOV_all_power_to_party
+		x = 64
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restart_agitprop focus = SOV_ideologicheskiy_otdel focus = SOV_otdel_propagandy }
+		available = { has_country_flag = SOV_choice_SOV_all_power_to_party }
+		mutually_exclusive = { focus = SOV_all_power_to_soviets }
+		mutually_exclusive = { focus = SOV_all_power_to_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_ideas = idea_SOV_all_power_to_party
+			set_country_flag = SOV_all_power_to_party_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_communist_international
+		icon = GFX_goal_SOV_the_communist_international
+		x = 45
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_soviets }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_the_communist_international_done
+		}
+	}
+
+	focus = {
+		id = SOV_soviet_every_factory
+		icon = GFX_goal_SOV_soviet_every_factory
+		x = 48
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_soviets }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_soviet_every_factory_done
+		}
+	}
+
+	focus = {
+		id = SOV_restore_political_commissariats
+		icon = GFX_goal_SOV_restore_political_commissariats
+		x = 51
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_soviets }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_restore_political_commissariats_done
+		}
+	}
+
+	focus = {
+		id = SOV_clubs_europe
+		icon = GFX_goal_SOV_clubs_europe
+		x = 45
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_communist_international }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_clubs_europe_done
+		}
+	}
+
+	focus = {
+		id = SOV_soviet_every_city
+		icon = GFX_goal_SOV_soviet_every_city
+		x = 48
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_soviet_every_factory }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_soviet_every_city_done
+		}
+	}
+
+	focus = {
+		id = SOV_flexible_tactics
+		icon = GFX_goal_SOV_flexible_tactics
+		x = 51
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_political_commissariats }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_flexible_tactics_done
+		}
+	}
+
+	focus = {
+		id = SOV_clubs_asia
+		icon = GFX_goal_SOV_clubs_asia
+		x = 45
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_clubs_europe }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_clubs_asia_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_central_council
+		icon = GFX_goal_SOV_the_central_council
+		x = 48
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_soviet_every_city }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_the_central_council_done
+		}
+	}
+
+	focus = {
+		id = SOV_implacable_ideology
+		icon = GFX_goal_SOV_implacable_ideology
+		x = 51
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_flexible_tactics }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_implacable_ideology_done
+		}
+	}
+
+	focus = {
+		id = SOV_clubs_america
+		icon = GFX_goal_SOV_clubs_america
+		x = 45
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_clubs_asia }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_clubs_america_done
+		}
+	}
+
+	focus = {
+		id = SOV_democratic_centralism_soviets
+		icon = GFX_goal_SOV_democratic_centralism_soviets
+		x = 48
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_central_council }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_democratic_centralism_soviets_done
+		}
+	}
+
+	focus = {
+		id = SOV_socialist_cultural_hegemony
+		icon = GFX_goal_SOV_socialist_cultural_hegemony
+		x = 51
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_implacable_ideology }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_socialist_cultural_hegemony_done
+		}
+	}
+
+	focus = {
+		id = SOV_specter_haunting_the_world
+		icon = GFX_goal_SOV_specter_haunting_the_world
+		x = 48
+		y = 12
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_clubs_america focus = SOV_democratic_centralism_soviets focus = SOV_socialist_cultural_hegemony }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_specter_haunting_the_world_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_spectre_of_communism
+		icon = GFX_goal_SOV_the_spectre_of_communism
+		x = 48
+		y = 13
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_specter_haunting_the_world }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_the_spectre_of_communism
+			add_political_power = 150
+			set_country_flag = SOV_the_spectre_of_communism_done
+		}
+	}
+
+	focus = {
+		id = SOV_glory_revolutionary_international
+		icon = GFX_goal_SOV_glory_revolutionary_international
+		x = 53
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_glory_revolutionary_international_done
+		}
+	}
+
+	focus = {
+		id = SOV_restore_factory_soviets
+		icon = GFX_goal_SOV_restore_factory_soviets
+		x = 56
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_restore_factory_soviets_done
+		}
+	}
+
+	focus = {
+		id = SOV_new_communism_new_age
+		icon = GFX_goal_SOV_new_communism_new_age
+		x = 59
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_new_communism_new_age_done
+		}
+	}
+
+	focus = {
+		id = SOV_permanent_revolution_principle
+		icon = GFX_goal_SOV_permanent_revolution_principle
+		x = 53
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_glory_revolutionary_international }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_permanent_revolution_principle_done
+		}
+	}
+
+	focus = {
+		id = SOV_revolutionary_committees
+		icon = GFX_goal_SOV_revolutionary_committees
+		x = 56
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_factory_soviets }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_revolutionary_committees_done
+		}
+	}
+
+	focus = {
+		id = SOV_anti_fascist_bastion
+		icon = GFX_goal_SOV_anti_fascist_bastion
+		x = 59
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_new_communism_new_age }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_anti_fascist_bastion_done
+		}
+	}
+
+	focus = {
+		id = SOV_export_the_revolution
+		icon = GFX_goal_SOV_export_the_revolution
+		x = 53
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_permanent_revolution_principle }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_export_the_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_absolute_loyalty_revolution
+		icon = GFX_goal_SOV_absolute_loyalty_revolution
+		x = 56
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revolutionary_committees }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_absolute_loyalty_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_cut_down_party_bureaucracy
+		icon = GFX_goal_SOV_cut_down_party_bureaucracy
+		x = 59
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_anti_fascist_bastion }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_cut_down_party_bureaucracy_done
+		}
+	}
+
+	focus = {
+		id = SOV_ensure_peoples_support
+		icon = GFX_goal_SOV_ensure_peoples_support
+		x = 53
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_export_the_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_ensure_peoples_support_done
+		}
+	}
+
+	focus = {
+		id = SOV_denouncing_chinese_revisionism
+		icon = GFX_goal_SOV_denouncing_chinese_revisionism
+		x = 56
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_absolute_loyalty_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_denouncing_chinese_revisionism_done
+		}
+	}
+
+	focus = {
+		id = SOV_anti_corruption_campaigns
+		icon = GFX_goal_SOV_anti_corruption_campaigns
+		x = 59
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cut_down_party_bureaucracy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_anti_corruption_campaigns_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_permanent_revolution
+		icon = GFX_goal_SOV_the_permanent_revolution
+		x = 56
+		y = 12
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_ensure_peoples_support focus = SOV_denouncing_chinese_revisionism focus = SOV_anti_corruption_campaigns }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_the_permanent_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_trotsky_young_once_again
+		icon = GFX_goal_SOV_trotsky_young_once_again
+		x = 56
+		y = 13
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_permanent_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_trotsky_young_once_again
+			add_political_power = 150
+			set_country_flag = SOV_trotsky_young_once_again_done
+		}
+	}
+
+	focus = {
+		id = SOV_rebirth_of_cominform
+		icon = GFX_goal_SOV_rebirth_of_cominform
+		x = 61
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+			set_country_flag = SOV_rebirth_of_cominform_done
+		}
+	}
+
+	focus = {
+		id = SOV_peoples_democratic_dictatorship
+		icon = GFX_goal_SOV_peoples_democratic_dictatorship
+		x = 64
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_peoples_democratic_dictatorship_done
+		}
+	}
+
+	focus = {
+		id = SOV_second_wave_of_purges
+		icon = GFX_goal_SOV_second_wave_of_purges
+		x = 67
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_all_power_to_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_second_wave_of_purges_done
+		}
+	}
+
+	focus = {
+		id = SOV_reclaim_breakaway_countries
+		icon = GFX_goal_SOV_reclaim_breakaway_countries
+		x = 61
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_rebirth_of_cominform }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_reclaim_breakaway_countries_done
+		}
+	}
+
+	focus = {
+		id = SOV_restore_authority_of_party
+		icon = GFX_goal_SOV_restore_authority_of_party
+		x = 64
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_peoples_democratic_dictatorship }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_restore_authority_of_party_done
+		}
+	}
+
+	focus = {
+		id = SOV_anti_corruption_campaign_party
+		icon = GFX_goal_SOV_anti_corruption_campaign_party
+		x = 67
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_second_wave_of_purges }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_anti_corruption_campaign_party_done
+		}
+	}
+
+	focus = {
+		id = SOV_create_the_minsk_pact
+		icon = GFX_goal_SOV_create_the_minsk_pact
+		x = 61
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_reclaim_breakaway_countries }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_create_the_minsk_pact_done
+		}
+	}
+
+	focus = {
+		id = SOV_politburo_of_yes_men
+		icon = GFX_goal_SOV_politburo_of_yes_men
+		x = 64
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_authority_of_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_politburo_of_yes_men_done
+		}
+	}
+
+	focus = {
+		id = SOV_great_trial_of_traitors
+		icon = GFX_goal_SOV_great_trial_of_traitors
+		x = 67
+		y = 10
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_anti_corruption_campaign_party }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_great_trial_of_traitors_done
+		}
+	}
+
+	focus = {
+		id = SOV_shackles_again_eastern_europe
+		icon = GFX_goal_SOV_shackles_again_eastern_europe
+		x = 61
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_create_the_minsk_pact }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_shackles_again_eastern_europe_done
+		}
+	}
+
+	focus = {
+		id = SOV_long_live_general_secretary
+		icon = GFX_goal_SOV_long_live_general_secretary
+		x = 64
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_politburo_of_yes_men }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_long_live_general_secretary_done
+		}
+	}
+
+	focus = {
+		id = SOV_new_party_cadres
+		icon = GFX_goal_SOV_new_party_cadres
+		x = 67
+		y = 11
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_great_trial_of_traitors }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_new_party_cadres_done
+		}
+	}
+
+	focus = {
+		id = SOV_xxii_party_congress
+		icon = GFX_goal_SOV_xxii_party_congress
+		x = 64
+		y = 12
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_shackles_again_eastern_europe focus = SOV_long_live_general_secretary focus = SOV_new_party_cadres }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_xxii_party_congress_done
+		}
+	}
+
+	focus = {
+		id = SOV_a_party_with_a_state
+		icon = GFX_goal_SOV_a_party_with_a_state
+		x = 64
+		y = 13
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_xxii_party_congress }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_a_party_with_a_state
+			add_political_power = 150
+			set_country_flag = SOV_a_party_with_a_state_done
+		}
+	}
+
+	focus = {
+		id = SOV_military_decision_center
+		icon = GFX_goal_SOV_military_decision_center
+		x = 93
+		y = 1
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_union_restored }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 100
+			add_command_power = 50
+			army_experience = 30
+			set_country_flag = SOV_military_decision_center_done
+		}
+	}
+
+	focus = {
+		id = SOV_restore_the_red_army
+		icon = GFX_goal_SOV_restore_the_red_army
+		x = 86
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_military_decision_center }
+		mutually_exclusive = { focus = SOV_restore_the_soviet_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_restore_the_red_army
+			add_political_power = 100
+			set_country_flag = SOV_restore_the_red_army_done
+		}
+	}
+
+	focus = {
+		id = SOV_restore_the_soviet_army
+		icon = GFX_goal_SOV_restore_the_soviet_army
+		x = 99
+		y = 2
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_military_decision_center }
+		mutually_exclusive = { focus = SOV_restore_the_red_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_restore_the_soviet_army
+			add_political_power = 100
+			set_country_flag = SOV_restore_the_soviet_army_done
+		}
+	}
+
+	focus = {
+		id = SOV_red_army_founder_trotsky
+		icon = GFX_goal_SOV_red_army_founder_trotsky
+		x = 83
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_red_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_red_army_founder_trotsky_done
+		}
+	}
+
+	focus = {
+		id = SOV_reforming_military_corps
+		icon = GFX_goal_SOV_reforming_military_corps
+		x = 86
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_red_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_reforming_military_corps_done
+		}
+	}
+
+	focus = {
+		id = SOV_smart_military_manufacturing
+		icon = GFX_goal_SOV_smart_military_manufacturing
+		x = 89
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_red_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = infantry_weapons }
+			army_experience = 16
+			set_country_flag = SOV_smart_military_manufacturing_done
+		}
+	}
+
+	focus = {
+		id = SOV_military_commissars
+		icon = GFX_goal_SOV_military_commissars
+		x = 83
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_red_army_founder_trotsky }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_military_commissars_done
+		}
+	}
+
+	focus = {
+		id = SOV_trial_of_corrupt_and_traitors
+		icon = GFX_goal_SOV_trial_of_corrupt_and_traitors
+		x = 86
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_reforming_military_corps }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_trial_of_corrupt_and_traitors_done
+		}
+	}
+
+	focus = {
+		id = SOV_peer_to_peer_production
+		icon = GFX_goal_SOV_peer_to_peer_production
+		x = 89
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_smart_military_manufacturing }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = SOV_peer_to_peer_production_done
+		}
+	}
+
+	focus = {
+		id = SOV_loyal_to_the_revolution
+		icon = GFX_goal_SOV_loyal_to_the_revolution
+		x = 86
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_military_commissars focus = SOV_trial_of_corrupt_and_traitors focus = SOV_peer_to_peer_production }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_loyal_to_the_revolution_done
+		}
+	}
+
+	focus = {
+		id = SOV_make_way_for_the_young
+		icon = GFX_goal_SOV_make_way_for_the_young
+		x = 83
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_loyal_to_the_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_make_way_for_the_young_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_workers_army
+		icon = GFX_goal_SOV_the_workers_army
+		x = 86
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_loyal_to_the_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_the_workers_army_done
+		}
+	}
+
+	focus = {
+		id = SOV_cult_of_the_blitzkrieg
+		icon = GFX_goal_SOV_cult_of_the_blitzkrieg
+		x = 89
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_loyal_to_the_revolution }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = armor }
+			army_experience = 20
+			set_country_flag = SOV_cult_of_the_blitzkrieg_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_red_airforce
+		icon = GFX_goal_SOV_the_red_airforce
+		x = 83
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_make_way_for_the_young }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = air_doctrine }
+			air_experience = 20
+			set_country_flag = SOV_the_red_airforce_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_red_navy
+		icon = GFX_goal_SOV_the_red_navy
+		x = 86
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_workers_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = naval_doctrine }
+			navy_experience = 20
+			set_country_flag = SOV_the_red_navy_done
+		}
+	}
+
+	focus = {
+		id = SOV_a_mechanized_army
+		icon = GFX_goal_SOV_a_mechanized_army
+		x = 89
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_cult_of_the_blitzkrieg }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = armor }
+			army_experience = 20
+			set_country_flag = SOV_a_mechanized_army_done
+		}
+	}
+
+	focus = {
+		id = SOV_study_new_doctrines
+		icon = GFX_goal_SOV_study_new_doctrines
+		x = 83
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_red_airforce }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_study_new_doctrines_done
+		}
+	}
+
+	focus = {
+		id = SOV_the_red_academies
+		icon = GFX_goal_SOV_the_red_academies
+		x = 86
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_red_navy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_the_red_academies_done
+		}
+	}
+
+	focus = {
+		id = SOV_superiority_of_tanks
+		icon = GFX_goal_SOV_superiority_of_tanks
+		x = 89
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_a_mechanized_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = armor }
+			army_experience = 20
+			set_country_flag = SOV_superiority_of_tanks_done
+		}
+	}
+
+	focus = {
+		id = SOV_electronic_warfare
+		icon = GFX_goal_SOV_electronic_warfare
+		x = 83
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_study_new_doctrines }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = SOV_electronic_warfare_done
+		}
+	}
+
+	focus = {
+		id = SOV_quality_training_programs
+		icon = GFX_goal_SOV_quality_training_programs
+		x = 86
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_the_red_academies }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_quality_training_programs_done
+		}
+	}
+
+	focus = {
+		id = SOV_overwhelming_superiority
+		icon = GFX_goal_SOV_overwhelming_superiority
+		x = 89
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_superiority_of_tanks }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+			set_country_flag = SOV_overwhelming_superiority_done
+		}
+	}
+
+	focus = {
+		id = SOV_workers_of_the_world_unite
+		icon = GFX_goal_SOV_workers_of_the_world_unite
+		x = 86
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_electronic_warfare focus = SOV_quality_training_programs focus = SOV_overwhelming_superiority }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_workers_of_the_world_unite
+			add_political_power = 150
+			set_country_flag = SOV_workers_of_the_world_unite_done
+		}
+	}
+
+	focus = {
+		id = SOV_politicized_military_focus
+		icon = GFX_goal_SOV_politicized_military_focus
+		x = 96
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_soviet_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_politicized_military_focus_done
+		}
+	}
+
+	focus = {
+		id = SOV_purge_traitors_of_the_people
+		icon = GFX_goal_SOV_purge_traitors_of_the_people
+		x = 99
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_soviet_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_purge_traitors_of_the_people_done
+		}
+	}
+
+	focus = {
+		id = SOV_political_commissars
+		icon = GFX_goal_SOV_political_commissars
+		x = 102
+		y = 3
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_restore_the_soviet_army }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+			set_country_flag = SOV_political_commissars_done
+		}
+	}
+
+	focus = {
+		id = SOV_relentless_propaganda
+		icon = GFX_goal_SOV_relentless_propaganda
+		x = 96
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_politicized_military_focus }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_relentless_propaganda_done
+		}
+	}
+
+	focus = {
+		id = SOV_red_terror
+		icon = GFX_goal_SOV_red_terror
+		x = 99
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_purge_traitors_of_the_people }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 70
+			add_stability = 0.06
+			add_war_support = 0.04
+			set_country_flag = SOV_red_terror_done
+		}
+	}
+
+	focus = {
+		id = SOV_connections_with_china
+		icon = GFX_goal_SOV_connections_with_china
+		x = 102
+		y = 4
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_political_commissars }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_connections_with_china_done
+		}
+	}
+
+	focus = {
+		id = SOV_sino_soviet_agreement
+		icon = GFX_goal_SOV_sino_soviet_agreement
+		x = 97
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_relentless_propaganda focus = SOV_red_terror focus = SOV_connections_with_china }
+		mutually_exclusive = { focus = SOV_soviet_chinese_alliance }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_sino_soviet_agreement
+			add_political_power = 100
+			set_country_flag = SOV_sino_soviet_agreement_done
+		}
+	}
+
+	focus = {
+		id = SOV_soviet_chinese_alliance
+		icon = GFX_goal_SOV_soviet_chinese_alliance
+		x = 101
+		y = 5
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_relentless_propaganda focus = SOV_red_terror focus = SOV_connections_with_china }
+		mutually_exclusive = { focus = SOV_sino_soviet_agreement }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_soviet_chinese_alliance
+			add_political_power = 100
+			set_country_flag = SOV_soviet_chinese_alliance_done
+		}
+	}
+
+	focus = {
+		id = SOV_total_industrial_mobilization
+		icon = GFX_goal_SOV_total_industrial_mobilization
+		x = 96
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_sino_soviet_agreement focus = SOV_soviet_chinese_alliance }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.06
+			set_country_flag = SOV_total_industrial_mobilization_done
+		}
+	}
+
+	focus = {
+		id = SOV_centralize_military_structures
+		icon = GFX_goal_SOV_centralize_military_structures
+		x = 99
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_sino_soviet_agreement focus = SOV_soviet_chinese_alliance }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_centralize_military_structures_done
+		}
+	}
+
+	focus = {
+		id = SOV_import_chinese_equipment
+		icon = GFX_goal_SOV_import_chinese_equipment
+		x = 102
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_sino_soviet_agreement focus = SOV_soviet_chinese_alliance }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_import_chinese_equipment_done
+		}
+	}
+
+	focus = {
+		id = SOV_revitalizes_the_navy
+		icon = GFX_goal_SOV_revitalizes_the_navy
+		x = 96
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_total_industrial_mobilization }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = naval_doctrine }
+			navy_experience = 20
+			set_country_flag = SOV_revitalizes_the_navy_done
+		}
+	}
+
+	focus = {
+		id = SOV_no_step_back_policy
+		icon = GFX_goal_SOV_no_step_back_policy
+		x = 99
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_centralize_military_structures }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_no_step_back_policy_done
+		}
+	}
+
+	focus = {
+		id = SOV_start_motorizing
+		icon = GFX_goal_SOV_start_motorizing
+		x = 102
+		y = 7
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_import_chinese_equipment }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = motorized_equipment }
+			army_experience = 16
+			set_country_flag = SOV_start_motorizing_done
+		}
+	}
+
+	focus = {
+		id = SOV_revitalize_the_air_force
+		icon = GFX_goal_SOV_revitalize_the_air_force
+		x = 96
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revitalizes_the_navy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = air_doctrine }
+			air_experience = 20
+			set_country_flag = SOV_revitalize_the_air_force_done
+		}
+	}
+
+	focus = {
+		id = SOV_red_patriotism
+		icon = GFX_goal_SOV_red_patriotism
+		x = 99
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_no_step_back_policy }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_red_patriotism_done
+		}
+	}
+
+	focus = {
+		id = SOV_mass_conscription
+		icon = GFX_goal_SOV_mass_conscription
+		x = 102
+		y = 8
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_start_motorizing }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.06
+			set_country_flag = SOV_mass_conscription_done
+		}
+	}
+
+	focus = {
+		id = SOV_joint_military_forces
+		icon = GFX_goal_SOV_joint_military_forces
+		x = 96
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_revitalize_the_air_force }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 16
+			set_country_flag = SOV_joint_military_forces_done
+		}
+	}
+
+	focus = {
+		id = SOV_motherland_above_all
+		icon = GFX_goal_SOV_motherland_above_all
+		x = 99
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_red_patriotism }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_war_support = 0.08
+			add_stability = 0.06
+			set_country_flag = SOV_motherland_above_all_done
+		}
+	}
+
+	focus = {
+		id = SOV_a_red_tsunami
+		icon = GFX_goal_SOV_a_red_tsunami
+		x = 102
+		y = 9
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_mass_conscription }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.06
+			set_country_flag = SOV_a_red_tsunami_done
+		}
+	}
+
+	focus = {
+		id = SOV_ura_ura_uraaa
+		icon = GFX_goal_SOV_ura_ura_uraaa
+		x = 99
+		y = 10
+		cost = 12
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_joint_military_forces focus = SOV_motherland_above_all focus = SOV_a_red_tsunami }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = idea_SOV_ura_ura_uraaa
+			add_political_power = 150
+			set_country_flag = SOV_ura_ura_uraaa_done
+		}
+	}
+
+}

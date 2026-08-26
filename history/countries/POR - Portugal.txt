@@ -107,26 +107,26 @@ if = {
 			has_dlc = "La Resistance"
 		}
 
-		complete_national_focus = POR_estado_novo
+		#complete_national_focus = POR_estado_novo
 		unlock_national_focus = POR_support_the_spanish_nationalists
-		complete_national_focus = POR_portuguese_legion
-		complete_national_focus = POR_observation_mission
+		#complete_national_focus = POR_portuguese_legion
+		#complete_national_focus = POR_observation_mission
 		unlock_national_focus = POR_send_assistance
-		complete_national_focus = POR_army_reorganization
-		complete_national_focus = POR_metropolitan_army
-		complete_national_focus = POR_corpo_do_estado_maior
-		complete_national_focus = POR_second_navy_reequipment
-		complete_national_focus = POR_a_powerful_merchant_marine
-		complete_national_focus = POR_merchant_marine_protection
-		complete_national_focus = POR_arsenal_do_alfeite
-		complete_national_focus = POR_continue_the_public_works
-		complete_national_focus = POR_instituto_superior_tecnico
-		complete_national_focus = POR_roads_bridges_and_dams
-		complete_national_focus = POR_ogme
-		complete_national_focus = POR_food_industries
-		complete_national_focus = POR_textile_industry
-		complete_national_focus = POR_colonial_assimilation_policy
-		complete_national_focus = POR_portuguese_artillery
+		#complete_national_focus = POR_army_reorganization
+		#complete_national_focus = POR_metropolitan_army
+		#complete_national_focus = POR_corpo_do_estado_maior
+		#complete_national_focus = POR_second_navy_reequipment
+		#complete_national_focus = POR_a_powerful_merchant_marine
+		#complete_national_focus = POR_merchant_marine_protection
+		#complete_national_focus = POR_arsenal_do_alfeite
+		#complete_national_focus = POR_continue_the_public_works
+		#complete_national_focus = POR_instituto_superior_tecnico
+		#complete_national_focus = POR_roads_bridges_and_dams
+		#complete_national_focus = POR_ogme
+		#complete_national_focus = POR_food_industries
+		#complete_national_focus = POR_textile_industry
+		#complete_national_focus = POR_colonial_assimilation_policy
+		#complete_national_focus = POR_portuguese_artillery
 
 		SPA = {
 			add_opinion_modifier = {
@@ -138,15 +138,15 @@ if = {
 
 		else = {
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = large_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = large_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}
 	}
 		
@@ -204,104 +204,36 @@ set_grand_doctrine = new_strategic_destruction
 
 set_convoys = 50
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1933.3.5"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	fascism = 10
-	neutrality = 30
-	democratic = 60
+	reactionary = 10
+	centrist = 90
 }
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1938.10.30"
-		election_frequency = 48
-		elections_allowed = no
-	}
-	set_popularities = {
-		neutrality = 100
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1938.10.30"
+#		election_frequency = 48
+#		elections_allowed = no
+#	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_popularities = {
+#	centrist = 100
+#}
 }
 
 set_convoys = 100
 set_stability = 0.75
 
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
 
-	recruit_character = POR_antonio_de_oliveira_salazar
-	recruit_character = POR_bento_goncalves
-	recruit_character = POR_rolao_preto
-	recruit_character = POR_jose_norton_de_matos
-	recruit_character = POR_jose_vicente_de_freitas
-	recruit_character = POR_luis_augusto_ferreira_martins
-	recruit_character = POR_raul_augusto_esteves
-	recruit_character = POR_jose_mendes_cabecadas
-	recruit_character = POR_julio_botelho_moniz
-	recruit_character = POR_humberto_delgado
-	recruit_character = POR_vieira_da_rocha
-	recruit_character = POR_manuel_ortins_torres_de_bettencourt
-	recruit_character = POR_antonio_oscar_carmona
-	recruit_character = POR_manuel_quintao_meireles
-	recruit_character = POR_jaime_afreixo
-	recruit_character = POR_americo_tomas
-	recruit_character = POR_domingos_oliveira
-	recruit_character = POR_manuel_gouveia
-	recruit_character = POR_jose_filipe_de_barros_rodrigues
-	recruit_character = POR_francisco_da_costa_gomes
-	recruit_character = POR_jose_manuel_sarmento_de_beires
-	recruit_character = POR_francisco_craveiro_lopes
-	recruit_character = POR_alvaro_cunhal
-	recruit_character = POR_francisco_da_cunha_leal
-	recruit_character = POR_bento_de_jesus_caraca
-	recruit_character = POR_jaime_cortesao
-	recruit_character = POR_alberto_monsaraz
-	recruit_character = POR_maria_lamas
-	recruit_character = POR_joao_de_azevedo_coutinho
-	recruit_character = POR_duarte_jose_pacheco
-	recruit_character = POR_manuel_goncalves_cerejeira
-	recruit_character = POR_jose_adriano_pequito_rebelo
-	recruit_character = POR_jose_hipolito_raposo
-	recruit_character = POR_joao_francisco_de_barbosa_azevedo
-	recruit_character = POR_alfredo_da_silva
-	recruit_character = POR_fernando_dos_santos_costa
-	recruit_character = POR_augusto_de_vasconcelos
-	recruit_character = POR_agostinho_lourenco
-}
-
-if = {
-	limit = {
-		NOT = { has_dlc = "La Resistance" }
-	}
-
-	recruit_character = POR_antonio_de_oliveira_salazar
-	recruit_character = POR_bento_goncalves
-	recruit_character = POR_rolao_preto
-	recruit_character = POR_jose_norton_de_matos
-	recruit_character = POR_jose_vicente_de_freitas
-	recruit_character = POR_jose_manuel_sarmento_de_beires
-	recruit_character = POR_manuel_ortins_torres_de_bettencourt
-	recruit_character = POR_humberto_carmona
-	recruit_character = POR_lobato_guerra
-	recruit_character = POR_humberto_delgado
-	recruit_character = POR_manuel_gouveia
-	recruit_character = POR_jaime_afreixo
-	recruit_character = POR_americo_tomas
-	recruit_character = POR_manuel_quintao_meireles
-	recruit_character = POR_jose_filipe_de_barros_rodrigues
-	recruit_character = POR_jose_adriano_rebelo_pequito
-	recruit_character = POR_francisco_craveiro_lopes
-	recruit_character = POR_jaime_cortesao
-	recruit_character = POR_raul_brandao
-	recruit_character = POR_augusto_de_vasconcelos
-	recruit_character = POR_jose_hipolito_raposo
-}
 
 ### VARIANTS ###
 # 1936 Start #

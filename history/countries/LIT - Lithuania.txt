@@ -1,4 +1,53 @@
-﻿capital = 11
+﻿capital = 784
+
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Lietuvos komunistu partija" name = "LKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Socialistinis Liaudies Frontas" name = "SLF" }
+set_party_name = { ideology = vanguard_socialism long_name = "Lietuvos komunistinis jaunimas" name = "LKJS" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Lietuvos socialdemokratu darbo partija" name = "LSDDP" }
+set_party_name = { ideology = progressive long_name = "Lietuvos socialdemokratu partija" name = "LSDP" }
+set_party_name = { ideology = centrist long_name = "Lietuvos Respublikos liberalu sajudis" name = "LRLS" }
+set_party_name = { ideology = conservative long_name = "Tevynes sajunga - Lietuvos krikscionys demokratai" name = "TS-LKD" }
+set_party_name = { ideology = reactionary long_name = "Lietuvos valstieciu ir zaliuju sajunga" name = "LVZS" }
+set_party_name = { ideology = authoritarianism long_name = "Valstybes saugumo departamentas" name = "VSD" }
+set_party_name = { ideology = autocracy long_name = "Lietuvos kariuomenes vadas" name = "KASP" }
+set_party_name = { ideology = absolutism long_name = "Gediminaiciu dinastija" name = "Gediminaiciai" }
+set_party_name = { ideology = ultranationalism long_name = "Nacionalinis susivienijimas" name = "NA" }
+set_party_name = { ideology = fundamentalism long_name = "Lietuvos Kataliku Baznycia" name = "LKB" }
+
+create_country_leader = { name = "Gintautas Paluckas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ingrida Simonyte" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Viktorija Cmilyte-Nielsen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Ramunas Karbauskis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Remigijus Zemaitaitis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Socialistinis Liaudies Frontas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Lietuvos komunistu partija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Lietuvos komunistinis jaunimas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Generolas Raimundas Vaiksnoras" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Darius Jauniskis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Arkivyskupas Gintaras Grusas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Didysis kunigaikstis Mindaugas III" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = progressive
+	last_election = "2024.10.27"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	progressive = 30
+	conservative = 22
+	centrist = 14
+	reactionary = 12
+	ultranationalism = 9
+	fundamentalism = 6
+	authoritarian_socialism = 4
+	totalitarian_socialism = 3
+}
+
+
 
 oob = "LIT_1936"
 if = {
@@ -32,43 +81,7 @@ set_variable = {
 	value = 100
 }
 
-recruit_character = LIT_antanas_smetona
-recruit_character = LIT_antanas_snieckus
-recruit_character = LIT_kazys_grinius
-recruit_character = LIT_augustinas_voldemaras
-recruit_character = LIT_kazys_skuchas
-recruit_character = LIT_petras_schatz
-recruit_character = LIT_feliksas_baltusis
-recruit_character = LIT_vincentas_latozaite
-recruit_character = LIT_albinas_cepas
-recruit_character = LIT_adolfas_ramanauskas
-recruit_character = LIT_juozas_ambrazevicius
-recruit_character = LIT_jonas_cernius
-recruit_character = LIT_vladas_karvelis
-recruit_character = LIT_antanas_gustaitis
-recruit_character = LIT_antanas_kaskelis
-recruit_character = LIT_juoza_barzda_bradauskas
-recruit_character = LIT_leonas_bistras
-recruit_character = LIT_vladas_jurgutis
-recruit_character = LIT_mykolas_slezevicius
-recruit_character = LIT_zigmas_angarietis
-recruit_character = LIT_karl_gero
-IF = { 
-	limit = { has_dlc = "No Step Back" }
-	recruit_character = LIT_stasys_rastikis
-	recruit_character = LIT_antanas_venclova
-	recruit_character = LIT_vytautas_alantas
-	recruit_character = LIT_vladas_mironas
-	recruit_character = LIT_ernestas_galvanauskas
-	recruit_character = LIT_vytautas_petrulis
-	recruit_character = LIT_aleksandras_stulginskis
-	recruit_character = LIT_jonas_staugaitis
-	recruit_character = LIT_mecislovas_gedvilas
-	recruit_character = LIT_vincas_mickevicius_kapsukas
-	recruit_character = LIT_stasys_pundzevichius
-	recruit_character = LIT_kazys_musteikis
-	recruit_character = LIT_edvardas_adamkavicius
-}
+
 
 
 set_technology = {
@@ -93,24 +106,24 @@ set_convoys = 10
 		limit = {
 			has_dlc = "No Step Back"
 		}
-		complete_national_focus = LIT_secure_a_loyal_cabinet
-		complete_national_focus = LIT_rastikis_military_reforms
-		complete_national_focus = LIT_exile_voldemares
-		complete_national_focus = LIT_root_out_the_iron_wolf
-		complete_national_focus = BALTIC_rejoin_the_railways
-		complete_national_focus = BALTIC_renew_allied_trade
-		complete_national_focus = LIT_purge_popular_resistance
-		complete_national_focus = LIT_patriotic_education
-		complete_national_focus = LIT_soviet_mutual_assistance
-		complete_national_focus = LIT_arrest_nazis_in_memel
-		complete_national_focus = LIT_anti_communist_militia
-		complete_national_focus = LIT_victory_in_trust
-		complete_national_focus = LIT_lithuanian_activist_front
-		complete_national_focus = BALTIC_attract_workers_to_capital
-		complete_national_focus = BALTIC_modernize_industry
-		complete_national_focus = BALTIC_school_of_aviation
-		complete_national_focus = BALTIC_original_designs
-		complete_national_focus = BALTIC_natural_resources
+		#complete_national_focus = LIT_secure_a_loyal_cabinet
+		#complete_national_focus = LIT_rastikis_military_reforms
+		#complete_national_focus = LIT_exile_voldemares
+		#complete_national_focus = LIT_root_out_the_iron_wolf
+		#complete_national_focus = BALTIC_rejoin_the_railways
+		#complete_national_focus = BALTIC_renew_allied_trade
+		#complete_national_focus = LIT_purge_popular_resistance
+		#complete_national_focus = LIT_patriotic_education
+		#complete_national_focus = LIT_soviet_mutual_assistance
+		#complete_national_focus = LIT_arrest_nazis_in_memel
+		#complete_national_focus = LIT_anti_communist_militia
+		#complete_national_focus = LIT_victory_in_trust
+		#complete_national_focus = LIT_lithuanian_activist_front
+		#complete_national_focus = BALTIC_attract_workers_to_capital
+		#complete_national_focus = BALTIC_modernize_industry
+		#complete_national_focus = BALTIC_school_of_aviation
+		#complete_national_focus = BALTIC_original_designs
+		#complete_national_focus = BALTIC_natural_resources
 	}
 	
 	oob = "LIT_1939"
@@ -182,23 +195,26 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = democratic
-	last_election = "1926.5.8"
-	election_frequency = 120
-	elections_allowed = no
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1926.5.8"
+#	election_frequency = 120
+#	elections_allowed = no
+#}
 set_popularities = {
-	democratic = 45
-	fascism = 15
-	neutrality = 40
+	centrist = 85
+	reactionary = 15
 }
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1936.6.10"
-		election_frequency = 120
-		elections_allowed = no
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1936.6.10"
+#		election_frequency = 120
+#		elections_allowed = no
+#	}
 }

@@ -7,40 +7,20 @@ set_technology = {
 
 set_convoys = 10
 
-recruit_character = ERI_awt
-recruit_character = ERI_acd2
-recruit_character = ERI_nt
-recruit_character = ERI_aco2
-recruit_character = ERI_acas
-recruit_character = ERI_acr
-recruit_character = ERI_mt
-recruit_character = ERI_stc
-recruit_character = ERI_aa2
-recruit_character = ERI_ncm
-recruit_character = ERI_communist_guy
-recruit_character = ERI_ncs
-recruit_character = ERI_pot
-recruit_character = ERI_nccr
-recruit_character = ERI_fascist_guy
-recruit_character = ERI_coi
-recruit_character = ERI_ai2
-recruit_character = ERI_democratic_guy
-recruit_character = ERI_ar
-recruit_character = ERI_acgs
 
 
 1939.1.1 = {
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = large_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 		tech_support = 1
@@ -78,7 +58,7 @@ set_grand_doctrine = new_strategic_destruction
 
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Mahber Shashewit Ertra" name = "MSE" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Mahber Shashewit Ertra" name = "MSE" }
 set_party_name = { ideology = vanguard_socialism long_name = "Eritrean People's Liberation Front - Marxist" name = "EPLF-M" }
 set_party_name = { ideology = revolutionary_socialism long_name = "People's Front for Democracy and Justice - Left" name = "PFDJ-L" }
 set_party_name = { ideology = progressive long_name = "Eritrean Democratic Alliance" name = "EDA" }
@@ -92,6 +72,9 @@ set_party_name = { ideology = ultranationalism long_name = "Eritrean Nationalist
 set_party_name = { ideology = fundamentalism long_name = "Eritrean Islamic Jihad Movement" name = "EIJM" }
 
 create_country_leader = { name = "Isaias Afwerki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = putinism }
+# DvE: Isaias Afwerki guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Isaias Afwerki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
 create_country_leader = { name = "Filipos Woldeyohannes" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_junta }
 create_country_leader = { name = "Mesfin Hagos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
 create_country_leader = { name = "Yemane Gebreab" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
@@ -104,7 +87,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 2
+	totalitarian_socialism = 2
 	vanguard_socialism = 5
 	revolutionary_socialism = 10
 	progressive = 2

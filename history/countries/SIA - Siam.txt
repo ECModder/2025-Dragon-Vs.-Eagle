@@ -20,28 +20,6 @@ if = {
 	}
 }
 
-recruit_character = SIA_phraya_phahon
-recruit_character = SIA_nangklao_chichalerm
-recruit_character = SIA_chao_phonphayuhasena
-recruit_character = SIA_nangklao_suriyawongse
-recruit_character = SIA_tianliang_huntrakool
-recruit_character = SIA_phra_silpasakrakorn
-recruit_character = SIA_luang_sinthusongkhramchai
-recruit_character = SIA_thawon_thamrongnawasawat
-recruit_character = SIA_phraya_preechacholayudha
-recruit_character = SIA_pridi_phanomyong
-recruit_character = SIA_sindhu_kamalanavin
-recruit_character = SIA_phraya_chitnasongkhla
-recruit_character = SIA_phraya_thayarnpikart
-recruit_character = SIA_phra_vechayanrangsarit
-recruit_character = SIA_manphya_khanphialong
-recruit_character = SIA_luang_phibunsongkhram
-recruit_character = SIA_phraya_wichcitcholathai
-recruit_character = SIA_sawat_phutianands
-recruit_character = SIA_phraya_chalermarkiart
-recruit_character = SIA_kuang_abhayavongsa
-recruit_character = SIA_thawee_punyaketu
-recruit_character = SIA_phot_bhahalyodin
 
 add_ideas = idea_SIA_army_of_siam
 # Starting tech
@@ -77,15 +55,15 @@ set_convoys = 15
 	add_command_power = 100
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	oob = "SIA_1939"
 	if = {
@@ -168,30 +146,32 @@ set_grand_doctrine = new_fleet_in_being
 
 
 set_politics = {
-	ruling_party = neutrality
+	ruling_party = centrist
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	fascism = 20
-	neutrality = 80
+	reactionary = 20
+	centrist = 80
 }
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = fascism
-		last_election = "1936.1.1"
-		election_frequency = 48
-		elections_allowed = no
-	}
-	set_popularities = {
-		fascism = 100
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = reactionary
+#		last_election = "1936.1.1"
+#		election_frequency = 48
+#		elections_allowed = no
+#	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_popularities = {
+#	reactionary = 100
+#}
 
-	recruit_character = SIA_plaek_phibunsongkhram
-	promote_character = SIA_plaek_phibunsongkhram
-	retire_character = SIA_nangklao_suriyawongse
+	
 }
 
 ### VARIANTS ###

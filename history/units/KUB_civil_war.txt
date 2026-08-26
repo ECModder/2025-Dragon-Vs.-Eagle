@@ -1,0 +1,35 @@
+# ============================================================
+#   KUB - forze all'inizio della Seconda Guerra Civile Russa
+#
+# Guardia nazionale del Kuban.
+#
+#   Caricato da RUS_second_civil_war_effect con load_oob.
+# ============================================================
+
+division_template = {
+	name = "Kubanskaya Gvardiya"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Territorialnoye Opolcheniye"
+	division_names_group = SOV_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+	# milizia territoriale: la richiama la decisione "Richiama la milizia"
+}
+
+units = {
+	division = { location = 717 division_template = "Kubanskaya Gvardiya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 234
+	division = { location = 3698 division_template = "Kubanskaya Gvardiya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 233
+	division = { location = 719 division_template = "Kubanskaya Gvardiya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 234
+	division = { location = 6692 division_template = "Kubanskaya Gvardiya" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # stato 233
+}

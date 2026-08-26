@@ -1,5 +1,54 @@
 ﻿capital = 808
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Latvijas Komunistiska partija" name = "LKP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Latvijas Socialistiska partija" name = "LSP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Brivie Komunisti" name = "Brivie" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Par cilveka tiesibam vienota Latvija" name = "PCTVL" }
+set_party_name = { ideology = progressive long_name = "Progresivie" name = "P" }
+set_party_name = { ideology = centrist long_name = "Attistibai/Par!" name = "AP" }
+set_party_name = { ideology = conservative long_name = "Jauna Vienotiba" name = "JV" }
+set_party_name = { ideology = reactionary long_name = "Nacionala apvieniba" name = "NA" }
+set_party_name = { ideology = authoritarianism long_name = "Valsts drosibas dienests" name = "VDD" }
+set_party_name = { ideology = autocracy long_name = "Nacionalo brunoto speku stabs" name = "NBS" }
+set_party_name = { ideology = absolutism long_name = "Kurzemes hercogiste" name = "Hercogiste" }
+set_party_name = { ideology = ultranationalism long_name = "Latvija pirmaja vieta" name = "LPV" }
+set_party_name = { ideology = fundamentalism long_name = "Latvijas Pareizticigo baznica" name = "LPB" }
+
+create_country_leader = { name = "Evika Silina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Edgars Rinkevics" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Elina Pinto" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Raivis Dzintars" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Ainars Slesers" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Latvijas Socialistiska partija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Latvijas Komunistiska partija" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Brivie Komunisti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Generalis Leonids Kalnins" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Normunds Mezviets" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Metropolits Aleksandrs" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Hercogs Jekabs III" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+
+set_politics = {
+	ruling_party = conservative
+	last_election = "2022.10.1"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	conservative = 29
+	progressive = 17
+	centrist = 16
+	ultranationalism = 13
+	reactionary = 11
+	authoritarian_socialism = 6
+	totalitarian_socialism = 4
+	fundamentalism = 4
+}
+
+
+
 oob = "LAT_1936"
 if = {
 	limit = { has_dlc = "Man the Guns" }
@@ -35,41 +84,6 @@ IF = {
 	}
 }
 
-recruit_character = LAT_gustavs_celminsh
-recruit_character = LAT_augusts_kirhensteins
-recruit_character = LAT_martinsh_penikis
-recruit_character = LAT_hermanis_buks
-recruit_character = LAT_janis_berzins
-recruit_character = LAT_ludvigs_bolsteins
-recruit_character = LAT_teodors_zvejnieks
-recruit_character = LAT_kornelijs_veidnieks
-recruit_character = LAT_rudolfs_kandis
-recruit_character = LAT_konstantins_cakste
-recruit_character = LAT_arturs_silgailis
-recruit_character = LAT_fricis_celmins
-recruit_character = LAT_otto_hellmich
-recruit_character = LAT_rudolfs_kocins
-recruit_character = LAT_arturs_sprogis
-recruit_character = LAT_tomas_spade
-recruit_character = LAT_vilis_lacis
-recruit_character = LAT_vilhelms_munters
-recruit_character = LAT_janis_kaminskis
-recruit_character = LAT_fricis_menders
-recruit_character = LAT_alberts_kvesis
-recruit_character = LAT_karlis_ulmanis
-
-IF = { 
-	limit = { has_dlc = "No Step Back" }
-	recruit_character = LAT_janis_balodis
-	recruit_character = LAT_janis_sudrabkalns
-	recruit_character = LAT_emilija_veinberga
-	recruit_character = LAT_janis_rudzutaks
-	recruit_character = LAT_karlis_baumanis
-	recruit_character = LAT_fricis_virsaitis
-	recruit_character = LAT_andrejs_krustinsh
-	recruit_character = LAT_zhanis_bahs
-	recruit_character = LAT_krisjanis_berkis
-}
 
 
 set_technology = {
@@ -123,24 +137,24 @@ set_convoys = 10
 		limit = {
 			has_dlc = "No Step Back"
 		}
-		complete_national_focus = LAT_suspend_the_constitution
-		complete_national_focus = LAT_empower_paramilitarists
-		complete_national_focus = LAT_the_sun_shines_equally
-		complete_national_focus = BALTIC_rejoin_the_railways
-		complete_national_focus = BALTIC_renew_allied_trade
-		complete_national_focus = LAT_banish_clemens
-		complete_national_focus = LAT_appease_democrats
-		complete_national_focus = LAT_martial_prime_minister
-		complete_national_focus = LAT_improve_military_life
-		complete_national_focus = LAT_establish_chambers_of_professions
-		complete_national_focus = BALTIC_attract_workers_to_capital
-		complete_national_focus = BALTIC_modernize_industry
-		complete_national_focus = LAT_nationalised_industry
-		complete_national_focus = LAT_merge_presidential_titles
-		complete_national_focus = BALTIC_school_of_aviation
-		complete_national_focus = LAT_aizsargi
-		complete_national_focus = BALTIC_british_aircraft
-		complete_national_focus = BALTIC_allied_shipments
+		#complete_national_focus = LAT_suspend_the_constitution
+		#complete_national_focus = LAT_empower_paramilitarists
+		#complete_national_focus = LAT_the_sun_shines_equally
+		#complete_national_focus = BALTIC_rejoin_the_railways
+		#complete_national_focus = BALTIC_renew_allied_trade
+		#complete_national_focus = LAT_banish_clemens
+		#complete_national_focus = LAT_appease_democrats
+		#complete_national_focus = LAT_martial_prime_minister
+		#complete_national_focus = LAT_improve_military_life
+		#complete_national_focus = LAT_establish_chambers_of_professions
+		#complete_national_focus = BALTIC_attract_workers_to_capital
+		#complete_national_focus = BALTIC_modernize_industry
+		#complete_national_focus = LAT_nationalised_industry
+		#complete_national_focus = LAT_merge_presidential_titles
+		#complete_national_focus = BALTIC_school_of_aviation
+		#complete_national_focus = LAT_aizsargi
+		#complete_national_focus = BALTIC_british_aircraft
+		#complete_national_focus = BALTIC_allied_shipments
 	}
 	
 	oob = "LAT_1939"
@@ -198,16 +212,17 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = democratic
-	last_election = "1931.10.3"
-	election_frequency = 10
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1931.10.3"
+#	election_frequency = 10
+#	elections_allowed = yes
+#}
 set_popularities = {
-	democratic = 45
-	fascism = 15
-	neutrality = 40
+	centrist = 85
+	reactionary = 15
 }
 
 # probably needs some adjustment before nazi occupation in 1940

@@ -1,0 +1,56 @@
+capital = 47
+
+# ============================================================
+#   GREEK SOCIALIST REPUBLIC (GSR)
+#
+#   Puppet socialista greco.
+#   Non esiste a inizio partita: nasce da eventi/decisioni.
+# ============================================================
+
+# === DvE party names ===
+set_party_name = { ideology = totalitarian_socialism name = "ELAS" long_name = "Ellinikos Laikos Apeleftherotikos Stratos" }
+set_party_name = { ideology = authoritarian_socialism name = "KKE" long_name = "Kommounistiko Komma Elladas" }
+set_party_name = { ideology = vanguard_socialism name = "D-KA" long_name = "Diethnismós - Kommounistikós Agónas" }
+set_party_name = { ideology = revolutionary_socialism name = "EKK" long_name = "Epanastatikó Kommounistikó Kómma" }
+set_party_name = { ideology = progressive name = "SYRIZA" long_name = "Synaspismos Rizospastikis Aristeras" }
+set_party_name = { ideology = centrist name = "PASOK" long_name = "Panellinio Sosialistiko Kinima" }
+set_party_name = { ideology = conservative name = "ND" long_name = "Nea Dimokratia" }
+set_party_name = { ideology = reactionary name = "Ethniki Parataxi" long_name = "Ethniki Parataxi" }
+set_party_name = { ideology = authoritarianism name = "Geniko Epiteleio" long_name = "Geniko Epiteleio Ethnikis Amynas" }
+set_party_name = { ideology = autocracy name = "EYP" long_name = "Ethniki Ypiresia Pliroforion" }
+set_party_name = { ideology = absolutism name = "Vasilikoi" long_name = "Vasilikon Kinima" }
+set_party_name = { ideology = ultranationalism name = "Ethnikistiko Metopo" long_name = "Ethnikistiko Metopo" }
+set_party_name = { ideology = fundamentalism name = "Iera Synodos" long_name = "Iera Synodos tis Ekklisias tis Ellados" }
+
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2025.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 11
+	authoritarian_socialism = 44
+	vanguard_socialism = 5
+	revolutionary_socialism = 5
+	progressive = 8
+	centrist = 7
+	conservative = 6
+	reactionary = 3
+	authoritarianism = 3
+	autocracy = 0
+	absolutism = 2
+	ultranationalism = 3
+	fundamentalism = 3
+}
+
+set_stability = 0.60
+set_war_support = 0.60
+set_research_slots = 3
+
+# === leader ===
+create_country_leader = { name = "Kentriki Epitropi" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_kentriki_epitropi.dds" expire = "2100.1.1" ideology = sovietism }
+
+# Volontari e prestito d'uso senza requisito di tensione mondiale
+add_ideas = DVE_socialist_solidarity

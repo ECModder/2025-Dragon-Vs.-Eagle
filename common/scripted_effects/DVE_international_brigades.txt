@@ -1,0 +1,50 @@
+# ============================================================
+#   DvE - le Brigate Internazionali per SOV
+#
+#   Chiamato da RUS_second_civil_war_effect: appena scoppia la
+#   guerra civile i sette paesi socialisti vogliono mandare
+#   volontari alla Repubblica Sovietica.
+#
+#   Serve sia il modificatore (che abbassa i requisiti per
+#   mandarli) sia la strategia IA send_volunteers_desire, che e'
+#   quella che dice davvero all'IA "manda i tuoi a SOV".
+#   Senza la seconda i paesi possono mandare volontari ma non
+#   scelgono SOV come destinazione.
+# ============================================================
+
+SOV_international_brigades_effect = {
+
+	every_country = {
+		limit = {
+			OR = {
+				tag = PRC   # Cina
+				tag = VIN   # Vietnam
+				tag = LAO   # Laos
+				tag = CUB   # Cuba
+				tag = VEN   # Venezuela
+				tag = NIC   # Nicaragua
+				tag = ERI   # Eritrea
+			}
+			NOT = { has_idea = international_brigades }
+		}
+		add_idea = international_brigades
+		add_ai_strategy = {
+			type = send_volunteers_desire
+			id = "SOV"
+			value = 200
+		}
+		add_ai_strategy = {
+			type = befriend
+			id = "SOV"
+			value = 100
+		}
+		# e non vanno certo ad aiutare Mosca
+		add_ai_strategy = {
+			type = send_volunteers_desire
+			id = "RUS"
+			value = -200
+		}
+	}
+
+	SOV = { set_country_flag = SOV_international_brigades_open }
+}

@@ -30,40 +30,6 @@ IF = {
 	}
 }
 
-recruit_character = EST_konstantin_pats
-recruit_character = EST_artur_sirk
-recruit_character = EST_johannes_kabin
-recruit_character = EST_jaan_tonisson
-recruit_character = EST_andres_larka
-recruit_character = EST_oskar_eiriksson
-recruit_character = EST_leo_sepp
-recruit_character = EST_richard_veermaa
-recruit_character = EST_alex_nirk
-recruit_character = EST_richard_tomberg
-recruit_character = EST_alfred_vendt
-recruit_character = EST_juhan_tuuling
-recruit_character = EST_nikolay_g_karotamm
-recruit_character = EST_voldemar_mere
-recruit_character = EST_alfons_rebane
-recruit_character = EST_juri_uluots
-recruit_character = EST_boris_kumm
-recruit_character = EST_august_rei
-recruit_character = EST_jaan_anvelt
-recruit_character = EST_johan_laidoner
-
-IF = { 
-	limit = { has_dlc = "No Step Back"}
-	recruit_character = EST_august_jakobson
-	recruit_character = EST_viktor_puskar
-	recruit_character = EST_voldemar_voolman
-	recruit_character = EST_henrik_allik
-	recruit_character = EST_johan_pitka
-	recruit_character = EST_hjalmar_mae
-	recruit_character = EST_aleksander_jaakson
-	recruit_character = EST_herbert_brede
-	recruit_character = EST_otto_heinze
-	recruit_character = UBD_sophie_buxhoeveden
-}
 
 set_variable = {
 	var = vaps_days_var
@@ -120,23 +86,23 @@ set_convoys = 5
 		limit = {
 			has_dlc = "No Step Back"
 		}
-		complete_national_focus = EST_era_of_silence
-		complete_national_focus = EST_fight_the_vaps
-		complete_national_focus = EST_ismaaliit
-		complete_national_focus = BALTIC_rejoin_the_railways
-		complete_national_focus = BALTIC_renew_allied_trade
-		complete_national_focus = EST_establish_the_rahvuskogu
-		complete_national_focus = EST_national_council
-		complete_national_focus = EST_chamber_of_deputies
-		complete_national_focus = EST_modernize_capital
-		complete_national_focus = BALTIC_attract_workers_to_capital
-		complete_national_focus = BALTIC_modernize_industry
-		complete_national_focus = EST_exploit_the_banks
-		complete_national_focus = EST_support_independent_militaries
-		complete_national_focus = EST_republican_defence_league
-		complete_national_focus = BALTIC_ford_motors
-		complete_national_focus = BALTIC_crossley_motors
-		complete_national_focus = BALTIC_invest_in_baltic_trade
+		#complete_national_focus = EST_era_of_silence
+		#complete_national_focus = EST_fight_the_vaps
+		#complete_national_focus = EST_ismaaliit
+		#complete_national_focus = BALTIC_rejoin_the_railways
+		#complete_national_focus = BALTIC_renew_allied_trade
+		#complete_national_focus = EST_establish_the_rahvuskogu
+		#complete_national_focus = EST_national_council
+		#complete_national_focus = EST_chamber_of_deputies
+		#complete_national_focus = EST_modernize_capital
+		#complete_national_focus = BALTIC_attract_workers_to_capital
+		#complete_national_focus = BALTIC_modernize_industry
+		#complete_national_focus = EST_exploit_the_banks
+		#complete_national_focus = EST_support_independent_militaries
+		#complete_national_focus = EST_republican_defence_league
+		#complete_national_focus = BALTIC_ford_motors
+		#complete_national_focus = BALTIC_crossley_motors
+		#complete_national_focus = BALTIC_invest_in_baltic_trade
 		unlock_national_focus = BALTIC_natural_resources
 	}
 	
@@ -216,7 +182,7 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Eestimaa Kommunistlik Partei" name = "EKP" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Eestimaa Kommunistlik Partei" name = "EKP" }
 set_party_name = { ideology = vanguard_socialism long_name = "Eesti Vasakpartei" name = "EVP" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Sotsiaaldemokraatlik Erakond - Vasak" name = "SDE-V" }
 set_party_name = { ideology = progressive long_name = "Sotsiaaldemokraatlik Erakond" name = "SDE" }
@@ -229,7 +195,7 @@ set_party_name = { ideology = absolutism long_name = "Eesti Kuninglik Liit" name
 set_party_name = { ideology = ultranationalism long_name = "Eesti Konservatiivne Rahvaerakond" name = "EKRE" }
 set_party_name = { ideology = fundamentalism long_name = "Kristlik Rahvaerakond" name = "KRE" }
 
-create_country_leader = { name = "Kristen Michal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberalism }
+create_country_leader = { name = "Kristen Michal" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = social_liberal }
 create_country_leader = { name = "Urmas Reinsalu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Martin Helme" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = military_democracy }
 create_country_leader = { name = "Lauri Läänemets" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = liberal_socialdemocrat }
@@ -242,7 +208,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 3
 	progressive = 12

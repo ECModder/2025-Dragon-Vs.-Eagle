@@ -9,7 +9,6 @@ focus_tree = {
 		}
 		
 	}
-	default = yes
 	reset_on_civilwar = yes
 
 	focus = {
@@ -28,7 +27,7 @@ focus_tree = {
 			add_political_power = 10
 			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
 			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
-			add_popularity = { ideology = totalitarian_communism popularity = 0.05 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
 			set_country_flag = ITA_proletariat_done
 		}
 	}
@@ -64,7 +63,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			set_politics = { ruling_party = fascism elections_allowed = no last_election = 2025.1.1 }
+			set_politics = { ruling_party = reactionary elections_allowed = no last_election = 2025.1.1 }
 			set_country_flag = ITA_goodolddays_done
 		}
 	}
@@ -102,8 +101,6 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			set_party_name = { ideology = totalitarian_communism name = "CP" long_name = "Partito Comunista" }
-			# NOTA: il testo indicava piu' long_name diversi (PdRC, PCI, OSA, CR) non compatibili con un solo set_party_name; ho messo un nome generico, verifica/cambia la sigla che preferisci.
 			set_country_flag = ST_hardline_done
 		}
 	}
@@ -277,6 +274,7 @@ focus = {
 	completion_reward = {
 		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
 		add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
+		set_capital = { state = 159 remember_old_capital = no }
 		set_country_flag = LT_international_done
 	}
 }
@@ -295,7 +293,7 @@ focus = {
 		completion_reward = {
 			set_popularities = { ideology = revolutionary_socialism popularity = 50 }
 			set_popularities = { ideology = vanguard_socialism popularity = 40 }
-			set_popularities = { ideology = totalitarian_communism popularity = 10 }
+			set_popularities = { ideology = totalitarian_socialism popularity = 10 }
 			# NOTA: 'set_popularities' non e' un effetto vanilla standard eseguibile a runtime; se la mod non lo definisce come scripted_effect, sostituisci con blocchi add_popularity calcolando il delta dal valore attuale.
 			set_country_flag = LT_pcr_done
 		}
@@ -478,8 +476,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			FRA = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			ITA_red_france_effect = yes			# FRA si spacca: il nord industriale diventa FSR
 			declare_war_on = { target = FRA type = annex_everything }
+			FRA = { leave_faction = yes }
 			set_country_flag = LT_redfra_done
 		}
 	}
@@ -500,7 +499,21 @@ focus = {
 			army_experience = 40
 			air_experience = 20
 			add_manpower = 10000
-			add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 20
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_newredarmy1_done
 		}
 	}
@@ -517,7 +530,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_fiveyear_done
 		}
 	}
@@ -568,7 +595,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 8 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 8
+				add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_workersclubs_done
 		}
 	}
@@ -585,10 +626,12 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			SPR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
-			POR = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
-			declare_war_on = { target = SPA type = annex_everything }
+			ITA_red_spain_effect = yes			# SPR si spacca: Madrid e il centro-sud diventano SPA
+			ITA_red_portugal_effect = yes			# POR si spacca: la terraferma diventa PRS
+			declare_war_on = { target = SPR type = annex_everything }
 			declare_war_on = { target = POR type = annex_everything }
+			SPR = { leave_faction = yes }
+			POR = { leave_faction = yes }
 			set_country_flag = LT_redspa_done
 		}
 	}
@@ -623,7 +666,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_laborunion_done
 		}
 	}
@@ -675,8 +732,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			GER = { start_civil_war = { ideology = vanguard_socialism size = 0.75 } }
+			ITA_red_germany_effect = yes			# GER si spacca: Berlino e il nord diventano GDR
 			declare_war_on = { target = GER type = annex_everything }
+			GER = { leave_faction = yes }
 			set_country_flag = LT_redger_done
 		}
 	}
@@ -731,7 +789,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_coopfactories_done
 		}
 	}
@@ -766,8 +838,9 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			ENG = { start_civil_war = { ideology = vanguard_socialism size = 0.8 } }
+			ITA_red_britain_effect = yes			# ENG si spacca: Londra e il nord diventano SRB
 			declare_war_on = { target = ENG type = annex_everything }
+			ENG = { leave_faction = yes }
 			set_country_flag = LT_redeng_done
 		}
 	}
@@ -804,7 +877,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_buildplan_done
 		}
 	}
@@ -857,10 +944,14 @@ focus = {
 		}
 		completion_reward = {
 			# NOTA: effetto complesso su molti paesi terzi (set_politics + add_to_faction per BEL/HOL/DEN/POL/CZE/NOR/SWE/SER/ROM/BUL/IRE/GRE). Per farlo servono blocchi tipo 'TAG = { set_politics = {...} add_to_faction = ITA }' per ciascun tag: dimmi se confermi l'elenco e se l'Italia deve annettere/puppettare o solo aggiungerli alla fazione, e li aggiungo.
-			declare_war_on = { target = SLV type = annex_everything }
-			declare_war_on = { target = CRO type = annex_everything }
-			declare_war_on = { target = BOS type = annex_everything }
-			declare_war_on = { target = ALB type = annex_everything }
+			puppet = SLV
+			puppet = CRO
+			puppet = BOS
+			puppet = ALB
+			puppet = BEL
+			puppet = HOL
+			puppet = SER
+			puppet = AUS
 			set_country_flag = LT_domino_done
 		}
 	}
@@ -913,7 +1004,21 @@ focus = {
 		}
 		completion_reward = {
 			add_manpower = 1000000
-			add_building_construction = { type = industrial_complex level = 30 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 30
+				add_building_construction = {
+					type = industrial_complex
+					level = 30
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_automationlabour_done
 		}
 	}
@@ -1112,7 +1217,21 @@ focus = {
 			army_experience = 40
 			air_experience = 20
 			add_manpower = 10000
-			add_building_construction = { type = arms_factory level = 20 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 20
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+			}
 			set_country_flag = LT_newredarmy2_done
 		}
 	}
@@ -1175,49 +1294,29 @@ focus = {
 	focus = {
 		id = ST_pdrc
 		icon = GFX_goal_pdrc
-		x = 26
-		y = 3
+		x = 27
+		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
-		mutually_exclusive = { focus = ST_potere }
+		prerequisite = { focus = ST_stalincoup }
 		mutually_exclusive = { focus = ST_cambiare }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = -100
+			add_political_power = +100
 			set_country_flag = ST_pdrc_done
-		}
-	}
-
-	focus = {
-		id = ST_potere
-		icon = GFX_goal_pap
-		x = 28
-		y = 3
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
-		mutually_exclusive = { focus = ST_pdrc }
-		mutually_exclusive = { focus = ST_cambiare }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_country_flag = ST_potere_done
 		}
 	}
 
 	focus = {
 		id = ST_cambiare
 		icon = GFX_goal_cr
-		x = 30
-		y = 3
+		x = 29
+		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_hardline }
+		prerequisite = { focus = ST_stalincoup }
 		mutually_exclusive = { focus = ST_potere }
 		mutually_exclusive = { focus = ST_pdrc }
 		ai_will_do = {
@@ -1225,6 +1324,7 @@ focus = {
 		}
 		completion_reward = {
 			add_political_power = -100
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no last_election = 2025.1.1 }
 			# NOTA: nel testo era scritto "-00" (probabile refuso); ho usato -100 per coerenza con gli altri partiti dello stesso step.
 			set_country_flag = ST_cambiare_done
 		}
@@ -1234,16 +1334,15 @@ focus = {
 		id = ST_stalincoup
 		icon = GFX_goal_stalincoup
 		x = 28
-		y = 4
+		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_pdrc focus = ST_potere focus = ST_cambiare }
+		prerequisite = { focus = ST_hardline }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			set_politics = { ruling_party = totalitarian_communism elections_allowed = no last_election = 2025.1.1 }
-			# NOTA: il testo diceva "totalitarian_communist", normalizzato in "totalitarian_communism" per coerenza con le altre ideologie del documento.
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no last_election = 2025.1.1 }
 			set_country_flag = ST_stalincoup_done
 		}
 	}
@@ -1255,7 +1354,7 @@ focus = {
 		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = ST_stalincoup }
+		prerequisite = { focus = ST_pdrc focus = ST_cambiare }
 		ai_will_do = {
 			factor = 1
 		}
@@ -1349,7 +1448,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			set_country_flag = ST_gosplan_done
 		}
 	}
@@ -1366,7 +1479,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = ST_fiveyearplan2_done
 		}
 	}
@@ -1383,7 +1510,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			set_country_flag = ST_controlledunion_done
 		}
 	}
@@ -1400,7 +1541,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			set_country_flag = ST_stakhanovism_done
 		}
 	}
@@ -2144,7 +2299,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_fundsschool_done
 		}
 	}
@@ -2179,7 +2348,21 @@ focus = {
 		}
 		completion_reward = {
 			add_stability = 0.5
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 10
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_welfare_done
 		}
 	}
@@ -2197,7 +2380,21 @@ focus = {
 		}
 		completion_reward = {
 			add_manpower = 5000
-			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_healthcare_done
 		}
 	}
@@ -2231,7 +2428,21 @@ focus = {
 		}
 		completion_reward = {
 			add_stability = 0.5
-			add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 4
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_scalamobile_done
 		}
 	}
@@ -2249,7 +2460,21 @@ focus = {
 		}
 		completion_reward = {
 			add_stability = 0.5
-			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_mezzogiorno_done
 		}
 	}
@@ -2266,7 +2491,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_carbonneutral_done
 		}
 	}
@@ -2370,7 +2609,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_protectmade_done
 		}
 	}
@@ -2387,7 +2640,21 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
-			add_building_construction = { type = arms_factory level = 6 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 6
+				add_building_construction = {
+					type = arms_factory
+					level = 6
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_winkarmy_done
 		}
 	}
@@ -2478,8 +2745,36 @@ focus = {
 		}
 		completion_reward = {
 			add_stability = 0.5
-			add_building_construction = { type = industrial_complex level = 5 instant_build = yes }
-			add_building_construction = { type = arms_factory level = 5 instant_build = yes }
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = arms_factory
+					level = 5
+					instant_build = yes
+				}
+			}
 			set_country_flag = DS_italianmanuf_done
 		}
 	}

@@ -1,0 +1,600 @@
+# ============================================================
+#   DvE - GUERRA CIVILE CINESE
+#
+#   Confini dati dai dev. Tutti e 76 gli stati che la Cina possiede
+#   a inizio partita sono assegnati, nessuno escluso:
+#
+#     PRC  11  Manciuria non occupata + Pechino, Suiyuan,
+#              Hebei, East Hebei, Jinan
+#     CCR  19  tutto il centro-nord      (capitale Yan'an)
+#     CSR  15  tutto il centro-sud       (capitale Wuhan)
+#     PXA   5  Taklamakan, Urumqi, Dabancheng, Kunlun Shan, Khotan
+#     SIK   2  Dzungaria, Yarkand
+#     PTA   5  Nagqu, Chamdo, Qinghai, Golog, Haixi
+#     TIB   2  Shigatse, Ngari
+#
+#   OCCUPANTI - prendono il territorio ma NON i cores, cosi' resta
+#   terra irredenta e non diventa loro a tutti gli effetti:
+#     RUS  Sungkiang
+#     MON  Xilingol
+#     KOR  Liaoning + tutta la Corea del Nord
+#     CHI  tutta la costa sud-orientale, da Shandong a Hainan
+#
+#   SCELTE MIE, da correggere se sbagliate:
+#     - Golog e Haixi sono prefetture del Qinghai: sono andate a
+#       PTA insieme a Qinghai. Se volevi solo lo stato 604, si
+#       spostano in CCR.
+#     - Qingdao e Guangzhouwan sono enclavi dentro Shandong e
+#       Guangdong: seguono la provincia che le contiene, quindi CHI.
+#     - Nanjing e Anhui non erano in nessuna lista: messi in CCR.
+#     - Ganzi e' Sichuan occidentale, tibetana ma dentro il Sichuan:
+#       messa in CSR.
+#     - "huanghan" l'ho letto come Huangshan (749).
+#     - "TPA" l'ho letto come PTA, il tag creato prima.
+#
+#   Come per la guerra civile russa non si usa start_civil_war, che
+#   creerebbe tag dinamici invece di quelli veri. Il trasferimento
+#   passa da every_owned_state con un limit, cosi' si spostano solo
+#   gli stati posseduti davvero quando scatta l'effetto.
+#
+#   Governo, popolarita' e stabilita' NON vengono forzati qui:
+#   restano quelli dei file in history/countries/.
+# ============================================================
+
+
+# ============================================================
+#   CCR - i maoisti - tutto il centro-nord.
+#   Capitale Yan'an, la citta' santa del maoismo.
+#   19 stati.
+# ============================================================
+CHN_spawn_CCR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 283  # Gansu
+				state = 606  # Anhui
+				state = 607  # Henan
+				state = 611  # Chahar
+				state = 615  # Shanxi
+				state = 616  # Ningxia
+				state = 622  # Shaanbei
+				state = 744  # Xian
+				state = 746  # Ordos
+				state = 753  # Gannan
+				state = 756  # Jiuquan
+				state = 1032 # Yan'an
+				state = 1035 # Nanjing
+				state = 1039 # Hebei-Chahar
+				state = 1040 # Alxa
+				state = 1043 # Pailingmiao
+				state = 1044 # Wuwei
+				state = 1045 # Guyuan
+				state = 1046 # Yulin
+			}
+		}
+		add_core_of = CCR
+		CCR = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = CCR }
+		CCR = {
+			if = {
+				limit = { owns_state = 1032 }
+				set_capital = { state = 1032 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   CSR - i leninisti - tutto il centro-sud.
+#   Capitale Wuhan.
+#   15 stati.
+# ============================================================
+CHN_spawn_CSR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 325  # Yunnan
+				state = 594  # Nanning
+				state = 599  # Guangxi
+				state = 602  # Hunan
+				state = 603  # Guizhou
+				state = 605  # Sichuan
+				state = 620  # Hubei
+				state = 747  # Dali
+				state = 748  # Zunyi
+				state = 750  # Changde
+				state = 751  # Liangshan
+				state = 752  # Ganzi
+				state = 1036 # Wuhan
+				state = 1037 # Chongqing
+				state = 1041 # Chengdu
+			}
+		}
+		add_core_of = CSR
+		CSR = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = CSR }
+		CSR = {
+			if = {
+				limit = { owns_state = 1036 }
+				set_capital = { state = 1036 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   PXA - amministrazione militare dell'EPL nello Xinjiang.
+#   5 stati.
+# ============================================================
+CHN_spawn_PXA_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 287  # Taklamakan
+				state = 617  # Urumqi
+				state = 759  # Kunlun Shan
+				state = 760  # Dabancheng
+				state = 1042 # Khotan
+			}
+		}
+		add_core_of = PXA
+		PXA = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = PXA }
+		PXA = {
+			if = {
+				limit = { owns_state = 617 }
+				set_capital = { state = 617 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   SIK - la rivolta dello Xinjiang, separatista.
+#   2 stati.
+# ============================================================
+CHN_spawn_SIK_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 618  # Dzungaria
+				state = 619  # Yarkand
+			}
+		}
+		add_core_of = SIK
+		SIK = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = SIK }
+		SIK = {
+			if = {
+				limit = { owns_state = 618 }
+				set_capital = { state = 618 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   PTA - amministrazione militare dell'EPL in Tibet.
+#   Nagqu, Chamdo e tutto l'altopiano del Qinghai.
+#   5 stati.
+# ============================================================
+CHN_spawn_PTA_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 322  # Nagqu
+				state = 601  # Chamdo
+				state = 604  # Qinghai
+				state = 754  # Golog
+				state = 755  # Haixi
+			}
+		}
+		add_core_of = PTA
+		PTA = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = PTA }
+		PTA = {
+			if = {
+				limit = { owns_state = 322 }
+				set_capital = { state = 322 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   TIB - il Tibet libero.
+#   2 stati.
+# ============================================================
+CHN_spawn_TIB_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 757  # Shigatse
+				state = 758  # Ngari
+			}
+		}
+		add_core_of = TIB
+		TIB = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = TIB }
+		TIB = {
+			if = {
+				limit = { owns_state = 757 }
+				set_capital = { state = 757 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   RUS - la Russia si prende la Sungkiang.
+#   Territorio senza cores: resta irredento.
+# ============================================================
+CHN_occupy_RUS_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 717  # Sungkiang
+			}
+		}
+		RUS = { transfer_state = PREV }
+	}
+}
+
+# ============================================================
+#   MON - la Mongolia si prende lo Xilingol.
+#   Territorio senza cores: resta irredento.
+# ============================================================
+CHN_occupy_MON_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 612  # Xilingol
+			}
+		}
+		MON = { transfer_state = PREV }
+	}
+}
+
+# ============================================================
+#   KOR - la Corea si prende il Liaoning e tutta la Corea del Nord.
+#   527/1028/1048 sono della NKO, non della Cina: il blocco sta a parte.
+#   Territorio senza cores: resta irredento.
+# ============================================================
+CHN_occupy_KOR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 716  # Liaoning
+			}
+		}
+		KOR = { transfer_state = PREV }
+	}
+
+	# la Corea del Nord non e' territorio cinese: blocco separato,
+	# togli questo 'if' se NKO deve restare in piedi
+	if = {
+		limit = { country_exists = NKO }
+		NKO = {
+			every_owned_state = {
+				limit = {
+					OR = {
+						state = 527  # stato coreano
+						state = 1028 # stato coreano
+						state = 1048 # stato coreano
+					}
+				}
+				KOR = { transfer_state = PREV }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   CHI - la Repubblica Cinese si prende tutta la costa sud-orientale.
+#   Territorio senza cores: resta irredento.
+# ============================================================
+CHN_occupy_CHI_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 591  # Hainan
+				state = 592  # Guangzhou
+				state = 593  # Guangdong
+				state = 595  # Fujian
+				state = 596  # Zhejiang
+				state = 597  # Shandong
+				state = 598  # Jiangsu
+				state = 600  # Jiangxi
+				state = 613  # Shanghai
+				state = 728  # Guangzhouwan
+				state = 743  # Qingdao
+				state = 749  # Huangshan
+				state = 1033 # Nanlu
+				state = 1034 # Suzhou
+			}
+		}
+		CHI = { transfer_state = PREV }
+	}
+}
+
+# ============================================================
+#   LA GUERRA CIVILE COMPLETA
+# ============================================================
+CHN_civil_war_effect = {
+
+	set_country_flag = CHN_civil_war
+	set_country_flag = DVE_civil_war_active
+
+	add_stability = -0.30
+	add_war_support = 0.10
+
+	# --- le sei fazioni prendono territorio e cores ---
+	CHN_spawn_CCR_effect = yes
+	CHN_spawn_CSR_effect = yes
+	CHN_spawn_PXA_effect = yes
+	CHN_spawn_SIK_effect = yes
+	CHN_spawn_PTA_effect = yes
+	CHN_spawn_TIB_effect = yes
+
+	# --- i vicini si servono ---
+	CHN_occupy_RUS_effect = yes
+	CHN_occupy_MON_effect = yes
+	CHN_occupy_KOR_effect = yes
+	CHN_occupy_CHI_effect = yes
+
+	# Non esistono file OOB cinesi in history/units/, quindi ogni tag
+	# crea il proprio template al volo e schiera sulla capitale.
+	CHN_civil_war_army_effect = yes
+
+	# --- le guerre: Pechino contro tutte le fazioni ---
+	if = { limit = { country_exists = CCR } declare_war_on = { target = CCR type = annex_everything } }
+	if = { limit = { country_exists = CSR } declare_war_on = { target = CSR type = annex_everything } }
+	if = { limit = { country_exists = PXA } declare_war_on = { target = PXA type = annex_everything } }
+	if = { limit = { country_exists = SIK } declare_war_on = { target = SIK type = annex_everything } }
+	if = { limit = { country_exists = PTA } declare_war_on = { target = PTA type = annex_everything } }
+	if = { limit = { country_exists = TIB } declare_war_on = { target = TIB type = annex_everything } }
+
+	# i due partiti rivali si combattono anche fra loro
+	if = {
+		limit = { country_exists = CCR country_exists = CSR }
+		CCR = { declare_war_on = { target = CSR type = annex_everything } }
+	}
+
+	# le due amministrazioni militari contro i rispettivi separatisti
+	if = {
+		limit = { country_exists = PXA country_exists = SIK }
+		PXA = { declare_war_on = { target = SIK type = annex_everything } }
+	}
+	if = {
+		limit = { country_exists = PTA country_exists = TIB }
+		PTA = { declare_war_on = { target = TIB type = annex_everything } }
+	}
+}
+
+
+# ============================================================
+#   GLI ESERCITI
+#   Separato cosi' si puo' richiamare da solo dal debug, dopo gli
+#   spawn singoli che il territorio lo danno ma le truppe no.
+# ============================================================
+CHN_civil_war_army_effect = {
+
+	if = {
+		limit = { country_exists = CCR }
+		CCR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Renmin Jiefangjun" } }
+					division_template = {
+						name = "Renmin Jiefangjun"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						artillery_brigade = { x = 2 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Renmin Jiefangjun\" division_template = \"Renmin Jiefangjun\" start_experience_factor = 0.30 start_equipment_factor = 0.80"
+					owner = CCR
+					count = 24
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = CSR }
+		CSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Hongjun" } }
+					division_template = {
+						name = "Hongjun"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						artillery_brigade = { x = 2 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Hongjun\" division_template = \"Hongjun\" start_experience_factor = 0.30 start_equipment_factor = 0.80"
+					owner = CSR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = PXA }
+		PXA = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Bianfang Budui" } }
+					division_template = {
+						name = "Bianfang Budui"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Bianfang Budui\" division_template = \"Bianfang Budui\" start_experience_factor = 0.25 start_equipment_factor = 0.70"
+					owner = PXA
+					count = 8
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = PTA }
+		PTA = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Gaoyuan Budui" } }
+					division_template = {
+						name = "Gaoyuan Budui"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Gaoyuan Budui\" division_template = \"Gaoyuan Budui\" start_experience_factor = 0.25 start_equipment_factor = 0.70"
+					owner = PTA
+					count = 6
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = SIK }
+		SIK = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Sinkiang Militia" } }
+					division_template = {
+						name = "Sinkiang Militia"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Sinkiang Militia\" division_template = \"Sinkiang Militia\" start_experience_factor = 0.20 start_equipment_factor = 0.55"
+					owner = SIK
+					count = 4
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = TIB }
+		TIB = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Tibetan Guard" } }
+					division_template = {
+						name = "Tibetan Guard"
+						regiments = {
+						infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Tibetan Guard\" division_template = \"Tibetan Guard\" start_experience_factor = 0.20 start_equipment_factor = 0.55"
+					owner = TIB
+					count = 3
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   ANNULLA TUTTO
+#   La Cina si riprende i sei tag e i territori occupati. Serve
+#   solo al debug, per rifare la prova da capo.
+#
+#   ROOT = la Cina (chi lancia l'effetto), PREV = lo stato in
+#   corso. Non si puo' usare PREV al posto di ROOT: dentro
+#   CCR = { ... } PREV punta a CCR stessa e gli stati tornerebbero
+#   a chi li ha appena persi.
+# ============================================================
+CHN_civil_war_reset_effect = {
+
+	clr_country_flag = CHN_civil_war
+	clr_country_flag = DVE_civil_war_active
+
+	if = { limit = { country_exists = CCR } CCR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = CSR } CSR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = PXA } PXA = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = SIK } SIK = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = PTA } PTA = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = TIB } TIB = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+
+	every_owned_state = {
+		remove_core_of = CCR
+		remove_core_of = CSR
+		remove_core_of = PXA
+		remove_core_of = SIK
+		remove_core_of = PTA
+		remove_core_of = TIB
+	}
+}

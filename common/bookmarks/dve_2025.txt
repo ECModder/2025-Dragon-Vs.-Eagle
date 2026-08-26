@@ -3,43 +3,94 @@ bookmarks = {
 		name = "DVE_BOOKMARK_2025_NAME"
 		desc = "DVE_BOOKMARK_2025_DESC"
 		date = 2025.1.1.12
-		picture = "GFX_select_date_1936" # TODO: sostituire con artwork dedicata 2025
+		picture = "GFX_select_date_dve_2025"
+		default_country = "USA"
 		default = yes
 
-		country = {
-			tag = USA
+		"USA" = {
+			minor = no
+			history = "DVE_USA_BOOKMARK_DESC"
 			ideology = conservative
-			major = yes
+			ideas = {
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = CHI
-			ideology = totalitarian_communism
-			major = yes
+		# La Repubblica Popolare e' il tag PRC. CHI in questa mod e'
+		# Taiwan (DPP, KMT, Forze Armate della Repubblica di Cina).
+		"PRC" = {
+			minor = no
+			history = "DVE_PRC_BOOKMARK_DESC"
+			ideology = totalitarian_socialism
+			ideas = {
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = RUS
+		"RUS" = {
+			minor = no
+			history = "DVE_RUS_BOOKMARK_DESC"
 			ideology = authoritarianism
-			major = yes
+			ideas = {
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = ENG
+		"ENG" = {
+			minor = no
+			history = "DVE_ENG_BOOKMARK_DESC"
 			ideology = progressive
-			major = yes
+			ideas = {
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = FRA
+		"FRA" = {
+			minor = no
+			history = "DVE_FRA_BOOKMARK_DESC"
 			ideology = centrist
-			major = yes
+			ideas = {
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = GER
+		"GER" = {
+			minor = no
+			history = "DVE_GER_BOOKMARK_DESC"
 			ideology = progressive
-			major = yes
+			ideas = {
+				GER_rise_of_radicalism
+			}
+			focuses = {
+			}
 		}
-		country = {
-			tag = ITA
+		"ITA" = {
+			minor = no
+			history = "DVE_ITA_BOOKMARK_DESC"
 			ideology = conservative
-			major = yes
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+				"POL" = {
+			minor = no
+			history = "DVE_POL_BOOKMARK_DESC"
+			ideology = conservative
+			ideas = {
+			POL_divided_country
+			POL_anti_ukr_support
+			POL_new_heart
+			}
+			focuses = {
+			POL_new_golden_era
+			POL_political_chaos
+			POL_chose_side
+			}
+		}
+
+		effect = {
+			randomize_weather = 22345 # <- Obligatory in every bookmark !
 		}
 	}
 }

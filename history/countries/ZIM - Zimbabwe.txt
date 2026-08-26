@@ -10,38 +10,19 @@ set_technology = {
 
 set_convoys = 5
 
-recruit_character = ZIM_acr
-recruit_character = ZIM_stc
-recruit_character = ZIM_awt
-recruit_character = ZIM_pot
-recruit_character = ZIM_mt
-recruit_character = ZIM_ncm
-recruit_character = ZIM_nt
-recruit_character = ZIM_acd2
-recruit_character = ZIM_fascist_guy
-recruit_character = ZIM_ncs
-recruit_character = ZIM_nccr
-recruit_character = ZIM_aco2
-recruit_character = ZIM_communist_guy
-recruit_character = ZIM_ai2
-recruit_character = ZIM_ar
-recruit_character = ZIM_coi
-recruit_character = ZIM_acas
-recruit_character = ZIM_acgs
-recruit_character = ZIM_aa2
-recruit_character = ZIM_democratic_guy
+
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -68,21 +49,24 @@ set_grand_doctrine = grand_battleplan
 }
 
 set_politics = {
-	ruling_party = fascism
+	ruling_party = reactionary
 	last_election = "1936.1.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	fascism = 100
+	reactionary = 100
 }
 
 create_country_leader = {
 	name = " Marcus James Hugins"
 	picture = GFX_portrait__Marcus_James_Hugins
 	expire = "1965.1.1"
-	ideology = nazism
+	ideology = nationalsocialist
 	traits = { 
 		prince_of_terror
 	}
+# DvE:  Marcus James Hugins guida anche il partito di governo (reactionary), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = " Marcus James Hugins" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
 }

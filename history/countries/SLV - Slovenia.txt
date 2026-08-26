@@ -1,5 +1,56 @@
 ﻿capital = 853
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Komunisticka strana Slovenska" name = "KSS" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Smer - socialna demokracia" name = "Smer" }
+set_party_name = { ideology = vanguard_socialism long_name = "Vzdor - strana prace" name = "Vzdor" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Socialisti.sk" name = "Socialisti" }
+set_party_name = { ideology = progressive long_name = "Progresivne Slovensko" name = "PS" }
+set_party_name = { ideology = centrist long_name = "Sloboda a Solidarita" name = "SaS" }
+set_party_name = { ideology = conservative long_name = "Krestanskodemokraticke hnutie" name = "KDH" }
+set_party_name = { ideology = reactionary long_name = "Hlas - socialna demokracia" name = "Hlas" }
+set_party_name = { ideology = authoritarianism long_name = "Slovenska informacna sluzba" name = "SIS" }
+set_party_name = { ideology = autocracy long_name = "Generalny stab Ozbrojenych sil" name = "GS OS SR" }
+set_party_name = { ideology = absolutism long_name = "Uhorska koruna" name = "Habsburgovci" }
+set_party_name = { ideology = ultranationalism long_name = "Slovenska narodna strana" name = "SNS" }
+set_party_name = { ideology = fundamentalism long_name = "Republika" name = "Republika" }
+
+create_country_leader = { name = "Robert Fico" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+# DvE: leader del partito di governo, prima mancava
+create_country_leader = { name = "Robert Fico" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
+create_country_leader = { name = "Michal Simecka" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Peter Pellegrini" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Branislav Groehling" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultra_liberalism }
+create_country_leader = { name = "Milan Majersky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Andrej Danko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Milan Uhrik" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Komunisticka strana Slovenska" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Vzdor - strana prace" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "General Daniel Zmeko" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Pavol Gaspar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Arcibiskup Stanislav Zvolensky" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2023.9.30"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	authoritarian_socialism = 28
+	centrist = 22
+	progressive = 14
+	conservative = 11
+	ultranationalism = 10
+	reactionary = 7
+	fundamentalism = 5
+	totalitarian_socialism = 3
+}
+
+
+
 set_research_slots = 3
 
 # Starting tech
@@ -52,14 +103,15 @@ if = {
 	}
 }
 
-set_politics = {
-	ruling_party = democratic
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1936.1.1"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
 
 set_popularities = {
-	democratic = 67
-	neutrality = 33
+	centrist = 100
 }

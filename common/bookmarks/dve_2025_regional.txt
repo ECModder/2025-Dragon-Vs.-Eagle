@@ -1,0 +1,110 @@
+# ============================================================
+#   DvE - secondo scenario: le potenze regionali
+#
+#   Stessa data e stesso mondo del bookmark principale: cambia
+#   soltanto quali otto nazioni vengono messe in evidenza nella
+#   schermata di selezione.
+#
+#   NOTA TECNICA, non solo di contenuto:
+#   con UN SOLO bookmark HOI4 salta la schermata di scelta della
+#   data e porta dritto alla selezione del paese. Il pulsante
+#   "Back" e il tasto ESC di quella schermata tornano proprio alla
+#   scelta della data: se quella schermata non e' mai stata
+#   mostrata, non hanno dove tornare e sembrano non funzionare.
+#   Avere due scenari ripristina quel passaggio.
+# ============================================================
+
+bookmarks = {
+	bookmark = {
+		name = "DVE_BOOKMARK_2025_REGIONAL_NAME"
+		desc = "DVE_BOOKMARK_2025_REGIONAL_DESC"
+		date = 2025.1.1.12
+		picture = "GFX_select_date_dve_2025_regional"
+		default_country = "JAP"
+		default = no
+
+		"JAP" = {
+			minor = no
+			history = "DVE_JAP_BOOKMARK_DESC"
+			ideology = conservative
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"RAJ" = {
+			minor = no
+			history = "DVE_RAJ_BOOKMARK_DESC"
+			ideology = conservative
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"TUR" = {
+			minor = no
+			history = "DVE_TUR_BOOKMARK_DESC"
+			ideology = reactionary
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"BRA" = {
+			minor = no
+			history = "DVE_BRA_BOOKMARK_DESC"
+			ideology = progressive
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"UKR" = {
+			minor = no
+			history = "DVE_UKR_BOOKMARK_DESC"
+			ideology = centrist
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"KOR" = {
+			minor = no
+			history = "DVE_KOR_BOOKMARK_DESC"
+			ideology = progressive
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"SAF" = {
+			minor = no
+			history = "DVE_SAF_BOOKMARK_DESC"
+			ideology = progressive
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		"SAU" = {
+			minor = no
+			history = "DVE_SAU_BOOKMARK_DESC"
+			ideology = absolutism
+			ideas = {
+			}
+			focuses = {
+			}
+		}
+
+		effect = {
+			randomize_weather = 22345
+		}
+	}
+}

@@ -1,0 +1,315 @@
+# ============================================================
+#   DvE - GLI SPIRITI DELL'ALBERO SOVIETICO PRINCIPALE
+#
+#   Uno per ciascuna scelta che definisce il percorso: le quattro
+#   vie economiche, il bivio della pianificazione, i due eserciti,
+#   i due patti con Pechino e gli undici finali di ramo.
+#
+#   Il ramo politico ha i suoi 18 spiriti separati, in
+#   DVE_SOV_political_spirits.txt.
+#
+#   Gli altri focus non hanno uno spirito ma una ricompensa
+#   concreta a tema (bonus tecnologici, fabbriche, esperienza,
+#   uomini, potere politico), assegnata per tipologia.
+#
+#   Tutti i modificatori sono gia' usati altrove nel mod.
+# ============================================================
+
+ideas = {
+
+	country = {
+
+		# ------------------------------------------------------
+		#   le quattro vie economiche
+		# ------------------------------------------------------
+
+		idea_SOV_socialization_of_production = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.15   
+				research_speed_factor = 0.18
+				production_speed_buildings_factor = 0.05   
+			}
+		}
+
+		idea_SOV_collectivization_of_production = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				industrial_capacity_factory = 0.15
+				conscription_factor = 0.10
+				consumer_goods_factor = 0.05   # la collettivita' va nutrita
+			}
+		}
+
+		idea_SOV_state_capitalism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_economic_increase
+
+			modifier = {
+				production_speed_buildings_factor = 0.20   # un solo padrone rimasto
+				local_resources_factor = 0.15
+				stability_factor = -0.05   # e si comporta come tale
+			}
+		}
+
+		idea_SOV_market_socialism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_economic_recovery
+
+			modifier = {
+				consumer_goods_factor = -0.10   # gli scaffali si riempiono da soli
+				production_factory_max_efficiency_factor = 0.10
+				drift_defence_factor = -0.15   # e qualcuno comincia a chiedersi perche' no anche il resto
+			}
+		}
+
+		# ------------------------------------------------------
+		#   pianificazione: ortodossia o cibernetica
+		# ------------------------------------------------------
+
+		idea_SOV_continue_five_year_plans = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+
+			modifier = {
+				production_speed_buildings_factor = 0.15
+				stability_factor = 0.08
+				research_speed_factor = -0.05   # il piano non prevede sorprese
+			}
+		}
+
+		idea_SOV_a_digital_trotsky = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.12
+				production_factory_efficiency_gain_factor = 0.15
+				stability_factor = -0.05   # nessuno sa spiegarlo al Comitato Centrale
+			}
+		}
+
+		# ------------------------------------------------------
+		#   i due eserciti
+		# ------------------------------------------------------
+
+		idea_SOV_restore_the_red_army = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_infantry_bonus
+
+			modifier = {
+				experience_gain_army_factor = 0.15
+				army_org_factor = 0.05
+				training_time_factor = -0.10   # si addestra, non si arruola soltanto
+			}
+		}
+
+		idea_SOV_restore_the_soviet_army = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.02   # si arruola tutto
+				army_org_factor = 0.05
+				experience_gain_army_factor = -0.10   # e si addestra quel che si puo'
+			}
+		}
+
+		# ------------------------------------------------------
+		#   i due patti con Pechino
+		# ------------------------------------------------------
+
+		idea_SOV_sino_soviet_agreement = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_research_bonus
+
+			modifier = {
+				industrial_capacity_factory = 0.10
+				research_speed_factor = 0.05
+			}
+		}
+
+		idea_SOV_soviet_chinese_alliance = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				conscription_factor = 0.15
+				war_support_factor = 0.10
+			}
+		}
+
+		# ------------------------------------------------------
+		#   i finali di ramo
+		# ------------------------------------------------------
+
+		idea_SOV_to_each_needs = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.15
+				political_power_gain = 0.10
+				consumer_goods_factor = 0.08   # la meta' del programma che costa
+			}
+		}
+
+		idea_SOV_agricultural_communes = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.02
+				stability_factor = 0.08
+				production_factory_efficiency_gain_factor = -0.05   # le braccia migliori restano nei campi
+			}
+		}
+
+		idea_SOV_full_blown_digital_marxism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_research_bonus
+
+			modifier = {
+				research_speed_factor = 0.15
+				production_factory_efficiency_gain_factor = 0.20
+				consumer_goods_factor = -0.10
+			}
+		}
+
+		idea_SOV_true_trotskyist_revolution = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				war_support_factor = 0.20
+				industrial_capacity_factory = 0.15
+				stability_factor = -0.10
+			}
+		}
+
+		idea_SOV_socialist_economy_as_god_teaches = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_economic_increase
+
+			modifier = {
+				production_speed_buildings_factor = 0.25
+				industrial_capacity_factory = 0.15
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		idea_SOV_new_factory_of_the_world = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_economic_recovery
+
+			modifier = {
+				industrial_capacity_factory = 0.35
+				local_resources_factor = 0.15
+				research_speed_factor = 0.05   # si produce cio' che altri hanno progettato
+			}
+		}
+
+		idea_SOV_the_spectre_of_communism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				drift_defence_factor = 0.30
+				political_power_gain = 0.20
+				stability_factor = 0.20
+			}
+		}
+
+		idea_SOV_trotsky_young_once_again = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				war_support_factor = 0.25
+				conscription_factor = 0.15
+				experience_gain_army_factor = 0.10
+				stability_factor = -0.10
+			}
+		}
+
+		idea_SOV_a_party_with_a_state = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_vanguard_socialism_drift_bonus
+
+			modifier = {
+				political_power_factor = 0.25
+				stability_factor = 0.20
+				research_speed_factor = -0.08
+			}
+		}
+
+		idea_SOV_workers_of_the_world_unite = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_infantry_bonus
+
+			modifier = {
+				experience_gain_army_factor = 0.50
+				army_org_factor = 0.20
+				training_time_factor = -0.35
+			}
+		}
+
+		idea_SOV_ura_ura_uraaa = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.03
+				war_support_factor = 0.20
+				army_org_factor = 0.05
+			}
+		}
+
+	}
+}

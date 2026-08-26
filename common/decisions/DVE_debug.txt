@@ -1,0 +1,713 @@
+# ============================================================
+#   DvE - decisioni DEBUG
+#
+#   Si aprono digitando in console:   debug
+#   Si richiudono digitando ancora:  debug
+#
+#   Tutte hanno cost = 0 e nessun tempo di esecuzione, cosi' il
+#   test e' immediato. Nessuna e' visibile fuori dalla modalita' debug, e l'IA non le vede mai.
+#
+#   Per aggiungerne altre basta copiare uno di questi blocchi
+#   dentro la categoria giusta e dargli una voce di localizzazione
+#   in localisation/english/DVE_debug_l_english.yml
+# ============================================================
+
+DVE_debug_general_category = {
+
+	# --- risorse politiche ------------------------------------
+	DVE_debug_give_pp = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			add_political_power = 1000
+			add_command_power = 100
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_max_stability_war_support = {
+		icon = GFX_decision_generic_civil_support
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			add_stability = 0.50
+			add_war_support = 0.50
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_drain_stability = {
+		icon = GFX_decision_generic_arrest
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			add_stability = -0.50
+			add_war_support = -0.30
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- industria e forze ------------------------------------
+	DVE_debug_give_industry = {
+		icon = GFX_decision_generic_construction
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			# add_building_construction vuole uno scope di stato,
+			# non di paese: senza capital_scope il gioco lo scarta
+			capital_scope = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+				}
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+				}
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_give_army = {
+		icon = GFX_decision_generic_army_support
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			add_manpower = 500000
+			army_experience = 200
+			navy_experience = 200
+			air_experience = 200
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 20000 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- ideologie: mette al potere ogni gruppo ---------------
+	DVE_debug_rule_totalitarian_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_authoritarian_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_vanguard_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_revolutionary_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_progressive = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = progressive elections_allowed = yes }
+			add_popularity = { ideology = progressive popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_centrist = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = centrist elections_allowed = yes }
+			add_popularity = { ideology = centrist popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_conservative = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = conservative elections_allowed = yes }
+			add_popularity = { ideology = conservative popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_reactionary = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = reactionary elections_allowed = no }
+			add_popularity = { ideology = reactionary popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_authoritarianism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = authoritarianism elections_allowed = no }
+			add_popularity = { ideology = authoritarianism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_autocracy = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = autocracy elections_allowed = no }
+			add_popularity = { ideology = autocracy popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_absolutism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = absolutism elections_allowed = no }
+			add_popularity = { ideology = absolutism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_ultranationalism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = ultranationalism elections_allowed = no }
+			add_popularity = { ideology = ultranationalism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_rule_fundamentalism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = fundamentalism elections_allowed = no }
+			add_popularity = { ideology = fundamentalism popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- guerra civile generica -------------------------------
+	DVE_debug_force_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			start_civil_war = {
+				ideology = totalitarian_socialism
+				size = 0.45
+				army_ratio = 0.45
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+}
+
+# ============================================================
+#   RUSSIA - scenari
+# ============================================================
+DVE_debug_russia_category = {
+
+	# --- sconfitta / pace bianca in Ucraina -------------------
+	# Fa esattamente quello che dovrebbe fare l'evento di fine
+	# guerra: carica l'albero post-sconfitta e apre la crisi.
+	DVE_debug_lost_ukraine = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			# stesso identico percorso della sconfitta vera, cosi' non
+			# ci sono due versioni da tenere allineate
+			RUS_ukraine_defeat_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- guerra d'Ucraina: gli altri due esiti ----------------
+	DVE_debug_win_ukraine = {
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_ukraine_victory_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_ukraine_white_peace = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			DVE_ukraine_white_peace_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo il trattato, senza l'albero --------------------
+	DVE_debug_peace_settlement = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = RUS_lost_war_settlement }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_lost_war_settlement_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- apre il menu della guerra civile ---------------------
+	DVE_debug_open_cw_menu = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_civil_war_active
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- la catena del Sovnarkom ------------------------------
+	# Riprogramma tutta la catena da adesso, senza aspettare la
+	# guerra civile: Sovnarkom a +3 giorni, le tre correnti a
+	# +10, +11 e +12.
+	DVE_debug_sovnarkom_chain = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = SOV }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			clr_country_flag = SOV_sovnarkom_scheduled
+			SOV_sovnarkom_chain_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- torna all'albero iniziale ----------------------------
+	DVE_debug_reload_starting_tree = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			load_focus_tree = { tree = russian_focus keep_completed = no }
+			clr_country_flag = RUS_lost_the_war_in_ukraine
+			clr_country_flag = RUS_pd_putin_is_dead
+			clr_country_flag = RUS_pd_succession_open
+			clr_country_flag = RUS_pd_clean_coup_done
+			clr_country_flag = RUS_second_civil_war
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- salta direttamente alla crisi di successione ---------
+	DVE_debug_open_succession = {
+		icon = GFX_decision_generic_arrest
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = RUS_pd_putin_is_dead
+			set_country_flag = RUS_pd_succession_open
+			add_stability = -0.15
+			# come nel focus: morto Putin governa il blocco reazionario
+			set_politics = { ruling_party = reactionary elections_allowed = no }
+			add_popularity = { ideology = reactionary popularity = 0.20 }
+			add_popularity = { ideology = autocracy popularity = -0.20 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- il timer scade adesso --------------------------------
+	DVE_debug_succession_timeout = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_country_flag = RUS_pd_succession_open
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_second_civil_war_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- colpo di stato pulito, crisi risolta -----------------
+	DVE_debug_clean_coup = {
+		icon = GFX_decision_generic_civil_support
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_country_flag = RUS_pd_succession_open
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = RUS_pd_clean_coup_done
+			add_stability = 0.20
+		}
+		ai_will_do = { base = 0 }
+	}
+}
+
+# ============================================================
+#   CINA - guerra civile
+#   La spartizione degli stati sta in
+#   common/scripted_effects/DVE_CHN_effects.txt ed e' PROVVISORIA:
+#   sono assegnati solo i 29 stati identificabili per nome, gli
+#   altri (quelli chiamati "China 1"..."China 19") restano a PRC.
+# ============================================================
+DVE_debug_china_category = {
+
+	# --- la guerra civile completa -----------------------------
+	# Spartizione + eserciti + dichiarazioni di guerra.
+	DVE_debug_china_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = CHN_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- fa nascere una fazione alla volta, senza guerra -------
+	# Serve a controllare bandiera, partiti, leader e ideologia
+	# di un singolo tag facendo tag-switch, senza far scoppiare
+	# tutto il resto.
+	DVE_debug_china_spawn_ccr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_CCR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_csr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_CSR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_pxa = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_PXA_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_pta = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_PTA_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_sik = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_SIK_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_tib = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_TIB_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- i vicini si servono: Russia, Mongolia, Corea, Rep. Cinese ---
+	DVE_debug_china_occupations = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_occupy_RUS_effect = yes
+			CHN_occupy_MON_effect = yes
+			CHN_occupy_KOR_effect = yes
+			CHN_occupy_CHI_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo gli eserciti -------------------------------------
+	# Da usare dopo gli spawn singoli, che il territorio lo danno
+	# ma le divisioni no.
+	DVE_debug_china_armies = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_army_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- annulla tutto -----------------------------------------
+	# La Cina si riprende i quattro tag e i loro cores, cosi' la
+	# prova si puo' rifare da capo. Le divisioni gia' create NON
+	# spariscono: restano ai tag, che pero' non hanno piu' terra.
+	DVE_debug_china_reset = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

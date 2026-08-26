@@ -1,0 +1,230 @@
+# ============================================================
+#   RUS - La crisi di successione
+#
+#   Meccanica del concept "Post Defeated Focus":
+#     "per completare tutti i focus devi prendere una serie di
+#      decisioni per guadagnare tempo e consenso; se non completi
+#      il focus tree di una delle parti prima che il tempo scada,
+#      scoppia la guerra civile."
+#
+#   STRUTTURA
+#   1) RUS_succession_countdown - la missione col conto alla
+#      rovescia. E' selectable_mission = yes cosi' la barra del
+#      tempo residuo resta sempre visibile in cima alla categoria.
+#   2) Due decisioni che comprano giorni.
+#   3) Dodici decisioni di consenso, tre per ciascuna delle quattro
+#      fazioni: qui il giocatore sceglie con chi stare.
+#
+#   Completare il ramo di una fazione nell'albero post-sconfitta
+#   imposta RUS_pd_clean_coup_done e chiude la crisi. Se il tempo
+#   scade prima, parte RUS_second_civil_war_effect (definito in
+#   common/scripted_effects/DVE_RUS_effects.txt).
+# ============================================================
+
+RUS_succession_crisis_category = {
+
+	# ==========================================================
+	#   IL CONTO ALLA ROVESCIA
+	# ==========================================================
+	RUS_succession_countdown = {
+
+		icon = GFX_decision_revolt
+		allowed = { original_tag = RUS }
+		priority = 1000
+
+		# si chiude completando il ramo di una fazione
+		available = {
+			has_country_flag = RUS_pd_clean_coup_done
+		}
+
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+
+		activation = {
+			original_tag = RUS
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = yes
+		days_mission_timeout = 365
+
+		timeout_effect = {
+			RUS_second_civil_war_effect = yes
+		}
+
+		complete_effect = {
+			add_stability = 0.10
+			add_political_power = 100
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# ==========================================================
+	#   COMPRARE TEMPO
+	# ==========================================================
+	RUS_delay_the_congress = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = RUS }
+
+		available = {
+			has_political_power > 74
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			add_days_mission_timeout = { mission = RUS_succession_countdown days = 45 }
+			add_stability = -0.02
+		}
+
+		ai_will_do = { base = 20 }
+	}
+
+	RUS_martial_law_in_moscow = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+
+		available = {
+			has_political_power > 99
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 45
+
+		complete_effect = {
+			add_days_mission_timeout = { mission = RUS_succession_countdown days = 75 }
+			add_stability = -0.05
+			add_war_support = 0.03
+		}
+
+		ai_will_do = { base = 15 }
+	}
+
+	# ==========================================================
+	#   LE QUATTRO FAZIONI
+	#
+	#   Una decisione per fazione. Ognuna alza i tre gruppi
+	#   ideologici che compongono quel blocco, secondo la
+	#   ripartizione delle dodici ideologie della mod:
+	#     SOV  totalitarian + authoritarian + vanguard + revolutionary
+	#     RUR  progressive  + centrist + conservative
+	#     RUS  reactionary  + authoritarianism + autocracy
+	#     NRE  absolutism   + ultranationalism + fundamentalism
+	# ==========================================================
+
+	# --- SOV - i socialisti -----------------------------------
+	RUS_back_the_socialists = {
+		icon = GFX_decision_generic_civil_support
+		allowed = { original_tag = RUS }
+		available = {
+			has_political_power > 59
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 10
+		complete_effect = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.03 }
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	# --- RUR - i democratici ----------------------------------
+	RUS_back_the_democrats = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		available = {
+			has_political_power > 59
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 10
+		complete_effect = {
+			add_popularity = { ideology = progressive popularity = 0.03 }
+			add_popularity = { ideology = centrist popularity = 0.03 }
+			add_popularity = { ideology = conservative popularity = 0.03 }
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	# --- RUS - il governo di Mosca ----------------------------
+	RUS_back_the_government = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = RUS }
+		available = {
+			has_political_power > 59
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 10
+		complete_effect = {
+			add_popularity = { ideology = reactionary popularity = 0.03 }
+			add_popularity = { ideology = authoritarianism popularity = 0.03 }
+			add_popularity = { ideology = autocracy popularity = 0.03 }
+		}
+		ai_will_do = { base = 15 }
+	}
+
+	# --- NRE - i bianchi e i nazbol ---------------------------
+	RUS_back_the_nationalists = {
+		icon = GFX_decision_generic_arrest
+		allowed = { original_tag = RUS }
+		available = {
+			has_political_power > 59
+			NOT = { has_country_flag = RUS_pd_clean_coup_done }
+		}
+		visible = {
+			has_country_flag = RUS_pd_succession_open
+			NOT = { has_country_flag = RUS_second_civil_war }
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 10
+		complete_effect = {
+			add_popularity = { ideology = absolutism popularity = 0.03 }
+			add_popularity = { ideology = ultranationalism popularity = 0.03 }
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+		}
+		ai_will_do = { base = 10 }
+	}
+}

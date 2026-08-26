@@ -60,23 +60,7 @@ if = {
 	}
 }
 
-recruit_character = USB_georges_vereecken
-recruit_character = USB_rene_lagrou
-recruit_character = USB_gaston_eyskens
-recruit_character = USB_victor_strydonck_burkel
-recruit_character = USB_paul_van_zeeland
-recruit_character = USB_fritz_lob
-recruit_character = USB_yvan_gerard
-recruit_character = USB_jules_pire
-recruit_character = USB_georges_deffontaine
-recruit_character = USB_oscar_michiels
-recruit_character = USB_raoul_overstraeten
-recruit_character = USB_fritz_conrad
-recruit_character = USB_victor_van_strydonck_de_burkel
-recruit_character = USB_paul-henri_spaak
-recruit_character = USB_charles_bastin
-recruit_character = USB_leon_degrelle
-recruit_character = USB_jules_iserentant
+
 
 
 1939.1.1 = {
@@ -194,13 +178,13 @@ set_convoys = 400
 
 
 set_politics = {
-	ruling_party = neutrality
+	ruling_party = centrist
 	last_election = "1932.11.8"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	neutrality = 100
+	centrist = 100
 }
 
 add_ideas = {
@@ -212,12 +196,14 @@ add_ideas = {
 }
 
 1939.1.1 = {
-	set_politics = {
-		ruling_party = neutrality
-		last_election = "1936.11.3"
-		election_frequency = 48
-		elections_allowed = yes
-	}
+	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#		ruling_party = centrist
+#		last_election = "1936.11.3"
+#		election_frequency = 48
+#		elections_allowed = yes
+#	}
 }
 
 

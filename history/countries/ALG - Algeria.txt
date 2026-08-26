@@ -4,29 +4,6 @@
 set_technology = {
 	infantry_weapons = 1
 }
-
-recruit_character = ALG_ar
-recruit_character = ALG_acr
-recruit_character = ALG_mt
-recruit_character = ALG_stc
-recruit_character = ALG_aa2
-recruit_character = ALG_acgs
-recruit_character = ALG_ncm
-recruit_character = ALG_nccr
-recruit_character = ALG_coi
-recruit_character = ALG_democratic_guy
-recruit_character = ALG_acd2
-recruit_character = ALG_acas
-recruit_character = ALG_communist_guy
-recruit_character = ALG_ncs
-recruit_character = ALG_awt
-recruit_character = ALG_pot
-recruit_character = ALG_fascist_guy
-recruit_character = ALG_ai2
-recruit_character = ALG_nt
-recruit_character = ALG_aco2
-
-
 set_convoys = 20
 
 
@@ -39,7 +16,7 @@ set_grand_doctrine = new_strategic_destruction
 	}
 
 # ==================== algerianistan mbappe diktator ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Parti Algerien pour la Democratie et le Socialisme" name = "PADS" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Parti Algerien pour la Democratie et le Socialisme" name = "PADS" }
 set_party_name = { ideology = vanguard_socialism long_name = "Parti des Travailleurs" name = "PT" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Front des Forces Socialistes" name = "FFS" }
 set_party_name = { ideology = progressive long_name = "Rassemblement pour la Culture et la Democratie" name = "RCD" }
@@ -52,8 +29,11 @@ set_party_name = { ideology = absolutism long_name = "Conseil de l'Emir" name = 
 set_party_name = { ideology = ultranationalism long_name = "Front National Algerien" name = "FNA" }
 set_party_name = { ideology = fundamentalism long_name = "Front Islamique du Salut" name = "FIS" }
 
-create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = despotism }
-create_country_leader = { name = "Louisa Hanoune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = marxismleninism }
+create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+# DvE: Abdelmadjid Tebboune guida anche il partito di governo (authoritarianism), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Abdelmadjid Tebboune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Louisa Hanoune" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
 
 set_politics = {
 	ruling_party = authoritarianism

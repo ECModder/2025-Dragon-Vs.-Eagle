@@ -43,32 +43,6 @@ set_research_slots = 3
 set_stability = 0.6
 set_war_support = 0.6
 
-recruit_character = ROM_gheorghe_tatarescu
-recruit_character = ROM_constantin_ion_parhon
-recruit_character = ROM_armand_calinescu
-recruit_character = ROM_corneliu_codreanu
-recruit_character = ROM_petre_dumitrescu
-recruit_character = ROM_ion_antonescu
-recruit_character = ROM_ioan_mihail_racovita
-recruit_character = ROM_gheorghe_avramescu
-recruit_character = ROM_constantin_sanatescu
-recruit_character = ROM_horia_macellariu
-recruit_character = ROM_gheorghe_potopeanu
-recruit_character = ROM_emanoil_ionescu
-recruit_character = ROM_gheorghe_mihail
-recruit_character = ROM_ermil_gheorghiu
-recruit_character = ROM_nicolae_sova
-recruit_character = ROM_gheorghe_jienescu
-recruit_character = ROM_paul_teodorescu
-recruit_character = ROM_gheorghe_vasiliu
-recruit_character = ROM_iuliu_maniu
-recruit_character = ROM_petru_groza
-recruit_character = ROM_gheorghe_gheorghiu_dej
-recruit_character = ROM_nicolae_malaxa
-recruit_character = ROM_mihail_sturdza
-recruit_character = ROM_gheorghe_argeseanu
-recruit_character = ROM_king_michael
-recruit_character = ROM_octavian_goga
 
 # Starting tech
 set_technology = {
@@ -262,29 +236,29 @@ set_grand_doctrine = new_operational_integrity
 		limit = {
 			has_dlc = "Death or Dishonor"
 		}
-		complete_national_focus = ROM_preserve_greater_romania
-		complete_national_focus = ROM_army_maneuvers
-		complete_national_focus = ROM_expand_the_air_force
-		complete_national_focus = ROM_civil_works
-		complete_national_focus = ROM_agrarian_reform
-		complete_national_focus = ROM_local_development
-		complete_national_focus = ROM_army_war_college
-		complete_national_focus = ROM_danubian_transport_network
-		complete_national_focus = ROM_malaxa
-		complete_national_focus = ROM_flexible_foreign_policy
-		complete_national_focus = ROM_air_superiority
-		complete_national_focus = ROM_expand_the_galati_shipyards
-		complete_national_focus = ROM_trade_treaty_with_germany
-		complete_national_focus = ROM_iar_80
-		complete_national_focus = ROM_appoint_allied_friendly_government
-		complete_national_focus = ROM_cas
-		complete_national_focus = ROM_royal_guards_divisions
-		complete_national_focus = ROM_the_zb_53
-		complete_national_focus = ROM_vanatori_de_munte
-		complete_national_focus = ROM_hunedoara_steel_works
-		complete_national_focus = ROM_appoint_german_friendly_government
-		complete_national_focus = ROM_invite_german_advisors
-		complete_national_focus = ROM_iron_guard
+		#complete_national_focus = ROM_preserve_greater_romania
+		#complete_national_focus = ROM_army_maneuvers
+		#complete_national_focus = ROM_expand_the_air_force
+		#complete_national_focus = ROM_civil_works
+		#complete_national_focus = ROM_agrarian_reform
+		#complete_national_focus = ROM_local_development
+		#complete_national_focus = ROM_army_war_college
+		#complete_national_focus = ROM_danubian_transport_network
+		#complete_national_focus = ROM_malaxa
+		#complete_national_focus = ROM_flexible_foreign_policy
+		#complete_national_focus = ROM_air_superiority
+		#complete_national_focus = ROM_expand_the_galati_shipyards
+		#complete_national_focus = ROM_trade_treaty_with_germany
+		#complete_national_focus = ROM_iar_80
+		#complete_national_focus = ROM_appoint_allied_friendly_government
+		#complete_national_focus = ROM_cas
+		#complete_national_focus = ROM_royal_guards_divisions
+		#complete_national_focus = ROM_the_zb_53
+		#complete_national_focus = ROM_vanatori_de_munte
+		#complete_national_focus = ROM_hunedoara_steel_works
+		#complete_national_focus = ROM_appoint_german_friendly_government
+		#complete_national_focus = ROM_invite_german_advisors
+		#complete_national_focus = ROM_iron_guard
 
 		#King stuff
 		unlock_national_focus = ROM_institute_royal_dictatorship
@@ -294,11 +268,14 @@ set_grand_doctrine = new_operational_integrity
 			desc = "POLITICS_CAROL_II_DESC"
 			picture = GFX_Portrait_romania_Carol_II			
 			expire = "1965.1.1"
-			ideology = despotism
+			ideology = personalist_dictatorship
 			traits = {
 				hedonist
 				camarilla_leader
 			}
+# DvE: Carol II guida anche il partito di governo (centrist), che prima
+# non aveva nessun leader e quindi in partita restava vuoto.
+create_country_leader = { name = "Carol II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 			id = 550
 		}
 		#ROM = {
@@ -310,15 +287,15 @@ set_grand_doctrine = new_operational_integrity
 
 		else = {		
 			#generic focuses
-			complete_national_focus = army_effort
-			complete_national_focus = equipment_effort
-			complete_national_focus = motorization_effort
-			complete_national_focus = aviation_effort
-			complete_national_focus = naval_effort
-			complete_national_focus = large_navy
-			complete_national_focus = industrial_effort
-			complete_national_focus = construction_effort
-			complete_national_focus = production_effort
+			#complete_national_focus = army_effort
+			#complete_national_focus = equipment_effort
+			#complete_national_focus = motorization_effort
+			#complete_national_focus = aviation_effort
+			#complete_national_focus = naval_effort
+			#complete_national_focus = large_navy
+			#complete_national_focus = industrial_effort
+			#complete_national_focus = construction_effort
+			#complete_national_focus = production_effort
 		}
 	}
 	
@@ -347,15 +324,14 @@ set_grand_doctrine = new_operational_integrity
 }
 
 set_politics = {
-	ruling_party = democratic
+	ruling_party = centrist
 	last_election = "1933.12.20"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	democratic = 60
-	fascism = 20
-	neutrality = 20
+	centrist = 80
+	reactionary = 20
 }
 
 ### VARIANTS ###

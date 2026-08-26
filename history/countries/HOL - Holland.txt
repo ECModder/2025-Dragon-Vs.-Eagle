@@ -1,5 +1,55 @@
 ﻿capital = 7
 
+# ==================== CUSTOM DVE MOD INJECTION ====================
+# DvE: questo file non aveva nomi di partito ne' leader al 2025.
+set_party_name = { ideology = totalitarian_socialism long_name = "Nieuwe Communistische Partij Nederland" name = "NCPN" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Socialistische Partij" name = "SP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Communistische Jongerenbeweging" name = "CJB" }
+set_party_name = { ideology = revolutionary_socialism long_name = "BIJ1" name = "BIJ1" }
+set_party_name = { ideology = progressive long_name = "GroenLinks-PvdA" name = "GL-PvdA" }
+set_party_name = { ideology = centrist long_name = "Democraten 66" name = "D66" }
+set_party_name = { ideology = conservative long_name = "Volkspartij voor Vrijheid en Democratie" name = "VVD" }
+set_party_name = { ideology = reactionary long_name = "BoerBurgerBeweging" name = "BBB" }
+set_party_name = { ideology = authoritarianism long_name = "Algemene Inlichtingen- en Veiligheidsdienst" name = "AIVD" }
+set_party_name = { ideology = autocracy long_name = "Staf Commandant der Strijdkrachten" name = "Defensiestaf" }
+set_party_name = { ideology = absolutism long_name = "Huis Oranje-Nassau" name = "Oranje" }
+set_party_name = { ideology = ultranationalism long_name = "Partij voor de Vrijheid" name = "PVV" }
+set_party_name = { ideology = fundamentalism long_name = "Staatkundig Gereformeerde Partij" name = "SGP" }
+
+create_country_leader = { name = "Dick Schoof" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Geert Wilders" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Rob Jetten" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Frans Timmermans" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Jimmy Dijk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = socialism }
+create_country_leader = { name = "Nieuwe Communistische Partij Nederland" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Communistische Jongerenbeweging" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Caroline van der Plas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+create_country_leader = { name = "Generaal Onno Eichelsheim" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Koning Willem-Alexander" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Chris Stoffer" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Erik Akerboom" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+
+set_politics = {
+	ruling_party = reactionary
+	last_election = "2023.11.22"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	reactionary = 25
+	conservative = 20
+	progressive = 19
+	centrist = 15
+	revolutionary_socialism = 8
+	fundamentalism = 5
+	ultranationalism = 4
+	absolutism = 2
+	totalitarian_socialism = 2
+}
+
+
+
 oob = "HOL_1936"
 if = {
 	limit = { has_dlc = "Man the Guns" }
@@ -108,46 +158,7 @@ if = {
 	}
 }
 
-recruit_character = HOL_hendrikus_colijn
-recruit_character = HOL_anton_mussert
-recruit_character = HOL_lou_de_visser
-recruit_character = HOL_willem_schermerhorn
-recruit_character = HOL_izaak_reijnders
-recruit_character = HOL_petrus_wilhelmus_best
-recruit_character = HOL_godfried_van_voorst_tot_voorst
-recruit_character = HOL_johannes_theodorus_furstner
-recruit_character = HOL_conrad_helfrich
-recruit_character = HOL_karel_doorman
-recruit_character = HOL_charles_douw_van_der_krap
-recruit_character = HOL_nico_van_straten
-recruit_character = HOL_hein_ter_poorten
-recruit_character = HOL_adrianus_rudolphus_van_den_bent
-recruit_character = HOL_hendrik_van_oyen
-recruit_character = HOL_hendrik_seyffardt
-recruit_character = HOL_henri_winkelman
-recruit_character = HOL_maarten_belzer
-recruit_character = HOL_marius_raaijmakers
-recruit_character = HOL_saul_de_groot
-recruit_character = HOL_antonie_pannekoek
-recruit_character = HOL_walraven_van_hall
-recruit_character = HOL_jacob_adriaan_de_wilde
-recruit_character = HOL_anton_de_kom
-recruit_character = HOL_jan_goudriaan
-recruit_character = HOL_adriaan_dijxhoorn
-recruit_character = HOL_prince_bernhard
-recruit_character = HOL_cornelis_van_geelkerken
-recruit_character = HOL_meinout_rost_van_tonningen
-recruit_character = HOL_dirk_jan_de_geer
-recruit_character = HOL_pieter_sjoerds_gerbrandy
-recruit_character = HOL_wilhelmina
-recruit_character = HOL_fanny_schoonheyt
 
-if = {
-	limit = {
-		has_dlc = "Man the Guns"
-	}
-	recruit_character = HOL_anthony_fokker
-}
 
 1939.1.1 = {
 	add_ideas = {
@@ -160,24 +171,24 @@ if = {
 	#generic focuses
 	remove_ideas = HOL_weak_government
 
-	complete_national_focus = HOL_obtain_foreign_colonial_investments	
-	complete_national_focus = HOL_the_crown_jewel_colony				
-	complete_national_focus = HOL_the_western_possessions				
-	complete_national_focus = HOL_abandon_the_gold_standard			
-	complete_national_focus = HOL_continue_the_public_works			
-	complete_national_focus = HOL_finish_the_noordoostpolder			
-	complete_national_focus = HOL_the_maastunnel						
-	complete_national_focus = HOL_expand_the_artillerieinrichtingen	
-	complete_national_focus = HOL_philips_focus							
-	complete_national_focus = HOL_expand_RD_facilities				
-	complete_national_focus = HOL_overturn_military_budget_cuts		
-	complete_national_focus = HOL_prepare_naval_expansion				
-	complete_national_focus = HOL_cornerstone_of_colonial_defense		
-	complete_national_focus = HOL_modernize_the_cruiser_fleet		
-	complete_national_focus = HOL_prepare_the_inundation_lines		
-	complete_national_focus = HOL_germany_is_the_greater_threat		
-	complete_national_focus = HOL_antilles_defenses					
-	complete_national_focus = HOL_form_new_government	
+	#complete_national_focus = HOL_obtain_foreign_colonial_investments	
+	#complete_national_focus = HOL_the_crown_jewel_colony				
+	#complete_national_focus = HOL_the_western_possessions				
+	#complete_national_focus = HOL_abandon_the_gold_standard			
+	#complete_national_focus = HOL_continue_the_public_works			
+	#complete_national_focus = HOL_finish_the_noordoostpolder			
+	#complete_national_focus = HOL_the_maastunnel						
+	#complete_national_focus = HOL_expand_the_artillerieinrichtingen	
+	#complete_national_focus = HOL_philips_focus							
+	#complete_national_focus = HOL_expand_RD_facilities				
+	#complete_national_focus = HOL_overturn_military_budget_cuts		
+	#complete_national_focus = HOL_prepare_naval_expansion				
+	#complete_national_focus = HOL_cornerstone_of_colonial_defense		
+	#complete_national_focus = HOL_modernize_the_cruiser_fleet		
+	#complete_national_focus = HOL_prepare_the_inundation_lines		
+	#complete_national_focus = HOL_germany_is_the_greater_threat		
+	#complete_national_focus = HOL_antilles_defenses					
+	#complete_national_focus = HOL_form_new_government	
 
 	unlock_national_focus = HOL_expand_curacao_oil_refineries
 	
@@ -269,15 +280,17 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
-set_politics = {
-	ruling_party = democratic
-	last_election = "1933.4.26"
-	election_frequency = 48
-	elections_allowed = yes
-}
+# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
+		# il governo moderno.
+#set_politics = {
+#	ruling_party = centrist
+#	last_election = "1933.4.26"
+#	election_frequency = 48
+#	elections_allowed = yes
+#}
 set_popularities = {
-	democratic = 93
-	fascism = 7
+	centrist = 93
+	reactionary = 7
 }
 
 set_convoys = 150

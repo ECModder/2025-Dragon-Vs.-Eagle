@@ -180,125 +180,10 @@ set_party_name = {
 	long_name = FIN_neutrality_party_kokoomus_long
 }
 
-recruit_character = FIN_stubb
-
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	recruit_character = FIN_otto_wille_kuusinen
-}
-
-### ARMY LEADERS
-recruit_character = FIN_carl_mannerheim
-recruit_character = FIN_erik_heinrichs
-recruit_character = FIN_vilho_petter_nenonen
-recruit_character = FIN_woldemar_hagglund
-recruit_character = FIN_juho_heiskanen
-recruit_character = FIN_wiljo_einar_tuompo
-recruit_character = FIN_aarne_juutilainen
-recruit_character = FIN_fanni_luukkonen
-recruit_character = FIN_paavo_talvela
-recruit_character = FIN_hannu_hannuksela
-recruit_character = FIN_hjalmar_siilasvuo
-recruit_character = FIN_taavetti_laatikainen
-recruit_character = FIN_matti_aarnio
-recruit_character = FIN_erkki_raappana
-recruit_character = FIN_aarne_sihvo
-recruit_character = FIN_aksel_airo
-recruit_character = FIN_ruben_lagus
-recruit_character = FIN_paavo_susitaival #Only as Fascist Demagogue without DLC
-
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	#Fascists
-	recruit_character = FIN_kurt_martti_wallenius
-	recruit_character = FIN_lauri_torni
-
-	#Communists
-	recruit_character = FIN_emil_vaateri
-	recruit_character = FIN_eyolf_mattsson
-	recruit_character = FIN_toivo_antikainen
-}
+recruit_character = FIN_Stubb
 
 
-### NAVY LEADERS
-recruit_character = FIN_ragnar_hakola
-recruit_character = FIN_svante_sundman
 
-### THEORISTS ###
-recruit_character = FIN_vaino_valve
-recruit_character = FIN_gustaf_magnusson
-recruit_character = FIN_torsti_verkkola
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	#Communist
-	recruit_character = FIN_akseli_anttila
-}
-
-###ARMY CHIEFS ###
-recruit_character = FIN_lauri_malmberg
-recruit_character = FIN_hugo_osterman
-
-### NAVY CHIEFS ###
-recruit_character = FIN_olavi_arho
-recruit_character = FIN_eero_rahola
-
-### AIR CHIEFS ###
-recruit_character = FIN_jarl_lundqvist
-recruit_character = FIN_olavi_sarko
-
-### MILITARY HIGH COMMAND ###
-recruit_character = FIN_karl_oesch
-recruit_character = FIN_harald_ohquist
-recruit_character = FIN_valio_porvari
-recruit_character = FIN_lauri_tiainen
-recruit_character = FIN_frans_helminen
-recruit_character = FIN_alpo_marttinen
-recruit_character = FIN_kaarlo_somerto
-recruit_character = FIN_reino_hallamaa
-recruit_character = FIN_johan_arajuuri
-recruit_character = GER_nikolaus_von_falkenhorst #Defined in the German char file
-
-
-### POLITICAL ADVISORS ###
-recruit_character = FIN_ake_henrik_gartz
-recruit_character = FIN_aimo_lahti
-recruit_character = FIN_antti_hackzell
-recruit_character = FIN_rudolf_holsti
-recruit_character = FIN_aimo_cajander
-recruit_character = FIN_urho_kekkonen
-recruit_character = FIN_ralf_torngren
-recruit_character = FIN_ernst_von_born
-recruit_character = FIN_hilja_riipinen
-recruit_character = FIN_esko_riekki
-recruit_character = FIN_elias_simojoki
-recruit_character = FIN_ilmari_kianto
-recruit_character = FIN_miina_sillanpaa
-recruit_character = FIN_karl_august_fagerholm #Democratic Reformer
-
-if = {
-	limit = {
-		has_dlc = "Arms Against Tyranny"
-	}
-	#Fascists
-	recruit_character = FIN_vilho_helanen
-	recruit_character = FIN_reino_ala_kulju
-
-	#Socialists
-	recruit_character = FIN_mandi_hannula
-	recruit_character = FIN_otto_brusiin
-	recruit_character = FIN_aarne_saarinen
-	recruit_character = FIN_karl_harald_wiik
-	recruit_character = FIN_kaisu_mirjami_rydberg
-	recruit_character = FIN_sandra_lehtinen
-	recruit_character = FIN_kullervo_manner
-	recruit_character = FIN_arvo_tuominen
-}
 
 #Set up flags for Civil Wars
 if = {
@@ -519,35 +404,35 @@ set_grand_doctrine = new_operational_integrity
 	
 	### FOCUS TREE ###
 	#1936
-	complete_national_focus = FIN_orpon_hallitus
-	complete_national_focus = FIN_deepen_ties_with_EU
-	unlock_national_focus = FIN_combat_gang_violence #Timed idea should be gone
-	unlock_national_focus = FIN_strenghten_nato_contribution #35 #tech bonus should be consumed
-	complete_national_focus = FIN_wait_for_elections #35
-	complete_national_focus = FIN_recover_from_pandemic
+	#complete_national_focus = FIN_finnish_neutrality
+	#complete_national_focus = FIN_enhance_southern_infrastructure
+	unlock_national_focus = FIN_industrial_development #Timed idea should be gone
+	unlock_national_focus = FIN_vaisala_radiosonde_tests #35 #tech bonus should be consumed
+	#complete_national_focus = FIN_increase_military_budget #35
+	#complete_national_focus = FIN_suomen_maavoimat
 
 	#1937
-	complete_national_focus = FIN_create_new_jobs_industry #35
-	complete_national_focus = FIN_raise_taxes #35
-	complete_national_focus = FIN_side_with_kokoomus
-	complete_national_focus = FIN_elections # Fix later
-	complete_national_focus = FIN_kokoomus_victory
-	complete_national_focus = FIN_start_stopping_public_debt #35
-	complete_national_focus = FIN_cut_welfare_spending #35 (1938 historically)
+	#complete_national_focus = FIN_reach_out_to_scandinavia #35
+	#complete_national_focus = FIN_moderate_politics #35
+	#complete_national_focus = FIN_mannerheim_line
+	#complete_national_focus = FIN_national_unity
+	#complete_national_focus = FIN_outokumpu_for_defence_industry
+	#complete_national_focus = FIN_industrial_upgrade_in_harjavalta #35
+	#complete_national_focus = FIN_janiskoski_power_plant #35 (1938 historically)
 
 	#1938
-	complete_national_focus = FIN_fund_foreign_immigration
-	complete_national_focus = FIN_strengthen_police
-	complete_national_focus = FIN_raise_military_spending
-	complete_national_focus = FIN_stop_public_debt # (ASAP - gated behind WT)
-	complete_national_focus = FIN_raise_conscription #35 (ASAP - gated behind WT)
-	complete_national_focus = FIN_decrease_taxes_for_elderly #35
+	#complete_national_focus = FIN_political_unity
+	#complete_national_focus = FIN_railways_and_infrastructure
+	#complete_national_focus = FIN_repurpose_small_industries
+	#complete_national_focus = FIN_extra_refresher_exercises # (ASAP - gated behind WT)
+	#complete_national_focus = FIN_weapon_caches #35 (ASAP - gated behind WT)
+	#complete_national_focus = FIN_the_cold_front #35
 	
 	#1939 (Nov -> Winter War)
-	complete_national_focus = FIN_raise_pigouvian_tax
-	complete_national_focus = FIN_invest_in_revenable_energy
-	complete_national_focus = FIN_salvaged_and_retooled
-	complete_national_focus = FIN_motti_tactics #35
+	#complete_national_focus = FIN_defense_in_depth
+	#complete_national_focus = FIN_jaeger_movement
+	#complete_national_focus = FIN_salvaged_and_retooled
+	#complete_national_focus = FIN_motti_tactics #35
 
 	# FOCUS ADJUSTMENTS
 
@@ -596,20 +481,21 @@ set_grand_doctrine = new_operational_integrity
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Kommunistinen Työväenpuolue" name = "KTP" }
-set_party_name = { ideology = vanguard_socialism long_name = "Vasemmistoliitto" name = "Vas" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Sosiaalidemokraattinen puolue" name = "SDP" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Kommunistinen Työväenpuolue" name = "KTP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Suomen Kommunistinen Puolue" name = "KTP" }
+set_party_name = { ideology = vanguard_socialism long_name = "Proletariaatin internationalismi" name = "PI" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Vasemmistoliitto" name = "Vas" }
 set_party_name = { ideology = progressive long_name = "Vihreä Liitto" name = "Vihr" }
-set_party_name = { ideology = centrist long_name = "Keskusta" name = "Kesk" }
+set_party_name = { ideology = centrist long_name = "Suomen Sosialidemokraattinen Puolue" name = "SDP" }
 set_party_name = { ideology = conservative long_name = "Kansallinen Kokoomus" name = "Kok" }
-set_party_name = { ideology = reactionary long_name = "Perussuomalaiset" name = "PS" }
+set_party_name = { ideology = reactionary long_name = "Suomen Keskusta" name = "Kesk" }
 set_party_name = { ideology = authoritarianism long_name = "Suomen Puolustusvoimat" name = "PV" }
 set_party_name = { ideology = autocracy long_name = "Valtioneuvoston Puolustusvaliokunta" name = "VPV" }
-set_party_name = { ideology = absolutism long_name = "Suomen Kuninkaallinen Liitto" name = "SKL" }
-set_party_name = { ideology = ultranationalism long_name = "Sinimusta liike" name = "SMl" }
+set_party_name = { ideology = absolutism long_name = "Suomen Monarkistinen Liitto" name = "SML" }
+set_party_name = { ideology = ultranationalism long_name = "Perussuomalaiset" name = "PS" }
 set_party_name = { ideology = fundamentalism long_name = "Suomen Kristillisdemokraatit" name = "KD" }
 
-create_country_leader = { name = "Hannu Harju" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = totalitarian_stalinism }
+create_country_leader = { name = "Hannu Harju" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
 create_country_leader = { name = "Juha-Pekka Väisänen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Li Andersson" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
 create_country_leader = { name = "Sofia Virta" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
@@ -629,7 +515,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 0
+	totalitarian_socialism = 0
 	vanguard_socialism = 1
 	revolutionary_socialism = 7
 	progressive = 7

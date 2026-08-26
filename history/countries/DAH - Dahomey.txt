@@ -7,40 +7,21 @@ set_technology = {
 
 set_convoys = 10
 
-recruit_character = DAH_stc
-recruit_character = DAH_aco2
-recruit_character = DAH_aa2
-recruit_character = DAH_ncs
-recruit_character = DAH_nt
-recruit_character = DAH_acas
-recruit_character = DAH_acd2
-recruit_character = DAH_democratic_guy
-recruit_character = DAH_mt
-recruit_character = DAH_ai2
-recruit_character = DAH_coi
-recruit_character = DAH_acr
-recruit_character = DAH_pot
-recruit_character = DAH_awt
-recruit_character = DAH_communist_guy
-recruit_character = DAH_ncm
-recruit_character = DAH_acgs
-recruit_character = DAH_nccr
-recruit_character = DAH_fascist_guy
-recruit_character = DAH_ar
+
 
 
 1939.1.1 = {
 	
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = large_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = large_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 		tech_support = 1
@@ -78,23 +59,32 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 # ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Kombinowana Partia Dahomeju" name = "KPD" }
-set_party_name = { ideology = vanguard_socialism long_name = "Awangarda Marksistowska" name = "AM" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Ludowy Front Wyzwolenia" name = "LFW" }
-set_party_name = { ideology = progressive long_name = "Ruch Postępu i Odnowy" name = "RPO" }
-set_party_name = { ideology = centrist long_name = "Sojusz Demokratyczny Dahomeju" name = "SDD" }
-set_party_name = { ideology = conservative long_name = "Partia Narodowo-Konserwatywna" name = "PNK" }
-set_party_name = { ideology = reactionary long_name = "Stronnictwo Tradycjonalistów" name = "ST" }
-set_party_name = { ideology = authoritarianism long_name = "Związek Wojskowy dla Stabilizacji" name = "ZWS" }
-set_party_name = { ideology = autocracy long_name = "Rada Najwyższa Państwa" name = "RNP" }
-set_party_name = { ideology = absolutism long_name = "Królestwo Abomey" name = "KA" }
-set_party_name = { ideology = ultranationalism long_name = "Ruch Czarnych Spartiatów" name = "RCS" }
-set_party_name = { ideology = fundamentalism long_name = "Rada Tradycji i Kultu Vodun" name = "RTV" }
+# DvE: i nomi dei partiti erano in polacco ("Kombinowana Partia
+# Dahomeju"), evidentemente un segnaposto. Questi sono i partiti veri.
+set_party_name = { ideology = totalitarian_socialism long_name = "Parti Communiste du Benin" name = "PCB" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Parti de la Revolution Populaire du Benin" name = "PRPB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Ligue Communiste Beninoise" name = "LCB" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Front Populaire de Liberation" name = "FPL" }
+set_party_name = { ideology = progressive long_name = "Les Democrates" name = "LD" }
+set_party_name = { ideology = centrist long_name = "Union Progressiste le Renouveau" name = "UPR" }
+set_party_name = { ideology = conservative long_name = "Bloc Republicain" name = "BR" }
+set_party_name = { ideology = reactionary long_name = "Force Cauris pour un Benin Emergent" name = "FCBE" }
+set_party_name = { ideology = authoritarianism long_name = "Conseil de Securite Nationale" name = "CSN" }
+set_party_name = { ideology = autocracy long_name = "Etat-Major des Forces Armees Beninoises" name = "FAB" }
+set_party_name = { ideology = absolutism long_name = "Trone de Danxome - Royaume d'Abomey" name = "Danxome" }
+set_party_name = { ideology = ultranationalism long_name = "Mouvement National Beninois" name = "MNB" }
+set_party_name = { ideology = fundamentalism long_name = "Conseil National du Vodun" name = "CNV" }
 
-create_country_leader = { name = "Hubert Maga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Sourou-Migan Apithy" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = centrist_populism }
-create_country_leader = { name = "Justin Ahomadégbé-Tomêtin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Christophe Soglo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = putinism }
+create_country_leader = { name = "Patrice Talon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Joseph Djogbenou" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
+create_country_leader = { name = "Eric Houndete" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+create_country_leader = { name = "Paul Hounkpe" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Philippe Noudjenoume" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
+create_country_leader = { name = "Ligue Communiste Beninoise" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Boni Yayi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "General Fructueux Gbaguidi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
+create_country_leader = { name = "Roi Dada Guedegbe" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Dah Aligbonon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = religious_nationalism }
 
 set_politics = {
 	ruling_party = conservative
@@ -104,7 +94,7 @@ set_politics = {
 }
 
 set_popularities = {
-	totalitarian_communism = 2
+	totalitarian_socialism = 2
 	vanguard_socialism = 4
 	revolutionary_socialism = 6
 	progressive = 11

@@ -10,39 +10,19 @@ set_technology = {
 
 set_convoys = 5
 
-recruit_character = ANG_acgs
-recruit_character = ANG_ncm
-recruit_character = ANG_mt
-recruit_character = ANG_nt
-recruit_character = ANG_ai2
-recruit_character = ANG_fascist_guy
-recruit_character = ANG_stc
-recruit_character = ANG_communist_guy
-recruit_character = ANG_aa2
-recruit_character = ANG_ar
-recruit_character = ANG_acd2
-recruit_character = ANG_acr
-recruit_character = ANG_coi
-recruit_character = ANG_acas
-recruit_character = ANG_awt
-recruit_character = ANG_pot
-recruit_character = ANG_nccr
-recruit_character = ANG_aco2
-recruit_character = ANG_democratic_guy
-recruit_character = ANG_ncs
 
 
 1939.1.1 = {
 	#generic focuses
-	complete_national_focus = army_effort
-	complete_national_focus = equipment_effort
-	complete_national_focus = motorization_effort
-	complete_national_focus = aviation_effort
-	complete_national_focus = naval_effort
-	complete_national_focus = flexible_navy
-	complete_national_focus = industrial_effort
-	complete_national_focus = construction_effort
-	complete_national_focus = production_effort
+	#complete_national_focus = army_effort
+	#complete_national_focus = equipment_effort
+	#complete_national_focus = motorization_effort
+	#complete_national_focus = aviation_effort
+	#complete_national_focus = naval_effort
+	#complete_national_focus = flexible_navy
+	#complete_national_focus = industrial_effort
+	#complete_national_focus = construction_effort
+	#complete_national_focus = production_effort
 	
 	set_technology = {
 
@@ -70,7 +50,7 @@ set_grand_doctrine = grand_battleplan
 	}
 }
 	# ==================== goon ====================
-set_party_name = { ideology = totalitarian_communism long_name = "Partido Comunista Angolano" name = "PCA" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista Angolano" name = "PCA" }
 set_party_name = { ideology = vanguard_socialism long_name = "MPLA (Marxista-Leninista)" name = "MPLA-ML" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Frente Nacional de Libertacao de Angola" name = "FNLA" }
 set_party_name = { ideology = progressive long_name = "Movimento Popular de Libertacao de Angola" name = "MPLA" }
@@ -84,18 +64,21 @@ set_party_name = { ideology = ultranationalism long_name = "Frente de Libertacao
 set_party_name = { ideology = fundamentalism long_name = "Igreja Tocoista" name = "Tocoista" }
 
 create_country_leader = { name = "Joao Lourenco" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+# DvE: leader del partito di governo, prima mancava
+create_country_leader = { name = "Joao Lourenco" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
 create_country_leader = { name = "Adalberto Costa Junior" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
 
 set_politics = {
-	ruling_party = progressive
+	ruling_party = authoritarian_socialism
 	last_election = "2022.8.24"
 	election_frequency = 60
 	elections_allowed = yes
 }
 
 set_popularities = {
-	progressive = 51
+	authoritarian_socialism = 45
 	conservative = 44
+	progressive = 6
 	centrist = 2
 	revolutionary_socialism = 2
 	ultranationalism = 1
