@@ -1,0 +1,57 @@
+  egypt_phase1_category = {
+        icon = generic_decision
+        scripted_guis = egypt_phase1_visual_sgui
+        visible_when_empty = yes
+
+        egypt_p1_consolidate_foundations = {
+            icon = generic_decision
+            cost = 100
+            days_remove = 120
+            allowed = { original_tag = EGY }
+            available = { always = yes }
+
+            activation_effect = {
+            }
+
+            remove_effect = {
+                add_to_variable = { egypt_capital_progress = 5 }
+            }
+        }
+
+        egypt_p1_government_district = {
+            icon = generic_decision
+            cost = 70
+            days_remove = 80
+            allowed = { original_tag = EGY }
+            available = { always = yes }
+
+            remove_effect = {
+                add_to_variable = { egypt_capital_progress = 6 }
+            }
+        }
+
+        egypt_p1_iconic_tower = {
+            icon = generic_decision
+            cost = 100
+            days_remove = 110
+            allowed = { original_tag = EGY }
+            available = { always = yes }
+
+            remove_effect = {
+                add_to_variable = { egypt_capital_progress = 10 }
+            }
+        }
+
+        egypt_p1_cbd_zoning = {
+            icon = generic_decision
+            cost = 70
+            days_remove = 50
+            allowed = { original_tag = EGY }
+            available = { always = yes }
+
+            remove_effect = {
+                add_to_variable = { egypt_capital_progress = 5 }
+            }
+        }
+    }
+}
