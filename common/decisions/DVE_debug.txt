@@ -352,12 +352,42 @@ DVE_debug_russia_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			# il trattato prima, l'albero dopo: e' l'ordine che dovra'
-			# tenere anche l'evento vero di fine guerra
-			RUS_lost_war_settlement_effect = yes
-			load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
-			set_country_flag = RUS_lost_the_war_in_ukraine
-			add_political_power = 200
+			# stesso identico percorso della sconfitta vera, cosi' non
+			# ci sono due versioni da tenere allineate
+			RUS_ukraine_defeat_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- guerra d'Ucraina: gli altri due esiti ----------------
+	DVE_debug_win_ukraine = {
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_ukraine_victory_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_ukraine_white_peace = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			DVE_ukraine_white_peace_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
