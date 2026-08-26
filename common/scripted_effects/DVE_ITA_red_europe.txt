@@ -71,6 +71,40 @@ ITA_red_france_effect = {
 		}
 	}
 
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Rouge" } }
+					division_template = {
+						name = "Garde Rouge"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Rouge\" division_template = \"Garde Rouge\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = FSR
+					count = 14
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = FSR }
 		FSR = {
@@ -127,6 +161,40 @@ ITA_red_spain_effect = {
 				owns_state = 171
 			}
 			set_capital = { state = 171 }
+		}
+	}
+
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = SPA }
+		SPA = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Roja" } }
+					division_template = {
+						name = "Guardia Roja"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Roja\" division_template = \"Guardia Roja\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = SPA
+					count = 12
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
 		}
 	}
 
@@ -195,6 +263,40 @@ ITA_red_germany_effect = {
 		}
 	}
 
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = GDR }
+		GDR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Rote Garde" } }
+					division_template = {
+						name = "Rote Garde"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Rote Garde\" division_template = \"Rote Garde\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = GDR
+					count = 16
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = GDR }
 		GDR = {
@@ -252,6 +354,40 @@ ITA_red_britain_effect = {
 		}
 	}
 
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = SRB }
+		SRB = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Red Guard" } }
+					division_template = {
+						name = "Red Guard"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Red Guard\" division_template = \"Red Guard\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = SRB
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = SRB }
 		SRB = {
@@ -299,6 +435,40 @@ ITA_red_portugal_effect = {
 				owns_state = 181
 			}
 			set_capital = { state = 181 }
+		}
+	}
+
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = PRS }
+		PRS = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guarda Vermelha" } }
+					division_template = {
+						name = "Guarda Vermelha"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guarda Vermelha\" division_template = \"Guarda Vermelha\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = PRS
+					count = 5
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
 		}
 	}
 

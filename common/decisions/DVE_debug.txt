@@ -711,3 +711,97 @@ DVE_debug_china_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+# ============================================================
+#   L'EUROPA ROSSA - far scoppiare le rivoluzioni a mano
+#
+#   Ogni decisione fa esattamente cio' che farebbe il focus
+#   italiano corrispondente: spacca il paese, da' territorio e
+#   cores al tag socialista, gli schiera la Guardia Rossa sulla
+#   capitale e apre la guerra civile.
+#
+#   Si vedono sia giocando l'Italia sia giocando il paese che si
+#   spacca, cosi' si puo' provare da entrambe le parti.
+# ============================================================
+DVE_debug_red_europe_category = {
+
+	DVE_debug_red_france = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = FRA } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = FSR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_france_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_spain = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = SPR } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = SPA } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_spain_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_germany = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = GER } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = GDR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_germany_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_britain = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = ENG } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = SRB } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_britain_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_portugal = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = POR } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = PRS } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_portugal_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}
