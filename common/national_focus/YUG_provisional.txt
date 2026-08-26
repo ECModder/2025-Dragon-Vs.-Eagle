@@ -42,6 +42,26 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 100
 			add_stability = 0.05
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Crvena Garda" } }
+					division_template = {
+						name = "Crvena Garda"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = { engineer = { x = 0 y = 0 } }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Crvena Garda\" division_template = \"Crvena Garda\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = ROOT
+					count = 5
+				}
+			}
 		}
 	}
 	focus = {
@@ -88,6 +108,26 @@ focus_tree = {
 			add_manpower = 30000
 			army_experience = 25
 			add_war_support = 0.05
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Crvena Garda" } }
+					division_template = {
+						name = "Crvena Garda"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = { engineer = { x = 0 y = 0 } }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Crvena Garda\" division_template = \"Crvena Garda\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = ROOT
+					count = 10
+				}
+			}
 		}
 	}
 	focus = {

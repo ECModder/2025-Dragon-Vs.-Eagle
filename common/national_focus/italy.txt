@@ -478,7 +478,7 @@ focus = {
 		completion_reward = {
 			ITA_red_france_effect = yes			# FRA si spacca: il nord industriale diventa FSR
 			declare_war_on = { target = FRA type = annex_everything }
-			FRA = { leave_faction = yes }
+			# FRA esce dalla fazione dentro ITA_red_*_effect
 			set_country_flag = LT_redfra_done
 		}
 	}
@@ -630,8 +630,8 @@ focus = {
 			ITA_red_portugal_effect = yes			# POR si spacca: la terraferma diventa PRS
 			declare_war_on = { target = SPR type = annex_everything }
 			declare_war_on = { target = POR type = annex_everything }
-			SPR = { leave_faction = yes }
-			POR = { leave_faction = yes }
+			# SPR esce dalla fazione dentro ITA_red_*_effect
+			# POR esce dalla fazione dentro ITA_red_*_effect
 			set_country_flag = LT_redspa_done
 		}
 	}
@@ -734,7 +734,7 @@ focus = {
 		completion_reward = {
 			ITA_red_germany_effect = yes			# GER si spacca: Berlino e il nord diventano GDR
 			declare_war_on = { target = GER type = annex_everything }
-			GER = { leave_faction = yes }
+			# GER esce dalla fazione dentro ITA_red_*_effect
 			set_country_flag = LT_redger_done
 		}
 	}
@@ -840,7 +840,7 @@ focus = {
 		completion_reward = {
 			ITA_red_britain_effect = yes			# ENG si spacca: Londra e il nord diventano SRB
 			declare_war_on = { target = ENG type = annex_everything }
-			ENG = { leave_faction = yes }
+			# ENG esce dalla fazione dentro ITA_red_*_effect
 			set_country_flag = LT_redeng_done
 		}
 	}

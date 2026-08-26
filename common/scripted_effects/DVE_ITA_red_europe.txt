@@ -32,6 +32,11 @@
 ITA_red_france_effect = {
 
 	FRA = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -72,6 +77,27 @@ ITA_red_france_effect = {
 	}
 
 
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			inherit_technology = FRA
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = FSR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = FSR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = FSR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = FSR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = FSR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = FSR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = FSR }
+		}
+	}
+
 	# --- la Guardia Rossa ---
 	# Il nucleo armato della rivoluzione: non e' l'esercito
 	# regolare, che resta col governo, ma quello che i comitati
@@ -98,7 +124,7 @@ ITA_red_france_effect = {
 				create_unit = {
 					division = "name = \"Garde Rouge\" division_template = \"Garde Rouge\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
 					owner = FSR
-					count = 14
+					count = 20
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -127,6 +153,11 @@ ITA_red_france_effect = {
 ITA_red_spain_effect = {
 
 	SPR = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -165,6 +196,27 @@ ITA_red_spain_effect = {
 	}
 
 
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = SPA }
+		SPA = {
+			inherit_technology = SPR
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SPA }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = SPA }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = SPA }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = SPA }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = SPA }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = SPA }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = SPA }
+		}
+	}
+
 	# --- la Guardia Rossa ---
 	# Il nucleo armato della rivoluzione: non e' l'esercito
 	# regolare, che resta col governo, ma quello che i comitati
@@ -191,7 +243,7 @@ ITA_red_spain_effect = {
 				create_unit = {
 					division = "name = \"Guardia Roja\" division_template = \"Guardia Roja\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
 					owner = SPA
-					count = 12
+					count = 20
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -220,6 +272,11 @@ ITA_red_spain_effect = {
 ITA_red_germany_effect = {
 
 	GER = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -264,6 +321,27 @@ ITA_red_germany_effect = {
 	}
 
 
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = GDR }
+		GDR = {
+			inherit_technology = GER
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = GDR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = GDR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = GDR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = GDR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = GDR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = GDR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = GDR }
+		}
+	}
+
 	# --- la Guardia Rossa ---
 	# Il nucleo armato della rivoluzione: non e' l'esercito
 	# regolare, che resta col governo, ma quello che i comitati
@@ -290,7 +368,7 @@ ITA_red_germany_effect = {
 				create_unit = {
 					division = "name = \"Rote Garde\" division_template = \"Rote Garde\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
 					owner = GDR
-					count = 16
+					count = 20
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -320,6 +398,11 @@ ITA_red_germany_effect = {
 ITA_red_britain_effect = {
 
 	ENG = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -355,6 +438,27 @@ ITA_red_britain_effect = {
 	}
 
 
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = SRB }
+		SRB = {
+			inherit_technology = ENG
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SRB }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = SRB }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = SRB }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = SRB }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = SRB }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = SRB }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = SRB }
+		}
+	}
+
 	# --- la Guardia Rossa ---
 	# Il nucleo armato della rivoluzione: non e' l'esercito
 	# regolare, che resta col governo, ma quello che i comitati
@@ -381,7 +485,7 @@ ITA_red_britain_effect = {
 				create_unit = {
 					division = "name = \"Red Guard\" division_template = \"Red Guard\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
 					owner = SRB
-					count = 10
+					count = 20
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -415,6 +519,11 @@ ITA_red_britain_effect = {
 ITA_red_portugal_effect = {
 
 	POR = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -438,6 +547,27 @@ ITA_red_portugal_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = PRS }
+		PRS = {
+			inherit_technology = POR
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = PRS }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = PRS }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = PRS }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = PRS }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = PRS }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = PRS }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = PRS }
+		}
+	}
 
 	# --- la Guardia Rossa ---
 	# Il nucleo armato della rivoluzione: non e' l'esercito
@@ -465,7 +595,7 @@ ITA_red_portugal_effect = {
 				create_unit = {
 					division = "name = \"Guarda Vermelha\" division_template = \"Guarda Vermelha\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
 					owner = PRS
-					count = 5
+					count = 20
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
