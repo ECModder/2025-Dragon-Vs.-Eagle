@@ -33,6 +33,28 @@ on_actions = {
 			#   attive (common/decisions/DVE_ukraine_war.txt).
 			# --------------------------------------------------
 			# La guerra c'e' gia' al primo frame di gioco.
+			# --------------------------------------------------
+			#   LA NATO DEL GIOCO BASE, DISINNESCATA
+			#
+			#   common/decisions/NATO.txt ha NATO_brussels_treaty,
+			#   visibile a ENG e FRA con la sola condizione
+			#   date > 1944.1.1 - che nel 2025 e' sempre vera. L'IA la
+			#   prende subito (ai_will_do base = 100) e il suo effetto
+			#   manda treaty_org.1 a OGNI altro membro della fazione.
+			#   In quell'evento l'opzione "esco" pesa 99 contro 2, e il
+			#   modificatore che la annulla vale solo con i focus storici
+			#   e per una lista di tag del 1949: nel 2025 quasi tutti
+			#   escono dall'Alleanza Atlantica a caso.
+			#
+			#   Le due flag qui sotto chiudono entrambe le decisioni:
+			#   brussels_to_fired nasconde la prima, nato_suggested la
+			#   seconda. Sono usate SOLO in NATO.txt, quindi non toccano
+			#   nient'altro. Per riattivare la meccanica basta togliere
+			#   queste due righe.
+			# --------------------------------------------------
+			set_global_flag = brussels_to_fired
+			set_global_flag = nato_suggested
+
 			RUS = { DVE_ukraine_war_start_effect = yes }
 		}
 	}

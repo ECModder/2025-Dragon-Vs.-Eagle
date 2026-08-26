@@ -1,0 +1,421 @@
+# ============================================================
+#   THE SOCIALIST REPUBLIC OF BRITAIN (SRB) - albero PROVVISORIO
+#
+#   Il paese parte sotto Communist Party of Great Britain (authoritarian_socialism).
+#   Al Congresso tre correnti si contendono il posto, e i nomi non
+#   sono inventati: sono i partiti che il paese ha davvero in
+#   history/countries/, ciascuno nella sua collocazione ideologica.
+#
+#     vanguard_socialism      Internationalism - Communist Struggle
+#     revolutionary_socialism RCP
+#     totalitarian_socialism  Communist Party of Britain
+#     authoritarian_socialism Communist Party of Great Britain  (gia' al governo)
+#
+#   Icone: una per corrente, da gfx/interface/goals/puppets/.
+#   26 focus.
+# ============================================================
+
+focus_tree = {
+	id = SRB_provisional_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = SRB
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 50 y = 900 }
+
+	focus = {
+		id = SRB_root
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 7
+		y = 0
+		cost = 7
+		available_if_capitulated = yes
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = SRB_rebuild_party
+		icon = GFX_goal_generic_political_pressure
+		x = 4
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 60
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_commanding_heights
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 7
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = SRB_peoples_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 10
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 30000
+			army_experience = 25
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = SRB_first_congress
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 7
+		y = 4
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_rebuild_party }
+		prerequisite = { focus = SRB_commanding_heights }
+		prerequisite = { focus = SRB_peoples_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = SRB_internationalist
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 0
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_first_congress }
+		mutually_exclusive = { focus = SRB_revolutionary focus = SRB_workerist focus = SRB_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = SRB_democratic_centralism
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 0
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_internationalist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_cadre_formation
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 0
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_democratic_centralism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_all_power_soviets
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 0
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_cadre_formation }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = SRB_internationalist_end
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 0
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_all_power_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = SRB_revolutionary
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 5
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_first_congress }
+		mutually_exclusive = { focus = SRB_internationalist focus = SRB_workerist focus = SRB_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = SRB_factory_councils
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 5
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_revolutionary }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_permanent_revolution
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 5
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_factory_councils }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_all_power_revolution
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 5
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_permanent_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = SRB_revolutionary_end
+		icon = GFX_goal_SRB_vanguard_revolutionary
+		x = 5
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = SRB_workerist
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 10
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_first_congress }
+		mutually_exclusive = { focus = SRB_internationalist focus = SRB_revolutionary focus = SRB_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = SRB_cadre_school
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 10
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_workerist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_the_politburo
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 10
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_cadre_school }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_all_power_party
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 10
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_the_politburo }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = SRB_workerist_end
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 10
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = SRB_statist
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 15
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_first_congress }
+		mutually_exclusive = { focus = SRB_internationalist focus = SRB_revolutionary focus = SRB_workerist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = SRB_keep_the_files
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 15
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_no_second_congress
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 15
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_keep_the_files }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = SRB_all_power_committee
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 15
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_no_second_congress }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = SRB_statist_end
+		icon = GFX_goal_SRB_authoritarian_totalitarian
+		x = 15
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = SRB_all_power_committee }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+}
