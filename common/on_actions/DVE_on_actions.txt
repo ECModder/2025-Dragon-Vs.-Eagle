@@ -32,30 +32,9 @@ on_actions = {
 			#   con le due missioni a tempo da 278 giorni gia'
 			#   attive (common/decisions/DVE_ukraine_war.txt).
 			# --------------------------------------------------
+			# La guerra c'e' gia' al primo frame di gioco.
 			RUS = { DVE_ukraine_war_start_effect = yes }
 		}
 	}
 
-	# ==================================================================
-	#   OBIETTIVI DELLA GUERRA D'UCRAINA
-	#   Scatta ogni volta che uno stato cambia controllore, cioe'
-	#   esattamente quando un obiettivo puo' essere stato raggiunto o
-	#   perduto. Niente controlli a intervalli.
-	#
-	#   Scope: ROOT = chi ha preso il controllo, FROM = chi l'ha perso,
-	#   FROM.FROM = lo stato.
-	# ==================================================================
-	on_state_control_changed = {
-		effect = {
-			if = {
-				limit = {
-					RUS = {
-						has_country_flag = RUS_ukraine_war_active
-						NOT = { has_country_flag = RUS_ukraine_war_over }
-					}
-				}
-				RUS = { DVE_ukraine_war_check_effect = yes }
-			}
-		}
-	}
 }

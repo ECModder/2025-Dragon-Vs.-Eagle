@@ -25,10 +25,11 @@
 #        albero post-sconfitta, crisi di successione
 #     C) scadono i 278 giorni     -> pace bianca
 #
-#   Il controllo degli obiettivi non gira a intervalli: si aggancia
-#   a on_state_control_changed, che scatta esattamente quando uno
-#   stato cambia mano. Ogni esito e' protetto da una flag, quindi
-#   non puo' avvenire due volte.
+#   Gli obiettivi NON sono controllati qui: sono missioni con
+#   selectable_mission = no in common/decisions/DVE_ukraine_war.txt,
+#   che si completano da sole appena la condizione e' vera.
+#   Ogni esito e' protetto da una flag, quindi non puo' avvenire
+#   due volte.
 # ============================================================
 
 # --- gli stati che contano ---
@@ -62,85 +63,6 @@ DVE_ukraine_war_start_effect = {
 			controls_state = 228
 		}
 		set_country_flag = RUS_obj_donbass
-	}
-}
-
-
-# ============================================================
-#   2) IL CONTROLLO DEGLI OBIETTIVI
-#      Chiamato in scope RUS da on_state_control_changed.
-# ============================================================
-DVE_ukraine_war_check_effect = {
-
-	if = {
-		limit = { has_country_flag = RUS_ukraine_war_active
-		          NOT = { has_country_flag = RUS_ukraine_war_over } }
-
-		# ---------- ESITO B: il Donbass torna ucraino ----------
-		# Va controllato per primo: se il Donbass e' perduto la
-		# guerra e' finita, qualunque cosa Mosca stia occupando.
-		if = {
-			limit = {
-				UKR = {
-					controls_state = 196
-					controls_state = 200
-					controls_state = 227
-					controls_state = 228
-				}
-			}
-			RUS_ukraine_defeat_effect = yes
-		}
-		else = {
-			# ---------- scala russa ----------
-			if = {
-				limit = {
-					NOT = { has_country_flag = RUS_obj_donbass }
-					controls_state = 196
-					controls_state = 200
-					controls_state = 227
-					controls_state = 228
-				}
-				set_country_flag = RUS_obj_donbass
-				country_event = { id = dve_ukrwar.1 hours = 6 }
-			}
-			if = {
-				limit = {
-					has_country_flag = RUS_obj_donbass
-					NOT = { has_country_flag = RUS_obj_odessa }
-					controls_state = 192
-				}
-				set_country_flag = RUS_obj_odessa
-				country_event = { id = dve_ukrwar.2 hours = 6 }
-			}
-			# ---------- ESITO A: Kiev ----------
-			if = {
-				limit = {
-					has_country_flag = RUS_obj_odessa
-					controls_state = 202
-				}
-				RUS_ukraine_victory_effect = yes
-			}
-
-			# ---------- scala ucraina ----------
-			UKR = {
-				if = {
-					limit = {
-						NOT = { has_country_flag = UKR_obj_crimea }
-						controls_state = 137
-					}
-					set_country_flag = UKR_obj_crimea
-					country_event = { id = dve_ukrwar.11 hours = 6 }
-				}
-				if = {
-					limit = {
-						NOT = { has_country_flag = UKR_obj_into_russia }
-						OR = { controls_state = 218 controls_state = 240 }
-					}
-					set_country_flag = UKR_obj_into_russia
-					country_event = { id = dve_ukrwar.12 hours = 6 }
-				}
-			}
-		}
 	}
 }
 
@@ -213,6 +135,13 @@ DVE_ukraine_white_peace_effect = {
 		UKR = { set_country_flag = UKR_ukraine_war_over }
 
 		white_peace = UKR
+
+		# Una guerra che non si e' vinta e' una guerra che si e' persa:
+		# anche la pace bianca porta all'albero post-sconfitta e alla
+		# crisi che ne segue. Il trattato pero' NON si applica - nessuno
+		# ha ceduto territori.
+		load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
+		set_country_flag = RUS_lost_the_war_in_ukraine
 
 		add_stability = -0.05
 		add_war_support = -0.10

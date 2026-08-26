@@ -151,3 +151,32 @@ country_event = {
 		name = dve_ukrwar.13.a
 	}
 }
+
+
+# ============================================================
+#   L'INNESCO
+#   Chiamato da on_startup un'ora dopo l'inizio. La guerra non
+#   viene dichiarata dentro on_startup perche' li' il gioco sta
+#   ancora montando lo stato iniziale.
+# ============================================================
+country_event = {
+	id = dve_ukrwar.99
+	title = dve_ukrwar.99.t
+	desc = dve_ukrwar.99.d
+	hidden = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			# rete di sicurezza: se per qualche motivo on_startup non
+			# ha fatto partire la guerra, la fa partire questo
+			if = {
+				limit = { NOT = { has_country_flag = RUS_ukraine_war_active } }
+				DVE_ukraine_war_start_effect = yes
+			}
+		}
+	}
+
+	option = { name = dve_ukrwar.99.a }
+}
