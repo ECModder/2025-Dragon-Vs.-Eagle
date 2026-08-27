@@ -1,100 +1,69 @@
 guiTypes = {
 
     containerWindowType = {
+
+        name = "egypt_capital_launcher"
+
+        position = { x = 0 y = 0 }
+        size = { width = 180 height = 40 }
+
+        buttonType = {
+
+            name = "egypt_capital_open_click"
+
+            position = { x = 0 y = 0 }
+
+            quadTextureSprite = "GFX_top_bar_button"
+
+            buttonText = "CAPITAL"
+            buttonFont = "hoi_16mbs"
+
+            Orientation = centre
+        }
+    }
+
+
+    containerWindowType = {
+
         name = "egypt_phase1_visual_window"
 
         position = { x = 0 y = 0 }
-        size = { width = 500 height = 750 }
 
-
-        # ==========================================
-        # EGYPT / CAPITAL MAP
-        # ==========================================
-
-        iconType = {
-            name = "egypt_p1_map_graphic"
-            spriteType = "GFX_egypt_phase1_map_img"
-            position = { x = 10 y = 10 }
+        size = {
+            width = 500
+            height = 750
         }
 
-
-        # ==========================================
-        # PHASE TITLE
-        # ==========================================
-
         instantTextBoxType = {
-            name = "egypt_p1_phase_title"
 
-            position = { x = 15 y = 225 }
+            name = "egypt_p1_test_text"
+
+            position = { x = 20 y = 20 }
 
             font = "hoi_18mbs"
-            borderSize = { x = 0 y = 0 }
 
             text = "EGYPT CAPITAL DEVELOPMENT"
 
-            maxWidth = 470
-            maxHeight = 30
+            maxWidth = 460
+            maxHeight = 40
 
             fixedsize = yes
             format = center
         }
 
 
-        # ==========================================
-        # PHASE DESCRIPTION
-        # ==========================================
+        buttonType = {
 
-        instantTextBoxType = {
-            name = "egypt_p1_middle_text"
+            name = "egypt_capital_close_click"
 
-            position = { x = 15 y = 255 }
+            position = { x = 420 y = 20 }
 
-            font = "hoi_16mbs"
-            borderSize = { x = 0 y = 0 }
+            quadTextureSprite = "GFX_top_bar_button"
 
-            text = "egypt_phase1_layout_text"
+            buttonText = "X"
+            buttonFont = "hoi_16mbs"
 
-            maxWidth = 470
-            maxHeight = 60
-
-            fixedsize = yes
-            format = center
+            Orientation = centre
         }
-
-
-        # ==========================================
-        # CAPITAL RENDER
-        # ==========================================
-
-        iconType = {
-            name = "egypt_p1_render_graphic"
-
-            spriteType = "GFX_egypt_phase1_render_img"
-
-            position = { x = 10 y = 345 }
-        }
-
-
-        # ==========================================
-        # PROGRESS
-        # ==========================================
-
-        instantTextBoxType = {
-            name = "egypt_p1_progress_label"
-
-            position = { x = 20 y = 680 }
-
-            font = "hoi_18mbs"
-            borderSize = { x = 0 y = 0 }
-
-            text = "egypt_p1_progress_visual_text"
-
-            maxWidth = 450
-            maxHeight = 30
-
-            fixedsize = yes
-            format = center
-        }
-
     }
 }
