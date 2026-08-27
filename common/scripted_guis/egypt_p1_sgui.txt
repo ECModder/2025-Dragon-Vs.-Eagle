@@ -1,8 +1,40 @@
-scripted_guis = {
+scripted_gui = {
+
+    egypt_capital_launcher = {
+        context_type = player_context
+        parent_window_token = top_bar
+        window_name = "egypt_capital_launcher"
+
+        visible = {
+            original_tag = EGY
+        }
+
+        effects = {
+
+            egypt_capital_open_click = {
+                set_country_flag = egypt_capital_ui_open
+            }
+
+        }
+    }
+
 
     egypt_phase1_visual_sgui = {
-        context_type = decision_category
-        window_name = egypt_phase1_visual_window
+        context_type = player_context
+        window_name = "egypt_phase1_visual_window"
+
+        visible = {
+            original_tag = EGY
+            has_country_flag = egypt_capital_ui_open
+        }
+
+        effects = {
+
+            egypt_capital_close_click = {
+                clr_country_flag = egypt_capital_ui_open
+            }
+
+        }
     }
 
 }
