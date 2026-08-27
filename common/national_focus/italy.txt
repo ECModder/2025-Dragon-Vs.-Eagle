@@ -213,7 +213,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.3 }
 			set_country_flag = LT_coup_done
 		}
 	}
@@ -273,7 +273,8 @@ focus = {
 	}
 	completion_reward = {
 		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
-		add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
+		add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
+		add_popularity = { ideology = revolutionary_socialism popularity = 0.3 }
 		set_capital = { state = 159 remember_old_capital = no }
 		set_country_flag = LT_international_done
 	}
@@ -353,12 +354,11 @@ focus = {
 	focus = {
 		id = LT_atheism
 		icon = GFX_goal_atheism
-		x = 6
+		x = 8
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		prerequisite = { focus = LT_pcr }
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
 		mutually_exclusive = { focus = LT_secular }
 		ai_will_do = {
 			factor = 1
@@ -374,12 +374,11 @@ focus = {
 	focus = {
 		id = LT_secular
 		icon = GFX_goal_secular
-		x = 8
+		x = 6
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		prerequisite = { focus = LT_pcr }
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
 		mutually_exclusive = { focus = LT_atheism }
 		ai_will_do = {
 			factor = 1
@@ -416,8 +415,7 @@ focus = {
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		prerequisite = { focus = LT_pcr }
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
 		mutually_exclusive = { focus = LT_civilwed }
 		ai_will_do = {
 			factor = 1
@@ -435,8 +433,7 @@ focus = {
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		prerequisite = { focus = LT_pcr }
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
 		mutually_exclusive = { focus = LT_marriage }
 		ai_will_do = {
 			factor = 1
@@ -917,7 +914,7 @@ focus = {
 		id = LT_workersunite
 		icon = GFX_goal_workersunite
 		x = 4
-		y = 17
+		y = 18
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = LT_congress }
@@ -933,24 +930,23 @@ focus = {
 	focus = {
 		id = LT_domino
 		icon = GFX_goal_domino
-		x = 2
-		y = 15
+		x = 4
+		y = 16
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redeng }
-		prerequisite = { focus = LT_revspirit }
+		prerequisite = { focus = LT_solidarity focus = LT_house }
+		prerequisite = { focus = LT_redyugo }
+		prerequisite = { focus = LT_redgre }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			# NOTA: effetto complesso su molti paesi terzi (set_politics + add_to_faction per BEL/HOL/DEN/POL/CZE/NOR/SWE/SER/ROM/BUL/IRE/GRE). Per farlo servono blocchi tipo 'TAG = { set_politics = {...} add_to_faction = ITA }' per ciascun tag: dimmi se confermi l'elenco e se l'Italia deve annettere/puppettare o solo aggiungerli alla fazione, e li aggiungo.
-			puppet = SLV
-			puppet = CRO
-			puppet = BOS
+			# I dominoes veri sono i quattro focus qui sotto: Polonia,
+			# Grecia, Scandinavia e Jugoslavia. Qui restano solo i paesi
+			# che nessuna rivoluzione assorbe.
 			puppet = ALB
 			puppet = BEL
 			puppet = HOL
-			puppet = SER
 			puppet = AUS
 			set_country_flag = LT_domino_done
 		}
@@ -1027,10 +1023,9 @@ focus = {
 		id = LT_congress
 		icon = GFX_goal_congress
 		x = 4
-		y = 16
+		y = 17
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_solidarity focus = LT_house }
 		prerequisite = { focus = LT_domino }
 		ai_will_do = {
 			factor = 1
@@ -1046,7 +1041,7 @@ focus = {
 		id = LT_redstar
 		icon = GFX_goal_redstar
 		x = 4
-		y = 18
+		y = 19
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = LT_workersunite }
@@ -1325,7 +1320,6 @@ focus = {
 		completion_reward = {
 			add_political_power = -100
 			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no last_election = 2025.1.1 }
-			# NOTA: nel testo era scritto "-00" (probabile refuso); ho usato -100 per coerenza con gli altri partiti dello stesso step.
 			set_country_flag = ST_cambiare_done
 		}
 	}
@@ -3195,4 +3189,63 @@ focus = {
 		}
 	}
 
+	focus = {
+		id = LT_redgre
+		icon = GFX_goal_domino
+		x = 0
+		y = 15
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redeng }
+		prerequisite = { focus = LT_revspirit }
+		available = { NOT = { country_exists = GSR } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_greece_effect = yes
+			declare_war_on = { target = GRE type = annex_everything }
+			set_country_flag = LT_redgre_done
+		}
+	}
+
+	focus = {
+		id = LT_redscand
+		icon = GFX_goal_domino
+		x = 1
+		y = 17
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redyugo }
+		prerequisite = { focus = LT_redgre }
+		prerequisite = { focus = LT_domino }
+		available = { NOT = { country_exists = SSR } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_scandinavia_effect = yes
+			declare_war_on = { target = SWE type = annex_everything }
+			set_country_flag = LT_redscand_done
+		}
+	}
+
+	focus = {
+		id = LT_redyugo
+		icon = GFX_goal_domino
+		x = 2
+		y = 15
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redeng }
+		prerequisite = { focus = LT_revspirit }
+		available = { NOT = { country_exists = YUG } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_yugoslavia_effect = yes
+			declare_war_on = { target = SLV type = annex_everything }
+			declare_war_on = { target = CRO type = annex_everything }
+			declare_war_on = { target = BOS type = annex_everything }
+			declare_war_on = { target = SER type = annex_everything }
+			declare_war_on = { target = MNT type = annex_everything }
+			declare_war_on = { target = MAC type = annex_everything }
+			set_country_flag = LT_redyugo_done
+		}
+	}
 }
