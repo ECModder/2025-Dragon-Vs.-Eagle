@@ -71,8 +71,8 @@ RUS_pd_become_SOV_effect = {
 
 # ============================================================
 #   l'opposizione democratica - "Ours shall be heard, with force." -> RUR
-#   La Repubblica Russa: il tag RUR eredita tutto. Non ha un albero focus
-#   proprio, quindi prende quello generico.
+#   La Repubblica Russa: il tag RUR eredita tutto e passa
+#   al suo albero nazionale (russian_republic_focus).
 # ============================================================
 RUS_pd_become_RUR_effect = {
 
@@ -105,7 +105,7 @@ RUS_pd_become_RUR_effect = {
 			}
 			add_popularity = { ideology = centrist popularity = 0.20 }
 			set_country_flag = RUR_born_from_defeated_russia
-			# nessun albero dedicato: prende il generico
+			load_focus_tree = { tree = russian_republic_focus keep_completed = no }
 			change_tag_from = RUS
 		}
 	}
@@ -113,8 +113,8 @@ RUS_pd_become_RUR_effect = {
 
 # ============================================================
 #   gli ultranazionalisti - "Coup d'Etat" -> NRE
-#   Il Nuovo Impero Russo: il tag NRE eredita tutto. Non ha un albero focus
-#   proprio, quindi prende quello generico.
+#   Il Nuovo Impero Russo: il tag NRE eredita tutto e passa
+#   al suo albero nazionale (new_russian_empire_focus).
 # ============================================================
 RUS_pd_become_NRE_effect = {
 
@@ -147,7 +147,7 @@ RUS_pd_become_NRE_effect = {
 			}
 			add_popularity = { ideology = ultranationalism popularity = 0.20 }
 			set_country_flag = NRE_born_from_defeated_russia
-			# nessun albero dedicato: prende il generico
+			load_focus_tree = { tree = new_russian_empire_focus keep_completed = no }
 			change_tag_from = RUS
 		}
 	}
