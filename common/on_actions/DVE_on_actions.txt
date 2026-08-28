@@ -59,4 +59,45 @@ on_actions = {
 		}
 	}
 
+	# ====================================================
+	#   L'ITALIA SOCIALISTA DIVENTA ROSSA SULLA MAPPA
+	#
+	#   Il colore di un paese sta in colors.txt ed e' legato al
+	#   TAG: HOI4 non ha un effetto per cambiarlo a partita in
+	#   corso. Il solo modo e' un tag cosmetico, che porta con se'
+	#   il proprio colore (common/countries/cosmetic.txt), nome e
+	#   bandiera. ITA_VAN e ITA_REV ripetono nome e bandiera delle
+	#   due ideologie, quindi in gioco cambia solo il colore.
+	#
+	#   Sta qui e non nei focus perche' on_ruling_party_change
+	#   scatta comunque: focus, evento, colpo di stato o console.
+	#   E vale nei due sensi - se Roma smette di essere socialista
+	#   il tag cade e l'Italia torna del suo verde.
+	# ====================================================
+	on_ruling_party_change = {
+		effect = {
+			if = {
+				limit = { tag = ITA }
+
+				if = {
+					limit = { has_government = vanguard_socialism }
+					set_cosmetic_tag = ITA_VAN
+				}
+				else_if = {
+					limit = { has_government = revolutionary_socialism }
+					set_cosmetic_tag = ITA_REV
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_cosmetic_tag = ITA_VAN
+							has_cosmetic_tag = ITA_REV
+						}
+					}
+					drop_cosmetic_tag = yes
+				}
+			}
+		}
+	}
+
 }
