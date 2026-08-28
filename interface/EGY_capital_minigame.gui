@@ -1,35 +1,23 @@
 guiTypes = {
 
     containerWindowType = {
+
         name = "egypt_phase1_visual_window"
 
         position = { x = 0 y = 0 }
-        size = { width = 500 height = 750 }
+        size = { width = 500 height = 820 }
 
 
-        # ==========================================
-        # EGYPT / CAPITAL MAP
-        # ==========================================
-
-        iconType = {
-            name = "egypt_p1_map_graphic"
-            spriteType = "GFX_egypt_phase1_map_img"
-            position = { x = 10 y = 10 }
-        }
-
-
-        # ==========================================
-        # PHASE TITLE
-        # ==========================================
+        # =====================================================
+        # TITLE
+        # =====================================================
 
         instantTextBoxType = {
-            name = "egypt_p1_phase_title"
+            name = "egypt_p1_title"
 
-            position = { x = 15 y = 225 }
+            position = { x = 15 y = 8 }
 
             font = "hoi_18mbs"
-            borderSize = { x = 0 y = 0 }
-
             text = "EGYPT CAPITAL DEVELOPMENT"
 
             maxWidth = 470
@@ -40,56 +28,113 @@ guiTypes = {
         }
 
 
-        # ==========================================
-        # PHASE DESCRIPTION
-        # ==========================================
+        # =====================================================
+        # MAP
+        # =====================================================
+
+        iconType = {
+            name = "egypt_p1_map_graphic"
+
+            spriteType = "GFX_egypt_phase1_map_img"
+
+            position = { x = 15 y = 50 }
+
+            scale = 0.75
+        }
+
+
+        # =====================================================
+        # PHASE I — FOUNDATIONS
+        # =====================================================
 
         instantTextBoxType = {
-            name = "egypt_p1_middle_text"
+            name = "egypt_p1_phase_title"
 
-            position = { x = 15 y = 255 }
+            position = { x = 15 y = 305 }
 
-            font = "hoi_16mbs"
-            borderSize = { x = 0 y = 0 }
+            font = "hoi_18mbs"
 
-            text = "egypt_phase1_layout_text"
+            text = "PHASE I — FOUNDATIONS"
 
             maxWidth = 470
-            maxHeight = 60
+            maxHeight = 35
 
             fixedsize = yes
             format = center
         }
 
 
-        # ==========================================
+        # =====================================================
+        # PHASE DESCRIPTION
+        # =====================================================
+
+        instantTextBoxType = {
+            name = "egypt_p1_description"
+
+            position = { x = 25 y = 345 }
+
+            font = "hoi_16mbs"
+
+            text = "egypt_phase1_layout_text"
+
+            maxWidth = 450
+            maxHeight = 70
+
+            fixedsize = yes
+            format = center
+        }
+
+
+        # =====================================================
         # CAPITAL RENDER
-        # ==========================================
+        # =====================================================
 
         iconType = {
             name = "egypt_p1_render_graphic"
 
             spriteType = "GFX_egypt_phase1_render_img"
 
-            position = { x = 10 y = 345 }
+            position = { x = 15 y = 425 }
+
+            scale = 0.65
         }
 
 
-        # ==========================================
-        # PROGRESS
-        # ==========================================
+        # =====================================================
+        # CAPITAL DEVELOPMENT
+        # =====================================================
+
+        instantTextBoxType = {
+            name = "egypt_p1_progress_title"
+
+            position = { x = 15 y = 710 }
+
+            font = "hoi_18mbs"
+
+            text = "CAPITAL DEVELOPMENT"
+
+            maxWidth = 470
+            maxHeight = 30
+
+            fixedsize = yes
+            format = center
+        }
+
+
+        # =====================================================
+        # PROGRESS VALUE
+        # =====================================================
 
         instantTextBoxType = {
             name = "egypt_p1_progress_label"
 
-            position = { x = 20 y = 680 }
+            position = { x = 15 y = 745 }
 
-            font = "hoi_18mbs"
-            borderSize = { x = 0 y = 0 }
+            font = "hoi_16mbs"
 
             text = "egypt_p1_progress_visual_text"
 
-            maxWidth = 450
+            maxWidth = 470
             maxHeight = 30
 
             fixedsize = yes
