@@ -329,6 +329,12 @@ focus = {
 			factor = 1
 		}
 		completion_reward = {
+			# L'Italia parte dentro la NATO (add_to_faction = ITA nel
+			# file di history degli USA) e create_faction non fa nulla
+			# se sei gia' in una fazione: senza questa riga
+			# l'Internazionale non nasceva e Roma restava alleata di
+			# chi stava per andare a combattere.
+			leave_faction = yes
 			create_faction = "The Internationale"
 			set_country_flag = LT_councils_done
 		}

@@ -37,6 +37,21 @@ ITA_red_france_effect = {
 		# tutti gli alleati entrano in guerra contro i rivoluzionari.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -158,6 +173,21 @@ ITA_red_spain_effect = {
 		# tutti gli alleati entrano in guerra contro i rivoluzionari.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -276,6 +306,21 @@ ITA_red_germany_effect = {
 		# quando la rivoluzione parte dal debug. Se resta dentro,
 		# tutti gli alleati entrano in guerra contro i rivoluzionari.
 		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
 
 		every_owned_state = {
 			limit = {
@@ -403,6 +448,21 @@ ITA_red_britain_effect = {
 		# tutti gli alleati entrano in guerra contro i rivoluzionari.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -524,6 +584,21 @@ ITA_red_portugal_effect = {
 		# tutti gli alleati entrano in guerra contro i rivoluzionari.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -625,6 +700,21 @@ ITA_red_poland_effect = {
 		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
 
 		every_owned_state = {
 			limit = {
@@ -733,6 +823,21 @@ ITA_red_greece_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -831,6 +936,21 @@ ITA_red_scandinavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -862,6 +982,21 @@ ITA_red_scandinavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -889,6 +1024,21 @@ ITA_red_scandinavia_effect = {
 		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
 
 		every_owned_state = {
 			limit = {
@@ -996,6 +1146,21 @@ ITA_red_yugoslavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -1023,6 +1188,21 @@ ITA_red_yugoslavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -1048,6 +1228,21 @@ ITA_red_yugoslavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -1070,6 +1265,21 @@ ITA_red_yugoslavia_effect = {
 		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
 
 		every_owned_state = {
 			limit = {
@@ -1095,6 +1305,21 @@ ITA_red_yugoslavia_effect = {
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
 
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -1117,6 +1342,21 @@ ITA_red_yugoslavia_effect = {
 		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
 		# quando la rivoluzione parte dal debug.
 		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
 
 		every_owned_state = {
 			limit = {

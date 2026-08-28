@@ -112,6 +112,91 @@ RUS_lost_war_settlement_effect = {
 
 
 # ============================================================
+#   1-bis) IL TRATTATO DELLA VITTORIA
+#
+#   Speculare a quello della sconfitta. Serve perche' altrimenti
+#   Mosca si teneva "tutto cio' che occupava": confini casuali,
+#   diversi a ogni partita e spesso senza senso sulla carta.
+#   Qui invece la linea e' fissa e non dipende da dove si sono
+#   fermate le divisioni.
+#
+#   LA LINEA
+#     Novorossiya - il corridoio sul Mar Nero che salda la Crimea
+#       alla Transnistria: Odessa, Mykolaiv, Nikopol, Balta e la
+#       Bessarabia meridionale. Annessa e messa a core, insieme
+#       al Donbass e alla Crimea che Mosca gia' possedeva.
+#     Slobozhanshchyna - la fascia di confine nord-orientale:
+#       Kharkov, Glukhov, Liski. Annessa ma solo rivendicata,
+#       non e' terra russa nell'anima.
+#     Il resto dell'Ucraina non viene toccato: resta ucraino, con
+#       la capitale a Kiev (202), e diventa un puppet di Mosca.
+#       E' il punto: un governo amico a Kiev, non una mappa a
+#       macchie di leopardo.
+#
+#   Il trattato NON fa la pace ne' installa il puppet: se ne
+#   occupa chi lo chiama (RUS_ukraine_victory_effect), cosi'
+#   l'effetto resta riusabile dal debug.
+# ============================================================
+RUS_won_war_settlement_effect = {
+
+	set_country_flag = RUS_won_war_settlement
+
+	# ---------- gli stati che passano a Mosca ----------
+	#   Il ciclo parte da UKR e non da RUS: transfer_state in scope
+	#   di paese prende lo stato a CHIUNQUE lo possieda, quindi se
+	#   durante la guerra un terzo ne avesse occupato uno lo si
+	#   strapperebbe a lui. Con every_owned_state si tocca solo
+	#   cio' che e' davvero ucraino.
+	UKR = {
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 192   # Odessa
+					state = 197   # Mykolaiv
+					state = 226   # Nikopol
+					state = 766   # Bessarabia meridionale
+					state = 834   # Balta
+					state = 221   # Kharkov
+					state = 225   # Glukhov
+					state = 259   # Liski
+				}
+			}
+			remove_core_of = UKR
+			RUS = { transfer_state = PREV }
+		}
+	}
+
+	# ---------- Novorossiya entra nella Federazione ----------
+	#   Donbass e Crimea Mosca li possedeva gia' dal 2014-2022: qui
+	#   si limita a metterli a core, cosi' la vittoria li rende
+	#   definitivi anche sulla carta.
+	add_state_core = 137   # Crimea
+	add_state_core = 196   # Kherson
+	add_state_core = 200   # Zaporizhzhia
+	add_state_core = 227   # Donetsk
+	add_state_core = 228   # Luhansk
+	add_state_core = 192   # Odessa
+	add_state_core = 197   # Mykolaiv
+	add_state_core = 226   # Nikopol
+	add_state_core = 766   # Bessarabia meridionale
+	add_state_core = 834   # Balta
+
+	# ---------- la fascia di Kharkov: annessa, non assimilata ----------
+	add_state_claim = 221
+	add_state_claim = 225
+	add_state_claim = 259
+
+	# ---------- cio' che resta all'Ucraina ----------
+	#   Kiev (202) e' gia' la capitale nel file di history e non
+	#   viene toccata: il puppet nasce li'.
+	UKR = {
+		add_stability = -0.20
+		add_war_support = -0.20
+	}
+}
+
+
+# ============================================================
 #   2) LA SECONDA GUERRA CIVILE RUSSA
 # ============================================================
 

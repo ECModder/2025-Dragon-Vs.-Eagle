@@ -19,8 +19,9 @@
 #     3) portare la guerra in Russia (Rostov o Belgorod)
 #
 #   I TRE ESITI
-#     A) Kiev cade                -> l'Ucraina diventa un puppet
-#        russo e Mosca tiene tutto cio' che occupa
+#     A) Kiev cade                -> trattato di vittoria a linea
+#        fissa (Novorossiya + fascia di Kharkov) e cio' che resta
+#        dell'Ucraina diventa un puppet russo con capitale a Kiev
 #     B) il Donbass torna ucraino -> "Lost in Ukraine": trattato,
 #        albero post-sconfitta, crisi di successione
 #     C) scadono i 278 giorni     -> pace bianca
@@ -72,26 +73,36 @@ DVE_ukraine_war_start_effect = {
 # ============================================================
 RUS_ukraine_victory_effect = {
 
-	set_country_flag = RUS_ukraine_war_over
-	set_country_flag = RUS_won_the_war_in_ukraine
-	UKR = { set_country_flag = UKR_ukraine_war_over }
+	# Stessa protezione degli altri due esiti: se la corsa agli
+	# obiettivi e lo scadere dei 278 giorni cadessero lo stesso
+	# giorno, la guerra finisce una volta sola.
+	if = {
+		limit = { NOT = { has_country_flag = RUS_ukraine_war_over } }
 
-	# Mosca si tiene tutto cio' che le sue truppe occupano
-	UKR = {
-		every_owned_state = {
-			limit = { is_controlled_by = ROOT }
-			ROOT = { transfer_state = PREV }
-		}
+		set_country_flag = RUS_ukraine_war_over
+		set_country_flag = RUS_won_the_war_in_ukraine
+		UKR = { set_country_flag = UKR_ukraine_war_over }
+
+		# Prima si chiude la guerra, poi si applica il trattato: a
+		# pace fatta il controllo torna ai proprietari, quindi gli
+		# stati annessi passano a Mosca gia' con proprieta' E
+		# controllo giusti, senza occupazioni residue.
+		white_peace = UKR
+
+		# I confini sono scritti nel trattato, non decisi da dove
+		# si sono fermate le divisioni.
+		RUS_won_war_settlement_effect = yes
+
+		# Il governo amico a Kiev arriva per ultimo, sull'Ucraina
+		# gia' ridotta ai confini del trattato.
+		puppet = UKR
+
+		add_stability = 0.10
+		add_war_support = 0.10
+		add_political_power = 200
+
+		country_event = { id = dve_ukrwar.3 hours = 2 }
 	}
-
-	white_peace = UKR
-	puppet = UKR
-
-	add_stability = 0.10
-	add_war_support = 0.10
-	add_political_power = 200
-
-	country_event = { id = dve_ukrwar.3 hours = 2 }
 }
 
 
