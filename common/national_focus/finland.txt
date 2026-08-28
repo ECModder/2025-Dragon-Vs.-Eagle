@@ -44,6 +44,10 @@ focus_tree = {
 		x = 9
 		y = 1
 		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
 		
 		completion_reward = {
 			add_political_power = 50
@@ -58,6 +62,9 @@ focus_tree = {
 		cost = 5
 		prerequisite = { 
 			focus = FIN_orpon_hallitus
+		}
+		ai_will_do = {
+			factor = 100
 		}
 
 		completion_reward = {
@@ -75,6 +82,9 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_orpon_hallitus
 		}
+		ai_will_do = {
+			factor = 100
+		}
 
 		completion_reward = {
 			add_political_power = -50
@@ -91,6 +101,10 @@ focus_tree = {
 		cost = 5
 		prerequisite = { 
 			focus = FIN_orpon_hallitus
+		}
+
+		ai_will_do = {
+			factor = 100
 		}
 
 		completion_reward = {
@@ -115,6 +129,14 @@ focus_tree = {
 		mutually_exclusive = {
 			focus = FIN_broken_coalition
 		}
+		ai_will_do = {
+			factor = 50
+
+			modifier = {
+				factor = 50
+				is_historical_focus_on = yes
+			}
+		}
 
 		completion_reward = {
 			add_stability = 0.05
@@ -136,6 +158,15 @@ focus_tree = {
 			focus = FIN_side_with_perussuomalaiset
 			focus = FIN_side_with_greens
 			focus = FIN_side_with_SDP
+		}
+
+		ai_will_do = {
+			factor = 30
+
+			modifier = {
+				factor = 70
+				is_historical_focus_on = yes
+			}
 		}
 
 		completion_reward = {
@@ -235,6 +266,18 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_side_with_kokoomus
 		}
+		available = {
+			not = { has_completed_focus = FIN_elections }
+		}
+
+		ai_will_do = {
+			factor = 0
+
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
 
 		completion_reward = {
 			add_popularity = {
@@ -257,6 +300,18 @@ focus_tree = {
 			focus = FIN_side_with_kokoomus
             focus = FIN_side_with_perussuomalaiset
 		}
+		available = {
+			not = { has_completed_focus = FIN_elections }
+		}
+
+		ai_will_do = {
+			factor = 0
+
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
 
 		completion_reward = {
 			add_stability = 0.15
@@ -276,6 +331,18 @@ focus_tree = {
 			focus = FIN_side_with_greens
             focus = FIN_side_with_SDP
 		}
+		available = {
+			not = { has_completed_focus = FIN_elections }
+		}
+
+		ai_will_do = {
+			factor = 0
+
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
 
 		completion_reward = {
 			add_stability = 0.15
@@ -291,6 +358,18 @@ focus_tree = {
 		cost = 5
 		prerequisite = { 
 			focus = FIN_side_with_greens
+		}
+		available = {
+			not = { has_completed_focus = FIN_elections }
+		}
+
+		ai_will_do = {
+			factor = 0
+
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
 		}
 
 		completion_reward = {
@@ -311,6 +390,19 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_side_with_SDP
 		}
+		available = {
+			not = { has_completed_focus = FIN_elections }
+		}
+
+		ai_will_do = {
+			factor = 0
+
+			modifier = {
+				factor = 10
+				is_historical_focus_on = no
+			}
+		}
+
 		completion_reward = {
 			add_stability = -0.15
             # Flips to Socialism
@@ -338,6 +430,14 @@ focus_tree = {
 			focus = FIN_side_with_greens
 			focus = FIN_side_with_SDP
 			# After IRL "election" day
+		}
+		ai_will_do = {
+			factor = 50
+			
+			modifier = {
+				factor = 50
+				is_historical_focus_on = yes
+			}
 		}
 
 		completion_reward = {
@@ -2780,6 +2880,15 @@ focus_tree = {
 		x = 35
 		y = 1
 		cost = 5
+
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 100
+				has_completed_focus = FIN_wait_for_elections
+			}
+		}
 
 		completion_reward = {
 			random_owned_state = {
