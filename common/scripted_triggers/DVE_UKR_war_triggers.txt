@@ -1,0 +1,12 @@
+# ============================================================
+#   DvE - lo stato della guerra, per l'albero ucraino
+#   Speculare a DVE_RUS_war_triggers.txt. Le flag le mette la
+#   meccanica della guerra, qui diventano solo leggibili.
+#     UKR_ukraine_war_active / _over
+#     UKR_obj_donbass  UKR_obj_crimea  UKR_obj_into_russia
+# ============================================================
+
+UKR_war_in_ukraine_ongoing = {
+	has_country_flag = UKR_ukraine_war_active
+	NOT = { has_country_flag = UKR_ukraine_war_over }
+}

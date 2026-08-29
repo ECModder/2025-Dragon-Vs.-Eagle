@@ -55,30 +55,43 @@ RUS_lost_war_settlement_effect = {
 	add_stability = -0.15
 	add_war_support = -0.20
 
-	# ---------- l'Ucraina si riprende tutto e prende la DMZ ----------
-	#   I quattro oblast occupati nel 2022 tornano indietro, la Crimea
-	#   con loro, e la Russia cede in piu' Belgorod e Rostov come zona
-	#   smilitarizzata.
-	#   NOTA: Belgorod in HOI4 non e' uno stato a se': la sua provincia
-	#   (9449) sta dentro il 240 (Voronezh), quindi la DMZ si prende
-	#   tutto il 240.
+	# ---------- l'Ucraina si riprende cio' che era suo ----------
+	#   I quattro oblast occupati nel 2022 tornano indietro e la
+	#   Crimea con loro, tutti a core: erano territorio ucraino e
+	#   tornano a esserlo.
+	#   Kursk e Belgorod invece NON entrano qui: sono russe, e vanno
+	#   alla zona d'occupazione poco piu' sotto.
+	#   NOTA: Belgorod in HOI4 non e' uno stato a se': la sua
+	#   provincia (9449) sta dentro il 240 (Voronezh), quindi la zona
+	#   d'occupazione si prende tutto il 240.
 	UKR = {
 		transfer_state = 196   # Kherson
 		transfer_state = 200   # Zaporizhzhia
 		transfer_state = 227   # Donetsk
 		transfer_state = 228   # Luhansk
 		transfer_state = 137   # Crimea
-		transfer_state = 220   # Kursk
-		transfer_state = 240   # Belgorod
 
 		add_state_core = 196
 		add_state_core = 200
 		add_state_core = 227
 		add_state_core = 228
 		add_state_core = 137
-		add_state_claim = 220
-		add_state_claim = 240
 	}
+
+	# ---------- la zona d'occupazione di Belgorod ----------
+	#   Kursk e Belgorod NON passano a Kiev. Sono terra russa, e
+	#   annetterla farebbe dell'Ucraina cio' che l'Ucraina ha appena
+	#   finito di combattere. Diventano invece un'amministrazione
+	#   militare a se', satellite di Kiev, con gli stessi colori
+	#   ucraini sulla mappa: sul terreno comanda l'Ucraina, sulla
+	#   carta il confine internazionale non si e' mosso.
+	#   Nessun core e nessuna rivendicazione, di proposito.
+	BOZ = {
+		transfer_state = 220   # Kursk
+		transfer_state = 240   # Belgorod
+		set_capital = { state = 240 }
+	}
+	UKR = { puppet = BOZ }
 
 	# ---------- DMZ giapponese: Sachalin e Curili ----------
 	JAP = {

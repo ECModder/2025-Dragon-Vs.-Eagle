@@ -1,0 +1,19 @@
+# ============================================================
+#   DvE - lo stato della guerra d'Ucraina, per l'albero russo
+#
+#   Le flag le mette gia' la meccanica della guerra
+#   (common/scripted_effects/DVE_ukraine_war.txt e le missioni
+#   in common/decisions/DVE_ukraine_war.txt): qui si limitano a
+#   diventare leggibili.
+#
+#     RUS_ukraine_war_active   la guerra e' cominciata
+#     RUS_ukraine_war_over     e' finita, comunque sia finita
+#     RUS_obj_donbass          le quattro oblast sono tenute
+#     RUS_obj_odessa           Odessa e' presa
+#     RUS_won_the_war_in_ukraine   Kiev e' caduta
+# ============================================================
+
+RUS_war_in_ukraine_ongoing = {
+	has_country_flag = RUS_ukraine_war_active
+	NOT = { has_country_flag = RUS_ukraine_war_over }
+}
