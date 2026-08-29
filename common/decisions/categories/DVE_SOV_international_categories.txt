@@ -1,0 +1,110 @@
+# ============================================================
+#   DvE - L'INTERNAZIONALE SOVIETICA: le categorie
+#
+#   Un menu per continente, piu' due menu speciali. I continenti
+#   sono quelli veri del mod (map/continent.txt) e i paesi sono
+#   assegnati leggendo la capitale di ognuno: niente liste fatte
+#   a mano, niente paesi dimenticati.
+#
+#   visible_when_empty = no, al contrario del menu di
+#   allineamento italiano: li' le categorie erano due, qui sono
+#   nove, e nove riquadri vuoti sarebbero solo ingombro. Un
+#   continente compare quando ha almeno un bersaglio buono.
+# ============================================================
+
+
+SOV_intl_europe_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_open = yes }
+}
+
+SOV_intl_asia_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_open = yes }
+}
+
+SOV_intl_middle_east_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_open = yes }
+}
+
+SOV_intl_africa_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_worldwide = yes }
+}
+
+SOV_intl_north_america_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_worldwide = yes }
+}
+
+SOV_intl_south_america_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_worldwide = yes }
+}
+
+SOV_intl_australia_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 70
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_worldwide = yes }
+}
+
+
+# Le sedici repubbliche piu' la Transnistria: il Cominform non le
+# influenza, se le riprende.
+SOV_intl_reclaim_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 75
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_reclaim_open = yes }
+}
+
+
+# Il menu in piu' della sola Internazionale Rivoluzionaria:
+# prima si annette il satellite, poi se ne comprano i core.
+SOV_intl_integration_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 74
+
+	visible_when_empty = no
+	allowed = { tag = SOV }
+	visible = { SOV_intl_integration_open = yes }
+}

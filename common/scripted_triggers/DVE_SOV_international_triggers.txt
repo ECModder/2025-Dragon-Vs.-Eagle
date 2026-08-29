@@ -1,0 +1,84 @@
+# ============================================================
+#   DvE - L'INTERNAZIONALE SOVIETICA: i trigger condivisi
+#
+#   Tre internazionali, una per ideologia, ognuna aperta dal
+#   proprio focus. I focus mettono gia' la loro flag da soli
+#   (soviet_tree.txt), quindi qui non si tocca l'albero.
+#
+#     totalitarian_socialism  + SOV_rebirth_of_cominform
+#         -> Cominform: Europa, Asia e Medio Oriente
+#     vanguard_socialism      + SOV_the_communist_international
+#         -> Internazionale Comunista: tutto il mondo
+#     revolutionary_socialism + SOV_glory_revolutionary_international
+#         -> Internazionale Rivoluzionaria: tutto il mondo, piu'
+#            il menu di annessione dei satelliti
+# ============================================================
+
+SOV_intl_open = {
+	tag = SOV
+	OR = {
+		AND = { has_government = totalitarian_socialism  has_country_flag = SOV_rebirth_of_cominform_done }
+		AND = { has_government = vanguard_socialism      has_country_flag = SOV_the_communist_international_done }
+		AND = { has_government = revolutionary_socialism has_country_flag = SOV_glory_revolutionary_international_done }
+	}
+}
+
+# Solo le due internazionali mondiali. Il Cominform si ferma
+# all'Eurasia: Africa, Americhe e Oceania restano fuori.
+SOV_intl_worldwide = {
+	tag = SOV
+	OR = {
+		AND = { has_government = vanguard_socialism      has_country_flag = SOV_the_communist_international_done }
+		AND = { has_government = revolutionary_socialism has_country_flag = SOV_glory_revolutionary_international_done }
+	}
+}
+
+SOV_intl_reclaim_open = {
+	tag = SOV
+	has_government = totalitarian_socialism
+	has_country_flag = SOV_reclaim_breakaway_countries_done
+}
+
+SOV_intl_integration_open = {
+	tag = SOV
+	has_government = revolutionary_socialism
+	has_country_flag = SOV_glory_revolutionary_international_done
+}
+
+
+# ============================================================
+#   I TRIGGER SUL BERSAGLIO
+#   Si valutano nello scope del paese preso di mira; ROOT resta
+#   l'Unione Sovietica perche' e' lei a possedere la decisione.
+# ============================================================
+
+SOV_intl_valid_target = {
+	exists = yes
+	NOT = { tag = SOV }
+	is_subject = no
+	has_capitulated = no
+}
+
+# Le tre eccezioni volute: le due superpotenze rivali e l'Italia
+# che ha imboccato il path Proletario restano influenzabili, ma
+# non si possono ridurre a satelliti.
+SOV_intl_immune_to_puppet = {
+	OR = {
+		tag = USA
+		tag = PRC
+		AND = { tag = ITA  has_country_flag = ITA_proletariat_done }
+	}
+}
+
+# Il bersaglio governa gia' con la stessa ideologia di Mosca.
+SOV_intl_aligned = {
+	OR = {
+		AND = { ROOT = { has_government = totalitarian_socialism }  has_government = totalitarian_socialism }
+		AND = { ROOT = { has_government = vanguard_socialism }      has_government = vanguard_socialism }
+		AND = { ROOT = { has_government = revolutionary_socialism } has_government = revolutionary_socialism }
+	}
+}
+
+SOV_intl_not_aligned = {
+	NOT = { SOV_intl_aligned = yes }
+}
