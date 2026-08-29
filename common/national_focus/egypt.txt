@@ -55,6 +55,230 @@ focus_tree = {
 	}
 
 	focus = {
+		id = EGY_strict_immigration_policy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_adress_the_refugee_crisis
+		}
+		mutually_exclusive = {
+			focus = EGY_lenient_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			USA = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = small_decrease
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_contain_the_immigrants
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_strict_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = EGY_compromise_with_israel
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_contain_the_immigrants
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_war_support = -0.03
+			add_stability = 0.03
+			add_opinion_modifier = {
+				target = ISR
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_demand_help_from_the_UN
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 6
+		cost = 2
+		prerequisite = {
+			focus = EGY_compromise_with_israel
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = EGY_lenient_immigration_policy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_adress_the_refugee_crisis
+		}
+		mutually_exclusive = {
+			focus = EGY_strict_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			EGY = {
+				every_neighbor_country = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = small_increase
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_immigrant_rights
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_lenient_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_protect_asylum_seekers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_immigrant_rights
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			add_war_support = -0.02
+			USA = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = medium_increase
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_welcome_our_palestinian_brothers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 6
+		cost = 2
+		prerequisite = {
+			focus = EGY_protect_asylum_seekers
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.02
+			add_opinion_modifier = {
+				target = ISR
+				modifier = small_decrease
+			}
+			add_opinion_modifier = {
+				target = PAL
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_a_safer_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 7
+		cost = 2
+		prerequisite = {
+			focus = EGY_demand_help_from_the_UN
+			focus = EGY_welcome_our_palestinian_brothers
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+
+	focus = {
 		id = EGY_egypt_on_world_stage
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 9
