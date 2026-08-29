@@ -1,25 +1,135 @@
 # ============================================================
 #   DvE - allineamento dei satelliti
 #
-#   Quando l'Italia o l'Unione Sovietica governano con un'ideologia
-#   rivoluzionaria impongono ai propri satelliti lo stesso partito
-#   e lo stesso organo dirigente che hanno in patria.
+#   Quando l'Italia o l'Unione Sovietica governano con una delle
+#   quattro ideologie socialiste, impongono ai propri satelliti lo
+#   STESSO partito e lo stesso organo dirigente che hanno in patria.
 #
-#   NOTA SULLA SCELTA TECNICA
-#   La prima versione era una decisione MIRATA (target_array).
-#   Non funzionava: con target_array = ROOT.subjects restavano
-#   fuori i satelliti che stanno in fazione ma non sono puppet
-#   formali, e con ROOT.allies restavano fuori i puppet di un paese
-#   che non ha fazione. In entrambi i casi la lista dei bersagli
-#   era vuota e - con visible_when_empty = no - spariva l'intera
-#   categoria dal menu.
-#   Ora non c'e' targeting: la decisione agisce su TUTTI i
-#   satelliti in un colpo solo, siano essi puppet o membri di
-#   fazione. Cosi' la categoria e' sempre visibile e la decisione
-#   e' semplicemente grigia finche' non hai satelliti da allineare.
+#   PERCHE' QUATTRO E NON DUE
+#   La prima versione copriva solo vanguard_socialism e
+#   revolutionary_socialism. Ma l'albero italiano puo' portare al
+#   potere anche totalitarian_socialism e authoritarian_socialism,
+#   e in quei due casi non compariva nessuna decisione: il menu
+#   c'era ed era vuoto. Ora c'e' una decisione per ciascuna delle
+#   quattro, per entrambi i padroni.
+#
+#   NOTA SUL TARGETING
+#   Nessun target_array: la decisione agisce su TUTTI i satelliti
+#   in un colpo solo, puppet formali e membri di fazione insieme.
+#   Con il targeting la lista restava vuota nei casi misti e
+#   spariva l'intera categoria.
 # ============================================================
 
 DVE_puppet_alignment_category = {
+
+	# ---------- ITA ----------
+	ITA_align_puppet_totalitarian = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = ITA }
+
+		visible = { has_government = totalitarian_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = totalitarian_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = totalitarian_socialism }
+				}
+				set_party_name = { ideology = totalitarian_socialism name = "PdRC, PCI" long_name = "Partito della Rifondazione Comunista, nPCI" }
+				create_country_leader = {
+					name = "Central Committee"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = stalinism
+				}
+				add_popularity = { ideology = totalitarian_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = totalitarian_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	ITA_align_puppet_authoritarian = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = ITA }
+
+		visible = { has_government = authoritarian_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = authoritarian_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = authoritarian_socialism }
+				}
+				set_party_name = { ideology = authoritarian_socialism name = "CR OSA, PaP" long_name = "Potere al Popolo, Cambiare Rotta OSA" }
+				create_country_leader = {
+					name = "Council of People's Commissars"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = sovietism
+				}
+				add_popularity = { ideology = authoritarian_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = authoritarian_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
 
 	ITA_align_puppet_vanguard = {
 
@@ -32,11 +142,11 @@ DVE_puppet_alignment_category = {
 			has_political_power > 149
 			any_country = {
 				NOT = { tag = ROOT }
-				OR = {
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = vanguard_socialism }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = vanguard_socialism }
 			}
 		}
 
@@ -47,16 +157,16 @@ DVE_puppet_alignment_category = {
 		complete_effect = {
 			every_country = {
 				limit = {
-					NOT = { tag = ROOT }
+				NOT = { tag = ROOT }
 					OR = {
 						is_subject_of = ROOT
 						is_in_faction_with = ROOT
 					}
 					NOT = { has_government = vanguard_socialism }
 				}
-				set_party_name = { ideology = vanguard_socialism name = "Internationalism" long_name = "Internationalism - Communist Struggle" }
+				set_party_name = { ideology = vanguard_socialism name = "Lotta Comunista" long_name = "Lotta Comunista (Internationalism)" }
 				create_country_leader = {
-					name = "Worker's Councils"
+					name = "Workers' Councils"
 					desc = "POLITICS_LEADER_DESC"
 					picture = ""
 					expire = "1965.1.1"
@@ -86,11 +196,11 @@ DVE_puppet_alignment_category = {
 			has_political_power > 149
 			any_country = {
 				NOT = { tag = ROOT }
-				OR = {
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = revolutionary_socialism }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = revolutionary_socialism }
 			}
 		}
 
@@ -101,14 +211,14 @@ DVE_puppet_alignment_category = {
 		complete_effect = {
 			every_country = {
 				limit = {
-					NOT = { tag = ROOT }
+				NOT = { tag = ROOT }
 					OR = {
 						is_subject_of = ROOT
 						is_in_faction_with = ROOT
 					}
 					NOT = { has_government = revolutionary_socialism }
 				}
-				set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Revolutionary Communist Party" }
+				set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "Partito Comunista Rivoluzionario" }
 				create_country_leader = {
 					name = "Central Councils"
 					desc = "POLITICS_LEADER_DESC"
@@ -119,6 +229,115 @@ DVE_puppet_alignment_category = {
 				add_popularity = { ideology = revolutionary_socialism popularity = 0.60 }
 				set_politics = {
 					ruling_party = revolutionary_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	# ---------- SOV ----------
+	SOV_align_puppet_totalitarian = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		visible = { has_government = totalitarian_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = totalitarian_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = totalitarian_socialism }
+				}
+				set_party_name = { ideology = totalitarian_socialism name = "KPSU" long_name = "Communist Party of the Soviet Union" }
+				create_country_leader = {
+					name = "Central Committee"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = stalinism
+				}
+				add_popularity = { ideology = totalitarian_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = totalitarian_socialism
+					elections_allowed = no
+				}
+				add_stability = -0.10
+				country_event = { id = dve_puppet.1 hours = 6 }
+			}
+		}
+
+		ai_will_do = { base = 40 }
+	}
+
+	SOV_align_puppet_authoritarian = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		visible = { has_government = authoritarian_socialism }
+
+		available = {
+			has_political_power > 149
+			any_country = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = authoritarian_socialism }
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 60
+
+		complete_effect = {
+			every_country = {
+				limit = {
+				NOT = { tag = ROOT }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = authoritarian_socialism }
+				}
+				set_party_name = { ideology = authoritarian_socialism name = "Politburo" long_name = "Council of People's Commissars" }
+				create_country_leader = {
+					name = "Council of People's Commissars"
+					desc = "POLITICS_LEADER_DESC"
+					picture = ""
+					expire = "1965.1.1"
+					ideology = sovietism
+				}
+				add_popularity = { ideology = authoritarian_socialism popularity = 0.60 }
+				set_politics = {
+					ruling_party = authoritarian_socialism
 					elections_allowed = no
 				}
 				add_stability = -0.10
@@ -140,11 +359,11 @@ DVE_puppet_alignment_category = {
 			has_political_power > 149
 			any_country = {
 				NOT = { tag = ROOT }
-				OR = {
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = vanguard_socialism }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = vanguard_socialism }
 			}
 		}
 
@@ -155,7 +374,7 @@ DVE_puppet_alignment_category = {
 		complete_effect = {
 			every_country = {
 				limit = {
-					NOT = { tag = ROOT }
+				NOT = { tag = ROOT }
 					OR = {
 						is_subject_of = ROOT
 						is_in_faction_with = ROOT
@@ -164,7 +383,7 @@ DVE_puppet_alignment_category = {
 				}
 				set_party_name = { ideology = vanguard_socialism name = "IPKB(b)" long_name = "Internatsionalistskaya partiya Kommunisticheskaya bor'ba (b)" }
 				create_country_leader = {
-					name = "Central Soviet"
+					name = "Workers' Councils"
 					desc = "POLITICS_LEADER_DESC"
 					picture = ""
 					expire = "1965.1.1"
@@ -194,11 +413,11 @@ DVE_puppet_alignment_category = {
 			has_political_power > 149
 			any_country = {
 				NOT = { tag = ROOT }
-				OR = {
-					is_subject_of = ROOT
-					is_in_faction_with = ROOT
-				}
-				NOT = { has_government = revolutionary_socialism }
+					OR = {
+						is_subject_of = ROOT
+						is_in_faction_with = ROOT
+					}
+					NOT = { has_government = revolutionary_socialism }
 			}
 		}
 
@@ -209,7 +428,7 @@ DVE_puppet_alignment_category = {
 		complete_effect = {
 			every_country = {
 				limit = {
-					NOT = { tag = ROOT }
+				NOT = { tag = ROOT }
 					OR = {
 						is_subject_of = ROOT
 						is_in_faction_with = ROOT
@@ -236,4 +455,5 @@ DVE_puppet_alignment_category = {
 
 		ai_will_do = { base = 40 }
 	}
+
 }

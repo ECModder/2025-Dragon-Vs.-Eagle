@@ -1,15 +1,94 @@
 focus_tree = {
 	id = EGY_focus_tree
-	
+
 	country = {
 		factor = 1
+		
 		modifier = {
 			add = 10
 			tag = EGY
 		}
 	}
 	
-	# ts is wip btw
-	
-	default = no
-	reset_on_civilwar = no
+ # Elections
+	initial_show_position = {
+		x = 23
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1050 }
+
+	focus = {
+		id = EGY_state_of_egyptian_politics
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		completion_reward = {
+			add_ideas = generic_pp_boost
+		}
+	}
+
+	focus = {
+		id = EGY_adress_the_refugee_crisis
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_egypt_on_world_stage
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = EGY_resolve_the_economic_crisis
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 2
+		cost = 10
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+}

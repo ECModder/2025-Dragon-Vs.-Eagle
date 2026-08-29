@@ -1,0 +1,57 @@
+# ============================================================
+#   DvE - i due pannelli della guerra d'Ucraina
+#
+#   context_type = decision_category: la finestra viene disegnata
+#   in cima alla categoria di decisioni, come fa il gioco base con
+#   war_escalation_decision_ui per la guerra italo-etiope.
+#
+#   Ogni obiettivo ha due icone sovrapposte, verde e rossa: i
+#   trigger qui sotto decidono quale delle due si vede. Il nome
+#   del trigger deve essere <nome_elemento>_visible.
+# ============================================================
+
+scripted_gui = {
+
+	DVE_ukraine_war_RUS_ui = {
+		context_type = decision_category
+		window_name = "DVE_ukraine_war_RUS_window"
+
+		visible = {
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+		}
+
+		triggers = {
+			rus_obj1_done_visible = { has_country_flag = RUS_obj_donbass }
+			rus_obj1_todo_visible = { NOT = { has_country_flag = RUS_obj_donbass } }
+
+			rus_obj2_done_visible = { has_country_flag = RUS_obj_odessa }
+			rus_obj2_todo_visible = { NOT = { has_country_flag = RUS_obj_odessa } }
+
+			# il terzo si spunta solo a guerra vinta
+			rus_obj3_done_visible = { has_country_flag = RUS_won_the_war_in_ukraine }
+			rus_obj3_todo_visible = { NOT = { has_country_flag = RUS_won_the_war_in_ukraine } }
+		}
+	}
+
+	DVE_ukraine_war_UKR_ui = {
+		context_type = decision_category
+		window_name = "DVE_ukraine_war_UKR_window"
+
+		visible = {
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+		}
+
+		triggers = {
+			ukr_obj1_done_visible = { has_country_flag = UKR_obj_donbass }
+			ukr_obj1_todo_visible = { NOT = { has_country_flag = UKR_obj_donbass } }
+
+			ukr_obj2_done_visible = { has_country_flag = UKR_obj_crimea }
+			ukr_obj2_todo_visible = { NOT = { has_country_flag = UKR_obj_crimea } }
+
+			ukr_obj3_done_visible = { has_country_flag = UKR_obj_into_russia }
+			ukr_obj3_todo_visible = { NOT = { has_country_flag = UKR_obj_into_russia } }
+		}
+	}
+}

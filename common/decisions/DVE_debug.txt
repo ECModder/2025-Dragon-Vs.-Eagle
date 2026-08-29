@@ -74,8 +74,18 @@ DVE_debug_general_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
-			add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+			# add_building_construction vuole uno scope di stato,
+			# non di paese: senza capital_scope il gioco lo scarta
+			capital_scope = {
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = industrial_complex level = 10 instant_build = yes }
+				}
+				capital_scope = {
+					add_extra_state_shared_building_slots = 10
+					add_building_construction = { type = arms_factory level = 10 instant_build = yes }
+				}
+			}
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -348,12 +358,42 @@ DVE_debug_russia_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			# il trattato prima, l'albero dopo: e' l'ordine che dovra'
-			# tenere anche l'evento vero di fine guerra
-			RUS_lost_war_settlement_effect = yes
-			load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
-			set_country_flag = RUS_lost_the_war_in_ukraine
-			add_political_power = 200
+			# stesso identico percorso della sconfitta vera, cosi' non
+			# ci sono due versioni da tenere allineate
+			RUS_ukraine_defeat_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- guerra d'Ucraina: gli altri due esiti ----------------
+	DVE_debug_win_ukraine = {
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			RUS_ukraine_victory_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_ukraine_white_peace = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = RUS }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			DVE_ukraine_white_peace_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -389,6 +429,26 @@ DVE_debug_russia_category = {
 		fire_only_once = no
 		complete_effect = {
 			set_country_flag = DVE_civil_war_active
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- la catena del Sovnarkom ------------------------------
+	# Riprogramma tutta la catena da adesso, senza aspettare la
+	# guerra civile: Sovnarkom a +3 giorni, le tre correnti a
+	# +10, +11 e +12.
+	DVE_debug_sovnarkom_chain = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = SOV }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			clr_country_flag = SOV_sovnarkom_scheduled
+			SOV_sovnarkom_chain_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -565,6 +625,55 @@ DVE_debug_china_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	DVE_debug_china_spawn_sik = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_SIK_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_china_spawn_tib = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_spawn_TIB_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- i vicini si servono: Russia, Mongolia, Corea, Rep. Cinese ---
+	DVE_debug_china_occupations = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = PRC }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			CHN_occupy_RUS_effect = yes
+			CHN_occupy_MON_effect = yes
+			CHN_occupy_KOR_effect = yes
+			CHN_occupy_CHI_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	# --- solo gli eserciti -------------------------------------
 	# Da usare dopo gli spawn singoli, che il territorio lo danno
 	# ma le divisioni no.
@@ -598,6 +707,164 @@ DVE_debug_china_category = {
 		fire_only_once = no
 		complete_effect = {
 			CHN_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}
+
+# ============================================================
+#   L'EUROPA ROSSA - far scoppiare le rivoluzioni a mano
+#
+#   Ogni decisione fa esattamente cio' che farebbe il focus
+#   italiano corrispondente: spacca il paese, da' territorio e
+#   cores al tag socialista, gli schiera la Guardia Rossa sulla
+#   capitale e apre la guerra civile.
+#
+#   Si vedono sia giocando l'Italia sia giocando il paese che si
+#   spacca, cosi' si puo' provare da entrambe le parti.
+# ============================================================
+DVE_debug_red_europe_category = {
+
+	DVE_debug_red_france = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = FRA } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = FSR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_france_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_spain = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = SPR } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = SPA } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_spain_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_germany = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = GER } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = GDR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_germany_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_britain = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = ENG } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = SRB } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_britain_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_poland = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = POL } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = PPR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_poland_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_greece = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = GRE } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = GSR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_greece_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_scandinavia = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = SWE } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = SSR } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_scandinavia_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_yugoslavia = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = SER } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = YUG } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_yugoslavia_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_red_portugal = {
+		icon = GFX_decision_revolt
+		allowed = { OR = { original_tag = ITA  original_tag = POR } }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = { NOT = { country_exists = PRS } }
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_red_portugal_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}

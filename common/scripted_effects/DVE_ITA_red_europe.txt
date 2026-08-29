@@ -32,6 +32,26 @@
 ITA_red_france_effect = {
 
 	FRA = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -71,6 +91,61 @@ ITA_red_france_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			inherit_technology = FRA
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = FSR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = FSR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = FSR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = FSR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = FSR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = FSR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = FSR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = FSR }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Rouge" } }
+					division_template = {
+						name = "Garde Rouge"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Rouge\" division_template = \"Garde Rouge\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = FSR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = FSR }
 		FSR = {
@@ -93,6 +168,26 @@ ITA_red_france_effect = {
 ITA_red_spain_effect = {
 
 	SPR = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -130,6 +225,61 @@ ITA_red_spain_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = SPA }
+		SPA = {
+			inherit_technology = SPR
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SPA }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = SPA }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = SPA }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = SPA }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = SPA }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = SPA }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = SPA }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = SPA }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = SPA }
+		SPA = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Roja" } }
+					division_template = {
+						name = "Guardia Roja"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Roja\" division_template = \"Guardia Roja\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = SPA
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = SPA }
 		SPA = {
@@ -152,6 +302,26 @@ ITA_red_spain_effect = {
 ITA_red_germany_effect = {
 
 	GER = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -195,6 +365,61 @@ ITA_red_germany_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = GDR }
+		GDR = {
+			inherit_technology = GER
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = GDR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = GDR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = GDR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = GDR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = GDR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = GDR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = GDR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = GDR }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = GDR }
+		GDR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Rote Garde" } }
+					division_template = {
+						name = "Rote Garde"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Rote Garde\" division_template = \"Rote Garde\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = GDR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = GDR }
 		GDR = {
@@ -218,6 +443,26 @@ ITA_red_germany_effect = {
 ITA_red_britain_effect = {
 
 	ENG = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -252,6 +497,61 @@ ITA_red_britain_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = SRB }
+		SRB = {
+			inherit_technology = ENG
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SRB }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = SRB }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = SRB }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = SRB }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = SRB }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = SRB }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = SRB }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = SRB }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = SRB }
+		SRB = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Red Guard" } }
+					division_template = {
+						name = "Red Guard"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Red Guard\" division_template = \"Red Guard\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = SRB
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = SRB }
 		SRB = {
@@ -279,6 +579,26 @@ ITA_red_britain_effect = {
 ITA_red_portugal_effect = {
 
 	POR = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug. Se resta dentro,
+		# tutti gli alleati entrano in guerra contro i rivoluzionari.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
 		every_owned_state = {
 			limit = {
 				OR = {
@@ -302,6 +622,61 @@ ITA_red_portugal_effect = {
 		}
 	}
 
+
+	# --- l'eredita' materiale della rivoluzione ---
+	# Un tag appena nato non ha NESSUNA tecnologia e nessun deposito:
+	# senza questi due blocchi la Guardia Rossa nasce disarmata e la
+	# repubblica non puo' nemmeno cominciare a produrre un fucile.
+	if = {
+		limit = { country_exists = PRS }
+		PRS = {
+			inherit_technology = POR
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = PRS }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = PRS }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = PRS }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = PRS }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = PRS }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = PRS }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = PRS }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = PRS }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	# Il nucleo armato della rivoluzione: non e' l'esercito
+	# regolare, che resta col governo, ma quello che i comitati
+	# riescono a mettere in piedi nelle prime settimane.
+	if = {
+		limit = { country_exists = PRS }
+		PRS = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guarda Vermelha" } }
+					division_template = {
+						name = "Guarda Vermelha"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guarda Vermelha\" division_template = \"Guarda Vermelha\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = PRS
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
 	if = {
 		limit = { country_exists = PRS }
 		PRS = {
@@ -310,6 +685,765 @@ ITA_red_portugal_effect = {
 				set_capital = { state = 112 }
 			}
 			declare_war_on = { target = POR type = annex_everything }
+		}
+	}
+}
+
+
+# ============================================================
+#   PPR - ITA_red_poland_effect
+#   La Polonia si spacca: alla Repubblica Popolare il triangolo industriale e le grandi citta',
+#   al governo residuo l'est rurale, con capitale a Bialystok.
+# ============================================================
+ITA_red_poland_effect = {
+	POL = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 1152 # Warszawa
+					state = 1153 # Praga Warszawa
+					state = 1154 # Zachodnim Mazowszu
+					state = 10   # Wschodnim Mazowszu
+					state = 87   # Lodz
+					state = 762  # Katowice
+					state = 67   # Upper Silesia
+					state = 66   # Lower Silesia
+					state = 86   # Poznan
+					state = 88   # Krakow
+					state = 90   # Kielce
+					state = 98   # Plock
+					state = 807  # Gdynia
+					state = 85   # Danzig
+				}
+			}
+			add_core_of = PPR
+			PPR = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 1152 }
+				owns_state = 97
+			}
+			set_capital = { state = 97 }
+		}
+	}
+
+	# --- l'eredita' materiale della rivoluzione ---
+	if = {
+		limit = { country_exists = PPR }
+		PPR = {
+			inherit_technology = POL
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = PPR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = PPR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = PPR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = PPR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = PPR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = PPR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = PPR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = PPR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = PPR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = PPR }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	if = {
+		limit = { country_exists = PPR }
+		PPR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Gwardia Czerwona" } }
+					division_template = {
+						name = "Gwardia Czerwona"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Gwardia Czerwona\" division_template = \"Gwardia Czerwona\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = PPR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = PPR }
+		PPR = {
+			if = {
+				limit = { owns_state = 1152 }
+				set_capital = { state = 1152 }
+			}
+			if = {
+				limit = { country_exists = POL }
+				declare_war_on = { target = POL type = annex_everything }
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   GSR - ITA_red_greece_effect
+#   La Grecia si spacca lungo la faglia del 1946: la terraferma - Macedonia ed Epiro,
+#   dove stava l'ELAS - alla Repubblica Socialista, le isole al governo, che ripiega
+#   a Creta come nel '41.
+# ============================================================
+ITA_red_greece_effect = {
+	GRE = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 47   # Attica
+					state = 731  # Central Macedonia
+					state = 184  # Thrace
+					state = 185  # Epirus
+					state = 186  # Peloponnese
+				}
+			}
+			add_core_of = GSR
+			GSR = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 47 }
+				owns_state = 182
+			}
+			set_capital = { state = 182 }
+		}
+	}
+
+	# --- l'eredita' materiale della rivoluzione ---
+	if = {
+		limit = { country_exists = GSR }
+		GSR = {
+			inherit_technology = GRE
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = GSR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = GSR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = GSR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = GSR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = GSR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = GSR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = GSR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = GSR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = GSR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = GSR }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	if = {
+		limit = { country_exists = GSR }
+		GSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Kokkini Froura" } }
+					division_template = {
+						name = "Kokkini Froura"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Kokkini Froura\" division_template = \"Kokkini Froura\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = GSR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = GSR }
+		GSR = {
+			if = {
+				limit = { owns_state = 47 }
+				set_capital = { state = 47 }
+			}
+			if = {
+				limit = { country_exists = GRE }
+				declare_war_on = { target = GRE type = annex_everything }
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   SSR - ITA_red_scandinavia_effect
+#   Non una guerra civile ma tre in una volta. Il sud abitato di Svezia, Norvegia e
+#   Danimarca passa all'Unione; i tre governi ripiegano sulle rispettive periferie -
+#   Norrbotten, Troms e la Groenlandia - e restano in guerra con essa.
+# ============================================================
+ITA_red_scandinavia_effect = {
+	SWE = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 141  # Sodermanland
+					state = 138  # Skane
+					state = 139  # Smaland
+					state = 140  # Vastergotland
+					state = 913  # Ostergotland
+					state = 915  # Bohuslan
+					state = 916  # Dalarna
+					state = 919  # Varmland
+					state = 38   # Gavleborg
+				}
+			}
+			add_core_of = SSR
+			SSR = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 141 }
+				owns_state = 666
+			}
+			set_capital = { state = 666 }
+		}
+	}
+
+	NOR = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 110  # Oslofjord
+					state = 142  # Vestlandet
+					state = 143  # Trondelag
+					state = 920  # Opplandene
+					state = 921  # Telemark
+					state = 922  # Agder
+				}
+			}
+			add_core_of = SSR
+			SSR = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 110 }
+				owns_state = 924
+			}
+			set_capital = { state = 924 }
+		}
+	}
+
+	DEN = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 37   # Sjaelland
+					state = 99   # Jutland
+					state = 911  # Fyn
+					state = 912  # Southern Jutland
+					state = 910  # Bornholm
+				}
+			}
+			add_core_of = SSR
+			SSR = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 37 }
+				owns_state = 101
+			}
+			set_capital = { state = 101 }
+		}
+	}
+
+	# --- l'eredita' materiale della rivoluzione ---
+	if = {
+		limit = { country_exists = SSR }
+		SSR = {
+			inherit_technology = SWE
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = SSR }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = SSR }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = SSR }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = SSR }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = SSR }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = SSR }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = SSR }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = SSR }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = SSR }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = SSR }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	if = {
+		limit = { country_exists = SSR }
+		SSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Roda Gardet" } }
+					division_template = {
+						name = "Roda Gardet"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Roda Gardet\" division_template = \"Roda Gardet\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = SSR
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = SSR }
+		SSR = {
+			if = {
+				limit = { owns_state = 141 }
+				set_capital = { state = 141 }
+			}
+			if = {
+				limit = { country_exists = SWE }
+				declare_war_on = { target = SWE type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = NOR }
+				declare_war_on = { target = NOR type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = DEN }
+				declare_war_on = { target = DEN type = annex_everything }
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   YUG - ITA_red_yugoslavia_effect
+#   La Federazione si ricompone a forza da sei paesi. Ognuno conserva un lembo e resta
+#   in guerra, tranne il Montenegro: ha un solo stato e quindi non puo' spaccarsi -
+#   passa intero e il tag MNT sparisce.
+# ============================================================
+ITA_red_yugoslavia_effect = {
+	SER = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 107  # Serbia
+					state = 108  # Morava
+					state = 45   # Vojvodina
+					state = 1047 # Srem
+					state = 764  # West Banat
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 107 }
+				owns_state = 803
+			}
+			set_capital = { state = 803 }
+		}
+	}
+
+	CRO = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 109  # Croatia
+					state = 103  # Dalmatia
+					state = 852  # Istria
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 109 }
+				owns_state = 163
+			}
+			set_capital = { state = 163 }
+		}
+	}
+
+	BOS = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 104  # Bosnia
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 104 }
+				owns_state = 804
+			}
+			set_capital = { state = 804 }
+		}
+	}
+
+	SLV = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 853  # Ljubljana
+					state = 102  # North Slovenia
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 853 }
+				owns_state = 736
+			}
+			set_capital = { state = 736 }
+		}
+	}
+
+	MAC = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 106  # Macedonia
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+		if = {
+			limit = {
+				NOT = { owns_state = 106 }
+				owns_state = 970
+			}
+			set_capital = { state = 970 }
+		}
+	}
+
+	MNT = {
+		# Esce dalla fazione QUI e non nel focus: cosi' vale anche
+		# quando la rivoluzione parte dal debug.
+		leave_faction = yes
+
+		# leave_faction toglie la fazione ma NON le garanzie, che
+		# restano attive e chiamano il garante in guerra contro i
+		# rivoluzionari. Bastava un membro NATO che garantiva questo
+		# paese (BEL garantisce Francia e Inghilterra, FRA la Polonia,
+		# ROM la Grecia) per trascinare dentro tutta l'alleanza, e con
+		# lei l'Italia. Qui le garanzie si spezzano una per una.
+		every_other_country = {
+			limit = { PREV = { is_guaranteed_by = PREV } }
+			diplomatic_relation = {
+				country = PREV
+				relation = guarantee
+				active = no
+			}
+		}
+
+		every_owned_state = {
+			limit = {
+				OR = {
+					state = 105  # Montenegro
+				}
+			}
+			add_core_of = YUG
+			YUG = { transfer_state = PREV }
+		}
+	}
+
+	# --- l'eredita' materiale della rivoluzione ---
+	if = {
+		limit = { country_exists = YUG }
+		YUG = {
+			inherit_technology = SER
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = YUG }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 600 producer = YUG }
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 400 producer = YUG }
+			add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 250 producer = YUG }
+			add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 producer = YUG }
+			add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 800 producer = YUG }
+			add_equipment_to_stockpile = { type = light_tank_equipment_1 amount = 250 producer = YUG }
+			add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 120 producer = YUG }
+			add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 120 producer = YUG }
+			add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 60 producer = YUG }
+		}
+	}
+
+	# --- la Guardia Rossa ---
+	if = {
+		limit = { country_exists = YUG }
+		YUG = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Crvena Garda" } }
+					division_template = {
+						name = "Crvena Garda"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Crvena Garda\" division_template = \"Crvena Garda\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = YUG
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = YUG }
+		YUG = {
+			if = {
+				limit = { owns_state = 107 }
+				set_capital = { state = 107 }
+			}
+			if = {
+				limit = { country_exists = SER }
+				declare_war_on = { target = SER type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = CRO }
+				declare_war_on = { target = CRO type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = BOS }
+				declare_war_on = { target = BOS type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = SLV }
+				declare_war_on = { target = SLV type = annex_everything }
+			}
+			if = {
+				limit = { country_exists = MAC }
+				declare_war_on = { target = MAC type = annex_everything }
+			}
 		}
 	}
 }

@@ -52,6 +52,16 @@ focus_tree = {
 			add_popularity = { ideology = authoritarian_socialism popularity = 0.02 }
 			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
 			add_popularity = { ideology = revolutionary_socialism popularity = 0.02 }
+			# create_unit vuole uno scope di STATO: chiamato in scope paese
+			# il gioco lo rifiuta con 'invalid scope state', a ripetizione.
+			217 = {   # Volgograd - Stalingrado
+				create_unit = {
+					division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+					owner = ROOT
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
 			set_country_flag = SOV_cw_strange_united_front_done
 		}
 	}
@@ -79,6 +89,42 @@ focus_tree = {
         		amount = 1000
         		producer = ROOT
     		}
+						add_tech_bonus = {
+				name = SOV_cw_new_putilov_workshops
+				bonus = 0.50
+				uses = 1
+				category = infantry_weapons
+			}
+			add_equipment_to_stockpile = {
+        		type = infantry_equipment_2
+        		amount = 1917
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = artillery_equipment_2
+        		amount = 1998
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = light_tank_equipment_2
+        		amount = 1650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = medium_tank_equipment_2
+        		amount = 2650
+        		producer = ROOT
+			}
+			add_equipment_to_stockpile = {
+        		type = motorized_equipment_1
+        		amount = 5000
+        		producer = ROOT
+    		}
+			add_equipment_to_stockpile = {
+        		type = support_equipment_3
+        		amount = 6023
+        		producer = ROOT
+			}
 			set_country_flag = SOV_cw_against_the_whites_done
 		}
 	}
@@ -107,7 +153,7 @@ focus_tree = {
 			}
 			add_equipment_to_stockpile = {
         		type = support_equipment_3
-        		amount = 723
+        		amount = 1723
         		producer = ROOT
 			}
 			set_country_flag = SOV_cw_centralized_command_center_done
@@ -162,19 +208,25 @@ focus_tree = {
 					value = 1000
 				}
 			}
-			create_unit = {
-				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
-				owner = ROOT
-				count = 6
-				prioritize_location = 79   # Leningrado
-				allow_spawning_on_enemy_provs = no
+			# create_unit vuole uno scope di STATO: chiamato in scope paese
+			# il gioco lo rifiuta con 'invalid scope state', a ripetizione.
+			195 = {   # St. Petersburg - Leningrado; il 79 era la MOLDAVIA, che SOV non possiede nemmeno
+				create_unit = {
+					division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+					owner = ROOT
+					count = 6
+					allow_spawning_on_enemy_provs = no
+				}
 			}
-			create_unit = {
-				division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
-				owner = ROOT
-				count = 10
-				prioritize_location = 217   # Stalingrad
-				allow_spawning_on_enemy_provs = yes
+			# create_unit vuole uno scope di STATO: chiamato in scope paese
+			# il gioco lo rifiuta con 'invalid scope state', a ripetizione.
+			217 = {   # Volgograd - Stalingrado
+				create_unit = {
+					division = "name = \"Internatsionalnaya Brigada\" division_template = \"Strelkovaya Diviziya\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+					owner = ROOT
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
 			}
 			set_country_flag = SOV_cw_permit_international_brigades_done
 		}

@@ -1,0 +1,103 @@
+# ============================================================
+#   DvE - on_actions
+#
+#   SOLIDARIETA' SOCIALISTA
+#   I paesi socialisti che esistono gia' a inizio partita ricevono
+#   DVE_socialist_solidarity, che toglie il requisito di tensione
+#   mondiale per volontari e prestito d'uso
+#   (common/ideas/DVE_international_brigades.txt).
+#
+#   I tag socialisti che nascono durante la partita - SOV, GDR,
+#   FSR, SRB, SPA, SSR, YUG, GSR, PRS, CSR, CCR, PXA, PTA - non
+#   sono qui: la ricevono dai rispettivi file in history/countries/,
+#   che girano comunque a inizio partita anche per i tag dormienti.
+# ============================================================
+
+on_actions = {
+
+	on_startup = {
+		effect = {
+			PRC = { add_ideas = DVE_socialist_solidarity }   # Cina
+			VIN = { add_ideas = DVE_socialist_solidarity }   # Vietnam
+			LAO = { add_ideas = DVE_socialist_solidarity }   # Laos
+			CUB = { add_ideas = DVE_socialist_solidarity }   # Cuba
+			VEN = { add_ideas = DVE_socialist_solidarity }   # Venezuela
+			NIC = { add_ideas = DVE_socialist_solidarity }   # Nicaragua
+			ERI = { add_ideas = DVE_socialist_solidarity }   # Eritrea
+			NKO = { add_ideas = DVE_socialist_solidarity }   # Corea del Nord
+
+			# --------------------------------------------------
+			#   LA GUERRA D'UCRAINA
+			#   Il gioco parte con Mosca e Kiev gia' in guerra, e
+			#   con le due missioni a tempo da 278 giorni gia'
+			#   attive (common/decisions/DVE_ukraine_war.txt).
+			# --------------------------------------------------
+			# La guerra c'e' gia' al primo frame di gioco.
+			# --------------------------------------------------
+			#   LA NATO DEL GIOCO BASE, DISINNESCATA
+			#
+			#   common/decisions/NATO.txt ha NATO_brussels_treaty,
+			#   visibile a ENG e FRA con la sola condizione
+			#   date > 1944.1.1 - che nel 2025 e' sempre vera. L'IA la
+			#   prende subito (ai_will_do base = 100) e il suo effetto
+			#   manda treaty_org.1 a OGNI altro membro della fazione.
+			#   In quell'evento l'opzione "esco" pesa 99 contro 2, e il
+			#   modificatore che la annulla vale solo con i focus storici
+			#   e per una lista di tag del 1949: nel 2025 quasi tutti
+			#   escono dall'Alleanza Atlantica a caso.
+			#
+			#   Le due flag qui sotto chiudono entrambe le decisioni:
+			#   brussels_to_fired nasconde la prima, nato_suggested la
+			#   seconda. Sono usate SOLO in NATO.txt, quindi non toccano
+			#   nient'altro. Per riattivare la meccanica basta togliere
+			#   queste due righe.
+			# --------------------------------------------------
+			set_global_flag = brussels_to_fired
+			set_global_flag = nato_suggested
+
+			RUS = { DVE_ukraine_war_start_effect = yes }
+		}
+	}
+
+	# ====================================================
+	#   L'ITALIA SOCIALISTA DIVENTA ROSSA SULLA MAPPA
+	#
+	#   Il colore di un paese sta in colors.txt ed e' legato al
+	#   TAG: HOI4 non ha un effetto per cambiarlo a partita in
+	#   corso. Il solo modo e' un tag cosmetico, che porta con se'
+	#   il proprio colore (common/countries/cosmetic.txt), nome e
+	#   bandiera. ITA_VAN e ITA_REV ripetono nome e bandiera delle
+	#   due ideologie, quindi in gioco cambia solo il colore.
+	#
+	#   Sta qui e non nei focus perche' on_ruling_party_change
+	#   scatta comunque: focus, evento, colpo di stato o console.
+	#   E vale nei due sensi - se Roma smette di essere socialista
+	#   il tag cade e l'Italia torna del suo verde.
+	# ====================================================
+	on_ruling_party_change = {
+		effect = {
+			if = {
+				limit = { tag = ITA }
+
+				if = {
+					limit = { has_government = vanguard_socialism }
+					set_cosmetic_tag = ITA_VAN
+				}
+				else_if = {
+					limit = { has_government = revolutionary_socialism }
+					set_cosmetic_tag = ITA_REV
+				}
+				else_if = {
+					limit = {
+						OR = {
+							has_cosmetic_tag = ITA_VAN
+							has_cosmetic_tag = ITA_REV
+						}
+					}
+					drop_cosmetic_tag = yes
+				}
+			}
+		}
+	}
+
+}

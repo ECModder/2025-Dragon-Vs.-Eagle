@@ -19,7 +19,7 @@ focus_tree = {
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -39,7 +39,7 @@ focus_tree = {
 }
 		     focus = {
 		id = POL_new_vic_way
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_vic_way
 		x = 8
 		y = 9
 				        available = {
@@ -48,7 +48,7 @@ focus_tree = {
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -63,12 +63,13 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = 40			
+			add_political_power = 40
+country_event = { id = polandos.16 }			
 			}
 }
 		     focus = {
 		id = POL_new_euro_way_one
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_euro_way_one
 		x = 6
 		y = 10
 				        available = {
@@ -77,7 +78,7 @@ focus_tree = {
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -94,12 +95,14 @@ focus_tree = {
 
 		completion_reward = {
 			add_political_power = 40	
-unlock_focus = { id = POL_new_euro_two }			
+set_country_flag = POL_new_way_euro	
+country_event = { id = polandos.17 }
+custom_effect_tooltip = NEW_FOCUSES_four		
 			}
 }
 		     focus = {
 		id = POL_new_pol_way
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_pol_way
 		x = 10
 		y = 10
 				        available = {
@@ -108,7 +111,7 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -124,12 +127,14 @@ unlock_focus = { id = POL_new_euro_two }
 		ai_will_do = { factor = 65 }
 
 		completion_reward = {
-			add_political_power = 40			
+			add_political_power = 40	
+			country_event = { id = polandos.18 }
+custom_effect_tooltip = NEW_FOCUSES_four			
 			}
 }
 		     focus = {
 		id = POL_new_social
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_social
 		x = 8
 		y = 11
 				        available = {
@@ -138,7 +143,7 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -153,12 +158,14 @@ unlock_focus = { id = POL_new_euro_two }
 		available_if_capitulated = no
 
 		completion_reward = {
-			add_political_power = 40			
+			add_political_power = 40
+country_event = { id = polandos.19 }			
 			}
 }
 		     focus = {
 		id = POL_new_euro_two
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_euro_two
+		
 		x = 6
 		y = 12
 				        available = {
@@ -168,11 +175,9 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 
-		allow_branch = {
-		}
 
 		
 		prerequisite = { focus = POL_new_social  }
@@ -181,9 +186,12 @@ unlock_focus = { id = POL_new_euro_two }
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-
+		
+		visible = { has_country_flag = POL_new_way_euro }
+		
 		completion_reward = {
-			add_political_power = 40			
+			add_political_power = 40	
+country_event = { id = request.5 }			
 			}
 }
 		     focus = {
@@ -198,7 +206,7 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -227,7 +235,7 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -257,11 +265,9 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
-				        allow_branch = {
-						
-        }
+visible = { has_country_flag = POL_new_way_euro }
 
 		
 		prerequisite = { focus = POL_new_pol_promise }
@@ -281,13 +287,13 @@ unlock_focus = { id = POL_new_euro_two }
 		x = 8
 		y = 14
 				        available = {
-						has_completed_focus = POL_new_euro_way_one
+						has_completed_focus = POL_new_pol_way
 						
             }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 2
 		priority = 10
 				        allow_branch = {
 						
@@ -307,7 +313,7 @@ unlock_focus = { id = POL_new_euro_two }
 }
 		     focus = {
 		id = POL_new_prepare
-		icon = GFX_goal
+		icon = GFX_goal_POL_new_prepare
 		x = 8
 		y = 15
 				        available = {
@@ -336,7 +342,37 @@ unlock_focus = { id = POL_new_euro_two }
 }
 		     focus = {
 		id = POL_new_elect
-		icon = GFX_goal_POL_PIS_ELECTIONS
+		icon = GFX_goal_POL_new_elect
+		x = 8
+		y = 17
+				        available = {
+						
+            }
+				bypass = {
+
+		}
+		cost = 0.5
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		prerequisite = { focus = POL_new_final_prepa  }
+		#mutually_exclusive = { focus =  }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 40
+custom_effect_tooltip = NEW_FOCUSES				
+			}
+}
+		     focus = {
+		id = POL_new_final_prepa
+		icon = GFX_goal_POL_new_final_prepa
 		x = 8
 		y = 16
 				        available = {
@@ -345,7 +381,7 @@ unlock_focus = { id = POL_new_euro_two }
 				bypass = {
 
 		}
-		cost = 1
+		cost = 0.5
 		priority = 10
 				        allow_branch = {
 						

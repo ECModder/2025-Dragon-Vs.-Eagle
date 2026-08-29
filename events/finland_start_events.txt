@@ -1,17 +1,29 @@
-add_namespace = finland_start
+add_namespace = FIN_start
 
 country_event = {
-	id = finland_start.1
+	id = FIN_start
+	title = FIN_start.1
+	desc = FIN_start.1.d
 	fire_only_once = yes
 	is_triggered_only = yes
 	trigger = {
 		tag = FIN
 	}
 
-	immediate = {
-		add_stability = 0.15
-		add_war_support = 0.05
-		add_named_temp_variable = { name = start_bonus value = 0.05 }
-		add_political_power = 50
+	option = {
+		name = "Leftists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Centrists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Rightists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Secret paths!"
+		add_political_power = 1
 	}
 }
