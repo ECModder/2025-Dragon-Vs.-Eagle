@@ -1,0 +1,286 @@
+POL_european_bop_decisions = {
+
+	POL_support_european_integration = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = -0.05
+				stability_factor = -0.2
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
+	}
+
+
+	POL_limit_european_integration = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = 0.05
+				stability_factor = 0.2
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
+	}
+		POL_anti_euro_propaganda = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = 0.08
+				stability_factor = 0.8
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
+	}
+		POL_pro_euro_propaganda = {
+		icon = generic_political_reform
+
+		allowed = {
+			tag = POL
+		}
+
+		visible = {
+			tag = POL
+		}
+
+		available = {
+			power_balance_value = {
+				id = POL_european_balance
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		complete_effect = {
+			add_power_balance_value = {
+				id = POL_european_balance
+				value = -0.05
+				add_political_power -0.25
+				stability_factor = -0.3
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+		days_remove = 60
+	}
+}
+POL_elections_category = {
+	POL_election_timer_mission = {
+		icon = generic_clock
+		
+		allowed = { 
+		always = no
+		}
+		
+		available = {
+			always = no 
+			has_country_flag = POL_elections_ongoing
+		}
+		visible = { has_country_flag = POL_elections_ongoing }
+		
+		days_mission_timeout = 96
+		
+		is_good = yes
+		
+		timeout_effect = {
+			clr_country_flag = POL_elections_ongoing
+			country_event = { id = elections.2 } 
+		}
+	}
+
+	POL_support_nawrocki = {
+		icon = generic_pp
+		
+		cost = 25
+		days_remove = 28
+		
+		available = {
+			has_country_flag = POL_elections_PIS
+		}
+		#visible = { has_country_flag = POL_elections_ongoing }
+		complete_effect = {
+			add_to_variable = { POL_nawrocki_support = 5 }
+				subtract_from_variable = { POL_trzaskowski_support = 2 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+		}
+	}
+
+	POL_support_trzaskowski = {
+		icon = generic_pp
+		cost = 25
+		days_remove = 28
+		#visible = { has_country_flag = POL_elections_ongoing }
+		available = { has_country_flag = POL_elections_KO }
+		complete_effect = {
+			add_to_variable = { POL_trzaskowski_support = 5 }
+				subtract_from_variable = { POL_nawrocki_support = 2 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+		}
+	}
+		POL_support_Menzten = {
+		icon = generic_pp
+		cost = 25
+		days_remove = 20
+		#visible = { has_country_flag = POL_elections_ongoing }
+		available = { has_country_flag = POL_elections_KONF }
+		complete_effect = {
+			add_to_variable = { POL_mentzen_support = 5 }
+			
+			subtract_from_variable = { POL_trzaskowski_support = 2 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+		}
+	}
+	POL_enemies_move_mission = {
+		icon = generic_decision
+		
+				allowed = { 
+		always = no
+		}
+		
+		available = {
+			always = no
+		}
+		visible = { has_country_flag = POL_elections_ongoing }
+		
+		
+		days_mission_timeout = 14
+		
+		is_good = no
+		
+		timeout_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = POL_elections_PIS } }
+				add_to_variable = { POL_nawrocki_support = 4 }
+				subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+			}
+			
+			if = {
+				limit = { NOT = { has_country_flag = POL_elections_KO } }
+				add_to_variable = { POL_trzaskowski_support = 4 }
+				subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = POL_elections_KONF } }
+				add_to_variable = { POL_mentzen_support = 4 }
+				subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+	            subtract_from_variable = { POL_biejat_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = POL_player_supports_biejat } }
+				add_to_variable = { POL_biejat_support = 4 }
+				subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+	            subtract_from_variable = { POL_mentzen_support = 1 }  
+	            subtract_from_variable = { POL_holownia_support = 1 }
+			}
+
+			if = {
+				limit = { NOT = { has_country_flag = POL_player_supports_holownia } }
+				add_to_variable = { POL_holownia_support = 4 }
+				subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+	            subtract_from_variable = { POL_mentzen_support = 1 }  
+	            subtract_from_variable = { POL_biejat_support = 1 }
+			}
+
+			if = {
+				limit = { has_country_flag = POL_elections_ongoing }
+				activate_mission = POL_enemies_move_mission
+			}
+		}
+	}
+    
+
+}
