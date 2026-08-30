@@ -334,9 +334,13 @@ crisis = {
 demobilization = {
 	icon = generic_crisis
 	priority = 100
-	
+
+	# DvE: China stays on a war footing even at peace - the civil war
+	# tensions (Chinese civil war mechanic, warlord states) mean an
+	# economy sized for war is the right call, not a nag to shrink it.
 	visible = {
 		has_war = no
+		NOT = { tag = PRC }
 	}
 }
 

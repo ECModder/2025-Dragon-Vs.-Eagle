@@ -478,21 +478,27 @@ demobilization = {
 	demobilization_economic = {
 
 		icon = generic_industry
-		
+
 		is_good = no
 
+		# DvE: China stays on a permanently mobilised, state-controlled
+		# economy regardless of war support - it never gets forced down
+		# a tier the way every other country does.
 		available = {
+			NOT = { tag = PRC }
 			has_unsupported_economic_law = yes
 			has_war = no
 		}
 
 		activation = {
+			NOT = { tag = PRC }
 			has_unsupported_economic_law = yes
 			has_war = no
 		}
 		cost = 50
 
 		visible = {
+			NOT = { tag = PRC }
 			has_war = no
 			has_unsupported_economic_law = yes
 		}
@@ -550,12 +556,19 @@ demobilization = {
 			OR = {
 				has_unsupported_economic_law = no
 				has_war = yes
+				tag = PRC
 			}
 		}
 
+		# DvE: the decision above already excludes PRC from having to
+		# demobilise. Without this exclusion here too, China could never
+		# take that decision AND could never satisfy this mission either -
+		# stuck on permanent, escalating strikes with no way out, all the
+		# way to a scripted civil war.
 		activation = {
 			has_unsupported_economic_law = yes
 			has_war = no
+			NOT = { tag = PRC }
 			NOT = {
 				original_tag = SWE
 				SWE = { has_completed_focus = SWE_totalforsvar }
