@@ -1,0 +1,22 @@
+# ============================================================
+#   DvE - the Azad Kashmir crisis: decision category
+#
+#   Visible only for the one-month window between the JAAC's
+#   takeover (set by history/countries/KAS - Kashmir.txt on
+#   2026.4.1) and the checkpoint on 2026.5.1 that reads the
+#   result (history/countries/PAK - Pakistan.txt).
+# ============================================================
+
+PAK_kashmir_crisis_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 90
+
+	visible_when_empty = yes
+
+	allowed = { tag = PAK }
+
+	visible = {
+		KAS = { has_country_flag = KAS_jaac_crisis_active }
+	}
+}

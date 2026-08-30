@@ -2,7 +2,12 @@
 
 give_guarantee = SAU
 
-oob = "PAK_1936"
+# Was "PAK_1936": that file never existed anywhere in the mod or in
+# vanilla, so Pakistan started every game with zero divisions - the
+# same bug already found and fixed for Italy earlier this session.
+oob = "PAK_2025"
+
+puppet = KAS
 
 # Starting tech
 set_technology = {
@@ -43,8 +48,11 @@ set_convoys = 20
 
 	add_political_power = 1198
 	add_command_power = 100
-	oob = "PAK_1939"
-	
+	# was "oob = PAK_1939" - also a nonexistent file, and would have
+	# reset the day-one OOB above anyway. Removed rather than fixed:
+	# this whole dated block is 1939-era vanilla leftover in a 2025
+	# scenario, harmless otherwise.
+
 	#complete_national_focus = army_effort
 	#complete_national_focus = equipment_effort
 	#complete_national_focus = motorization_effort
@@ -186,4 +194,90 @@ create_corps_commander = {
 	defense_skill = 3
 	planning_skill = 3
 	logistics_skill = 3
+}
+
+# ============================================================
+#   DvE - the Azad Kashmir crisis, the two checkpoints
+#
+#   1 May: did the containment decisions (common/decisions/
+#   PAK_kashmir_crisis.txt) add up to enough? Below 2 out of the
+#   3 available and the JAAC's spring turns into the RCP's summer:
+#   Kashmir stops being a puppet, tips into revolutionary_socialism
+#   and raises its own Red Guard. Above the threshold, the crisis
+#   is contained and the ruling party reverts.
+#
+#   1 June: only fires if Kashmir went RCP. Pakistan does not
+#   negotiate with a revolutionary government on its own border -
+#   it invades.
+# ============================================================
+
+2026.5.1 = {
+	KAS = {
+		clr_country_flag = KAS_jaac_crisis_active
+
+		if = {
+			limit = {
+				NOT = { check_variable = { var = PAK_jaac_containment value = 2 compare = less_than } }
+			}
+
+			set_politics = {
+				ruling_party = centrist
+				elections_allowed = yes
+			}
+			add_popularity = { ideology = progressive popularity = -0.30 }
+			add_stability = 0.10
+
+			ROOT = { country_event = { id = dve_kashmir.2 hours = 2 } }
+		}
+		else = {
+			set_country_flag = KAS_became_rcp
+			set_politics = {
+				ruling_party = revolutionary_socialism
+				elections_allowed = no
+			}
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.55 }
+			add_stability = -0.15
+			add_war_support = 0.15
+
+			# no longer anyone's puppet
+			ROOT = { end_puppet = KAS }
+
+			# the Red Guard: same pattern as the nine European
+			# revolutions (common/scripted_effects/DVE_ITA_red_europe.txt),
+			# eight brigades instead of twenty.
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Inqalabi Guard" } }
+					division_template = {
+						name = "Inqalabi Guard"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Inqalabi Guard\" division_template = \"Inqalabi Guard\" start_experience_factor = 0.25 start_equipment_factor = 0.55"
+					owner = KAS
+					count = 8
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+
+			ROOT = { country_event = { id = dve_kashmir.3 hours = 2 } }
+		}
+	}
+}
+
+2026.6.1 = {
+	if = {
+		limit = { KAS = { has_country_flag = KAS_became_rcp } }
+		declare_war_on = { target = KAS type = annex_everything }
+		country_event = { id = dve_kashmir.4 hours = 2 }
+	}
 }

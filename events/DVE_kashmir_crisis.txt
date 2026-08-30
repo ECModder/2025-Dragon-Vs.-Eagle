@@ -1,0 +1,67 @@
+# ============================================================
+#   DvE - the Azad Kashmir crisis
+#
+#   1  JAAC takeover, 1 April 2026 - sees KAS
+#   2  crisis contained, 1 May 2026    - sees PAK
+#   3  Kashmir goes RCP, 1 May 2026    - sees PAK
+#   4  Pakistan invades, 1 June 2026   - sees PAK
+#
+#   Called from history/countries/KAS - Kashmir.txt and
+#   history/countries/PAK - Pakistan.txt.
+# ============================================================
+
+add_namespace = dve_kashmir
+
+country_event = {
+	id = dve_kashmir.1
+	title = dve_kashmir.1.t
+	desc = dve_kashmir.1.d
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_kashmir.1.a
+	}
+}
+
+country_event = {
+	id = dve_kashmir.2
+	title = dve_kashmir.2.t
+	desc = dve_kashmir.2.d
+	picture = GFX_report_event_riot_police_poland
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_kashmir.2.a
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = dve_kashmir.3
+	title = dve_kashmir.3.t
+	desc = dve_kashmir.3.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_kashmir.3.a
+	}
+}
+
+country_event = {
+	id = dve_kashmir.4
+	title = dve_kashmir.4.t
+	desc = dve_kashmir.4.d
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_kashmir.4.a
+		add_war_support = 0.05
+	}
+}

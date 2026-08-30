@@ -1,4 +1,7 @@
-﻿capital = 441 
+﻿capital = 1910   # was 441, which belongs to India (RAJ): Azad Kashmir's
+                 # own territory is state 787, of which 1910 is a part.
+
+oob = "KAS_2025"
 
 set_research_slots = 3
 add_political_power = 2000
@@ -84,6 +87,19 @@ if = {
 }
 
 
+# ============================================================
+#   DvE - the Azad Kashmir crisis (2026)
+#
+#   Day one: a Pakistani puppet, run by an appointed civil
+#   administration. On 1 April the JAAC takes the streets and the
+#   government with them - Pakistan gets a month of decisions
+#   (common/decisions/PAK_kashmir_crisis.txt) to contain it. What
+#   happens on 1 May and 1 June is decided from Pakistan's own
+#   history file, since it's Islamabad reacting to the outcome.
+# ============================================================
+set_party_name = { ideology = progressive          name = "JAAC" long_name = "Joint Awami Action Committee" }
+set_party_name = { ideology = revolutionary_socialism name = "RCP" long_name = "Inqalabi Communist Party" }
+
 set_politics = {
 	ruling_party = centrist
 	last_election = "1934.2.11"
@@ -91,8 +107,22 @@ set_politics = {
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 95
+	centrist = 70
 	reactionary = 5
+	progressive = 20
+	revolutionary_socialism = 5
+}
+
+2026.4.1 = {
+	set_country_flag = KAS_jaac_crisis_active
+	set_politics = {
+		ruling_party = progressive
+		elections_allowed = no
+	}
+	add_popularity = { ideology = progressive popularity = 0.45 }
+	add_stability = -0.20
+	add_war_support = 0.10
+	country_event = { id = dve_kashmir.1 hours = 2 }
 }
 
 
