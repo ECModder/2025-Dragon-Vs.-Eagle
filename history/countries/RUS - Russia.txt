@@ -1,4 +1,4 @@
-﻿# ============================================================
+# ============================================================
 #   RUSSIAN FEDERATION (RUS) - 2025
 # ============================================================
 
@@ -1932,3 +1932,16 @@ set_popularities = {
 	ultranationalism = 8
 	fundamentalism = 1
 }
+
+# ============================================================
+#   DvE - the war in Ukraine starts on day one
+#
+#   This used to run from on_startup (common/on_actions/
+#   DVE_on_actions.txt), which fires at the transition into
+#   gameplay rather than during history execution. declare_war_on
+#   has no vanilla precedent being called from on_startup at all
+#   - every vanilla mod/scenario that starts two countries already
+#   at war does it from history instead, which is the phase we've
+#   verified runs cleanly. Moved here for that reason.
+# ============================================================
+DVE_ukraine_war_start_effect = yes
