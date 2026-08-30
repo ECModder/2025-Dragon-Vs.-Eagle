@@ -8,6 +8,7 @@ add_namespace = elections
 add_namespace = resistance
 add_namespace = request
 add_namespace = intervention
+add_namespace = debate
 
 
 country_event = {
@@ -60,6 +61,7 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 70 }
+		country_event = { id = elections.1 }
 		custom_effect_tooltip = NEW_FOCUSES		
 	}
 		option = {
@@ -73,6 +75,7 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 15 }
+		country_event = { id = elections.4 }
         custom_effect_tooltip = NEW_FOCUSES_three		
 		}
 			option = {
@@ -86,6 +89,7 @@ POL = {
 		}
 		}
 		ai_will_do = { factor = 15 }
+		country_event = { id = elections.3 }
 		custom_effect_tooltip = NEW_FOCUSES_two	
 		}
 
@@ -106,40 +110,6 @@ name = "Thank you!"
 
 }
 country_event = {
-
-    id = elections.1
-
-    title = elections.1.t
-    desc = elections.1.d
-
-    is_triggered_only = yes
-
-    option = {
-
-        name = "Lets begin"
-
-
-        set_variable = {
-            POL_candidate_A = 25
-        }
-
-        set_variable = {
-            POL_candidate_B = 25
-        }
-
-        set_variable = {
-            POL_candidate_C = 25
-        }
-
-        set_variable = {
-            POL_candidate_D = 25
-        }
-
-
-        set_country_flag = POL_elections_active
-    }
-}
-country_event = {
 	id = polandos.4
 	title = polandos.4.t
 	desc = polandos.4.d
@@ -150,6 +120,12 @@ country_event = {
 		name = "God, honor, homeland!"
 		add_political_power = 20
 		add_stability = 0.05
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 	}
 
 		}
@@ -163,6 +139,12 @@ country_event = {
 	option = {
 		name = "Poland - invincible"
 		add_political_power = 20
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 	}
 
 		}
@@ -180,6 +162,12 @@ add_power_balance_value = {
     id = POL_european_balance
     value = 0.05
 }
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 	}
 
 		}
@@ -197,6 +185,12 @@ add_power_balance_value = {
     id = POL_european_balance
     value = 0.15
 }
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 }				
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 	}
 
@@ -209,6 +203,12 @@ add_power_balance_value = {
 	option = {
 		name = "The Final Countdown..."
 		add_political_power = 20
+	hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 }				
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -221,8 +221,14 @@ add_power_balance_value = {
 	option = {
 		name = "This Is OUR victory!"
 		add_political_power = 20
-}
 
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 2 }
+		subtract_from_variable = { POL_trzaskowski_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 }				
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+		}
 	}
 		country_event = {
 	id = resistance.1
@@ -337,6 +343,12 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
 	option = {
 		name = "everyone! Vote for him!"
 		add_political_power = 20
+				hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -354,6 +366,12 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
     id = POL_european_balance
     value = -0.05
 }
+				hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -372,6 +390,12 @@ set_party_name = { ideology = vanguard_socialism long_name = POL_outlawed_party_
     value = -0.12
 }
 add_stability = -0.10
+				hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -441,6 +465,12 @@ country_event = {
 	option = {
 		name = "YAY!"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 	}
 	country_event = {
@@ -464,6 +494,12 @@ country_event = {
 	option = {
 		name = "Thanks Donald"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -476,6 +512,12 @@ country_event = {
 	option = {
 		name = "Who Will Win?"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -488,6 +530,12 @@ country_event = {
 	option = {
 		name = "They Are Easy to use!"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_mentzen_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -552,6 +600,12 @@ set_autonomy = {
     id = POL_european_balance
     value = 0.03
 }
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -568,6 +622,12 @@ set_autonomy = {
     id = POL_european_balance
     value = -0.03
 }
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -578,12 +638,18 @@ set_autonomy = {
 
 	is_triggered_only = yes
 	option = {
-		name = "§B my perfect victory! §!"
+		name = "my perfect victory!"
 		add_political_power = 20
 		add_power_balance_value = {
     id = POL_european_balance
     value = 0.03
 }
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -600,6 +666,12 @@ set_autonomy = {
     id = POL_european_balance
     value = 0.03
 }
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 
 	}
@@ -649,6 +721,12 @@ ai_will_do = { factor = 60 }
 	option = {
 		name = "YAY!"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 	}
 	country_event = {
@@ -692,6 +770,12 @@ ai_will_do = { factor = 60 }
 	option = {
 		name = "YAY!"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 }
 			country_event = {
@@ -735,6 +819,12 @@ ai_will_do = { factor = 60 }
 	option = {
 		name = "YAY!"
 		add_political_power = 20
+						hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
 }
 	}
 		country_event = {
@@ -748,4 +838,327 @@ ai_will_do = { factor = 60 }
 		add_political_power = -20
 }
 	}
+	country_event = {
+	id = elections.1
+	title = elections.1.t
+	desc = elections.1.d
+	picture = GFX_report_event_POL_elections
+
+	is_triggered_only = yes
+
+	option = {
+		name = "PIS IS THE BEST!"
+		
+		set_country_flag = POL_elections_ongoing
+		set_country_flag = POL_elections_PIS
+		hidden_effect = {
+		activate_mission = POL_election_timer_mission
+		activate_mission = POL_enemies_move_mission
+		}
+
+		set_variable = { POL_nawrocki_support = 38 }
+		set_variable = { POL_trzaskowski_support = 37 }
+		set_variable = { POL_mentzen_support = 22 }
+		set_variable = { POL_biejat_support = 1 }
+		set_variable = { POL_holownia_support = 2 }
+		hidden_effect = { country_event = { id = debate.1 days = 12 } }
+	}
+}
+	country_event = {
+	id = elections.2
+	title = elections.2.t
+	desc = elections.2.d
+	picture = GFX_report_event_POL_elections
+
+	is_triggered_only = yes
+option = {
+	name = "Karol Nawrocki!"
+	trigger = {
+		check_variable = { POL_nawrocki_support > POL_trzaskowski_support }
+		check_variable = { POL_nawrocki_support > POL_mentzen_support }
+		check_variable = { POL_nawrocki_support > POL_biejat_support }
+		check_variable = { POL_nawrocki_support > POL_holownia_support }
+	}
+
+	add_popularity = {
+			ideology = conservative
+			popularity = 0.15
+		}
+		retire_country_leader = yes
+	promote_character = POL_Karol_Nawrocki
+	remove_country_flag = POL_elections_ongoing
+}
+option = {
+	name = "Rafał Trzaskowski!"
+	trigger = {
+		check_variable = { POL_trzaskowski_support > POL_nawrocki_support }
+		check_variable = { POL_trzaskowski_support > POL_mentzen_support }
+		check_variable = { POL_trzaskowski_support > POL_biejat_support }
+		check_variable = { POL_trzaskowski_support > POL_holownia_support }
+	}
+	set_politics = {
+    ruling_party = centrist
+    elections_allowed = no
+}
+	add_popularity = {
+			ideology = centrist
+			popularity = 0.15
+		}
+	retire_country_leader = yes
+	promote_character = POL_Trzaskowski
+	remove_country_flag = POL_elections_ongoing
+}
+option = {
+	name = "Sławomir Mentzen!"
+	trigger = {
+		check_variable = { POL_mentzen_support > POL_nawrocki_support }
+		check_variable = { POL_mentzen_support > POL_trzaskowski_support }
+		check_variable = { POL_mentzen_support > POL_biejat_support }
+		check_variable = { POL_mentzen_support > POL_holownia_support }
+	}
+		set_politics = {
+    ruling_party = traditionalismo
+    elections_allowed = no
+	remove_country_flag = POL_elections_ongoing
+}
+		add_popularity = {
+			ideology = traditionalismo
+			popularity = 0.15
+		}
+	retire_country_leader = yes
+	promote_character = POL_Mentzen
+}
+
+}
+	country_event = {
+	id = elections.3
+	title = elections.3.t
+	desc = elections.3.d
+	picture = GFX_report_event_POL_elections
+
+	is_triggered_only = yes
+
+	option = {
+		name = "KO IS THE BEST!"
+		
+		set_country_flag = POL_elections_KO
+		set_country_flag = POL_elections_ongoing
+		hidden_effect = {
+		activate_mission = POL_election_timer_mission
+		activate_mission = POL_enemies_move_mission
+		}
+
+		set_variable = { POL_nawrocki_support = 38 }
+		set_variable = { POL_trzaskowski_support = 37 }
+		set_variable = { POL_mentzen_support = 22 }
+		set_variable = { POL_biejat_support = 1 }
+		set_variable = { POL_holownia_support = 2 }
+		hidden_effect = { country_event = { id = debate.4 days = 12 } }
+	}
+}
+	country_event = {
+	id = elections.4
+	title = elections.4.t
+	desc = elections.4.d
+	picture = GFX_report_event_POL_elections
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Konfederacja IS THE BEST!"
+		
+		set_country_flag = POL_elections_KONF
+		set_country_flag = POL_elections_ongoing
+		hidden_effect = {
+		activate_mission = POL_election_timer_mission
+		activate_mission = POL_enemies_move_mission
+		}
+
+		set_variable = { POL_nawrocki_support = 38 }
+		set_variable = { POL_trzaskowski_support = 37 }
+		set_variable = { POL_mentzen_support = 22 }
+		set_variable = { POL_biejat_support = 1 }
+		set_variable = { POL_holownia_support = 2 }
+		hidden_effect = { country_event = { id = debate.7 days = 12 } }
+	}
+}
+
+# debates election events #
+
+country_event = {
+	id = debate.1
+	title = debate.1.t
+	desc = debate.1.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Lets hope we will win"
+		hidden_effect = {
+			random_list = {
+				55 = {
+					country_event = { id = debate.2 days = 10 }
+				}
+				45 = {
+					country_event = { id = debate.3 days = 10 }
+				}
+			}
+		}
+	}
+}
+	country_event = {
+	id = debate.2
+	title = debate.2.t
+	desc = debate.2.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "This is called - Victory."
+		hidden_effect = {
+		add_to_variable = { POL_nawrocki_support = 5 }
+		subtract_from_variable = { POL_mentzen_support = 2 }
+	    subtract_from_variable = { POL_trzaskowski_support = 3 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+	}
+}
+	country_event = {
+	id = debate.3
+	title = debate.3.t
+	desc = debate.3.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Maybe... Next time we will win?"
+		hidden_effect = {
+		subtract_from_variable = { POL_nawrocki_support = 5 }
+		add_to_variable = { POL_mentzen_support = 2 }
+	    add_to_variable = { POL_trzaskowski_support = 3 } 
+		}
+		custom_effect_tooltip = RUIN_ELECTIONS
+	}
+}
+country_event = {
+	id = debate.4
+	title = debate.4.t
+	desc = debate.4.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Lets hope we will win"
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = debate.5 days = 10 }
+				}
+				50 = {
+					country_event = { id = debate.6 days = 10 }
+				}
+			}
+		}
+	}
+}
+	country_event = {
+	id = debate.6
+	title = debate.6.t
+	desc = debate.6.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Maybe... Next time we will win?"
+		hidden_effect = {
+		subtract_from_variable = { POL_trzaskowski_support = 5 }
+		add_to_variable = { POL_mentzen_support = 2 }
+	    add_to_variable = { POL_nawrocki_support = 3 } 
+		}
+		custom_effect_tooltip = RUIN_ELECTIONS
+	}
+}
+	country_event = {
+	id = debate.5
+	title = debate.5.t
+	desc = debate.5.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Maybe... Next time we will win?"
+		hidden_effect = {
+		add_to_variable = { POL_trzaskowski_support = 5 }
+		subtract_from_variable = { POL_mentzen_support = 2 }
+	    subtract_from_variable = { POL_nawrocki_support = 3 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+	}
+}
+
+country_event = {
+	id = debate.7
+	title = debate.7.t
+	desc = debate.7.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Lets hope we will win"
+		hidden_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = debate.8 days = 10 }
+				}
+				50 = {
+					country_event = { id = debate.9 days = 10 }
+				}
+			}
+		}
+	}
+}
+	country_event = {
+	id = debate.8
+	title = debate.8.t
+	desc = debate.8.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Maybe... Next time we will win?"
+		hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 5 }
+		subtract_from_variable = { POL_mentzen_support = 2 }
+	    subtract_from_variable = { POL_trzaskowski_support = 3 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+	}
+}
+	country_event = {
+	id = debate.9
+	title = debate.9.t
+	desc = debate.9.d
+	picture = GFX_report_event_POL_debates
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Maybe... Next time we will win?"
+		hidden_effect = {
+		subtract_from_variable = { POL_mentzen_support = 5 }
+		add_to_variable = { POL_trzaskowski_support = 2 }
+	    add_to_variable = { POL_nawrocki_support = 3 } 
+		}
+		custom_effect_tooltip = RUIN_ELECTIONS
+	}
+}
+
 	
