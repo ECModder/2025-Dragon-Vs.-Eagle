@@ -707,9 +707,9 @@ ai_will_do = { factor = 60 }
 }
 	option = {
 		name = "NAH"
-		add_political_power = 20
+		add_political_power = 99
 		POL = { country_event = { id = request.8 days = 1 } }
-		ai_will_do = { factor = 40 }
+		ai_will_do = { factor = 1 }
 }
 }
 	country_event = {
@@ -752,13 +752,13 @@ ai_will_do = { factor = 60 }
 		POL = {
 		country_event = { id = request.10  days = 1 }
 }
-ai_will_do = { factor = 60 }
+ai_will_do = { factor = 99 }
 }
 	option = {
 		name = "NAH"
 		add_political_power = 20
 		POL = { country_event = { id = request.11 days = 1 } }
-		ai_will_do = { factor = 40 }
+		ai_will_do = { factor = 1 }
 }
 }
 		country_event = {
@@ -801,13 +801,13 @@ ai_will_do = { factor = 60 }
 		POL = {
 		country_event = { id = request.13  days = 1 }
 }
-ai_will_do = { factor = 60 }
+ai_will_do = { factor = 99 }
 }
 	option = {
 		name = "NAH"
 		add_political_power = 20
 		POL = { country_event = { id = request.14 days = 1 } }
-		ai_will_do = { factor = 40 }
+		ai_will_do = { factor = 1 }
 }
 }
 	country_event = {
@@ -917,12 +917,12 @@ option = {
 		check_variable = { POL_mentzen_support > POL_holownia_support }
 	}
 		set_politics = {
-    ruling_party = traditionalismo
+    ruling_party = reactionary
     elections_allowed = no
 	remove_country_flag = POL_elections_ongoing
 }
 		add_popularity = {
-			ideology = traditionalismo
+			ideology = reactionary
 			popularity = 0.15
 		}
 	retire_country_leader = yes
@@ -1092,7 +1092,7 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Maybe... Next time we will win?"
+		name = "This is called - Victory."
 		hidden_effect = {
 		add_to_variable = { POL_trzaskowski_support = 5 }
 		subtract_from_variable = { POL_mentzen_support = 2 }
@@ -1133,7 +1133,7 @@ country_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = "Maybe... Next time we will win?"
+		name = "This is called - Victory."
 		hidden_effect = {
 		add_to_variable = { POL_mentzen_support = 5 }
 		subtract_from_variable = { POL_mentzen_support = 2 }
@@ -1161,4 +1161,49 @@ country_event = {
 	}
 }
 
-	
+# back to normal events #
+
+
+			country_event = {
+	id = polandos.20
+	title = polandos.20.t
+	desc = polandos.20.d
+
+	is_triggered_only = yes
+	option = {
+		name = "No time to waste!"
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.02
+}
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+		subtract_from_variable = { POL_nawrocki_support = 1 }
+	            subtract_from_variable = { POL_trzaskowski_support = 1 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+}
+
+	}	
+				country_event = {
+	id = polandos.21
+	title = polandos.21.t
+	desc = polandos.21.d
+
+	is_triggered_only = yes
+	option = {
+		name = "."
+		add_political_power = 20
+		add_power_balance_value = {
+    id = POL_european_balance
+    value = 0.02
+}
+				hidden_effect = {
+		add_to_variable = { POL_mentzen_support = 2 }
+	            subtract_from_variable = { POL_trzaskowski_support = 2 } 
+		}
+		custom_effect_tooltip = HELP_IN_SMTH
+}
+
+	}	
