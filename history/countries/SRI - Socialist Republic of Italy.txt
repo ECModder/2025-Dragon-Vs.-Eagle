@@ -1,0 +1,66 @@
+capital = 2 # Rome - the coup seizes the existing capital rather than relocating it
+
+# ============================================================
+#   SOCIALIST REPUBLIC OF ITALY (SRI) - 2026
+#   Stalinist faction of the Italian civil war. Does not exist
+#   at startup: emerges from Italy's hardline path (common/
+#   national_focus/italy.txt, ST_hardline -> ST_stalincoup and
+#   onward -> common/national_focus/SRI_focus.txt) once the
+#   not-yet-built civil war effect actually splits the country.
+#   Same party system as Italy - same movements, now running
+#   their own state.
+# ============================================================
+
+# === party names ===
+# The SRI was born AGAINST internationalism
+# (which gave birth to the International,
+# here the two socialisms that founded it
+# (totalitarian/authoritarian) remain those of the PdRC/PCI and
+# of CR OSA-PaP, but the entire rest of the political landscape 
+# including internationalism itself went Banned
+# and therefore underground under the new Stalinist state.
+
+set_party_name = { ideology = totalitarian_socialism name = "PCI-U" long_name = "Partito Comunista Italiano Unificato (HardLine)" }
+set_party_name = { ideology = authoritarian_socialism name = "PCI-U" long_name = "Partito Comunista Italiano Unificato (Reformist)" }
+set_party_name = { ideology = vanguard_socialism name = "LC" long_name = "[Banned] Lotta Comunista - Internazionalismo" }
+set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "[Banned] Partito Comunista Rivoluzionario" }
+set_party_name = { ideology = progressive name = "USB" long_name = "Unione Sindacale di Base" }
+set_party_name = { ideology = centrist name = "FNB" long_name = "[Banned] Fronte Nazionale Borghese" }
+set_party_name = { ideology = conservative name = "CRD" long_name = "[Banned] Comitato di Rifondazione della Destra" }
+set_party_name = { ideology = reactionary name = "RN" long_name = "[Banned] Rifondazione Nazionale" }
+set_party_name = { ideology = authoritarianism name = "BR" long_name = "nuove Brigate Rosse" }
+set_party_name = { ideology = autocracy name = "Guardia Rossa" long_name = "Alto Comando della Guerdia Rossa" }
+set_party_name = { ideology = absolutism name = "PNM" long_name = "[Banned] Partito Nazionale Monarchico" }
+set_party_name = { ideology = ultranationalism name = "PNF" long_name = "[Banned] Movimento Nazionale neoFascista" }
+set_party_name = { ideology = fundamentalism name = "Chiesa Cattolica" long_name = "[Banned] Chiesa Cattolica'" }
+
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Committee.dds" expire = "2100.1.1" ideology = stalinism }
+create_country_leader = { name = "Direttivo di Potere al Popolo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2100.1.1" ideology = sovietism }
+
+set_politics = {
+	ruling_party = totalitarian_socialism
+	last_election = "2026.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 45
+	authoritarian_socialism = 35
+	vanguard_socialism = 6
+	revolutionary_socialism = 5
+	progressive = 3
+	centrist = 1
+	conservative = 0
+	reactionary = 0
+	authoritarianism = 1
+	autocracy = 1
+	absolutism = 1
+	ultranationalism = 1
+	fundamentalism = 0
+}
+
+set_stability = 0.45
+set_war_support = 0.50
+
+set_research_slots = 2

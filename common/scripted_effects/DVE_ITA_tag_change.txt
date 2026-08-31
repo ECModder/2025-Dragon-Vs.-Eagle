@@ -1,0 +1,115 @@
+# ============================================================
+#   DvE - CAMBIO DI TAG A FINE PERCORSO PRE-GUERRA CIVILE
+#
+#   Stesso meccanismo della Russia post-sconfitta (common/
+#   scripted_effects/DVE_RUS_tag_change.txt): chi porta a termine
+#   il colpo di stato non si limita a cambiare governo, cambia
+#   proprio paese. Il giocatore continua col nuovo tag.
+#
+#   L'effetto e' change_tag_from, eseguito NELLO SCOPE DEL NUOVO
+#   PAESE - sposta il giocatore dal vecchio. E' lo stesso
+#   meccanismo con cui il gioco base fa nascere Vichy dalla
+#   Francia (common/decisions/FRA.txt).
+#
+#   ORDINE DELLE OPERAZIONI - conta davvero:
+#     1) tecnologia, unita' e scorte, FINCHE' l'Italia ha ancora
+#        gli stati: a paese svuotato transfer_units_fraction
+#        fallisce, lo avverte il gioco base stesso
+#     2) territorio e cores
+#     3) governo, capitale, albero focus e change_tag_from
+#
+#   Ogni effetto e' protetto da country_exists: se per qualche
+#   motivo il tag di destinazione esistesse gia', non si fa
+#   niente e l'Italia resta l'Italia.
+#
+#   Usati da common/national_focus/italy.txt:
+#     LT_coup, LT_warrev   -> ITA_become_INT_effect
+#     ST_stalincoup        -> ITA_become_SRI_effect
+# ============================================================
+
+# ============================================================
+#   Lotta Comunista - "Coup de Main" / "War Revolution" -> INT
+#   L'Internazionale nasce: il tag INT eredita territorio,
+#   esercito, scorte e tecnologia, e passa al suo albero
+#   nazionale (INT_focus, common/national_focus/INT_focus.txt).
+# ============================================================
+ITA_become_INT_effect = {
+
+	if = {
+		limit = { NOT = { country_exists = INT } }
+
+		# 1) tecnologia, unita' e scorte, prima di svuotare l'Italia
+		INT = { inherit_technology = ITA }
+		transfer_units_fraction = {
+			target = INT
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# 2) territorio e cores
+		every_owned_state = {
+			add_core_of = INT
+			INT = { transfer_state = PREV }
+		}
+
+		# 3) il nuovo Stato, e il giocatore ci passa dentro
+		INT = {
+			set_capital = { state = 159 }   # Lombardia - Milano
+			set_politics = {
+				ruling_party = vanguard_socialism
+				elections_allowed = yes
+			}
+			add_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+			set_country_flag = INT_born_from_italy
+			load_focus_tree = { tree = INT_focus keep_completed = no }
+			change_tag_from = ITA
+		}
+	}
+}
+
+# ============================================================
+#   la corrente stalinista - "Colpo di Stato Stalinista" -> SRI
+#   La Repubblica Socialista d'Italia nasce: il tag SRI eredita
+#   territorio, esercito, scorte e tecnologia, e passa al suo
+#   albero nazionale (SRI_focus, common/national_focus/
+#   SRI_focus.txt).
+# ============================================================
+ITA_become_SRI_effect = {
+
+	if = {
+		limit = { NOT = { country_exists = SRI } }
+
+		# 1) tecnologia, unita' e scorte, prima di svuotare l'Italia
+		SRI = { inherit_technology = ITA }
+		transfer_units_fraction = {
+			target = SRI
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# 2) territorio e cores
+		every_owned_state = {
+			add_core_of = SRI
+			SRI = { transfer_state = PREV }
+		}
+
+		# 3) il nuovo Stato, e il giocatore ci passa dentro
+		SRI = {
+			set_capital = { state = 2 }   # Roma
+			set_politics = {
+				ruling_party = authoritarian_socialism
+				elections_allowed = no
+			}
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.20 }
+			set_country_flag = SRI_born_from_italy
+			load_focus_tree = { tree = SRI_focus keep_completed = no }
+			change_tag_from = ITA
+		}
+	}
+}

@@ -1,0 +1,67 @@
+capital = 159 # Lombardy - Milan, the "seat of the International" (matches LT_international's own set_capital)
+
+# ============================================================
+#   THE INTERNATIONALE (INT) - 2026
+#   Vanguard/revolutionary-socialist faction of the Italian
+#   civil war. Does not exist at startup: emerges from Italy's
+#   "Lotta Comunista" path (common/national_focus/italy.txt,
+#   LT_coup and onward -> common/national_focus/INT_focus.txt)
+#   once the not-yet-built civil war effect actually splits the
+#   country. Same party system as Italy - same movements, now
+#   running their own state.
+# ============================================================
+
+# === party names ===
+# The International was born AGAINST Stalinism
+# (which gave birth to the SRI): here, the two socialisms that founded it
+# (vanguard/revolutionary) remain the true ones of the Communist
+# Struggle and the PCR, but the rest of the political landscape
+# including Stalinism itself is clandestine or
+# marginalized under the new internationalist state.
+
+set_party_name = { ideology = totalitarian_socialism name = "PdRC" long_name = "[Banned] Partito della Ridondazione Comunista" }
+set_party_name = { ideology = authoritarian_socialism name = "PCd'I" long_name = "Partito Comunista d'Italia" }
+set_party_name = { ideology = vanguard_socialism name = "Lotta Comunista" long_name = "Lotta Comunista - L'Internazionale" }
+set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "Partito Comunista Rivoluzionario" }
+set_party_name = { ideology = progressive name = "CGIL-FIOM" long_name = "Federazione Sindacale degli Impiegati, Operai e Metallurgici" }
+set_party_name = { ideology = centrist name = "PDS" long_name = "Partito Democratico della Sinistra" }
+set_party_name = { ideology = conservative name = "PD" long_name = "Partito Democratico" }
+set_party_name = { ideology = reactionary name = "Armata Rossa" long_name = "Armata Rossa degli Operai, Impiegati e Contadini " }
+set_party_name = { ideology = authoritarianism name = "BR" long_name = "[Banned] nuove Brigate Rosse" }
+set_party_name = { ideology = autocracy name = "Azione Anti-Communista" long_name = "[Banned] Movimento Anti-Communista" }
+set_party_name = { ideology = absolutism name = "Azione Anti-Communista" long_name = "[Banned] Movimento Anti-Communista" }
+set_party_name = { ideology = ultranationalism name = "Azione Anti-Communista" long_name = "[Banned] Movimento Anti-Communista" }
+set_party_name = { ideology = fundamentalism name = "Azione Anti-Communista" long_name = "[Banned] Movimento Anti-Communista" }
+
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Committee.dds" expire = "2100.1.1" ideology = stalinism }
+create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Committee.dds" expire = "2100.1.1" ideology = maximalism }
+create_country_leader = { name = "Workers' Councils" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_workers_council.dds" expire = "2100.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2100.1.1" ideology = trotskyism }
+
+set_politics = {red_army
+	ruling_party = vanguard_socialism
+	last_election = "2026.1.1"
+	election_frequency = 12
+	elections_allowed = yes
+}
+
+set_popularities = {
+	totalitarian_socialism = 0
+	authoritarian_socialism = 5
+	vanguard_socialism = 45
+	revolutionary_socialism = 40
+	progressive = 6
+	centrist = 3
+	conservative = 0
+	reactionary = 1
+	authoritarianism = 0
+	autocracy = 0
+	absolutism = 0
+	ultranationalism = 0
+	fundamentalism = 0
+}
+
+set_stability = 0.60
+set_war_support = 0.70
+
+set_research_slots = 3

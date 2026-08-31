@@ -59,14 +59,19 @@ SOV_intl_valid_target = {
 	has_capitulated = no
 }
 
-# Le tre eccezioni volute: le due superpotenze rivali e l'Italia
-# che ha imboccato il path Proletario restano influenzabili, ma
-# non si possono ridurre a satelliti.
+# Le eccezioni volute: le due superpotenze rivali, l'Italia che ha
+# imboccato il path Proletario e i suoi due tag successori della
+# guerra civile (INT e SRI, common/national_focus/italy.txt) -
+# restano influenzabili, ma non si possono ridurre a satelliti.
+# INT e SRI sono immuni a prescindere dalla flag: la loro stessa
+# esistenza e' gia' la prova di aver completato quel percorso.
 SOV_intl_immune_to_puppet = {
 	OR = {
 		tag = USA
 		tag = PRC
 		AND = { tag = ITA  has_country_flag = ITA_proletariat_done }
+		tag = INT
+		tag = SRI
 	}
 }
 

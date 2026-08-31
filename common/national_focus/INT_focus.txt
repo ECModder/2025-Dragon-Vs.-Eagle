@@ -1,0 +1,1152 @@
+# ============================================================
+#   THE INTERNATIONALE (INT) - albero nazionale
+#
+#   Nasce dalla guerra civile italiana: il ramo "Lotta Comunista"
+#   dell'Italia (common/national_focus/italy.txt), tutto cio' che
+#   viene dopo "Coup de Main" (LT_coup). Le radici dell'albero -
+#   LT_staterev (Rivoluzione di Stato, revolutionary_socialism) e
+#   LT_international (L'Internazionale, vanguard_socialism) -
+#   in Italia avevano "prerequisite = { focus = LT_coup }" (o
+#   LT_warrev); quel prerequisito e' stato tolto qui perche' punta
+#   a un focus che ora appartiene all'albero di un altro paese
+#   (ITA) - una volta che l'INT esiste, il colpo di stato e' gia'
+#   avvenuto per definizione.
+#
+#   NOTA: questo file sposta solo l'albero. Il meccanismo che
+#   davvero fa scoppiare la guerra civile e trasforma ITA in INT
+#   (change_tag / form_new_country dal completamento di LT_coup)
+#   non e' ancora stato scritto.
+#
+#   54 focus, identici a com'erano in italy.txt salvo le coordinate
+#   x/y (traslate per ripartire da un'origine pulita) e i due
+#   prerequisiti tolti sopra.
+# ============================================================
+
+focus_tree = {
+	id = INT_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = INT
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 1200 y = 4500 }
+
+	focus = {
+		id = LT_staterev
+		icon = GFX_goal_staterev
+		x = 15
+		y = 0
+		cost = 10
+		available_if_capitulated = no
+		mutually_exclusive = { focus = LT_international }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.3 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.7 }
+			set_country_flag = LT_staterev_done
+		}
+	}
+
+	focus = {
+	id = LT_international
+		icon = GFX_goal_international
+	x = 4
+	y = 0
+	cost = 10
+	available_if_capitulated = no
+	
+	mutually_exclusive = { focus = LT_staterev } 
+	ai_will_do = {
+		factor = 1
+	}
+	completion_reward = {
+		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
+		add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
+		add_popularity = { ideology = revolutionary_socialism popularity = 0.3 }
+		set_capital = { state = 159 remember_old_capital = no }
+		set_country_flag = LT_international_done
+	}
+}
+
+	focus = {
+		id = LT_pcr
+		icon = GFX_goal_pcr
+		x = 15
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_staterev }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_popularities = { ideology = revolutionary_socialism popularity = 50 }
+			set_popularities = { ideology = vanguard_socialism popularity = 40 }
+			set_popularities = { ideology = totalitarian_socialism popularity = 10 }
+			# NOTA: 'set_popularities' non e' un effetto vanilla standard eseguibile a runtime; se la mod non lo definisce come scripted_effect, sostituisci con blocchi add_popularity calcolando il delta dal valore attuale.
+			set_country_flag = LT_pcr_done
+		}
+	}
+
+	focus = {
+		id = LT_lotta
+		icon = GFX_goal_lotta
+		x = 4
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_international }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_lotta_done
+		}
+	}
+
+	focus = {
+		id = LT_councils
+		icon = GFX_goal_councils
+		x = 2
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# L'Italia parte dentro la NATO (add_to_faction = ITA nel
+			# file di history degli USA) e create_faction non fa nulla
+			# se sei gia' in una fazione: senza questa riga
+			# l'Internazionale non nasceva e Roma restava alleata di
+			# chi stava per andare a combattere.
+			leave_faction = yes
+			create_faction = "The Internationale"
+			set_country_flag = LT_councils_done
+		}
+	}
+
+	focus = {
+		id = LT_marxengels
+		icon = GFX_goal_marxengels
+		x = 4
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 200
+			set_country_flag = LT_marxengels_done
+		}
+	}
+
+	focus = {
+		id = LT_atheism
+		icon = GFX_goal_atheism
+		x = 8
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
+		mutually_exclusive = { focus = LT_secular }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.02
+			add_manpower = 150000
+			set_country_flag = LT_atheism_done
+		}
+	}
+
+	focus = {
+		id = LT_secular
+		icon = GFX_goal_secular
+		x = 6
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
+		mutually_exclusive = { focus = LT_atheism }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = LT_secular_done
+		}
+	}
+
+	focus = {
+		id = LT_truelenin
+		icon = GFX_goal_truelenin
+		x = 4
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_marxengels }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.08
+			add_political_power = 300
+			add_war_support = 0.1
+			add_command_power = 50
+			set_country_flag = LT_truelenin_done
+		}
+	}
+
+	focus = {
+		id = LT_marriage
+		icon = GFX_goal_marriage
+		x = 11
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
+		mutually_exclusive = { focus = LT_civilwed }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.1
+			set_country_flag = LT_marriage_done
+		}
+	}
+
+	focus = {
+		id = LT_civilwed
+		icon = GFX_goal_civilwed
+		x = 13
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_lotta focus = LT_pcr }
+		mutually_exclusive = { focus = LT_marriage }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.3
+			set_country_flag = LT_civilwed_done
+		}
+	}
+
+	focus = {
+		id = LT_pariscommune
+		icon = GFX_goal_pariscommune
+		x = 0
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_pariscommune_done
+		}
+	}
+
+	focus = {
+		id = LT_redfra
+		icon = GFX_goal_redfra
+		x = 2
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ITA_red_france_effect = yes			# FRA si spacca: il nord industriale diventa FSR
+			declare_war_on = { target = FRA type = annex_everything }
+			# FRA esce dalla fazione dentro ITA_red_*_effect
+			set_country_flag = LT_redfra_done
+		}
+	}
+
+	focus = {
+		id = LT_newredarmy1
+		icon = GFX_goal_newredarmy1
+		x = 4
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 20
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_newredarmy1_done
+		}
+	}
+
+	focus = {
+		id = LT_fiveyear
+		icon = GFX_goal_fiveyear
+		x = 6
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_fiveyear_done
+		}
+	}
+
+	focus = {
+		id = LT_partyworking1
+		icon = GFX_goal_partyworking1
+		x = 9
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_truelenin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.2
+			set_country_flag = LT_partyworking1_done
+		}
+	}
+
+	focus = {
+		id = LT_partyworking2
+		icon = GFX_goal_partyworking2
+		x = 11
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_parlcomm }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = LT_partyworking2_done
+		}
+	}
+
+	focus = {
+		id = LT_workersclubs
+		icon = GFX_goal_workersclubs
+		x = 0
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_pariscommune }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 8
+				add_building_construction = {
+					type = industrial_complex
+					level = 7
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_workersclubs_done
+		}
+	}
+
+	focus = {
+		id = LT_redspa
+		icon = GFX_goal_redspa
+		x = 2
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redfra }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ITA_red_spain_effect = yes			# SPR si spacca: Madrid e il centro-sud diventano SPA
+			ITA_red_portugal_effect = yes			# POR si spacca: la terraferma diventa PRS
+			declare_war_on = { target = SPR type = annex_everything }
+			declare_war_on = { target = POR type = annex_everything }
+			# SPR esce dalla fazione dentro ITA_red_*_effect
+			# POR esce dalla fazione dentro ITA_red_*_effect
+			set_country_flag = LT_redspa_done
+		}
+	}
+
+	focus = {
+		id = LT_checka
+		icon = GFX_goal_checka
+		x = 4
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_newredarmy1 }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			create_intelligence_agency = yes
+			# NOTA: "agency_upgrade_number 10" non e' sintassi HOI4 valida (segnalato come incerto anche nel testo originale) ed e' stato omesso.
+			set_country_flag = LT_checka_done
+		}
+	}
+
+	focus = {
+		id = LT_laborunion
+		icon = GFX_goal_laborunion
+		x = 6
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_fiveyear }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_laborunion_done
+		}
+	}
+
+	focus = {
+		id = LT_automation
+		icon = GFX_goal_automation
+		x = 10
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_partyworking1 focus = LT_partyworking2 }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_research_slot = 1
+			set_country_flag = LT_automation_done
+		}
+	}
+
+	focus = {
+		id = LT_councilcity
+		icon = GFX_goal_councilcity
+		x = 0
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_workersclubs }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 200
+			set_country_flag = LT_councilcity_done
+		}
+	}
+
+	focus = {
+		id = LT_redger
+		icon = GFX_goal_redger
+		x = 2
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redspa }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ITA_red_germany_effect = yes			# GER si spacca: Berlino e il nord diventano GDR
+			declare_war_on = { target = GER type = annex_everything }
+			# GER esce dalla fazione dentro ITA_red_*_effect
+			set_country_flag = LT_redger_done
+		}
+	}
+
+	focus = {
+		id = LT_womenmil
+		icon = GFX_goal_womenmil
+		x = 4
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_checka }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_manpower = 1000000
+			add_war_support = 0.2
+			add_stability = -0.2
+			set_country_flag = LT_womenmil_done
+		}
+	}
+
+	focus = {
+		id = LT_publicschool
+		icon = GFX_goal_publicschool
+		x = 6
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_laborunion }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.04
+			add_research_slot = 1
+			set_country_flag = LT_publicschool_done
+		}
+	}
+
+	focus = {
+		id = LT_coopfactories
+		icon = GFX_goal_coopfactories
+		x = 10
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_automation }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_coopfactories_done
+		}
+	}
+
+	focus = {
+		id = LT_revspirit
+		icon = GFX_goal_revspirit
+		x = 0
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_councilcity }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			# NOTA: stessa nota di LT_solidarity sull'effetto limitato all'Italia.
+			set_country_flag = LT_revspirit_done
+		}
+	}
+
+	focus = {
+		id = LT_redeng
+		icon = GFX_goal_redeng
+		x = 2
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redger }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ITA_red_britain_effect = yes			# ENG si spacca: Londra e il nord diventano SRB
+			declare_war_on = { target = ENG type = annex_everything }
+			# ENG esce dalla fazione dentro ITA_red_*_effect
+			set_country_flag = LT_redeng_done
+		}
+	}
+
+	focus = {
+		id = LT_radicalize
+		icon = GFX_goal_radicalize
+		x = 4
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_womenmil }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 50
+			add_manpower = 10000
+			add_command_power = 100
+			add_war_support = 0.5
+			set_country_flag = LT_radicalize_done
+		}
+	}
+
+	focus = {
+		id = LT_buildplan
+		icon = GFX_goal_buildplan
+		x = 6
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_publicschool }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 10
+				add_building_construction = {
+					type = industrial_complex
+					level = 8
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_buildplan_done
+		}
+	}
+
+	focus = {
+		id = LT_freeinternet
+		icon = GFX_goal_freeinternet
+		x = 10
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_coopfactories }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_research_slot = 1
+			set_country_flag = LT_freeinternet_done
+		}
+	}
+
+	focus = {
+		id = LT_workersunite
+		icon = GFX_goal_workersunite
+		x = 4
+		y = 11
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_congress }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# NOTA: 'can_declare_war_on' e' un TRIGGER, non un effetto eseguibile in completion_reward: nessun effetto applicato. Se vuoi bypassare i normali requisiti di dichiarazione guerra verso quei tag serve modificare i trigger in common/scripted_triggers.
+			set_country_flag = LT_workersunite_done
+		}
+	}
+
+	focus = {
+		id = LT_domino
+		icon = GFX_goal_domino
+		x = 4
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_solidarity focus = LT_house }
+		prerequisite = { focus = LT_redyugo }
+		prerequisite = { focus = LT_redgre }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# I dominoes veri sono i quattro focus qui sotto: Polonia,
+			# Grecia, Scandinavia e Jugoslavia. Qui restano solo i paesi
+			# che nessuna rivoluzione assorbe.
+			puppet = ALB
+			puppet = BEL
+			puppet = HOL
+			puppet = AUS
+			set_country_flag = LT_domino_done
+		}
+	}
+
+	focus = {
+		id = LT_solidarity
+		icon = GFX_goal_solidarity
+		x = 4
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_radicalize }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			# NOTA: il testo parlava di applicare popolarita' anche a RUS/JAP/PRC ecc., ma add_popularity si applica solo al paese che esegue il focus. Applicato solo all'Italia; dimmi se vuoi che si propaghi anche ad altri paesi e aggiungo i blocchi extra.
+			set_country_flag = LT_solidarity_done
+		}
+	}
+
+	focus = {
+		id = LT_house
+		icon = GFX_goal_house
+		x = 6
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_buildplan }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.10
+			set_country_flag = LT_house_done
+		}
+	}
+
+	focus = {
+		id = LT_automationlabour
+		icon = GFX_goal_automationlabour
+		x = 10
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_freeinternet }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_manpower = 1000000
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 30
+				add_building_construction = {
+					type = industrial_complex
+					level = 20
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_automationlabour_done
+		}
+	}
+
+	focus = {
+		id = LT_congress
+		icon = GFX_goal_congress
+		x = 4
+		y = 10
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_domino }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.25 }
+			add_political_power = 300
+			set_country_flag = LT_congress_done
+		}
+	}
+
+	focus = {
+		id = LT_redstar
+		icon = GFX_goal_redstar
+		x = 4
+		y = 12
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_workersunite }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 1000
+			add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
+			# NOTA: 'set_political_party' non e' un effetto HOI4 valido; sostituito con add_popularity per portare vanguard_socialism verso il 100%.
+			set_stability = 1
+			set_war_support = 1
+			# NOTA: stability/war_support vanno da 0 a 1 (0%-100%) negli effetti HOI4; '100' sarebbe fuori scala, usato 1.
+			set_country_flag = LT_redstar_done
+		}
+	}
+
+	focus = {
+		id = LT_eurocomm
+		icon = GFX_goal_eurocomm
+		x = 15
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_pcr }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.5
+			set_country_flag = LT_eurocomm_done
+		}
+	}
+
+	focus = {
+		id = LT_parlcomm
+		icon = GFX_goal_parlcomm
+		x = 15
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_eurocomm }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			hold_election = yes
+			set_country_flag = LT_parlcomm_done
+		}
+	}
+
+	focus = {
+		id = LT_centralcomm
+		icon = GFX_goal_centralcomm
+		x = 14
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_parlcomm }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_centralcomm_done
+		}
+	}
+
+	focus = {
+		id = LT_trotconst
+		icon = GFX_goal_trotconst
+		x = 16
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_parlcomm }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.5
+			set_country_flag = LT_trotconst_done
+		}
+	}
+
+	focus = {
+		id = LT_intellvanguard
+		icon = GFX_goal_intellvanguard
+		x = 14
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_centralcomm }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.2
+			set_country_flag = LT_intellvanguard_done
+		}
+	}
+
+	focus = {
+		id = LT_rediscovergramsci
+		icon = GFX_goal_rediscovergramsci
+		x = 14
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_intellvanguard }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_rediscovergramsci_done
+		}
+	}
+
+	focus = {
+		id = LT_hasta
+		icon = GFX_goal_hasta
+		x = 14
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_rediscovergramsci }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			set_country_flag = LT_hasta_done
+		}
+	}
+
+	focus = {
+		id = LT_permrev
+		icon = GFX_goal_permrev
+		x = 16
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_trotconst }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			set_country_flag = LT_permrev_done
+		}
+	}
+
+	focus = {
+		id = LT_newredarmy2
+		icon = GFX_goal_newredarmy2
+		x = 16
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_permrev }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.1
+			army_experience = 40
+			air_experience = 20
+			add_manpower = 10000
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = arms_factory
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 20
+				add_building_construction = {
+					type = arms_factory
+					level = 20
+					instant_build = yes
+				}
+			}
+			set_country_flag = LT_newredarmy2_done
+		}
+	}
+
+	focus = {
+		id = LT_workersarmy
+		icon = GFX_goal_workersarmy
+		x = 16
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_newredarmy2 }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_manpower = 10000
+			army_experience = 40
+			add_command_power = 30
+			set_country_flag = LT_workersarmy_done
+		}
+	}
+
+	focus = {
+		id = LT_exportrev
+		icon = GFX_goal_exportrev
+		x = 15
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_hasta focus = LT_workersarmy }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# NOTA: come per LT_workersunite, 'can_declare_war_on' e' un trigger e non un effetto: nessun effetto applicato qui.
+			set_country_flag = LT_exportrev_done
+		}
+	}
+
+	focus = {
+		id = LT_trotskyyoung
+		icon = GFX_goal_trotskyyoung
+		x = 15
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_exportrev }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_stability = 1
+			set_war_support = 1
+			add_command_power = 100
+			set_country_flag = LT_trotskyyoung_done
+		}
+	}
+
+	focus = {
+		id = LT_redgre
+		icon = GFX_goal_domino
+		x = 0
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redeng }
+		prerequisite = { focus = LT_revspirit }
+		available = { NOT = { country_exists = GSR } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_greece_effect = yes
+			declare_war_on = { target = GRE type = annex_everything }
+			set_country_flag = LT_redgre_done
+		}
+	}
+
+	focus = {
+		id = LT_redscand
+		icon = GFX_goal_domino
+		x = 1
+		y = 10
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redyugo }
+		prerequisite = { focus = LT_redgre }
+		prerequisite = { focus = LT_domino }
+		available = { NOT = { country_exists = SSR } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_scandinavia_effect = yes
+			declare_war_on = { target = SWE type = annex_everything }
+			set_country_flag = LT_redscand_done
+		}
+	}
+
+	focus = {
+		id = LT_redyugo
+		icon = GFX_goal_domino
+		x = 2
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = LT_redeng }
+		prerequisite = { focus = LT_revspirit }
+		available = { NOT = { country_exists = YUG } }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			ITA_red_yugoslavia_effect = yes
+			declare_war_on = { target = SLV type = annex_everything }
+			declare_war_on = { target = CRO type = annex_everything }
+			declare_war_on = { target = BOS type = annex_everything }
+			declare_war_on = { target = SER type = annex_everything }
+			declare_war_on = { target = MNT type = annex_everything }
+			declare_war_on = { target = MAC type = annex_everything }
+			set_country_flag = LT_redyugo_done
+		}
+	}
+}
