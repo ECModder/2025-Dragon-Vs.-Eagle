@@ -64,6 +64,25 @@ idea_categories = {
 		removal_cost = -1
 	}
 
+	# Same reasoning as state_policies above: this has to live here,
+	# between state_policies and research_production, to land where
+	# it was asked for. Was its own file (common/idea_tags/
+	# DVE_welfare_policies.txt), now empty - kept only so nothing
+	# still references it.
+	welfare_policies = {
+		slot = welfare
+		slot = corruption
+		slot = workers_conditions
+		slot = labour_union
+		slot = civic_jurisdiction
+		slot = military_jurisdiction
+
+		ledger = civilian
+
+		cost = 100
+		removal_cost = -1
+	}
+
 	research_production = {
 		slot = tank_manufacturer
 		slot = naval_manufacturer

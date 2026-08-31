@@ -1,10 +1,11 @@
 # ============================================================
 #   DvE - Better Laws and Policies: Welfare & Jurisdiction row
-#   Six law groups, referenced as slots by common/idea_tags/
-#   DVE_welfare_policies.txt. Simplified 3-tier versions of the
-#   equivalent laws in the real Better Laws and Policies workshop
-#   mod (wp_benefits_policy, wp_labour_laws, is_trade_unions,
-#   mj_code_of_ethics) - field names cross-checked against it.
+#
+#   Second pass: Worker's Conditions (the old safety-standards
+#   group) is gone: the name moves onto what used to be Working
+#   Hours. Corruption is new. Every other group is widened from
+#   its original 3 tiers. Fields are the same verified set used
+#   throughout this row and the State Policies one.
 # ============================================================
 
 ideas = {
@@ -14,155 +15,268 @@ ideas = {
 		use_list_view = yes
 
 		minimal_welfare = {
-
 			cost = 100
 			removal_cost = -1
-			default = yes
-
 			modifier = {
-				political_power_factor = 0.05
-				consumer_goods_factor = -0.03
+				political_power_factor = 0.08
+				consumer_goods_factor = -0.06
+				stability_factor = -0.04
 			}
-
 			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
+			ai_will_do = { factor = 10 }
 		}
 
 		basic_welfare = {
-
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
-				monthly_population = 0.03
+				political_power_factor = 0.04
+				consumer_goods_factor = -0.03
+				stability_factor = -0.02
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+
+		mediocre_welfare = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.02
+				consumer_goods_factor = -0.01
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+
+		standard_welfare = {
+			cost = 100
+			removal_cost = -1
+			default = yes
+			modifier = {
+				monthly_population = 0.02
 				stability_factor = 0.02
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = { factor = 15 }
 		}
 
 		generous_welfare = {
-
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
-				political_power_factor = -0.05
+				political_power_factor = -0.03
+				monthly_population = 0.05
+				consumer_goods_factor = 0.03
+				stability_factor = 0.04
+				drift_defence_factor = 0.05
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+
+		extensive_welfare = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.06
 				monthly_population = 0.08
-				consumer_goods_factor = 0.05
-				stability_factor = 0.05
+				consumer_goods_factor = 0.06
+				stability_factor = 0.06
 				drift_defence_factor = 0.10
 			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 8 }
+		}
 
+		full_welfare_state = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.10
+				monthly_population = 0.12
+				consumer_goods_factor = 0.10
+				stability_factor = 0.08
+				drift_defence_factor = 0.15
+			}
 			cancel_if_invalid = no
 			ai_will_do = {
-				base = 10
-				modifier = { factor = 10  has_stability > 0.5 }
+				base = 5
+				modifier = { factor = 10  OR = { has_government = revolutionary_socialism  has_government = vanguard_socialism } }
 			}
 		}
 	}
 
+	# ============================================================
+	#   Corruption - new. Sectoral Corruption is the default: some
+	#   corruption somewhere is the realistic baseline, not the
+	#   absence of it. Kleptocracy and Absolute Transparency are the
+	#   two ends nobody starts at.
+	# ============================================================
+	corruption = {
+		law = yes
+		use_list_view = yes
+
+		kleptocracy = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				consumer_goods_factor = 0.15
+				stability_factor = -0.15
+				production_factory_efficiency_gain_factor = -0.15
+				local_resources_factor = -0.10
+				civilian_intel_to_others = -15.0
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 5 }
+		}
+
+		institutionalized_corruption = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				consumer_goods_factor = 0.10
+				stability_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.10
+				local_resources_factor = -0.07
+				civilian_intel_to_others = -8.0
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 8 }
+		}
+
+		systemic_corruption = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.06
+				consumer_goods_factor = 0.06
+				stability_factor = -0.06
+				production_factory_efficiency_gain_factor = -0.06
+				local_resources_factor = -0.04
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+
+		rampant_corruption = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.03
+				consumer_goods_factor = 0.03
+				stability_factor = -0.03
+				production_factory_efficiency_gain_factor = -0.03
+				local_resources_factor = -0.02
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 12 }
+		}
+
+		sectoral_corruption = {
+			cost = 100
+			removal_cost = -1
+			default = yes
+			modifier = {
+				stability_factor = -0.01
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 20 }
+		}
+
+		sporadic_corruption = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.02
+				stability_factor = 0.02
+				production_factory_efficiency_gain_factor = 0.03
+				civilian_intel_to_others = 5.0
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+
+		absolute_transparency = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.08
+				civilian_intel_to_others = 15.0
+			}
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 5
+				modifier = { factor = 10  has_government = democratic }
+			}
+		}
+	}
+
+	# ============================================================
+	#   Worker's Conditions - was Working Hours; the old Worker's
+	#   Conditions (safety-standards) group is gone, this took the
+	#   name over.
+	# ============================================================
 	workers_conditions = {
 		law = yes
 		use_list_view = yes
 
-		unregulated_conditions = {
-
+		twelve_hour_workday = {
 			cost = 100
 			removal_cost = -1
-			default = yes
-
 			modifier = {
-				industrial_capacity_factory = 0.05
-				stability_factor = -0.03
+				industrial_capacity_factory = 0.12
+				consumer_goods_factor = -0.06
+				stability_factor = -0.06
 			}
-
-			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
-		}
-
-		basic_safety_standards = {
-
-			cost = 100
-			removal_cost = -1
-
-			modifier = {
-				stability_factor = 0.02
-				production_factory_efficiency_gain_factor = 0.03
-			}
-
-			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
-		}
-
-		strict_safety_standards = {
-
-			cost = 100
-			removal_cost = -1
-
-			modifier = {
-				industrial_capacity_factory = -0.05
-				stability_factor = 0.05
-				production_factory_efficiency_gain_factor = 0.08
-				drift_defence_factor = 0.05
-			}
-
 			cancel_if_invalid = no
 			ai_will_do = { factor = 10 }
 		}
-	}
 
-	working_hours = {
-		law = yes
-		use_list_view = yes
-
-		long_hours = {
-
+		ten_hour_workday = {
 			cost = 100
 			removal_cost = -1
-			default = yes
-
 			modifier = {
-				industrial_capacity_factory = 0.10
-				consumer_goods_factor = -0.05
-				stability_factor = -0.05
+				industrial_capacity_factory = 0.06
+				consumer_goods_factor = -0.02
+				stability_factor = -0.02
 			}
-
 			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
-		}
-
-		standard_hours = {
-
-			cost = 100
-			removal_cost = -1
-
-			modifier = {
-				industrial_capacity_factory = 0.05
-			}
-
-			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
+			ai_will_do = { factor = 12 }
 		}
 
 		eight_hour_workday = {
-
 			cost = 100
 			removal_cost = -1
-
+			default = yes
 			modifier = {
-				consumer_goods_factor = 0.05
-				monthly_population = 0.05
-				line_change_production_efficiency_factor = 0.05
-				stability_factor = 0.10
-				drift_defence_factor = 0.05
+				consumer_goods_factor = 0.03
+				monthly_population = 0.03
+				stability_factor = 0.04
+				drift_defence_factor = 0.03
 			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
 
+		six_hour_workday = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = -0.08
+				consumer_goods_factor = 0.08
+				monthly_population = 0.06
+				stability_factor = 0.08
+				drift_defence_factor = 0.08
+			}
 			cancel_if_invalid = no
 			ai_will_do = {
-				base = 10
-				modifier = { factor = 15  has_stability > 0.5 }
+				base = 8
+				modifier = { factor = 15  OR = { has_government = revolutionary_socialism  has_government = vanguard_socialism } }
 			}
 		}
 	}
@@ -172,55 +286,84 @@ ideas = {
 		use_list_view = yes
 
 		unions_banned = {
-
 			cost = 100
 			removal_cost = -1
-			default = yes
-
 			modifier = {
-				industrial_capacity_factory = 0.05
-				industrial_capacity_dockyard = 0.05
-				stability_factor = -0.02
+				industrial_capacity_factory = 0.06
+				industrial_capacity_dockyard = 0.06
+				stability_factor = -0.03
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = {
-				base = 15
+				base = 10
 				modifier = { factor = 10  NOT = { has_government = democratic } }
 			}
 		}
 
 		unions_tolerated = {
-
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
-				stability_factor = 0.0
+				stability_factor = -0.01
 			}
-
 			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
+			ai_will_do = { factor = 12 }
 		}
 
 		unions_allowed = {
-
-			available = { NOT = { has_government = fascism } }
-
 			cost = 100
 			removal_cost = -1
-
+			default = yes
+			available = { NOT = { has_government = fascism } }
 			modifier = {
-				stability_factor = 0.05
-				production_factory_efficiency_gain_factor = 0.10
-				industrial_capacity_factory = -0.05
-				industrial_capacity_dockyard = -0.05
+				stability_factor = 0.03
+				production_factory_efficiency_gain_factor = 0.05
 			}
-
 			cancel_if_invalid = yes
 			ai_will_do = {
-				base = 10
-				modifier = { factor = 15  has_government = democratic }
+				base = 15
+				modifier = { factor = 10  has_government = democratic }
+			}
+		}
+
+		state_labour_unions = {
+			cost = 100
+			removal_cost = -1
+			available = { NOT = { has_government = democratic } }
+			modifier = {
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.08
+				political_power_gain = 0.04
+				drift_defence_factor = 0.08
+			}
+			cancel_if_invalid = yes
+			ai_will_do = {
+				base = 8
+				modifier = { factor = 15  OR = { has_government = authoritarianism  has_government = authoritarian_socialism  has_government = totalitarian_socialism } }
+			}
+		}
+
+		workers_labour_union = {
+			cost = 100
+			removal_cost = -1
+			available = {
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = vanguard_socialism
+				}
+			}
+			modifier = {
+				stability_factor = 0.02
+				production_factory_efficiency_gain_factor = 0.12
+				industrial_capacity_factory = -0.08
+				industrial_capacity_dockyard = -0.08
+				political_power_gain = 0.06
+				drift_defence_factor = 0.12
+			}
+			cancel_if_invalid = yes
+			ai_will_do = {
+				base = 15
+				modifier = { factor = 10  has_government = revolutionary_socialism }
 			}
 		}
 	}
@@ -229,50 +372,57 @@ ideas = {
 		law = yes
 		use_list_view = yes
 
-		lenient_justice = {
-
+		formal_justice = {
 			cost = 100
 			removal_cost = -1
-			default = yes
-
 			modifier = {
 				stability_factor = -0.02
 				political_power_gain = 0.02
 			}
-
 			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
+			ai_will_do = { factor = 10 }
 		}
 
-		standard_justice = {
-
+		ordinary_justice = {
 			cost = 100
 			removal_cost = -1
-
+			default = yes
 			modifier = {
 				stability_factor = 0.0
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = { factor = 15 }
 		}
 
 		strict_justice = {
-
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
-				stability_factor = 0.05
+				stability_factor = 0.04
 				political_power_gain = -0.02
-				drift_defence_factor = 0.10
-				civilian_intel_to_others = -10.0
+				drift_defence_factor = 0.08
+				civilian_intel_to_others = -8.0
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = {
 				base = 10
 				modifier = { factor = 15  NOT = { has_government = democratic } }
+			}
+		}
+
+		equal_justice = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				political_power_gain = -0.04
+				drift_defence_factor = 0.04
+				research_speed_factor = 0.03
+			}
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 8
+				modifier = { factor = 15  has_government = democratic }
 			}
 		}
 	}
@@ -281,50 +431,71 @@ ideas = {
 		law = yes
 		use_list_view = yes
 
-		lax_discipline = {
+		forbearing_discipline = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				experience_gain_army_unit_factor = -0.08
+				max_command_power = 0.15
+			}
+			cancel_if_invalid = no
+			ai_will_do = { factor = 8 }
+		}
 
+		codified_discipline = {
 			cost = 100
 			removal_cost = -1
 			default = yes
-
 			modifier = {
-				experience_gain_army_unit_factor = -0.05
-				max_command_power = 0.10
+				political_power_factor = 0.01
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = { factor = 15 }
 		}
 
-		standard_discipline = {
-
+		draconian_discipline = {
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
+				army_attack_factor = 0.02
+				experience_gain_army_unit_factor = 0.05
+				max_command_power = -0.05
 				political_power_factor = 0.02
 			}
-
 			cancel_if_invalid = no
-			ai_will_do = { factor = 15 }
+			ai_will_do = { factor = 10 }
 		}
 
 		strict_discipline = {
-
 			cost = 100
 			removal_cost = -1
-
 			modifier = {
-				army_attack_factor = 0.03
-				experience_gain_army_unit_factor = 0.10
-				max_command_power = -0.10
+				army_attack_factor = 0.04
+				experience_gain_army_unit_factor = 0.08
+				max_command_power = -0.08
 				political_power_factor = 0.03
 			}
-
 			cancel_if_invalid = no
 			ai_will_do = {
 				base = 10
-				modifier = { factor = 15  has_war = yes }
+				modifier = { factor = 10  has_war = yes }
+			}
+		}
+
+		iron_fist = {
+			cost = 100
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.06
+				experience_gain_army_unit_factor = 0.12
+				max_command_power = -0.12
+				political_power_factor = 0.05
+				stability_factor = -0.03
+			}
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 5
+				modifier = { factor = 15  has_war = yes  NOT = { has_government = democratic } }
 			}
 		}
 	}
