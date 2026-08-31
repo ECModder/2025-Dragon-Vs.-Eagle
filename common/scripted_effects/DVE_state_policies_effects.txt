@@ -61,3 +61,207 @@ DVE_set_economic_model_effect = {
 		add_ideas = socialist_economy
 	}
 }
+
+
+# ============================================================
+#   DvE - Better Laws and Policies: automatic State Policies
+#   and Welfare & Jurisdiction rows
+#
+#   Same mechanism as DVE_set_economic_model_effect: every one
+#   of these 11 law groups is locked to the current government
+#   (each tier's own "available" in common/ideas/
+#   DVE_state_policies.txt, DVE_political_laws.txt and
+#   DVE_welfare_policies.txt requires it), and this effect is
+#   the only thing that actually assigns them - on_startup for
+#   every country, and again from on_ruling_party_change.
+#
+#   Unlike Economic Model there is no free ladder here: the
+#   player's only way off the ideology-assigned tier is the
+#   350pp decisions in common/decisions/DVE_state_policies.txt.
+# ============================================================
+
+DVE_set_state_policies_effect = {
+
+	if = {
+		limit = { has_government = totalitarian_socialism }
+		add_ideas = high_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = total_censorship
+		add_ideas = party_guided_state
+		add_ideas = basic_welfare
+		add_ideas = systemic_corruption
+		add_ideas = ten_hour_workday
+		add_ideas = state_labour_unions
+		add_ideas = strict_justice
+		add_ideas = iron_fist
+	}
+	else_if = {
+		limit = { has_government = authoritarian_socialism }
+		add_ideas = moderate_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = press_censorship
+		add_ideas = party_guided_state
+		add_ideas = standard_welfare
+		add_ideas = rampant_corruption
+		add_ideas = eight_hour_workday
+		add_ideas = state_labour_unions
+		add_ideas = strict_justice
+		add_ideas = strict_discipline
+	}
+	else_if = {
+		limit = { has_government = vanguard_socialism }
+		add_ideas = high_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = state_propaganda
+		add_ideas = regulated_press
+		add_ideas = councils_state
+		add_ideas = full_welfare_state
+		add_ideas = sporadic_corruption
+		add_ideas = six_hour_workday
+		add_ideas = workers_labour_union
+		add_ideas = equal_justice
+		add_ideas = draconian_discipline
+	}
+	else_if = {
+		limit = { has_government = revolutionary_socialism }
+		add_ideas = high_taxation
+		add_ideas = managed_opposition
+		add_ideas = state_propaganda
+		add_ideas = regulated_press
+		add_ideas = councils_state
+		add_ideas = extensive_welfare
+		add_ideas = sporadic_corruption
+		add_ideas = six_hour_workday
+		add_ideas = workers_labour_union
+		add_ideas = equal_justice
+		add_ideas = draconian_discipline
+	}
+	else_if = {
+		limit = { has_government = progressive }
+		add_ideas = high_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = minimal_propaganda
+		add_ideas = free_press
+		add_ideas = functioning_state
+		add_ideas = generous_welfare
+		add_ideas = sectoral_corruption
+		add_ideas = eight_hour_workday
+		add_ideas = unions_allowed
+		add_ideas = ordinary_justice
+		add_ideas = codified_discipline
+	}
+	else_if = {
+		limit = { has_government = centrist }
+		add_ideas = moderate_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = state_propaganda
+		add_ideas = free_press
+		add_ideas = functioning_state
+		add_ideas = standard_welfare
+		add_ideas = sectoral_corruption
+		add_ideas = eight_hour_workday
+		add_ideas = unions_allowed
+		add_ideas = ordinary_justice
+		add_ideas = codified_discipline
+	}
+	else_if = {
+		limit = { has_government = conservative }
+		add_ideas = moderate_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = state_propaganda
+		add_ideas = free_press
+		add_ideas = functioning_state
+		add_ideas = mediocre_welfare
+		add_ideas = sectoral_corruption
+		add_ideas = eight_hour_workday
+		add_ideas = unions_allowed
+		add_ideas = ordinary_justice
+		add_ideas = codified_discipline
+	}
+	else_if = {
+		limit = { has_government = reactionary }
+		add_ideas = low_taxation
+		add_ideas = managed_opposition
+		add_ideas = state_propaganda
+		add_ideas = press_censorship
+		add_ideas = improvised_bureaucracy
+		add_ideas = mediocre_welfare
+		add_ideas = rampant_corruption
+		add_ideas = ten_hour_workday
+		add_ideas = unions_tolerated
+		add_ideas = strict_justice
+		add_ideas = strict_discipline
+	}
+	else_if = {
+		limit = { has_government = authoritarianism }
+		add_ideas = moderate_taxation
+		add_ideas = banned_opposition
+		add_ideas = state_propaganda
+		add_ideas = press_censorship
+		add_ideas = party_guided_state
+		add_ideas = basic_welfare
+		add_ideas = systemic_corruption
+		add_ideas = twelve_hour_workday
+		add_ideas = unions_tolerated
+		add_ideas = strict_justice
+		add_ideas = strict_discipline
+	}
+	else_if = {
+		limit = { has_government = autocracy }
+		add_ideas = moderate_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = total_censorship
+		add_ideas = party_guided_state
+		add_ideas = basic_welfare
+		add_ideas = institutionalized_corruption
+		add_ideas = twelve_hour_workday
+		add_ideas = unions_tolerated
+		add_ideas = strict_justice
+		add_ideas = strict_discipline
+	}
+	else_if = {
+		limit = { has_government = absolutism }
+		add_ideas = high_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = total_censorship
+		add_ideas = party_guided_state
+		add_ideas = basic_welfare
+		add_ideas = institutionalized_corruption
+		add_ideas = twelve_hour_workday
+		add_ideas = unions_banned
+		add_ideas = formal_justice
+		add_ideas = codified_discipline
+	}
+	else_if = {
+		limit = { has_government = ultranationalism }
+		add_ideas = low_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = total_censorship
+		add_ideas = party_guided_state
+		add_ideas = minimal_welfare
+		add_ideas = kleptocracy
+		add_ideas = twelve_hour_workday
+		add_ideas = unions_banned
+		add_ideas = formal_justice
+		add_ideas = iron_fist
+	}
+	else_if = {
+		limit = { has_government = fundamentalism }
+		add_ideas = low_taxation
+		add_ideas = banned_opposition
+		add_ideas = total_ideological_mobilisation
+		add_ideas = total_censorship
+		add_ideas = improvised_bureaucracy
+		add_ideas = minimal_welfare
+		add_ideas = kleptocracy
+		add_ideas = twelve_hour_workday
+		add_ideas = unions_banned
+		add_ideas = formal_justice
+		add_ideas = forbearing_discipline
+	}
+}

@@ -21,6 +21,14 @@ ideas = {
 		# the position of default/available changed to match it.
 
 		functioning_state = {
+			available = {
+				OR = {
+					has_government = conservative
+					has_government = centrist
+					has_government = progressive
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -41,6 +49,13 @@ ideas = {
 		}
 
 		improvised_bureaucracy = {
+			available = {
+				OR = {
+					has_government = fundamentalism
+					has_government = reactionary
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -56,11 +71,18 @@ ideas = {
 		}
 
 		party_guided_state = {
-
 			available = {
-				has_stability > 0.5
-				NOT = { has_government = democratic }
+				OR = {
+					has_government = authoritarian_socialism
+					has_government = totalitarian_socialism
+					has_government = authoritarianism
+					has_government = autocracy
+					has_government = absolutism
+					has_government = ultranationalism
+				}
 			}
+
+
 
 			cost = 100
 			removal_cost = -1
@@ -87,14 +109,14 @@ ideas = {
 		# councils - fits the two ideologies that also drive the new
 		# Economic Model ladder below.
 		councils_state = {
-
 			available = {
-				has_stability > 0.5
 				OR = {
 					has_government = revolutionary_socialism
 					has_government = vanguard_socialism
 				}
 			}
+
+
 
 			cost = 100
 			removal_cost = -1
@@ -126,6 +148,15 @@ ideas = {
 		use_list_view = yes
 
 		tolerated_dissent = {
+			available = {
+				OR = {
+					has_government = progressive
+					has_government = centrist
+					has_government = conservative
+					has_government = vanguard_socialism
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -146,6 +177,13 @@ ideas = {
 		}
 
 		managed_opposition = {
+			available = {
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = reactionary
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -162,8 +200,19 @@ ideas = {
 		}
 
 		banned_opposition = {
+			available = {
+				OR = {
+					has_government = absolutism
+					has_government = ultranationalism
+					has_government = totalitarian_socialism
+					has_government = autocracy
+					has_government = fundamentalism
+					has_government = authoritarianism
+					has_government = authoritarian_socialism
+				}
+			}
 
-			available = { NOT = { has_government = democratic } }
+
 
 			cost = 100
 			removal_cost = -1
@@ -398,6 +447,14 @@ ideas = {
 		use_list_view = yes
 
 		low_taxation = {
+			available = {
+				OR = {
+					has_government = ultranationalism
+					has_government = reactionary
+					has_government = fundamentalism
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -418,6 +475,16 @@ ideas = {
 		}
 
 		moderate_taxation = {
+			available = {
+				OR = {
+					has_government = centrist
+					has_government = conservative
+					has_government = authoritarian_socialism
+					has_government = autocracy
+					has_government = authoritarianism
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -434,6 +501,16 @@ ideas = {
 		}
 
 		high_taxation = {
+			available = {
+				OR = {
+					has_government = progressive
+					has_government = vanguard_socialism
+					has_government = revolutionary_socialism
+					has_government = totalitarian_socialism
+					has_government = absolutism
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -458,6 +535,8 @@ ideas = {
 		use_list_view = yes
 
 		minimal_propaganda = {
+			available = { has_government = progressive }
+
 
 			cost = 100
 			removal_cost = -1
@@ -473,6 +552,17 @@ ideas = {
 		}
 
 		state_propaganda = {
+			available = {
+				OR = {
+					has_government = centrist
+					has_government = conservative
+					has_government = vanguard_socialism
+					has_government = revolutionary_socialism
+					has_government = reactionary
+					has_government = authoritarianism
+				}
+			}
+
 
 			cost = 100
 			removal_cost = -1
@@ -492,8 +582,18 @@ ideas = {
 		}
 
 		total_ideological_mobilisation = {
+			available = {
+				OR = {
+					has_government = absolutism
+					has_government = ultranationalism
+					has_government = totalitarian_socialism
+					has_government = autocracy
+					has_government = fundamentalism
+					has_government = authoritarian_socialism
+				}
+			}
 
-			available = { NOT = { has_government = democratic } }
+
 
 			cost = 100
 			removal_cost = -1

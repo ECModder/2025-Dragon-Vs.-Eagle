@@ -1,0 +1,1069 @@
+# ============================================================
+#   DvE - Better Laws and Policies: manual override, 350pp
+#
+#   Every one of these 11 law groups is ideology-locked
+#   (common/scripted_effects/DVE_state_policies_effects.txt sets
+#   the correct tier automatically, and each tier's own
+#   "available" blocks manual selection in the normal law
+#   panel). This is the only way around that: pay 350pp, get
+#   whichever tier you pick, no matter what your government
+#   would otherwise assign. Repeatable - nothing stops paying
+#   again later for a different tier, or to undo this one.
+#
+#   One decision per tier (50 total), each hidden once you
+#   already have that tier via "NOT = { has_idea = X }".
+# ============================================================
+
+DVE_policy_override_category = {
+
+	DVE_set_low_taxation = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = low_taxation }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = low_taxation
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_moderate_taxation = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = moderate_taxation }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = moderate_taxation
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_high_taxation = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = high_taxation }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = high_taxation
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_tolerated_dissent = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = tolerated_dissent }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = tolerated_dissent
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_managed_opposition = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = managed_opposition }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = managed_opposition
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_banned_opposition = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = banned_opposition }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = banned_opposition
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_minimal_propaganda = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = minimal_propaganda }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = minimal_propaganda
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_state_propaganda = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = state_propaganda }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = state_propaganda
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_total_ideological_mobilisation = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = total_ideological_mobilisation }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = total_ideological_mobilisation
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_free_press = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = free_press }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = free_press
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_regulated_press = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = regulated_press }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = regulated_press
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_state_media = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = state_media }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = state_media
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_press_censorship = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = press_censorship }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = press_censorship
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_total_censorship = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = total_censorship }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = total_censorship
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_functioning_state = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = functioning_state }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = functioning_state
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_improvised_bureaucracy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = improvised_bureaucracy }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = improvised_bureaucracy
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_party_guided_state = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = party_guided_state }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = party_guided_state
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_councils_state = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = councils_state }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = councils_state
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_minimal_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = minimal_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = minimal_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_basic_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = basic_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = basic_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_mediocre_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = mediocre_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = mediocre_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_standard_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = standard_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = standard_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_generous_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = generous_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = generous_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_extensive_welfare = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = extensive_welfare }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = extensive_welfare
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_full_welfare_state = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = full_welfare_state }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = full_welfare_state
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_kleptocracy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = kleptocracy }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = kleptocracy
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_institutionalized_corruption = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = institutionalized_corruption }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = institutionalized_corruption
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_systemic_corruption = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = systemic_corruption }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = systemic_corruption
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_rampant_corruption = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = rampant_corruption }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = rampant_corruption
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_sectoral_corruption = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = sectoral_corruption }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = sectoral_corruption
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_sporadic_corruption = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = sporadic_corruption }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = sporadic_corruption
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_absolute_transparency = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = absolute_transparency }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = absolute_transparency
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_twelve_hour_workday = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = twelve_hour_workday }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = twelve_hour_workday
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_ten_hour_workday = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = ten_hour_workday }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = ten_hour_workday
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_eight_hour_workday = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = eight_hour_workday }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = eight_hour_workday
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_six_hour_workday = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = six_hour_workday }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = six_hour_workday
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_unions_banned = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = unions_banned }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = unions_banned
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_unions_tolerated = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = unions_tolerated }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = unions_tolerated
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_unions_allowed = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = unions_allowed }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = unions_allowed
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_state_labour_unions = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = state_labour_unions }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = state_labour_unions
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_workers_labour_union = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = workers_labour_union }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = workers_labour_union
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_formal_justice = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = formal_justice }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = formal_justice
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_ordinary_justice = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = ordinary_justice }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = ordinary_justice
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_strict_justice = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = strict_justice }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = strict_justice
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_equal_justice = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = equal_justice }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = equal_justice
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_forbearing_discipline = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = forbearing_discipline }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = forbearing_discipline
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_codified_discipline = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = codified_discipline }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = codified_discipline
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_draconian_discipline = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = draconian_discipline }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = draconian_discipline
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_strict_discipline = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = strict_discipline }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = strict_discipline
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_iron_fist = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = iron_fist }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = iron_fist
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+}

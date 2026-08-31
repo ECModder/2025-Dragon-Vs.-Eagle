@@ -15,6 +15,14 @@ ideas = {
 		use_list_view = yes
 
 		free_press = {
+			available = {
+				OR = {
+					has_government = progressive
+					has_government = centrist
+					has_government = conservative
+				}
+			}
+
 
 			cost = 150
 			removal_cost = -1
@@ -42,6 +50,13 @@ ideas = {
 		}
 
 		regulated_press = {
+			available = {
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = vanguard_socialism
+				}
+			}
+
 
 			cost = 150
 			removal_cost = -1
@@ -63,6 +78,8 @@ ideas = {
 		}
 
 		state_media = {
+			available = { always = no }
+
 
 			cost = 150
 			removal_cost = -1
@@ -88,6 +105,14 @@ ideas = {
 		}
 
 		press_censorship = {
+			available = {
+				OR = {
+					has_government = authoritarian_socialism
+					has_government = reactionary
+					has_government = authoritarianism
+				}
+			}
+
 
 			cost = 150
 			removal_cost = -1
@@ -118,6 +143,16 @@ ideas = {
 		}
 
 		total_censorship = {
+			available = {
+				OR = {
+					has_government = absolutism
+					has_government = ultranationalism
+					has_government = totalitarian_socialism
+					has_government = autocracy
+					has_government = fundamentalism
+				}
+			}
+
 
 			cost = 150
 			removal_cost = -1
