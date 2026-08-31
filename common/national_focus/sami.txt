@@ -30,7 +30,7 @@ focus_tree = {
 		}
 	}
 	
-	default = yes
+	default = no
  # Elections
 	initial_show_position = {
 		x = 20
@@ -66,6 +66,35 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 75
 			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_reclaim_our_capital
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_fate_of_our_politics
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.05
+			add_war_support = 0.1
+			148 = {
+    			owner = {
+        			ROOT = {
+            			create_wargoal = {
+                			type = take_state_focus
+                			target = PREV
+                			generator = { 148 }
+            			}
+        			}
+    			}
+			}
 		}
 	}
 
@@ -215,6 +244,24 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SMI_prepare_coronation
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 7
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_ruler_for_life
+		}
+		
+		completion_reward = {
+			add_political_power = -75
+			add_stability = 0.05
+			# Temp negative ind buff
+		}
+	}
+
+	focus = {
 		id = SMI_crown_our_king
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 12
@@ -222,14 +269,13 @@ focus_tree = {
 		cost = 5
 
 		prerequisite = {
-			focus = SMI_demand_lappland
+			focus = SMI_prepare_coronation
 			focus = SMI_ruler_for_life
 		}
 		
 		completion_reward = {
-			add_political_power = -75
-			add_stability = -0.05
-			# Demand Lappland from sweden, on refusal, ability to start a limited war
+			add_political_power = 75
+			add_stability = 0.15
 		}
 	}
 
@@ -288,6 +334,95 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 75
 			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = SMI_secure_our_grip
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 16
+		y = 5
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_shift_to_ultranationalism
+		}
+		
+		completion_reward = {
+			add_political_power = 125
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = SMI_militarize_society
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 16
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_secure_our_grip
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.15
+			# National spirit
+		}
+	}
+
+	focus = {
+		id = SMI_prepare_for_war
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 18
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_secure_our_grip
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+				}
+			}
+			add_manpower = 50000
+		}
+	}
+
+	focus = {
+		id = SMI_autarky
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 16
+		y = 7
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_militarize_society
+		}
+		prerequisite = {
+			focus = SMI_prepare_for_war
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+				}
+			}
+			# Add some resources
+			add_ideas = closed_economy
 		}
 	}
 
