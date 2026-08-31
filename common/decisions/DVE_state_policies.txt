@@ -1,0 +1,71 @@
+# ============================================================
+#   DvE - Better Laws and Policies: the paid economic upgrade
+#
+#   revolutionary_socialism starts on Syndicalist Economy,
+#   vanguard_socialism starts on Socialist Economy - both set
+#   automatically by DVE_set_economic_model_effect (common/
+#   scripted_effects/DVE_state_policies_effects.txt). These two
+#   decisions are the ONLY way past that starting tier: 300pp,
+#   one-way, and the flag they set is read by economic_model's
+#   own "available" trigger (common/ideas/DVE_state_policies.txt)
+#   to unlock the next law up.
+# ============================================================
+
+DVE_economic_upgrade_category = {
+
+	DVE_upgrade_to_socialist_economy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			has_government = revolutionary_socialism
+			has_idea = syndicalist_economy
+			has_political_power > 299
+		}
+
+		visible = {
+			has_government = revolutionary_socialism
+			NOT = { has_country_flag = DVE_econ_upgraded_socialist }
+		}
+
+		cost = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			set_country_flag = DVE_econ_upgraded_socialist
+			add_ideas = socialist_economy
+		}
+
+		ai_will_do = { factor = 8 }
+	}
+
+	DVE_upgrade_to_communist_economy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			has_government = vanguard_socialism
+			has_idea = socialist_economy
+			has_political_power > 299
+		}
+
+		visible = {
+			has_government = vanguard_socialism
+			NOT = { has_country_flag = DVE_econ_upgraded_communist }
+		}
+
+		cost = 300
+		fire_only_once = yes
+
+		complete_effect = {
+			set_country_flag = DVE_econ_upgraded_communist
+			add_ideas = communist_economy
+		}
+
+		ai_will_do = { factor = 8 }
+	}
+}

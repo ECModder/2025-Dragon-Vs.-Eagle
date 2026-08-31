@@ -1,0 +1,63 @@
+# ============================================================
+#   DvE - Better Laws and Policies: automatic Economic Model
+#
+#   Called once for every country on_startup (common/on_actions/
+#   DVE_on_actions.txt) and again from on_ruling_party_change
+#   whenever a government changes. The economic_model law group
+#   (common/ideas/DVE_state_policies.txt) is not player-selectable
+#   - every tier's own "available" locks it to one government, so
+#   this effect is the only thing that ever actually assigns it.
+#
+#   revolutionary_socialism and vanguard_socialism always reset to
+#   their BASE tier here (Syndicalist / Socialist respectively),
+#   clearing any paid upgrade - becoming that ideology fresh always
+#   starts from the bottom of its own ladder again.
+# ============================================================
+
+DVE_set_economic_model_effect = {
+
+	if = {
+		limit = {
+			OR = {
+				has_government = conservative
+				has_government = centrist
+				has_government = reactionary
+				has_government = fundamentalism
+			}
+		}
+		add_ideas = market_economy
+	}
+	else_if = {
+		limit = { has_government = progressive }
+		add_ideas = mixed_economy
+	}
+	else_if = {
+		limit = {
+			OR = {
+				has_government = authoritarianism
+				has_government = autocracy
+				has_government = absolutism
+				has_government = ultranationalism
+			}
+		}
+		add_ideas = command_economy
+	}
+	else_if = {
+		limit = { has_government = authoritarian_socialism }
+		add_ideas = market_socialism
+	}
+	else_if = {
+		limit = { has_government = totalitarian_socialism }
+		add_ideas = state_capitalism
+	}
+	else_if = {
+		limit = { has_government = revolutionary_socialism }
+		clr_country_flag = DVE_econ_upgraded_socialist
+		add_ideas = syndicalist_economy
+	}
+	else_if = {
+		limit = { has_government = vanguard_socialism }
+		clr_country_flag = DVE_econ_upgraded_communist
+		add_ideas = socialist_economy
+	}
+}

@@ -57,6 +57,18 @@ on_actions = {
 
 			# Moved to history/countries/RUS - Russia.txt: declare_war_on
 			# has no vanilla precedent firing from on_startup.
+
+			# --------------------------------------------------
+			#   BETTER LAWS AND POLICIES - starting Economic Model
+			#   Bootstraps every country's ideology-locked economic
+			#   law on day one. add_ideas (used here, same as the
+			#   existing solidarity lines above) is a plain, simple
+			#   operation - unlike declare_war_on this isn't the kind
+			#   of thing on_startup has burned us on before.
+			# --------------------------------------------------
+			every_country = {
+				DVE_set_economic_model_effect = yes
+			}
 		}
 	}
 
@@ -77,6 +89,12 @@ on_actions = {
 	# ====================================================
 	on_ruling_party_change = {
 		effect = {
+			# Better Laws and Policies: re-lock the Economic Model to
+			# whatever the new government is. Runs for every country,
+			# not just ITA - this is the "not player-changeable, only
+			# changes when the ideology does" half of the mechanic.
+			DVE_set_economic_model_effect = yes
+
 			if = {
 				limit = { tag = ITA }
 

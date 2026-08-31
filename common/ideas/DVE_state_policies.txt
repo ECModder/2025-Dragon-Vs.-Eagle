@@ -1,0 +1,520 @@
+# ============================================================
+#   DvE - Better Laws and Policies: the "State Policies" row
+#
+#   Five law groups, referenced as slots by common/idea_tags/
+#   DVE_state_policies.txt (the sixth slot, press_laws, already
+#   exists in DVE_political_laws.txt). Simplified 3-tier version
+#   of the equivalent laws in the real Better Laws and Policies
+#   workshop mod - field names cross-checked against it rather
+#   than guessed.
+# ============================================================
+
+ideas = {
+
+	national_ideology = {
+		law = yes
+		use_list_view = yes
+
+		# order: Functioning State -> Improvised Bureaucracy ->
+		# Party-Guided State -> Councils State. The first three keep
+		# the exact bonuses they had before - only the sequence and
+		# the position of default/available changed to match it.
+
+		functioning_state = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				political_power_gain = 0.03
+				stability_factor = 0.02
+				research_speed_factor = 0.02
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 20
+				modifier = { factor = 10  has_stability > 0.5 }
+			}
+		}
+
+		improvised_bureaucracy = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = -0.05
+				stability_factor = -0.03
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = { factor = 1 }
+		}
+
+		party_guided_state = {
+
+			available = {
+				has_stability > 0.5
+				NOT = { has_government = democratic }
+			}
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.08
+				stability_factor = 0.05
+				drift_defence_factor = 0.15
+				research_speed_factor = -0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 30
+					OR = { has_government = fascism  has_government = communism }
+				}
+			}
+		}
+
+		# new fourth tier: the party apparatus itself gives way to
+		# councils - fits the two ideologies that also drive the new
+		# Economic Model ladder below.
+		councils_state = {
+
+			available = {
+				has_stability > 0.5
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = vanguard_socialism
+				}
+			}
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+				drift_defence_factor = 0.20
+				research_speed_factor = 0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 30
+					OR = {
+						has_government = revolutionary_socialism
+						has_government = vanguard_socialism
+					}
+				}
+			}
+		}
+	}
+
+	civil_liberties = {
+		law = yes
+		use_list_view = yes
+
+		tolerated_dissent = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				stability_factor = -0.02
+				drift_defence_factor = -0.10
+				political_power_factor = 0.05
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 15
+				modifier = { factor = 20  has_government = democratic }
+			}
+		}
+
+		managed_opposition = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.02
+				drift_defence_factor = 0.05
+				political_power_factor = -0.02
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = { factor = 20 }
+		}
+
+		banned_opposition = {
+
+			available = { NOT = { has_government = democratic } }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.06
+				war_support_factor = 0.05
+				drift_defence_factor = 0.25
+				political_power_factor = -0.10
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 25
+					OR = { has_government = fascism  has_government = communism }
+				}
+			}
+		}
+	}
+
+	# ============================================================
+	#   Economic Model - locked to ideology, not player-selectable.
+	#
+	#   Every tier's "available" requires the one specific
+	#   government it belongs to, so the normal law panel never
+	#   offers a real choice - whichever tier matches your current
+	#   government is the only one ever selectable there. The
+	#   actual assignment is automatic, done by
+	#   DVE_set_economic_model_effect (common/scripted_effects/
+	#   DVE_state_policies_effects.txt), called once for every
+	#   country on_startup and again from on_ruling_party_change
+	#   whenever a government changes.
+	#
+	#   The two exceptions: revolutionary_socialism starts on
+	#   Syndicalist Economy and vanguard_socialism starts on
+	#   Socialist Economy, each upgradable ONCE for 300pp via
+	#   common/decisions/DVE_state_policies.txt. Socialist Economy
+	#   is therefore reachable two ways - as vanguard_socialism's
+	#   own base, or as revolutionary_socialism's paid upgrade -
+	#   which is why its availability checks a flag on one side and
+	#   nothing on the other.
+	# ============================================================
+	economic_model = {
+		law = yes
+		use_list_view = yes
+
+		market_economy = {
+
+			available = {
+				OR = {
+					has_government = conservative
+					has_government = centrist
+					has_government = reactionary
+					has_government = fundamentalism
+				}
+			}
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				consumer_goods_factor = -0.15
+				production_speed_buildings_factor = -0.05
+				research_speed_factor = 0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		mixed_economy = {
+
+			available = { has_government = progressive }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		command_economy = {
+
+			available = {
+				OR = {
+					has_government = authoritarianism
+					has_government = autocracy
+					has_government = absolutism
+					has_government = ultranationalism
+				}
+			}
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = 0.10
+				local_resources_factor = 0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		market_socialism = {
+
+			available = { has_government = authoritarian_socialism }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.0
+				production_speed_buildings_factor = 0.08
+				local_resources_factor = 0.08
+				political_power_gain = 0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		state_capitalism = {
+
+			available = { has_government = totalitarian_socialism }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.08
+				production_speed_buildings_factor = 0.15
+				local_resources_factor = 0.12
+				stability_factor = -0.02
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		syndicalist_economy = {
+
+			available = { has_government = revolutionary_socialism }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				production_speed_buildings_factor = 0.12
+				local_resources_factor = 0.15
+				political_power_gain = 0.05
+				stability_factor = -0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		socialist_economy = {
+
+			# vanguard_socialism starts here outright; revolutionary_socialism
+			# only gets here after paying for the upgrade (the flag below).
+			available = {
+				OR = {
+					has_government = vanguard_socialism
+					AND = {
+						has_government = revolutionary_socialism
+						has_country_flag = DVE_econ_upgraded_socialist
+					}
+				}
+			}
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.10
+				production_speed_buildings_factor = 0.18
+				local_resources_factor = 0.18
+				political_power_gain = 0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+
+		communist_economy = {
+
+			# only reachable as vanguard_socialism's paid upgrade.
+			available = {
+				has_government = vanguard_socialism
+				has_country_flag = DVE_econ_upgraded_communist
+			}
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.15
+				production_speed_buildings_factor = 0.25
+				local_resources_factor = 0.25
+				political_power_gain = 0.08
+				stability_factor = 0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = { factor = 1 }
+		}
+	}
+
+	tax_policy = {
+		law = yes
+		use_list_view = yes
+
+		low_taxation = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				political_power_factor = -0.10
+				consumer_goods_factor = -0.05
+				stability_factor = 0.03
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 15
+				modifier = { factor = 15  has_government = democratic }
+			}
+		}
+
+		moderate_taxation = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = 0.0
+				stability_factor = 0.0
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = { factor = 20 }
+		}
+
+		high_taxation = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.20
+				consumer_goods_factor = 0.10
+				stability_factor = -0.05
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 15  has_war = yes }
+			}
+		}
+	}
+
+	ideological_mobilisation = {
+		law = yes
+		use_list_view = yes
+
+		minimal_propaganda = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				drift_defence_factor = -0.05
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = { factor = 15 }
+		}
+
+		state_propaganda = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				drift_defence_factor = 0.10
+				war_support_factor = 0.03
+				stability_factor = 0.02
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 15
+				modifier = { factor = 15  has_war = yes }
+			}
+		}
+
+		total_ideological_mobilisation = {
+
+			available = { NOT = { has_government = democratic } }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				drift_defence_factor = 0.30
+				war_support_factor = 0.08
+				stability_factor = 0.05
+				political_power_gain = -0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+				modifier = {
+					factor = 25
+					has_war = yes
+					OR = { has_government = fascism  has_government = communism }
+				}
+			}
+		}
+	}
+}
