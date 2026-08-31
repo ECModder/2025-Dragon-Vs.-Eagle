@@ -1,0 +1,331 @@
+# ============================================================
+#   DvE - Better Laws and Policies: Welfare & Jurisdiction row
+#   Six law groups, referenced as slots by common/idea_tags/
+#   DVE_welfare_policies.txt. Simplified 3-tier versions of the
+#   equivalent laws in the real Better Laws and Policies workshop
+#   mod (wp_benefits_policy, wp_labour_laws, is_trade_unions,
+#   mj_code_of_ethics) - field names cross-checked against it.
+# ============================================================
+
+ideas = {
+
+	welfare = {
+		law = yes
+		use_list_view = yes
+
+		minimal_welfare = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				political_power_factor = 0.05
+				consumer_goods_factor = -0.03
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		basic_welfare = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				monthly_population = 0.03
+				stability_factor = 0.02
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		generous_welfare = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = -0.05
+				monthly_population = 0.08
+				consumer_goods_factor = 0.05
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 10  has_stability > 0.5 }
+			}
+		}
+	}
+
+	workers_conditions = {
+		law = yes
+		use_list_view = yes
+
+		unregulated_conditions = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				industrial_capacity_factory = 0.05
+				stability_factor = -0.03
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		basic_safety_standards = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.02
+				production_factory_efficiency_gain_factor = 0.03
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		strict_safety_standards = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = -0.05
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.08
+				drift_defence_factor = 0.05
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 10 }
+		}
+	}
+
+	working_hours = {
+		law = yes
+		use_list_view = yes
+
+		long_hours = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				industrial_capacity_factory = 0.10
+				consumer_goods_factor = -0.05
+				stability_factor = -0.05
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		standard_hours = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				industrial_capacity_factory = 0.05
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		eight_hour_workday = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.05
+				monthly_population = 0.05
+				line_change_production_efficiency_factor = 0.05
+				stability_factor = 0.10
+				drift_defence_factor = 0.05
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 15  has_stability > 0.5 }
+			}
+		}
+	}
+
+	labour_union = {
+		law = yes
+		use_list_view = yes
+
+		unions_banned = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				industrial_capacity_factory = 0.05
+				industrial_capacity_dockyard = 0.05
+				stability_factor = -0.02
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 15
+				modifier = { factor = 10  NOT = { has_government = democratic } }
+			}
+		}
+
+		unions_tolerated = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.0
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		unions_allowed = {
+
+			available = { NOT = { has_government = fascism } }
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.05
+				production_factory_efficiency_gain_factor = 0.10
+				industrial_capacity_factory = -0.05
+				industrial_capacity_dockyard = -0.05
+			}
+
+			cancel_if_invalid = yes
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 15  has_government = democratic }
+			}
+		}
+	}
+
+	civic_jurisdiction = {
+		law = yes
+		use_list_view = yes
+
+		lenient_justice = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				stability_factor = -0.02
+				political_power_gain = 0.02
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		standard_justice = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.0
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		strict_justice = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = -0.02
+				drift_defence_factor = 0.10
+				civilian_intel_to_others = -10.0
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 15  NOT = { has_government = democratic } }
+			}
+		}
+	}
+
+	military_jurisdiction = {
+		law = yes
+		use_list_view = yes
+
+		lax_discipline = {
+
+			cost = 100
+			removal_cost = -1
+			default = yes
+
+			modifier = {
+				experience_gain_army_unit_factor = -0.05
+				max_command_power = 0.10
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		standard_discipline = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.02
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = { factor = 15 }
+		}
+
+		strict_discipline = {
+
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				army_attack_factor = 0.03
+				experience_gain_army_unit_factor = 0.10
+				max_command_power = -0.10
+				political_power_factor = 0.03
+			}
+
+			cancel_if_invalid = no
+			ai_will_do = {
+				base = 10
+				modifier = { factor = 15  has_war = yes }
+			}
+		}
+	}
+}
