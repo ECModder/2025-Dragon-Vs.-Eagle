@@ -244,6 +244,43 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SMI_establish_regency
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 5
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_ruler_for_life
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.15
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_question_of_leadership
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_establish_regency
+		}
+		
+		completion_reward = {
+			add_political_power = -50
+			add_stability = 0.05
+			# Desicion where you decide between absolute monarchy or constitutional
+			# Other desicion if giving power to nobles
+		}
+	}
+
+	focus = {
 		id = SMI_prepare_coronation
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 12
@@ -251,7 +288,7 @@ focus_tree = {
 		cost = 5
 
 		prerequisite = {
-			focus = SMI_ruler_for_life
+			focus = SMI_question_of_leadership
 		}
 		
 		completion_reward = {
