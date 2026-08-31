@@ -69,6 +69,11 @@ on_actions = {
 			every_country = {
 				DVE_set_economic_model_effect = yes
 				DVE_set_state_policies_effect = yes
+
+				# Generic Decisions: Arms/Surplus/Black Market share this
+				# counter (common/decisions/DVE_market_decisions.txt) to
+				# cap concurrent purchase orders at 3 across all markets.
+				set_variable = { DVE_market_orders_active = 0 }
 			}
 		}
 	}

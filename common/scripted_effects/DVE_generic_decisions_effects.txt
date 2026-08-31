@@ -1,0 +1,26 @@
+# ============================================================
+#   DvE - Generic Decisions: shared helper effects
+# ============================================================
+
+# Used by the delayed reward of "Crack Down on Opposition":
+# boosts whichever of the mod's 13 ideologies is currently ruling,
+# since add_popularity needs a literal ideology token and there is
+# no "current ruling party" shortcut for it.
+DVE_boost_ruling_party_popularity_effect = {
+
+	if = { limit = { has_government = totalitarian_socialism }  add_popularity = { ideology = totalitarian_socialism popularity = 0.03 } }
+	else_if = { limit = { has_government = authoritarian_socialism }  add_popularity = { ideology = authoritarian_socialism popularity = 0.03 } }
+	else_if = { limit = { has_government = vanguard_socialism }  add_popularity = { ideology = vanguard_socialism popularity = 0.03 } }
+	else_if = { limit = { has_government = revolutionary_socialism }  add_popularity = { ideology = revolutionary_socialism popularity = 0.03 } }
+	else_if = { limit = { has_government = progressive }  add_popularity = { ideology = progressive popularity = 0.03 } }
+	else_if = { limit = { has_government = centrist }  add_popularity = { ideology = centrist popularity = 0.03 } }
+	else_if = { limit = { has_government = conservative }  add_popularity = { ideology = conservative popularity = 0.03 } }
+	else_if = { limit = { has_government = reactionary }  add_popularity = { ideology = reactionary popularity = 0.03 } }
+	else_if = { limit = { has_government = authoritarianism }  add_popularity = { ideology = authoritarianism popularity = 0.03 } }
+	else_if = { limit = { has_government = autocracy }  add_popularity = { ideology = autocracy popularity = 0.03 } }
+	else_if = { limit = { has_government = absolutism }  add_popularity = { ideology = absolutism popularity = 0.03 } }
+	else_if = { limit = { has_government = ultranationalism }  add_popularity = { ideology = ultranationalism popularity = 0.03 } }
+	else_if = { limit = { has_government = fundamentalism }  add_popularity = { ideology = fundamentalism popularity = 0.03 } }
+
+	add_stability = -0.03
+}

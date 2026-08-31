@@ -1,0 +1,289 @@
+# ============================================================
+#   DvE - Arms / Surplus / Black Market: delayed delivery
+#
+#   One event per purchasable item in common/decisions/
+#   DVE_market_decisions.txt. Each delivers its equipment 25
+#   days after the order was placed and frees the shared
+#   DVE_market_orders_active slot back up.
+# ============================================================
+
+add_namespace = dve_market
+
+# --- Arms Market ---
+
+country_event = { # 1: 10 000 Infantry Equipment
+	id = dve_market.1
+	title = dve_market.1.t
+	desc = dve_market.1.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.1.a
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 10000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 2: 2000 Support Equipment
+	id = dve_market.2
+	title = dve_market.2.t
+	desc = dve_market.2.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.2.a
+		add_equipment_to_stockpile = { type = support_equipment amount = 2000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 3: 500 Towed Artillery
+	id = dve_market.3
+	title = dve_market.3.t
+	desc = dve_market.3.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.3.a
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 500 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 4: 1000 Anti-Tank Equipment
+	id = dve_market.4
+	title = dve_market.4.t
+	desc = dve_market.4.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.4.a
+		add_equipment_to_stockpile = { type = anti_tank_equipment amount = 1000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 5: 500 Anti-Air Equipment
+	id = dve_market.5
+	title = dve_market.5.t
+	desc = dve_market.5.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.5.a
+		add_equipment_to_stockpile = { type = anti_air_equipment amount = 500 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 6: 200 IFVs
+	id = dve_market.6
+	title = dve_market.6.t
+	desc = dve_market.6.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.6.a
+		add_equipment_to_stockpile = { type = mechanized_equipment amount = 200 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 7: 100 Main Battle Tanks
+	id = dve_market.7
+	title = dve_market.7.t
+	desc = dve_market.7.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.7.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 100 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 8: 50 SP Artillery
+	id = dve_market.8
+	title = dve_market.8.t
+	desc = dve_market.8.d
+	picture = GFX_report_event_generic_factory
+	is_triggered_only = yes
+	option = {
+		name = dve_market.8.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 50 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+# --- Surplus Market ---
+
+country_event = { # 9: 10 000 Cold War Rifles
+	id = dve_market.9
+	title = dve_market.9.t
+	desc = dve_market.9.d
+	picture = GFX_report_event_generic_rifles
+	is_triggered_only = yes
+	option = {
+		name = dve_market.9.a
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 10000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 10: 1000 Cold War Howitzers
+	id = dve_market.10
+	title = dve_market.10.t
+	desc = dve_market.10.d
+	picture = GFX_report_event_generic_rifles
+	is_triggered_only = yes
+	option = {
+		name = dve_market.10.a
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 1000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 11: 300 Cold War IFVs
+	id = dve_market.11
+	title = dve_market.11.t
+	desc = dve_market.11.d
+	picture = GFX_report_event_generic_rifles
+	is_triggered_only = yes
+	option = {
+		name = dve_market.11.a
+		add_equipment_to_stockpile = { type = mechanized_equipment amount = 300 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 12: 200 Surplus MBTs
+	id = dve_market.12
+	title = dve_market.12.t
+	desc = dve_market.12.d
+	picture = GFX_report_event_generic_rifles
+	is_triggered_only = yes
+	option = {
+		name = dve_market.12.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 200 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 13: 100 Surplus SP Artillery
+	id = dve_market.13
+	title = dve_market.13.t
+	desc = dve_market.13.d
+	picture = GFX_report_event_generic_rifles
+	is_triggered_only = yes
+	option = {
+		name = dve_market.13.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 100 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+# --- Black Market ---
+
+country_event = { # 14: 5000 Infantry Equipment
+	id = dve_market.14
+	title = dve_market.14.t
+	desc = dve_market.14.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.14.a
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 15: 250 Towed Artillery
+	id = dve_market.15
+	title = dve_market.15.t
+	desc = dve_market.15.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.15.a
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 250 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 16: 500 Anti-Tank Equipment
+	id = dve_market.16
+	title = dve_market.16.t
+	desc = dve_market.16.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.16.a
+		add_equipment_to_stockpile = { type = anti_tank_equipment amount = 500 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 17: 250 Anti-Air Equipment
+	id = dve_market.17
+	title = dve_market.17.t
+	desc = dve_market.17.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.17.a
+		add_equipment_to_stockpile = { type = anti_air_equipment amount = 250 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 18: 1000 Support Equipment
+	id = dve_market.18
+	title = dve_market.18.t
+	desc = dve_market.18.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.18.a
+		add_equipment_to_stockpile = { type = support_equipment amount = 1000 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 19: 100 IFVs
+	id = dve_market.19
+	title = dve_market.19.t
+	desc = dve_market.19.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.19.a
+		add_equipment_to_stockpile = { type = mechanized_equipment amount = 100 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 20: 50 Main Battle Tanks
+	id = dve_market.20
+	title = dve_market.20.t
+	desc = dve_market.20.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.20.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 50 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}
+
+country_event = { # 21: 25 SP Artillery
+	id = dve_market.21
+	title = dve_market.21.t
+	desc = dve_market.21.d
+	picture = GFX_report_event_generic_strike
+	is_triggered_only = yes
+	option = {
+		name = dve_market.21.a
+		add_equipment_to_stockpile = { type = medium_tank_equipment amount = 25 producer = ROOT }
+		add_to_variable = { DVE_market_orders_active = -1 }
+	}
+}

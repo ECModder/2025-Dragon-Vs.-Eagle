@@ -1,0 +1,303 @@
+# ============================================================
+#   DvE - Generic Decisions: Arms / Surplus / Black Market
+#
+#   Straightforward equipment purchases: pay PP, get the stated
+#   amount of equipment after a delay. All three markets share a
+#   single pool of 3 concurrent orders, tracked in the country
+#   variable DVE_market_orders_active (initialised to 0 on_startup
+#   in common/on_actions/DVE_on_actions.txt). Every purchase
+#   decision here increments it and fires a delayed event
+#   (events/DVE_market_events.txt) that delivers the equipment
+#   25 days later (the middle of the 20-30 day range) and frees
+#   the slot back up.
+#
+#   MBT and SP Artillery purchases both use the medium_tank_
+#   equipment archetype: this mod's tank tech (common/units/
+#   equipment/tank_chassis.txt) is the unmodified NSB modular
+#   tank designer, which has no separate self-propelled-artillery
+#   equipment type distinct from the regular tank line - flagged
+#   to Matteo, fine as a placeholder until/unless a dedicated SPG
+#   archetype gets built.
+# ============================================================
+
+DVE_arms_market_category = {
+
+	DVE_arms_market_infantry_equipment = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 125
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.1 days = 25 }
+		}
+	}
+
+	DVE_arms_market_support_equipment = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 80
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.2 days = 25 }
+		}
+	}
+
+	DVE_arms_market_towed_artillery = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 110
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.3 days = 25 }
+		}
+	}
+
+	DVE_arms_market_anti_tank_equipment = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 90
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.4 days = 25 }
+		}
+	}
+
+	DVE_arms_market_anti_air_equipment = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 110
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.5 days = 25 }
+		}
+	}
+
+	DVE_arms_market_ifv = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 150
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.6 days = 25 }
+		}
+	}
+
+	DVE_arms_market_mbt = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 175
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.7 days = 25 }
+		}
+	}
+
+	DVE_arms_market_sp_artillery = {
+		icon = GFX_decision_generic_tank
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 200
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.8 days = 25 }
+		}
+	}
+}
+
+DVE_surplus_market_category = {
+
+	DVE_surplus_market_cold_war_rifles = {
+		icon = GFX_decision_generic_trucks
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 65
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.9 days = 25 }
+		}
+	}
+
+	DVE_surplus_market_cold_war_howitzers = {
+		icon = GFX_decision_generic_trucks
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 60
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.10 days = 25 }
+		}
+	}
+
+	DVE_surplus_market_cold_war_ifvs = {
+		icon = GFX_decision_generic_trucks
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 75
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.11 days = 25 }
+		}
+	}
+
+	DVE_surplus_market_mbts = {
+		icon = GFX_decision_generic_trucks
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 90
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.12 days = 25 }
+		}
+	}
+
+	DVE_surplus_market_sp_artillery = {
+		icon = GFX_decision_generic_trucks
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 60
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.13 days = 25 }
+		}
+	}
+}
+
+DVE_black_market_category = {
+
+	DVE_black_market_infantry_equipment = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 90
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.14 days = 25 }
+		}
+	}
+
+	DVE_black_market_towed_artillery = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 65
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.15 days = 25 }
+		}
+	}
+
+	DVE_black_market_anti_tank_equipment = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 55
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.16 days = 25 }
+		}
+	}
+
+	DVE_black_market_anti_air_equipment = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 60
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.17 days = 25 }
+		}
+	}
+
+	DVE_black_market_support_equipment = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 50
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.18 days = 25 }
+		}
+	}
+
+	DVE_black_market_ifv = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 80
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.19 days = 25 }
+		}
+	}
+
+	DVE_black_market_mbt = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 100
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.20 days = 25 }
+		}
+	}
+
+	DVE_black_market_sp_artillery = {
+		icon = GFX_decision_generic_confiscation
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { check_variable = { var = DVE_market_orders_active value = 3 compare = less_than } }
+		cost = 125
+		fire_only_once = no
+		complete_effect = {
+			add_to_variable = { DVE_market_orders_active = 1 }
+			country_event = { id = dve_market.21 days = 25 }
+		}
+	}
+}
