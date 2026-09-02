@@ -1,0 +1,65 @@
+add_namespace = finlandos
+add_namespace = FIN_start
+
+country_event = {
+	id = FIN_start
+	title = FIN_start.1
+	desc = FIN_start.1.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Leftists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Centrists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Rightists!"
+		add_political_power = 1
+	}
+	option = {
+		name = "Secret paths!"
+		add_political_power = 1
+	}
+}
+
+country_event = {
+	id = finlandos.1
+	title = finlandos.1.t
+	desc = finlandos.1.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "This is our historical claim!"
+		add_political_power = 20
+		add_stability = 0.025
+		ai_chance = {
+			factor = 25
+		}
+		146 = {
+			add_core_of = FIN
+		}
+	}
+
+	option = {
+		name = "Lets Give them a country"
+		add_political_power = -20
+		ai_chance = {
+			factor = 75
+		}
+			146 = {
+				add_core_of = KAR
+			}
+
+			set_autonomy = {
+				target = KAR
+				autonomy_state = autonomy_colony
+				freedom_level = 38
+			}
+
+	}
+}
