@@ -11,18 +11,162 @@ country_event = {
 	option = {
 		name = "Leftists!"
 		add_political_power = 1
+		country_event = FIN_start.2
 	}
 	option = {
 		name = "Centrists!"
 		add_political_power = 1
+		country_event = FIN_start.3
 	}
 	option = {
 		name = "Rightists!"
 		add_political_power = 1
+		country_event = FIN_start.4
+	}
+	option = {
+		name = "Post WW3!"
+		add_political_power = 1
+		country_event = FIN_start.6
 	}
 	option = {
 		name = "Secret paths!"
 		add_political_power = 1
+		country_event = FIN_start.5
+	}
+}
+
+country_event = {
+	id = FIN_start.2
+	title = FIN_start.2.t
+	desc = FIN_start.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "I want to see other paths!"
+		add_political_power = 1
+		country_event = FIN_start.1
+	}
+	option = {
+		name = "Okay!"
+		add_political_power = 1
+	}
+}
+
+country_event = {
+	id = FIN_start.3
+	title = FIN_start.3.t
+	desc = FIN_start.3.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "I want to see other paths!"
+		add_political_power = 1
+		country_event = FIN_start.1
+	}
+	option = {
+		name = "Okay!"
+		add_political_power = 1
+	}
+}
+
+country_event = {
+	id = FIN_start.4
+	title = FIN_start.4.t
+	desc = FIN_start.4.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "I want to see other paths!"
+		add_political_power = 1
+		country_event = FIN_start.1
+	}
+	option = {
+		name = "Okay!"
+		add_political_power = 1
+	}
+}
+
+country_event = {
+	id = FIN_start.5
+	title = FIN_start.5.t
+	desc = FIN_start.5.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "I want to see other paths!"
+		add_political_power = 1
+		country_event = FIN_start.1
+	}
+	option = {
+		name = "Okay!"
+		add_political_power = 1
+	}
+}
+
+country_event = {
+	id = FIN_start.6
+	title = FIN_start.6.t
+	desc = FIN_start.6.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Victory!"
+		add_political_power = 1
+		country_event = FIN_start.7
+	}
+	option = {
+		name = "Defeat!"
+		add_political_power = 1
+		country_event = FIN_start.3
+	}
+	option = {
+		name = "Avoided!"
+		add_political_power = 1
+		country_event = FIN_start.4
+	}
+	option = {
+		name = "I want to go back!"
+		add_political_power = 1
+		country_event = FIN_start.1
+	}
+}
+
+country_event = {
+	id = FIN_start.7
+	title = FIN_start.7.t
+	desc = FIN_start.7.d
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Leftists!"
+		add_political_power = 1
+		country_event = FIN_start.2
+	}
+	option = {
+		name = "Centrists / Monarchists!"
+		add_political_power = 1
+		country_event = FIN_start.3
+	}
+	option = {
+		name = "Rightists!"
+		add_political_power = 1
+		country_event = FIN_start.4
+	}
+	option = {
+		name = "Secret paths!"
+		add_political_power = 1
+		country_event = FIN_start.5
+	}
+	option = {
+		name = "I want to go back!"
+		add_political_power = 1
+		country_event = FIN_start.6
 	}
 }
 
@@ -53,6 +197,9 @@ country_event = {
 		}
 			146 = {
 				add_core_of = KAR
+			}
+			KAR = {
+				transfer_state = 146
 			}
 
 			set_autonomy = {
