@@ -1,0 +1,99 @@
+add_namespace = serbiaos
+
+country_event = {
+	id = serbiaos.1
+	title = serbiaos.1.t
+	desc = serbiaos.1.d
+	is_triggered_only = yes
+
+	option = {
+		name = "Finish the Kosovoan campaign!"
+		add_political_power = -50
+		add_stability = -0.05
+		declare_war_on = {
+			target = KOS
+			type = annex_everything
+		}
+		add_state_core = 802
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = medium_decrease
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "We shall not start wars!"
+		add_political_power = 50
+		add_stability = 0.15
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = medium_increase
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = serbiaos.2
+	title = serbiaos.2.t
+	desc = serbiaos.2.d
+	is_triggered_only = yes
+
+	option = {
+		name = "Success!"
+		add_political_power = 25
+		add_stability = 0.05
+		add_state_core = 105
+		annex_country = {
+			target = MON
+		}
+	}
+}
+
+country_event = {
+	id = serbiaos.3
+	title = serbiaos.3.t
+	desc = serbiaos.3.d
+	is_triggered_only = yes
+
+	option = {
+		name = "Iniate the operation!"
+		add_political_power = -50
+		add_stability = -0.05
+		declare_war_on = {
+			target = BOS
+			type = annex_everything
+		}
+		add_state_core = 104
+		add_state_core = 804
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = small_decrease
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "We will hold off the invasion."
+		add_political_power = 50
+		add_stability = 0.1
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = medium_increase
+				}
+			}
+		}
+	}
+}
