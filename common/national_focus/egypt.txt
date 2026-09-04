@@ -523,4 +523,154 @@ focus_tree = {
 			add_political_power = 100
 		}
 	}
+
+	focus = {
+		id = EGY_re-animate_the_economy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 civ contrusction boost
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_welfare_programs
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 4
+		cost = 10
+		prerequisite = {
+			focus = EGY_re-animate_the_economy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# -0.05 pp gain
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_industrial_scope
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 mil contrusction boost
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = EGY_the_2030_industrial_vision
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_industrial_scope
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 mil contrusction boost
+			# +3% research speed
+		}
+	}
+
+	focus = {
+		id = EGY_economic_optimism
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 5
+		cost = 2
+		prerequisite = {
+			focus = EGY_welfare_programs
+		}
+		prerequisite = {
+			focus = EGY_the_2030_industrial_vision
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# 5% pp boost
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_a_prosperous_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 7
+		cost = 2
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# +3% Research speed
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_the_egypt_of_tomorrow
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 8
+		cost = 2
+		prerequisite = {
+			focus = EGY_a_safer_egypt
+		}
+		prerequisite = {
+			focus = EGY_an_influential_egypt
+		}
+		prerequisite = {
+			focus = EGY_a_prosperous_egypt
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
 }
