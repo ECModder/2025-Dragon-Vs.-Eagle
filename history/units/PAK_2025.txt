@@ -1,0 +1,63 @@
+# ============================================================
+#   PAKISTAN - order of battle, 1.1.2025
+#
+#   PAK's history file referenced "PAK_1936" and "PAK_1939",
+#   neither of which existed anywhere in the mod or in vanilla:
+#   Pakistan started every game with zero divisions. Same bug
+#   already found and fixed for Italy earlier this session.
+#
+#   Eight brigades, mixed for the northern frontier:
+#     2  armoured
+#     3  motorized infantry
+#     3  mountain (West Punjab borders Azad Kashmir directly)
+# ============================================================
+
+division_template = {
+	name = "Armoured Brigade"
+	division_names_group = PAK_ARM_01
+	regiments = {
+		medium_armor = { x = 0 y = 0 }  medium_armor = { x = 0 y = 1 }
+		mechanized   = { x = 1 y = 0 }  mechanized   = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Motorized Infantry Brigade"
+	division_names_group = PAK_MOT_01
+	regiments = {
+		motorized  = { x = 0 y = 0 }  motorized  = { x = 0 y = 1 }  motorized  = { x = 0 y = 2 }
+		mechanized = { x = 1 y = 0 }  mechanized = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  artillery = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Mountain Infantry Brigade"
+	division_names_group = PAK_MTN_01
+	regiments = {
+		mountaineers = { x = 0 y = 0 }  mountaineers = { x = 0 y = 1 }  mountaineers = { x = 0 y = 2 }
+		infantry     = { x = 1 y = 0 }  infantry     = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  logistics_company = { x = 0 y = 1 }
+	}
+}
+
+units = {
+	division = { name = "1st Armoured Brigade" location = 1147 division_template = "Armoured Brigade" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Sind, capital region
+	division = { name = "6th Armoured Brigade" location = 4979 division_template = "Armoured Brigade" start_experience_factor = 0.50 start_equipment_factor = 0.80 }   # West Punjab
+
+	division = { name = "9th Motorized Brigade"  location = 1147 division_template = "Motorized Infantry Brigade" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Sind
+	division = { name = "12th Motorized Brigade" location = 4979 division_template = "Motorized Infantry Brigade" start_experience_factor = 0.50 start_equipment_factor = 0.80 }   # West Punjab
+	division = { name = "23rd Motorized Brigade" location = 4990 division_template = "Motorized Infantry Brigade" start_experience_factor = 0.50 start_equipment_factor = 0.80 }   # Quetta
+
+	# --- the Kashmir frontier: West Punjab is the springboard for June 1st ---
+	division = { name = "12th Mountain Brigade" location = 4979 division_template = "Mountain Infantry Brigade" start_experience_factor = 0.60 start_equipment_factor = 0.85 }
+	division = { name = "19th Mountain Brigade" location = 4979 division_template = "Mountain Infantry Brigade" start_experience_factor = 0.55 start_equipment_factor = 0.80 }
+	division = { name = "Force Command Northern Areas" location = 1107 division_template = "Mountain Infantry Brigade" start_experience_factor = 0.55 start_equipment_factor = 0.85 }   # Waziristan
+}

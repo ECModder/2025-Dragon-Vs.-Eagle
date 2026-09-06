@@ -88,6 +88,40 @@ ideas = {
 			cancel_if_invalid = no
 		}
 
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		light_economic_mobilisation = {
+
+			available = {
+				has_war_support > 0.08
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.325
+				production_speed_industrial_complex_factor = -0.2
+				production_speed_arms_factory_factor = -0.2
+				conversion_cost_civ_to_mil_factor = 0.15
+				conversion_cost_mil_to_civ_factor = 0.15
+				max_fuel_factor = -0.125
+				fuel_gain_factor = -0.325
+				factory_energy_consumption = -0.225
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 2
+
+				modifier = {
+					factor = 10
+
+					is_major = yes
+				}
+			}
+		}
+
 		low_economic_mobilisation = {
 
 			available = {
@@ -125,6 +159,39 @@ ideas = {
    			}
 		}
 
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		rising_economic_mobilisation = {
+
+			available = {
+				has_war_support > 0.20
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.275
+				production_speed_industrial_complex_factor = -0.05
+				production_speed_arms_factory_factor = 0.0
+				conversion_cost_civ_to_mil_factor = -0.05
+				conversion_cost_mil_to_civ_factor = -0.05
+				fuel_gain_factor = -0.175
+				factory_energy_consumption = -0.075
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 2
+
+				modifier = {
+					factor = 10
+
+					is_major = yes
+				}
+			}
+		}
+
 		partial_economic_mobilisation = {
 
 			available = {
@@ -154,6 +221,37 @@ ideas = {
 					is_major = yes
 				}
    			}
+		}
+
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		advancing_economic_mobilisation = {
+
+			available = {
+				has_war_support > 0.375
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.225
+				production_speed_arms_factory_factor = 0.15
+				conversion_cost_civ_to_mil_factor = -0.15
+				conversion_cost_mil_to_civ_factor = -0.15
+				fuel_gain_factor = -0.05
+				factory_energy_consumption = 0.125
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 3
+
+				modifier = {
+					factor = 15
+					manpower_per_military_factory > 1000
+				}
+			}
 		}
 
 		war_economy = {
@@ -188,6 +286,37 @@ ideas = {
 					manpower_per_military_factory >  1000
 				}
    			}
+		}
+
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		near_total_economic_mobilisation = {
+
+			available = {
+				has_war_support > 0.65
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_expected_value = 0.175
+				conscription = -0.015
+				production_speed_arms_factory_factor = 0.25
+				conversion_cost_civ_to_mil_factor = -0.25
+				conversion_cost_mil_to_civ_factor = -0.25
+				factory_energy_consumption = 0.375
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				base = 2
+
+				modifier = {
+					factor = 20
+					manpower_per_military_factory > 8000
+				}
+			}
 		}
 
 		tot_economic_mobilisation = {
@@ -276,6 +405,33 @@ ideas = {
    			}
 		}
 
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		managed_trade = {
+
+			available = {
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				min_export = 0.65
+				industrial_capacity_factory = 0.125
+				industrial_capacity_dockyard = 0.125
+				production_speed_buildings_factor = 0.125
+				research_speed_factor = 0.075
+				civilian_intel_to_others = 30.0
+				navy_intel_to_others = 15.0
+				cic_construction_boost_factor = 0.075
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
 		export_focus = {
 
 			available = {
@@ -322,6 +478,34 @@ ideas = {
    			}
 		}
 
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		restricted_trade = {
+
+			available = {
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				min_export = 0.375
+				industrial_capacity_factory = 0.075
+				industrial_capacity_dockyard = 0.075
+				production_speed_buildings_factor = 0.075
+				research_speed_factor = 0.03
+				civilian_intel_to_others = 15.0
+				navy_intel_to_others = 7.5
+				lend_lease_tension = 0.10
+				cic_construction_boost_factor = 0.025
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 1
+			}
+		}
+
 		limited_exports = {
 			available = {
 			}
@@ -354,6 +538,42 @@ ideas = {
 					has_war = yes
 				}
    			}
+		}
+
+		# ==== DvE - Better Laws and Policies: intermediate tier ====
+		trade_embargo = {
+
+			available = {
+			}
+
+			cost = 150
+			removal_cost = -1
+
+			modifier = {
+				min_export = 0.125
+				industrial_capacity_factory = 0.025
+				industrial_capacity_dockyard = 0.025
+				production_speed_buildings_factor = 0.025
+				research_speed_factor = 0.005
+				civilian_intel_to_others = 5.0
+				navy_intel_to_others = 2.5
+				lend_lease_tension = 0.30
+				cic_construction_boost = -0.075
+			}
+
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 1
+
+				modifier = {
+					factor = 0
+
+					is_major = no
+					is_in_faction = yes
+					has_war = yes
+				}
+			}
 		}
 
 		closed_economy = {

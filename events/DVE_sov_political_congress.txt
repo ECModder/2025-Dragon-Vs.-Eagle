@@ -1,0 +1,267 @@
+# ============================================================
+#   DvE - LE SEI DECISIONI DEL CONGRESSO POLITICO (SOV)
+#
+#   Sostituiscono la scelta a colpi di focus mutually_exclusive
+#   nella prima parte del ramo politico.
+#
+#   Il focus "Political Decision Congress" avvia la catena: la
+#   prima decisione arriva 3 giorni dopo, e ogni decisione
+#   successiva 3 giorni dopo che il giocatore ha risposto alla
+#   precedente. Sei decisioni in tutto, l'ultima e' "All Power
+#   to...".
+#
+#   Ogni opzione fa due cose:
+#     - alza la flag SOV_choice_<focus>, che e' l'unica cosa che
+#       rende quel focus selezionabile (available nel focus tree)
+#     - completa il focus con complete_national_focus, che fa
+#       scattare anche il suo completion_reward normale
+#
+#   Le altre due opzioni della riga restano senza flag, quindi i
+#   loro focus non si possono piu' prendere: e' lo stesso effetto
+#   di prima, ma senza le frecce rosse di mutually_exclusive che
+#   sporcavano l'albero. Le esclusioni vere restano solo sui tre
+#   "All Power to...", come richiesto.
+#
+#   I prerequisiti delle righe 2-6 sono in OR su tutta la riga
+#   precedente: le correnti si possono mescolare liberamente.
+# ============================================================
+
+add_namespace = dve_sovpol
+
+
+# ============================================================
+#   Decisione 1 di 6 - The Shape of the State
+# ============================================================
+country_event = {
+	id = dve_sovpol.1
+	title = dve_sovpol.1.t
+	desc = dve_sovpol.1.d
+	picture = GFX_report_event_communist_leader
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.1.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_state_of_the_councils
+		complete_national_focus = SOV_state_of_the_councils
+			country_event = { id = dve_sovpol.2 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.1.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_parliamentary_communism
+		complete_national_focus = SOV_parliamentary_communism
+			country_event = { id = dve_sovpol.2 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.1.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_bureaucracy_at_the_helm
+		complete_national_focus = SOV_bureaucracy_at_the_helm
+			country_event = { id = dve_sovpol.2 days = 3 }
+	}
+
+}
+
+# ============================================================
+#   Decisione 2 di 6 - How the Plan Is Made
+# ============================================================
+country_event = {
+	id = dve_sovpol.2
+	title = dve_sovpol.2.t
+	desc = dve_sovpol.2.d
+	picture = GFX_report_event_generic_factory
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.2.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_workers_council_planning
+		complete_national_focus = SOV_workers_council_planning
+			country_event = { id = dve_sovpol.3 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.2.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_workers_unions_planning
+		complete_national_focus = SOV_workers_unions_planning
+			country_event = { id = dve_sovpol.3 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.2.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_cadre_bureaucratic_planning
+		complete_national_focus = SOV_cadre_bureaucratic_planning
+			country_event = { id = dve_sovpol.3 days = 3 }
+	}
+
+}
+
+# ============================================================
+#   Decisione 3 di 6 - Where Power Sits
+# ============================================================
+country_event = {
+	id = dve_sovpol.3
+	title = dve_sovpol.3.t
+	desc = dve_sovpol.3.d
+	picture = GFX_report_event_gathering_protest
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.3.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_democratic_centralism
+		complete_national_focus = SOV_democratic_centralism
+			country_event = { id = dve_sovpol.4 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.3.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_strong_supreme_soviet
+		complete_national_focus = SOV_strong_supreme_soviet
+			country_event = { id = dve_sovpol.4 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.3.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_recreation_of_politburo
+		complete_national_focus = SOV_recreation_of_politburo
+			country_event = { id = dve_sovpol.4 days = 3 }
+	}
+
+}
+
+# ============================================================
+#   Decisione 4 di 6 - The Organs of Security
+# ============================================================
+country_event = {
+	id = dve_sovpol.4
+	title = dve_sovpol.4.t
+	desc = dve_sovpol.4.d
+	picture = GFX_report_event_soldiers_marching
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.4.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_cheka_model
+		complete_national_focus = SOV_cheka_model
+			country_event = { id = dve_sovpol.5 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.4.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_nkvd_model
+		complete_national_focus = SOV_nkvd_model
+			country_event = { id = dve_sovpol.5 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.4.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_kgb_model
+		complete_national_focus = SOV_kgb_model
+			country_event = { id = dve_sovpol.5 days = 3 }
+	}
+
+}
+
+# ============================================================
+#   Decisione 5 di 6 - The Voice of the Party
+# ============================================================
+country_event = {
+	id = dve_sovpol.5
+	title = dve_sovpol.5.t
+	desc = dve_sovpol.5.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.5.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_restart_agitprop
+		complete_national_focus = SOV_restart_agitprop
+			country_event = { id = dve_sovpol.6 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.5.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_ideologicheskiy_otdel
+		complete_national_focus = SOV_ideologicheskiy_otdel
+			country_event = { id = dve_sovpol.6 days = 3 }
+	}
+
+	option = {
+		name = dve_sovpol.5.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_otdel_propagandy
+		complete_national_focus = SOV_otdel_propagandy
+			country_event = { id = dve_sovpol.6 days = 3 }
+	}
+
+}
+
+# ============================================================
+#   Decisione 6 di 6 - All Power To...
+# ============================================================
+country_event = {
+	id = dve_sovpol.6
+	title = dve_sovpol.6.t
+	desc = dve_sovpol.6.d
+	picture = GFX_report_event_worker_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_sovpol.6.a
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_all_power_to_soviets
+		complete_national_focus = SOV_all_power_to_soviets
+	}
+
+	option = {
+		name = dve_sovpol.6.b
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_all_power_to_revolution
+		complete_national_focus = SOV_all_power_to_revolution
+	}
+
+	option = {
+		name = dve_sovpol.6.c
+		ai_chance = { factor = 33 }
+
+		set_country_flag = SOV_choice_SOV_all_power_to_party
+		complete_national_focus = SOV_all_power_to_party
+	}
+
+}

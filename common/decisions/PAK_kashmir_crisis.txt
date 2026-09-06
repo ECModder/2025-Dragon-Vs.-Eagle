@@ -1,0 +1,79 @@
+# ============================================================
+#   DvE - Islamabad tries to contain the JAAC
+#
+#   Three routes, each worth 1 point of PAK_jaac_containment.
+#   The 2026.5.1 checkpoint in history/countries/PAK - Pakistan.txt
+#   needs 2 of the 3 to call the crisis contained; short of that,
+#   Kashmir tips to the RCP. fire_only_once = yes on all three:
+#   there is no farming the same route twice in a four-week window.
+# ============================================================
+
+PAK_kashmir_crisis_category = {
+
+	PAK_negotiate_with_jaac = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = PAK }
+
+		available = { has_political_power > 99 }
+
+		cost = 100
+		fire_only_once = yes
+
+		complete_effect = {
+			add_to_variable = { var = PAK_jaac_containment value = 1 }
+			KAS = {
+				add_stability = 0.05
+				add_popularity = { ideology = progressive popularity = -0.10 }
+			}
+		}
+
+		ai_will_do = { factor = 6 }
+	}
+
+	PAK_deploy_frontier_corps = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = PAK }
+
+		available = {
+			has_political_power > 149
+			has_manpower > 4999
+		}
+
+		cost = 150
+		fire_only_once = yes
+
+		complete_effect = {
+			add_to_variable = { var = PAK_jaac_containment value = 1 }
+			KAS = {
+				add_stability = -0.05
+				add_popularity = { ideology = progressive popularity = -0.15 }
+			}
+			add_war_support = 0.03
+		}
+
+		ai_will_do = { factor = 6 }
+	}
+
+	PAK_media_blackout = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = PAK }
+
+		available = { has_political_power > 79 }
+
+		cost = 80
+		fire_only_once = yes
+
+		complete_effect = {
+			add_to_variable = { var = PAK_jaac_containment value = 1 }
+			KAS = {
+				add_popularity = { ideology = progressive popularity = -0.10 }
+			}
+			add_stability = -0.03
+		}
+
+		ai_will_do = { factor = 6 }
+	}
+}

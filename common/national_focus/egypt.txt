@@ -1,15 +1,676 @@
 focus_tree = {
 	id = EGY_focus_tree
-	
+
 	country = {
 		factor = 1
+		
 		modifier = {
 			add = 10
 			tag = EGY
 		}
 	}
 	
-	# ts is wip btw
-	
-	default = no
-	reset_on_civilwar = no
+ # Elections
+	initial_show_position = {
+		x = 23
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1050 }
+
+	focus = {
+		id = EGY_state_of_egyptian_politics
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 1
+		cost = 1
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		completion_reward = {
+			add_ideas = Bulwark_of_egyptian_politics
+		}
+	}
+
+	focus = {
+		id = EGY_adress_the_refugee_crisis
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_strict_immigration_policy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_adress_the_refugee_crisis
+		}
+		mutually_exclusive = {
+			focus = EGY_lenient_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			USA = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = small_decrease
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_contain_the_immigrants
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_strict_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = EGY_compromise_with_israel
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_contain_the_immigrants
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_war_support = -0.03
+			add_stability = 0.03
+			add_opinion_modifier = {
+				target = ISR
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_demand_help_from_the_UN
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 6
+		cost = 2
+		prerequisite = {
+			focus = EGY_compromise_with_israel
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = EGY_lenient_immigration_policy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_adress_the_refugee_crisis
+		}
+		mutually_exclusive = {
+			focus = EGY_strict_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			EGY = {
+				every_neighbor_country = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = small_increase
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_immigrant_rights
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_lenient_immigration_policy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_protect_asylum_seekers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_immigrant_rights
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			add_war_support = -0.02
+			USA = {
+				every_faction_member = {
+					add_opinion_modifier = {
+						target = ROOT
+						modifier = medium_increase
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_welcome_our_palestinian_brothers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 6
+		cost = 2
+		prerequisite = {
+			focus = EGY_protect_asylum_seekers
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_war_support = 0.05
+			add_stability = 0.02
+			add_opinion_modifier = {
+				target = ISR
+				modifier = small_decrease
+			}
+			add_opinion_modifier = {
+				target = PAL
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_a_safer_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 7
+		cost = 2
+		prerequisite = {
+			focus = EGY_demand_help_from_the_UN
+			focus = EGY_welcome_our_palestinian_brothers
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = EGY_egypt_on_world_stage
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+
+	focus = {
+		id = EGY_the_paris_conference
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 3
+		cost = 2
+		prerequisite = {
+			focus = EGY_egypt_on_world_stage
+		}
+		mutually_exclusive = {
+			focus = EGY_russian_oil
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = EGY_negotiate_with_the_house_of_saud
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_the_paris_conference
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			add_opinion_modifier = {
+				target = SAU
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_letter_to_washington_dc
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_negotiate_with_the_house_of_saud
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			add_opinion_modifier = {
+				target = USA
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_russian_oil
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 3
+		cost = 2
+		prerequisite = {
+			focus = EGY_egypt_on_world_stage
+		}
+		mutually_exclusive = {
+			focus = EGY_the_paris_conference
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.02
+			add_opinion_modifier = {
+				target = RUS
+				modifier = medium_increase
+			}
+			add_opinion_modifier = {
+				target = USA
+				modifier = small_decrease
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_send_aid_to_syria
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_russian_oil
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = -25
+			add_war_support = 0.05
+			add_opinion_modifier = {
+				target = SYR
+				modifier = medium_increase
+			}
+			army_experience = 5
+		}
+	}
+
+	focus = {
+		id = EGY_letter_to_tehran
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 5
+		cost = 5
+		prerequisite = {
+			focus = EGY_send_aid_to_syria
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_opinion_modifier = {
+				target = PER
+				modifier = medium_increase
+			}
+			add_opinion_modifier = {
+				target = ISR
+				modifier = small_decrease
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_a_sovereign_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 6
+		cost = 2
+		prerequisite = {
+			focus = EGY_letter_to_washington_dc
+			focus = EGY_letter_to_tehran
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# PP boost
+			add_stability = 0.05
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_an_influential_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 7
+		cost = 2
+		prerequisite = {
+			focus = EGY_a_sovereign_egypt
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# PP boost
+			add_stability = 0.03
+			add_opinion_modifier = {
+				target = SAU
+				modifier = medium_increase
+			}
+			add_opinion_modifier = {
+				target = UAE
+				modifier = medium_increase
+			}
+			add_opinion_modifier = {
+				target = TUR
+				modifier = medium_increase
+			}
+		}
+	}
+
+	focus = {
+		id = EGY_resolve_the_economic_crisis
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 2
+		cost = 2
+		prerequisite = {
+			focus = EGY_state_of_egyptian_politics
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+
+	focus = {
+		id = EGY_re-animate_the_economy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 civ contrusction boost
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = EGY_welfare_programs
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 4
+		cost = 10
+		prerequisite = {
+			focus = EGY_re-animate_the_economy
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# -0.05 pp gain
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_industrial_scope
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 3
+		cost = 5
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 mil contrusction boost
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = EGY_the_2030_industrial_vision
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 14
+		y = 4
+		cost = 5
+		prerequisite = {
+			focus = EGY_industrial_scope
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# National spirit with +5 mil contrusction boost
+			# +3% research speed
+		}
+	}
+
+	focus = {
+		id = EGY_economic_optimism
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 5
+		cost = 2
+		prerequisite = {
+			focus = EGY_welfare_programs
+		}
+		prerequisite = {
+			focus = EGY_the_2030_industrial_vision
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# 5% pp boost
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_a_prosperous_egypt
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 13
+		y = 7
+		cost = 2
+		prerequisite = {
+			focus = EGY_resolve_the_economic_crisis
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			# +3% Research speed
+			add_political_power = 50
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = EGY_the_egypt_of_tomorrow
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 8
+		cost = 2
+		prerequisite = {
+			focus = EGY_a_safer_egypt
+		}
+		prerequisite = {
+			focus = EGY_an_influential_egypt
+		}
+		prerequisite = {
+			focus = EGY_a_prosperous_egypt
+		}
+
+		ai_will_do = {
+			factor = 30
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
+}

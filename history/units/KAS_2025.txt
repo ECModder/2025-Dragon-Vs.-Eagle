@@ -1,0 +1,31 @@
+# ============================================================
+#   AZAD KASHMIR - order of battle, 1.1.2025
+#
+#   Four brigades of Territorial Guard, structured exactly like
+#   ITA's Carabinieri brigade (history/units/ITA_2025.txt): light
+#   infantry/motorized with military police, engineer and
+#   logistics support - a gendarmerie built for internal order,
+#   not for a real front. That's the point: this is what the
+#   RCP's Red Guard is about to outnumber two-to-one on 1 May.
+# ============================================================
+
+division_template = {
+	name = "Territorial Guard Brigade"
+	division_names_group = KAS_TG_01
+	regiments = {
+		infantry  = { x = 0 y = 0 }  infantry  = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }  motorized = { x = 1 y = 1 }
+	}
+	support = {
+		military_police    = { x = 0 y = 0 }
+		engineer           = { x = 0 y = 1 }
+		logistics_company  = { x = 0 y = 2 }
+	}
+}
+
+units = {
+	division = { name = "1st Territorial Guard Brigade" location = 1910 division_template = "Territorial Guard Brigade" start_experience_factor = 0.45 start_equipment_factor = 0.70 }
+	division = { name = "2nd Territorial Guard Brigade" location = 2041 division_template = "Territorial Guard Brigade" start_experience_factor = 0.45 start_equipment_factor = 0.70 }
+	division = { name = "3rd Territorial Guard Brigade" location = 2084 division_template = "Territorial Guard Brigade" start_experience_factor = 0.40 start_equipment_factor = 0.65 }
+	division = { name = "4th Territorial Guard Brigade" location = 10821 division_template = "Territorial Guard Brigade" start_experience_factor = 0.40 start_equipment_factor = 0.65 }
+}

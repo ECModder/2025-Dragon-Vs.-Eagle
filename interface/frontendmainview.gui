@@ -70,11 +70,16 @@ guiTypes = {
 
 		buttonType = {
 			name ="change_background_button"
-			position = { x = -206 y = -24 }
+			# DvE: era GFX_button_238x38 con font hoi_24header a x=-206 y=-24.
+			# Rimpicciolito a 148x34 con font hoi_16mbs. La x e' ricalcolata
+			# perche' e' relativa al centro del contenitore: con 90 pixel di
+			# larghezza in meno serve -116 per tenere il pulsante nello
+			# stesso angolo in basso a destra.
+			position = { x = -116 y = -20 }
 			
-			quadTextureSprite = "GFX_button_238x38"
+			quadTextureSprite = "GFX_button_148x34"
 			buttonText = "CHANGE_BACKGROUND"
-			buttonFont = "hoi_24header"
+			buttonFont = "hoi_16mbs"
 			Orientation = center
 		}
 
@@ -190,7 +195,10 @@ guiTypes = {
 	### MAIN MENU PANEL (DLC Ownership) 
 	containerWindowType = {
 		name  ="mainmenu_dlc_ownership"
-		position = { x=5 y =0 }
+		# DvE: la striscia dei DLC stava in basso a sinistra (x=5 y=0).
+		# Spostata fuori schermo: il gioco continua a popolarla, non si
+		# vede piu'. Per riaverla rimetti x=5 y=0.
+		position = { x=-4000 y =0 }
 		size = { width = 370 height = 583}
 		Orientation = lower_left
 		origo = lower_left
@@ -257,18 +265,22 @@ guiTypes = {
 			pdx_tooltip = "MENU_ACHIEVEMENTS"
 		}
 
+		# DvE: i due loghi Paradox erano a x=15 e x=135, in alto a destra.
+		# Non li cancello - il gioco li cerca per nome - ma li mando
+		# fuori schermo con una y molto negativa. Per rimetterli basta
+		# riportare la y a 15.
 		iconType =
 		{
 			name ="frontend_dev_logo"
 			spriteType = "GFX_frontend_dev_logo"
-			position = { x= 15 y = 15 }
+			position = { x= 15 y = -4000 }
 		}
 		
 		iconType =
 		{
 			name ="pdx_int_logo"
 			spriteType = "GFX_pdx_int_logo"
-			position = { x= 135 y = 15 }
+			position = { x= 135 y = -4000 }
 		}		
 		
 	}		
@@ -276,10 +288,19 @@ guiTypes = {
 	### SINGLE PLAYER MENU
 	containerWindowType = {
 		name = "mainmenu_single_player"
-		position = { x=0 y =0}
+		# DvE: il sotto-menu (Continue / New Game / Load / Tutorial /
+		# Back) era centrato come lo era il menu principale. Stessa
+		# larghezza, 320, quindi stessa x: centro a 200 = 40 pixel di
+		# margine dal bordo. Cosi' si apre esattamente dove stava il
+		# menu da cui arrivi, invece di saltare al centro dello schermo.
+		# DvE: centrato sulla stessa area del pannello principale.
+		# Quello e' alto 450 col fondo a -40, quindi il suo centro sta
+		# a -265 dal fondo. Questo e' alto 395: perche' i due centri
+		# coincidano il suo fondo va a -265 + 395/2 = -68.
+		position = { x=40 y =-68}
 		size = { width = 320 height = 395}
-		Orientation = CENTER
-		Origo = center	
+		Orientation = lower_left
+		Origo = lower_left	
 				
 		background = {
 			name = "Background"		
@@ -381,10 +402,14 @@ guiTypes = {
 		#   che il pannello ci va col suo centro, quindi con larghezza
 		#   320 la x del centro e' 40 + 160 = 200 e restano 40 pixel
 		#   di margine dal bordo. Per staccarla di piu', alza la x.
-		position = { x=200 y =0}
+		# DvE: ancorata all'angolo in basso a sinistra.
+		# Origo = lower_left mette l'angolo del pannello sull'angolo
+		# dello schermo, quindi x=40 e y=-40 sono proprio i 40 pixel
+		# di margine da sinistra e dal fondo.
+		position = { x=40 y =-40}
 		size = { width = 320 height = 450 }
-		Orientation = center_left
-		Origo = center		
+		Orientation = lower_left
+		Origo = lower_left		
 
 		positionType = {
 			name = "subscription_size"
@@ -567,7 +592,11 @@ guiTypes = {
 	
 	containerWindowType = {
 		name = "mainmenu_social_buttons"
-		position = { x=-50 y=25 }	
+		# DvE: la fila di pulsanti social (Discord, X, Facebook,
+		# Instagram, YouTube, forum, homepage, Bluesky) stava al centro
+		# dello schermo, sopra la mappa. Spostata fuori schermo come i
+		# loghi Paradox: per riaverla rimetti x=-50 y=25.
+		position = { x=-4000 y=25 }	
 		size = { width = 240 height = 90 }
 		Orientation = center	
 		origo = center
@@ -589,7 +618,8 @@ guiTypes = {
 		
 		containerWindowType = {
 			name = "social_view_interface_window"
-			position = { x = 250 y = 0  }
+			# DvE: era x=250 y=0, il pulsantino degli amici accanto ai social.
+			position = { x = -4000 y = 0  }
 			size = { width = 60 height = 40 }
 			
 			buttonType = {
@@ -633,7 +663,11 @@ guiTypes = {
 		}
         containerWindowType = {
             name = "first_row"
-			position = { x=48 y=-17 }
+			# DvE: era x=48 y=-17. Spostare il contenitore padre non basta,
+			# il gioco lo riposiziona da solo a runtime usando i positionType:
+			# vanno spostate le due file di pulsanti. Per riaverle, first_row
+			# torna a 48/-17 e second_row a 30/19.
+			position = { x=-4000 y=-17 }
             ButtonType = {
                 name = "homepage_button"
                 position = { x=0 y=0 }
@@ -671,7 +705,7 @@ guiTypes = {
         }
         containerWindowType = {
             name = "second_row"
-			position = { x=30 y=19 }
+			position = { x=-4000 y=19 }
             ButtonType = {
                 name = "bluesky_button"
                 position = { x=0 y=0 }

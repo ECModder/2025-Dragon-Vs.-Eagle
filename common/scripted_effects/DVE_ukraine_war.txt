@@ -1,0 +1,163 @@
+# ============================================================
+#   DvE - LA GUERRA D'UCRAINA
+#
+#   Il gioco parte con RUS e UKR gia' in guerra (on_startup, in
+#   common/on_actions/DVE_on_actions.txt).
+#
+#   MECCANICA, sul modello della guerra italo-etiope del gioco
+#   base: una missione a tempo con una scala di obiettivi.
+#
+#   RUSSIA - 278 giorni per, in quest'ordine:
+#     1) tenere le quattro regioni del Donbass  (Kherson,
+#        Zaporozhe, Donetsk, Lugansk)
+#     2) prendere Odessa
+#     3) prendere Kiev
+#
+#   UCRAINA - gli stessi 278 giorni per, in quest'ordine:
+#     1) riprendere le quattro regioni del Donbass
+#     2) riprendere la Crimea
+#     3) portare la guerra in Russia (Rostov o Belgorod)
+#
+#   I TRE ESITI
+#     A) Kiev cade                -> trattato di vittoria a linea
+#        fissa (Novorossiya + fascia di Kharkov) e cio' che resta
+#        dell'Ucraina diventa un puppet russo con capitale a Kiev
+#     B) il Donbass torna ucraino -> "Lost in Ukraine": trattato,
+#        albero post-sconfitta, crisi di successione
+#     C) scadono i 278 giorni     -> pace bianca
+#
+#   Gli obiettivi NON sono controllati qui: sono missioni con
+#   selectable_mission = no in common/decisions/DVE_ukraine_war.txt,
+#   che si completano da sole appena la condizione e' vera.
+#   Ogni esito e' protetto da una flag, quindi non puo' avvenire
+#   due volte.
+# ============================================================
+
+# --- gli stati che contano ---
+#   Donbass  196 Kherson | 200 Zaporozhe | 227 Donetsk | 228 Lugansk
+#   Crimea   137
+#   Ucraina  192 Odessa  | 202 Kiev
+#   Russia   218 Rostov  | 240 Belgorod
+
+
+# ============================================================
+#   1) L'INIZIO - chiamato da on_startup in scope RUS
+# ============================================================
+DVE_ukraine_war_start_effect = {
+
+	set_country_flag = RUS_ukraine_war_active
+	UKR = { set_country_flag = UKR_ukraine_war_active }
+
+	declare_war_on = { target = UKR type = annex_everything }
+
+	# Il Donbass Mosca lo tiene gia' a inizio partita: il primo
+	# obiettivo e' la posizione di partenza, non una conquista.
+	# Va segnato subito, in silenzio, altrimenti Odessa resta
+	# bloccata per sempre - il controllo degli obiettivi gira su
+	# on_state_control_changed, e se nessuno stato cambia mano non
+	# scatta mai.
+	if = {
+		limit = {
+			controls_state = 196
+			controls_state = 200
+			controls_state = 227
+			controls_state = 228
+		}
+		set_country_flag = RUS_obj_donbass
+	}
+}
+
+
+# ============================================================
+#   3) ESITO A - Kiev cade
+# ============================================================
+RUS_ukraine_victory_effect = {
+
+	# Stessa protezione degli altri due esiti: se la corsa agli
+	# obiettivi e lo scadere dei 278 giorni cadessero lo stesso
+	# giorno, la guerra finisce una volta sola.
+	if = {
+		limit = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+
+		set_country_flag = RUS_ukraine_war_over
+		set_country_flag = RUS_won_the_war_in_ukraine
+		UKR = { set_country_flag = UKR_ukraine_war_over }
+
+		# Prima si chiude la guerra, poi si applica il trattato: a
+		# pace fatta il controllo torna ai proprietari, quindi gli
+		# stati annessi passano a Mosca gia' con proprieta' E
+		# controllo giusti, senza occupazioni residue.
+		white_peace = UKR
+
+		# I confini sono scritti nel trattato, non decisi da dove
+		# si sono fermate le divisioni.
+		RUS_won_war_settlement_effect = yes
+
+		# Il governo amico a Kiev arriva per ultimo, sull'Ucraina
+		# gia' ridotta ai confini del trattato.
+		puppet = UKR
+
+		add_stability = 0.10
+		add_war_support = 0.10
+		add_political_power = 200
+
+		country_event = { id = dve_ukrwar.3 hours = 2 }
+	}
+}
+
+
+# ============================================================
+#   4) ESITO B - il Donbass torna ucraino: "Lost in Ukraine"
+#      Fa esattamente cio' che fa la decisione di debug
+#      DVE_debug_lost_ukraine.
+# ============================================================
+RUS_ukraine_defeat_effect = {
+
+	set_country_flag = RUS_ukraine_war_over
+	UKR = { set_country_flag = UKR_ukraine_war_over }
+	UKR = { set_country_flag = UKR_obj_donbass }
+
+	white_peace = UKR
+
+	# il trattato prima, l'albero dopo: e' l'ordine che tiene
+	# anche la decisione di debug
+	RUS_lost_war_settlement_effect = yes
+	load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
+	set_country_flag = RUS_lost_the_war_in_ukraine
+	add_political_power = 200
+
+	country_event = { id = dve_ukrwar.5 hours = 2 }
+	UKR = { country_event = { id = dve_ukrwar.10 hours = 4 } }
+}
+
+
+# ============================================================
+#   5) ESITO C - scadono i 278 giorni: pace bianca
+#      Protetto da flag: la chiamano entrambe le missioni, ma
+#      succede una volta sola.
+# ============================================================
+DVE_ukraine_white_peace_effect = {
+
+	if = {
+		limit = { NOT = { has_country_flag = RUS_ukraine_war_over } }
+
+		set_country_flag = RUS_ukraine_war_over
+		set_country_flag = RUS_ukraine_white_peace
+		UKR = { set_country_flag = UKR_ukraine_war_over }
+
+		white_peace = UKR
+
+		# Una guerra che non si e' vinta e' una guerra che si e' persa:
+		# anche la pace bianca porta all'albero post-sconfitta e alla
+		# crisi che ne segue. Il trattato pero' NON si applica - nessuno
+		# ha ceduto territori.
+		load_focus_tree = { tree = russian_defeated_focus keep_completed = no }
+		set_country_flag = RUS_lost_the_war_in_ukraine
+
+		add_stability = -0.05
+		add_war_support = -0.10
+
+		country_event = { id = dve_ukrwar.4 hours = 2 }
+		UKR = { country_event = { id = dve_ukrwar.13 hours = 4 } }
+	}
+}

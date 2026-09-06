@@ -1,0 +1,146 @@
+# ============================================================
+#   DvE - il pannello della guerra d'Ucraina
+#
+#   Si aggancia in cima alle due categorie di decisioni, come fa
+#   il gioco base con la guerra italo-etiope
+#   (interface/war_escalation_scripted_gui.gui).
+#
+#   Ogni obiettivo ha due icone sovrapposte nella stessa
+#   posizione: quella verde e quella rossa. Quale si vede lo
+#   decidono i trigger in
+#   common/scripted_guis/DVE_ukraine_war_gui.txt.
+# ============================================================
+
+@RIGA1 = 46
+@RIGA2 = 66
+@RIGA3 = 86
+@SPUNTA_X = 14
+@TESTO_X = 34
+
+guiTypes = {
+
+	# ==========================================================
+	#   RUSSIA
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_ukraine_war_RUS_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 112 }
+
+		iconType = {
+			name = "dve_ukr_banner"
+			spriteType = "GFX_DVE_ukraine_war_banner"
+			position = { x = 0 y = 0 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_ukr_title"
+			position = { x = 12 y = 8 }
+			font = "hoi_18mbs"
+			text = "DVE_ukraine_war_panel_RUS"
+			format = left
+			maxWidth = 456
+			maxHeight = 34
+		}
+
+		# --- obiettivo 1 ---
+		iconType = { name = "rus_obj1_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA1 } }
+		iconType = { name = "rus_obj1_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA1 } }
+		instantTextBoxType = {
+			name = "rus_obj1_text"
+			position = { x = @TESTO_X y = @RIGA1 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_RUS_1"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+
+		# --- obiettivo 2 ---
+		iconType = { name = "rus_obj2_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA2 } }
+		iconType = { name = "rus_obj2_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA2 } }
+		instantTextBoxType = {
+			name = "rus_obj2_text"
+			position = { x = @TESTO_X y = @RIGA2 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_RUS_2"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+
+		# --- obiettivo 3 ---
+		iconType = { name = "rus_obj3_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA3 } }
+		iconType = { name = "rus_obj3_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA3 } }
+		instantTextBoxType = {
+			name = "rus_obj3_text"
+			position = { x = @TESTO_X y = @RIGA3 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_RUS_3"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+	}
+
+	# ==========================================================
+	#   UCRAINA
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_ukraine_war_UKR_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 112 }
+
+		iconType = {
+			name = "dve_ukr_banner_u"
+			spriteType = "GFX_DVE_ukraine_war_banner"
+			position = { x = 0 y = 0 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_ukr_title_u"
+			position = { x = 12 y = 8 }
+			font = "hoi_18mbs"
+			text = "DVE_ukraine_war_panel_UKR"
+			format = left
+			maxWidth = 456
+			maxHeight = 34
+		}
+
+		iconType = { name = "ukr_obj1_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA1 } }
+		iconType = { name = "ukr_obj1_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA1 } }
+		instantTextBoxType = {
+			name = "ukr_obj1_text"
+			position = { x = @TESTO_X y = @RIGA1 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_UKR_1"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+
+		iconType = { name = "ukr_obj2_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA2 } }
+		iconType = { name = "ukr_obj2_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA2 } }
+		instantTextBoxType = {
+			name = "ukr_obj2_text"
+			position = { x = @TESTO_X y = @RIGA2 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_UKR_2"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+
+		iconType = { name = "ukr_obj3_done" spriteType = "GFX_checkbox_small_green" position = { x = @SPUNTA_X y = @RIGA3 } }
+		iconType = { name = "ukr_obj3_todo" spriteType = "GFX_checkbox_small_red"   position = { x = @SPUNTA_X y = @RIGA3 } }
+		instantTextBoxType = {
+			name = "ukr_obj3_text"
+			position = { x = @TESTO_X y = @RIGA3 }
+			font = "hoi_16mbs"
+			text = "DVE_ukraine_obj_UKR_3"
+			format = left
+			maxWidth = 430
+			maxHeight = 18
+		}
+	}
+}

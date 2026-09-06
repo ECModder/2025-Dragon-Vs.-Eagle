@@ -1,0 +1,145 @@
+# ============================================================
+#   DvE - Generic Decisions: delayed payoffs
+#
+#   Called from common/decisions/DVE_generic_decisions.txt for
+#   every "after N days" effect (the ones that can't be expressed
+#   as a timed idea because they either grant a one-shot bonus or
+#   unlock a permanent modifier rather than a temporary one).
+# ============================================================
+
+add_namespace = dve_gendec
+
+# Expand Public Services (decision, 100 days later)
+country_event = {
+	id = dve_gendec.1
+	title = dve_gendec.1.t
+	desc = dve_gendec.1.d
+	picture = GFX_report_event_generic_parliament
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.1.a
+		clr_country_flag = DVE_public_services_pending
+		add_stability = 0.03
+	}
+}
+
+# Improve National Infrastructure (decision, 120 days later)
+country_event = {
+	id = dve_gendec.2
+	title = dve_gendec.2.t
+	desc = dve_gendec.2.d
+	picture = GFX_report_event_generic_construction_site
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.2.a
+		add_ideas = DVE_infrastructure_modernization_idea
+	}
+}
+
+# Crack Down on Opposition (decision, 90 days later)
+country_event = {
+	id = dve_gendec.3
+	title = dve_gendec.3.t
+	desc = dve_gendec.3.d
+	picture = GFX_report_event_generic_riot
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.3.a
+		clr_country_flag = DVE_crackdown_pending
+		DVE_boost_ruling_party_popularity_effect = yes
+	}
+}
+
+# Military Exercises (decision, immediate) - choose training branch
+country_event = {
+	id = dve_gendec.4
+	title = dve_gendec.4.t
+	desc = dve_gendec.4.d
+	picture = GFX_report_event_generic_military_parade
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.4.a
+		country_event = { id = dve_gendec.5 days = 90 }
+	}
+
+	option = {
+		name = dve_gendec.4.b
+		country_event = { id = dve_gendec.6 days = 90 }
+	}
+
+	option = {
+		name = dve_gendec.4.c
+		country_event = { id = dve_gendec.7 days = 90 }
+	}
+}
+
+# Military Exercises - Train the Army (90 days later)
+country_event = {
+	id = dve_gendec.5
+	title = dve_gendec.5.t
+	desc = dve_gendec.5.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.5.a
+		clr_country_flag = DVE_military_exercises_pending
+		army_experience = 30
+	}
+}
+
+# Military Exercises - Naval Training (90 days later)
+country_event = {
+	id = dve_gendec.6
+	title = dve_gendec.6.t
+	desc = dve_gendec.6.d
+	picture = GFX_report_event_ast_navy
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.6.a
+		clr_country_flag = DVE_military_exercises_pending
+		navy_experience = 30
+	}
+}
+
+# Military Exercises - Train the Air Force (90 days later)
+country_event = {
+	id = dve_gendec.7
+	title = dve_gendec.7.t
+	desc = dve_gendec.7.d
+	picture = GFX_report_event_generic_bombers
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.7.a
+		clr_country_flag = DVE_military_exercises_pending
+		air_experience = 30
+	}
+}
+
+# Expand Officer Corps (decision, 110 days later)
+country_event = {
+	id = dve_gendec.8
+	title = dve_gendec.8.t
+	desc = dve_gendec.8.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_gendec.8.a
+		add_ideas = DVE_officer_corps_reform_idea
+	}
+}

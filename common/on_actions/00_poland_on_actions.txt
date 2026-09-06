@@ -1,0 +1,28 @@
+on_actions = {
+
+    on_startup = {
+        effect = {
+
+            POL = {
+                country_event = {
+                    id = starting_poland.1
+                    days = 1
+                }
+            }
+
+        }
+    }
+	on_annex = {
+		effect = {
+			if = {
+				limit = {
+					FROM = { tag = UKR }
+				}
+				POL = {
+				country_event = { id = intervention.1 }
+				}
+			}
+		}
+	}
+
+}

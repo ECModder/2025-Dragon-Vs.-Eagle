@@ -113,6 +113,15 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_the_farce_continues }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			army_experience = 40
@@ -130,6 +139,13 @@ focus_tree = {
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_prolong_conflict }
 		mutually_exclusive = { focus = RUS_draw_belarus }
+		# Serve tenere davvero le quattro oblast del Donbass.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_holds_donbass
+				has_country_flag = RUS_obj_donbass
+			}
+		}
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			add_war_support = 0.05
@@ -165,6 +181,15 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_the_farce_continues }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			army_experience = 40
@@ -266,6 +291,15 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_officially_war }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			add_manpower = 150000
@@ -282,6 +316,15 @@ focus_tree = {
 		cost = 8
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_voinskiy_prizyv }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			army_experience = 50
@@ -317,6 +360,15 @@ focus_tree = {
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_officially_war }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			BLR = { add_opinion_modifier = { target = RUS modifier = large_increase } }
@@ -367,8 +419,19 @@ focus_tree = {
 		y = 6
 		cost = 15
 		available_if_capitulated = no
-		prerequisite = { focus = RUS_russians_above_all focus = RUS_joint_union_command }
-		prerequisite = { focus = RUS_fsb_presence focus = RUS_revanchist_fervor focus = RUS_unify_command }
+		# Era in due blocchi separati, quindi in AND: uno scendeva da
+		# RUS_the_farce_continues e l'altro da RUS_officially_war, che
+		# sono mutuamente esclusivi. Cosi' com'era non si poteva
+		# prendere in nessuna partita. Un blocco solo, in OR.
+		prerequisite = { focus = RUS_russians_above_all focus = RUS_joint_union_command focus = RUS_fsb_presence focus = RUS_revanchist_fervor focus = RUS_unify_command }
+		# Il premio della vittoria. Perdere o pattare carica l'albero
+		# della sconfitta, quindi qui si arriva solo da vincitori.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_won_ukraine
+				has_country_flag = RUS_won_the_war_in_ukraine
+			}
+		}
 		ai_will_do = { factor = 5 }
 		completion_reward = {
 			add_war_support = 0.15
@@ -723,6 +786,14 @@ focus_tree = {
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_bonuses_for_workers }
+		# Serve tenere davvero le quattro oblast del Donbass.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_holds_donbass
+				has_country_flag = RUS_obj_donbass
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			# il bacino del Donbas: carbone e acciaio
@@ -871,6 +942,15 @@ focus_tree = {
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_nationalize_oligarch_industries }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			add_building_construction = { type = arms_factory level = 5 instant_build = yes }
@@ -940,6 +1020,15 @@ focus_tree = {
 		cost = 10
 		available_if_capitulated = no
 		prerequisite = { focus = RUS_invest_in_csto }
+		# Ha senso solo mentre si combatte. A guerra finita il focus
+		# si auto-completa senza dare nulla: la finestra era quella.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = RUS_tt_war_ongoing
+				RUS_war_in_ukraine_ongoing = yes
+			}
+		}
+		bypass = { has_country_flag = RUS_ukraine_war_over }
 		ai_will_do = { factor = 3 }
 		completion_reward = {
 			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 10000 }

@@ -1,12 +1,15 @@
 on_actions = {
-	on_startup = {
-		effect = {
-			if = {
-				limit = {
-					tag = FIN
-				}
-				country_event = { id = finland_start.1 }
-			}
-		}
-	}
+
+    on_startup = {
+        effect = {
+
+            FIN = {
+                country_event = {
+                    id = FIN_start.1
+                    days = 1
+                }
+            }
+
+        }
+    }
 }

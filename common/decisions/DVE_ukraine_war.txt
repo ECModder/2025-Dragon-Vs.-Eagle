@@ -1,0 +1,319 @@
+# ============================================================
+#   DvE - LA GUERRA D'UCRAINA
+#
+#   Struttura copiata dalla guerra italo-etiope del gioco base:
+#   una missione col conto alla rovescia piu' una scala di
+#   obiettivi, tutti visibili nella stessa categoria.
+#
+#   Gli obiettivi sono missioni con selectable_mission = no: si
+#   completano DA SOLE appena la condizione e' vera, senza che il
+#   giocatore clicchi niente, e intanto restano in elenco. E' lo
+#   stesso meccanismo di "Hold the North" in Etiopia.
+#
+#   Proprio per questo non serve piu' agganciarsi a
+#   on_state_control_changed: le missioni si controllano da sole.
+#
+#   RUSSIA   Donbass -> Odessa -> Kiev
+#   UCRAINA  Donbass -> Crimea -> oltre confine
+# ============================================================
+
+RUS_ukraine_war_category = {
+
+	# ==========================================================
+	#   IL CONTO ALLA ROVESCIA - 278 giorni
+	# ==========================================================
+	RUS_ukraine_campaign = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+		priority = 1000
+
+		available = { has_country_flag = RUS_ukraine_war_over }
+
+		visible = {
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+		}
+
+		activation = {
+			original_tag = RUS
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = yes
+		days_mission_timeout = 278
+
+		timeout_effect = {
+			DVE_ukraine_white_peace_effect = yes
+		}
+
+		complete_effect = { add_political_power = 25 }
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- tenere le quattro regioni ---
+	RUS_obj_hold_the_donbass = {
+
+		icon = GFX_decision_border_war
+		allowed = { original_tag = RUS }
+
+		available = {
+			controls_state = 196   # Kherson
+			controls_state = 200   # Zaporozhe
+			controls_state = 227   # Donetsk
+			controls_state = 228   # Lugansk
+		}
+
+		visible = {
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+
+		}
+
+		activation = {
+			original_tag = RUS
+			has_country_flag = RUS_ukraine_war_active
+
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			set_country_flag = RUS_obj_donbass
+			country_event = { id = dve_ukrwar.1 hours = 6 }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- prendere Odessa ---
+	RUS_obj_take_odessa = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+
+		available = {
+			controls_state = 192   # Odessa
+		}
+
+		visible = {
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+			has_country_flag = RUS_obj_donbass
+		}
+
+		activation = {
+			original_tag = RUS
+			has_country_flag = RUS_ukraine_war_active
+			has_country_flag = RUS_obj_donbass
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			set_country_flag = RUS_obj_odessa
+			country_event = { id = dve_ukrwar.2 hours = 6 }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- prendere Kiev - la vittoria ---
+	RUS_obj_take_kiev = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = RUS }
+
+		available = {
+			controls_state = 202   # Kiev
+		}
+
+		visible = {
+			has_country_flag = RUS_ukraine_war_active
+			NOT = { has_country_flag = RUS_ukraine_war_over }
+			has_country_flag = RUS_obj_odessa
+		}
+
+		activation = {
+			original_tag = RUS
+			has_country_flag = RUS_ukraine_war_active
+			has_country_flag = RUS_obj_odessa
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			RUS_ukraine_victory_effect = yes
+		}
+
+		ai_will_do = { base = 0 }
+	}
+}
+
+
+UKR_ukraine_war_category = {
+
+	# ==========================================================
+	#   IL CONTO ALLA ROVESCIA - 278 giorni
+	# ==========================================================
+	UKR_liberation_campaign = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = UKR }
+		priority = 1000
+
+		available = { has_country_flag = UKR_ukraine_war_over }
+
+		visible = {
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+		}
+
+		activation = {
+			original_tag = UKR
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = yes
+		days_mission_timeout = 278
+
+		timeout_effect = {
+			RUS = { DVE_ukraine_white_peace_effect = yes }
+		}
+
+		complete_effect = { add_political_power = 25 }
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- riprendere le quattro regioni - sconfitta russa ---
+	UKR_obj_liberate_donbass = {
+
+		icon = GFX_decision_border_war
+		allowed = { original_tag = UKR }
+
+		available = {
+			controls_state = 196   # Kherson
+			controls_state = 200   # Zaporozhe
+			controls_state = 227   # Donetsk
+			controls_state = 228   # Lugansk
+		}
+
+		visible = {
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+
+		}
+
+		activation = {
+			original_tag = UKR
+			has_country_flag = UKR_ukraine_war_active
+
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			set_country_flag = UKR_obj_donbass
+			country_event = { id = dve_ukrwar.10 hours = 6 }
+			# e' questo che fa scattare "Lost in Ukraine" a Mosca
+			RUS = { RUS_ukraine_defeat_effect = yes }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- riprendere la Crimea ---
+	UKR_obj_retake_crimea = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = UKR }
+
+		available = {
+			controls_state = 137   # Crimea
+		}
+
+		visible = {
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+			has_country_flag = UKR_obj_donbass
+		}
+
+		activation = {
+			original_tag = UKR
+			has_country_flag = UKR_ukraine_war_active
+			has_country_flag = UKR_obj_donbass
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			set_country_flag = UKR_obj_crimea
+			country_event = { id = dve_ukrwar.11 hours = 6 }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+
+	# --- portare la guerra in Russia ---
+	UKR_obj_into_russia = {
+
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = UKR }
+
+		available = {
+			OR = {
+				controls_state = 218   # Rostov
+				controls_state = 240   # Belgorod
+			}
+		}
+
+		visible = {
+			has_country_flag = UKR_ukraine_war_active
+			NOT = { has_country_flag = UKR_ukraine_war_over }
+			has_country_flag = UKR_obj_crimea
+		}
+
+		activation = {
+			original_tag = UKR
+			has_country_flag = UKR_ukraine_war_active
+			has_country_flag = UKR_obj_crimea
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+
+		complete_effect = {
+			set_country_flag = UKR_obj_into_russia
+			country_event = { id = dve_ukrwar.12 hours = 6 }
+		}
+
+		ai_will_do = { base = 0 }
+	}
+}

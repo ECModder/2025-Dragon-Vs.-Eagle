@@ -1,0 +1,664 @@
+# ============================================================
+#   DvE - L'INTERNAZIONALE SOVIETICA
+#
+#   Il ciclo e' sempre lo stesso: si influenza un paese finche'
+#   non passa alla tua ideologia, e allora lo si puo' ridurre a
+#   satellite. Cambia solo quanto lontano arriva il braccio.
+#
+#     Cominform (totalitarian)   Europa, Asia, Medio Oriente
+#     Internazionale Comunista   tutto il mondo
+#     Internazionale Rivoluz.    tutto il mondo + annessioni
+#
+#   IMMUNI DAL SATELLIZZAMENTO, non dall'influenza: USA, PRC e
+#   l'Italia che ha imboccato il path Proletario. Si possono far
+#   virare a sinistra, non si possono mettere al guinzaglio.
+#
+#   I bersagli sono elencati tag per tag invece che pescati a
+#   runtime: le liste sono generate dalle capitali vere del mod,
+#   e una lista esplicita non puo' fallire in silenzio.
+#   Il target_trigger scarta poi chi non e' un bersaglio buono,
+#   quindi in partita se ne vedono pochi alla volta.
+# ============================================================
+
+
+SOV_intl_europe_category = {
+
+	SOV_intl_influence_europe = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			ADU ALB AND ANT AUS BAY BEL BLR BOS BRI BUL CAT CIN COR CRI CRO CYP CZE DAG DDR DEN DNZ
+			DON ENG EST FIN FRA FSR GDR GEN GER GLC GRE GSR HAN HES HOL HRZ HUN ICE IRE ITA JAN KAL
+			KAR KBK KOS KSH KUB LAT LBV LIE LIT LUX MAC MEK MLT MNC MNT MOL NAV NCY NIR NOA NOR NRE
+			OCC PAP POL POR PPR PRE PRS RGB RHI RKB RKC RKG RKH RKI RKM RKN RKO RKU ROM RUR RUS SAX
+			SCO SER SHL SIL SLO SLV SMA SMI SPA SPM SPR SRB SSR SWE SWI THU TNS TOS TRA TTS UBD UKK
+			UKR UNK WGR WLS WUR YUG
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_europe = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			ADU ALB AND ANT AUS BAY BEL BLR BOS BRI BUL CAT CIN COR CRI CRO CYP CZE DAG DDR DEN DNZ
+			DON ENG EST FIN FRA FSR GDR GEN GER GLC GRE GSR HAN HES HOL HRZ HUN ICE IRE ITA JAN KAL
+			KAR KBK KOS KSH KUB LAT LBV LIE LIT LUX MAC MEK MLT MNC MNT MOL NAV NCY NIR NOA NOR NRE
+			OCC PAP POL POR PPR PRE PRS RGB RHI RKB RKC RKG RKH RKI RKM RKN RKO RKU ROM RUR RUS SAX
+			SCO SER SHL SIL SLO SLV SMA SMI SPA SPM SPR SRB SSR SWE SWI THU TNS TOS TRA TTS UBD UKK
+			UKR UNK WGR WLS WUR YUG
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_asia_category = {
+
+	SOV_intl_influence_asia = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			AFG ALT ANU BAN BHU BRM BRN BSK BUK BYA CAM CCR CHI CHM CHU CIP CKK CSR DIP EVE EZO FER
+			FIJ FOR FSM GDC GSM GUM GXC HAW HBC HNK HYD INS JAP KAM KAS KAZ KHA KHI KHL KHM KIR KKP
+			KLT KOL KOM KOR KUM KYR LAO MAL MAN MAR MCA MEL MEN MLD MON MPU MYS NAU NEN NEP NKO NWF
+			NXM OKN OVO PAK PHI PLU PSR PTA PXA RAJ RAS RHD RJP RKL RKT RNG ROA SAB SAM SAR SHX SIA
+			SIC SIK SIN SKK SND SNG SRL TAH TAJ TAN TAT TAY TIB TML TMS TUV UDM UZB VGE VIN VLA WIS
+			XIC XSM YAK YAM YUN
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_asia = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			AFG ALT ANU BAN BHU BRM BRN BSK BUK BYA CAM CCR CHI CHM CHU CIP CKK CSR DIP EVE EZO FER
+			FIJ FOR FSM GDC GSM GUM GXC HAW HBC HNK HYD INS JAP KAM KAS KAZ KHA KHI KHL KHM KIR KKP
+			KLT KOL KOM KOR KUM KYR LAO MAL MAN MAR MCA MEL MEN MLD MON MPU MYS NAU NEN NEP NKO NWF
+			NXM OKN OVO PAK PHI PLU PSR PTA PXA RAJ RAS RHD RJP RKL RKT RNG ROA SAB SAM SAR SHX SIA
+			SIC SIK SIN SKK SND SNG SRL TAH TAJ TAN TAT TAY TIB TML TMS TUV UDM UZB VGE VIN VLA WIS
+			XIC XSM YAK YAM YUN
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_middle_east_category = {
+
+	SOV_intl_influence_middle_east = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			ABK ARM ASY AZR BHR BLC DRZ FSA GEO HOU IMO IRQ ISR ISS JOR KUR KUW LEB OMA PER QAT RAR
+			RKK ROJ SAU SYA SYR TSY TUR UAE YEM YNR YST
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_middle_east = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			ABK ARM ASY AZR BHR BLC DRZ FSA GEO HOU IMO IRQ ISR ISS JOR KUR KUW LEB OMA PER QAT RAR
+			RKK ROJ SAU SYA SYR TSY TUR UAE YEM YNR YST
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_africa_category = {
+
+	SOV_intl_influence_africa = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			AFA ALG ANG AOI BAR BEG BIA BOT BRD CAR CBV CHA CMR COG COM DAH DJI EGY EMZ EQG ERI ESW
+			ETH GAB GAM GBA GHA GNA GNB HAR IRS IVO KAT KEN KMZ LBA LES LIB MAD MAU MLI MLW MOR MRT
+			MZB NGA NGR NMB ORO PSH PUN QEM RCG RIF RKA RNA RSF RWA SAF SEN SEY SID SIE SLM SOD SOK
+			SOM SSU STP SUD TIG TOG TUN TZN UGA VOL WES ZAM ZIM
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_africa = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			AFA ALG ANG AOI BAR BEG BIA BOT BRD CAR CBV CHA CMR COG COM DAH DJI EGY EMZ EQG ERI ESW
+			ETH GAB GAM GBA GHA GNA GNB HAR IRS IVO KAT KEN KMZ LBA LES LIB MAD MAU MLI MLW MOR MRT
+			MZB NGA NGR NMB ORO PSH PUN QEM RCG RIF RKA RNA RSF RWA SAF SEN SEY SID SIE SLM SOD SOK
+			SOM SSU STP SUD TIG TOG TUN TZN UGA VOL WES ZAM ZIM
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_north_america_category = {
+
+	SOV_intl_influence_north_america = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			CAN CSA GRN INU MAY MEX QUE RCA RIG USA USB YUC
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_north_america = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			CAN CSA GRN INU MAY MEX QUE RCA RIG USA USB YUC
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_south_america_category = {
+
+	SOV_intl_influence_south_america = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			ARG BAH BAS BLZ BOL BRA BRB CAY CHL CHR COL COS CRC CUB DMN DOM ECU ELS GAR GDL GRD GUA
+			GYA HAI HAM HON IAS INC ITZ JAM LUC MIS NAH NIC PAL PAN PAR PRU PUE RAN RCO RKV STK SUR
+			TRI URG VEN WLA
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_south_america = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			ARG BAH BAS BLZ BOL BRA BRB CAY CHL CHR COL COS CRC CUB DMN DOM ECU ELS GAR GDL GRD GUA
+			GYA HAI HAM HON IAS INC ITZ JAM LUC MIS NAH NIC PAL PAN PAR PRU PUE RAN RCO RKV STK SUR
+			TRI URG VEN WLA
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+SOV_intl_australia_category = {
+
+	SOV_intl_influence_australia = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			AST NZL PNG RAA RAP SOL VAN WPG
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_not_aligned = yes
+			}
+		}
+
+		available = { has_political_power > 59 }
+
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+
+		complete_effect = {
+			FROM = { SOV_intl_influence_effect = yes }
+		}
+
+		ai_will_do = { factor = 10 }
+	}
+
+	SOV_intl_puppet_australia = {
+
+		icon = GFX_decision_generic_political_address
+		allowed = { tag = SOV }
+
+		targets = {
+			AST NZL PNG RAA RAP SOL VAN WPG
+		}
+
+		target_trigger = {
+			FROM = {
+				SOV_intl_valid_target = yes
+				SOV_intl_aligned = yes
+				NOT = { SOV_intl_immune_to_puppet = yes }
+			}
+		}
+
+		available = {
+			has_political_power > 199
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 200
+		fire_only_once = no
+
+		complete_effect = {
+			# ROOT e' Mosca, FROM il paese scelto nel menu.
+			puppet = FROM
+		}
+
+		ai_will_do = { factor = 5 }
+	}
+}
+
+
+# ============================================================
+#   LE EX REPUBBLICHE - solo Cominform
+#   Sedici repubbliche piu' la Transnistria. Non si influenzano:
+#   si riprendono, con i core.
+# ============================================================
+SOV_intl_reclaim_category = {
+
+	SOV_intl_reclaim = {
+
+		icon = GFX_decision_generic_nationalism
+		allowed = { tag = SOV }
+
+		targets = {
+			EST LAT LIT BLR UKR MOL TNS GEO ABK NOA AZR ARM KAZ UZB TMS TAJ KYR
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				OR = {
+					is_subject_of = ROOT
+					SOV_intl_aligned = yes
+				}
+			}
+		}
+
+		available = {
+			has_political_power > 299
+			FROM = { NOT = { has_war_with = ROOT } }
+		}
+
+		cost = 300
+		fire_only_once = no
+
+		complete_effect = {
+			FROM = {
+				every_owned_state = { add_core_of = ROOT }
+				SOV_intl_annex_effect = yes
+			}
+		}
+
+		ai_will_do = { factor = 8 }
+	}
+}
+
+
+# ============================================================
+#   L'INTEGRAZIONE - solo Internazionale Rivoluzionaria
+#   Prima si annette il satellite (450), poi se ne comprano i
+#   core (250). I due passi sono separati apposta: l'annessione
+#   ti da' il territorio, i core te lo fanno diventare Russia.
+# ============================================================
+SOV_intl_integration_category = {
+
+	SOV_intl_annex_puppet = {
+
+		icon = GFX_decision_generic_form_nation
+		allowed = { tag = SOV }
+
+		targets = {
+			ABK ADU AFA AFG ALB ALG ALT AND ANG ANT ANU AOI ARG ARM AST ASY AUS AZR BAH BAN BAR BAS
+			BAY BEG BEL BHR BHU BIA BLC BLR BLZ BOL BOS BOT BRA BRB BRD BRI BRM BRN BSK BUK BUL BYA
+			CAM CAN CAR CAT CAY CBV CCR CHA CHI CHL CHM CHR CHU CIN CIP CKK CMR COG COL COM COR COS
+			CRC CRI CRO CSA CSR CUB CYP CZE DAG DAH DDR DEN DIP DJI DMN DNZ DOM DON DRZ ECU EGY ELS
+			EMZ ENG EQG ERI EST ESW ETH EVE EZO FER FIJ FIN FOR FRA FSA FSM FSR GAB GAM GAR GBA GDC
+			GDL GDR GEN GEO GER GHA GLC GNA GNB GRD GRE GRN GSM GSR GUA GUM GXC GYA HAI HAM HAN HAR
+			HAW HBC HES HNK HOL HON HOU HRZ HUN HYD IAS ICE IMO INC INS INU IRE IRQ IRS ISR ISS ITA
+			ITZ IVO JAM JAN JAP JOR KAL KAM KAR KAS KAT KAZ KBK KEN KHA KHI KHL KHM KIR KKP KLT KMZ
+			KOL KOM KOR KOS KSH KUB KUM KUR KUW KYR LAO LAT LBA LBV LEB LES LIB LIE LIT LUC LUX MAC
+			MAD MAL MAN MAR MAU MAY MCA MEK MEL MEN MEX MIS MLD MLI MLT MLW MNC MNT MOL MON MOR MPU
+			MRT MYS MZB NAH NAU NAV NCY NEN NEP NGA NGR NIC NIR NKO NMB NOA NOR NRE NWF NXM NZL OCC
+			OKN OMA ORO OVO PAK PAL PAN PAP PAR PER PHI PLU PNG POL POR PPR PRE PRS PRU PSH PSR PTA
+			PUE PUN PXA QAT QEM QUE RAA RAJ RAN RAP RAR RAS RCA RCG RCO RGB RHD RHI RIF RIG RJP RKA
+			RKB RKC RKG RKH RKI RKK RKL RKM RKN RKO RKT RKU RKV RNA RNG ROA ROJ ROM RSF RUR RUS RWA
+			SAB SAF SAM SAR SAU SAX SCO SEN SER SEY SHL SHX SIA SIC SID SIE SIK SIL SIN SKK SLM SLO
+			SLV SMA SMI SND SNG SOD SOK SOL SOM SPA SPM SPR SRB SRL SSR SSU STK STP SUD SUR SWE SWI
+			SYA SYR TAH TAJ TAN TAT TAY THU TIB TIG TML TMS TNS TOG TOS TRA TRI TSY TTS TUN TUR TUV
+			TZN UAE UBD UDM UGA UKK UKR UNK URG USA USB UZB VAN VEN VGE VIN VLA VOL WES WGR WIS WLA
+			WLS WPG WUR XIC XSM YAK YAM YEM YNR YST YUC YUG YUN ZAM ZIM
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_subject_of = ROOT
+			}
+		}
+
+		available = { has_political_power > 449 }
+
+		cost = 450
+		fire_only_once = no
+
+		complete_effect = {
+			FROM = { SOV_intl_annex_effect = yes }
+		}
+
+		ai_will_do = { factor = 4 }
+	}
+
+	SOV_intl_core_annexed = {
+
+		icon = GFX_decision_generic_nationalism
+		allowed = { tag = SOV }
+
+		targets = {
+			ABK ADU AFA AFG ALB ALG ALT AND ANG ANT ANU AOI ARG ARM AST ASY AUS AZR BAH BAN BAR BAS
+			BAY BEG BEL BHR BHU BIA BLC BLR BLZ BOL BOS BOT BRA BRB BRD BRI BRM BRN BSK BUK BUL BYA
+			CAM CAN CAR CAT CAY CBV CCR CHA CHI CHL CHM CHR CHU CIN CIP CKK CMR COG COL COM COR COS
+			CRC CRI CRO CSA CSR CUB CYP CZE DAG DAH DDR DEN DIP DJI DMN DNZ DOM DON DRZ ECU EGY ELS
+			EMZ ENG EQG ERI EST ESW ETH EVE EZO FER FIJ FIN FOR FRA FSA FSM FSR GAB GAM GAR GBA GDC
+			GDL GDR GEN GEO GER GHA GLC GNA GNB GRD GRE GRN GSM GSR GUA GUM GXC GYA HAI HAM HAN HAR
+			HAW HBC HES HNK HOL HON HOU HRZ HUN HYD IAS ICE IMO INC INS INU IRE IRQ IRS ISR ISS ITA
+			ITZ IVO JAM JAN JAP JOR KAL KAM KAR KAS KAT KAZ KBK KEN KHA KHI KHL KHM KIR KKP KLT KMZ
+			KOL KOM KOR KOS KSH KUB KUM KUR KUW KYR LAO LAT LBA LBV LEB LES LIB LIE LIT LUC LUX MAC
+			MAD MAL MAN MAR MAU MAY MCA MEK MEL MEN MEX MIS MLD MLI MLT MLW MNC MNT MOL MON MOR MPU
+			MRT MYS MZB NAH NAU NAV NCY NEN NEP NGA NGR NIC NIR NKO NMB NOA NOR NRE NWF NXM NZL OCC
+			OKN OMA ORO OVO PAK PAL PAN PAP PAR PER PHI PLU PNG POL POR PPR PRE PRS PRU PSH PSR PTA
+			PUE PUN PXA QAT QEM QUE RAA RAJ RAN RAP RAR RAS RCA RCG RCO RGB RHD RHI RIF RIG RJP RKA
+			RKB RKC RKG RKH RKI RKK RKL RKM RKN RKO RKT RKU RKV RNA RNG ROA ROJ ROM RSF RUR RUS RWA
+			SAB SAF SAM SAR SAU SAX SCO SEN SER SEY SHL SHX SIA SIC SID SIE SIK SIL SIN SKK SLM SLO
+			SLV SMA SMI SND SNG SOD SOK SOL SOM SPA SPM SPR SRB SRL SSR SSU STK STP SUD SUR SWE SWI
+			SYA SYR TAH TAJ TAN TAT TAY THU TIB TIG TML TMS TNS TOG TOS TRA TRI TSY TTS TUN TUR TUV
+			TZN UAE UBD UDM UGA UKK UKR UNK URG USA USB UZB VAN VEN VGE VIN VLA VOL WES WGR WIS WLA
+			WLS WPG WUR XIC XSM YAK YAM YEM YNR YST YUC YUG YUN ZAM ZIM
+		}
+
+		# Il paese qui non esiste piu': lo si ritrova dalla flag che
+		# l'annessione ha lasciato su Mosca, e le sue terre dalla
+		# flag di stato che porta il suo tag.
+		target_trigger = {
+			ROOT = {
+				has_country_flag = SOV_intl_annexed_@FROM
+				NOT = { has_country_flag = SOV_intl_cored_@FROM }
+			}
+		}
+
+		available = { has_political_power > 249 }
+
+		cost = 250
+		fire_only_once = no
+
+		complete_effect = {
+			every_owned_state = {
+				limit = { has_state_flag = SOV_intl_land_@FROM }
+				add_core_of = ROOT
+			}
+			set_country_flag = SOV_intl_cored_@FROM
+		}
+
+		ai_will_do = { factor = 3 }
+	}
+}

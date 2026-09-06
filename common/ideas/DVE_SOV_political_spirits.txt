@@ -1,0 +1,283 @@
+# ============================================================
+#   DvE - GLI SPIRITI DEL CONGRESSO POLITICO (SOV)
+#
+#   Uno per ciascuno dei 18 focus della prima parte del ramo
+#   politico. Prima le tre opzioni di ogni riga davano ricompense
+#   IDENTICHE, quindi la scelta era puramente estetica: questi
+#   spiriti sono cio' che la rende una decisione vera.
+#
+#   Ogni riga ha tre direzioni diverse, e quasi tutte hanno un
+#   prezzo. Sono tutti modificatori gia' usati altrove nel mod,
+#   quindi validi di sicuro.
+# ============================================================
+
+ideas = {
+
+	country = {
+
+		# ------------------------------------------------------
+		#   Riga 1 - su cosa poggia lo Stato
+		# ------------------------------------------------------
+
+		idea_SOV_state_of_the_councils = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.20   # la base ti sostiene
+				political_power_gain = 0.10
+				consumer_goods_factor = -0.05
+				war_support_factor = 0.05   # deliberare richiede tempo
+			}
+		}
+
+		idea_SOV_parliamentary_communism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_centrist_drift_bonus
+
+			modifier = {
+				political_power_gain = 0.20   # un'assemblea che legittima
+				drift_defence_factor = 0.15
+				army_org_factor = -0.05   # la catena di comando passa dal dibattito
+			}
+		}
+
+		idea_SOV_bureaucracy_at_the_helm = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_industrial_concern_1
+
+			modifier = {
+				production_speed_buildings_factor = 0.10   # l'apparato costruisce
+				consumer_goods_factor = -0.05
+				stability_factor = -0.05   # nessuno lo ha eletto
+			}
+		}
+
+		# ------------------------------------------------------
+		#   Riga 2 - come si fa il piano
+		# ------------------------------------------------------
+
+		idea_SOV_workers_council_planning = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_production_bonus
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.15   # le linee si assestano in fretta
+				research_speed_factor = 0.05
+				production_factory_max_efficiency_factor = -0.05   # nessuno impone il tetto
+			}
+		}
+
+		idea_SOV_workers_unions_planning = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				industrial_capacity_factory = 0.10   # piu' braccia in fabbrica
+				conscription_factor = 0.10
+				consumer_goods_factor = 0.05   # i sindacati chiedono, e ottengono
+			}
+		}
+
+		idea_SOV_cadre_bureaucratic_planning = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_economic_increase
+
+			modifier = {
+				production_speed_buildings_factor = 0.15   # Gosplan costruisce
+				local_resources_factor = 0.10
+				production_factory_efficiency_gain_factor = -0.10   # i quadri riscrivono il piano a meta' corsa
+			}
+		}
+
+		# ------------------------------------------------------
+		#   Riga 3 - dove siede il potere
+		# ------------------------------------------------------
+
+		idea_SOV_democratic_centralism = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				political_power_gain = 0.20   # si discute, poi si obbedisce
+				drift_defence_factor = 0.25
+				max_command_power = 50
+				stability_factor = 0.05
+			}
+		}
+
+		idea_SOV_strong_supreme_soviet = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_infantry_bonus
+
+			modifier = {
+				war_support_factor = 0.10   # un organo che puo' dichiarare guerra
+				max_command_power = 50
+				political_power_gain = 0.10
+			}
+		}
+
+		idea_SOV_recreation_of_politburo = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_spy_political
+
+			modifier = {
+				command_power_gain_mult = 0.25   # undici uomini decidono in un pomeriggio
+				political_power_gain = 0.15
+				stability_factor = -0.05   # e nessun altro sa cosa hanno deciso
+			}
+		}
+
+		# ------------------------------------------------------
+		#   Riga 4 - gli organi di sicurezza
+		# ------------------------------------------------------
+
+		idea_SOV_cheka_model = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_army_problems
+
+			modifier = {
+				resistance_target_on_our_occupied_states = -0.15   # terrore rivoluzionario, non procedura
+				war_support_factor = 0.10
+				stability_factor = -0.05   # nemmeno i compagni dormono tranquilli
+			}
+		}
+
+		idea_SOV_nkvd_model = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_army_problems
+
+			modifier = {
+				stability_factor = 0.15   # nessuno alza la voce
+				foreign_subversive_activites = -0.30
+				army_org_factor = -0.05   # gli ufficiali migliori li ha presi la lista
+				experience_gain_army_factor = -0.10
+			}
+		}
+
+		idea_SOV_kgb_model = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_intel_bonus
+
+			modifier = {
+				operative_slot = 1   # professionisti, non boia
+				foreign_subversive_activites = -0.20
+				research_speed_factor = 0.05   # cio' che si ruba non si sviluppa
+			}
+		}
+
+		# ------------------------------------------------------
+		#   Riga 5 - la voce del partito
+		# ------------------------------------------------------
+
+		idea_SOV_restart_agitprop = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.02   # la piazza risponde
+				war_support_factor = 0.10
+				political_power_gain = -0.05   # mobilitare costa quadri
+			}
+		}
+
+		idea_SOV_ideologicheskiy_otdel = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_vanguard_socialism_drift_bonus
+
+			modifier = {
+				drift_defence_factor = 0.30   # la dottrina non si discute
+				political_power_gain = 0.10
+				research_speed_factor = -0.05   # e nemmeno la fisica, a volte
+			}
+		}
+
+		idea_SOV_otdel_propagandy = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.10   # professionisti del consenso
+				party_popularity_stability_factor = 0.15
+				war_support_factor = 0.05
+			}
+		}
+
+		# ------------------------------------------------------
+		#   Riga 6 - All Power to...
+		# ------------------------------------------------------
+
+		idea_SOV_all_power_to_soviets = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+
+			modifier = {
+				stability_factor = 0.10
+				political_power_gain = 0.15
+				vanguard_socialism_drift = 0.05
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		idea_SOV_all_power_to_revolution = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				war_support_factor = 0.15
+				conscription_factor = 0.10
+				revolutionary_socialism_drift = 0.05
+				stability_factor = -0.05
+			}
+		}
+
+		idea_SOV_all_power_to_party = {
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			picture = generic_vanguard_socialism_drift_bonus
+
+			modifier = {
+				political_power_factor = 0.20
+				stability_factor = 0.10
+				totalitarian_socialism_drift = 0.05
+				research_speed_factor = -0.05
+			}
+		}
+
+	}
+}

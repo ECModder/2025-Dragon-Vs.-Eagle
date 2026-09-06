@@ -1,0 +1,254 @@
+# ============================================================
+#   DvE - Generic Decisions: Domestic Affairs, Military Affairs
+#   and Foreign Relations
+#
+#   Universal decisions available to every country regardless of
+#   its own focus tree. Names/costs are taken verbatim from the
+#   reference screenshots; instant "for N days" effects use the
+#   timed ideas in common/ideas/DVE_generic_decisions_ideas.txt,
+#   while "after N days" effects fire a delayed one-shot event
+#   from events/DVE_generic_decisions_events.txt. Categories are
+#   defined in common/decisions/categories/
+#   DVE_generic_decisions_categories.txt.
+# ============================================================
+
+DVE_domestic_affairs_category = {
+
+	DVE_anti_corruption_campaign = {
+		icon = GFX_decision_generic_wreckers
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_anticorruption_campaign_idea }
+		}
+
+		cost = 100
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_anticorruption_campaign_idea days = 60 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_expand_public_services = {
+		icon = GFX_decision_generic_welfare
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_country_flag = DVE_public_services_pending }
+		}
+
+		cost = 75
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = DVE_public_services_pending
+			country_event = { id = dve_gendec.1 days = 100 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_subsidize_strategic_industries = {
+		icon = GFX_decision_generic_industry
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_subsidize_industries_idea }
+		}
+
+		cost = 75
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_subsidize_industries_idea days = 90 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_improve_national_infrastructure = {
+		icon = GFX_decision_generic_construction
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = { always = yes }
+
+		cost = 75
+		fire_only_once = yes
+
+		complete_effect = {
+			country_event = { id = dve_gendec.2 days = 120 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_crack_down_on_opposition = {
+		icon = GFX_decision_generic_arrest
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_country_flag = DVE_crackdown_pending }
+		}
+
+		cost = 100
+		fire_only_once = no
+
+		complete_effect = {
+			set_country_flag = DVE_crackdown_pending
+			country_event = { id = dve_gendec.3 days = 90 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_emergency_economic_measures = {
+		icon = GFX_decision_generic_consumer_goods
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_emergency_economic_measures_idea }
+		}
+
+		cost = 125
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_emergency_economic_measures_idea days = 120 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+}
+
+DVE_military_affairs_category = {
+
+	DVE_military_exercises = {
+		icon = GFX_decision_generic_train
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			command_power > 29
+			NOT = { has_country_flag = DVE_military_exercises_pending }
+		}
+
+		cost = 50
+		fire_only_once = no
+
+		complete_effect = {
+			add_command_power = -30
+			set_country_flag = DVE_military_exercises_pending
+			country_event = { id = dve_gendec.4 hours = 6 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_expand_officer_corps = {
+		icon = GFX_decision_generic_army_support
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			command_power > 29
+		}
+
+		cost = 70
+		fire_only_once = yes
+
+		complete_effect = {
+			add_command_power = -30
+			country_event = { id = dve_gendec.8 days = 110 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_modernize_armed_forces = {
+		icon = GFX_decision_generic_tank
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_modernize_armed_forces_idea }
+		}
+
+		cost = 110
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_modernize_armed_forces_idea days = 120 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_military_recruitment_drive = {
+		icon = GFX_decision_generic_military
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_recruitment_drive_idea }
+		}
+
+		cost = 120
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_recruitment_drive_idea days = 150 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+}
+
+DVE_foreign_relations_category = {
+
+	DVE_diplomatic_outreach = {
+		icon = GFX_decision_generic_political_discourse
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_diplomatic_outreach_idea }
+		}
+
+		cost = 70
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_diplomatic_outreach_idea days = 180 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+
+	DVE_international_cooperation = {
+		icon = GFX_decision_generic_political_rally
+
+		allowed = { always = yes }
+		visible = { always = yes }
+		available = {
+			NOT = { has_idea = DVE_international_cooperation_idea }
+		}
+
+		cost = 100
+		fire_only_once = no
+
+		complete_effect = {
+			add_timed_idea = { idea = DVE_international_cooperation_idea days = 180 }
+		}
+
+		ai_will_do = { factor = 1 }
+	}
+}

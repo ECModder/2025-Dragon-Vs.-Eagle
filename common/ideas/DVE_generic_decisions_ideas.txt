@@ -1,0 +1,91 @@
+# ============================================================
+#   DvE - Generic Decisions: shared ideas
+#
+#   Timed ideas are added via add_timed_idea by the Domestic
+#   Affairs / Military Affairs / Foreign Relations decisions in
+#   common/decisions/DVE_generic_decisions.txt and expire on
+#   their own after the stated number of days.
+#
+#   The last two (infrastructure/officer corps) are PERMANENT -
+#   granted with a plain add_ideas once by a delayed event in
+#   events/DVE_generic_decisions_events.txt, no timer, matching
+#   the "grants X after N days" (not "for N days") wording of
+#   those two decisions.
+# ============================================================
+
+ideas = {
+
+	country = {
+
+		DVE_anticorruption_campaign_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				stability_weekly = 0.002
+			}
+		}
+
+		DVE_emergency_economic_measures_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				stability_weekly = -0.002
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.03
+			}
+		}
+
+		DVE_subsidize_industries_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				stability_weekly = -0.002
+				industrial_capacity_factory = 0.02
+			}
+		}
+
+		DVE_modernize_armed_forces_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.04
+				industrial_capacity_factory = 0.02
+			}
+		}
+
+		DVE_recruitment_drive_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				recruitable_population_factor = 0.05
+				war_support_weekly = 0.002
+			}
+		}
+
+		DVE_diplomatic_outreach_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				opinion_gain_monthly_factor = 0.10
+				drift_defence_factor = 0.05
+			}
+		}
+
+		DVE_international_cooperation_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				trade_opinion_factor = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+
+		DVE_infrastructure_modernization_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_infrastructure_factor = 0.02
+			}
+		}
+
+		DVE_officer_corps_reform_idea = {
+			cancel_if_invalid = no
+			modifier = {
+				army_org_factor = 0.03
+				planning_speed = 0.02
+			}
+		}
+	}
+}

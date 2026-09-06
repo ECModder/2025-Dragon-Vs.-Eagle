@@ -1,0 +1,155 @@
+# ============================================================
+#   DvE - CAMBIO DI TAG A FINE ALBERO POST-SCONFITTA
+#
+#   Chi porta a termine il ramo di una fazione prima che scada la
+#   crisi di successione non si limita a cambiare governo: cambia
+#   proprio paese. Il giocatore continua col nuovo tag.
+#
+#   L'effetto e' change_tag_from, che va eseguito NELLO SCOPE DEL
+#   NUOVO PAESE e sposta il giocatore dal vecchio. E' lo stesso
+#   meccanismo con cui il gioco base fa nascere Vichy dalla Francia
+#   (common/decisions/FRA.txt).
+#
+#   ORDINE DELLE OPERAZIONI - conta davvero:
+#     1) tecnologia, unita' e scorte, FINCHE' la Russia ha ancora
+#        gli stati: a paese svuotato transfer_units_fraction
+#        fallisce, lo avverte il gioco base stesso
+#     2) territorio e cores
+#     3) governo, capitale, albero focus e change_tag_from
+#
+#   "Firm grip on power" (United Russia) NON cambia tag: quel ramo
+#   e' la Federazione Russa che sopravvive a se stessa, il tag
+#   giusto resta RUS.
+#
+#   Ogni effetto e' protetto da country_exists: se per qualche
+#   motivo il tag di destinazione esistesse gia' - per esempio
+#   perche' la guerra civile e' scoppiata lo stesso - non si fa
+#   niente e la Russia resta la Russia.
+# ============================================================
+
+# ============================================================
+#   KPRF - i comunisti - "Coup de main" -> SOV
+#   L'Unione Sovietica torna in piedi. Il tag SOV eredita territorio, esercito,
+#   scorte e tecnologia, e passa all'albero principale sovietico.
+# ============================================================
+RUS_pd_become_SOV_effect = {
+
+	if = {
+		limit = { NOT = { country_exists = SOV } }
+
+		# 1) tecnologia, unita' e scorte, prima di svuotare la Russia
+		SOV = { inherit_technology = RUS }
+		transfer_units_fraction = {
+			target = SOV
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# 2) territorio e cores
+		every_owned_state = {
+			add_core_of = SOV
+			SOV = { transfer_state = PREV }
+		}
+
+		# 3) il nuovo Stato, e il giocatore ci passa dentro
+		SOV = {
+			set_capital = { state = 219 }   # Mosca
+			set_politics = {
+				ruling_party = totalitarian_socialism
+				elections_allowed = no
+			}
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.20 }
+			set_country_flag = SOV_born_from_defeated_russia
+			load_focus_tree = { tree = soviet_focus keep_completed = no }
+			change_tag_from = RUS
+		}
+	}
+}
+
+# ============================================================
+#   l'opposizione democratica - "Ours shall be heard, with force." -> RUR
+#   La Repubblica Russa: il tag RUR eredita tutto e passa
+#   al suo albero nazionale (russian_republic_focus).
+# ============================================================
+RUS_pd_become_RUR_effect = {
+
+	if = {
+		limit = { NOT = { country_exists = RUR } }
+
+		# 1) tecnologia, unita' e scorte, prima di svuotare la Russia
+		RUR = { inherit_technology = RUS }
+		transfer_units_fraction = {
+			target = RUR
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# 2) territorio e cores
+		every_owned_state = {
+			add_core_of = RUR
+			RUR = { transfer_state = PREV }
+		}
+
+		# 3) il nuovo Stato, e il giocatore ci passa dentro
+		RUR = {
+			set_capital = { state = 219 }   # Mosca
+			set_politics = {
+				ruling_party = centrist
+				elections_allowed = yes
+			}
+			add_popularity = { ideology = centrist popularity = 0.20 }
+			set_country_flag = RUR_born_from_defeated_russia
+			load_focus_tree = { tree = russian_republic_focus keep_completed = no }
+			change_tag_from = RUS
+		}
+	}
+}
+
+# ============================================================
+#   gli ultranazionalisti - "Coup d'Etat" -> NRE
+#   Il Nuovo Impero Russo: il tag NRE eredita tutto e passa
+#   al suo albero nazionale (new_russian_empire_focus).
+# ============================================================
+RUS_pd_become_NRE_effect = {
+
+	if = {
+		limit = { NOT = { country_exists = NRE } }
+
+		# 1) tecnologia, unita' e scorte, prima di svuotare la Russia
+		NRE = { inherit_technology = RUS }
+		transfer_units_fraction = {
+			target = NRE
+			size = 1.0
+			stockpile_ratio = 1.0
+			army_ratio = 1.0
+			navy_ratio = 1.0
+			air_ratio = 1.0
+		}
+
+		# 2) territorio e cores
+		every_owned_state = {
+			add_core_of = NRE
+			NRE = { transfer_state = PREV }
+		}
+
+		# 3) il nuovo Stato, e il giocatore ci passa dentro
+		NRE = {
+			set_capital = { state = 219 }   # Mosca
+			set_politics = {
+				ruling_party = ultranationalism
+				elections_allowed = no
+			}
+			add_popularity = { ideology = ultranationalism popularity = 0.20 }
+			set_country_flag = NRE_born_from_defeated_russia
+			load_focus_tree = { tree = new_russian_empire_focus keep_completed = no }
+			change_tag_from = RUS
+		}
+	}
+}
+
