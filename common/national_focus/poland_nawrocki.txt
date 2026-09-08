@@ -1,0 +1,210 @@
+focus_tree = {
+	id = poland_nawrocki_focus
+	
+	country = {
+		factor = 0
+		modifier = {
+		tag = POL
+		add = 0
+		}
+	}
+			     focus = {
+		id = POL_nawrocki
+		icon = GFX_goal
+		x = 20
+		y = 1
+				        available = {
+						has_war = no
+                        }
+				bypass = {
+
+		}
+		ai_will_do = { factor = 100 }
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+
+		
+		#prerequisite = { focus =  }
+		#mutually_exclusive = { focus }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 10	
+custom_effect_tooltip = POL_DESCYYYYY_ONE			
+			}
+}
+			     focus = {
+		id = POL_ACTS
+		icon = GFX_goal
+		x = 20
+		y = 2
+				        available = {
+						has_war = no
+                        }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+		ai_will_do = { factor = 100 }
+
+		
+		prerequisite = { focus = POL_nawrocki  }
+		#mutually_exclusive = { focus }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 10	
+custom_effect_tooltip = POL_DESCYYYYY_TWO			
+			}
+}
+			     focus = {
+		id = POL_influence_status
+		icon = GFX_goal
+		x = 20
+		y = 3
+				        available = {
+						has_war = no
+                        }
+				bypass = {
+
+		}
+		cost = 2
+		priority = 10
+				        allow_branch = {
+						
+        }
+		ai_will_do = { factor = 100 }
+
+		
+		prerequisite = { focus = POL_ACTS  }
+		#mutually_exclusive = { focus }
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_political_power = 10			
+			}
+}
+focus = {
+	id = POL_its_time_for_work
+	icon = GFX_goal
+	x = 20
+	y = 4
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	priority = 10
+
+	allow_branch = {
+
+	}
+
+	ai_will_do = { factor = 100 }
+
+	prerequisite = { focus = POL_influence_status }
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10    
+		set_country_flag = POL_nawrocki_work
+		
+
+		mark_focus_tree_layout_dirty = yes 
+
+		custom_effect_tooltip = NEW_FOCUSES                
+	}
+}
+
+focus = {
+	id = POL_NEW_HEART
+	icon = GFX_goal
+	x = 10
+	y = 8
+
+
+	allow_branch = { 
+		has_country_flag = POL_nawrocki_work 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	priority = 10
+	ai_will_do = { factor = 30 }
+
+
+	#prerequisite = { focus =  }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10            
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	}
