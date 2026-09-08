@@ -100,65 +100,82 @@ custom_effect_tooltip = POL_DESCYYYYY_TWO
 			add_political_power = 10			
 			}
 }
-			     focus = {
-		id = POL_its_time_for_work
-		icon = GFX_goal
-		x = 20
-		y = 4
-				        available = {
-						has_war = no
-                        }
-				bypass = {
+focus = {
+	id = POL_its_time_for_work
+	icon = GFX_goal
+	x = 20
+	y = 4
 
-		}
-		cost = 2
-		priority = 10
-				        allow_branch = {
-						
-        }
-		ai_will_do = { factor = 100 }
+	available = {
+		has_war = no
+	}
 
+	bypass = {
+
+	}
+
+	cost = 2
+	priority = 10
+
+	allow_branch = {
+
+	}
+
+	ai_will_do = { factor = 100 }
+
+	prerequisite = { focus = POL_influence_status }
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10    
+		set_country_flag = POL_nawrocki_work
 		
-		prerequisite = { focus = POL_influence_status  }
-		#mutually_exclusive = { focus }
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
+		mark_focus_tree_layout_dirty = yes 
 
-		completion_reward = {
-			add_political_power = 10	
-custom_effect_tooltip = NEW_FOCUSES				
-			}
+		custom_effect_tooltip = NEW_FOCUSES                
+	}
 }
-			     focus = {
-		id = POL_NEW_HEART
-		icon = GFX_goal
-		x = 12
-		y = 8
-				        available = {
-						has_war = no
-						has_completed_focus = POL_its_time_for_work
-                        }
-				bypass = {
 
-		}
-		cost = 2
-		priority = 10
-		ai_will_do = { factor = 30 }
-		allow_branch = { has_completed_focus = POL_its_time_for_work }
+focus = {
+	id = POL_NEW_HEART
+	icon = GFX_goal
+	x = 10
+	y = 8
 
-		
-		#prerequisite = { focus =   }
-		#mutually_exclusive = { focus }
 
-		cancel_if_invalid = yes
-		continue_if_invalid = no
-		available_if_capitulated = no
+	allow_branch = { 
+		has_country_flag = POL_nawrocki_work 
+	}
 
-		completion_reward = {
-			add_political_power = 10			
-			}
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	priority = 10
+	ai_will_do = { factor = 30 }
+
+
+	#prerequisite = { focus =  }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10            
+	}
 }
 	
 	
