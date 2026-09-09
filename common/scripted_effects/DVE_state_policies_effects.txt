@@ -28,7 +28,12 @@ DVE_set_economic_model_effect = {
 		add_ideas = market_economy
 	}
 	else_if = {
-		limit = { has_government = progressive }
+		limit = {
+			OR = {
+				has_government = progressive
+				has_government = liberal
+			}
+		}
 		add_ideas = mixed_economy
 	}
 	else_if = {
@@ -160,6 +165,20 @@ DVE_set_state_policies_effect = {
 		add_ideas = free_press
 		add_ideas = functioning_state
 		add_ideas = standard_welfare
+		add_ideas = sectoral_corruption
+		add_ideas = eight_hour_workday
+		add_ideas = unions_allowed
+		add_ideas = ordinary_justice
+		add_ideas = codified_discipline
+	}
+	else_if = {
+		limit = { has_government = liberal }
+		add_ideas = high_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = minimal_propaganda
+		add_ideas = free_press
+		add_ideas = functioning_state
+		add_ideas = generous_welfare
 		add_ideas = sectoral_corruption
 		add_ideas = eight_hour_workday
 		add_ideas = unions_allowed

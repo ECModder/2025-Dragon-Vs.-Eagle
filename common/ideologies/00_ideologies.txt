@@ -248,12 +248,6 @@ rules = {
 
             # GFX: GFX_ideology_left_centrist_icon
             left_centrist = {}
-
-            # GFX: GFX_ideology_left_populism_icon
-            left_populism = {}
-
-            # GFX: GFX_ideology_green_leftist_icon
-            green_leftist = {}
         }
 
         dynamic_faction_names = {
@@ -286,9 +280,6 @@ rules = {
     # ============================================================
     centrist = {
         types = {
-            # GFX: GFX_ideology_liberal_socialdemocrat_icon
-            liberal_socialdemocrat = {}
-
             # GFX: GFX_ideology_green_liberalism_icon
             green_liberalism = {}
 
@@ -297,9 +288,6 @@ rules = {
 
             # GFX: GFX_ideology_centrist_populism_icon
             centrist_populism = {}
-
-            # GFX: GFX_ideology_social_liberal_icon
-            social_liberal = {}
         }
 
         dynamic_faction_names = {
@@ -321,6 +309,49 @@ rules = {
 			can_join_factions = no
 			can_send_volunteers = yes
 		}
+
+
+        ai_ideology_wanted_units_factor = 0.90
+    }
+
+    # ============================================================
+    #   LIBERAL
+    #   GFX base: GFX_ideology_liberal_icon
+    #
+    #   Ritagliata da progressive (left_populism, green_leftist) e
+    #   da centrist (social_liberal, liberal_socialdemocrat): la
+    #   famiglia socialdemocratica/verde/liberal-di-sinistra che
+    #   in pratica governa la maggior parte dei partiti "di centro"
+    #   gia' scritti nei file paese (Campo Largo, SPD, Labour, PS,
+    #   PASOK, Socialdemokraterna...).
+    # ============================================================
+    liberal = {
+        types = {
+            # GFX: GFX_ideology_social_liberal_icon
+            social_liberal = {}
+
+            # GFX: GFX_ideology_liberal_socialdemocrat_icon
+            liberal_socialdemocrat = {}
+
+            # GFX: GFX_ideology_green_leftist_icon
+            green_leftist = {}
+
+            # GFX: GFX_ideology_left_populism_icon
+            left_populism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_LIBERAL_1"
+            "FACTION_LIBERAL_2"
+        }
+
+        color = { 255 140 0 }
+
+        war_impact_on_world_tension = 0.15
+
+        can_be_boosted = yes
+        can_collaborate = yes
+        can_host_government_in_exile = yes
 
 
         ai_ideology_wanted_units_factor = 0.90
