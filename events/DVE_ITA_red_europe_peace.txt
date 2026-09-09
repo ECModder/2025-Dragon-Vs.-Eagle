@@ -1,0 +1,218 @@
+# ============================================================
+#   DvE - le paci scriptate delle rivoluzioni rosse italiane
+#
+#   Ogni ITA_red_X_effect (common/scripted_effects/
+#   DVE_ITA_red_europe.txt) trasferisce gli stati con effetti
+#   diretti (add_core_of + transfer_state) PRIMA di dichiarare
+#   guerra: la spartizione e' gia' decisa dallo script, non dalla
+#   guerra. Il declare_war_on che segue serve solo a marcare la
+#   rottura - due governi che si considerano nemici - non a
+#   lasciare che la guerra vera decida i confini.
+#
+#   Senza questo file la guerra resterebbe aperta con un
+#   wargoal "annex_everything": se il nuovo Stato rivoluzionario,
+#   nato debole con appena 20 divisioni della Guardia Rossa,
+#   perde quella guerra contro il governo che ha appena lasciato
+#   (che tiene ancora il grosso dell'esercito), verrebbe
+#   riassorbito e la scissione sarebbe annullata. Ogni evento qui
+#   dichiara la pace bianca pochissime ore dopo la dichiarazione
+#   di guerra, cosi' i confini restano quelli scritti dall'effetto
+#   e nessuna delle due parti puo' annettere l'altra.
+# ============================================================
+
+add_namespace = dve_itapeace
+
+# 1: FSR - FRA
+country_event = {
+	id = dve_itapeace.1
+	title = dve_itapeace.1.t
+	desc = dve_itapeace.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.1.a
+		white_peace = FRA
+	}
+}
+
+# 2: SPA - SPR
+country_event = {
+	id = dve_itapeace.2
+	title = dve_itapeace.2.t
+	desc = dve_itapeace.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.2.a
+		white_peace = SPR
+	}
+}
+
+# 3: GDR - GER
+country_event = {
+	id = dve_itapeace.3
+	title = dve_itapeace.3.t
+	desc = dve_itapeace.3.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.3.a
+		white_peace = GER
+	}
+}
+
+# 4: SRB - ENG
+country_event = {
+	id = dve_itapeace.4
+	title = dve_itapeace.4.t
+	desc = dve_itapeace.4.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.4.a
+		white_peace = ENG
+	}
+}
+
+# 5: PRS - POR
+country_event = {
+	id = dve_itapeace.5
+	title = dve_itapeace.5.t
+	desc = dve_itapeace.5.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.5.a
+		white_peace = POR
+	}
+}
+
+# 6: PPR - POL
+country_event = {
+	id = dve_itapeace.6
+	title = dve_itapeace.6.t
+	desc = dve_itapeace.6.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.6.a
+		white_peace = POL
+	}
+}
+
+# 7: GSR - GRE
+country_event = {
+	id = dve_itapeace.7
+	title = dve_itapeace.7.t
+	desc = dve_itapeace.7.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.7.a
+		white_peace = GRE
+	}
+}
+
+# 8: SSR - SWE
+country_event = {
+	id = dve_itapeace.8
+	title = dve_itapeace.8.t
+	desc = dve_itapeace.8.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.8.a
+		white_peace = SWE
+	}
+}
+
+# 9: SSR - NOR
+country_event = {
+	id = dve_itapeace.9
+	title = dve_itapeace.9.t
+	desc = dve_itapeace.9.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.9.a
+		white_peace = NOR
+	}
+}
+
+# 10: SSR - DEN
+country_event = {
+	id = dve_itapeace.10
+	title = dve_itapeace.10.t
+	desc = dve_itapeace.10.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.10.a
+		white_peace = DEN
+	}
+}
+
+# 11: YUG - SER
+country_event = {
+	id = dve_itapeace.11
+	title = dve_itapeace.11.t
+	desc = dve_itapeace.11.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.11.a
+		white_peace = SER
+	}
+}
+
+# 12: YUG - CRO
+country_event = {
+	id = dve_itapeace.12
+	title = dve_itapeace.12.t
+	desc = dve_itapeace.12.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.12.a
+		white_peace = CRO
+	}
+}
+
+# 13: YUG - BOS
+country_event = {
+	id = dve_itapeace.13
+	title = dve_itapeace.13.t
+	desc = dve_itapeace.13.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.13.a
+		white_peace = BOS
+	}
+}
+
+# 14: YUG - SLV
+country_event = {
+	id = dve_itapeace.14
+	title = dve_itapeace.14.t
+	desc = dve_itapeace.14.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.14.a
+		white_peace = SLV
+	}
+}
+
+# 15: YUG - MAC
+country_event = {
+	id = dve_itapeace.15
+	title = dve_itapeace.15.t
+	desc = dve_itapeace.15.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = dve_itapeace.15.a
+		white_peace = MAC
+	}
+}
