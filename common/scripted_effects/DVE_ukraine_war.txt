@@ -94,8 +94,20 @@ RUS_ukraine_victory_effect = {
 		RUS_won_war_settlement_effect = yes
 
 		# Il governo amico a Kiev arriva per ultimo, sull'Ucraina
-		# gia' ridotta ai confini del trattato.
+		# gia' ridotta ai confini del trattato. Non e' un governo
+		# eletto ne' un partito: e' un'amministrazione militare
+		# d'occupazione, installata da Mosca sopra un esercito che
+		# ha appena perso la guerra - da qui autocracy, non uno dei
+		# quattro socialismi. Il nome che ne esce ("Ukrainian State")
+		# e' gia' in UKR_ideology_names_l_english.yml.
 		puppet = UKR
+		UKR = {
+			set_politics = {
+				ruling_party = autocracy
+				elections_allowed = no
+			}
+			add_popularity = { ideology = autocracy popularity = 0.30 }
+		}
 
 		add_stability = 0.10
 		add_war_support = 0.10
