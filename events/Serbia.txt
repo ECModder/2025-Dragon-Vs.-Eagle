@@ -25,13 +25,13 @@ country_event = {
 		}
 		random_list = {
 			50 = {
-				country_event = { id = serbiaos.2 days = 140 }
+				country_event = { id = serbiaos.2 days = 100 random_days = 80 }
 			}
 			25 = {
-				country_event = { id = serbiaos.3 days = 140 }
+				country_event = { id = serbiaos.3 days = 100 random_days = 80 }
 			}
 			25 = {
-
+				country_event = { id = serbiaos.5 days = 100 random_days = 80 }
 			}
 		}
 	}
@@ -40,6 +40,9 @@ country_event = {
 		name = "We shall not start wars!"
 		add_political_power = 50
 		add_stability = 0.15
+		ai_chance = {
+			base = 1000
+		}
 		USA = {
 			every_faction_member = {
 				add_opinion_modifier = {
@@ -65,9 +68,10 @@ country_event = {
 		annex_country = {
 			target = MNT
 		}
-		country_event = { id = serbiaos.3 days = 140 }
+		country_event = { id = serbiaos.3 days = 100 random_days = 80 }
 	}
 }
+
 
 country_event = {
 	id = serbiaos.3
@@ -97,6 +101,47 @@ country_event = {
 
 	option = {
 		name = "We will hold off the invasion."
+		add_political_power = 50
+		add_stability = 0.1
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = medium_increase
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = serbiaos.5
+	title = serbiaos.5.t
+	desc = serbiaos.5.d
+	is_triggered_only = yes
+
+	option = {
+		name = "Lets go with our backup plan!"
+		add_political_power = -50
+		add_stability = -0.05
+		declare_war_on = {
+			target = MNT
+			type = annex_everything
+		}
+		add_state_core = 105
+		USA = {
+			every_faction_member = {
+				add_opinion_modifier = {
+					target = USA
+					modifier = small_decrease
+				}
+			}
+		}
+		country_event = { id = serbiaos.3 days = 100 random_days = 80 }
+	}
+
+	option = {
+		name = "We cannot risk our relatitions with the West."
 		add_political_power = 50
 		add_stability = 0.1
 		USA = {
