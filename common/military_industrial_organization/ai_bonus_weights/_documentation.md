@@ -16,7 +16,7 @@ For example:
 ```
 infantry_equipment = {
 	# Prefer infantry equipment with high air superiority bonus!
-	air_superiority = 9.999
+	air_superiority = 9.999 
 }
 ```
 
