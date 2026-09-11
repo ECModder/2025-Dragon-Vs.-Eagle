@@ -47,67 +47,6 @@ set_technology = {
 	basic_depth_charges = 1
 }
 
-if = {
-	limit = {
-		has_dlc = "No Compromise, No Surrender"
-		has_dlc = "Arms Against Tyranny"
-	}
-		create_equipment_variant = {
-			name = "Casco Convoy"
-			type = convoy_1
-			parent_version = 0
-			design_team = mio:PHI_compania_maritima_de_cebu_organization
-			show_position = no
-			mark_older_equipment_obsolete = yes
-		}
-
-		create_equipment_variant = {
-			name = "Clemson Class"				# represents Sampson, Caldwell, Clemson, and Wickes classes
-			type = ship_hull_light_1
-			name_group = PHI_DD_HISTORICAL
-			parent_version = 0
-			design_team = mio:PHI_compania_maritima_de_cebu_organization
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_1
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				mid_1_custom_slot = ship_torpedo_1
-				rear_1_custom_slot = ship_depth_charge_1
-			}
-		}
-	else = {
-		create_equipment_variant = {
-			name = "Casco Convoy"
-			type = convoy_1
-			parent_version = 0
-			show_position = no
-			mark_older_equipment_obsolete = yes
-		}
-
-		create_equipment_variant = {
-			name = "Clemson Class"				# represents Sampson, Caldwell, Clemson, and Wickes classes
-			type = ship_hull_light_1
-			name_group = PHI_DD_HISTORICAL
-			parent_version = 0
-			show_position = no
-			mark_older_equipment_obsolete = yes
-			modules = {
-				fixed_ship_battery_slot = ship_light_battery_1
-				fixed_ship_anti_air_slot = ship_anti_air_1
-				fixed_ship_fire_control_system_slot = ship_fire_control_system_0
-				fixed_ship_radar_slot = empty
-				fixed_ship_engine_slot = light_ship_engine_1
-				fixed_ship_torpedo_slot = ship_torpedo_1
-				mid_1_custom_slot = ship_torpedo_1
-				rear_1_custom_slot = ship_depth_charge_1
-			}
-		}
-	}
-}
-
 set_convoys = 50
 
 #Dynamic modifiers 
