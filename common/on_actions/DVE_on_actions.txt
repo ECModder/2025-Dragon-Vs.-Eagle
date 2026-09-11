@@ -126,4 +126,20 @@ on_actions = {
 		}
 	}
 
+    on_state_control_changed = {
+        effect = {
+            if = {
+                limit = {
+                    FROM.FROM = { state = 146 }
+                    ROOT = { tag = FIN }
+                    NOT = { has_global_flag = FIN_control_Karelia }
+                }
+                ROOT = {
+                    country_event = { id = finlandos.1 }
+                }
+                set_global_flag = FIN_control_Karelia
+            }
+        }
+    }
+
 }
