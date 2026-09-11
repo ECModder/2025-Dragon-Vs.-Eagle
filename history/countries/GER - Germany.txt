@@ -102,7 +102,14 @@ if = {
 	}
 }
 
-
+if = {
+	limit = {
+		NOT = {
+			has_dlc = "No Step Back"
+		}
+	}
+	set_oob = "GER_2025"
+}
 
 # Starting Stats of various kinds
 set_research_slots = 4
@@ -126,7 +133,8 @@ set_party_name = { ideology = authoritarian_socialism long_name = "Bündnis Sahr
 set_party_name = { ideology = vanguard_socialism long_name = "Marxistisch-Leninistische Partei Deutschlands" name = "MLPD" }
 set_party_name = { ideology = revolutionary_socialism long_name = "Die Linke" name = "Linke" }
 set_party_name = { ideology = progressive long_name = "Bündnis 90/Die Grünen" name = "Grüne" }
-set_party_name = { ideology = centrist long_name = "Sozialdemokratische Partei Deutschlands" name = "SPD" }
+set_party_name = { ideology = centrist long_name = "Freie Demokratische Partei" name = "FDP" }
+set_party_name = { ideology = liberal long_name = "Sozialdemokratische Partei Deutschlands" name = "SPD" }
 set_party_name = { ideology = conservative long_name = "Christlich Demokratische Union" name = "CDU" }
 set_party_name = { ideology = reactionary long_name = "Alternative für Deutschland" name = "AfD" }
 set_party_name = { ideology = authoritarianism long_name = "Bundesmilitärdirektorium" name = "BMD" }
@@ -139,7 +147,7 @@ create_country_leader = { name = "Martin Schirdewan" desc = "POLITICS_LEADER_DES
 create_country_leader = { name = "Workers' Councils" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_workers_council.dds" expire = "2100.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Sahra Wagenknecht" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = stalinism }
 create_country_leader = { name = "Annalena Baerbock" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = progressivism }
-create_country_leader = { name = "Olaf Scholz" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_scholz.dds" expire = "2035.1.1" ideology = liberal_socialdemocrat }
+create_country_leader = { name = "Olaf Scholz" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_scholz.dds" expire = "2035.1.1" ideology = social_liberal }
 create_country_leader = { name = "Friedrich Merz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Alice Weidel" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = constitutionalist }
 create_country_leader = { name = "Thomas Haldenwang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = technocracy }
@@ -149,7 +157,7 @@ create_country_leader = { name = "Frank Franz" desc = "POLITICS_LEADER_DESC" pic
 create_country_leader = { name = "Karin Heepen" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = christian_fundamentalism }
 
 set_politics = {
-	ruling_party = centrist
+	ruling_party = liberal
 	last_election = "2021.9.26"
 	election_frequency = 48
 	elections_allowed = yes
@@ -159,15 +167,16 @@ set_popularities = {
 	totalitarian_socialism = 0
 	authoritarian_socialism = 5
 	vanguard_socialism = 0
-	revolutionary_socialism = 4
+	revolutionary_socialism = 1
 	progressive = 14
-	centrist = 22
+	centrist = 4
+	liberal = 22
 	conservative = 31
 	reactionary = 20
 	authoritarianism = 1
 	autocracy = 0
 	absolutism = 0
-	ultranationalism = 2
+	ultranationalism = 1
 	fundamentalism = 1
 }
 add_ai_strategy = {
