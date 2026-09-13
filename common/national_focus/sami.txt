@@ -112,6 +112,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SMI_fate_of_our_politics
 		}
+		mutually_exclusive = {
+			focus = SMI_emerengy_powers
+		}
 		
 		completion_reward = {
 			add_political_power = 75
@@ -133,6 +136,9 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 75
 			add_stability = 0.05
+			set_politics = {
+				ruling_party = vanguard_socialism
+			}
 		}
 	}
 
@@ -146,10 +152,73 @@ focus_tree = {
 		prerequisite = {
 			focus = SMI_prepare_elections
 		}
+		mutually_exclusive = {
+			focus = SMI_communist_coup
+		}
 		
 		completion_reward = {
 			add_political_power = 75
 			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_leftist_victory
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 5
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_free_elections
+		}
+		mutually_exclusive = {
+			focus = SMI_centrist_victory
+			focus = SMI_rightist_victory
+		}
+		
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = SMI_centrist_victory
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 5
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_free_elections
+		}
+		mutually_exclusive = {
+			focus = SMI_leftist_victory
+			focus = SMI_rightist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+		}
+	}
+
+	focus = {
+		id = SMI_rightist_victory
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 5
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_free_elections
+		}
+		mutually_exclusive = {
+			focus = SMI_leftist_victory
+			focus = SMI_centrist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 75
 		}
 	}
 
@@ -180,10 +249,16 @@ focus_tree = {
 		prerequisite = {
 			focus = SMI_emerengy_powers
 		}
+		mutually_exclusive = {
+			focus = SMI_shift_to_ultranationalism
+		}
 		
 		completion_reward = {
 			add_political_power = 75
 			add_stability = -0.05
+			set_politics = {
+				ruling_party = autocracy
+			}
 		}
 	}
 
@@ -371,6 +446,9 @@ focus_tree = {
 		prerequisite = {
 			focus = SMI_emerengy_powers
 		}
+		mutually_exclusive = {
+			focus = SMI_ruler_for_life
+		}
 		
 		completion_reward = {
 			add_political_power = 75
@@ -472,7 +550,7 @@ focus_tree = {
 	focus = {
 		id = SMI_kickstart_our_industry
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
-		x = 23
+		x = 24
 		y = 1
 		cost = 10
 		
@@ -611,6 +689,169 @@ focus_tree = {
 				type = chromium
 				amount = 8
 				state = 666
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_build_our_domestic_industry
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 27
+		y = 2
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_kickstart_our_industry
+		}
+		completion_reward = {
+			add_political_power = 25
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 3
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 2
+            	add_building_construction = {
+                	type = arms_factory
+                	level = 1
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_civilian_industry
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 25
+		y = 3
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_build_our_domestic_industry
+		}
+		completion_reward = {
+			add_political_power = 25
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = infrastructure
+					level = 2
+				}
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 3
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_military_industry
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 29
+		y = 3
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_build_our_domestic_industry
+		}
+		prerequisite = {
+			focus = SMI_modernize_our_equipment
+		}
+		completion_reward = {
+			add_war_support = 0.05
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+            	add_building_construction = {
+                	type = arms_factory
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_found_our_army
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 34
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			add_political_power = 50
+			army_experience = 30
+			add_manpower = 10000
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1000
+			}
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_extra_state_shared_building_slots = 1
+            	add_building_construction = {
+                	type = arms_factory
+                	level = 1
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_modernize_our_equipment
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 31
+		y = 2
+		cost = 5
+		prerequisite = {
+			focus = SMI_found_our_army
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			army_experience = 30
+			set_technology = {
+				infantry_weapons1 = 1
+			}
+			add_tech_bonus = {
+				name = infantry_equipment
+				bonus = 0.75
+				uses = 2
+				category = infantry_weapons
+			}
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 500
 			}
 		}
 	}
