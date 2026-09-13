@@ -1,0 +1,55 @@
+# ============================================================
+#   DvE - consiglieri politici dell'Internazionale
+#
+#   Stessi tre consiglieri gia' scritti per l'Italia (common/
+#   characters/DVE_ITA.txt): Lotta Comunista non si scioglie
+#   quando smette di essere un movimento italiano e diventa lo
+#   Stato dell'Internazionale, la sua struttura interna la segue.
+#   Stessi tratti (common/country_leader/DVE_ITA_advisor_traits.txt,
+#   riusati cosi' come sono - sono definizioni generiche, non
+#   legate a un tag), stesse foto, copiate in gfx/leaders/INT/
+#   con lo stesso schema di ogni altro tag di questa mod.
+# ============================================================
+
+characters={
+
+	INT_circoli_operai = {
+		name = INT_circoli_operai
+		portraits = {
+			civilian = { small = "gfx/leaders/INT/INT_circoli_operai_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = INT_circoli_operai
+			traits = { DVE_circoli_operai }
+			cost = 300
+		}
+	}
+
+	INT_segretari_locali = {
+		name = INT_segretari_locali
+		portraits = {
+			civilian = { small = "gfx/leaders/INT/INT_segretari_locali_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = INT_segretari_locali
+			traits = { DVE_segretari_locali }
+			cost = 300
+		}
+	}
+
+	INT_consiglio_centrale = {
+		name = INT_consiglio_centrale
+		portraits = {
+			civilian = { small = "gfx/leaders/INT/INT_consiglio_centrale_small.dds" }
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = INT_consiglio_centrale
+			traits = { DVE_consiglio_centrale }
+			cost = 300
+		}
+	}
+
+}

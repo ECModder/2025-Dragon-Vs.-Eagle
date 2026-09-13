@@ -64,6 +64,37 @@ ITA_become_INT_effect = {
 			}
 			add_popularity = { ideology = vanguard_socialism popularity = 0.20 }
 			set_country_flag = INT_born_from_italy
+
+			# transfer_units_fraction sposta quello che l'Italia aveva
+			# gia' messo in campo, ma un paese che nasce da un colpo di
+			# stato non puo' contare solo su quello - specie se il
+			# giocatore non aveva ancora costruito un esercito vero.
+			# 30 divisioni di garanzia, armate con le scorte appena
+			# ereditate (stockpile_ratio = 1.0 qui sopra).
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Internazionalista" } }
+					division_template = {
+						name = "Guardia Internazionalista"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
+					owner = INT
+					count = 30
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+
 			load_focus_tree = { tree = INT_focus keep_completed = no }
 			change_tag_from = ITA
 		}
@@ -108,6 +139,34 @@ ITA_become_SRI_effect = {
 			}
 			add_popularity = { ideology = authoritarian_socialism popularity = 0.20 }
 			set_country_flag = SRI_born_from_italy
+
+			# stessa logica di ITA_become_INT_effect: 20 divisioni di
+			# garanzia, armate con le scorte appena ereditate
+			# (stockpile_ratio = 1.0 qui sopra).
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia di Stato" } }
+					division_template = {
+						name = "Guardia di Stato"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
+					owner = SRI
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+
 			load_focus_tree = { tree = SRI_focus keep_completed = no }
 			change_tag_from = ITA
 		}
