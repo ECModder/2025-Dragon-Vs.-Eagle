@@ -1,0 +1,159 @@
+# TEMPLATES #
+
+
+division_template = {
+    name = "Brigade Schnelle Kräfte"
+
+    regiments = {
+        motorized = { x = 0 y = 0 }
+        motorized = { x = 0 y = 1 }
+        motorized = { x = 0 y = 2 }
+
+        mechanized = { x = 1 y = 0 }
+        mechanized = { x = 1 y = 1 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Österreichische Panzergrenadierbrigade"
+
+    regiments = {
+        medium_armor = { x = 0 y = 0 }
+        medium_armor = { x = 0 y = 1 }
+
+        mechanized = { x = 1 y = 0 }
+        mechanized = { x = 1 y = 1 }
+        mechanized = { x = 1 y = 2 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+        maintenance_company = { x = 0 y = 3 }
+    }
+}
+
+division_template = {
+    name = "Österreichische Gebirgsbrigade"
+
+    regiments = {
+        mountaineers = { x = 0 y = 0 }
+        mountaineers = { x = 0 y = 1 }
+        mountaineers = { x = 0 y = 2 }
+        mountaineers = { x = 0 y = 3 }
+
+        motorized = { x = 1 y = 0 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Österreichische Jägerbrigade"
+
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 0 y = 3 }
+
+        motorized = { x = 1 y = 0 }
+        motorized = { x = 1 y = 1 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Jagdkommando"
+
+    regiments = {
+        mountaineers = { x = 0 y = 0 }
+        mountaineers = { x = 0 y = 1 }
+    }
+
+    support = {
+        recon = { x = 0 y = 0 }
+        engineer = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+units = {
+
+    # ======================================================
+    # BUNDESHEER - 1 JANUARY 2025
+    # ======================================================
+
+
+    # 3. Jägerbrigade
+    # Brigade Schnelle Kräfte
+    division = {
+        name = "3. Jägerbrigade"
+        location = 732
+        division_template = "Brigade Schnelle Kräfte"
+
+        start_experience_factor = 0.45
+        start_equipment_factor = 0.85
+    }
+
+
+    # 4. Panzergrenadierbrigade
+    division = {
+        name = "4. Panzergrenadierbrigade"
+        location = 9665
+        division_template = "Österreichische Panzergrenadierbrigade"
+
+        start_experience_factor = 0.50
+        start_equipment_factor = 0.90
+    }
+
+
+    # 6. Gebirgsbrigade
+    division = {
+        name = "6. Gebirgsbrigade"
+        location = 673
+        division_template = "Österreichische Gebirgsbrigade"
+
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+
+    # 7. Jägerbrigade
+    division = {
+        name = "7. Jägerbrigade"
+        location = 3673
+        division_template = "Österreichische Jägerbrigade"
+
+        start_experience_factor = 0.45
+        start_equipment_factor = 0.85
+    }
+
+
+    # Jagdkommando
+    division = {
+        name = "Jagdkommando"
+        location = 11666
+        division_template = "Jagdkommando"
+
+        start_experience_factor = 0.90
+        start_equipment_factor = 1.00
+    }
+
+}
