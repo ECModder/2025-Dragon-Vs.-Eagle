@@ -1,0 +1,322 @@
+# TEMPLATES #
+
+
+division_template = {
+    name = "Brigade Blindee"
+
+    regiments = {
+        medium_armor = { x = 0 y = 0 }
+        medium_armor = { x = 0 y = 1 }
+
+        mechanized = { x = 1 y = 0 }
+        mechanized = { x = 1 y = 1 }
+        mechanized = { x = 1 y = 2 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+        maintenance_company = { x = 0 y = 3 }
+    }
+}
+
+division_template = {
+    name = "Brigade Mecanisee"
+
+    regiments = {
+        mechanized = { x = 0 y = 0 }
+        mechanized = { x = 0 y = 1 }
+        mechanized = { x = 0 y = 2 }
+
+        motorized = { x = 1 y = 0 }
+        motorized = { x = 1 y = 1 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Brigade Legere Blindee"
+
+    regiments = {
+        motorized = { x = 0 y = 0 }
+        motorized = { x = 0 y = 1 }
+        motorized = { x = 0 y = 2 }
+
+        mechanized = { x = 1 y = 0 }
+        mechanized = { x = 1 y = 1 }
+    }
+
+    support = {
+        recon = { x = 0 y = 0 }
+        engineer = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Brigade Infanterie de Marine"
+
+    regiments = {
+        motorized = { x = 0 y = 0 }
+        motorized = { x = 0 y = 1 }
+        motorized = { x = 0 y = 2 }
+        motorized = { x = 0 y = 3 }
+
+        mechanized = { x = 1 y = 0 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Brigade Alpine"
+
+    regiments = {
+        mountaineers = { x = 0 y = 0 }
+        mountaineers = { x = 0 y = 1 }
+        mountaineers = { x = 0 y = 2 }
+        mountaineers = { x = 0 y = 3 }
+
+        motorized = { x = 1 y = 0 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Brigade Parachutiste"
+
+    regiments = {
+        paratrooper = { x = 0 y = 0 }
+        paratrooper = { x = 0 y = 1 }
+        paratrooper = { x = 0 y = 2 }
+        paratrooper = { x = 0 y = 3 }
+        paratrooper = { x = 1 y = 0 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+
+division_template = {
+    name = "Legion Etrangere"
+
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+
+        motorized = { x = 1 y = 0 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+division_template = {
+    name = "Forces Speciales"
+
+    regiments = {
+        paratrooper = { x = 0 y = 0 }
+        paratrooper = { x = 0 y = 1 }
+    }
+
+    support = {
+        recon = { x = 0 y = 0 }
+        engineer = { x = 0 y = 1 }
+        logistics_company = { x = 0 y = 2 }
+    }
+}
+
+units = {
+
+    # ======================================================
+    # FRENCH ARMY
+    # 1 JANUARY 2025
+    # ======================================================
+
+
+    # 7e Brigade blindée
+    division = {
+        name = "7e Brigade blindée"
+        location = 9642
+        division_template = "Brigade Blindee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 9e Brigade d'infanterie de marine
+    division = {
+        name = "9e Brigade d'infanterie de marine"
+        location = 629
+        division_template = "Brigade Infanterie de Marine"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 27e Brigade d'infanterie de montagne
+    division = {
+        name = "27e Brigade d'infanterie de montagne"
+        location = 3768
+        division_template = "Brigade Alpine"
+        start_experience_factor = 0.60
+        start_equipment_factor = 0.90
+    }
+
+    # 2e Brigade blindée
+    division = {
+        name = "2e Brigade blindée"
+        location = 9503
+        division_template = "Brigade Blindee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 6e Brigade légère blindée
+    division = {
+        name = "6e Brigade légère blindée"
+        location = 11877
+        division_template = "Brigade Legere Blindee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 11e Brigade parachutiste
+    division = {
+        name = "11e Brigade parachutiste"
+        location = 6766
+        division_template = "Brigade Parachutiste"
+        start_experience_factor = 0.65
+        start_equipment_factor = 0.95
+    }
+
+    # Franco-German Brigade
+    division = {
+        name = "Brigade franco-allemande"
+        location = 11640
+        division_template = "Brigade Mecanisee"
+        start_experience_factor = 0.50
+        start_equipment_factor = 0.90
+    }
+    
+    # 2e Régiment étranger d'infanterie
+    division = {
+        name = "2e Régiment étranger d'infanterie"
+        location = 11877
+        division_template = "Legion Etrangere"
+        start_experience_factor = 0.70
+        start_equipment_factor = 0.95
+    }
+
+    # 1er Régiment étranger de cavalerie
+    division = {
+        name = "1er Régiment étranger de cavalerie"
+        location = 11834
+        division_template = "Brigade Legere Blindee"
+        start_experience_factor = 0.70
+        start_equipment_factor = 0.95
+    }
+
+    # 2e Régiment étranger de parachutistes
+    division = {
+        name = "2e Régiment étranger de parachutistes"
+        location = 11804
+        division_template = "Brigade Parachutiste"
+        start_experience_factor = 0.75
+        start_equipment_factor = 0.95
+    }
+
+    # 13e Demi-brigade de Légion étrangère
+    division = {
+        name = "13e Demi-brigade de Légion étrangère"
+        location = 760
+        division_template = "Legion Etrangere"
+        start_experience_factor = 0.70
+        start_equipment_factor = 0.95
+    }
+
+    # 1er RPIMa
+    division = {
+        name = "1er Régiment de parachutistes d'infanterie de marine"
+        location = 9710
+        division_template = "Forces Speciales"
+        start_experience_factor = 0.90
+        start_equipment_factor = 1.00
+    }
+
+    # 13e RDP
+    division = {
+        name = "13e Régiment de dragons parachutistes"
+        location = 9737
+        division_template = "Forces Speciales"
+        start_experience_factor = 0.90
+        start_equipment_factor = 1.00
+    }
+   
+    # 1er Régiment de chasseurs
+    division = {
+        name = "1er Régiment de chasseurs"
+        location = 5291
+        division_template = "Brigade Blindee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 5e Régiment de dragons
+    division = {
+        name = "5e Régiment de dragons"
+        location = 9490
+        division_template = "Brigade Blindee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 1er Régiment de tirailleurs
+    division = {
+        name = "1er Régiment de tirailleurs"
+        location = 521
+        division_template = "Brigade Mecanisee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 16e Bataillon de chasseurs à pied
+    division = {
+        name = "16e Bataillon de chasseurs à pied"
+        location = 3768
+        division_template = "Brigade Mecanisee"
+        start_experience_factor = 0.55
+        start_equipment_factor = 0.90
+    }
+
+    # 1er Régiment de spahis
+    division = {
+        name = "1er Régiment de spahis"
+        location = 762
+        division_template = "Brigade Legere Blindee"
+        start_experience_factor = 0.60
+        start_equipment_factor = 0.90
+    }
+
+}
