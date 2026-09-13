@@ -142,4 +142,51 @@ on_actions = {
         }
     }
 
+	# ============================================================
+	#   LA GUERRA D'UCRAINA - paracadute sulla capitolazione
+	#
+	#   Il trattato (common/scripted_effects/DVE_ukraine_war.txt e
+	#   DVE_RUS_effects.txt) presume che la missione "Kiev cade"
+	#   scatti PRIMA che la guerra finisca da sola: ma catturare la
+	#   capitale nemica e' proprio cio' che fa collassare un paese,
+	#   quindi Kiev che cade e l'Ucraina che capitola possono
+	#   succedere nello stesso momento. Se la capitolazione vince
+	#   la corsa, il gioco base applica il wargoal aperto
+	#   (annex_everything, dichiarato all'inizio) e si annette
+	#   TUTTA l'Ucraina, Kiev compresa - esattamente il difetto
+	#   gia' visto (e corretto) nelle rivoluzioni rosse italiane in
+	#   Europa: una pace non scriptata si sminchia.
+	#
+	#   Qui la guerra e' scriptata gia' a meta' (la missione esiste),
+	#   ma non basta: on_capitulation intercetta la capitolazione
+	#   PRIMA che la conferenza di pace nativa la risolva, e applica
+	#   il trattato giusto per conto suo. Entrambi gli effetti
+	#   controllano gia' da soli RUS_ukraine_war_over, quindi non
+	#   c'e' rischio di doppio scatto con la missione normale.
+	# ============================================================
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					ROOT = { original_tag = UKR }
+					FROM = { original_tag = RUS }
+					RUS = {
+						has_country_flag = RUS_ukraine_war_active
+						NOT = { has_country_flag = RUS_ukraine_war_over }
+					}
+				}
+				RUS = { RUS_ukraine_victory_effect = yes }
+			}
+			if = {
+				limit = {
+					ROOT = { original_tag = RUS }
+					FROM = { original_tag = UKR }
+					has_country_flag = RUS_ukraine_war_active
+					NOT = { has_country_flag = RUS_ukraine_war_over }
+				}
+				RUS_ukraine_defeat_effect = yes
+			}
+		}
+	}
+
 }

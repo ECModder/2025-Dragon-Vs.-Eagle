@@ -1,0 +1,49 @@
+# ============================================================
+#   DvE - tratti dei consiglieri politici italiani
+#
+#   Uno per consigliere, stesso schema di common/country_leader/
+#   DVE_RUS_advisor_traits.txt: qui pero' i valori non sono solo
+#   deriva ideologica, ma modificatori generali (vanilla, common/
+#   country_leader/00_traits.txt e goe_traits.txt confermano tutti
+#   i nomi di campo usati sotto).
+# ============================================================
+
+leader_traits = {
+
+	# --- Circoli Operai, Lotta Comunista ---
+	DVE_circoli_operai = {
+		random = no
+		sprite = 13
+		vanguard_socialism_drift = 0.05
+		revolutionary_socialism_drift = 0.04
+		consumer_goods_factor = -0.15
+		compliance_gain = 0.0002
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Segretari Locali, Lotta Comunista ---
+	DVE_segretari_locali = {
+		random = no
+		sprite = 13
+		vanguard_socialism_drift = 0.10
+		stability_factor = 0.05
+		war_support_factor = 0.05
+		political_power_factor = 0.05
+		agency_upgrade_time = -0.15
+		research_speed_factor = 0.05
+		production_speed_arms_factory_factor = 0.10
+		production_speed_industrial_complex_factor = 0.10
+		ai_will_do = { factor = 1 }
+	}
+
+	# --- Consiglio Centrale, Lotta Comunista ---
+	DVE_consiglio_centrale = {
+		random = no
+		sprite = 13
+		political_power_factor = 0.05
+		stability_factor = 0.05
+		operative_slot = 1
+		war_support_factor = 0.10
+		ai_will_do = { factor = 1 }
+	}
+}
