@@ -1,0 +1,108 @@
+# ============================================================
+#   DvE - The Internationale: design companies
+#
+#   INT non compare in nessuna delle liste "allowed" del gioco
+#   base (common/ideas/zzz_generic.txt), quindi di suo vedrebbe
+#   solo le design company generiche ("Small Arms Company" ecc.)
+#   - da qui lo screenshot di Matteo. Queste le sostituiscono con
+#   la versione "impresa socializzata": stessa meccanica (+15%
+#   ricerca sulla categoria, stesso costo delle generiche in
+#   questa mod), gestione dei consigli operai invece che
+#   un'azienda privata.
+#
+#   Aggiunte ai gruppi ESISTENTI del gioco base (tank_manufacturer,
+#   naval_manufacturer, aircraft_manufacturer, materiel_manufacturer)
+#   - HOI4 unisce le idee con lo stesso id di gruppo tra i file,
+#   non serve ridichiarare il gruppo. Le generiche restano visibili
+#   anche per INT (il loro "allowed" non la esclude, e ridichiararlo
+#   vorrebbe dire riscrivere tutta la lista di eccezioni DLC del
+#   gioco base) - se preferisci nasconderle del tutto va fatto
+#   apposta, per ora restano un'opzione in piu' sulla lista.
+# ============================================================
+
+ideas = {
+
+	tank_manufacturer = {
+		INT_tank_manufacturer = {
+			picture = generic_tank_manufacturer_1
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { armor = 0.15 }
+			traits = { tank_manufacturer }
+		}
+	}
+
+	naval_manufacturer = {
+		INT_naval_manufacturer = {
+			picture = generic_naval_manufacturer_1
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { naval_equipment = 0.15 }
+			traits = { naval_manufacturer }
+		}
+	}
+
+	aircraft_manufacturer = {
+		INT_light_aircraft_manufacturer = {
+			picture = generic_air_manufacturer_1
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { air_equipment = 0.15 }
+			traits = { light_aircraft_manufacturer }
+		}
+		INT_medium_aircraft_manufacturer = {
+			picture = generic_air_manufacturer_3
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { air_equipment = 0.15 }
+			traits = { medium_aircraft_manufacturer }
+		}
+		INT_heavy_aircraft_manufacturer = {
+			picture = generic_air_manufacturer_2
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { air_equipment = 0.15 }
+			traits = { heavy_aircraft_manufacturer }
+		}
+		INT_naval_aircraft_manufacturer = {
+			picture = generic_naval_manufacturer_2
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { air_equipment = 0.15 }
+			traits = { naval_aircraft_manufacturer }
+		}
+	}
+
+	materiel_manufacturer = {
+		INT_motorized_equipment_manufacturer = {
+			picture = generic_motorized_equipment_manufacturer_3
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { motorized_equipment = 0.15 }
+			traits = { motorized_equipment_manufacturer }
+		}
+		INT_infantry_equipment_manufacturer = {
+			picture = generic_infantry_equipment_manufacturer_2
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { infantry_weapons = 0.15 }
+			traits = { infantry_equipment_manufacturer }
+		}
+		INT_artillery_manufacturer = {
+			picture = generic_artillery_manufacturer_2
+			allowed = { tag = INT }
+			cost = 160
+			removal_cost = 10
+			research_bonus = { artillery = 0.15 }
+			traits = { artillery_manufacturer }
+		}
+	}
+}
