@@ -375,7 +375,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SMI_uphold_family_values
+		id = SMI_promote_individual_freedom
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 8
 		y = 6
@@ -388,6 +388,65 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_promote_individual_freedom
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_centrist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_switch_to_market_economy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 7
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_promote_individual_freedom
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_enact_universal_suffrage
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 8
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_switch_to_market_economy
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.1
 		}
 	}
 
@@ -414,6 +473,339 @@ focus_tree = {
 			add_popularity = {
 				ideology = reactionary
 				popularity = 0.20
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_uphold_family_values
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_rightist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_increase_importance_of_religion
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 7
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_uphold_family_values
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_strenghten_presidents_position
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 8
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_increase_importance_of_religion
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_will_to_reunite
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 9
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_a_peoples_republic
+			focus = SMI_fund_science
+			focus = SMI_enact_universal_suffrage
+			focus = SMI_strenghten_presidents_position
+		}
+
+		mutually_exclusive = {
+			focus = SMI_focus_inwards
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = -0.05
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_instigate_revolutions_in_neighbouring_countries
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 10
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_a_peoples_republic
+		}
+		prerequisite = {
+			focus = SMI_will_to_reunite
+		}
+		mutually_exclusive = {
+			focus = SMI_request_lappland
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			# Desicions to start revolts. On success get claimed lands and rest as a puppet
+			# Desicion to prepare / supply them
+		}
+	}
+
+	focus = {
+		id = SMI_scandinavian_SSR
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 2
+		y = 11
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_instigate_revolutions_in_neighbouring_countries
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Revolts in Sweden and Norway
+		}
+	}
+
+	focus = {
+		id = SMI_finnish_SSR
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 11
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_instigate_revolutions_in_neighbouring_countries
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.05
+			# Revolts in Finland + States if they exist
+		}
+	}
+
+	focus = {
+		id = SMI_go_on_Russia
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 12
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_scandinavian_SSR
+		}
+		prerequisite = {
+			focus = SMI_finnish_SSR
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.15
+			# Positive buff
+			# Revolts in Karelia ands Murmansk
+		}
+	}
+
+	focus = {
+		id = SMI_demand_lapland
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 10
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_will_to_reunite
+		}
+		mutually_exclusive = {
+			focus = SMI_instigate_revolutions_in_neighbouring_countries
+		}
+		
+		completion_reward = {
+			add_political_power = 125
+			add_stability = 0.1
+			# Demands Sweden to give Lappland
+		}
+	}
+
+	focus = {
+		id = SMI_demand_nord_norge
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 11
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_demand_lapland
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Demands Norway to give Nord-Norge, Possibly even more
+		}
+	}
+
+	focus = {
+		id = SMI_demand_Murmansk
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 12
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_demand_Murmansk
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			# Demands that Russia gives Murmansk
+		}
+	}
+
+	focus = {
+		id = SMI_focus_inwards
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 9
+		y = 9
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_fund_science
+			focus = SMI_enact_universal_suffrage
+			focus = SMI_strenghten_presidents_position
+		}
+
+		mutually_exclusive = {
+			focus = SMI_will_to_reunite
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_go_with_the_west
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 10
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_focus_inwards
+		}
+
+		prerequisite = {
+			focus = SMI_enact_universal_suffrage
+		}
+
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.1
+			add_war_support = 0.05
+			USA = {
+    			add_to_faction = SMI
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_jack_of_all_trades
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 10
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_focus_inwards
+		}
+
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.1
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_trade_with_both_sides
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 11
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_jack_of_all_trades
+		}
+
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 1500
+			}
+			# Ind buff
+			# Desicion to trade with them
+		}
+	}
+
+	focus = {
+		id = SMI_go_with_russia
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 12
+		y = 10
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_focus_inwards
+		}
+
+		prerequisite = {
+			focus = SMI_strenghten_presidents_position
+		}
+
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.1
+			RUS = {
+    			add_to_faction = SMI
 			}
 		}
 	}
