@@ -375,7 +375,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SMI_uphold_family_values
+		id = SMI_promote_individual_freedom
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 8
 		y = 6
@@ -388,6 +388,65 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = 50
 			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_promote_individual_freedom
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_centrist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_switch_to_market_economy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 7
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_promote_individual_freedom
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			random_owned_state = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = SMI_enact_universal_suffrage
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 8
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_switch_to_market_economy
+		}
+		
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.1
 		}
 	}
 
@@ -415,6 +474,59 @@ focus_tree = {
 				ideology = reactionary
 				popularity = 0.20
 			}
+		}
+	}
+
+	focus = {
+		id = SMI_uphold_family_values
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_rightist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_stability = 0.15
+		}
+	}
+
+	focus = {
+		id = SMI_increase_importance_of_religion
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 7
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_uphold_family_values
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+	}
+
+	focus = {
+		id = SMI_strenghten_presidents_position
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 8
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_increase_importance_of_religion
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_war_support = 0.1
 		}
 	}
 
