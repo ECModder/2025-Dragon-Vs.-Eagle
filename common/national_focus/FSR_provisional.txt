@@ -1,0 +1,461 @@
+# ============================================================
+#   THE FRENCH SOCIALIST REPUBLIC (FSR) - albero PROVVISORIO
+#
+#   Il paese parte sotto Comite Central de la Republique Socialiste (authoritarian_socialism).
+#   Al Congresso tre correnti si contendono il posto, e i nomi non
+#   sono inventati: sono i partiti che il paese ha davvero in
+#   history/countries/, ciascuno nella sua collocazione ideologica.
+#
+#     vanguard_socialism      Communist Struggle
+#     revolutionary_socialism Parti communiste révolutionnaire
+#     totalitarian_socialism  Parti communiste maximaliste
+#     authoritarian_socialism Comite Central de la Republique Socialiste  (gia' al governo)
+#
+#   Icone: una per corrente, da gfx/interface/goals/puppets/.
+#   26 focus.
+# ============================================================
+
+focus_tree = {
+	id = FSR_provisional_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = FSR
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 50 y = 900 }
+
+	focus = {
+		id = FSR_root
+		icon = GFX_goal_FSR_authoritarian
+		x = 7
+		y = 0
+		cost = 7
+		available_if_capitulated = yes
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Rouge" } }
+					division_template = {
+						name = "Garde Rouge"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = { engineer = { x = 0 y = 0 } }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Rouge\" division_template = \"Garde Rouge\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = ROOT
+					count = 5
+				}
+			}
+		}
+	}
+	focus = {
+		id = FSR_rebuild_party
+		icon = GFX_goal_generic_political_pressure
+		x = 4
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 60
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_commanding_heights
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 7
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = FSR_peoples_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 10
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 30000
+			army_experience = 25
+			add_war_support = 0.05
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Rouge" } }
+					division_template = {
+						name = "Garde Rouge"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = { engineer = { x = 0 y = 0 } }
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Rouge\" division_template = \"Garde Rouge\" start_experience_factor = 0.25 start_equipment_factor = 0.60"
+					owner = ROOT
+					count = 10
+				}
+			}
+		}
+	}
+	focus = {
+		id = FSR_first_congress
+		icon = GFX_goal_FSR_authoritarian
+		x = 7
+		y = 4
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_rebuild_party }
+		prerequisite = { focus = FSR_commanding_heights }
+		prerequisite = { focus = FSR_peoples_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = FSR_internationalist
+		icon = GFX_goal_FSR_vanguard
+		x = 0
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_first_congress }
+		mutually_exclusive = { focus = FSR_revolutionary focus = FSR_workerist focus = FSR_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = FSR_democratic_centralism
+		icon = GFX_goal_FSR_vanguard
+		x = 0
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_internationalist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_cadre_formation
+		icon = GFX_goal_FSR_vanguard
+		x = 0
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_democratic_centralism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_all_power_soviets
+		icon = GFX_goal_FSR_vanguard
+		x = 0
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_cadre_formation }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = FSR_internationalist_end
+		icon = GFX_goal_FSR_vanguard
+		x = 0
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_all_power_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = FSR_revolutionary
+		icon = GFX_goal_FSR_revolutionary
+		x = 5
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_first_congress }
+		mutually_exclusive = { focus = FSR_internationalist focus = FSR_workerist focus = FSR_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = FSR_factory_councils
+		icon = GFX_goal_FSR_revolutionary
+		x = 5
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_revolutionary }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_permanent_revolution
+		icon = GFX_goal_FSR_revolutionary
+		x = 5
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_factory_councils }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_all_power_revolution
+		icon = GFX_goal_FSR_revolutionary
+		x = 5
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_permanent_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = FSR_revolutionary_end
+		icon = GFX_goal_FSR_revolutionary
+		x = 5
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = FSR_workerist
+		icon = GFX_goal_FSR_totalitarian
+		x = 10
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_first_congress }
+		mutually_exclusive = { focus = FSR_internationalist focus = FSR_revolutionary focus = FSR_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = FSR_cadre_school
+		icon = GFX_goal_FSR_totalitarian
+		x = 10
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_workerist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_the_politburo
+		icon = GFX_goal_FSR_totalitarian
+		x = 10
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_cadre_school }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_all_power_party
+		icon = GFX_goal_FSR_totalitarian
+		x = 10
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_the_politburo }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = FSR_workerist_end
+		icon = GFX_goal_FSR_totalitarian
+		x = 10
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = FSR_statist
+		icon = GFX_goal_FSR_authoritarian
+		x = 15
+		y = 6
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_first_congress }
+		mutually_exclusive = { focus = FSR_internationalist focus = FSR_revolutionary focus = FSR_workerist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = FSR_keep_the_files
+		icon = GFX_goal_FSR_authoritarian
+		x = 15
+		y = 8
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_statist }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_no_second_congress
+		icon = GFX_goal_FSR_authoritarian
+		x = 15
+		y = 10
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_keep_the_files }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = FSR_all_power_committee
+		icon = GFX_goal_FSR_authoritarian
+		x = 15
+		y = 12
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_no_second_congress }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = FSR_statist_end
+		icon = GFX_goal_FSR_authoritarian
+		x = 15
+		y = 14
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = FSR_all_power_committee }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+}
