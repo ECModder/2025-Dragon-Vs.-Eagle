@@ -392,6 +392,23 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SMI_promote_individual_freedom
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 8
+		y = 6
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_centrist_victory
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
 		id = SMI_switch_to_market_economy
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 8
@@ -667,7 +684,7 @@ focus_tree = {
 		cost = 10
 
 		prerequisite = {
-			focus = SMI_demand_nord_norge
+			focus = SMI_demand_Murmansk
 		}
 		
 		completion_reward = {
@@ -802,9 +819,6 @@ focus_tree = {
 
 		prerequisite = {
 			focus = SMI_fate_of_our_politics
-		}
-		mutually_exclusive = {
-			focus = SMI_prepare_elections
 		}
 		
 		completion_reward = {
