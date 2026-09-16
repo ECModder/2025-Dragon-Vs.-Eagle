@@ -1,107 +1,632 @@
-# ============================================================
-#   UCRAINA - schieramento 1.1.2025
-#
-#   40 brigate lungo il fronte con la Russia, dal confine di Sumy
-#   fino a Mykolaiv. La composizione segue i rapporti di forza
-#   reali (Statista, terreno): poche unita' corazzate, molta
-#   fanteria e difesa territoriale.
-# ============================================================
+﻿# TEMPLATS #
+
 
 division_template = {
-	name = "Okrema Mekhanizovana Bryhada"
-	division_names_group = UKR_MEC_01
+	name = "Mekhanizovana bryhada"
+
 	regiments = {
-		mechanized = { x = 0 y = 0 }  mechanized = { x = 0 y = 1 }  mechanized = { x = 0 y = 2 }
-		motorized  = { x = 1 y = 0 }  motorized  = { x = 1 y = 1 }
+		mechanized = { x = 0 y = 0 }
+		mechanized = { x = 0 y = 1 }
+		mechanized = { x = 0 y = 2 }
+		mechanized = { x = 1 y = 0 }
+		mechanized = { x = 1 y = 1 }
 	}
+
 	support = {
-		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }  artillery = { x = 0 y = 2 }
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
 	}
 }
 
 division_template = {
-	name = "Okrema Motopikhotna Bryhada"
-	division_names_group = UKR_MOT_01
+	name = "Motopikhotna bryhada"
+
 	regiments = {
-		motorized = { x = 0 y = 0 }  motorized = { x = 0 y = 1 }  motorized = { x = 0 y = 2 }
-		infantry  = { x = 1 y = 0 }  infantry  = { x = 1 y = 1 }
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		motorized = { x = 0 y = 2 }
+		motorized = { x = 0 y = 3 }
 	}
+
 	support = {
-		engineer = { x = 0 y = 0 }  anti_tank = { x = 0 y = 1 }
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
 	}
 }
 
 division_template = {
-	name = "Okrema Pikhotna Bryhada"
-	division_names_group = UKR_INF_01
+	name = "Tankova bryhada"
+
 	regiments = {
-		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
-		infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+		medium_armor = { x = 0 y = 0 }
+		medium_armor = { x = 0 y = 1 }
+		medium_armor = { x = 0 y = 2 }
+		mechanized = { x = 1 y = 0 }
+		mechanized = { x = 1 y = 1 }
+		mechanized = { x = 1 y = 2 }
 	}
+
 	support = {
-		engineer = { x = 0 y = 0 }  anti_tank = { x = 0 y = 1 }
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
 	}
 }
 
 division_template = {
-	name = "Bryhada Terytorialnoi Oborony"
-	division_names_group = UKR_GAR_01
-	regiments = {
-		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
-	}
-}
+	name = "Vazhka mekhanizovana bryhada"
 
-division_template = {
-	name = "Okrema Tankova Bryhada"
-	division_names_group = UKR_MEC_01
 	regiments = {
-		light_armor = { x = 0 y = 0 }  light_armor = { x = 0 y = 1 }
-		mechanized  = { x = 1 y = 0 }  mechanized  = { x = 1 y = 1 }
+		medium_armor = { x = 0 y = 0 }
+		medium_armor = { x = 0 y = 1 }
+		mechanized = { x = 1 y = 0 }
+		mechanized = { x = 1 y = 1 }
+		mechanized = { x = 1 y = 2 }
+		mechanized = { x = 2 y = 0 }
 	}
+
 	support = {
-		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+		maintenance_company = { x = 0 y = 3 }
 	}
 }
+
+division_template = {
+	name = "Shturmova bryhada"
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+		motorized = { x = 1 y = 1 }
+	}
+
+	support = {
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Desantno-shturmova bryhada"
+
+	regiments = {
+		paratrooper = { x = 0 y = 0 }
+		paratrooper = { x = 0 y = 1 }
+		paratrooper = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+	}
+
+	support = {
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Bryhada morskoi pikhoty"
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+	}
+
+	support = {
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Bryhada terytorialnoi oborony"
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+	}
+
+	support = {
+		engineer = { x = 0 y = 0 }
+		recon = { x = 0 y = 1 }
+	}
+}
+
+
+# ==========================================================
+# Zbroini syly Ukrainy - 1 JANUARY 2025
+# ==========================================================
 
 units = {
-	division = { location = 418 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 3409 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 3508 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 3531 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 6530 division_template = "Okrema Tankova Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 6554 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 9531 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 9556 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 11397 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 11461 division_template = "Okrema Tankova Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 11541 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 418 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 221
-	division = { location = 453 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 472 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 486 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 6423 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 9419 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 9433 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 9463 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 9479 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 11422 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 226
-	division = { location = 463 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 501 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 522 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 3225 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 3455 division_template = "Bryhada Terytorialnoi Oborony" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 3520 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 6565 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 9477 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 225
-	division = { location = 409 division_template = "Okrema Mekhanizovana Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
-	division = { location = 574 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
-	division = { location = 3403 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
-	division = { location = 3755 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
-	division = { location = 6597 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 197
-	division = { location = 511 division_template = "Okrema Motopikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
-	division = { location = 559 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
-	division = { location = 3557 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 259
-	division = { location = 238 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
-	division = { location = 546 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
-	division = { location = 3480 division_template = "Okrema Pikhotna Bryhada" start_experience_factor = 0.55 start_equipment_factor = 0.75 }   # stato 193
+
+	# 01
+	division = {
+		name = "92-ha okrema shturmova bryhada"
+		location = 418
+		division_template = "Shturmova bryhada"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.75
+	}
+
+	# 02
+	division = {
+		name = "Kholodnyi Yar"
+		location = 9556
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.78
+		start_equipment_factor = 0.72
+	}
+
+	# 03
+	division = {
+		name = "Magura"
+		location = 11397
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.70
+	}
+
+	# 04
+	division = {
+		name = "57-ma okrema motopikhotna bryhada"
+		location = 501
+		division_template = "Motopikhotna bryhada"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.70
+	}
+
+	# 05
+	division = {
+		name = "42-ha okrema mekhanizovana bryhada"
+		location = 3520
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.72
+	}
+
+	# 06
+	division = {
+		name = "41-sha okrema mekhanizovana bryhada"
+		location = 522
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.60
+		start_equipment_factor = 0.72
+	}
+
+	# 07
+	division = {
+		name = "54-ta okrema mekhanizovana bryhada"
+		location = 6565
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.68
+	}
+
+	# 08
+	division = {
+		name = "53-tia okrema mekhanizovana bryhada"
+		location = 11553
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.68
+	}
+
+	# 09
+	division = {
+		name = "30-ta okrema mekhanizovana bryhada"
+		location = 3225
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.74
+		start_equipment_factor = 0.70
+	}
+
+	# 10
+	division = {
+		name = "66-ta okrema mekhanizovana bryhada"
+		location = 238
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.68
+		start_equipment_factor = 0.68
+	}
+
+	# 11
+	division = {
+		name = "67-ma okrema mekhanizovana bryhada"
+		location = 6589
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.68
+	}
+
+	# 12
+	division = {
+		name = "3-tia okrema shturmova bryhada"
+		location = 9531
+		division_template = "Shturmova bryhada"
+		start_experience_factor = 0.82
+		start_equipment_factor = 0.75
+	}
+
+	# 13
+	division = {
+		name = "5-ta okrema shturmova bryhada"
+		location = 11541
+		division_template = "Shturmova bryhada"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.70
+	}
+
+	# 14
+	division = {
+		name = "King Danylo"
+		location = 3409
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.80
+		start_equipment_factor = 0.70
+	}
+
+	# 15
+	division = {
+		name = "100-ta okrema mekhanizovana bryhada"
+		location = 11461
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.70
+	}
+
+	# 16
+	division = {
+		name = "110-ta okrema mekhanizovana bryhada"
+		location = 6530
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.76
+		start_equipment_factor = 0.62
+	}
+
+	# 17
+	division = {
+		name = "115-ta okrema mekhanizovana bryhada"
+		location = 486
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.68
+	}
+
+	# 18
+	division = {
+		name = "116-ta okrema mekhanizovana bryhada"
+		location = 472
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.60
+		start_equipment_factor = 0.70
+	}
+
+	# 19
+	division = {
+		name = "117-ta okrema mekhanizovana bryhada"
+		location = 453
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.60
+		start_equipment_factor = 0.70
+	}
+
+	# 20
+	division = {
+		name = "118-ta okrema mekhanizovana bryhada"
+		location = 11422
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.60
+		start_equipment_factor = 0.70
+	}
+
+	# 21
+	division = {
+		name = "33-tia okrema mekhanizovana bryhada"
+		location = 9419
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.72
+	}
+
+	# 22
+	division = {
+		name = "65-ta okrema mekhanizovana bryhada"
+		location = 574
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.67
+		start_equipment_factor = 0.70
+	}
+
+	# 23
+	division = {
+		name = "Inhulets"
+		location = 3755
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.68
+		start_equipment_factor = 0.68
+	}
+
+	# 24
+	division = {
+		name = "61-sha okrema mekhanizovana bryhada"
+		location = 11561
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.70
+	}
+
+	# 25
+	division = {
+		name = "25-ta okrema povitrianodesantna bryhada"
+		location = 11437
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.78
+		start_equipment_factor = 0.82
+	}
+
+	# 26
+	division = {
+		name = "46-ta okrema aeromobilna bryhada"
+		location = 11504
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.80
+	}
+
+	# 27
+	division = {
+		name = "71-sha okrema yeherska bryhada"
+		location = 9531
+		division_template = "Shturmova bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.78
+	}
+
+	# 28
+	division = {
+		name = "77-ma okrema aeromobilna bryhada"
+		location = 11504
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.70
+		start_equipment_factor = 0.78
+	}
+
+	# 29
+	division = {
+		name = "82-ha okrema desantno-shturmova bryhada"
+		location = 3409
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.78
+		start_equipment_factor = 0.82
+	}
+
+	# 30
+	division = {
+		name = "95-ta okrema desantno-shturmova bryhada"
+		location = 525
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.82
+		start_equipment_factor = 0.85
+	}
+
+	# 31
+	division = {
+		name = "Black Zaporozhians"
+		location = 525
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.78
+		start_equipment_factor = 0.75
+	}
+
+	# 32
+	division = {
+		name = "1-sha okrema tankova bryhada"
+		location = 11437
+		division_template = "Tankova bryhada"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.75
+	}
+
+	# 33
+	division = {
+		name = "17-ta okrema vazhka mekhanizovana bryhada"
+		location = 11437
+		division_template = "Vazhka mekhanizovana bryhada"
+		start_experience_factor = 0.78
+		start_equipment_factor = 0.72
+	}
+
+	# 34
+	division = {
+		name = "4-ta okrema tankova bryhada"
+		location = 9556
+		division_template = "Tankova bryhada"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.72
+	}
+
+	# 35
+	division = {
+		name = "35-ta okrema bryhada morskoi pikhoty"
+		location = 11683
+		division_template = "Bryhada morskoi pikhoty"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.75
+	}
+
+	# 36
+	division = {
+		name = "36-ta okrema bryhada morskoi pikhoty"
+		location = 11683
+		division_template = "Bryhada morskoi pikhoty"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.75
+	}
+
+	# 37
+	division = {
+		name = "37-ma okrema bryhada morskoi pikhoty"
+		location = 11670
+		division_template = "Bryhada morskoi pikhoty"
+		start_experience_factor = 0.68
+		start_equipment_factor = 0.72
+	}
+
+	# 38
+	division = {
+		name = "38-ma okrema bryhada morskoi pikhoty"
+		location = 6727
+		division_template = "Bryhada morskoi pikhoty"
+		start_experience_factor = 0.68
+		start_equipment_factor = 0.72
+	}
+
+	# 39
+	division = {
+		name = "40-va okrema bryhada berehovoi oborony"
+		location = 3755
+		division_template = "Motopikhotna bryhada"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.70
+	}
+
+	# 40
+	division = {
+		name = "79-ta okrema desantno-shturmova bryhada"
+		location = 11541
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.80
+		start_equipment_factor = 0.82
+	}
+
+	# 41
+	division = {
+		name = "80-ta okrema desantno-shturmova bryhada"
+		location = 11479
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.80
+		start_equipment_factor = 0.85
+	}
+
+	# 42
+	division = {
+		name = "81-sha okrema aeromobilna bryhada"
+		location = 488
+		division_template = "Desantno-shturmova bryhada"
+		start_experience_factor = 0.75
+		start_equipment_factor = 0.80
+	}
+
+	# 43
+	division = {
+		name = "112-ta okrema bryhada terytorialnoi oborony"
+		location = 525
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.50
+		start_equipment_factor = 0.68
+	}
+
+	# 44
+	division = {
+		name = "113-ta okrema bryhada terytorialnoi oborony"
+		location = 418
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.58
+		start_equipment_factor = 0.65
+	}
+
+	# 45
+	division = {
+		name = "116-ta okrema bryhada terytorialnoi oborony"
+		location = 11504
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.52
+		start_equipment_factor = 0.65
+	}
+
+	# 46
+	division = {
+		name = "117-ta okrema bryhada terytorialnoi oborony"
+		location = 3520
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.65
+	}
+
+	# 47
+	division = {
+		name = "120-ta okrema bryhada terytorialnoi oborony"
+		location = 476
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.50
+		start_equipment_factor = 0.68
+	}
+
+	# 48
+	division = {
+		name = "125-ta okrema bryhada terytorialnoi oborony"
+		location = 11479
+		division_template = "Bryhada terytorialnoi oborony"
+		start_experience_factor = 0.50
+		start_equipment_factor = 0.68
+	}
+
+
+	# 49 - dodatkova tankova bryhada
+	division = {
+		name = "3-tia okrema tankova bryhada"
+		location = 3409
+		division_template = "Tankova bryhada"
+		start_experience_factor = 0.68
+		start_equipment_factor = 0.72
+	}
+
+	# 50 - dodatkova tankova bryhada
+	division = {
+		name = "5-ta okrema tankova bryhada"
+		location = 9556
+		division_template = "Tankova bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.70
+	}
+
+	# 51
+	division = {
+		name = "14-ta okrema mekhanizovana bryhada imeni kniazia Romana Velykoho"
+		location = 6530
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.72
+		start_equipment_factor = 0.72
+	}
+
+	# 52
+	division = {
+		name = "21-sha okrema mekhanizovana bryhada"
+		location = 418
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.74
+	}
+
+	# 53
+	division = {
+		name = "32-ha okrema mekhanizovana bryhada"
+		location = 11397
+		division_template = "Mekhanizovana bryhada"
+		start_experience_factor = 0.62
+		start_equipment_factor = 0.72
+	}
+
 }
