@@ -1,4 +1,4 @@
-﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_POLITICAL}
 ### search_filters = {FOCUS_FILTER_RESEARCH}
 ### search_filters = {FOCUS_FILTER_INDUSTRY}
 ### search_filters = {FOCUS_FILTER_STABILITY}
@@ -792,11 +792,12 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FIN_crackdown_on_left_wing_extremists
+			focus = FIN_prepare_a_military_coup
 		}
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				popularity = 0.05
 			}
 			add_popularity = {
@@ -822,7 +823,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				popularity = 0.1
 			}
 			add_stability = -0.05
@@ -846,7 +847,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				popularity = -0.15
 			}
 			add_popularity = {
@@ -899,7 +900,7 @@ focus_tree = {
 
 		completion_reward = {
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				popularity = -0.15
 			}
 			add_popularity = {
@@ -954,6 +955,7 @@ focus_tree = {
 		}
 		mutually_exclusive = {
 			focus = FIN_crackdown_on_right_wing_extremists
+			focus = FIN_prepare_a_military_coup
 		}
 
 		completion_reward = {
@@ -962,7 +964,7 @@ focus_tree = {
 				popularity = 0.05
 			}
 			add_popularity = {
-				ideology = totalitarian_communism
+				ideology = totalitarian_socialism
 				popularity = -0.05
 			}
 		}
@@ -1065,7 +1067,7 @@ focus_tree = {
 					has_completed_focus = FIN_turn_a_blind_eye_on_communists
 				}
 				set_politics = {
-					ruling_party = totalitarian_communism
+					ruling_party = totalitarian_socialism
 				}
 			}
 			else_if = {
@@ -1161,7 +1163,7 @@ focus_tree = {
             always = no
         }
 		bypass = {
-			has_government = totalitarian_communism
+			has_government = totalitarian_socialism
 		}
 
 	}
@@ -1273,8 +1275,20 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_political_power = -25
-			add_civilian_factory = 3
-			add_military_factory = 1
+			random_owned_state = {
+				limit = { is_fully_controlled_by = ROOT }
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 3
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
 		}
 
 	}
@@ -1337,7 +1351,7 @@ focus_tree = {
 		y = 18
 		cost = 5
 		prerequisite = {
-			focus = FIN_red_finland
+			focus = FIN_establish_revolutionary_army
 		}
 		completion_reward = {
 			add_stability = 0.15
@@ -1494,7 +1508,7 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = FIN_health
-			focus = FIN_services
+			focus = FIN_work
 		}
 		completion_reward = {
 			add_political_power = -50
@@ -2011,7 +2025,15 @@ focus_tree = {
 		completion_reward = {
 			add_political_power = -50
 			add_stability = -0.1
-			add_civilian_factory = 2
+			random_owned_state = {
+				limit = { is_fully_controlled_by = ROOT }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 
 	}
@@ -2156,7 +2178,7 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.05
             add_war_support = 0.05
-            set_conscription_law = extensive_conscription
+            add_ideas = extensive_conscription
 		}
 
 	}
@@ -2172,7 +2194,15 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_stability = -0.05
-            add_civilian_factory = 2
+            random_owned_state = {
+				limit = { is_fully_controlled_by = ROOT }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
 		}
 
 	}
@@ -2466,7 +2496,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = FIN_Fortify_borders
+		id = FIN_fortify_borders
 		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
 		x = 31
 		y = 16
@@ -2478,9 +2508,8 @@ focus_tree = {
 		completion_reward = {
 			every_owned_state = {
 				limit = {
-					is_border_state = yes
 					any_neighbor_state = {
-						owner = SOV
+						is_owned_by = SOV
 					}
 				}
 				add_building_construction = {
@@ -2689,23 +2718,6 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = FIN_align_with_Russia
-		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
-		x = 40
-		y = 18
-		cost = 5
-		prerequisite = {
-			focus = FIN_leave_NATO
-		}
-	
-		completion_reward = {
-			add_war_support = 0.1
-			add_stability = -0.05
-			add_political_power = 25
-			# Join Russias faction
-		}
-	}
 
 	focus = {
 		id = FIN_strip_away_minorities_rights
@@ -2951,7 +2963,7 @@ focus_tree = {
 			# Has arrested party leaders
 		}
 		bypass = {
-			has_government = conservatism
+			has_government = conservative
 		}
 		completion_reward = {}
 

@@ -1,145 +1,3 @@
-POL_european_bop_decisions = {
-
-	POL_support_european_integration = {
-		icon = generic_political_reform
-
-		allowed = {
-			tag = POL
-		}
-
-		visible = {
-			tag = POL
-		}
-
-		available = {
-			power_balance_value = {
-				id = POL_european_balance
-			}
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		complete_effect = {
-			add_power_balance_value = {
-				id = POL_european_balance
-				value = -0.05
-			}
-			add_stability = -0.2
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-		days_remove = 60
-	}
-
-
-	POL_limit_european_integration = {
-		icon = generic_political_reform
-
-		allowed = {
-			tag = POL
-		}
-
-		visible = {
-			tag = POL
-		}
-
-		available = {
-			power_balance_value = {
-				id = POL_european_balance
-			}
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		complete_effect = {
-			add_power_balance_value = {
-				id = POL_european_balance
-				value = 0.05
-			}
-			add_stability = 0.2
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-		days_remove = 60
-	}
-		POL_anti_euro_propaganda = {
-		icon = generic_political_reform
-
-		allowed = {
-			tag = POL
-		}
-
-		visible = {
-			tag = POL
-		}
-
-		available = {
-			power_balance_value = {
-				id = POL_european_balance
-			}
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		complete_effect = {
-			add_power_balance_value = {
-				id = POL_european_balance
-				value = 0.08
-			}
-			add_stability = 0.8
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-		days_remove = 60
-	}
-		POL_pro_euro_propaganda = {
-		icon = generic_political_reform
-
-		allowed = {
-			tag = POL
-		}
-
-		visible = {
-			tag = POL
-		}
-
-		available = {
-			power_balance_value = {
-				id = POL_european_balance
-			}
-		}
-
-		cost = 50
-
-		fire_only_once = no
-
-		complete_effect = {
-			add_power_balance_value = {
-				id = POL_european_balance
-				value = -0.05
-			}
-			add_stability = -0.3
-			add_political_power -0.25
-		}
-
-		ai_will_do = {
-			factor = 10
-		}
-		days_remove = 60
-	}
-}
 POL_elections_category = {
 	POL_election_timer_mission = {
 		icon = generic_clock
@@ -281,6 +139,84 @@ POL_elections_category = {
 			}
 		}
 	}
-    
+
+	# Campaign decisions merged from POL_election_season.txt
+
+	POL_campaign_A = {
+
+	        icon = GFX_decision_generic_political_discourse
+visible = {
+	            has_country_flag = POL_elections_active
+	        }
+
+	        cost = 25
+
+	        complete_effect = {
+
+	            add_to_variable = {
+	                POL_candidate_A = 3
+	            }
+	        }
+
+	        ai_will_do = {
+	            factor = 0
+	        }
+	    }
+
+	POL_campaign_B = {
+
+	        icon = GFX_decision_generic_political_discourse
+visible = {
+	            has_country_flag = POL_elections_active
+	        }
+
+	        cost = 25
+
+	        complete_effect = {
+
+	            add_to_variable = {
+	                POL_candidate_B = 3
+	            }
+	        }
+
+	        ai_will_do = {
+	            factor = 0
+	        }
+	    }
+
+	POL_campaign_C = {
+
+	        icon = GFX_decision_generic_political_discourse
+visible = {
+	            has_country_flag = POL_elections_active
+	        }
+
+	        cost = 25
+
+	        complete_effect = {
+
+	            add_to_variable = {
+	                POL_candidate_C = 3
+	            }
+	        }
+
+	        ai_will_do = {
+	            factor = 0
+	        }
+	    }
+
+	POL_election_campaign = {
+
+	        icon = GFX_decision_generic_political_discourse
+visible = {
+	            has_country_flag = POL_elections_active
+	        }
+
+	        days_remove = 60
+
+	        ai_will_do = {
+	            factor = 0
+	        }
+	    }
 
 }

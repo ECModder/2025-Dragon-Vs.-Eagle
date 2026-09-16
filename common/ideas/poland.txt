@@ -23,7 +23,7 @@ modifier = {
 	stability_factor = -0.25
 	political_power_gain = -0.05
 	war_support_factor = -0.10
-	construction_speed = -0.15
+	production_speed_buildings_factor = -0.15
 	production_factory_max_efficiency_factor = -0.05
 	surrender_limit = -0.05
 	local_resources_factor = -0.05
@@ -80,7 +80,7 @@ modifier = {
 	stability_factor = 0.01
 	political_power_gain = 0.01
 	war_support_factor = 0.01
-	construction_speed = 0.01
+	production_speed_buildings_factor = 0.01
 	production_factory_max_efficiency_factor = 0.01
 	surrender_limit = 0.01
 	local_resources_factor = 0.01
@@ -89,6 +89,37 @@ modifier = {
 }
 	}
   }
+  country = {
+    POL_new_heart_upgraded = {
+        picture = GFX_idea_POL_new_heart
+
+        allowed = {
+            always = no
+            original_tag = POL
+        }
+        available = {}
+        cancel = {}
+
+        allowed_civil_war = {
+            always = no
+        }
+
+        removal_cost = -1
+
+        modifier = {
+            stability_factor = 0.01
+            political_power_gain = 0.01
+            war_support_factor = 0.01
+            production_speed_buildings_factor = 0.01
+            production_factory_max_efficiency_factor = 0.01
+            surrender_limit = 0.01
+            local_resources_factor = 0.01
+            industrial_capacity_factory = 0.05
+            consumer_goods_factor = -0.05
+        }
+    }
+}
+
          country = {
 	POL_polish_army = {
 	picture = GFX_idea_generic_army
@@ -245,7 +276,7 @@ attrition = -0.05
 equipment_capture_factor = 0.05
 production_speed_arms_factory_factor = 0.05
 army_defence_factor = 0.05
-entrenchment_factor = 0.10
+max_dig_in_factor = 0.10
 experience_loss_factor = 0.15
 coordination_bonus = 0.01
 mechanized_attack_factor = -0.05
@@ -278,43 +309,10 @@ attrition = -0.05
 equipment_capture_factor = 0.05
 production_speed_arms_factory_factor = 0.05
 army_defence_factor = 0.05
-entrenchment_factor = 0.10
+max_dig_in_factor = 0.10
 experience_loss_factor = 0.05
 coordination_bonus = 0.05
 mechanized_attack_factor = 0.05
-}
-	}
-  }
-                      country = {
-	POL_polish_army_upgraded_6 = {
-	picture = GFX_idea_generic_army
-	traits = {
-			 }
-
-		allowed = {
-			always = no
-			original_tag = POL
-		}
-		available = {}
-		cancel = {}
-
-		allowed_civil_war = {
-			always = no
-		}
-
-        removal_cost = -1
-
-modifier = {
-political_power_factor = 0.10
-army_org_factor = 0.05
-attrition = -0.05
-equipment_capture_factor = 0.05
-production_speed_arms_factory_factor = 0.05
-army_defence_factor = 0.05
-entrenchment_factor = 0.10
-experience_loss_factor = 0.05
-coordination_bonus = 0.05
-mechanized_attack_factor = 0.10
 }
 	}
   }
@@ -344,7 +342,7 @@ attrition = -0.05
 equipment_capture_factor = 0.05
 production_speed_arms_factory_factor = 0.05
 army_defence_factor = 0.05
-entrenchment_factor = 0.10
+max_dig_in_factor = 0.10
 experience_loss_factor = 0.05
 coordination_bonus = 0.05
 mechanized_attack_factor = 0.10
@@ -377,7 +375,7 @@ attrition = -0.10
 equipment_capture_factor = 0.05
 production_speed_arms_factory_factor = 0.05
 army_defence_factor = 0.05
-entrenchment_factor = 0.10
+max_dig_in_factor = 0.10
 experience_loss_factor = 0.05
 coordination_bonus = 0.05
 mechanized_attack_factor = 0.10

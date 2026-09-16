@@ -90,10 +90,11 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			set_popularities = { ideology = revolutionary_socialism popularity = 50 }
-			set_popularities = { ideology = vanguard_socialism popularity = 40 }
-			set_popularities = { ideology = totalitarian_socialism popularity = 10 }
-			# NOTA: 'set_popularities' non e' un effetto vanilla standard eseguibile a runtime; se la mod non lo definisce come scripted_effect, sostituisci con blocchi add_popularity calcolando il delta dal valore attuale.
+			set_popularities = {
+				revolutionary_socialism = 50
+				vanguard_socialism = 40
+				totalitarian_socialism = 10
+			}
 			set_country_flag = LT_pcr_done
 		}
 	}

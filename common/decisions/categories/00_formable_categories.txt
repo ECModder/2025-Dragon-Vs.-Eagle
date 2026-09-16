@@ -79,6 +79,20 @@ form_austria_hungary_category = {
 	}
 }
 
+form_commonwealth_category = {
+
+	icon = generic_formable_nations
+
+	picture = GFX_decision_cat_generic_commonwealth
+
+	allowed = {
+		OR = {
+			has_dlc = "Waking the Tiger"
+			has_dlc = "No Step Back"
+		}
+	}
+}
+
 form_united_netherlands_category = {
 
 	icon = generic_formable_nations
@@ -242,6 +256,8 @@ form_arabia_category = {
 			original_tag = FSA
 			# Imamate of Oman
 			original_tag = IMO
+			# Rif 
+			original_tag = RIF
 		}
 		has_dlc = "Waking the Tiger"
 	}
@@ -264,6 +280,12 @@ form_majapahit_empire_category = {
 			original_tag = SAR # Sarawak
 			original_tag = SAB # Sabah
 			original_tag = BRN # Brunei
+			original_tag = TNE # Ternate 
+			original_tag = GOW # Gowa 
+			original_tag = BLI # Bali 
+			original_tag = POK # Pontianak 
+			original_tag = SSI # Siak 
+			original_tag = ATJ # Aceh 
 		}
 		has_dlc = "Waking the Tiger"
 	}
@@ -652,28 +674,42 @@ neo_assyrian_empire_category = {
 	}
 }
 
+GOE_form_hindustan_category = {
+
+	icon = generic_formable_nations
+ 
+	picture = GFX_form_hindustan_category_icon
+
+	allowed = {
+		has_dlc = "Graveyard of Empires" 
+	}
+}
+
 raj_formable_cat = {
 	icon = generic_formable_nations
 
 	#picture = GFX_decision_cat_picture_neo_assyrian_empire
 	
 	allowed = {
-		original_tag = RAJ 
+		original_tag = RAJ # India 
 	}
 }
 
 neo_mesopotamia_category = {
 	icon = generic_formable_nations
 
+	picture = GFX_decision_cat_picture_neo_assyrian_empire
+
 	allowed = {
 		OR = {
 			original_tag = KUR #Kurdistan
-			original_tag = IRQ 
-			original_tag = SYR
-			original_tag = PAL
-			original_tag = EGY
-			original_tag = KUW
-			original_tag = LEB
+			original_tag = IRQ # Iraq 
+			original_tag = SYR # Syria 
+			original_tag = PAL # Palestine 
+			original_tag = EGY # Egypt 
+			original_tag = KUW # Kuwait 
+			original_tag = LEB # Lebanon 
+			original_tag = ASY # Assyria 
 		}
 		
 	}
@@ -685,7 +721,18 @@ form_maphilindo_category = {
 	picture = GFX_decision_cat_picture_form_maphilindo
 
 	allowed = {
-		original_tag = PHI
+		original_tag = PHI # Philippines 
 		has_dlc = "No Compromise, No Surrender"
+	}
+}
+
+AST_australia_formables_category = {
+	icon = generic_formable_nations
+
+	visible_when_empty = no
+
+	allowed = {
+		original_tag = AST
+		has_dlc = "Thunder at Our Gates"
 	}
 }

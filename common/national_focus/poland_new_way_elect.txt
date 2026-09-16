@@ -1,6 +1,6 @@
 focus_tree = {
 	id = poland_new_way_elect_focus
-	
+
 	country = {
 		factor = 0
 		modifier = {
@@ -14,18 +14,17 @@ focus_tree = {
 		x = 8
 		y = 8
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		#prerequisite = { focus =  }
 		#mutually_exclusive = { focus }
 
@@ -43,18 +42,17 @@ focus_tree = {
 		x = 8
 		y = 9
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_way  }
 		#mutually_exclusive = { focus }
 
@@ -73,18 +71,17 @@ country_event = { id = polandos.16 }
 		x = 6
 		y = 10
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_vic_way  }
 		mutually_exclusive = { focus = POL_new_pol_way }
 
@@ -106,18 +103,17 @@ custom_effect_tooltip = NEW_FOCUSES_four
 		x = 10
 		y = 10
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_vic_way  }
 		mutually_exclusive = { focus = POL_new_euro_way_one }
 
@@ -138,18 +134,17 @@ custom_effect_tooltip = NEW_FOCUSES_four
 		x = 8
 		y = 11
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_euro_way_one focus = POL_new_pol_way  }
 		#mutually_exclusive = { focus =  }
 
@@ -165,30 +160,26 @@ country_event = { id = polandos.19 }
 		     focus = {
 		id = POL_new_euro_two
 		icon = GFX_goal_POL_new_euro_two
-		
+
 		x = 6
 		y = 12
 				        available = {
 						has_completed_focus = POL_new_euro_way_one
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
-
-
-		
 		prerequisite = { focus = POL_new_social  }
 		mutually_exclusive = { focus = POL_new_pol_youth }
 
 		cancel_if_invalid = yes
 		continue_if_invalid = no
 		available_if_capitulated = no
-		
-		visible = { has_country_flag = POL_new_way_euro }
-		
+
+		allow_branch = { has_country_flag = POL_new_way_euro }
+
 		completion_reward = {
 			add_political_power = 40	
 country_event = { id = request.5 }			
@@ -201,18 +192,17 @@ country_event = { id = request.5 }
 		y = 12
 				        available = {
 						has_completed_focus = POL_new_pol_way
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_social  }
 		mutually_exclusive = { focus = POL_new_euro_two}
 
@@ -231,18 +221,17 @@ country_event = { id = polandos.20 }
 		x = 8
 		y = 13
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_pol_youth focus = POL_new_euro_two }
 		#mutually_exclusive = { focus = }
 
@@ -266,16 +255,15 @@ country_event = { id = polandos.20 }
 		y = 14
 				        available = {
 						has_completed_focus = POL_new_euro_way_one
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
-visible = { has_country_flag = POL_new_way_euro }
+allow_branch = { has_country_flag = POL_new_way_euro }
 
-		
+
 		prerequisite = { focus = POL_new_pol_promise }
 		mutually_exclusive = { focus = POL_new_pol_way_last }
 
@@ -299,18 +287,17 @@ visible = { has_country_flag = POL_new_way_euro }
 		y = 14
 				        available = {
 						has_completed_focus = POL_new_pol_way
-						
+
             }
 				bypass = {
 
 		}
 		cost = 2
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_pol_promise }
 		mutually_exclusive = { focus = POL_new_euro_three }
 
@@ -334,18 +321,17 @@ visible = { has_country_flag = POL_new_way_euro }
 		x = 8
 		y = 15
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 0.5
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_euro_three focus = POL_new_pol_way_last  }
 		#mutually_exclusive = { focus =  }
 
@@ -369,18 +355,17 @@ visible = { has_country_flag = POL_new_way_euro }
 		x = 8
 		y = 17
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 0.5
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_final_prepa  }
 		#mutually_exclusive = { focus =  }
 
@@ -399,18 +384,17 @@ custom_effect_tooltip = NEW_FOCUSES
 		x = 8
 		y = 16
 				        available = {
-						
+
             }
 				bypass = {
 
 		}
 		cost = 0.5
-		priority = 10
 				        allow_branch = {
-						
+
         }
 
-		
+
 		prerequisite = { focus = POL_new_prepare  }
 		#mutually_exclusive = { focus =  }
 
