@@ -1351,7 +1351,7 @@ focus_tree = {
 		y = 18
 		cost = 5
 		prerequisite = {
-			focus = FIN_establish_revolutionary_army
+			focus = FIN_red_finland
 		}
 		completion_reward = {
 			add_stability = 0.15
@@ -1508,7 +1508,7 @@ focus_tree = {
 		cost = 5
 		prerequisite = {
 			focus = FIN_health
-			focus = FIN_work
+			focus = FIN_services
 		}
 		completion_reward = {
 			add_political_power = -50
@@ -2693,6 +2693,24 @@ focus_tree = {
 			add_war_support = -0.05
 			add_political_power = -25
 			# Better relatitions with russia
+		}
+	}
+
+	focus = {
+		id = FIN_align_with_Russia
+		icon = GFX_SOV_demand_eastern_poland_ccp_2d_sov_compatibility
+		x = 40
+		y = 18
+		cost = 5
+		prerequisite = {
+			focus = FIN_leave_NATO
+		}
+	
+		completion_reward = {
+			add_war_support = 0.1
+			add_stability = -0.05
+			add_political_power = 25
+			# Join Russias faction
 		}
 	}
 
