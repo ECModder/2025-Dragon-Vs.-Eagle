@@ -1,0 +1,2616 @@
+# ============================================================
+#   CHINESE SOVIET REPUBLIC (CSR) - "Workerist/Internationalist Tree"
+#
+#   Albero su disegno dei dev. Tre ali che partono da
+#   "If Chen Duxiu could see us...":
+#       Economic Decision Center   (sinistra)
+#       Political Decision Congress (centro)
+#       Military Decision Center   (destra)
+#
+#   Scelte esclusive:
+#     - le tre correnti politiche (Internationalist / Revolutionary
+#       / Workerist) e i tre "All Power to..."
+#     - le tre vie economiche (Socialization / Collectivization /
+#       State Capitalism)
+#     - Restore the Red Army / Restore the Soviet Army
+#     - Sino-Soviet Agreement / Soviet-Chinese Alliance
+#
+#   NOTA sui prerequisiti dei tre "All Power to...": nel disegno le
+#   tre catene di corrente confluiscono in un bus unico che si
+#   riapre sui tre rami, quindi qui sono in OR (basta una qualsiasi
+#   delle tre correnti). Se invece ogni corrente deve portare solo
+#   al suo ramo, e' una riga per focus: dimmelo.
+#
+#   NOTA sulle ricompense: il disegno dava solo i nomi. Gli effetti
+#   sono segnaposto coerenti per ala e profondita', da sostituire.
+#
+#   Icone: GFX_goal_CSR_<nome_focus>, definite in
+#   interface/CSR_icone_focus.gfx, file in gfx/interface/goals/CSR/
+#   (95x85). Ora sono segnaposto.
+# ============================================================
+
+focus_tree = {
+	id = CSR_communist_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = CSR
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 50 y = 1300 }
+
+	focus = {
+		id = CSR_against_xi
+		icon = GFX_goal_CSR_against_xi
+		x = 50
+		y = 0
+		cost = 8
+		available_if_capitulated = yes
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 80
+			add_war_support = 0.06
+		}
+	}
+	focus = {
+		id = CSR_red_guards
+		icon = GFX_goal_CSR_red_guards
+		x = 47
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_against_xi }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_permit_intl_brigades
+		icon = GFX_goal_CSR_permit_intl_brigades
+		x = 50
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_against_xi }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_war_communism
+		icon = GFX_goal_CSR_war_communism
+		x = 53
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_against_xi }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_revolutionary_vanguard_army
+		icon = GFX_goal_CSR_revolutionary_vanguard_army
+		x = 47
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_red_guards }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_use_political_commissars
+		icon = GFX_goal_CSR_use_political_commissars
+		x = 50
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_permit_intl_brigades }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_every_weapon
+		icon = GFX_goal_CSR_every_weapon
+		x = 53
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_war_communism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_chen_duxiu
+		icon = GFX_goal_CSR_chen_duxiu
+		x = 50
+		y = 6
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revolutionary_vanguard_army }
+		prerequisite = { focus = CSR_use_political_commissars }
+		prerequisite = { focus = CSR_every_weapon }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 120
+			add_war_support = 0.09
+		}
+	}
+	focus = {
+		id = CSR_economic_center
+		icon = GFX_goal_CSR_economic_center
+		x = 14
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_chen_duxiu }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_political_congress
+		icon = GFX_goal_CSR_political_congress
+		x = 50
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_chen_duxiu }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = CSR_military_center
+		icon = GFX_goal_CSR_military_center
+		x = 81
+		y = 8
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_chen_duxiu }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 20
+		}
+	}
+	focus = {
+		id = CSR_internationalist_faction
+		icon = GFX_goal_CSR_internationalist_faction
+		x = 44
+		y = 10
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_political_congress }
+		mutually_exclusive = { focus = CSR_revolutionary_faction focus = CSR_workerist_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_internationalist_faction
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_state_of_councils
+		icon = GFX_goal_CSR_state_of_councils
+		x = 44
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_internationalist_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_workers_council_planning
+		icon = GFX_goal_CSR_workers_council_planning
+		x = 44
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_of_councils }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_democratic_centralism_int
+		icon = GFX_goal_CSR_democratic_centralism_int
+		x = 44
+		y = 16
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_workers_council_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_revolutionary_faction
+		icon = GFX_goal_CSR_revolutionary_faction
+		x = 50
+		y = 10
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_political_congress }
+		mutually_exclusive = { focus = CSR_internationalist_faction focus = CSR_workerist_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_revolutionary_faction
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_parliamentary_communism
+		icon = GFX_goal_CSR_parliamentary_communism
+		x = 50
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revolutionary_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_state_unions_planning
+		icon = GFX_goal_CSR_state_unions_planning
+		x = 50
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_parliamentary_communism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_strong_supreme_soviet
+		icon = GFX_goal_CSR_strong_supreme_soviet
+		x = 50
+		y = 16
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_unions_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_workerist_faction
+		icon = GFX_goal_CSR_workerist_faction
+		x = 56
+		y = 10
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_political_congress }
+		mutually_exclusive = { focus = CSR_internationalist_faction focus = CSR_revolutionary_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_workerist_faction
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_bureaucracy_helm
+		icon = GFX_goal_CSR_bureaucracy_helm
+		x = 56
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_workerist_faction }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_cadre_bureaucratic_planning
+		icon = GFX_goal_CSR_cadre_bureaucratic_planning
+		x = 56
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_bureaucracy_helm }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_recreation_politburo
+		icon = GFX_goal_CSR_recreation_politburo
+		x = 56
+		y = 16
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cadre_bureaucratic_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_all_power_soviets
+		icon = GFX_goal_CSR_all_power_soviets
+		x = 39
+		y = 18
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_democratic_centralism_int focus = CSR_strong_supreme_soviet focus = CSR_recreation_politburo }
+		mutually_exclusive = { focus = CSR_all_power_revolution focus = CSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_all_power_soviets
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_comintern
+		icon = GFX_goal_CSR_comintern
+		x = 36
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_funds_europe
+		icon = GFX_goal_CSR_funds_europe
+		x = 36
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_comintern }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_funds_asia
+		icon = GFX_goal_CSR_funds_asia
+		x = 36
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_funds_europe }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_funds_america
+		icon = GFX_goal_CSR_funds_america
+		x = 36
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_funds_asia }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_soviet_every_factory
+		icon = GFX_goal_CSR_soviet_every_factory
+		x = 39
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_soviet_every_city
+		icon = GFX_goal_CSR_soviet_every_city
+		x = 39
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_soviet_every_factory }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_central_council
+		icon = GFX_goal_CSR_central_council
+		x = 39
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_soviet_every_city }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_democratic_centralism_sov
+		icon = GFX_goal_CSR_democratic_centralism_sov
+		x = 39
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_central_council }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_restore_political_commissariats
+		icon = GFX_goal_CSR_restore_political_commissariats
+		x = 42
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_flexible_tactics
+		icon = GFX_goal_CSR_flexible_tactics
+		x = 42
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_political_commissariats }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_implacable_ideology
+		icon = GFX_goal_CSR_implacable_ideology
+		x = 42
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_flexible_tactics }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_socialist_cultural_hegemony
+		icon = GFX_goal_CSR_socialist_cultural_hegemony
+		x = 42
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_implacable_ideology }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_specter_haunting_asia
+		icon = GFX_goal_CSR_specter_haunting_asia
+		x = 39
+		y = 28
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_funds_america }
+		prerequisite = { focus = CSR_democratic_centralism_sov }
+		prerequisite = { focus = CSR_socialist_cultural_hegemony }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+		}
+	}
+	focus = {
+		id = CSR_spectre_of_communism
+		icon = GFX_goal_CSR_spectre_of_communism
+		x = 39
+		y = 30
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_specter_haunting_asia }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_spectre_of_communism
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_all_power_revolution
+		icon = GFX_goal_CSR_all_power_revolution
+		x = 50
+		y = 18
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_democratic_centralism_int focus = CSR_strong_supreme_soviet focus = CSR_recreation_politburo }
+		mutually_exclusive = { focus = CSR_all_power_soviets focus = CSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_all_power_revolution
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_glory_revolutionary_intl
+		icon = GFX_goal_CSR_glory_revolutionary_intl
+		x = 47
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_permanent_revolution_principle
+		icon = GFX_goal_CSR_permanent_revolution_principle
+		x = 47
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_glory_revolutionary_intl }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_export_revolution
+		icon = GFX_goal_CSR_export_revolution
+		x = 47
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_permanent_revolution_principle }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 45
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_ensure_peoples_support
+		icon = GFX_goal_CSR_ensure_peoples_support
+		x = 47
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_export_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_restore_factory_soviets
+		icon = GFX_goal_CSR_restore_factory_soviets
+		x = 50
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_revolutionary_committees
+		icon = GFX_goal_CSR_revolutionary_committees
+		x = 50
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_factory_soviets }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_absolute_loyalty
+		icon = GFX_goal_CSR_absolute_loyalty
+		x = 50
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revolutionary_committees }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_denouncing_revisionism
+		icon = GFX_goal_CSR_denouncing_revisionism
+		x = 50
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_absolute_loyalty }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_new_communism_new_age
+		icon = GFX_goal_CSR_new_communism_new_age
+		x = 53
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_cut_party_bureaucracy
+		icon = GFX_goal_CSR_cut_party_bureaucracy
+		x = 53
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_new_communism_new_age }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_anticorruption_campaigns
+		icon = GFX_goal_CSR_anticorruption_campaigns
+		x = 53
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cut_party_bureaucracy }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_arrest_centralists_rev
+		icon = GFX_goal_CSR_arrest_centralists_rev
+		x = 53
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_anticorruption_campaigns }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_the_permanent_revolution
+		icon = GFX_goal_CSR_the_permanent_revolution
+		x = 50
+		y = 28
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ensure_peoples_support }
+		prerequisite = { focus = CSR_denouncing_revisionism }
+		prerequisite = { focus = CSR_arrest_centralists_rev }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 90
+			add_war_support = 0.06
+		}
+	}
+	focus = {
+		id = CSR_trotsky_young_again
+		icon = GFX_goal_CSR_trotsky_young_again
+		x = 50
+		y = 30
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_the_permanent_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_trotsky_young_again
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_all_power_party
+		icon = GFX_goal_CSR_all_power_party
+		x = 61
+		y = 18
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_democratic_centralism_int focus = CSR_strong_supreme_soviet focus = CSR_recreation_politburo }
+		mutually_exclusive = { focus = CSR_all_power_soviets focus = CSR_all_power_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_all_power_party
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_peoples_democratic_model
+		icon = GFX_goal_CSR_peoples_democratic_model
+		x = 58
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_restore_party_authority
+		icon = GFX_goal_CSR_restore_party_authority
+		x = 58
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_peoples_democratic_model }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_politburo_yes_men
+		icon = GFX_goal_CSR_politburo_yes_men
+		x = 58
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_party_authority }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_long_live_general_secretary
+		icon = GFX_goal_CSR_long_live_general_secretary
+		x = 58
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_politburo_yes_men }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_anticorruption_campaign
+		icon = GFX_goal_CSR_anticorruption_campaign
+		x = 61
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_destroy_chongqing_model
+		icon = GFX_goal_CSR_destroy_chongqing_model
+		x = 61
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_anticorruption_campaign }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_great_trial_traitors
+		icon = GFX_goal_CSR_great_trial_traitors
+		x = 61
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_destroy_chongqing_model }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_new_party_cadres
+		icon = GFX_goal_CSR_new_party_cadres
+		x = 61
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_great_trial_traitors }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_ideological_cleansing
+		icon = GFX_goal_CSR_ideological_cleansing
+		x = 64
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_all_power_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_new_wave_purges
+		icon = GFX_goal_CSR_new_wave_purges
+		x = 64
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ideological_cleansing }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_counterrevolutionaries_everywhere
+		icon = GFX_goal_CSR_counterrevolutionaries_everywhere
+		x = 64
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_new_wave_purges }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_arrest_centralists_party
+		icon = GFX_goal_CSR_arrest_centralists_party
+		x = 64
+		y = 26
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_counterrevolutionaries_everywhere }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_cpc_party_congress
+		icon = GFX_goal_CSR_cpc_party_congress
+		x = 61
+		y = 28
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_long_live_general_secretary }
+		prerequisite = { focus = CSR_new_party_cadres }
+		prerequisite = { focus = CSR_arrest_centralists_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = CSR_party_with_a_state
+		icon = GFX_goal_CSR_party_with_a_state
+		x = 61
+		y = 30
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cpc_party_congress }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_party_with_a_state
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_socialization_means
+		icon = GFX_goal_CSR_socialization_means
+		x = 3
+		y = 10
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_economic_center }
+		mutually_exclusive = { focus = CSR_collectivization_means focus = CSR_state_capitalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_socialization_means
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_from_each_abilities
+		icon = GFX_goal_CSR_from_each_abilities
+		x = 0
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_socialization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_to_each_needs
+		icon = GFX_goal_CSR_to_each_needs
+		x = 0
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_from_each_abilities }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_workspace_democracy
+		icon = GFX_goal_CSR_workspace_democracy
+		x = 3
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_socialization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_peer_to_peer_economy
+		icon = GFX_goal_CSR_peer_to_peer_economy
+		x = 3
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_workspace_democracy }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_socialization_factories
+		icon = GFX_goal_CSR_socialization_factories
+		x = 6
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_socialization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_agricultural_communes
+		icon = GFX_goal_CSR_agricultural_communes
+		x = 6
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_socialization_factories }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_revive_ogas
+		icon = GFX_goal_CSR_revive_ogas
+		x = 3
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_to_each_needs }
+		prerequisite = { focus = CSR_peer_to_peer_economy }
+		prerequisite = { focus = CSR_agricultural_communes }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_investments_ai
+		icon = GFX_goal_CSR_investments_ai
+		x = 0
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revive_ogas }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_smart_production_chains
+		icon = GFX_goal_CSR_smart_production_chains
+		x = 0
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_investments_ai }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_decentralize_system
+		icon = GFX_goal_CSR_decentralize_system
+		x = 0
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_smart_production_chains }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_supercomputer_each_council
+		icon = GFX_goal_CSR_supercomputer_each_council
+		x = 0
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_decentralize_system }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_unified_computer_network
+		icon = GFX_goal_CSR_unified_computer_network
+		x = 3
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revive_ogas }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_ai_economic_planning
+		icon = GFX_goal_CSR_ai_economic_planning
+		x = 3
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_unified_computer_network }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_variable_production_quotas
+		icon = GFX_goal_CSR_variable_production_quotas
+		x = 3
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ai_economic_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_automation_factories
+		icon = GFX_goal_CSR_automation_factories
+		x = 3
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_variable_production_quotas }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_ecodata_monitoring
+		icon = GFX_goal_CSR_ecodata_monitoring
+		x = 6
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revive_ogas }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_green_quota_algorithms
+		icon = GFX_goal_CSR_green_quota_algorithms
+		x = 6
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ecodata_monitoring }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_cybernetic_energy_grid
+		icon = GFX_goal_CSR_cybernetic_energy_grid
+		x = 6
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_green_quota_algorithms }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_full_ecological_transition
+		icon = GFX_goal_CSR_full_ecological_transition
+		x = 6
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cybernetic_energy_grid }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.04
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+	focus = {
+		id = CSR_digital_marxism
+		icon = GFX_goal_CSR_digital_marxism
+		x = 3
+		y = 26
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_supercomputer_each_council }
+		prerequisite = { focus = CSR_automation_factories }
+		prerequisite = { focus = CSR_full_ecological_transition }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_digital_marxism
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_collectivization_means
+		icon = GFX_goal_CSR_collectivization_means
+		x = 14
+		y = 10
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_economic_center }
+		mutually_exclusive = { focus = CSR_socialization_means focus = CSR_state_capitalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_collectivization_means
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_nationalize_private
+		icon = GFX_goal_CSR_nationalize_private
+		x = 11
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_collectivization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_seize_the_wealth
+		icon = GFX_goal_CSR_seize_the_wealth
+		x = 11
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_nationalize_private }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_state_unions_economy
+		icon = GFX_goal_CSR_state_unions_economy
+		x = 14
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_collectivization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_militarization_economy
+		icon = GFX_goal_CSR_militarization_economy
+		x = 14
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_unions_economy }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_work_coercion
+		icon = GFX_goal_CSR_work_coercion
+		x = 17
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_collectivization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_labor_mobilization
+		icon = GFX_goal_CSR_labor_mobilization
+		x = 17
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_work_coercion }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_collective_economic_outlook
+		icon = GFX_goal_CSR_collective_economic_outlook
+		x = 14
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_seize_the_wealth }
+		prerequisite = { focus = CSR_militarization_economy }
+		prerequisite = { focus = CSR_labor_mobilization }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_restart_five_year_plans
+		icon = GFX_goal_CSR_restart_five_year_plans
+		x = 14
+		y = 18
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_collective_economic_outlook }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_socialist_modernization
+		icon = GFX_goal_CSR_socialist_modernization
+		x = 11
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restart_five_year_plans }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_ecological_development
+		icon = GFX_goal_CSR_ecological_development
+		x = 11
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_socialist_modernization }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.04
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+	focus = {
+		id = CSR_meritocratic_socialism
+		icon = GFX_goal_CSR_meritocratic_socialism
+		x = 11
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ecological_development }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_centralize_economic_planning
+		icon = GFX_goal_CSR_centralize_economic_planning
+		x = 14
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restart_five_year_plans }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_fight_corruption_apparatus
+		icon = GFX_goal_CSR_fight_corruption_apparatus
+		x = 14
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_centralize_economic_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_radical_redistribution
+		icon = GFX_goal_CSR_radical_redistribution
+		x = 14
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_fight_corruption_apparatus }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_network_computer_servers
+		icon = GFX_goal_CSR_network_computer_servers
+		x = 17
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restart_five_year_plans }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_advanced_economic_planning
+		icon = GFX_goal_CSR_advanced_economic_planning
+		x = 17
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_network_computer_servers }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_integrated_advanced_search
+		icon = GFX_goal_CSR_integrated_advanced_search
+		x = 17
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_advanced_economic_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_true_communist_economy
+		icon = GFX_goal_CSR_true_communist_economy
+		x = 14
+		y = 26
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_meritocratic_socialism }
+		prerequisite = { focus = CSR_radical_redistribution }
+		prerequisite = { focus = CSR_integrated_advanced_search }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_true_communist_economy
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_state_capitalism
+		icon = GFX_goal_CSR_state_capitalism
+		x = 25
+		y = 10
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_economic_center }
+		mutually_exclusive = { focus = CSR_socialization_means focus = CSR_collectivization_means }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_state_capitalism
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_economic_sovereignty
+		icon = GFX_goal_CSR_economic_sovereignty
+		x = 22
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_capitalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_ads_comecon
+		icon = GFX_goal_CSR_ads_comecon
+		x = 22
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_economic_sovereignty }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_reinstate_gosplan
+		icon = GFX_goal_CSR_reinstate_gosplan
+		x = 25
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_capitalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_nationalize_all_industries
+		icon = GFX_goal_CSR_nationalize_all_industries
+		x = 25
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_reinstate_gosplan }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_cult_industrialization
+		icon = GFX_goal_CSR_cult_industrialization
+		x = 28
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_state_capitalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_comprehensive_work_planning
+		icon = GFX_goal_CSR_comprehensive_work_planning
+		x = 28
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cult_industrialization }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_repeal_market_socialism
+		icon = GFX_goal_CSR_repeal_market_socialism
+		x = 25
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_ads_comecon }
+		prerequisite = { focus = CSR_nationalize_all_industries }
+		prerequisite = { focus = CSR_comprehensive_work_planning }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_revitalize_chinese_periphery
+		icon = GFX_goal_CSR_revitalize_chinese_periphery
+		x = 22
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_repeal_market_socialism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_food_self_sufficiency
+		icon = GFX_goal_CSR_food_self_sufficiency
+		x = 22
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revitalize_chinese_periphery }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_stability = 0.04
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+	focus = {
+		id = CSR_quantity_over_quality
+		icon = GFX_goal_CSR_quantity_over_quality
+		x = 22
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_food_self_sufficiency }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_inspired_by_stalinka
+		icon = GFX_goal_CSR_inspired_by_stalinka
+		x = 22
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_quantity_over_quality }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_tackle_demographic_collapse
+		icon = GFX_goal_CSR_tackle_demographic_collapse
+		x = 25
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_repeal_market_socialism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_centralized_work_assignment
+		icon = GFX_goal_CSR_centralized_work_assignment
+		x = 25
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_tackle_demographic_collapse }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_eliminate_unemployment
+		icon = GFX_goal_CSR_eliminate_unemployment
+		x = 25
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_centralized_work_assignment }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_skyrocketing_quotas
+		icon = GFX_goal_CSR_skyrocketing_quotas
+		x = 25
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_eliminate_unemployment }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_end_landlordism
+		icon = GFX_goal_CSR_end_landlordism
+		x = 28
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_repeal_market_socialism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_tolerate_shopkeepers
+		icon = GFX_goal_CSR_tolerate_shopkeepers
+		x = 28
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_end_landlordism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_solidify_party_cadres
+		icon = GFX_goal_CSR_solidify_party_cadres
+		x = 28
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_tolerate_shopkeepers }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_rewards_heavy_industry
+		icon = GFX_goal_CSR_rewards_heavy_industry
+		x = 28
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_solidify_party_cadres }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_some_more_equal
+		icon = GFX_goal_CSR_some_more_equal
+		x = 25
+		y = 26
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_inspired_by_stalinka }
+		prerequisite = { focus = CSR_skyrocketing_quotas }
+		prerequisite = { focus = CSR_rewards_heavy_industry }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_some_more_equal
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_restore_red_army
+		icon = GFX_goal_CSR_restore_red_army
+		x = 75
+		y = 10
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_military_center }
+		mutually_exclusive = { focus = CSR_restore_soviet_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_restore_red_army
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_trotsky_founder
+		icon = GFX_goal_CSR_trotsky_founder
+		x = 72
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_red_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_military_commissars
+		icon = GFX_goal_CSR_military_commissars
+		x = 72
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_trotsky_founder }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_reforming_military_corps
+		icon = GFX_goal_CSR_reforming_military_corps
+		x = 75
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_red_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_trial_corrupt_traitors
+		icon = GFX_goal_CSR_trial_corrupt_traitors
+		x = 75
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_reforming_military_corps }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_smart_military_manufacturing
+		icon = GFX_goal_CSR_smart_military_manufacturing
+		x = 78
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_red_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_peer_to_peer_production
+		icon = GFX_goal_CSR_peer_to_peer_production
+		x = 78
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_smart_military_manufacturing }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = CSR_loyal_to_revolution
+		icon = GFX_goal_CSR_loyal_to_revolution
+		x = 75
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_military_commissars }
+		prerequisite = { focus = CSR_trial_corrupt_traitors }
+		prerequisite = { focus = CSR_peer_to_peer_production }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 2 category = land_doctrine }
+			army_experience = 24
+		}
+	}
+	focus = {
+		id = CSR_make_way_young
+		icon = GFX_goal_CSR_make_way_young
+		x = 72
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_loyal_to_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_red_airforce
+		icon = GFX_goal_CSR_red_airforce
+		x = 72
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_make_way_young }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = air_doctrine }
+			air_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_study_new_doctrines
+		icon = GFX_goal_CSR_study_new_doctrines
+		x = 72
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_red_airforce }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_electronic_warfare
+		icon = GFX_goal_CSR_electronic_warfare
+		x = 72
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_study_new_doctrines }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+	focus = {
+		id = CSR_workers_army
+		icon = GFX_goal_CSR_workers_army
+		x = 75
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_loyal_to_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_red_navy
+		icon = GFX_goal_CSR_red_navy
+		x = 75
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_workers_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_red_academies
+		icon = GFX_goal_CSR_red_academies
+		x = 75
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_red_navy }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_quality_training
+		icon = GFX_goal_CSR_quality_training
+		x = 75
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_red_academies }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_cult_blitzkrieg
+		icon = GFX_goal_CSR_cult_blitzkrieg
+		x = 78
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_loyal_to_revolution }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = armor }
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_mechanized_army
+		icon = GFX_goal_CSR_mechanized_army
+		x = 78
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_cult_blitzkrieg }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = armor }
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_superiority_of_tanks
+		icon = GFX_goal_CSR_superiority_of_tanks
+		x = 78
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_mechanized_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = armor }
+			army_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_overwhelming_superiority
+		icon = GFX_goal_CSR_overwhelming_superiority
+		x = 78
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_superiority_of_tanks }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 12
+		}
+	}
+	focus = {
+		id = CSR_workers_of_world_unite
+		icon = GFX_goal_CSR_workers_of_world_unite
+		x = 75
+		y = 26
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_electronic_warfare }
+		prerequisite = { focus = CSR_quality_training }
+		prerequisite = { focus = CSR_overwhelming_superiority }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_workers_of_world_unite
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = CSR_restore_soviet_army
+		icon = GFX_goal_CSR_restore_soviet_army
+		x = 87
+		y = 10
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_military_center }
+		mutually_exclusive = { focus = CSR_restore_red_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_restore_soviet_army
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_politicized_military
+		icon = GFX_goal_CSR_politicized_military
+		x = 84
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_soviet_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_relentless_propaganda
+		icon = GFX_goal_CSR_relentless_propaganda
+		x = 84
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_politicized_military }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_purge_traitors
+		icon = GFX_goal_CSR_purge_traitors
+		x = 87
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_soviet_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_red_terror
+		icon = GFX_goal_CSR_red_terror
+		x = 87
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_purge_traitors }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 35
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+	}
+	focus = {
+		id = CSR_political_commissars_mil
+		icon = GFX_goal_CSR_political_commissars_mil
+		x = 90
+		y = 12
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_restore_soviet_army }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_connections_with_china
+		icon = GFX_goal_CSR_connections_with_china
+		x = 90
+		y = 14
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_political_commissars_mil }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_command_power = 25
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_sino_soviet_agreement
+		icon = GFX_goal_CSR_sino_soviet_agreement
+		x = 84
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_relentless_propaganda }
+		prerequisite = { focus = CSR_red_terror }
+		prerequisite = { focus = CSR_connections_with_china }
+		mutually_exclusive = { focus = CSR_soviet_chinese_alliance }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_sino_soviet_agreement
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_soviet_chinese_alliance
+		icon = GFX_goal_CSR_soviet_chinese_alliance
+		x = 90
+		y = 16
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_relentless_propaganda }
+		prerequisite = { focus = CSR_red_terror }
+		prerequisite = { focus = CSR_connections_with_china }
+		mutually_exclusive = { focus = CSR_sino_soviet_agreement }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_soviet_chinese_alliance
+			add_political_power = 100
+		}
+	}
+	focus = {
+		id = CSR_total_industrial_mobilization
+		icon = GFX_goal_CSR_total_industrial_mobilization
+		x = 84
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_sino_soviet_agreement focus = CSR_soviet_chinese_alliance }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_revitalize_navy
+		icon = GFX_goal_CSR_revitalize_navy
+		x = 84
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_total_industrial_mobilization }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_revitalize_airforce
+		icon = GFX_goal_CSR_revitalize_airforce
+		x = 84
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revitalize_navy }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = air_doctrine }
+			air_experience = 10
+		}
+	}
+	focus = {
+		id = CSR_joint_military_forces
+		icon = GFX_goal_CSR_joint_military_forces
+		x = 84
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_revitalize_airforce }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_command_power = 25
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_centralize_military_structures
+		icon = GFX_goal_CSR_centralize_military_structures
+		x = 87
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_sino_soviet_agreement focus = CSR_soviet_chinese_alliance }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+	}
+	focus = {
+		id = CSR_no_step_back
+		icon = GFX_goal_CSR_no_step_back
+		x = 87
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_centralize_military_structures }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_command_power = 25
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_red_patriotism
+		icon = GFX_goal_CSR_red_patriotism
+		x = 87
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_no_step_back }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_motherland_above_all
+		icon = GFX_goal_CSR_motherland_above_all
+		x = 87
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_red_patriotism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.04
+			add_stability = 0.03
+		}
+	}
+	focus = {
+		id = CSR_import_chinese_equipment
+		icon = GFX_goal_CSR_import_chinese_equipment
+		x = 90
+		y = 18
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_sino_soviet_agreement focus = CSR_soviet_chinese_alliance }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = infantry_weapons }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_start_motorizing
+		icon = GFX_goal_CSR_start_motorizing
+		x = 90
+		y = 20
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_import_chinese_equipment }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = motorized_equipment }
+			army_experience = 8
+		}
+	}
+	focus = {
+		id = CSR_mass_conscription
+		icon = GFX_goal_CSR_mass_conscription
+		x = 90
+		y = 22
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_start_motorizing }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_red_tsunami
+		icon = GFX_goal_CSR_red_tsunami
+		x = 90
+		y = 24
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_mass_conscription }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+		}
+	}
+	focus = {
+		id = CSR_ura
+		icon = GFX_goal_CSR_ura
+		x = 87
+		y = 26
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = CSR_joint_military_forces }
+		prerequisite = { focus = CSR_motherland_above_all }
+		prerequisite = { focus = CSR_red_tsunami }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = idea_CSR_ura
+			add_political_power = 150
+		}
+	}
+}
