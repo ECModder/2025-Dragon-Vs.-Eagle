@@ -1,0 +1,422 @@
+# ============================================================
+#   REVOLUTIONARY SOCIALIST AMERICA (RCA) - albero PROVVISORIO
+#
+#   Stessa struttura degli altri nove alberi puppet, ma qui il
+#   paese parte gia' su revolutionary_socialism: la corrente al
+#   governo e' la RCA stessa, sezione americana della Revolutionary
+#   Communist International.
+#
+#   Le quattro correnti sono i partiti che il paese ha davvero in
+#   history/countries/:
+#     vanguard_socialism      Internationalism - Communist Struggle
+#     revolutionary_socialism Revolutionary Communist America  (al governo)
+#     totalitarian_socialism  Communist Party USA
+#     authoritarian_socialism Party for Socialism and Liberation
+#
+#   Icone generiche del gioco base. 25 focus.
+# ============================================================
+
+focus_tree = {
+	id = RCA_provisional_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RCA
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 50 y = 900 }
+
+	focus = {
+		id = RCA_root
+		icon = GFX_goal_generic_propaganda
+		x = 4
+		y = 0
+		cost = 7
+		available_if_capitulated = yes
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = RCA_federal_reserve
+		icon = GFX_goal_generic_political_pressure
+		x = 1
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 60
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_arsenals
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 4
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_tech_bonus = { bonus = 0.5 uses = 1 category = industry }
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
+		}
+	}
+	focus = {
+		id = RCA_arm_committees
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 7
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_root }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_manpower = 50000
+			army_experience = 30
+			add_war_support = 0.05
+		}
+	}
+	focus = {
+		id = RCA_continental_congress
+		icon = GFX_goal_generic_forceful_treaty
+		x = 4
+		y = 2
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_federal_reserve }
+		prerequisite = { focus = RCA_arsenals }
+		prerequisite = { focus = RCA_arm_committees }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 130
+			add_stability = 0.05
+		}
+	}
+	focus = {
+		id = RCA_internationalism
+		icon = GFX_goal_generic_political_pressure
+		x = 0
+		y = 3
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_continental_congress }
+		mutually_exclusive = { focus = RCA_rca focus = RCA_cpusa focus = RCA_psl }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = RCA_cadre_before_crowd
+		icon = GFX_goal_generic_propaganda
+		x = 0
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_internationalism }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_one_section
+		icon = GFX_goal_generic_production
+		x = 0
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_cadre_before_crowd }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_internationalism_power
+		icon = GFX_goal_generic_forceful_treaty
+		x = 0
+		y = 6
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_one_section }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = RCA_america_not_the_point
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 0
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_internationalism_power }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = RCA_rca
+		icon = GFX_goal_generic_political_pressure
+		x = 3
+		y = 3
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_continental_congress }
+		mutually_exclusive = { focus = RCA_internationalism focus = RCA_cpusa focus = RCA_psl }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = RCA_does_not_pause
+		icon = GFX_goal_generic_propaganda
+		x = 3
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_rca }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_carry_it_south
+		icon = GFX_goal_generic_production
+		x = 3
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_does_not_pause }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_rca_power
+		icon = GFX_goal_generic_forceful_treaty
+		x = 3
+		y = 6
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_carry_it_south }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = RCA_hemisphere_follows
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 3
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_rca_power }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = RCA_cpusa
+		icon = GFX_goal_generic_political_pressure
+		x = 6
+		y = 3
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_continental_congress }
+		mutually_exclusive = { focus = RCA_internationalism focus = RCA_rca focus = RCA_psl }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = RCA_oldest_party
+		icon = GFX_goal_generic_propaganda
+		x = 6
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_cpusa }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_discipline_over_enthusiasm
+		icon = GFX_goal_generic_production
+		x = 6
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_oldest_party }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_cpusa_power
+		icon = GFX_goal_generic_forceful_treaty
+		x = 6
+		y = 6
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_discipline_over_enthusiasm }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = RCA_party_with_a_continent
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 6
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_cpusa_power }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+	focus = {
+		id = RCA_psl
+		icon = GFX_goal_generic_political_pressure
+		x = 9
+		y = 3
+		cost = 7
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_continental_congress }
+		mutually_exclusive = { focus = RCA_internationalism focus = RCA_rca focus = RCA_cpusa }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_political_power = 80
+		}
+	}
+	focus = {
+		id = RCA_already_organised
+		icon = GFX_goal_generic_propaganda
+		x = 9
+		y = 4
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_psl }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_cadres_every_city
+		icon = GFX_goal_generic_production
+		x = 9
+		y = 5
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_already_organised }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_political_power = 50
+			add_stability = 0.04
+		}
+	}
+	focus = {
+		id = RCA_psl_power
+		icon = GFX_goal_generic_forceful_treaty
+		x = 9
+		y = 6
+		cost = 8
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_cadres_every_city }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.20 }
+			add_stability = 0.10
+			add_political_power = 150
+		}
+	}
+	focus = {
+		id = RCA_republic_consolidated
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 9
+		y = 7
+		cost = 10
+		available_if_capitulated = yes
+		prerequisite = { focus = RCA_psl_power }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_political_power = 200
+			army_experience = 40
+		}
+	}
+}
