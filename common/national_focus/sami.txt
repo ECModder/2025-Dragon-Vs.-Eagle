@@ -31,7 +31,7 @@ focus_tree = {
 	}
 	
 	default = no
- # Elections
+
 	initial_show_position = {
 		x = 20
 		y = 0
@@ -552,7 +552,7 @@ focus_tree = {
 			focus = SMI_will_to_reunite
 		}
 		mutually_exclusive = {
-			focus = SMI_demand_lapland
+			focus = SMI_demand_lappland_two
 		}
 		
 		completion_reward = {
@@ -621,7 +621,7 @@ focus_tree = {
 	}
 
 	focus = {
-		id = SMI_demand_lapland
+		id = SMI_demand_lappland_two
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 6
 		y = 10
@@ -649,7 +649,7 @@ focus_tree = {
 		cost = 10
 
 		prerequisite = {
-			focus = SMI_demand_lapland
+			focus = SMI_demand_lappland_two
 		}
 		
 		completion_reward = {
@@ -674,6 +674,36 @@ focus_tree = {
 			add_political_power = 50
 			add_stability = 0.05
 			# Demands that Russia gives Murmansk
+		}
+	}
+
+	focus = {
+		id = SMI_sapmi_no_longer_divided
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 13
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_go_on_Russia
+		}
+		prerequisite = {
+			focus = SMI_demand_Murmansk
+		}
+
+		available = {
+            NOT = {
+            	any_core_state = {
+                	NOT = { is_controlled_by = ROOT }
+            	}
+        	}
+		}
+		
+		completion_reward = {
+			add_political_power = 150
+			add_war_support = 0.05
+			add_stability = 0.15
+			add_research_slot = 1
 		}
 	}
 
@@ -764,6 +794,40 @@ focus_tree = {
 			}
 			# Ind buff
 			# Desicion to trade with them
+		}
+	}
+
+	focus = {
+		id = SMI_armed_neutrality
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 10
+		y = 12
+		cost = 5
+
+		prerequisite = {
+			focus = SMI_jack_of_all_trades
+		}
+
+		completion_reward = {
+			add_political_power = 125
+			add_stability = 0.05
+			add_war_support = 0.15
+			every_owned_state = {
+				limit = {
+					has_border_war_with = RUS
+					has_border_war_with = FIN
+					has_border_war_with = OUL
+					has_border_war_with = NOR
+					has_border_war_with = SWE
+				}
+				add_building_construction = {
+					type = bunker
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_research_slot = 1
+			# Army buff
 		}
 	}
 
@@ -1237,9 +1301,9 @@ focus_tree = {
 		completion_reward = {
 			add_stability = -0.05
 			add_resource = {
-				type = steel
+				type = oil
 				amount = 16
-				state = 666
+				state = 925
 			}
 		}
 	}
@@ -1271,7 +1335,7 @@ focus_tree = {
 			add_resource = {
 				type = chromium
 				amount = 8
-				state = 666
+				state = 213
 			}
 		}
 	}
@@ -1281,7 +1345,7 @@ focus_tree = {
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 27
 		y = 2
-		cost = 5
+		cost = 10
 
 		prerequisite = {
 			focus = SMI_kickstart_our_industry
@@ -1436,6 +1500,78 @@ focus_tree = {
 				type = infantry_equipment
 				amount = 500
 			}
+		}
+	}
+
+	focus = {
+		id = SMI_build_our_navy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 41
+		y = 1
+		cost = 5
+
+		available = {
+			any_controlled_state = {
+				is_coastal = yes
+			}
+		}
+
+		completion_reward = {
+			add_political_power = 25
+			navy_experience = 100
+			add_manpower = 5000
+			add_equipment_to_stockpile = {
+				type = convoy
+				amount = 15
+			}
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+					is_coastal = yes
+            	}
+            	add_extra_state_shared_building_slots = 3
+            	add_building_construction = {
+                	type = dockyard
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
+		id = SMI_build_air_bases
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 49
+		y = 1
+		cost = 5
+
+		completion_reward = {
+			air_experience = 125
+			add_manpower = 7500
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_building_construction = {
+                	type = air_base
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+        	random_owned_state = {
+            	limit = {
+                	is_controlled_by = ROOT
+                	is_core_of = ROOT
+            	}
+            	add_building_construction = {
+                	type = air_base
+                	level = 1
+                	instant_build = yes
+            	}
+        	}
 		}
 	}
 }
