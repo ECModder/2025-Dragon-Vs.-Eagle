@@ -1,0 +1,38 @@
+# ============================================================
+#   DvE - la guerra civile italiana, il colpo di stato militare
+#
+#   Scheduled da ITA_civil_war_effect (common/scripted_effects/
+#   DVE_ITA_civil_war_effects.txt) con "country_event = { id =
+#   dve_itacw.1 days = 2 }": 2 giorni dopo lo scoppio della
+#   guerra civile, i vertici militari residui si impongono sul
+#   governo che resta - l'FF.AA. (autocracy) prende il potere.
+# ============================================================
+
+add_namespace = dve_itacw
+
+# 1: il Comando Interforze prende il potere
+country_event = {
+	id = dve_itacw.1
+	title = dve_itacw.1.t
+	desc = dve_itacw.1.d
+	picture = GFX_report_event_generic_army
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itacw.1.a
+		set_politics = {
+			ruling_party = autocracy
+			elections_allowed = no
+		}
+		add_popularity = { ideology = autocracy popularity = 0.30 }
+		create_country_leader = {
+			name = "Comando Interforze F.F.A.A."
+			desc = "POLITICS_LEADER_DESC"
+			picture = "portrait_large_ffaa.dds"
+			expire = "2100.1.1"
+			ideology = military_dictatorship
+		}
+		add_stability = -0.05
+		add_war_support = 0.05
+	}
+}

@@ -869,3 +869,150 @@ DVE_debug_red_europe_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+# ============================================================
+#   GUERRA CIVILE ITALIANA A SEI FAZIONI - solo debug per ora
+#   La spartizione degli stati sta in common/scripted_effects/
+#   DVE_ITA_civil_war_effects.txt. Non ancora agganciata a
+#   nessun focus: e' il modo per provare il meccanismo (INT/SRI/
+#   RSI/LOM/TYR che nascono insieme, guerre dichiarate, la
+#   guarnigione italiana a Roma) prima di scriverlo nell'albero.
+# ============================================================
+DVE_debug_italy_category = {
+
+	# --- la guerra civile completa -----------------------------
+	# Spartizione + eserciti + dichiarazioni di guerra, tutto insieme.
+	DVE_debug_italy_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = ITA_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_civil_war_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- fa nascere una fazione alla volta, senza guerra -------
+	# Serve a controllare bandiera, partiti, leader e ideologia
+	# di un singolo tag facendo tag-switch, senza far scoppiare
+	# tutto il resto.
+	DVE_debug_italy_spawn_int = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_INT_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_italy_spawn_sri = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_SRI_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_italy_spawn_rsi = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_RSI_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_italy_spawn_lom = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_LOM_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_italy_spawn_tyr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_TYR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo gli eserciti (e la guarnigione di Roma) ----------
+	# Da usare dopo gli spawn singoli, che il territorio lo danno
+	# ma le divisioni no.
+	DVE_debug_italy_armies = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_civil_war_army_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- annulla tutto ------------------------------------------
+	# L'Italia si riprende le cinque fazioni e i loro cores, cosi'
+	# la prova si puo' rifare da capo. Le divisioni gia' create NON
+	# spariscono: restano ai tag, che pero' non hanno piu' terra.
+	DVE_debug_italy_reset = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

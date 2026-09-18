@@ -1,0 +1,492 @@
+# ============================================================
+#   DvE - GUERRA CIVILE ITALIANA A SEI FAZIONI
+#
+#   Per ora richiamabile SOLO dalle decisioni di DEBUG (common/
+#   decisions/DVE_debug.txt, DVE_debug_italy_category) - non e'
+#   ancora agganciata a nessun focus. Stesso schema, riga per
+#   riga, della guerra civile cinese (DVE_CHN_effects.txt): niente
+#   start_civil_war (creerebbe tag dinamici invece di quelli
+#   veri), ogni fazione riceve una lista esplicita di stati via
+#   every_owned_state + limit, cosi' l'ITA (che sopravvive come
+#   fazione a se') mantiene automaticamente tutto cio' che non e'
+#   nella lista di nessuno.
+#
+#   Spartizione (16 stati italiani, tutti assegnati):
+#     ITA   4  Abruzzo(157) Sicilia(115) Sardegna(114) Trentino(850)
+#     INT   5  Piemonte(158) Lombardia(159) Emilia-Romagna(161)
+#              Toscana(162) Trieste(1155)         - capitale 159
+#     SRI   3  Napoli/Campania(117) Calabria(156) Puglia(849)
+#                                                  - capitale 117
+#     RSI   1  Lazio/Roma(2)                       - capitale 2
+#     LOM   2  Veneto(160) Bergamo(1088)           - capitale 160
+#     TYR   1  Alto Adige(39)                       - capitale 39
+#
+#   Roma: RSI possiede lo stato per intero (come richiesto), ma
+#   l'ITA ci pianta comunque una guarnigione di truppe fedeli
+#   (allow_spawning_on_enemy_provs = yes, stesso trucco usato
+#   ovunque in questo file per le divisioni create in territorio
+#   non proprio) - una sacca di resistenza nella capitale persa,
+#   non un possedimento vero.
+#
+#   Gli stati che l'ITA mantiene per intero (Abruzzo, Sicilia,
+#   Sardegna, Trentino) ricevono ognuno 2 divisioni di guarnigione
+#   (template "Presidio Territoriale"), da ITA_civil_war_army_effect.
+#
+#   Guerre dichiarate quando scoppia tutto:
+#     ITA contro tutte e cinque le fazioni (il governo legittimo
+#       contro chi si e' staccato)
+#     INT contro RSI e SRI (comunisti contro fascisti, e le due
+#       correnti socialiste rivali - vedi le rispettive history)
+#     SRI contro RSI (comunisti contro fascisti)
+#     LOM e TYR restano fuori dalle guerre ideologiche: vogliono
+#       l'indipendenza, non conquistare il resto del paese.
+# ============================================================
+
+
+# ============================================================
+#   INT - Lotta Comunista / Vanguard-Revolutionary Front.
+#   5 stati, capitale Milano.
+# ============================================================
+ITA_cw_spawn_INT_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 158  # Piemonte
+				state = 159  # Lombardia
+				state = 161  # Emilia-Romagna
+				state = 162  # Toscana
+				state = 1155 # Trieste
+			}
+		}
+		add_core_of = INT
+		INT = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = INT }
+		INT = {
+			if = {
+				limit = { owns_state = 159 }
+				set_capital = { state = 159 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   SRI - PdRC-PaP Front (Stalinist).
+#   3 stati, capitale Napoli.
+# ============================================================
+ITA_cw_spawn_SRI_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 117  # Napoli/Campania
+				state = 156  # Calabria
+				state = 849  # Puglia
+			}
+		}
+		add_core_of = SRI
+		SRI = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = SRI }
+		SRI = {
+			if = {
+				limit = { owns_state = 117 }
+				set_capital = { state = 117 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   RSI - Fascist Front.
+#   1 stato (Lazio/Roma).
+# ============================================================
+ITA_cw_spawn_RSI_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 2  # Lazio - Roma
+			}
+		}
+		add_core_of = RSI
+		RSI = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = RSI }
+		RSI = {
+			if = {
+				limit = { owns_state = 2 }
+				set_capital = { state = 2 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   LOM - Padania (separatista settentrionale).
+#   2 stati, capitale Veneto.
+# ============================================================
+ITA_cw_spawn_LOM_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 160  # Veneto
+				state = 1088 # Bergamo
+			}
+		}
+		add_core_of = LOM
+		LOM = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = LOM }
+		LOM = {
+			if = {
+				limit = { owns_state = 160 }
+				set_capital = { state = 160 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   TYR - Alto Adige/South Tyrol (separatista di lingua tedesca).
+#   1 stato.
+# ============================================================
+ITA_cw_spawn_TYR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 39  # Alto Adige
+			}
+		}
+		add_core_of = TYR
+		TYR = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = TYR }
+		TYR = {
+			if = {
+				limit = { owns_state = 39 }
+				set_capital = { state = 39 }
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   LA GUERRA CIVILE COMPLETA
+# ============================================================
+ITA_civil_war_effect = {
+
+	set_country_flag = ITA_civil_war
+	set_country_flag = DVE_civil_war_active
+
+	# --- l'Italia esce dalla NATO: un governo che si sta
+	#     sgretolando non puo' restare in un'alleanza militare ---
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	add_stability = -0.30
+	add_war_support = 0.10
+
+	# --- le cinque fazioni prendono territorio e cores ---
+	ITA_cw_spawn_INT_effect = yes
+	ITA_cw_spawn_SRI_effect = yes
+	ITA_cw_spawn_RSI_effect = yes
+	ITA_cw_spawn_LOM_effect = yes
+	ITA_cw_spawn_TYR_effect = yes
+
+	# --- eserciti e guarnigione di Roma ---
+	ITA_civil_war_army_effect = yes
+
+	# --- 2 giorni dopo, il Comando Interforze F.F.A.A. prende il
+	#     potere a Roma (events/DVE_ITA_civil_war.txt) ---
+	country_event = { id = dve_itacw.1 days = 2 }
+
+	# --- le guerre: Roma (governo legittimo) contro tutte le fazioni ---
+	if = { limit = { country_exists = INT } declare_war_on = { target = INT type = annex_everything } }
+	if = { limit = { country_exists = SRI } declare_war_on = { target = SRI type = annex_everything } }
+	if = { limit = { country_exists = RSI } declare_war_on = { target = RSI type = annex_everything } }
+	if = { limit = { country_exists = LOM } declare_war_on = { target = LOM type = annex_everything } }
+	if = { limit = { country_exists = TYR } declare_war_on = { target = TYR type = annex_everything } }
+
+	# --- comunisti contro fascisti ---
+	if = {
+		limit = { country_exists = INT country_exists = RSI }
+		INT = { declare_war_on = { target = RSI type = annex_everything } }
+	}
+	if = {
+		limit = { country_exists = SRI country_exists = RSI }
+		SRI = { declare_war_on = { target = RSI type = annex_everything } }
+	}
+
+	# --- le due correnti socialiste rivali, come da lore ---
+	if = {
+		limit = { country_exists = INT country_exists = SRI }
+		INT = { declare_war_on = { target = SRI type = annex_everything } }
+	}
+}
+
+
+# ============================================================
+#   GLI ESERCITI
+#   Separato cosi' si puo' richiamare da solo dal debug, dopo gli
+#   spawn singoli che il territorio lo danno ma le truppe no.
+#   Includes anche la guarnigione italiana a Roma.
+# ============================================================
+ITA_civil_war_army_effect = {
+
+	if = {
+		limit = { country_exists = INT }
+		INT = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Internazionalista" } }
+					division_template = {
+						name = "Guardia Internazionalista"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
+					owner = INT
+					count = 24
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = SRI }
+		SRI = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia di Stato" } }
+					division_template = {
+						name = "Guardia di Stato"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
+					owner = SRI
+					count = 16
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = RSI }
+		RSI = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Nazionale Repubblicana" } }
+					division_template = {
+						name = "Guardia Nazionale Repubblicana"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80"
+					owner = RSI
+					count = 14
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = LOM }
+		LOM = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Padana" } }
+					division_template = {
+						name = "Guardia Padana"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+					owner = LOM
+					count = 8
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = TYR }
+		TYR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Schützen" } }
+					division_template = {
+						name = "Schützen"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+					owner = TYR
+					count = 4
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	# --- la guarnigione italiana a Roma: la RSI possiede lo stato,
+	#     ma il governo legittimo ci pianta comunque delle truppe.
+	#     Scope numerico diretto sullo stato 2, non capital_scope
+	#     (l'ITA non ha piu' Roma come capitale una volta che la
+	#     RSI se la prende) ---
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Presidio di Roma" } }
+			division_template = {
+				name = "Presidio di Roma"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+				}
+			}
+		}
+	}
+	2 = {
+		create_unit = {
+			division = "name = \"Presidio di Roma\" division_template = \"Presidio di Roma\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
+			owner = ITA
+			count = 3
+			allow_spawning_on_enemy_provs = yes
+		}
+	}
+
+	# --- guarnigioni sul territorio che l'Italia mantiene per intero
+	#     (Abruzzo, Sicilia, Sardegna, Trentino - nessuna fazione li
+	#     reclama): 2 divisioni per stato, stesso template condiviso,
+	#     nome diverso per stato per chiarezza sulla mappa ---
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Presidio Territoriale" } }
+			division_template = {
+				name = "Presidio Territoriale"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+				}
+			}
+		}
+	}
+	157 = { # Abruzzo
+		create_unit = {
+			division = "name = \"Presidio d'Abruzzo\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 2
+		}
+	}
+	115 = { # Sicilia
+		create_unit = {
+			division = "name = \"Presidio di Sicilia\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 2
+		}
+	}
+	114 = { # Sardegna
+		create_unit = {
+			division = "name = \"Presidio di Sardegna\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 2
+		}
+	}
+	850 = { # Trentino
+		create_unit = {
+			division = "name = \"Presidio del Trentino\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 2
+		}
+	}
+}
+
+
+# ============================================================
+#   ANNULLA TUTTO
+#   L'Italia si riprende le cinque fazioni e i loro cores. Serve
+#   solo al debug, per rifare la prova da capo.
+# ============================================================
+ITA_civil_war_reset_effect = {
+
+	clr_country_flag = ITA_civil_war
+	clr_country_flag = DVE_civil_war_active
+
+	# --- rientra nella NATO, per rifare la prova da capo ---
+	if = {
+		limit = { NOT = { is_in_faction = yes } }
+		USA = { add_to_faction = ITA }
+	}
+
+	if = { limit = { country_exists = INT } INT = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = SRI } SRI = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = RSI } RSI = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = LOM } LOM = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = TYR } TYR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+
+	every_owned_state = {
+		remove_core_of = INT
+		remove_core_of = SRI
+		remove_core_of = RSI
+		remove_core_of = LOM
+		remove_core_of = TYR
+	}
+}
