@@ -362,21 +362,22 @@ focus = {
 	completion_reward = {
 		add_political_power = 10  
 1152 = {
-		add_extra_state_shared_building_slots = 1
-		add_building_construction = {
-			type = industrial_complex
-			level = 1
-			instant_build = yes
-		}
-	}	
+	add_extra_state_shared_building_slots = 1
+	add_building_construction = {
+		type = arms_factory
+		level = 1
+		instant_build = yes
+	}
+}
+
 85 = {
-		add_extra_state_shared_building_slots = 1
-		add_building_construction = {
-			type = industrial_complex
-			level = 1
-			instant_build = yes
-		}
-	}	
+	add_extra_state_shared_building_slots = 1
+	add_building_construction = {
+		type = arms_factory
+		level = 1
+		instant_build = yes
+	}
+}	
 swap_ideas = {
 			remove_idea = POL_polish_army_upgraded_3
 			add_idea = POL_polish_army_upgraded_4
@@ -534,6 +535,417 @@ swap_ideas = {
 custom_effect_tooltip = POL_DESCYYYYY_THREE		
 	}
 }
+focus = {
+	id = POL_question_of_navy
+	icon = GFX_goal
+	x = 34
+	y = 10
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_army_has_to_be_strong  }
+prerequisite = { focus = POL_power_land  }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10  	
+swap_ideas = {
+			remove_idea = POL_polish_army_upgraded_8
+			add_idea = POL_polish_army_upgraded_9
+		}	
+	}
+}
+focus = {
+	id = POL_small_but_good
+	icon = GFX_goal
+	x = 34
+	y = 11
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_question_of_navy  }
+
+
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10  	
+swap_ideas = {
+			remove_idea = POL_polish_army_upgraded_9
+			add_idea = POL_polish_army_upgraded_10
+		}	
+	}
+}
+
+focus = {
+	id = POL_a_new_fleet
+	icon = GFX_goal
+	x = 34
+	y = 12
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_small_but_good  }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+	completion_reward = {
+		add_political_power = 10  	
+swap_ideas = {
+			remove_idea = POL_polish_army_upgraded_10
+			add_idea = POL_polish_army_upgraded_11
+		}	
+	}
+}
+focus = {
+	id = POL_navy_for_poland
+	icon = GFX_goal
+	x = 34
+	y = 13
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_a_new_fleet }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_11
+            add_idea = POL_polish_army_upgraded_14
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+focus = {
+	id = POL_air_force_1
+	icon = GFX_goal
+	x = 36
+	y = 10
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_army_has_to_be_strong  }
+prerequisite = { focus = POL_navy_for_poland }
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_14
+            add_idea = POL_polish_army_upgraded_15
+}
+}
+}
+focus = {
+	id = POL_air_force_2
+	icon = GFX_goal
+	x = 36
+	y = 11
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 4
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_air_force_1  }
+
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_15
+            add_idea = POL_polish_army_upgraded_16
+}
+}
+}
+
+focus = {
+	id = POL_air_force_3
+	icon = GFX_goal
+	x = 36
+	y = 12
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_air_force_2  }
+
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_16
+            add_idea = POL_polish_army_upgraded_17
+}
+}
+}
+
+focus = {
+	id = POL_air_force_4
+	icon = GFX_goal
+	x = 36
+	y = 13
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_air_force_3  }
+
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_17
+            add_idea = POL_polish_army_upgraded_18
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+focus = {
+	id = POL_ARMY_ENDING_ONE
+	icon = GFX_goal
+	x = 32
+	y = 14
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_air_force_4  }
+prerequisite = { focus = POL_navy_for_poland  }
+prerequisite = { focus = POL_power_land  }
+
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_18
+            add_idea = POL_polish_army_upgraded_19
+}
+}
+}
+focus = {
+	id = POL_ARMY_ENDING_TWO
+	icon = GFX_goal
+	x = 32
+	y = 15
+
+
+	allow_branch = { 
+	}
+
+	available = {
+		has_war = no
+	}
+
+	bypass = {
+
+	}
+
+	cost = 2
+	ai_will_do = { factor = 30 }
+
+prerequisite = { focus = POL_ARMY_ENDING_ONE  }
+
+
+	#mutually_exclusive = { focus = ... }
+
+	cancel_if_invalid = yes
+	continue_if_invalid = no
+	available_if_capitulated = no
+
+completion_reward = {
+    add_political_power = 10 
+        swap_ideas = {
+            remove_idea = POL_polish_army_upgraded_19
+            add_idea = POL_polish_army_upgraded_20
+}
+}
+}
+
 
 
 
