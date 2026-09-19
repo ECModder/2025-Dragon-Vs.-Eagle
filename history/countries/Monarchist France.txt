@@ -1,0 +1,64 @@
+capital = 29 # Pas de Calais
+
+# ============================================================
+#   MONARCHIST FRANCE (MOF) - 2027
+#   Il "Blocco Monarchico": Philippe de Villiers all'inizio, poi
+#   il Conte di Parigi come pretendente. Nasce a nord quando il
+#   National Bloc non riesce a tenere insieme il paese. Non esiste
+#   a inizio partita: nasce solo via l'effetto DEBUG (common/
+#   scripted_effects/DVE_FRA_civil_war_effects.txt,
+#   FRA_cw_spawn_MOF_effect).
+#   2 stati: Picardy, Pas de Calais (capitale).
+#
+#   De Villiers e' definito PRIMA del Conte di Parigi cosi' resta
+#   lui il leader attivo ("all'inizio... poi"): la transizione vera
+#   e propria non e' ancora scriptata (nessun evento a tempo come
+#   quello italiano della FFAA), e' solo lore per ora.
+# ============================================================
+
+# === party names (stesso roster condiviso di FRA) ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] PRCF" long_name = "[Banned] Pôle de Renaissance Communiste en France" }
+set_party_name = { ideology = authoritarian_socialism name = "[Banned] PCF" long_name = "[Banned] Parti Communiste Français" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] INTERNATIONALISTE" long_name = "[Banned] Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] PCR" long_name = "[Banned] Parti Communiste Révolutionnaire" }
+set_party_name = { ideology = progressive name = "[Banned] PS-LFI" long_name = "[Banned] La France insoumise, Parti Socialiste" }
+set_party_name = { ideology = centrist name = "[Banned] RE" long_name = "[Banned] Renaissance" }
+set_party_name = { ideology = liberal name = "[Banned] MoDem" long_name = "[Banned] Mouvement Démocrate" }
+set_party_name = { ideology = conservative name = "LR" long_name = "Les Républicains" }
+set_party_name = { ideology = reactionary name = "RN" long_name = "Rassemblement National" }
+set_party_name = { ideology = authoritarianism name = "[Banned] CDSN" long_name = "[Banned] Conseil de Défense et de Sécurité Nationale" }
+set_party_name = { ideology = autocracy name = "[Banned] EMA" long_name = "[Banned] État-Major des Armées" }
+set_party_name = { ideology = absolutism name = "AR" long_name = "Alliance Royale" }
+set_party_name = { ideology = ultranationalism name = "[Banned] REC" long_name = "[Banned] Reconquête" }
+set_party_name = { ideology = fundamentalism name = "VIA" long_name = "Via, la voie du peuple" }
+
+create_country_leader = { name = "Comte de Paris" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = divine_monarchy }
+create_country_leader = { name = "Philippe de Villiers" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = monarchism }
+
+set_politics = {
+	ruling_party = absolutism
+	last_election = "2027.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 1
+	authoritarian_socialism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 1
+	progressive = 1
+	centrist = 1
+	liberal = 1
+	conservative = 15
+	reactionary = 20
+	authoritarianism = 3
+	autocracy = 2
+	absolutism = 35
+	ultranationalism = 5
+	fundamentalism = 15
+}
+
+set_stability = 0.55
+set_war_support = 0.50
+set_research_slots = 2

@@ -1,19 +1,32 @@
-capital = 16
+capital = 30 # Loire
 
 # ============================================================
-#   FRENCH SOCIALIST REPUBLIC (FSR)
+#   SOCIALIST FRANCE (FSR) - 2027
 #
-#   Puppet socialista francese.
-#   Non esiste a inizio partita: nasce da eventi/decisioni.
+#   Riutilizzato per la guerra civile francese: nasce dalla
+#   disillusione della sinistra moderata. Olivier Faure e il PS
+#   hanno combattuto all'inizio a fianco di Mélenchon, mai del
+#   tutto fidandosi di lui - credono nella Repubblica, nelle
+#   istituzioni, in una sinistra che governa invece di rivoltarsi.
+#   Non esiste a inizio partita: nasce solo via l'effetto DEBUG
+#   (common/scripted_effects/DVE_FRA_civil_war_effects.txt,
+#   FRA_cw_spawn_FSR_effect). 2 stati: Loire (capitale), Poitou.
+#
+#   vanguard_socialism resta ALTA di proposito come seconda forza:
+#   e' la stessa Francia che, per l'INT, potrebbe un giorno cadere
+#   in mano internazionalista (vedi anche ITA_red_france_effect in
+#   DVE_ITA_red_europe.txt, un percorso diverso e indipendente che
+#   porta a questo stesso tag con un governo comunista imposto con
+#   la forza).
 # ============================================================
 
 # === DvE party names ===
 set_party_name = { ideology = totalitarian_socialism name = "PCM" long_name = "Parti communiste maximaliste" }
 set_party_name = { ideology = authoritarian_socialism name = "PCF" long_name = "Parti communiste français" }
-set_party_name = { ideology = vanguard_socialism long_name = "Communist Struggle" name = "INTERNATIONALISTE" }
+set_party_name = { ideology = vanguard_socialism long_name = "Internationaliste" name = "Internationaliste communiste" }
 set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "Parti communiste révolutionnaire" }
-set_party_name = { ideology = progressive name = "CGT" long_name = "Confédération générale du travail" }
-set_party_name = { ideology = liberal name = "PS(l)" long_name = "Parti Socialiste (left)" }
+set_party_name = { ideology = progressive name = "PS" long_name = "Parti Socialiste" }
+set_party_name = { ideology = liberal name = "MoDem" long_name = "Mouvement Démocrate" }
 set_party_name = { ideology = conservative name = "PS(r)" long_name = "Parti Socialiste (Right)" }
 set_party_name = { ideology = reactionary name = "Armée Rouge" long_name = "Armée Rouge française et Garde Rouge" }
 set_party_name = { ideology = authoritarianism name = "[BANNED]Fran" long_name = "Etat-Major General" }
@@ -23,27 +36,27 @@ set_party_name = { ideology = ultranationalism name = "RN" long_name = "Rassembl
 set_party_name = { ideology = fundamentalism name = "Eglise Gallicane" long_name = "Eglise Gallicane" }
 
 set_politics = {
-	ruling_party = vanguard_socialism
-	last_election = "2025.1.1"
+	ruling_party = progressive
+	last_election = "2027.1.1"
 	election_frequency = 48
 	elections_allowed = no
 }
 
 set_popularities = {
-	totalitarian_socialism = 9
-	authoritarian_socialism = 5
-	vanguard_socialism = 45
-	revolutionary_socialism = 6
-	progressive = 9
+	totalitarian_socialism = 5
+	authoritarian_socialism = 3
+	vanguard_socialism = 30
+	revolutionary_socialism = 4
+	progressive = 45
 	centrist = 0
-	liberal = 7
-	conservative = 6
-	reactionary = 3
-	authoritarianism = 3
+	liberal = 4
+	conservative = 3
+	reactionary = 2
+	authoritarianism = 1
 	autocracy = 0
 	absolutism = 0
-	ultranationalism = 5
-	fundamentalism = 2
+	ultranationalism = 2
+	fundamentalism = 1
 }
 
 set_stability = 0.60
@@ -51,7 +64,10 @@ set_war_support = 0.60
 set_research_slots = 3
 
 # === leader ===
+# Comite Central resta definito (non attivo): e' il governo-ombra
+# internazionalista che l'INT potrebbe un giorno installare.
 create_country_leader = { name = "Comite Central" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_comite_central.dds" expire = "2100.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Olivier Faure" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = social_democracy }
 
 # Volontari e prestito d'uso senza requisito di tensione mondiale
 add_ideas = DVE_socialist_solidarity

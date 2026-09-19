@@ -1016,3 +1016,225 @@ DVE_debug_italy_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+# ============================================================
+#   GUERRA CIVILE FRANCESE A UNDICI FAZIONI - solo debug per ora
+#   La spartizione degli stati sta in common/scripted_effects/
+#   DVE_FRA_civil_war_effects.txt. Non ancora agganciata a nessun
+#   focus: e' il modo per provare il meccanismo (FSR/CMU/FRS/MOF/
+#   BRY/VAF/ANF/FAC/COR/CTL che nascono insieme, guerre dichiarate)
+#   prima di scriverlo nell'albero.
+# ============================================================
+DVE_debug_france_category = {
+
+	# --- la guerra civile completa -----------------------------
+	# Spartizione + eserciti + dichiarazioni di guerra, tutto insieme.
+	DVE_debug_france_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_country_flag = FRA_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_civil_war_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- fa nascere una fazione alla volta, senza guerra -------
+	# Serve a controllare bandiera, partiti, leader e ideologia
+	# di un singolo tag facendo tag-switch, senza far scoppiare
+	# tutto il resto.
+	DVE_debug_france_spawn_fsr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_FSR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_cmu = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_CMU_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_frs = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_FRS_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_mof = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_MOF_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_bry = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_BRY_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_vaf = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_VAF_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_anf = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_ANF_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_fac = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_FAC_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_cor = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_COR_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_ctl = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_CTL_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- solo gli eserciti --------------------------------------
+	# Da usare dopo gli spawn singoli, che il territorio lo danno
+	# ma le divisioni no.
+	DVE_debug_france_armies = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_civil_war_army_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- annulla tutto ------------------------------------------
+	# La Francia si riprende le dieci fazioni e i loro cores, cosi'
+	# la prova si puo' rifare da capo. Le divisioni gia' create NON
+	# spariscono: restano ai tag, che pero' non hanno piu' terra.
+	DVE_debug_france_reset = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

@@ -1,0 +1,64 @@
+capital = 21 # Bouches-du-Rhone - Marsiglia
+
+# ============================================================
+#   VANGUARD FRANCE (VAF) - 2027
+#   Il nuovo nazionalismo: Éric Zemmour (volto pubblico) e il
+#   generale François Lecointre (comando). Nasce intorno a Nizza e
+#   Marsiglia quando il National Bloc si indebolisce a sud - piu'
+#   dura e piu' radicale della RN di Le Pen. Non esiste a inizio
+#   partita: nasce solo via l'effetto DEBUG (common/
+#   scripted_effects/DVE_FRA_civil_war_effects.txt,
+#   FRA_cw_spawn_VAF_effect).
+#   2 stati: Bouches-du-Rhone (capitale), Var.
+#
+#   Lecointre e' definito DOPO Zemmour cosi' resta lui il leader
+#   attivo ("il generale comanda"), coerente col ruolo militare
+#   descritto nel lore.
+# ============================================================
+
+# === party names (stesso roster condiviso di FRA) ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] PRCF" long_name = "[Banned] Pôle de Renaissance Communiste en France" }
+set_party_name = { ideology = authoritarian_socialism name = "[Banned] PCF" long_name = "[Banned] Parti Communiste Français" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] INTERNATIONALISTE" long_name = "[Banned] Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] PCR" long_name = "[Banned] Parti Communiste Révolutionnaire" }
+set_party_name = { ideology = progressive name = "[Banned] PS-LFI" long_name = "[Banned] La France insoumise, Parti Socialiste" }
+set_party_name = { ideology = centrist name = "[Banned] RE" long_name = "[Banned] Renaissance" }
+set_party_name = { ideology = liberal name = "[Banned] MoDem" long_name = "[Banned] Mouvement Démocrate" }
+set_party_name = { ideology = conservative name = "LR" long_name = "Les Républicains" }
+set_party_name = { ideology = reactionary name = "RN" long_name = "Rassemblement National" }
+set_party_name = { ideology = authoritarianism name = "CDSN" long_name = "Conseil de Défense et de Sécurité Nationale" }
+set_party_name = { ideology = autocracy name = "EMA" long_name = "État-Major des Armées" }
+set_party_name = { ideology = absolutism name = "AR" long_name = "Alliance Royale" }
+set_party_name = { ideology = ultranationalism name = "REC" long_name = "Reconquête" }
+set_party_name = { ideology = fundamentalism name = "[Banned] VIA" long_name = "[Banned] Via, la voie du peuple" }
+
+create_country_leader = { name = "Éric Zemmour" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = neo_fascist }
+create_country_leader = { name = "François Lecointre" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = national_syndicalism }
+
+set_politics = {
+	ruling_party = ultranationalism
+	last_election = "2027.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 1
+	authoritarian_socialism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 0
+	progressive = 1
+	centrist = 0
+	liberal = 1
+	conservative = 5
+	reactionary = 15
+	authoritarianism = 10
+	autocracy = 8
+	absolutism = 2
+	ultranationalism = 55
+	fundamentalism = 2
+}
+
+set_stability = 0.50
+set_war_support = 0.70
+set_research_slots = 2
