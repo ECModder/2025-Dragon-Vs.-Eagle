@@ -1,0 +1,719 @@
+# ============================================================
+#   DvE - GUERRA CIVILE FRANCESE A UNDICI FAZIONI
+#
+#   Per ora richiamabile SOLO dalle decisioni di DEBUG (common/
+#   decisions/DVE_debug.txt, DVE_debug_france_category) - non e'
+#   ancora agganciata a nessun focus. Stesso schema, riga per
+#   riga, della guerra civile italiana (DVE_ITA_civil_war_effects.
+#   txt): niente start_civil_war (creerebbe tag dinamici invece di
+#   quelli veri), ogni fazione riceve una lista esplicita di stati
+#   via every_owned_state + limit, cosi' la FRA (che sopravvive
+#   come Repubblica legittima) mantiene automaticamente tutto cio'
+#   che non e' nella lista di nessuno - in questo caso Ile de
+#   France/Parigi (16), unico stato non assegnato dei 33.
+#
+#   Spartizione (33 stati francesi, tutti assegnati):
+#     FRA   1  Ile de France(16) - resta alla Repubblica, capitale
+#     FSR   2  Loire(30) Poitou(23)             - capitale 30
+#     CMU   3  Champagne(18) Champagne2(27) Centre(24) - cap. 24
+#     FRS   9  Normandy(15) Alcase Lorraine(17) Alcase(28)
+#              Franche-comte(20) Bourgogne(26) Limousin(25)
+#              Rhone Alpes(32) Savoy(735) Centre sud(33) - cap. 32
+#     MOF   2  Picardy(785) Pas de Calais(29)   - capitale 29
+#     BRY   1  Brittany(14)                     - capitale 14
+#     VAF   2  Bouches-du-Rhone(21) Var(851)    - capitale 21
+#     ANF   4  Aquitaine(19) French Basque Country(806)
+#              Midi Pyrenees(31) Roussillion/Languedoc(22) - cap. 19
+#     FAC   7  French SA(310) New Caledonia(635) Tahiti(641)
+#              French Caribbean(694) Reunion(706) Kerguelen(713)
+#              St Pierre and Miquelon(730)       - capitale 694
+#     COR   1  Corsica(1)                       - capitale 1
+#     CTL   1  Northern Catalonia(1071)          - capitale 1071
+#
+#   FSR e COR esistevano gia' (rispettivamente dal sistema "Europa
+#   Rossa" esportato dall'Italia e come tag autonomo): qui vengono
+#   solo riutilizzati con la nuova identita' politica gia' scritta
+#   nei rispettivi history/countries/. Vedi il commento in testa a
+#   "FSR - French Socialist Republic.txt" per la nota sulla
+#   convivenza con ITA_red_france_effect (DVE_ITA_red_europe.txt),
+#   che punta allo STESSO tag con un esito politico diverso.
+#
+#   Guerre dichiarate quando scoppia tutto:
+#     FRA (governo legittimo) contro tutte e dieci le fazioni
+#     CMU contro FRS (comunisti contro il National Bloc)
+#   Le altre fazioni (MOF, BRY, VAF, ANF, FAC, COR, CTL, FSR) non
+#   si dichiarano guerra a vicenda: sono rotture separate, non
+#   fronti comuni - restano comunque tutte in guerra CONTRO la FRA.
+# ============================================================
+
+
+# ============================================================
+#   FSR - Socialist France (Olivier Faure/PS).
+#   2 stati, capitale Loire.
+# ============================================================
+FRA_cw_spawn_FSR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 30  # Loire
+				state = 23  # Poitou
+			}
+		}
+		add_core_of = FSR
+		FSR = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			if = {
+				limit = { owns_state = 30 }
+				set_capital = { state = 30 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   CMU - Communard Republic (Fabien Roussel/PCF).
+#   3 stati, capitale Centre.
+# ============================================================
+FRA_cw_spawn_CMU_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 18  # Champagne
+				state = 27  # Champagne2
+				state = 24  # Centre
+			}
+		}
+		add_core_of = CMU
+		CMU = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = CMU }
+		CMU = {
+			if = {
+				limit = { owns_state = 24 }
+				set_capital = { state = 24 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   FRS - The French State (Marine Le Pen/RN, National Bloc).
+#   9 stati, capitale Rhone Alpes.
+# ============================================================
+FRA_cw_spawn_FRS_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 15   # Normandy
+				state = 17   # Alcase Lorraine
+				state = 28   # Alcase
+				state = 20   # Franche-comte
+				state = 26   # Bourgogne
+				state = 25   # Limousin
+				state = 32   # Rhone Alpes
+				state = 735  # Savoy
+				state = 33   # Centre sud
+			}
+		}
+		add_core_of = FRS
+		FRS = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = FRS }
+		FRS = {
+			if = {
+				limit = { owns_state = 32 }
+				set_capital = { state = 32 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   MOF - Monarchist France (de Villiers / Conte di Parigi).
+#   2 stati, capitale Pas de Calais.
+# ============================================================
+FRA_cw_spawn_MOF_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 785  # Picardy
+				state = 29   # Pas de Calais
+			}
+		}
+		add_core_of = MOF
+		MOF = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = MOF }
+		MOF = {
+			if = {
+				limit = { owns_state = 29 }
+				set_capital = { state = 29 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   BRY - Brittany (coalizione delle quattro tendenze).
+#   1 stato.
+# ============================================================
+FRA_cw_spawn_BRY_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 14  # Brittany
+			}
+		}
+		add_core_of = BRY
+		BRY = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = BRY }
+		BRY = {
+			if = {
+				limit = { owns_state = 14 }
+				set_capital = { state = 14 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   VAF - Vanguard France (Zemmour/Lecointre).
+#   2 stati, capitale Bouches-du-Rhone (Marsiglia).
+# ============================================================
+FRA_cw_spawn_VAF_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 21   # Bouches-du-Rhone
+				state = 851  # Var
+			}
+		}
+		add_core_of = VAF
+		VAF = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = VAF }
+		VAF = {
+			if = {
+				limit = { owns_state = 21 }
+				set_capital = { state = 21 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   ANF - Anarchist France (collettivi, sud-ovest).
+#   4 stati, capitale Aquitaine (Bordeaux).
+# ============================================================
+FRA_cw_spawn_ANF_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 19   # Aquitaine
+				state = 806  # French Basque Country
+				state = 31   # Midi Pyrenees
+				state = 22   # Roussillion / Languedoc
+			}
+		}
+		add_core_of = ANF
+		ANF = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = ANF }
+		ANF = {
+			if = {
+				limit = { owns_state = 19 }
+				set_capital = { state = 19 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   FAC - French Army Command (generale Mongros, oltremare).
+#   7 stati, capitale French Caribbean.
+# ============================================================
+FRA_cw_spawn_FAC_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 310  # French SA
+				state = 635  # New Caledonia
+				state = 641  # Tahiti
+				state = 694  # French Caribbean
+				state = 706  # Reunion
+				state = 713  # Kerguelen
+				state = 730  # St Pierre and Miquelon
+			}
+		}
+		add_core_of = FAC
+		FAC = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = FAC }
+		FAC = {
+			if = {
+				limit = { owns_state = 694 }
+				set_capital = { state = 694 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   COR - Corsica (Gilles Simeoni, autonomista pragmatico).
+#   1 stato (gia' esisteva come tag: qui riceve solo il territorio).
+# ============================================================
+FRA_cw_spawn_COR_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1  # Corsica
+			}
+		}
+		add_core_of = COR
+		COR = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = COR }
+		COR = {
+			if = {
+				limit = { owns_state = 1 }
+				set_capital = { state = 1 }
+			}
+		}
+	}
+}
+
+# ============================================================
+#   CTL - Catalonia (Carles Puigdemont, Catalunya Nord).
+#   1 stato. Tag distinto dall'esistente CAT (Catalogna spagnola).
+# ============================================================
+FRA_cw_spawn_CTL_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1071  # Northern Catalonia
+			}
+		}
+		add_core_of = CTL
+		CTL = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = CTL }
+		CTL = {
+			if = {
+				limit = { owns_state = 1071 }
+				set_capital = { state = 1071 }
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   LA GUERRA CIVILE COMPLETA
+# ============================================================
+FRA_civil_war_effect = {
+
+	set_country_flag = FRA_civil_war
+	set_country_flag = DVE_civil_war_active
+
+	# --- la Francia esce dalla NATO: un governo che si sta
+	#     sgretolando non puo' restare in un'alleanza militare ---
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	add_stability = -0.35
+	add_war_support = 0.10
+
+	# --- Mélenchon si insedia subito: e' gia' il presidente eletto
+	#     nel 2027, la guerra civile lo trova gia' al potere ---
+	set_politics = {
+		ruling_party = liberal
+		elections_allowed = no
+	}
+	create_country_leader = { name = "Jean-Luc Mélenchon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+	add_popularity = { ideology = liberal popularity = 0.20 }
+
+	# --- le dieci fazioni prendono territorio e cores ---
+	FRA_cw_spawn_FSR_effect = yes
+	FRA_cw_spawn_CMU_effect = yes
+	FRA_cw_spawn_FRS_effect = yes
+	FRA_cw_spawn_MOF_effect = yes
+	FRA_cw_spawn_BRY_effect = yes
+	FRA_cw_spawn_VAF_effect = yes
+	FRA_cw_spawn_ANF_effect = yes
+	FRA_cw_spawn_FAC_effect = yes
+	FRA_cw_spawn_COR_effect = yes
+	FRA_cw_spawn_CTL_effect = yes
+
+	# --- eserciti ---
+	FRA_civil_war_army_effect = yes
+
+	# --- le guerre: Parigi (governo legittimo) contro tutte le fazioni ---
+	if = { limit = { country_exists = FSR } declare_war_on = { target = FSR type = annex_everything } }
+	if = { limit = { country_exists = CMU } declare_war_on = { target = CMU type = annex_everything } }
+	if = { limit = { country_exists = FRS } declare_war_on = { target = FRS type = annex_everything } }
+	if = { limit = { country_exists = MOF } declare_war_on = { target = MOF type = annex_everything } }
+	if = { limit = { country_exists = BRY } declare_war_on = { target = BRY type = annex_everything } }
+	if = { limit = { country_exists = VAF } declare_war_on = { target = VAF type = annex_everything } }
+	if = { limit = { country_exists = ANF } declare_war_on = { target = ANF type = annex_everything } }
+	if = { limit = { country_exists = FAC } declare_war_on = { target = FAC type = annex_everything } }
+	if = { limit = { country_exists = COR } declare_war_on = { target = COR type = annex_everything } }
+	if = { limit = { country_exists = CTL } declare_war_on = { target = CTL type = annex_everything } }
+
+	# --- comunisti contro il National Bloc ---
+	if = {
+		limit = { country_exists = CMU country_exists = FRS }
+		CMU = { declare_war_on = { target = FRS type = annex_everything } }
+	}
+}
+
+
+# ============================================================
+#   GLI ESERCITI
+#   Separato cosi' si puo' richiamare da solo dal debug, dopo gli
+#   spawn singoli che il territorio lo danno ma le truppe no.
+# ============================================================
+FRA_civil_war_army_effect = {
+
+	if = {
+		limit = { country_exists = FSR }
+		FSR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Milice Socialiste" } }
+					division_template = {
+						name = "Milice Socialiste"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Milice Socialiste\" division_template = \"Milice Socialiste\" start_experience_factor = 0.25 start_equipment_factor = 0.70"
+					owner = FSR
+					count = 12
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = CMU }
+		CMU = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Communarde" } }
+					division_template = {
+						name = "Garde Communarde"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Communarde\" division_template = \"Garde Communarde\" start_experience_factor = 0.25 start_equipment_factor = 0.70"
+					owner = CMU
+					count = 14
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = FRS }
+		FRS = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Milice Nationale" } }
+					division_template = {
+						name = "Milice Nationale"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Milice Nationale\" division_template = \"Milice Nationale\" start_experience_factor = 0.30 start_equipment_factor = 0.85"
+					owner = FRS
+					count = 30
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = MOF }
+		MOF = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Garde Royale" } }
+					division_template = {
+						name = "Garde Royale"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Garde Royale\" division_template = \"Garde Royale\" start_experience_factor = 0.25 start_equipment_factor = 0.70"
+					owner = MOF
+					count = 8
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = BRY }
+		BRY = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Kad Breizh" } }
+					division_template = {
+						name = "Kad Breizh"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Kad Breizh\" division_template = \"Kad Breizh\" start_experience_factor = 0.20 start_equipment_factor = 0.65"
+					owner = BRY
+					count = 6
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = VAF }
+		VAF = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Légion du Renouveau" } }
+					division_template = {
+						name = "Légion du Renouveau"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Légion du Renouveau\" division_template = \"Légion du Renouveau\" start_experience_factor = 0.30 start_equipment_factor = 0.80"
+					owner = VAF
+					count = 14
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = ANF }
+		ANF = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Milices Autonomes" } }
+					division_template = {
+						name = "Milices Autonomes"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Milices Autonomes\" division_template = \"Milices Autonomes\" start_experience_factor = 0.15 start_equipment_factor = 0.55"
+					owner = ANF
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = FAC }
+		FAC = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Forces d'Outre-Mer" } }
+					division_template = {
+						name = "Forces d'Outre-Mer"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Forces d'Outre-Mer\" division_template = \"Forces d'Outre-Mer\" start_experience_factor = 0.35 start_equipment_factor = 0.85"
+					owner = FAC
+					count = 20
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = COR }
+		COR = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Milizia Corsa" } }
+					division_template = {
+						name = "Milizia Corsa"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Milizia Corsa\" division_template = \"Milizia Corsa\" start_experience_factor = 0.20 start_equipment_factor = 0.65"
+					owner = COR
+					count = 6
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = { country_exists = CTL }
+		CTL = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Mossos de la Catalunya Nord" } }
+					division_template = {
+						name = "Mossos de la Catalunya Nord"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+						}
+					}
+				}
+			}
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Mossos de la Catalunya Nord\" division_template = \"Mossos de la Catalunya Nord\" start_experience_factor = 0.20 start_equipment_factor = 0.60"
+					owner = CTL
+					count = 5
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+		}
+	}
+}
+
+
+# ============================================================
+#   ANNULLA TUTTO
+#   La Francia si riprende le dieci fazioni e i loro cores. Serve
+#   solo al debug, per rifare la prova da capo.
+# ============================================================
+FRA_civil_war_reset_effect = {
+
+	clr_country_flag = FRA_civil_war
+	clr_country_flag = DVE_civil_war_active
+
+	# --- rientra nella NATO, per rifare la prova da capo ---
+	if = {
+		limit = { NOT = { is_in_faction = yes } }
+		USA = { add_to_faction = FRA }
+	}
+
+	if = { limit = { country_exists = FSR } FSR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = CMU } CMU = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = FRS } FRS = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = MOF } MOF = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = BRY } BRY = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = VAF } VAF = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = ANF } ANF = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = FAC } FAC = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = COR } COR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = CTL } CTL = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+
+	every_owned_state = {
+		remove_core_of = FSR
+		remove_core_of = CMU
+		remove_core_of = FRS
+		remove_core_of = MOF
+		remove_core_of = BRY
+		remove_core_of = VAF
+		remove_core_of = ANF
+		remove_core_of = FAC
+		remove_core_of = COR
+		remove_core_of = CTL
+	}
+}
