@@ -1,0 +1,24 @@
+division_template = {
+	name = "Rebel Milita"
+	division_names_group = REB_INF_01
+	regiments = {
+		infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+	}
+}
+division_template = {
+	name = "Rebel Mechanized"
+	division_names_group = REB_MEC_01
+	regiments = {
+		light_armor = { x = 0 y = 0 }  light_armor = { x = 0 y = 1 }
+		mechanized  = { x = 1 y = 0 }  mechanized  = { x = 1 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }  recon = { x = 0 y = 1 }
+	}
+}
+units = {
+	division = { location = 5074 division_template = "Rebel Milita" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # state 992
+    division = { location = 13374 division_template = "Rebel Milita" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # state 992
+    division = { location = 12821 division_template = "Rebel Milita" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # state 992
+	division = { location = 5074 division_template = "Rebel Mechanized" start_experience_factor = 0.35 start_equipment_factor = 0.70 }   # state 992
+}
