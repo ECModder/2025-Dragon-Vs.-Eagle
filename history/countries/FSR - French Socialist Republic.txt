@@ -1,23 +1,15 @@
 capital = 30 # Loire
 
 # ============================================================
-#   SOCIALIST FRANCE (FSR) - 2027
-#
-#   Riutilizzato per la guerra civile francese: nasce dalla
-#   disillusione della sinistra moderata. Olivier Faure e il PS
-#   hanno combattuto all'inizio a fianco di Mélenchon, mai del
-#   tutto fidandosi di lui - credono nella Repubblica, nelle
-#   istituzioni, in una sinistra che governa invece di rivoltarsi.
-#   Non esiste a inizio partita: nasce solo via l'effetto DEBUG
-#   (common/scripted_effects/DVE_FRA_civil_war_effects.txt,
-#   FRA_cw_spawn_FSR_effect). 2 stati: Loire (capitale), Poitou.
-#
-#   vanguard_socialism resta ALTA di proposito come seconda forza:
-#   e' la stessa Francia che, per l'INT, potrebbe un giorno cadere
-#   in mano internazionalista (vedi anche ITA_red_france_effect in
-#   DVE_ITA_red_europe.txt, un percorso diverso e indipendente che
-#   porta a questo stesso tag con un governo comunista imposto con
-#   la forza).
+#   SOCIALIST FRANCE (FSR)
+# Used for the French Civil War: it was born from the
+# disillusionment of the moderate left. Olivier Faure and the PS
+# they fought at the beginning alongside Mélenchon, never of the
+# all trusting him - they believe in the Republic, in the
+# institutions, in a left that governs instead of revolting.
+# It doesn't exist at the start of the game: only the DEBUG effect is born away
+# (common/scripted_effects/DVE_FRA_civil_war_effects.txt,
+# FRA_cw_spawn_FSR_effect). 2 states: Loire (capital), Poitou.
 # ============================================================
 
 # === DvE party names ===
@@ -64,10 +56,8 @@ set_war_support = 0.60
 set_research_slots = 3
 
 # === leader ===
-# Comite Central resta definito (non attivo): e' il governo-ombra
-# internazionalista che l'INT potrebbe un giorno installare.
 create_country_leader = { name = "Comite Central" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_comite_central.dds" expire = "2100.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Olivier Faure" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = social_democracy }
 
-# Volontari e prestito d'uso senza requisito di tensione mondiale
+# Volunteers and loan for use without the requirement of global tension
 add_ideas = DVE_socialist_solidarity
