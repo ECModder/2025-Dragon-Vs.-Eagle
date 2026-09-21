@@ -1027,8 +1027,7 @@ DVE_debug_italy_category = {
 # ============================================================
 DVE_debug_france_category = {
 
-	# --- la guerra civile completa -----------------------------
-	# Spartizione + eserciti + dichiarazioni di guerra, tutto insieme.
+	# --- Day 1: FRS, CMU and COR break away ---------------------
 	DVE_debug_france_civil_war = {
 		icon = GFX_decision_revolt
 		allowed = { original_tag = FRA }
@@ -1047,11 +1046,8 @@ DVE_debug_france_category = {
 		ai_will_do = { base = 0 }
 	}
 
-	# --- fa nascere una fazione alla volta, senza guerra -------
-	# Serve a controllare bandiera, partiti, leader e ideologia
-	# di un singolo tag facendo tag-switch, senza far scoppiare
-	# tutto il resto.
-	DVE_debug_france_spawn_fsr = {
+	# --- single Day-1 spawns, no war: for tag-switch checks -----
+	DVE_debug_france_spawn_frs = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }
 		visible = {
@@ -1061,7 +1057,7 @@ DVE_debug_france_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			FRA_cw_spawn_FSR_effect = yes
+			FRA_cw_spawn_FRS_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -1081,7 +1077,7 @@ DVE_debug_france_category = {
 		ai_will_do = { base = 0 }
 	}
 
-	DVE_debug_france_spawn_frs = {
+	DVE_debug_france_spawn_cor = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }
 		visible = {
@@ -1091,11 +1087,44 @@ DVE_debug_france_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			FRA_cw_spawn_FRS_effect = yes
+			FRA_cw_spawn_COR_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
 
+	# --- Day 1 armies --------------------------------------------
+	DVE_debug_france_armies = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_civil_war_army_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- Day 7: FRS collapses, FSR/ANF/GER carve up the rest ----
+	DVE_debug_france_second_wave = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_civil_war_second_wave_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- single Day-7 spawns, no war -----------------------------
 	DVE_debug_france_spawn_mof = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }
@@ -1126,7 +1155,7 @@ DVE_debug_france_category = {
 		ai_will_do = { base = 0 }
 	}
 
-	DVE_debug_france_spawn_vaf = {
+	DVE_debug_france_spawn_fac = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }
 		visible = {
@@ -1136,7 +1165,22 @@ DVE_debug_france_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			FRA_cw_spawn_VAF_effect = yes
+			FRA_cw_spawn_FAC_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_france_spawn_fsr = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = FRA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			FRA_cw_spawn_FSR_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
@@ -1156,7 +1200,7 @@ DVE_debug_france_category = {
 		ai_will_do = { base = 0 }
 	}
 
-	DVE_debug_france_spawn_fac = {
+	DVE_debug_france_spawn_ger_occupation = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }
 		visible = {
@@ -1166,45 +1210,13 @@ DVE_debug_france_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			FRA_cw_spawn_FAC_effect = yes
+			FRA_cw_spawn_GER_occupation_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
 
-	DVE_debug_france_spawn_cor = {
-		icon = GFX_decision_generic_form_nation
-		allowed = { original_tag = FRA }
-		visible = {
-			is_ai = no
-			is_debug = yes
-		}
-		cost = 0
-		fire_only_once = no
-		complete_effect = {
-			FRA_cw_spawn_COR_effect = yes
-		}
-		ai_will_do = { base = 0 }
-	}
-
-	DVE_debug_france_spawn_ctl = {
-		icon = GFX_decision_generic_form_nation
-		allowed = { original_tag = FRA }
-		visible = {
-			is_ai = no
-			is_debug = yes
-		}
-		cost = 0
-		fire_only_once = no
-		complete_effect = {
-			FRA_cw_spawn_CTL_effect = yes
-		}
-		ai_will_do = { base = 0 }
-	}
-
-	# --- solo gli eserciti --------------------------------------
-	# Da usare dopo gli spawn singoli, che il territorio lo danno
-	# ma le divisioni no.
-	DVE_debug_france_armies = {
+	# --- Day 7 armies ----------------------------------------------
+	DVE_debug_france_second_wave_armies = {
 		icon = GFX_decision_generic_political_address
 		allowed = { original_tag = FRA }
 		visible = {
@@ -1214,15 +1226,12 @@ DVE_debug_france_category = {
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			FRA_civil_war_army_effect = yes
+			FRA_civil_war_second_wave_army_effect = yes
 		}
 		ai_will_do = { base = 0 }
 	}
 
-	# --- annulla tutto ------------------------------------------
-	# La Francia si riprende le dieci fazioni e i loro cores, cosi'
-	# la prova si puo' rifare da capo. Le divisioni gia' create NON
-	# spariscono: restano ai tag, che pero' non hanno piu' terra.
+	# --- undo everything -------------------------------------------
 	DVE_debug_france_reset = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { original_tag = FRA }

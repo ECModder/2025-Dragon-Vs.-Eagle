@@ -1,19 +1,20 @@
-capital = 30 # Loire
+capital = 29 # Pas-de-Calais
 
 # ============================================================
-#   SOCIALIST FRANCE (FSR)
-# Used for the French Civil War: it was born from the
-# disillusionment of the moderate left. Olivier Faure and the PS
-# they fought at the beginning alongside Mélenchon, never of the
-# all trusting him - they believe in the Republic, in the
-# institutions, in a left that governs instead of revolting.
-# It doesn't exist at the start of the game: only the DEBUG effect is born away
-# (common/scripted_effects/DVE_FRA_civil_war_effects.txt,
-# FRA_cw_spawn_FSR_effect). 2 states: Loire (capital), Poitou.
+#   SOCIALIST FRANCE (FSR) - 2027
+#   Olivier Faure (PS), born from the moderate left's split with
+#   Mélenchon. Spawns day 7 in the industrial north (Pas-de-
+#   Calais, Picardy), carved out of FRA's remaining territory.
+#   DEBUG-only (DVE_FRA_civil_war_effects.txt).
+#
+#   vanguard_socialism stays HIGH on purpose as a second force:
+#   the same France that could later fall to the Internationalist
+#   (see also ITA_red_france_effect in DVE_ITA_red_europe.txt,
+#   a separate path to this same tag with a different outcome).
 # ============================================================
-
+ 
 # === DvE party names ===
-set_party_name = { ideology = totalitarian_socialism name = "PCM" long_name = "Parti communiste maximaliste" }
+set_party_name = { ideology = totalitarian_socialism name = "PRCF" long_name = "Pôle de Renaissance Communiste en France" }
 set_party_name = { ideology = authoritarian_socialism name = "PCF" long_name = "Parti communiste français" }
 set_party_name = { ideology = vanguard_socialism long_name = "Internationaliste" name = "Internationaliste communiste" }
 set_party_name = { ideology = revolutionary_socialism name = "PCR" long_name = "Parti communiste révolutionnaire" }
@@ -26,6 +27,20 @@ set_party_name = { ideology = autocracy name = "DGSI" long_name = "Direction Gen
 set_party_name = { ideology = absolutism name = "Legitimistes" long_name = "Mouvement Legitimiste" }
 set_party_name = { ideology = ultranationalism name = "RN" long_name = "Rassemblement National" }
 set_party_name = { ideology = fundamentalism name = "Eglise Gallicane" long_name = "Eglise Gallicane" }
+
+create_country_leader = { name = "Fadi Kassem" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Fadi_Kassem.dds" expire = "2035.1.1" ideology = jacobinism }
+create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2100.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Fabien Roussel" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Fabien Roussel.dds" expire = "2035.1.1" ideology = Workerism }
+create_country_leader = { name = "Jean-Luc Mélenchon" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jean-Luc Mélenchon.dds" expire = "2035.1.1" ideology = left_populism }
+create_country_leader = { name = "Olivier Faure" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Olivier Faure.dds" expire = "2035.1.1" ideology = reformist_socialism }
+create_country_leader = { name = "Emmanuel Macron" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_macron.dds" expire = "2027.5.14" ideology = centrist_populism }
+create_country_leader = { name = "Laurent Wauquiez" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Laurent Wauquiez.dds" expire = "2035.1.1" ideology = conservatism }
+create_country_leader = { name = "Jordan Bardella" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jordan Bardella.dds" expire = "2035.1.1" ideology = constitutionalist }
+create_country_leader = { name = "Thierry Burkhard" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Thierry Burkhard.dds" expire = "2035.1.1" ideology = putinism }
+create_country_leader = { name = "Pierre de Villiers" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Pierre de Villiers.dds" expire = "2035.1.1" ideology = military_junta }
+create_country_leader = { name = "Jean-Christophe Napoléon" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jean-Christophe Napoléon.dds" expire = "2035.1.1" ideology = absolute_monarchy }
+create_country_leader = { name = "Éric Zemmour" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Éric Zemmour.dds" expire = "2035.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Jean-Frédéric Poisson" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jean-Frédéric Poisson.dds" expire = "2035.1.1" ideology = clerical_fascism }
 
 set_politics = {
 	ruling_party = progressive
