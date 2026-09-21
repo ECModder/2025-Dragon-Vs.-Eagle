@@ -1,0 +1,59 @@
+capital = 32 # Rhone-Alpes - Lione
+
+# ============================================================
+#   THE FRENCH STATE (FRS) - 2027
+#   Il "National Bloc" fatto governo: Marine Le Pen (RN). La
+#   fazione dominante della guerra civile francese, quella da cui
+#   si staccheranno poi sia i Monarchici/Bretoni a nord sia
+#   Vanguard France a sud. Non esiste a inizio partita: nasce
+#   solo via l'effetto DEBUG (common/scripted_effects/
+#   DVE_FRA_civil_war_effects.txt, FRA_cw_spawn_FRS_effect).
+#   9 stati: Normandy, Alcase Lorraine, Alcase, Franche-Comte,
+#   Bourgogne, Limousin, Rhone Alpes (capitale), Savoy, Centre sud.
+# ============================================================
+
+# === party names (stesso roster condiviso di FRA) ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] PRCF" long_name = "[Banned] Pôle de Renaissance Communiste en France" }
+set_party_name = { ideology = authoritarian_socialism name = "[Banned] PCF" long_name = "[Banned] Parti Communiste Français" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] INTERNATIONALISTE" long_name = "[Banned] Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] PCR" long_name = "[Banned] Parti Communiste Révolutionnaire" }
+set_party_name = { ideology = progressive name = "[Banned] PS-LFI" long_name = "[Banned] La France insoumise, Parti Socialiste" }
+set_party_name = { ideology = centrist name = "[Banned] RE" long_name = "[Banned] Renaissance" }
+set_party_name = { ideology = liberal name = "[Banned] MoDem" long_name = "[Banned] Mouvement Démocrate" }
+set_party_name = { ideology = conservative name = "LR" long_name = "Les Républicains" }
+set_party_name = { ideology = reactionary name = "RN" long_name = "Rassemblement National" }
+set_party_name = { ideology = authoritarianism name = "CDSN" long_name = "Conseil de Défense et de Sécurité Nationale" }
+set_party_name = { ideology = autocracy name = "EMA" long_name = "État-Major des Armées" }
+set_party_name = { ideology = absolutism name = "AR" long_name = "Alliance Royale" }
+set_party_name = { ideology = ultranationalism name = "REC" long_name = "Reconquête" }
+set_party_name = { ideology = fundamentalism name = "VIA" long_name = "Via, la voie du peuple" }
+
+create_country_leader = { name = "Marine Le Pen" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = paleoconservatism }
+
+set_politics = {
+	ruling_party = reactionary
+	last_election = "2027.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 2
+	authoritarian_socialism = 1
+	vanguard_socialism = 1
+	revolutionary_socialism = 2
+	progressive = 2
+	centrist = 0
+	liberal = 2
+	conservative = 10
+	reactionary = 45
+	authoritarianism = 8
+	autocracy = 5
+	absolutism = 2
+	ultranationalism = 15
+	fundamentalism = 5
+}
+
+set_stability = 0.55
+set_war_support = 0.65
+set_research_slots = 4

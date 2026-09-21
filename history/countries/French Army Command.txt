@@ -1,0 +1,61 @@
+capital = 694 # French Caribbean
+
+# ============================================================
+#   FRENCH ARMY COMMAND (FAC) - 2027
+#   L'esercito che cerca di salvare se stesso: il generale Mongros
+#   tiene i territori d'oltremare e non si piega ne' alla
+#   Repubblica ne' al National Bloc. Non vuole il potere, vuole che
+#   l'esercito sopravviva come istituzione. Non esiste a inizio
+#   partita: nasce solo via l'effetto DEBUG (common/
+#   scripted_effects/DVE_FRA_civil_war_effects.txt,
+#   FRA_cw_spawn_FAC_effect).
+#   7 stati d'oltremare: French SA, New Caledonia, Tahiti, French
+#   Caribbean (capitale), Reunion, Kerguelen, St Pierre and
+#   Miquelon.
+# ============================================================
+
+# === party names (stesso roster condiviso di FRA) ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] PRCF" long_name = "[Banned] Pôle de Renaissance Communiste en France" }
+set_party_name = { ideology = authoritarian_socialism name = "[Banned] PCF" long_name = "[Banned] Parti Communiste Français" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] INTERNATIONALISTE" long_name = "[Banned] Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] PCR" long_name = "[Banned] Parti Communiste Révolutionnaire" }
+set_party_name = { ideology = progressive name = "[Banned] PS-LFI" long_name = "[Banned] La France insoumise, Parti Socialiste" }
+set_party_name = { ideology = centrist name = "[Banned] RE" long_name = "[Banned] Renaissance" }
+set_party_name = { ideology = liberal name = "[Banned] MoDem" long_name = "[Banned] Mouvement Démocrate" }
+set_party_name = { ideology = conservative name = "LR" long_name = "Les Républicains" }
+set_party_name = { ideology = reactionary name = "[Banned] RN" long_name = "[Banned] Rassemblement National" }
+set_party_name = { ideology = authoritarianism name = "CDSN" long_name = "Conseil de Défense et de Sécurité Nationale" }
+set_party_name = { ideology = autocracy name = "EMA" long_name = "État-Major des Armées" }
+set_party_name = { ideology = absolutism name = "[Banned] AR" long_name = "[Banned] Alliance Royale" }
+set_party_name = { ideology = ultranationalism name = "[Banned] REC" long_name = "[Banned] Reconquête" }
+set_party_name = { ideology = fundamentalism name = "[Banned] VIA" long_name = "[Banned] Via, la voie du peuple" }
+
+create_country_leader = { name = "Général Mongros" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2100.1.1" ideology = technocracy }
+
+set_politics = {
+	ruling_party = authoritarianism
+	last_election = "2027.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 0
+	authoritarian_socialism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 0
+	progressive = 1
+	centrist = 1
+	liberal = 1
+	conservative = 10
+	reactionary = 5
+	authoritarianism = 60
+	autocracy = 15
+	absolutism = 3
+	ultranationalism = 3
+	fundamentalism = 1
+}
+
+set_stability = 0.65
+set_war_support = 0.55
+set_research_slots = 3
