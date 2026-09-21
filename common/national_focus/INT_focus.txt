@@ -278,9 +278,24 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ITA_red_france_effect = yes			# FRA si spacca: il nord industriale diventa FSR
-			declare_war_on = { target = FRA type = annex_everything }
-			# FRA esce dalla fazione dentro ITA_red_*_effect
+        FRA = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+        }
+		CMU = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+        }
+		FAC = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		ANF = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		FRS = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		MOF = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
 			set_country_flag = LT_redfra_done
 		}
 	}
@@ -428,12 +443,18 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ITA_red_spain_effect = yes			# SPR si spacca: Madrid e il centro-sud diventano SPA
-			ITA_red_portugal_effect = yes			# POR si spacca: la terraferma diventa PRS
-			declare_war_on = { target = SPR type = annex_everything }
-			declare_war_on = { target = POR type = annex_everything }
-			# SPR esce dalla fazione dentro ITA_red_*_effect
-			# POR esce dalla fazione dentro ITA_red_*_effect
+        SPR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+        }
+		SPA = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+        }
+		POR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		PRS = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
 			set_country_flag = LT_redspa_done
 		}
 	}
@@ -534,9 +555,24 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ITA_red_germany_effect = yes			# GER si spacca: Berlino e il nord diventano GDR
-			declare_war_on = { target = GER type = annex_everything }
-			# GER esce dalla fazione dentro ITA_red_*_effect
+        GER = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+        }
+		GDR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+        }
+		DDR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		BAV = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+        }
+		AUS = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		SWI = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
 			set_country_flag = LT_redger_done
 		}
 	}
@@ -640,9 +676,30 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ITA_red_britain_effect = yes			# ENG si spacca: Londra e il nord diventano SRB
-			declare_war_on = { target = ENG type = annex_everything }
-			# ENG esce dalla fazione dentro ITA_red_*_effect
+        ENG = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+        }
+		UKK = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+        }
+		UK1 = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		UK2 = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		SRB = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		WLS = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
+		SCO = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+		}
+		IRE = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+		}
 			set_country_flag = LT_redeng_done
 		}
 	}
@@ -753,6 +810,12 @@ focus_tree = {
 			puppet = BEL
 			puppet = HOL
 			puppet = AUS
+			puppet = CZE
+			puppet = LUX
+			puppet = DEN
+			puppet = EST
+			puppet = LAT
+			puppet = LIT
 			set_country_flag = LT_domino_done
 		}
 	}
@@ -1103,8 +1166,30 @@ focus_tree = {
 		available = { NOT = { country_exists = GSR } }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			ITA_red_greece_effect = yes
-			declare_war_on = { target = GRE type = annex_everything }
+        GRE = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		GSR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
+        }
+		CYP = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		TUR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+        }
+		ALB = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		MAC = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
+		BUL = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+		}
+		CRE = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+		}
 			set_country_flag = LT_redgre_done
 		}
 	}
@@ -1124,6 +1209,31 @@ focus_tree = {
 		completion_reward = {
 			ITA_red_scandinavia_effect = yes
 			declare_war_on = { target = SWE type = annex_everything }
+		NOR = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		SWE = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
+        }
+		FIN = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		EST = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+        }
+		LAT = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		LIT = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+		}
+		POL = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
+		ICE = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+		}
+			
 			set_country_flag = LT_redscand_done
 		}
 	}
@@ -1147,6 +1257,27 @@ focus_tree = {
 			declare_war_on = { target = SER type = annex_everything }
 			declare_war_on = { target = MNT type = annex_everything }
 			declare_war_on = { target = MAC type = annex_everything }
+		SLV = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		SER = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
+        }
+		CYP = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
+        }
+		BOS = { 
+            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+        }
+		CRO = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
+		}
+		MAC = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+		}
+		MNT = { 
+			add_party_popularity = { ideology = vanguard_socialism popularity = 0.25 }
+		}
 			set_country_flag = LT_redyugo_done
 		}
 	}
