@@ -1,0 +1,31 @@
+# ============================================================
+#   DvE - INT's workers' uprising: categories
+# ============================================================
+
+INT_uprising_category = {
+
+	icon = GFX_decision_category_generic_crisis
+	priority = 76
+
+	visible_when_empty = no
+	allowed = {
+		OR = {
+			tag = CMU
+			tag = SPA
+			tag = GDR
+			tag = PRS
+			tag = ENG
+		}
+	}
+	visible = { country_exists = INT }
+}
+
+INT_uprising_annex_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	priority = 73
+
+	visible_when_empty = no
+	allowed = { tag = INT }
+	visible = { always = yes }
+}

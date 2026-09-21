@@ -1,0 +1,24 @@
+# INT-backed workers' uprising. Runs in the TARGET's own scope
+# (ROOT = the country seizing power for itself).
+INT_uprising_seize_power_effect = {
+
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+
+	# Keeps the nation's own existing vanguard_socialism party name
+	# and leader (must already be defined in its history file) -
+	# no override here.
+	set_politics = {
+		ruling_party = vanguard_socialism
+		elections_allowed = no
+	}
+	add_popularity = { ideology = vanguard_socialism popularity = 0.60 }
+	add_stability = -0.10
+
+	if = {
+		limit = { NOT = { is_subject_of = INT } }
+		INT = { puppet = ROOT }
+	}
+}

@@ -1,0 +1,22 @@
+add_namespace = dve_intup
+
+# Sent by one of INT's 5 trigger decisions. Fires in the
+# TARGET's own scope (ROOT = the nation being offered power).
+country_event = {
+	id = dve_intup.1
+	title = dve_intup.1.t
+	desc = dve_intup.1.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.1.a
+		ai_chance = { factor = 80 }
+		INT_uprising_seize_power_effect = yes
+	}
+	option = {
+		name = dve_intup.1.b
+		ai_chance = { factor = 20 }
+	}
+}
