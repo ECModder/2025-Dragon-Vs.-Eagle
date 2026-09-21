@@ -1,0 +1,274 @@
+### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_INTERNAL_AFFAIRS}
+### search_filters = {FOCUS_FILTER_ARMY_XP}
+### search_filters = {FOCUS_FILTER_NAVY_XP}
+### search_filters = {FOCUS_FILTER_AIR_XP}
+### search_filters = {FOCUS_FILTER_BALANCE_OF_POWERS}
+### search_filters = {FOCUS_FILTER_POLITICAL_CHARACTER}
+### search_filters = {FOCUS_FILTER_MILITARY_CHARACTER}
+### search_filters = {FOCUS_FILTER_INTERNATIONAL_TRADE}
+
+
+
+focus_tree = {
+	id = finnish_focus_defeat
+
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 20
+			tag = FIN
+		}
+	}
+	
+	default = no
+ # Elections
+	initial_show_position = {
+		x = 23
+		y = 0
+	}
+
+	continuous_focus_position = { x = 1700 y = 400 }
+
+	focus = {
+		id = FINl_defeat
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 3
+		y = 0
+		cost = 1
+		
+		completion_reward = {
+			add_political_power = -125
+			add_stability = -0.05
+			add_war_support = -0.15
+		}
+	}
+
+	focus = {
+		id = FINl_rising_tensions
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 3
+		y = 1
+		cost = 10
+
+		prerequisite = {
+			focus = FINl_defeat
+		}
+		
+		completion_reward = {
+			add_political_power = -25
+			add_stability = -0.15
+			add_war_support = 0.05
+			# If not anything chosen in 100 days, event to play as Sapmi
+		}
+	}
+
+	focus = {
+		id = FINl_follow_our_ancestors
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 3
+		y = 4
+		cost = 10
+
+		prerequisite = {
+			focus = FINl_rising_tensions
+		}
+
+		mutually_exclusive = {
+			focus = FINl_side_with_the_government
+		}
+		mutually_exclusive = {
+			focus = FINl_side_with_the_people
+		}
+
+		allow_branch = {
+			has_completed_focus = FINl_rising_tensions
+			# If nothing chosen in 100 days, after event unlock.
+		}
+		
+		completion_reward = {
+			add_political_power = -50
+			add_stability = -0.1
+			add_war_support = -0.05
+			release = SMI
+			transfer_units_fraction = {
+				target = SMI
+				army_ratio = 0.1
+			}
+			SMI = { change_tag_from = FIN }
+		}
+	}
+
+	focus = {
+		id = FINl_side_with_the_government
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 2
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = FINl_rising_tensions
+		}
+
+		mutually_exclusive = {
+			focus = FINl_side_with_the_people
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+			add_war_support = 0.05
+			# Activates desicions to strenghten the grip
+		}
+	}
+
+	focus = {
+		id = FINl_arrest_revolutionaries
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 0
+		y = 3
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_side_with_the_government
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+			add_war_support = 0.15
+			# Desisicons?
+		}
+	}
+
+	focus = {
+		id = FINl_gather_support_from_russia
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 2
+		y = 3
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_side_with_the_government
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.05
+			add_war_support = 0.05
+			# Add division from russia and equipment
+		}
+	}
+
+	focus = {
+		id = FINl_preemptive_strike
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 1
+		y = 4
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_side_with_the_government
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.1
+			add_stability = 0.15
+			# Aviable for 85 days after siding with the government
+			# More stability and war support = Weaker revolt
+		}
+	}
+
+	focus = {
+		id = FINl_side_with_the_people
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 2
+		cost = 10
+
+		prerequisite = {
+			focus = FINl_rising_tensions
+		}
+
+		mutually_exclusive = {
+			focus = FINl_side_with_the_government
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.05
+			add_war_support = 0.05
+			# Activates Desicions to destabilize the ruling party
+		}
+	}
+
+	focus = {
+		id = FINl_help_from_our_brothers
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 4
+		y = 3
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_side_with_the_people
+		}
+		
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.05
+			add_war_support = -0.1
+			# Add division from russia and equipment
+		}
+	}
+
+	focus = {
+		id = FINl_get_the_army_on_our_side
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 6
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = FINl_side_with_the_people
+		}
+		
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = -0.15
+			# Transfers part of the army to rebels
+		}
+	}
+
+	focus = {
+		id = FINl_iniate_the_revolution
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 5
+		y = 4
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_side_with_the_people
+		}
+		
+		completion_reward = {
+			add_war_support = -0.05
+			RFI = { change_tag_from = ROOT }
+			declare_war_on = {
+				target = RFI
+				type = take_state
+			}
+			# Aviable for 85 days after siding with the people
+			# Less stability and war support = Stronger revolt
+		}
+	}
+}
