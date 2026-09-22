@@ -1,60 +1,149 @@
 # ============================================================
 #   DvE - INT's workers' uprising
-#   Narrower cousin of the Soviet International: only the 5
-#   nations tied to the European civil war (CMU, SPA, GDR, PRS,
-#   ENG) can receive this
+#   5 separate decisions, one per target (CMU, SPA, GDR, PRS,
+#   ENG) - INT fires one, the target gets an event with the
+#   choice to accept. INT never touches the target's own leader
+#   or party name (DVE_INT_uprising_effects.txt).
 # ============================================================
 
 INT_uprising_category = {
 
-	INT_uprising_seize_power = {
+	INT_uprising_trigger_CMU = {
 		icon = GFX_decision_revolt
-		allowed = {
-			OR = {
-				tag = CMU
-				tag = SPA
-				tag = GDR
-				tag = PRS
-				tag = ENG
-			}
-		}
-		visible = {
-			country_exists = INT
-			NOT = { has_government = vanguard_socialism }
-		}
+		allowed = { tag = INT }
+		visible = { country_exists = CMU }
 		available = {
-			NOT = { is_subject_of = INT }
+			NOT = { CMU = { is_subject_of = INT } }
 		}
-		cost = 0
+		cost = 50
 		fire_only_once = no
+		days_re_enable = 30
 		complete_effect = {
-			INT_uprising_seize_power_effect = yes
+			CMU = { country_event = { id = dve_intup.1 days = 1 } }
 		}
-		ai_will_do = { factor = 50 }
+		ai_will_do = { factor = 20 }
+	}
+
+	INT_uprising_trigger_SPA = {
+		icon = GFX_decision_revolt
+		allowed = { tag = INT }
+		visible = { country_exists = SPA }
+		available = {
+			NOT = { SPA = { is_subject_of = INT } }
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			SPA = { country_event = { id = dve_intup.1 days = 1 } }
+		}
+		ai_will_do = { factor = 20 }
+	}
+
+	INT_uprising_trigger_GDR = {
+		icon = GFX_decision_revolt
+		allowed = { tag = INT }
+		visible = { country_exists = GDR }
+		available = {
+			NOT = { GDR = { is_subject_of = INT } }
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			GDR = { country_event = { id = dve_intup.1 days = 1 } }
+		}
+		ai_will_do = { factor = 20 }
+	}
+
+	INT_uprising_trigger_PRS = {
+		icon = GFX_decision_revolt
+		allowed = { tag = INT }
+		visible = { country_exists = PRS }
+		available = {
+			NOT = { PRS = { is_subject_of = INT } }
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			PRS = { country_event = { id = dve_intup.1 days = 1 } }
+		}
+		ai_will_do = { factor = 20 }
+	}
+
+	INT_uprising_trigger_ENG = {
+		icon = GFX_decision_revolt
+		allowed = { tag = INT }
+		visible = { country_exists = ENG }
+		available = {
+			NOT = { ENG = { is_subject_of = INT } }
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			ENG = { country_event = { id = dve_intup.1 days = 1 } }
+		}
+		ai_will_do = { factor = 20 }
 	}
 }
 
+# ============================================================
+#   Annexation - ANY current puppet of INT, not just the 5
+#   uprising targets. 450 PP, no war-state requirement. Cores
+#   are added explicitly before annexing: annex_country alone
+#   transfers troops/equipment/stockpile but not historical cores.
+# ============================================================
 INT_uprising_annex_category = {
 
 	INT_uprising_annex_puppet = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { tag = INT }
-		targets = { CMU SPA GDR PRS ENG }
+
+		targets = {
+			ABK ADU AFA AFG ALB ALG ALT AND ANG ANT ANU AOI ARG ARM AST ASY AUS AZR BAH BAN BAR BAS
+			BAY BEG BEL BHR BHU BIA BLC BLR BLZ BOL BOS BOT BRA BRB BRD BRI BRM BRN BSK BUK BUL BYA
+			CAM CAN CAR CAT CAY CBV CCR CHA CHI CHL CHM CHR CHU CIN CIP CKK CMR COG COL COM COR COS
+			CRC CRI CRO CSA CSR CUB CYP CZE DAG DAH DDR DEN DIP DJI DMN DNZ DOM DON DRZ ECU EGY ELS
+			EMZ ENG EQG ERI EST ESW ETH EVE EZO FER FIJ FIN FOR FRA FSA FSM FSR GAB GAM GAR GBA GDC
+			GDL GDR GEN GEO GER GHA GLC GNA GNB GRD GRE GRN GSM GSR GUA GUM GXC GYA HAI HAM HAN HAR
+			HAW HBC HES HNK HOL HON HOU HRZ HUN HYD IAS ICE IMO INC INS INU IRE IRQ IRS ISR ISS ITA
+			ITZ IVO JAM JAN JAP JOR KAL KAM KAR KAS KAT KAZ KBK KEN KHA KHI KHL KHM KIR KKP KLT KMZ
+			KOL KOM KOR KOS KSH KUB KUM KUR KUW KYR LAO LAT LBA LBV LEB LES LIB LIE LIT LUC LUX MAC
+			MAD MAL MAN MAR MAU MAY MCA MEK MEL MEN MEX MIS MLD MLI MLT MLW MNC MNT MOL MON MOR MPU
+			MRT MYS MZB NAH NAU NAV NCY NEN NEP NGA NGR NIC NIR NKO NMB NOA NOR NRE NWF NXM NZL OCC
+			OKN OMA ORO OVO PAK PAL PAN PAP PAR PER PHI PLU PNG POL POR PPR PRE PRS PRU PSH PSR PTA
+			PUE PUN PXA QAT QEM QUE RAA RAJ RAN RAP RAR RAS RCA RCG RCO RGB RHD RHI RIF RIG RJP RKA
+			RKB RKC RKG RKH RKI RKK RKL RKM RKN RKO RKT RKU RKV RNA RNG ROA ROJ ROM RSF RUR RUS RWA
+			SAB SAF SAM SAR SAU SAX SCO SEN SER SEY SHL SHX SIA SIC SID SIE SIK SIL SIN SKK SLM SLO
+			SLV SMA SMI SND SNG SOD SOK SOL SOM SPA SPM SPR SRB SRL SSR SSU STK STP SUD SUR SWE SWI
+			SYA SYR TAH TAJ TAN TAT TAY THU TIB TIG TML TMS TNS TOG TOS TRA TRI TSY TTS TUN TUR TUV
+			TZN UAE UBD UDM UGA UKK UKR UNK URG USA USB UZB VAN VEN VGE VIN VLA VOL WES WGR WIS WLA
+			WLS WPG WUR XIC XSM YAK YAM YEM YNR YST YUC YUG YUN ZAM ZIM
+		}
+
 		target_trigger = {
 			FROM = {
 				exists = yes
 				is_subject_of = ROOT
 			}
 		}
+
 		available = {
-			has_political_power > 149
-			FROM = { NOT = { is_at_war = yes } }
+			has_political_power > 449
 		}
-		cost = 150
+
+		cost = 450
 		fire_only_once = no
+
 		complete_effect = {
+			FROM = {
+				every_owned_state = { add_core_of = ROOT }
+			}
 			annex_country = { target = FROM transfer_troops = yes }
 		}
+
 		ai_will_do = { factor = 20 }
 	}
 }
