@@ -402,7 +402,7 @@ country_event = {
 	option = {
 		name = "This is our historical claim!"
 		add_political_power = 20
-		add_stability = 0.025
+		add_stability = -0.05
 		ai_chance = {
 			base = 25
 		}
@@ -414,6 +414,7 @@ country_event = {
 	option = {
 		name = "Lets Give them a country"
 		add_political_power = -20
+		add_stability = 0.1
 		ai_chance = {
 			base = 75
 		}
@@ -445,4 +446,22 @@ country_event = {
     immediate = {
         set_country_flag = Finland_end_of_a_nation
     }
+}
+
+country_event = {
+	id = finlandos.3
+	title = finlandos.3.t
+	desc = finlandos.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = "Under the russian boot again..."
+		add_political_power = -25
+		add_stability = -0.05
+		ai_chance = {
+			base = 100
+		}
+		load_focus_tree = finnish_focus_defeat
+	}
 }

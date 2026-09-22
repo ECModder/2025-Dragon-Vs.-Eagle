@@ -184,6 +184,30 @@ focus_tree = {
 			add_political_power = 75
 			add_war_support = 0.1
 			add_stability = 0.15
+
+			hidden_effect = {
+				RFI = { transfer_state = 928 }
+				RFI = { transfer_state = 930 }
+				RFI = { transfer_state = 150 }
+				RFI = { transfer_state = 929 }
+				RFI = { transfer_state = 1156 }
+				transfer_units_fraction = {
+					target = RFI
+					army_ratio = 0.4
+				}
+				every_state = {
+					limit = {
+						is_core_of = FIN
+					}
+					add_core_of = RFI
+				}
+
+
+				declare_war_on = {
+					target = RFI
+					type = take_state
+				}
+			}
 			# Aviable for 85 days after siding with the government
 			# More stability and war support = Weaker revolt
 		}
@@ -261,11 +285,32 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_war_support = -0.05
-			RFI = { change_tag_from = ROOT }
-			declare_war_on = {
-				target = RFI
-				type = take_state
+
+			# Tooltip
+
+			hidden_effect = {
+				add_war_support = -0.05
+				RFI = { transfer_state = 928 }
+				RFI = { transfer_state = 930 }
+				RFI = { transfer_state = 150 }
+				RFI = { transfer_state = 929 }
+				RFI = { transfer_state = 1156 }
+				transfer_units_fraction = {
+					target = RFI
+					army_ratio = 0.5
+				}
+				every_state = {
+					limit = {
+						is_core_of = FIN
+					}
+					add_core_of = RFI
+				}
+
+				RFI = { change_tag_from = ROOT }
+				declare_war_on = {
+					target = RFI
+					type = take_state
+				}
 			}
 			# Aviable for 85 days after siding with the people
 			# Less stability and war support = Stronger revolt
