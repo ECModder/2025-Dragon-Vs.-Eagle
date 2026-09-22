@@ -49,10 +49,11 @@ on_actions = {
     }
 
 
-    on_peace = {
+    on_daily = {
         effect = {
             if = {
                 limit = { is_subject_of = RUS }
+                limit = { tag = FIN }
                 country_event = { id = finlandos.3 }
             }
         }
