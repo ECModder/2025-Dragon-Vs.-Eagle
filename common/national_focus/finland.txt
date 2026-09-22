@@ -525,65 +525,78 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_rising_tensions
 		}
+		allow_branch = {
+			has_completed_focus = FIN_rising_tensions
+			NOT = {
+				has_completed_focus = FIN_schedule_snap_elections
+			}
+			NOT = {
+				has_completed_focus = FIN_looming_coup
+			}
+			has_country_flag = Finland_end_of_a_nation
+		}
 
 		completion_reward = {
 			add_stability = -0.3
-			release = SAV
-			release = OUL
-			release = VAS
-			release = TRK
-			release = HME
-			release = SMI
-			release = ALA
-			release = KAR
 			leave_faction = yes
-			root = {
-				transfer_units_fraction = {
-					target = ALA
-					size = 1
-					army_ratio = 0.1
+			# Tooltip "End of a nation..."
+
+			hidden_effect = {
+				release = SAV
+				release = OUL
+				release = VAS
+				release = TRK
+				release = HME
+				release = ALA
+				release = KAR
+				root = {
+					transfer_units_fraction = {
+						target = ALA
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = SAV
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = OUL
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = VAS
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = TRK
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = HME
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = SMI
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = KAR
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_navy = {
+						target = ALA
+					}
 				}
-				transfer_units_fraction = {
-					target = SAV
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = OUL
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = VAS
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = TRK
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = HME
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = SMI
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = KAR
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_navy = {
-					target = ALA
-				}
-			}
-			145 = {
+				145 = {
 				set_demilitarized_zone = no
+				}	
 			}
 		}
 
