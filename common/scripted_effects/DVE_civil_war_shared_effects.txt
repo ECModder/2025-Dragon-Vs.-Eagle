@@ -1,0 +1,35 @@
+# Setup for a tag born from a civil war split. Run in the NEW
+# faction's scope; ROOT must be the country it splits from (true
+# for every *_spawn_* effect, which already takes ROOT's states).
+DVE_cw_new_faction_setup_effect = {
+
+	# A freshly created tag has no tech, hence no equipment
+	# variants: without this even create_unit divisions spawn empty.
+	inherit_technology = ROOT
+
+	# Starting stockpile, given once. Archetype names resolve to the
+	# most modern variant just inherited, not the 1936 _1 ones.
+	if = {
+		limit = { NOT = { has_country_flag = DVE_cw_kit_given } }
+		set_country_flag = DVE_cw_kit_given
+
+		# INT and CMU are the two main revolutionary fronts: bigger kit.
+		if = {
+			limit = { OR = { tag = INT tag = CMU } }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 8500 }
+			add_equipment_to_stockpile = { type = support_equipment amount = 900 }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 800 }
+			add_equipment_to_stockpile = { type = anti_tank_equipment amount = 550 }
+			add_equipment_to_stockpile = { type = anti_air_equipment amount = 650 }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 1000 }
+		}
+		else = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 6000 }
+			add_equipment_to_stockpile = { type = support_equipment amount = 600 }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 400 }
+			add_equipment_to_stockpile = { type = anti_tank_equipment amount = 250 }
+			add_equipment_to_stockpile = { type = anti_air_equipment amount = 250 }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 800 }
+		}
+	}
+}

@@ -10,13 +10,37 @@ country_event = {
 
 	is_triggered_only = yes
 
+	immediate = {
+		# Marks that this event actually fired, so we can tell
+		# "declined" apart from "never triggered" when debugging.
+		set_country_flag = INT_uprising_offer_received
+	}
+
 	option = {
 		name = dve_intup.1.a
-		ai_chance = { factor = 80 }
+		ai_chance = { factor = 90 }
 		INT_uprising_seize_power_effect = yes
 	}
 	option = {
 		name = dve_intup.1.b
-		ai_chance = { factor = 20 }
+		ai_chance = { factor = 10 }
+		# Save who failed before switching scope to INT, so the
+		# report event can name them.
+		save_global_event_target_as = int_uprising_failed_target
+		INT = { country_event = { id = dve_intup.2 } }
+	}
+}
+
+# Sent to INT when a target declines the uprising offer.
+country_event = {
+	id = dve_intup.2
+	title = dve_intup.2.t
+	desc = dve_intup.2.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.2.a
 	}
 }

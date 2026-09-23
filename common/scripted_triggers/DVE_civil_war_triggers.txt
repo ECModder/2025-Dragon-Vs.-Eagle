@@ -1,0 +1,48 @@
+# Which tags belong to the same civil war / revolutionary split.
+# CHI is left out of the Chinese group on purpose: it isn't a party
+# to that civil war, and PRC vs CHI must stay a normal war.
+
+DVE_cw_italy = { OR = { tag = ITA tag = INT tag = SRI tag = RSI tag = LOM tag = TYR } }
+DVE_cw_france = { OR = { tag = FRA tag = FSR tag = CMU tag = FRS tag = MOF tag = BRY tag = VAF tag = ANF tag = FAC tag = COR tag = CTL } }
+DVE_cw_china = { OR = { tag = PRC tag = CCR tag = CSR tag = PXA tag = SIK tag = PTA tag = TIB } }
+DVE_cw_russia = { OR = { tag = RUS tag = SOV tag = RUR tag = NRE } }
+DVE_cw_yemen = { OR = { tag = YEM tag = HOU tag = YNR tag = YST } }
+DVE_cw_spain = { OR = { tag = SPR tag = SPA } }
+DVE_cw_germany = { OR = { tag = GER tag = GDR } }
+DVE_cw_britain = { OR = { tag = ENG tag = SRB } }
+DVE_cw_poland = { OR = { tag = POL tag = PPR } }
+DVE_cw_greece = { OR = { tag = GRE tag = GSR } }
+DVE_cw_portugal = { OR = { tag = POR tag = PRS } }
+DVE_cw_scandinavia = { OR = { tag = SWE tag = NOR tag = DEN tag = SSR } }
+DVE_cw_yugoslavia = { OR = { tag = SER tag = BOS tag = CRO tag = MAC tag = MNT tag = SLV tag = YUG } }
+
+# Peace conference only: use at the top of a peace action's enable
+# block, where FROM = taker and FROM.FROM = giver.
+# Scandinavia and Yugoslavia span several real countries, so there
+# the revolutionary tag (SSR / YUG) must be one of the two - otherwise
+# e.g. SWE vs NOR or SER vs CRO would get the discount in any war.
+DVE_pc_taker_and_giver_same_civil_war = {
+	OR = {
+		AND = { FROM = { DVE_cw_italy = yes } FROM.FROM = { DVE_cw_italy = yes } }
+		AND = { FROM = { DVE_cw_france = yes } FROM.FROM = { DVE_cw_france = yes } }
+		AND = { FROM = { DVE_cw_china = yes } FROM.FROM = { DVE_cw_china = yes } }
+		AND = { FROM = { DVE_cw_russia = yes } FROM.FROM = { DVE_cw_russia = yes } }
+		AND = { FROM = { DVE_cw_yemen = yes } FROM.FROM = { DVE_cw_yemen = yes } }
+		AND = { FROM = { DVE_cw_spain = yes } FROM.FROM = { DVE_cw_spain = yes } }
+		AND = { FROM = { DVE_cw_germany = yes } FROM.FROM = { DVE_cw_germany = yes } }
+		AND = { FROM = { DVE_cw_britain = yes } FROM.FROM = { DVE_cw_britain = yes } }
+		AND = { FROM = { DVE_cw_poland = yes } FROM.FROM = { DVE_cw_poland = yes } }
+		AND = { FROM = { DVE_cw_greece = yes } FROM.FROM = { DVE_cw_greece = yes } }
+		AND = { FROM = { DVE_cw_portugal = yes } FROM.FROM = { DVE_cw_portugal = yes } }
+		AND = {
+			FROM = { DVE_cw_scandinavia = yes }
+			FROM.FROM = { DVE_cw_scandinavia = yes }
+			OR = { FROM = { tag = SSR } FROM.FROM = { tag = SSR } }
+		}
+		AND = {
+			FROM = { DVE_cw_yugoslavia = yes }
+			FROM.FROM = { DVE_cw_yugoslavia = yes }
+			OR = { FROM = { tag = YUG } FROM.FROM = { tag = YUG } }
+		}
+	}
+}
