@@ -96,13 +96,28 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_political_power = -50
-			add_stability = -0.1
-			add_war_support = -0.05
+			RFI = { transfer_state = 928 }
+			RFI = { transfer_state = 930 }
+			RFI = { transfer_state = 150 }
+			RFI = { transfer_state = 111 }
+			RFI = { transfer_state = 1156 }
+			set_autonomy = {
+				target = RFI
+				autonomy_state = autonomy_puppet
+			}
+			end_puppet = RFI
+			RUS = {
+				end_puppet = FIN
+			}
+			drop_cosmetic_tag = yes
 			release = SMI
 			transfer_units_fraction = {
+				target = RFI
+				army_ratio = 0.4
+			}
+			transfer_units_fraction = {
 				target = SMI
-				army_ratio = 0.1
+				army_ratio = 0.2
 			}
 			SMI = { change_tag_from = FIN }
 		}
@@ -189,13 +204,25 @@ focus_tree = {
 				RFI = { transfer_state = 928 }
 				RFI = { transfer_state = 930 }
 				RFI = { transfer_state = 150 }
-				RFI = { transfer_state = 929 }
+				RFI = { transfer_state = 111 }
 				RFI = { transfer_state = 1156 }
+				set_autonomy = {
+					target = RFI
+					autonomy_state = autonomy_puppet
+				}
+				end_puppet = RFI
+				RUS = {
+					end_puppet = FIN
+				}
 				drop_cosmetic_tag = yes
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
 					army_ratio = 0.4
+				}
+				transfer_units_fraction = {
+					target = SMI
+					army_ratio = 0.2
 				}
 				every_state = {
 					limit = {
@@ -295,13 +322,25 @@ focus_tree = {
 				RFI = { transfer_state = 928 }
 				RFI = { transfer_state = 930 }
 				RFI = { transfer_state = 150 }
-				RFI = { transfer_state = 929 }
+				RFI = { transfer_state = 111 }
 				RFI = { transfer_state = 1156 }
+				set_autonomy = {
+					target = RFI
+					autonomy_state = autonomy_puppet
+				}
+				end_puppet = RFI
+				RUS = {
+					end_puppet = FIN
+				}
 				drop_cosmetic_tag = yes
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
 					army_ratio = 0.5
+				}
+				transfer_units_fraction = {
+					target = SMI
+					army_ratio = 0.2
 				}
 				every_state = {
 					limit = {
@@ -310,11 +349,11 @@ focus_tree = {
 					add_core_of = RFI
 				}
 
-				RFI = { change_tag_from = ROOT }
 				declare_war_on = {
 					target = RFI
 					type = take_state
 				}
+				RFI = { change_tag_from = ROOT }
 			}
 			# Aviable for 85 days after siding with the people
 			# Less stability and war support = Stronger revolt
