@@ -3,7 +3,8 @@
 #   Players only, and only in countries that hold elections.
 #   1. Dissolve  2. task a party with at least 20%  3. invite
 #   partners from its side  4. form the government with >50%.
-#   No party at 20%, or a failed coalition: random elections.
+#   No party at 20%, or a failed coalition: new elections,
+#   results the next day. Dissolving has a 30-day cooldown.
 #   Rules: coalition lists and incompatibilities in
 #   DVE_government_triggers.txt / the invite decisions below.
 # ============================================================
@@ -20,6 +21,7 @@ DVE_government_category = {
 		}
 		cost = 50
 		fire_only_once = no
+		days_re_enable = 30
 		complete_effect = {
 			DVE_gov_clear_partners_effect = yes
 			set_country_flag = DVE_gov_dissolved
@@ -34,6 +36,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			totalitarian_socialism > 0.199
 		}
@@ -52,6 +55,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			authoritarian_socialism > 0.199
 		}
@@ -70,6 +74,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			progressive > 0.199
 		}
@@ -88,6 +93,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			liberal > 0.199
 		}
@@ -106,6 +112,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			centrist > 0.199
 		}
@@ -124,6 +131,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			conservative > 0.199
 		}
@@ -142,6 +150,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			reactionary > 0.199
 		}
@@ -160,6 +169,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			authoritarianism > 0.199
 		}
@@ -178,6 +188,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			autocracy > 0.199
 		}
@@ -196,6 +207,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			absolutism > 0.199
 		}
@@ -214,6 +226,7 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			ultranationalism > 0.199
 		}
@@ -232,15 +245,34 @@ DVE_government_category = {
 		visible = {
 			is_ai = no
 			has_country_flag = DVE_gov_dissolved
+			NOT = { has_country_flag = DVE_gov_election_running }
 			NOT = { DVE_gov_has_formateur = yes }
 			NOT = { DVE_gov_any_party_can_form = yes }
 		}
 		cost = 0
 		fire_only_once = no
 		complete_effect = {
-			custom_effect_tooltip = DVE_gov_random_election_tt
-			hidden_effect = { DVE_gov_random_election_effect = yes }
+			custom_effect_tooltip = DVE_gov_election_tt
+			hidden_effect = { DVE_gov_call_election_effect = yes }
 		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_election_day = {
+		icon = GFX_decision_generic_civil_support
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_election_running
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_gov_election_day_tt
+				always = no
+			}
+		}
+		cost = 0
+		fire_only_once = no
 		ai_will_do = { base = 0 }
 	}
 
@@ -572,8 +604,8 @@ DVE_government_category = {
 			clr_country_flag = DVE_gov_formateur_autocracy
 			clr_country_flag = DVE_gov_formateur_absolutism
 			clr_country_flag = DVE_gov_formateur_ultranationalism
-			custom_effect_tooltip = DVE_gov_random_election_tt
-			hidden_effect = { DVE_gov_random_election_effect = yes }
+			custom_effect_tooltip = DVE_gov_election_tt
+			hidden_effect = { DVE_gov_call_election_effect = yes }
 		}
 		ai_will_do = { base = 0 }
 	}

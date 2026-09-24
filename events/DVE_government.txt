@@ -1,0 +1,23 @@
+add_namespace = dve_gov
+
+# Election results, one day after the vote is called
+# (DVE_gov_call_election_effect). Only players reach this.
+country_event = {
+	id = dve_gov.1
+	title = dve_gov.1.t
+	desc = dve_gov.1.d
+	picture = GFX_report_event_election_vote
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			DVE_gov_hold_election_effect = yes
+			clr_country_flag = DVE_gov_election_running
+		}
+	}
+
+	option = {
+		name = dve_gov.1.a
+	}
+}
