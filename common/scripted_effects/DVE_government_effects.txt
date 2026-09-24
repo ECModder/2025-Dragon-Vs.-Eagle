@@ -1,0 +1,315 @@
+# DvE government formation - shared effects.
+
+# Ends the formation process. Coalition partners are kept as the
+# record of the sitting coalition until the next dissolution.
+DVE_gov_end_formation_effect = {
+	clr_country_flag = DVE_gov_dissolved
+	clr_country_flag = DVE_gov_formateur_totalitarian_socialism
+	clr_country_flag = DVE_gov_formateur_authoritarian_socialism
+	clr_country_flag = DVE_gov_formateur_progressive
+	clr_country_flag = DVE_gov_formateur_liberal
+	clr_country_flag = DVE_gov_formateur_centrist
+	clr_country_flag = DVE_gov_formateur_conservative
+	clr_country_flag = DVE_gov_formateur_reactionary
+	clr_country_flag = DVE_gov_formateur_authoritarianism
+	clr_country_flag = DVE_gov_formateur_autocracy
+	clr_country_flag = DVE_gov_formateur_absolutism
+	clr_country_flag = DVE_gov_formateur_ultranationalism
+}
+
+DVE_gov_clear_partners_effect = {
+	clr_country_flag = DVE_gov_partner_totalitarian_socialism
+	clr_country_flag = DVE_gov_partner_authoritarian_socialism
+	clr_country_flag = DVE_gov_partner_progressive
+	clr_country_flag = DVE_gov_partner_liberal
+	clr_country_flag = DVE_gov_partner_centrist
+	clr_country_flag = DVE_gov_partner_conservative
+	clr_country_flag = DVE_gov_partner_reactionary
+	clr_country_flag = DVE_gov_partner_authoritarianism
+	clr_country_flag = DVE_gov_partner_autocracy
+	clr_country_flag = DVE_gov_partner_absolutism
+	clr_country_flag = DVE_gov_partner_ultranationalism
+	clr_country_flag = DVE_gov_partner_revolutionary_socialism
+}
+
+# Vote share (0-100) held by the formateur plus its partners.
+DVE_gov_recount_effect = {
+	set_variable = { DVE_gov_majority = 0 }
+	if = {
+		limit = { DVE_gov_in_coalition_totalitarian_socialism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@totalitarian_socialism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_authoritarian_socialism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@authoritarian_socialism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_progressive = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@progressive }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_liberal = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@liberal }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_centrist = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@centrist }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_conservative = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@conservative }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_reactionary = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@reactionary }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_authoritarianism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@authoritarianism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_autocracy = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@autocracy }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_absolutism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@absolutism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_ultranationalism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@ultranationalism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+	if = {
+		limit = { DVE_gov_in_coalition_revolutionary_socialism = yes }
+		set_temp_variable = { dve_gov_t = party_popularity_100@revolutionary_socialism }
+		add_to_variable = { DVE_gov_majority = dve_gov_t }
+	}
+}
+
+# Random vote shares for every party, ultranationalists capped at 4%.
+# Weights are random^4, not flat random: with 14 flat shares no party
+# reaches 20% in ~99% of elections and the vote would repeat forever.
+# With ^4 the top party averages ~31% and a re-vote happens ~15% of the time.
+DVE_gov_random_election_effect = {
+	set_temp_variable = { dve_gov_sum = 0 }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_totalitarian_socialism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_totalitarian_socialism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_authoritarian_socialism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_authoritarian_socialism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_vanguard_socialism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_vanguard_socialism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_revolutionary_socialism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_revolutionary_socialism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_progressive = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_progressive = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_progressive = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_progressive = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_progressive = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_progressive }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_liberal = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_liberal = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_liberal = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_liberal = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_liberal = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_liberal }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_centrist = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_centrist = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_centrist = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_centrist = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_centrist = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_centrist }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_conservative = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_conservative = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_conservative = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_conservative = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_conservative = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_conservative }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_reactionary = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_reactionary = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_reactionary = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_reactionary = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_reactionary = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_reactionary }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_authoritarianism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarianism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarianism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_authoritarianism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_authoritarianism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_authoritarianism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_autocracy = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_autocracy = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_autocracy = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_autocracy = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_autocracy = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_autocracy }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_absolutism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_absolutism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_absolutism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_absolutism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_absolutism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_absolutism }
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_fundamentalism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_fundamentalism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_fundamentalism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_fundamentalism = dve_gov_r }
+	add_to_temp_variable = { dve_gov_w_fundamentalism = 0.001 }
+	add_to_temp_variable = { dve_gov_sum = dve_gov_w_fundamentalism }
+
+	set_temp_variable = { dve_gov_r = random }
+	set_temp_variable = { dve_gov_w_ultranationalism = dve_gov_r }
+	multiply_temp_variable = { dve_gov_w_ultranationalism = 4 }
+
+	# Everyone else shares 100 minus the ultranationalist vote.
+	set_temp_variable = { dve_gov_rest = dve_gov_w_ultranationalism }
+	multiply_temp_variable = { dve_gov_rest = -1 }
+	add_to_temp_variable = { dve_gov_rest = 100 }
+	divide_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_totalitarian_socialism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_authoritarian_socialism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_vanguard_socialism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_revolutionary_socialism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_progressive = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_progressive = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_liberal = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_liberal = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_centrist = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_centrist = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_conservative = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_conservative = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_reactionary = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_reactionary = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_authoritarianism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_authoritarianism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_autocracy = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_autocracy = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_absolutism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_absolutism = dve_gov_rest }
+	divide_temp_variable = { dve_gov_w_fundamentalism = dve_gov_sum }
+	multiply_temp_variable = { dve_gov_w_fundamentalism = dve_gov_rest }
+
+	# Copied into regular variables, as vanilla does before set_popularities.
+	set_variable = { DVE_gov_share_totalitarian_socialism = dve_gov_w_totalitarian_socialism }
+	set_variable = { DVE_gov_share_authoritarian_socialism = dve_gov_w_authoritarian_socialism }
+	set_variable = { DVE_gov_share_vanguard_socialism = dve_gov_w_vanguard_socialism }
+	set_variable = { DVE_gov_share_revolutionary_socialism = dve_gov_w_revolutionary_socialism }
+	set_variable = { DVE_gov_share_progressive = dve_gov_w_progressive }
+	set_variable = { DVE_gov_share_liberal = dve_gov_w_liberal }
+	set_variable = { DVE_gov_share_centrist = dve_gov_w_centrist }
+	set_variable = { DVE_gov_share_conservative = dve_gov_w_conservative }
+	set_variable = { DVE_gov_share_reactionary = dve_gov_w_reactionary }
+	set_variable = { DVE_gov_share_authoritarianism = dve_gov_w_authoritarianism }
+	set_variable = { DVE_gov_share_autocracy = dve_gov_w_autocracy }
+	set_variable = { DVE_gov_share_absolutism = dve_gov_w_absolutism }
+	set_variable = { DVE_gov_share_ultranationalism = dve_gov_w_ultranationalism }
+	set_variable = { DVE_gov_share_fundamentalism = dve_gov_w_fundamentalism }
+
+	set_popularities = {
+		totalitarian_socialism = DVE_gov_share_totalitarian_socialism
+		authoritarian_socialism = DVE_gov_share_authoritarian_socialism
+		vanguard_socialism = DVE_gov_share_vanguard_socialism
+		revolutionary_socialism = DVE_gov_share_revolutionary_socialism
+		progressive = DVE_gov_share_progressive
+		liberal = DVE_gov_share_liberal
+		centrist = DVE_gov_share_centrist
+		conservative = DVE_gov_share_conservative
+		reactionary = DVE_gov_share_reactionary
+		authoritarianism = DVE_gov_share_authoritarianism
+		autocracy = DVE_gov_share_autocracy
+		absolutism = DVE_gov_share_absolutism
+		ultranationalism = DVE_gov_share_ultranationalism
+		fundamentalism = DVE_gov_share_fundamentalism
+	}
+}
+
+# The formateur takes power with its coalition.
+DVE_gov_form_government_effect = {
+	if = {
+		limit = { has_country_flag = DVE_gov_formateur_totalitarian_socialism }
+		set_politics = { ruling_party = totalitarian_socialism elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_authoritarian_socialism }
+		set_politics = { ruling_party = authoritarian_socialism elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_progressive }
+		set_politics = { ruling_party = progressive elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_liberal }
+		set_politics = { ruling_party = liberal elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_centrist }
+		set_politics = { ruling_party = centrist elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_conservative }
+		set_politics = { ruling_party = conservative elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_reactionary }
+		set_politics = { ruling_party = reactionary elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_authoritarianism }
+		set_politics = { ruling_party = authoritarianism elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_autocracy }
+		set_politics = { ruling_party = autocracy elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_absolutism }
+		set_politics = { ruling_party = absolutism elections_allowed = yes }
+	}
+	else_if = {
+		limit = { has_country_flag = DVE_gov_formateur_ultranationalism }
+		set_politics = { ruling_party = ultranationalism elections_allowed = yes }
+	}
+	DVE_gov_end_formation_effect = yes
+}
+

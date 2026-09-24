@@ -1,0 +1,581 @@
+# ============================================================
+#   DvE - dissolving the government and forming a new one.
+#   Players only, and only in countries that hold elections.
+#   1. Dissolve  2. task a party with at least 20%  3. invite
+#   partners from its side  4. form the government with >50%.
+#   No party at 20%, or a failed coalition: random elections.
+#   Rules: coalition lists and incompatibilities in
+#   DVE_government_triggers.txt / the invite decisions below.
+# ============================================================
+
+DVE_government_category = {
+
+	DVE_gov_dissolve = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_elections = yes
+			NOT = { has_country_flag = DVE_gov_dissolved }
+		}
+		cost = 50
+		fire_only_once = no
+		complete_effect = {
+			DVE_gov_clear_partners_effect = yes
+			set_country_flag = DVE_gov_dissolved
+			add_stability = -0.05
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_totalitarian_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			totalitarian_socialism > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_totalitarian_socialism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_authoritarian_socialism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			authoritarian_socialism > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_authoritarian_socialism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_progressive = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			progressive > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_progressive
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_liberal = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			liberal > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_liberal
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_centrist = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			centrist > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_centrist
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_conservative = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			conservative > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_conservative
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_reactionary = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			reactionary > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_reactionary
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_authoritarianism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			authoritarianism > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_authoritarianism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_autocracy = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			autocracy > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_autocracy
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_absolutism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			absolutism > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_absolutism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_form_ultranationalism = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			ultranationalism > 0.199
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_formateur_ultranationalism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_new_elections = {
+		icon = GFX_decision_generic_civil_support
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_gov_dissolved
+			NOT = { DVE_gov_has_formateur = yes }
+			NOT = { DVE_gov_any_party_can_form = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_gov_random_election_tt
+			hidden_effect = { DVE_gov_random_election_effect = yes }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_totalitarian_socialism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_authoritarian_socialism
+				has_country_flag = DVE_gov_formateur_progressive
+			}
+			NOT = { has_country_flag = DVE_gov_partner_totalitarian_socialism }
+			totalitarian_socialism > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_liberal = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_totalitarian_socialism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_authoritarian_socialism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_totalitarian_socialism
+				has_country_flag = DVE_gov_formateur_progressive
+				has_country_flag = DVE_gov_formateur_liberal
+			}
+			NOT = { has_country_flag = DVE_gov_partner_authoritarian_socialism }
+			authoritarian_socialism > 0.009
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_authoritarian_socialism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_progressive = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_totalitarian_socialism
+				has_country_flag = DVE_gov_formateur_authoritarian_socialism
+				has_country_flag = DVE_gov_formateur_liberal
+				has_country_flag = DVE_gov_formateur_centrist
+			}
+			NOT = { has_country_flag = DVE_gov_partner_progressive }
+			progressive > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_conservative = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_progressive
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_liberal = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_authoritarian_socialism
+				has_country_flag = DVE_gov_formateur_progressive
+				has_country_flag = DVE_gov_formateur_centrist
+				has_country_flag = DVE_gov_formateur_conservative
+			}
+			NOT = { has_country_flag = DVE_gov_partner_liberal }
+			liberal > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_totalitarian_socialism = yes }
+			NOT = { DVE_gov_in_coalition_reactionary = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_liberal
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_centrist = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_progressive
+				has_country_flag = DVE_gov_formateur_liberal
+				has_country_flag = DVE_gov_formateur_conservative
+				has_country_flag = DVE_gov_formateur_reactionary
+			}
+			NOT = { has_country_flag = DVE_gov_partner_centrist }
+			centrist > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_authoritarianism = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_centrist
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_conservative = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_liberal
+				has_country_flag = DVE_gov_formateur_centrist
+				has_country_flag = DVE_gov_formateur_reactionary
+				has_country_flag = DVE_gov_formateur_authoritarianism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_conservative }
+			conservative > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_progressive = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_conservative
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_reactionary = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_conservative
+				has_country_flag = DVE_gov_formateur_authoritarianism
+				has_country_flag = DVE_gov_formateur_autocracy
+				has_country_flag = DVE_gov_formateur_absolutism
+				has_country_flag = DVE_gov_formateur_ultranationalism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_reactionary }
+			reactionary > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_liberal = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_reactionary
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_authoritarianism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_reactionary
+				has_country_flag = DVE_gov_formateur_autocracy
+				has_country_flag = DVE_gov_formateur_absolutism
+				has_country_flag = DVE_gov_formateur_ultranationalism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_authoritarianism }
+			authoritarianism > 0.009
+		}
+		available = {
+			NOT = { DVE_gov_in_coalition_centrist = yes }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_authoritarianism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_autocracy = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_authoritarianism
+				has_country_flag = DVE_gov_formateur_absolutism
+				has_country_flag = DVE_gov_formateur_ultranationalism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_autocracy }
+			autocracy > 0.009
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_autocracy
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_absolutism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_ultranationalism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_absolutism }
+			absolutism > 0.009
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_absolutism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_ultranationalism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_autocracy
+				has_country_flag = DVE_gov_formateur_absolutism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_ultranationalism }
+			ultranationalism > 0.009
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_ultranationalism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_invite_revolutionary_socialism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			OR = {
+				has_country_flag = DVE_gov_formateur_totalitarian_socialism
+				has_country_flag = DVE_gov_formateur_authoritarian_socialism
+			}
+			NOT = { has_country_flag = DVE_gov_partner_revolutionary_socialism }
+			revolutionary_socialism > 0.009
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_country_flag = DVE_gov_partner_revolutionary_socialism
+			DVE_gov_recount_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_confirm = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			DVE_gov_has_formateur = yes
+		}
+		available = {
+			check_variable = { DVE_gov_majority > 50 }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			DVE_gov_form_government_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_gov_abandon = {
+		icon = GFX_decision_generic_arrest
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			DVE_gov_has_formateur = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			DVE_gov_clear_partners_effect = yes
+			clr_country_flag = DVE_gov_formateur_totalitarian_socialism
+			clr_country_flag = DVE_gov_formateur_authoritarian_socialism
+			clr_country_flag = DVE_gov_formateur_progressive
+			clr_country_flag = DVE_gov_formateur_liberal
+			clr_country_flag = DVE_gov_formateur_centrist
+			clr_country_flag = DVE_gov_formateur_conservative
+			clr_country_flag = DVE_gov_formateur_reactionary
+			clr_country_flag = DVE_gov_formateur_authoritarianism
+			clr_country_flag = DVE_gov_formateur_autocracy
+			clr_country_flag = DVE_gov_formateur_absolutism
+			clr_country_flag = DVE_gov_formateur_ultranationalism
+			custom_effect_tooltip = DVE_gov_random_election_tt
+			hidden_effect = { DVE_gov_random_election_effect = yes }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+}
