@@ -468,3 +468,71 @@ country_event = {
 		load_focus_tree = finnish_focus_defeat
 	}
 }
+
+country_event = {
+	id = finlandos.4
+	title = finlandos.4.t
+	desc = finlandos.4.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The last offensive!"
+		add_political_power = 25
+		add_war_support = 0.05
+		ai_chance = {
+			base = 100
+		}
+		declare_war_on = {
+			target = SMI
+			type = annex_everything
+		}
+	}
+}
+
+
+country_event = {
+	id = finlandos.5
+	title = finlandos.5.t
+	desc = finlandos.5.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The government holds."
+		add_political_power = 75
+		add_stability = 0.05
+		ai_chance = {
+			base = 100
+		}
+		RUS = {
+			puppet = {
+				target = FIN
+			}
+		}
+	}
+}
+
+country_event = {
+	id = finlandos.6
+	title = finlandos.6.t
+	desc = finlandos.6.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The revolution succeeded!"
+		add_political_power = 50
+		add_stability = 0.1
+		ai_chance = {
+			base = 100
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = large_decrease
+		}
+	}
+}
