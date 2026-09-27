@@ -1,1284 +1,3344 @@
 # ============================================================
-#   THE INTERNATIONALE (INT) - albero nazionale
+#   THE INTERNATIONALE (INT) - main focus tree
 #
-#   Nasce dalla guerra civile italiana: il ramo "Lotta Comunista"
-#   dell'Italia (common/national_focus/italy.txt), tutto cio' che
-#   viene dopo "Coup de Main" (LT_coup). Le radici dell'albero -
-#   LT_staterev (Rivoluzione di Stato, revolutionary_socialism) e
-#   LT_international (L'Internazionale, vanguard_socialism) -
-#   in Italia avevano "prerequisite = { focus = LT_coup }" (o
-#   LT_warrev); quel prerequisito e' stato tolto qui perche' punta
-#   a un focus che ora appartiene all'albero di un altro paese
-#   (ITA) - una volta che l'INT esiste, il colpo di stato e' gia'
-#   avvenuto per definizione.
+#   Loaded by "If Lenin could see us..." once the Italian civil
+#   war is won (INT_civil_war.txt), or by ITA_become_INT_effect.
+#   Four sections: Economy, Politics, Foreign policy, Military.
 #
-#   NOTA: questo file sposta solo l'albero. Il meccanismo che
-#   davvero fa scoppiare la guerra civile e trasforma ITA in INT
-#   (change_tag / form_new_country dal completamento di LT_coup)
-#   non e' ancora stato scritto.
+#   The politics choice (Lotta Comunista / PCR) unlocks the
+#   matching Economy and Foreign branch (dark red / light red
+#   in the design). Cross links in the design: solid = extra
+#   prerequisite (AND), dotted = alternative (OR).
 #
-#   54 focus, identici a com'erano in italy.txt salvo le coordinate
-#   x/y (traslate per ripartire da un'origine pulita) e i due
-#   prerequisiti tolti sopra.
+#   The European revolution focuses puppet the socialist
+#   republics born from the civil wars (CMU, SPA, PRS, GDR...),
+#   only if they exist, are independent and socialist.
 # ============================================================
 
 focus_tree = {
 	id = INT_focus
 
+	# Not auto-selected: INT starts on INT_civil_war_focus.
 	country = {
 		factor = 0
-		modifier = {
-			add = 10
-			tag = INT
-		}
 	}
 
 	default = no
 	reset_on_civilwar = no
 
-	continuous_focus_position = { x = 1200 y = 4500 }
+	continuous_focus_position = { x = 50 y = 1650 }
 
 	focus = {
-		id = LT_staterev
-		icon = GFX_goal_staterev
-		x = 15
+		id = INT_eco_socialist_economy_question
+		icon = GFX_goal_INT_eco_socialist_economy_question
+		x = 5
 		y = 0
 		cost = 10
 		available_if_capitulated = no
-		mutually_exclusive = { focus = LT_international }
-		ai_will_do = {
-			factor = 1
-		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
-			add_popularity = { ideology = vanguard_socialism popularity = 0.3 }
-			add_popularity = { ideology = revolutionary_socialism popularity = 0.7 }
-			set_country_flag = LT_staterev_done
+			add_political_power = 75
+			add_tech_bonus = { name = INT_eco_socialist_economy_question bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_socialist_economy_question_done
 		}
 	}
 
 	focus = {
-	id = LT_international
-		icon = GFX_goal_international
-	x = 4
-	y = 0
-	cost = 10
-	available_if_capitulated = no
-	
-	mutually_exclusive = { focus = LT_staterev } 
-	ai_will_do = {
-		factor = 1
-	}
-	completion_reward = {
-		set_politics = { ruling_party = vanguard_socialism elections_allowed = yes last_election = 2025.1.1 }
-		add_popularity = { ideology = vanguard_socialism popularity = 0.7 }
-		add_popularity = { ideology = revolutionary_socialism popularity = 0.3 }
-		set_capital = { state = 159 remember_old_capital = no }
-		set_country_flag = LT_international_done
-	}
-}
-
-	focus = {
-		id = LT_pcr
-		icon = GFX_goal_pcr
-		x = 15
+		id = INT_eco_socialization_means
+		icon = GFX_goal_INT_eco_socialization_means
+		x = 2
 		y = 1
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_staterev }
-		ai_will_do = {
-			factor = 1
+		prerequisite = { focus = INT_eco_socialist_economy_question }
+		mutually_exclusive = { focus = INT_eco_collectivization_means }
+		available = {
+			has_completed_focus = INT_pol_lotta_comunista_majority
 		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 3 }
 		completion_reward = {
-			set_popularities = {
-				revolutionary_socialism = 50
-				vanguard_socialism = 40
-				totalitarian_socialism = 10
+			add_ideas = INT_socialized_economy
+			add_political_power = 50
+			set_country_flag = INT_eco_socialization_means_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_collectivization_means
+		icon = GFX_goal_INT_eco_collectivization_means
+		x = 9
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_socialist_economy_question }
+		mutually_exclusive = { focus = INT_eco_socialization_means }
+		available = {
+			has_completed_focus = INT_pol_pcr_majority
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_ideas = INT_collectivized_economy
+			add_political_power = 50
+			set_country_flag = INT_eco_collectivization_means_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_from_each_abilities
+		icon = GFX_goal_INT_eco_from_each_abilities
+		x = 0
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_socialization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
 			}
-			set_country_flag = LT_pcr_done
+			add_tech_bonus = { name = INT_eco_from_each_abilities bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_from_each_abilities_done
 		}
 	}
 
 	focus = {
-		id = LT_lotta
-		icon = GFX_goal_lotta
-		x = 4
-		y = 1
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_international }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_country_flag = LT_lotta_done
-		}
-	}
-
-	focus = {
-		id = LT_councils
-		icon = GFX_goal_councils
+		id = INT_eco_workspace_democracy
+		icon = GFX_goal_INT_eco_workspace_democracy
 		x = 2
 		y = 2
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_socialization_means }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			# L'Italia parte dentro la NATO (add_to_faction = ITA nel
-			# file di history degli USA) e create_faction non fa nulla
-			# se sei gia' in una fazione: senza questa riga
-			# l'Internazionale non nasceva e Roma restava alleata di
-			# chi stava per andare a combattere.
-			leave_faction = yes
-			create_faction = "The Internationale"
-			set_country_flag = LT_councils_done
+			add_stability = 0.05
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_workspace_democracy_done
 		}
 	}
 
 	focus = {
-		id = LT_marxengels
-		icon = GFX_goal_marxengels
+		id = INT_eco_socialization_factories
+		icon = GFX_goal_INT_eco_socialization_factories
 		x = 4
 		y = 2
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_socialization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 200
-			set_country_flag = LT_marxengels_done
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_socialization_factories_done
 		}
 	}
 
 	focus = {
-		id = LT_atheism
-		icon = GFX_goal_atheism
-		x = 8
-		y = 2
+		id = INT_eco_to_each_needs
+		icon = GFX_goal_INT_eco_to_each_needs
+		x = 0
+		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta focus = LT_pcr }
-		mutually_exclusive = { focus = LT_secular }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_from_each_abilities focus = INT_eco_workspace_democracy }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_war_support = 0.05
-			add_stability = 0.02
-			add_manpower = 150000
-			set_country_flag = LT_atheism_done
+			add_stability = 0.05
+			add_political_power = 50
+			set_country_flag = INT_eco_to_each_needs_done
 		}
 	}
 
 	focus = {
-		id = LT_secular
-		icon = GFX_goal_secular
-		x = 6
-		y = 2
+		id = INT_eco_peer_to_peer_economy
+		icon = GFX_goal_INT_eco_peer_to_peer_economy
+		x = 2
+		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta focus = LT_pcr }
-		mutually_exclusive = { focus = LT_atheism }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_workspace_democracy }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			set_country_flag = LT_secular_done
+			add_tech_bonus = { name = INT_eco_peer_to_peer_economy bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { name = INT_eco_peer_to_peer_economy bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = INT_eco_peer_to_peer_economy_done
 		}
 	}
 
 	focus = {
-		id = LT_truelenin
-		icon = GFX_goal_truelenin
+		id = INT_eco_agricultural_communes
+		icon = GFX_goal_INT_eco_agricultural_communes
 		x = 4
 		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_marxengels }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_socialization_factories }
+		prerequisite = { focus = INT_eco_workspace_democracy }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_stability = 0.08
-			add_political_power = 300
-			add_war_support = 0.1
-			add_command_power = 50
-			set_country_flag = LT_truelenin_done
+			add_stability = 0.03
+			add_war_support = 0.03
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_agricultural_communes_done
 		}
 	}
 
 	focus = {
-		id = LT_marriage
-		icon = GFX_goal_marriage
-		x = 11
-		y = 2
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta focus = LT_pcr }
-		mutually_exclusive = { focus = LT_civilwed }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.1
-			set_country_flag = LT_marriage_done
-		}
-	}
-
-	focus = {
-		id = LT_civilwed
-		icon = GFX_goal_civilwed
-		x = 13
-		y = 2
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_lotta focus = LT_pcr }
-		mutually_exclusive = { focus = LT_marriage }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.3
-			set_country_flag = LT_civilwed_done
-		}
-	}
-
-	focus = {
-		id = LT_pariscommune
-		icon = GFX_goal_pariscommune
-		x = 0
-		y = 4
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_truelenin }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_country_flag = LT_pariscommune_done
-		}
-	}
-
-	focus = {
-		id = LT_redfra
-		icon = GFX_goal_redfra
+		id = INT_eco_five_year_plans
+		icon = GFX_goal_INT_eco_five_year_plans
 		x = 2
 		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_truelenin }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_to_each_needs }
+		prerequisite = { focus = INT_eco_peer_to_peer_economy }
+		prerequisite = { focus = INT_eco_agricultural_communes }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-        FRA = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-        }
-		CMU = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-        }
-		FAC = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		ANF = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		FRS = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		MOF = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-			set_country_flag = LT_redfra_done
+			swap_ideas = { remove_idea = INT_socialized_economy add_idea = INT_socialized_economy_2 }
+			set_country_flag = INT_eco_five_year_plans_done
 		}
 	}
 
 	focus = {
-		id = LT_newredarmy1
-		icon = GFX_goal_newredarmy1
+		id = INT_eco_investments_ai
+		icon = GFX_goal_INT_eco_investments_ai
+		x = 0
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_five_year_plans }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_investments_ai bonus = 0.5 uses = 2 category = computing_tech }
+			set_country_flag = INT_eco_investments_ai_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_unified_computer_network
+		icon = GFX_goal_INT_eco_unified_computer_network
+		x = 2
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_five_year_plans }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_unified_computer_network bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = INT_eco_unified_computer_network_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_green_quotas
+		icon = GFX_goal_INT_eco_green_quotas
 		x = 4
-		y = 4
+		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_truelenin }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_five_year_plans }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_war_support = 0.05
-			army_experience = 40
-			air_experience = 20
-			add_manpower = 10000
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 20
-				add_building_construction = {
-					type = arms_factory
-					level = 20
-					instant_build = yes
-				}
-			}
-			set_country_flag = LT_newredarmy1_done
+			add_stability = 0.03
+			add_political_power = 50
+			set_country_flag = INT_eco_green_quotas_done
 		}
 	}
 
 	focus = {
-		id = LT_fiveyear
-		icon = GFX_goal_fiveyear
-		x = 6
-		y = 4
+		id = INT_eco_smart_production_chains
+		icon = GFX_goal_INT_eco_smart_production_chains
+		x = 0
+		y = 6
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_truelenin }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_investments_ai }
+		prerequisite = { focus = INT_eco_unified_computer_network }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 10
-				add_building_construction = {
-					type = industrial_complex
-					level = 8
-					instant_build = yes
-				}
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 			}
-			set_country_flag = LT_fiveyear_done
+			add_tech_bonus = { name = INT_eco_smart_production_chains bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_smart_production_chains_done
 		}
 	}
 
 	focus = {
-		id = LT_partyworking1
-		icon = GFX_goal_partyworking1
+		id = INT_eco_ai_economic_planning
+		icon = GFX_goal_INT_eco_ai_economic_planning
+		x = 2
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_unified_computer_network }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_ai_economic_planning bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_eco_ai_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_ecodata_monitoring
+		icon = GFX_goal_INT_eco_ecodata_monitoring
+		x = 4
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_green_quotas focus = INT_eco_unified_computer_network }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_ecodata_monitoring bonus = 0.5 uses = 1 category = electronics }
+			add_stability = 0.02
+			set_country_flag = INT_eco_ecodata_monitoring_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_decentralize_system
+		icon = GFX_goal_INT_eco_decentralize_system
+		x = 0
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_smart_production_chains }
+		prerequisite = { focus = INT_eco_ai_economic_planning }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+			set_country_flag = INT_eco_decentralize_system_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_variable_production_quotas
+		icon = GFX_goal_INT_eco_variable_production_quotas
+		x = 2
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_ai_economic_planning }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = INT_eco_variable_production_quotas_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_clean_energy_grid
+		icon = GFX_goal_INT_eco_clean_energy_grid
+		x = 4
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_ecodata_monitoring focus = INT_eco_ai_economic_planning }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = INT_eco_clean_energy_grid bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_clean_energy_grid_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_supercomputer_each_council
+		icon = GFX_goal_INT_eco_supercomputer_each_council
+		x = 0
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_decentralize_system focus = INT_eco_variable_production_quotas }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_supercomputer_each_council bonus = 1.0 uses = 1 category = computing_tech }
+			set_country_flag = INT_eco_supercomputer_each_council_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_automation_factories
+		icon = GFX_goal_INT_eco_automation_factories
+		x = 2
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_variable_production_quotas }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_automation_factories_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_full_ecological_transition
+		icon = GFX_goal_INT_eco_full_ecological_transition
+		x = 4
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_clean_energy_grid focus = INT_eco_variable_production_quotas }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.08
+			set_country_flag = INT_eco_full_ecological_transition_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_digital_marxism
+		icon = GFX_goal_INT_eco_digital_marxism
+		x = 2
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_supercomputer_each_council }
+		prerequisite = { focus = INT_eco_automation_factories }
+		prerequisite = { focus = INT_eco_full_ecological_transition }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_socialized_economy_2 add_idea = INT_digital_marxism }
+			add_research_slot = 1
+			add_political_power = 100
+			set_country_flag = INT_eco_digital_marxism_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_nationalize_private
+		icon = GFX_goal_INT_eco_nationalize_private
+		x = 7
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_stability = -0.03
+			set_country_flag = INT_eco_nationalize_private_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_state_unions_economy
+		icon = GFX_goal_INT_eco_state_unions_economy
+		x = 9
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_state_unions_economy_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_work_coercion
+		icon = GFX_goal_INT_eco_work_coercion
+		x = 11
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_timed_idea = { idea = INT_work_coercion days = 365 }
+			set_country_flag = INT_eco_work_coercion_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_seize_the_wealth
+		icon = GFX_goal_INT_eco_seize_the_wealth
+		x = 7
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_nationalize_private }
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = -0.05
+			set_country_flag = INT_eco_seize_the_wealth_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_militarization_economy
+		icon = GFX_goal_INT_eco_militarization_economy
+		x = 9
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_militarization_economy_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_labor_mobilization
+		icon = GFX_goal_INT_eco_labor_mobilization
+		x = 11
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_work_coercion }
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 30000
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_labor_mobilization_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_collective_economic_outlook
+		icon = GFX_goal_INT_eco_collective_economic_outlook
 		x = 9
 		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_truelenin }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_seize_the_wealth }
+		prerequisite = { focus = INT_eco_militarization_economy }
+		prerequisite = { focus = INT_eco_labor_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 100
-			add_stability = 0.2
-			set_country_flag = LT_partyworking1_done
+			swap_ideas = { remove_idea = INT_collectivized_economy add_idea = INT_collectivized_economy_2 }
+			set_country_flag = INT_eco_collective_economic_outlook_done
 		}
 	}
 
 	focus = {
-		id = LT_partyworking2
-		icon = GFX_goal_partyworking2
-		x = 11
-		y = 4
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_parlcomm }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			set_country_flag = LT_partyworking2_done
-		}
-	}
-
-	focus = {
-		id = LT_workersclubs
-		icon = GFX_goal_workersclubs
-		x = 0
+		id = INT_eco_recreate_sovkhozes
+		icon = GFX_goal_INT_eco_recreate_sovkhozes
+		x = 7
 		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_pariscommune }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 8
-				add_building_construction = {
-					type = industrial_complex
-					level = 7
-					instant_build = yes
-				}
-			}
-			set_country_flag = LT_workersclubs_done
-		}
-	}
-
-	focus = {
-		id = LT_redspa
-		icon = GFX_goal_redspa
-		x = 2
-		y = 5
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_redfra }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-        SPR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-        }
-		SPA = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-        }
-		POR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		PRS = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-			set_country_flag = LT_redspa_done
-		}
-	}
-
-	focus = {
-		id = LT_checka
-		icon = GFX_goal_checka
-		x = 4
-		y = 5
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_newredarmy1 }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			create_intelligence_agency = yes
-			# NOTA: "agency_upgrade_number 10" non e' sintassi HOI4 valida (segnalato come incerto anche nel testo originale) ed e' stato omesso.
-			set_country_flag = LT_checka_done
-		}
-	}
-
-	focus = {
-		id = LT_laborunion
-		icon = GFX_goal_laborunion
-		x = 6
-		y = 5
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_fiveyear }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 10
-				add_building_construction = {
-					type = industrial_complex
-					level = 8
-					instant_build = yes
-				}
-			}
-			set_country_flag = LT_laborunion_done
-		}
-	}
-
-	focus = {
-		id = LT_automation
-		icon = GFX_goal_automation
-		x = 10
-		y = 5
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_partyworking1 focus = LT_partyworking2 }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_research_slot = 1
-			set_country_flag = LT_automation_done
-		}
-	}
-
-	focus = {
-		id = LT_councilcity
-		icon = GFX_goal_councilcity
-		x = 0
-		y = 6
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_workersclubs }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
 			add_stability = 0.05
-			add_political_power = 200
-			set_country_flag = LT_councilcity_done
+			add_war_support = 0.03
+			set_country_flag = INT_eco_recreate_sovkhozes_done
 		}
 	}
 
 	focus = {
-		id = LT_redger
-		icon = GFX_goal_redger
-		x = 2
-		y = 6
+		id = INT_eco_restart_five_year_plans
+		icon = GFX_goal_INT_eco_restart_five_year_plans
+		x = 9
+		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redspa }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-        GER = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-        }
-		GDR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-        }
-		DDR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		BAV = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-        }
-		AUS = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		SWI = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-			set_country_flag = LT_redger_done
+			add_tech_bonus = { name = INT_eco_restart_five_year_plans bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_eco_restart_five_year_plans_done
 		}
 	}
 
 	focus = {
-		id = LT_womenmil
-		icon = GFX_goal_womenmil
-		x = 4
-		y = 6
+		id = INT_eco_meritocratic_socialism
+		icon = GFX_goal_INT_eco_meritocratic_socialism
+		x = 11
+		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_checka }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_manpower = 1000000
-			add_war_support = 0.2
-			add_stability = -0.2
-			set_country_flag = LT_womenmil_done
+			add_tech_bonus = { name = INT_eco_meritocratic_socialism bonus = 0.5 uses = 1 category = computing_tech }
+			add_political_power = 50
+			set_country_flag = INT_eco_meritocratic_socialism_done
 		}
 	}
 
 	focus = {
-		id = LT_publicschool
-		icon = GFX_goal_publicschool
-		x = 6
+		id = INT_eco_socialist_modernization
+		icon = GFX_goal_INT_eco_socialist_modernization
+		x = 7
 		y = 6
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_laborunion }
-		ai_will_do = {
-			factor = 1
+		prerequisite = { focus = INT_eco_recreate_sovkhozes }
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_socialist_modernization_done
 		}
+	}
+
+	focus = {
+		id = INT_eco_centralize_economic_planning
+		icon = GFX_goal_INT_eco_centralize_economic_planning
+		x = 9
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_centralized_planning
+			set_country_flag = INT_eco_centralize_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_network_computer_servers
+		icon = GFX_goal_INT_eco_network_computer_servers
+		x = 11
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_meritocratic_socialism }
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_network_computer_servers bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { name = INT_eco_network_computer_servers bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = INT_eco_network_computer_servers_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_ecological_development
+		icon = GFX_goal_INT_eco_ecological_development
+		x = 7
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_socialist_modernization focus = INT_eco_centralize_economic_planning }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_tech_bonus = { name = INT_eco_ecological_development bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_ecological_development_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_fight_corruption_apparatus
+		icon = GFX_goal_INT_eco_fight_corruption_apparatus
+		x = 9
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_centralize_economic_planning }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
 			add_political_power = 100
-			add_stability = 0.04
-			add_research_slot = 1
-			set_country_flag = LT_publicschool_done
+			add_stability = 0.05
+			set_country_flag = INT_eco_fight_corruption_apparatus_done
 		}
 	}
 
 	focus = {
-		id = LT_coopfactories
-		icon = GFX_goal_coopfactories
-		x = 10
-		y = 6
+		id = INT_eco_advanced_economic_planning
+		icon = GFX_goal_INT_eco_advanced_economic_planning
+		x = 11
+		y = 7
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_automation }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_network_computer_servers }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 10
-				add_building_construction = {
-					type = industrial_complex
-					level = 8
-					instant_build = yes
-				}
+			add_tech_bonus = { name = INT_eco_advanced_economic_planning bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_eco_advanced_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_rewards_heavy_industry
+		icon = GFX_goal_INT_eco_rewards_heavy_industry
+		x = 7
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_ecological_development }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
 			}
-			set_country_flag = LT_coopfactories_done
+			set_country_flag = INT_eco_rewards_heavy_industry_done
 		}
 	}
 
 	focus = {
-		id = LT_revspirit
-		icon = GFX_goal_revspirit
-		x = 0
-		y = 7
+		id = INT_eco_radical_redistribution
+		icon = GFX_goal_INT_eco_radical_redistribution
+		x = 9
+		y = 8
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_councilcity }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_fight_corruption_apparatus }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
-			# NOTA: stessa nota di LT_solidarity sull'effetto limitato all'Italia.
-			set_country_flag = LT_revspirit_done
+			add_stability = 0.08
+			add_war_support = 0.03
+			set_country_flag = INT_eco_radical_redistribution_done
 		}
 	}
 
 	focus = {
-		id = LT_redeng
-		icon = GFX_goal_redeng
-		x = 2
-		y = 7
+		id = INT_eco_integrated_advanced_search
+		icon = GFX_goal_INT_eco_integrated_advanced_search
+		x = 11
+		y = 8
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redger }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_advanced_economic_planning }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-        ENG = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-        }
-		UKK = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-        }
-		UK1 = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		UK2 = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		SRB = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		WLS = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-		SCO = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-		}
-		IRE = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-		}
-			set_country_flag = LT_redeng_done
+			add_tech_bonus = { name = INT_eco_integrated_advanced_search bonus = 1.0 uses = 1 category = computing_tech }
+			set_country_flag = INT_eco_integrated_advanced_search_done
 		}
 	}
 
 	focus = {
-		id = LT_radicalize
-		icon = GFX_goal_radicalize
-		x = 4
-		y = 7
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_womenmil }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			army_experience = 50
-			add_manpower = 10000
-			add_command_power = 100
-			add_war_support = 0.5
-			set_country_flag = LT_radicalize_done
-		}
-	}
-
-	focus = {
-		id = LT_buildplan
-		icon = GFX_goal_buildplan
-		x = 6
-		y = 7
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_publicschool }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 10
-				add_building_construction = {
-					type = industrial_complex
-					level = 8
-					instant_build = yes
-				}
-			}
-			set_country_flag = LT_buildplan_done
-		}
-	}
-
-	focus = {
-		id = LT_freeinternet
-		icon = GFX_goal_freeinternet
-		x = 10
-		y = 7
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_coopfactories }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_research_slot = 1
-			set_country_flag = LT_freeinternet_done
-		}
-	}
-
-	focus = {
-		id = LT_workersunite
-		icon = GFX_goal_workersunite
-		x = 4
-		y = 11
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_congress }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			# NOTA: 'can_declare_war_on' e' un TRIGGER, non un effetto eseguibile in completion_reward: nessun effetto applicato. Se vuoi bypassare i normali requisiti di dichiarazione guerra verso quei tag serve modificare i trigger in common/scripted_triggers.
-			set_country_flag = LT_workersunite_done
-		}
-	}
-
-	focus = {
-		id = LT_domino
-		icon = GFX_goal_domino
-		x = 4
+		id = INT_eco_true_trotskyist_revolution
+		icon = GFX_goal_INT_eco_true_trotskyist_revolution
+		x = 9
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_solidarity focus = LT_house }
-		prerequisite = { focus = LT_redyugo }
-		prerequisite = { focus = LT_redgre }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_eco_rewards_heavy_industry }
+		prerequisite = { focus = INT_eco_radical_redistribution }
+		prerequisite = { focus = INT_eco_integrated_advanced_search }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			# I dominoes veri sono i quattro focus qui sotto: Polonia,
-			# Grecia, Scandinavia e Jugoslavia. Qui restano solo i paesi
-			# che nessuna rivoluzione assorbe.
-			puppet = ALB
-			puppet = BEL
-			puppet = HOL
-			puppet = AUS
-			puppet = CZE
-			puppet = LUX
-			puppet = DEN
-			puppet = EST
-			puppet = LAT
-			puppet = LIT
-			set_country_flag = LT_domino_done
+			swap_ideas = { remove_idea = INT_collectivized_economy_2 add_idea = INT_trotskyist_economy }
+			add_research_slot = 1
+			add_political_power = 100
+			set_country_flag = INT_eco_true_trotskyist_revolution_done
 		}
 	}
 
+
+#|================================================|#
+#|                POLITICAL FOCUS                 |#
+#|================================================|#
+
 	focus = {
-		id = LT_solidarity
-		icon = GFX_goal_solidarity
-		x = 4
-		y = 8
+		id = INT_pol_unified_congress
+		icon = GFX_goal_INT_pol_unified_congress
+		x = 19
+		y = 0
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_radicalize }
-		ai_will_do = {
-			factor = 1
-		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
-			# NOTA: il testo parlava di applicare popolarita' anche a RUS/JAP/PRC ecc., ma add_popularity si applica solo al paese che esegue il focus. Applicato solo all'Italia; dimmi se vuoi che si propaghi anche ad altri paesi e aggiungo i blocchi extra.
-			set_country_flag = LT_solidarity_done
+			add_political_power = 100
+			add_stability = 0.05
+			set_country_flag = INT_pol_unified_congress_done
 		}
 	}
 
 	focus = {
-		id = LT_house
-		icon = GFX_goal_house
-		x = 6
-		y = 8
+		id = INT_pol_lotta_comunista_majority
+		icon = GFX_goal_INT_pol_lotta_comunista_majority
+		x = 18
+		y = 1
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_buildplan }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_unified_congress }
+		mutually_exclusive = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 3 }
 		completion_reward = {
-			add_stability = 0.10
-			set_country_flag = LT_house_done
+			set_politics = { ruling_party = vanguard_socialism elections_allowed = no }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.2 }
+			add_political_power = 50
+			set_country_flag = INT_pol_lotta_comunista_majority_done
 		}
 	}
 
 	focus = {
-		id = LT_automationlabour
-		icon = GFX_goal_automationlabour
-		x = 10
-		y = 8
+		id = INT_pol_pcr_majority
+		icon = GFX_goal_INT_pol_pcr_majority
+		x = 21
+		y = 1
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_freeinternet }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_unified_congress }
+		mutually_exclusive = { focus = INT_pol_lotta_comunista_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
 		completion_reward = {
-			add_manpower = 1000000
-			random_owned_controlled_state = {
-				limit = {
-					free_building_slots = {
-						building = industrial_complex
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 30
-				add_building_construction = {
-					type = industrial_complex
-					level = 20
-					instant_build = yes
-				}
-			}
-			set_country_flag = LT_automationlabour_done
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.2 }
+			add_political_power = 50
+			set_country_flag = INT_pol_pcr_majority_done
 		}
 	}
 
 	focus = {
-		id = LT_congress
-		icon = GFX_goal_congress
-		x = 4
-		y = 10
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_domino }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_popularity = { ideology = vanguard_socialism popularity = 0.25 }
-			add_political_power = 300
-			set_country_flag = LT_congress_done
-		}
-	}
-
-	focus = {
-		id = LT_redstar
-		icon = GFX_goal_redstar
-		x = 4
-		y = 12
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_workersunite }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 1000
-			add_popularity = { ideology = vanguard_socialism popularity = 1.0 }
-			# NOTA: 'set_political_party' non e' un effetto HOI4 valido; sostituito con add_popularity per portare vanguard_socialism verso il 100%.
-			set_stability = 1
-			set_war_support = 1
-			# NOTA: stability/war_support vanno da 0 a 1 (0%-100%) negli effetti HOI4; '100' sarebbe fuori scala, usato 1.
-			set_country_flag = LT_redstar_done
-		}
-	}
-
-	focus = {
-		id = LT_eurocomm
-		icon = GFX_goal_eurocomm
-		x = 15
+		id = INT_pol_cheka_model
+		icon = GFX_goal_INT_pol_cheka_model
+		x = 14
 		y = 2
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_pcr }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_lotta_comunista_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 50
-			add_stability = 0.5
-			set_country_flag = LT_eurocomm_done
+			add_ideas = INT_cheka
+			create_intelligence_agency = {
+				name = "checka"
+				icon = GFX_intelligence_agency_logo_sov
+			}
+			set_country_flag = INT_pol_cheka_model_done
 		}
 	}
 
 	focus = {
-		id = LT_parlcomm
-		icon = GFX_goal_parlcomm
-		x = 15
+		id = INT_pol_new_agit_prop
+		icon = GFX_goal_INT_pol_new_agit_prop
+		x = 14
 		y = 3
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_eurocomm }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_cheka_model }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			hold_election = yes
-			set_country_flag = LT_parlcomm_done
+			add_ideas = INT_agit_prop
+			set_country_flag = INT_pol_new_agit_prop_done
 		}
 	}
 
 	focus = {
-		id = LT_centralcomm
-		icon = GFX_goal_centralcomm
+		id = INT_pol_repudiate_stalinism
+		icon = GFX_goal_INT_pol_repudiate_stalinism
 		x = 14
 		y = 4
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_parlcomm }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_new_agit_prop }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 100
-			set_country_flag = LT_centralcomm_done
+			add_popularity = { ideology = totalitarian_socialism popularity = -0.1 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_stability = 0.03
+			set_country_flag = INT_pol_repudiate_stalinism_done
 		}
 	}
 
 	focus = {
-		id = LT_trotconst
-		icon = GFX_goal_trotconst
-		x = 16
-		y = 4
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_parlcomm }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.5
-			set_country_flag = LT_trotconst_done
-		}
-	}
-
-	focus = {
-		id = LT_intellvanguard
-		icon = GFX_goal_intellvanguard
+		id = INT_pol_china_is_imperialist
+		icon = GFX_goal_INT_pol_china_is_imperialist
 		x = 14
 		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_centralcomm }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_repudiate_stalinism }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_stability = 0.2
-			set_country_flag = LT_intellvanguard_done
+			add_war_support = 0.05
+			add_political_power = 50
+			if = {
+				limit = { country_exists = PRC }
+				PRC = { add_opinion_modifier = { target = ROOT modifier = INT_denounced_by_the_internationale } }
+			}
+			set_country_flag = INT_pol_china_is_imperialist_done
 		}
 	}
 
 	focus = {
-		id = LT_rediscovergramsci
-		icon = GFX_goal_rediscovergramsci
+		id = INT_pol_us_decrepit_wreck
+		icon = GFX_goal_INT_pol_us_decrepit_wreck
 		x = 14
 		y = 6
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_intellvanguard }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_china_is_imperialist }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 100
-			set_country_flag = LT_rediscovergramsci_done
+			add_war_support = 0.08
+			add_stability = 0.03
+			if = {
+				limit = { country_exists = USA }
+				USA = { add_opinion_modifier = { target = ROOT modifier = INT_denounced_by_the_internationale } }
+			}
+			set_country_flag = INT_pol_us_decrepit_wreck_done
 		}
 	}
 
 	focus = {
-		id = LT_hasta
-		icon = GFX_goal_hasta
+		id = INT_pol_communism_or_barbarism
+		icon = GFX_goal_INT_pol_communism_or_barbarism
 		x = 14
 		y = 7
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_rediscovergramsci }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_us_decrepit_wreck }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_political_power = 100
-			set_country_flag = LT_hasta_done
+			swap_ideas = { remove_idea = INT_agit_prop add_idea = INT_communism_or_barbarism }
+			set_country_flag = INT_pol_communism_or_barbarism_done
 		}
 	}
 
 	focus = {
-		id = LT_permrev
-		icon = GFX_goal_permrev
+		id = INT_pol_state_of_councils
+		icon = GFX_goal_INT_pol_state_of_councils
+		x = 16
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_lotta_comunista_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_council_state
+			set_country_flag = INT_pol_state_of_councils_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_workers_clubs
+		icon = GFX_goal_INT_pol_workers_clubs
+		x = 16
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_state_of_councils }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			set_country_flag = INT_pol_workers_clubs_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_factory_councils
+		icon = GFX_goal_INT_pol_factory_councils
+		x = 16
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_workers_clubs }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = INT_pol_factory_councils bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_pol_factory_councils_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_city_councils
+		icon = GFX_goal_INT_pol_city_councils
 		x = 16
 		y = 5
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_trotconst }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_factory_councils }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_war_support = 0.1
-			set_country_flag = LT_permrev_done
-		}
-	}
-
-	focus = {
-		id = LT_newredarmy2
-		icon = GFX_goal_newredarmy2
-		x = 16
-		y = 6
-		cost = 10
-		available_if_capitulated = no
-		prerequisite = { focus = LT_permrev }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_war_support = 0.1
-			army_experience = 40
-			air_experience = 20
-			add_manpower = 10000
+			add_stability = 0.05
 			random_owned_controlled_state = {
 				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
 				}
-				add_extra_state_shared_building_slots = 20
-				add_building_construction = {
-					type = arms_factory
-					level = 20
-					instant_build = yes
-				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
 			}
-			set_country_flag = LT_newredarmy2_done
+			set_country_flag = INT_pol_city_councils_done
 		}
 	}
 
 	focus = {
-		id = LT_workersarmy
-		icon = GFX_goal_workersarmy
+		id = INT_pol_council_based_planning
+		icon = GFX_goal_INT_pol_council_based_planning
+		x = 16
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_city_councils }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_pol_council_based_planning bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_pol_council_based_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_all_power_to_councils
+		icon = GFX_goal_INT_pol_all_power_to_councils
 		x = 16
 		y = 7
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_newredarmy2 }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_council_based_planning }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			add_manpower = 10000
-			army_experience = 40
-			add_command_power = 30
-			set_country_flag = LT_workersarmy_done
+			swap_ideas = { remove_idea = INT_council_state add_idea = INT_council_state_2 }
+			set_country_flag = INT_pol_all_power_to_councils_done
 		}
 	}
 
 	focus = {
-		id = LT_exportrev
-		icon = GFX_goal_exportrev
-		x = 15
+		id = INT_pol_marx_engels_cervetto
+		icon = GFX_goal_INT_pol_marx_engels_cervetto
+		x = 18
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_lotta_comunista_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			set_country_flag = INT_pol_marx_engels_cervetto_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_true_leninism
+		icon = GFX_goal_INT_pol_true_leninism
+		x = 18
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_marx_engels_cervetto }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+			add_stability = 0.03
+			set_country_flag = INT_pol_true_leninism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_democratic_centralism
+		icon = GFX_goal_INT_pol_democratic_centralism
+		x = 18
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_true_leninism }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_democratic_centralism
+			set_country_flag = INT_pol_democratic_centralism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_councils_political_commissariats
+		icon = GFX_goal_INT_pol_councils_political_commissariats
+		x = 18
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_democratic_centralism }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 30
+			add_command_power = 50
+			set_country_flag = INT_pol_councils_political_commissariats_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_flexible_tactics
+		icon = GFX_goal_INT_pol_flexible_tactics
+		x = 18
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_councils_political_commissariats }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_pol_flexible_tactics bonus = 0.5 uses = 1 category = land_doctrine }
+			set_country_flag = INT_pol_flexible_tactics_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_relentless_strategy
+		icon = GFX_goal_INT_pol_relentless_strategy
+		x = 18
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_flexible_tactics }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_pol_relentless_strategy bonus = 0.5 uses = 1 category = land_doctrine }
+			add_war_support = 0.05
+			set_country_flag = INT_pol_relentless_strategy_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_european_leninism
+		icon = GFX_goal_INT_pol_european_leninism
+		x = 16
 		y = 8
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_hasta focus = LT_workersarmy }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_pol_communism_or_barbarism }
+		prerequisite = { focus = INT_pol_all_power_to_councils }
+		prerequisite = { focus = INT_pol_relentless_strategy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			# NOTA: come per LT_workersunite, 'can_declare_war_on' e' un trigger e non un effetto: nessun effetto applicato qui.
-			set_country_flag = LT_exportrev_done
+			add_ideas = INT_european_leninism
+			add_political_power = 150
+			set_country_flag = INT_pol_european_leninism_done
 		}
 	}
 
 	focus = {
-		id = LT_trotskyyoung
-		icon = GFX_goal_trotskyyoung
-		x = 15
+		id = INT_pol_trotskyism
+		icon = GFX_goal_INT_pol_trotskyism
+		x = 21
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+			add_political_power = 75
+			set_country_flag = INT_pol_trotskyism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_united_front_tactic
+		icon = GFX_goal_INT_pol_united_front_tactic
+		x = 21
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_trotskyism }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = { ideology = progressive popularity = 0.03 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+			set_country_flag = INT_pol_united_front_tactic_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_leninists
+		icon = GFX_goal_INT_pol_concessions_leninists
+		x = 21
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_united_front_tactic }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_stability = 0.05
+			set_country_flag = INT_pol_concessions_leninists_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_leftcom
+		icon = GFX_goal_INT_pol_concessions_leftcom
+		x = 21
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_leninists }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			set_country_flag = INT_pol_concessions_leftcom_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_socdem
+		icon = GFX_goal_INT_pol_concessions_socdem
+		x = 21
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_leftcom }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = progressive popularity = 0.05 }
+			add_stability = 0.05
+			set_country_flag = INT_pol_concessions_socdem_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_party_full_of_factions
+		icon = GFX_goal_INT_pol_party_full_of_factions
+		x = 21
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_socdem }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_party_of_factions
+			set_country_flag = INT_pol_party_full_of_factions_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_new_communism_new_age
+		icon = GFX_goal_INT_pol_new_communism_new_age
+		x = 23
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_tech_bonus = { name = INT_pol_new_communism_new_age bonus = 0.5 uses = 1 category = computing_tech }
+			set_country_flag = INT_pol_new_communism_new_age_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_city_soviets
+		icon = GFX_goal_INT_pol_city_soviets
+		x = 23
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_new_communism_new_age }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_city_soviets
+			set_country_flag = INT_pol_city_soviets_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_militarized_labour_unions
+		icon = GFX_goal_INT_pol_militarized_labour_unions
+		x = 23
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_city_soviets }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_militarized_unions
+			set_country_flag = INT_pol_militarized_labour_unions_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_militarization_of_policy
+		icon = GFX_goal_INT_pol_militarization_of_policy
+		x = 23
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_militarized_labour_unions }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.1
+			army_experience = 25
+			set_country_flag = INT_pol_militarization_of_policy_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_complete_ideological_revolution
+		icon = GFX_goal_INT_pol_complete_ideological_revolution
+		x = 23
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_militarization_of_policy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+			add_stability = 0.03
+			set_country_flag = INT_pol_complete_ideological_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_absolute_loyalty
+		icon = GFX_goal_INT_pol_absolute_loyalty
+		x = 23
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_complete_ideological_revolution }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			set_country_flag = INT_pol_absolute_loyalty_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_stalinism_degeneration
+		icon = GFX_goal_INT_pol_stalinism_degeneration
+		x = 25
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = -0.1 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			set_country_flag = INT_pol_stalinism_degeneration_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_china_deviated_socialism
+		icon = GFX_goal_INT_pol_china_deviated_socialism
+		x = 25
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_stalinism_degeneration }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.05
+			add_political_power = 50
+			if = {
+				limit = { country_exists = PRC }
+				PRC = { add_opinion_modifier = { target = ROOT modifier = INT_denounced_by_the_internationale } }
+			}
+			set_country_flag = INT_pol_china_deviated_socialism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_contacts_vietnam
+		icon = GFX_goal_INT_pol_contacts_vietnam
+		x = 25
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_china_deviated_socialism }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = VIN }
+				add_opinion_modifier = { target = VIN modifier = INT_revolutionary_contacts }
+				VIN = { add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_contacts } }
+			}
+			add_political_power = 25
+			add_tech_bonus = { name = INT_pol_contacts_vietnam bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = INT_pol_contacts_vietnam_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_contacts_african_socialists
+		icon = GFX_goal_INT_pol_contacts_african_socialists
+		x = 25
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_contacts_vietnam }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_pol_contacts_african_socialists_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						capital_scope = { is_on_continent = africa }
+						OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+					}
+					add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_contacts }
+					ROOT = { add_opinion_modifier = { target = PREV modifier = INT_revolutionary_contacts } }
+				}
+			}
+			add_political_power = 25
+			set_country_flag = INT_pol_contacts_african_socialists_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_alliance_with_cuba
+		icon = GFX_goal_INT_pol_alliance_with_cuba
+		x = 25
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_contacts_african_socialists }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = faction_template_internationale
+			}
+			if = {
+				limit = {
+					country_exists = CUB
+					is_faction_leader = yes
+					CUB = { is_in_faction = no is_subject = no }
+				}
+				add_to_faction = CUB
+			}
+			if = {
+				limit = { country_exists = CUB }
+				add_opinion_modifier = { target = CUB modifier = INT_revolutionary_alliance }
+				CUB = { add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_alliance } }
+			}
+			set_country_flag = INT_pol_alliance_with_cuba_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_support_comrev_world
+		icon = GFX_goal_INT_pol_support_comrev_world
+		x = 25
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_alliance_with_cuba }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_comrev_support
+			set_country_flag = INT_pol_support_comrev_world_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_trotskyism_young_again
+		icon = GFX_goal_INT_pol_trotskyism_young_again
+		x = 23
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_party_full_of_factions }
+		prerequisite = { focus = INT_pol_absolute_loyalty }
+		prerequisite = { focus = INT_pol_support_comrev_world }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_trotskyism_young
+			add_command_power = 100
+			set_country_flag = INT_pol_trotskyism_young_again_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revolution_crosses_alps
+		icon = GFX_goal_INT_for_revolution_crosses_alps
+		x = 31
+		y = 0
+		cost = 10
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.05
+			set_country_flag = INT_for_revolution_crosses_alps_done
+		}
+	}
+
+	focus = {
+		id = INT_for_councils_international
+		icon = GFX_goal_INT_for_councils_international
+		x = 29
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revolution_crosses_alps }
+		mutually_exclusive = { focus = INT_for_revolutionary_international }
+		available = {
+			has_completed_focus = INT_pol_lotta_comunista_majority
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = faction_template_internationale
+			}
+			add_ideas = INT_councils_international
+			set_country_flag = INT_for_councils_international_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revolutionary_international
+		icon = GFX_goal_INT_for_revolutionary_international
+		x = 33
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revolution_crosses_alps }
+		mutually_exclusive = { focus = INT_for_councils_international }
+		available = {
+			has_completed_focus = INT_pol_pcr_majority
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = faction_template_internationale
+			}
+			add_political_power = 50
+			add_war_support = 0.05
+			set_country_flag = INT_for_revolutionary_international_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninist_france
+		icon = GFX_goal_INT_for_leninist_france
+		x = 28
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_councils_international }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_leninist_france_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = CMU
+						CMU = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					CMU = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = CMU
+				}
+				if = {
+					limit = {
+						country_exists = FSR
+						FSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					FSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = FSR
+				}
+			}
+			if = {
+				limit = { country_exists = FRA }
+				FRA = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_leninist_france_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninist_spain
+		icon = GFX_goal_INT_for_leninist_spain
+		x = 28
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninist_france }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_leninist_spain_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = SPA
+						SPA = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SPA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SPA
+				}
+				if = {
+					limit = {
+						country_exists = PRS
+						PRS = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					PRS = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = PRS
+				}
+			}
+			if = {
+				limit = { country_exists = SPR }
+				SPR = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_leninist_spain_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninist_germany
+		icon = GFX_goal_INT_for_leninist_germany
+		x = 28
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninist_spain }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_leninist_germany_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = GDR
+						GDR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					GDR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = GDR
+				}
+			}
+			if = {
+				limit = { country_exists = GER }
+				GER = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_leninist_germany_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninist_brittany
+		icon = GFX_goal_INT_for_leninist_brittany
+		x = 28
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninist_germany }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_leninist_brittany_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = SRB
+						SRB = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SRB = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SRB
+				}
+				if = {
+					limit = {
+						country_exists = ENG
+						ENG = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					ENG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = ENG
+				}
+			}
+			if = {
+				limit = { country_exists = ENG }
+				ENG = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_leninist_brittany_done
+		}
+	}
+
+	focus = {
+		id = INT_for_yugoslav_revolution
+		icon = GFX_goal_INT_for_yugoslav_revolution
+		x = 30
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_councils_international }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_yugoslav_revolution_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = YUG
+						YUG = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					YUG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = YUG
+				}
+			}
+			if = {
+				limit = { country_exists = SER }
+				SER = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_yugoslav_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_for_scandinavian_revolution
+		icon = GFX_goal_INT_for_scandinavian_revolution
+		x = 30
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_yugoslav_revolution }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_scandinavian_revolution_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = SSR
+						SSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SSR
+				}
+			}
+			if = {
+				limit = { country_exists = SWE }
+				SWE = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_scandinavian_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_for_world_is_burning
+		icon = GFX_goal_INT_for_world_is_burning
+		x = 30
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_scandinavian_revolution }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_world_is_burning_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = GSR
+						GSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					GSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = GSR
+				}
+			}
+			if = {
+				limit = { country_exists = GRE }
+				GRE = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_world_is_burning_done
+		}
+	}
+
+	focus = {
+		id = INT_for_domino_effect
+		icon = GFX_goal_INT_for_domino_effect
+		x = 30
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_world_is_burning }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_domino_effect_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = PPR
+						PPR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					PPR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = PPR
+				}
+			}
+			if = {
+				limit = { country_exists = POL }
+				POL = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_domino_effect_done
+		}
+	}
+
+	focus = {
+		id = INT_for_internationalist_europe
+		icon = GFX_goal_INT_for_internationalist_europe
+		x = 29
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninist_brittany }
+		prerequisite = { focus = INT_for_domino_effect }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_councils_international add_idea = INT_internationalist_europe }
+			add_political_power = 100
+			set_country_flag = INT_for_internationalist_europe_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninist_network_ukraine
+		icon = GFX_goal_INT_for_leninist_network_ukraine
+		x = 28
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_internationalist_europe }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = UKR }
+				UKR = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			set_country_flag = INT_for_leninist_network_ukraine_done
+		}
+	}
+
+	focus = {
+		id = INT_for_red_ukrainian_resistance
+		icon = GFX_goal_INT_for_red_ukrainian_resistance
+		x = 28
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninist_network_ukraine }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = UKR }
+				UKR = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+					add_stability = -0.05
+				}
+			}
+			set_country_flag = INT_for_red_ukrainian_resistance_done
+		}
+	}
+
+	focus = {
+		id = INT_for_baltic_resistance
+		icon = GFX_goal_INT_for_baltic_resistance
+		x = 28
 		y = 9
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_exportrev }
-		ai_will_do = {
-			factor = 1
-		}
+		prerequisite = { focus = INT_for_red_ukrainian_resistance }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
 		completion_reward = {
-			set_stability = 1
-			set_war_support = 1
-			add_command_power = 100
-			set_country_flag = LT_trotskyyoung_done
+			if = {
+				limit = { country_exists = EST }
+				EST = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = { country_exists = LAT }
+				LAT = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = { country_exists = LIT }
+				LIT = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			set_country_flag = INT_for_baltic_resistance_done
 		}
 	}
 
 	focus = {
-		id = LT_redgre
-		icon = GFX_goal_domino
-		x = 0
+		id = INT_for_support_russian_leninists
+		icon = GFX_goal_INT_for_support_russian_leninists
+		x = 30
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_internationalist_europe }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = RUS }
+				RUS = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = { country_exists = SOV }
+				SOV = {
+					add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROOT }
+					add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = ROOT }
+				}
+			}
+			set_country_flag = INT_for_support_russian_leninists_done
+		}
+	}
+
+	focus = {
+		id = INT_for_leninists_belarus
+		icon = GFX_goal_INT_for_leninists_belarus
+		x = 30
 		y = 8
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redeng }
-		prerequisite = { focus = LT_revspirit }
-		available = { NOT = { country_exists = GSR } }
+		prerequisite = { focus = INT_for_support_russian_leninists }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-        GRE = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		GSR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
-        }
-		CYP = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		TUR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-        }
-		ALB = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		MAC = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-		BUL = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-		}
-		CRE = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-		}
-			set_country_flag = LT_redgre_done
+			if = {
+				limit = { country_exists = BLR }
+				BLR = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+					add_stability = -0.05
+				}
+			}
+			set_country_flag = INT_for_leninists_belarus_done
 		}
 	}
 
 	focus = {
-		id = LT_redscand
-		icon = GFX_goal_domino
-		x = 1
+		id = INT_for_prepare_soviets_revolution
+		icon = GFX_goal_INT_for_prepare_soviets_revolution
+		x = 30
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_leninists_belarus }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = RUS }
+				RUS = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.15 }
+					add_stability = -0.1
+				}
+			}
+			add_war_support = 0.05
+			set_country_flag = INT_for_prepare_soviets_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_for_permanent_revolution_principle
+		icon = GFX_goal_INT_for_permanent_revolution_principle
+		x = 33
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revolutionary_international }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_permanent_revolution
+			set_country_flag = INT_for_permanent_revolution_principle_done
+		}
+	}
+
+	focus = {
+		id = INT_for_exporting_revolution
+		icon = GFX_goal_INT_for_exporting_revolution
+		x = 33
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_permanent_revolution_principle }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_exporting_revolution_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = CMU
+						CMU = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					CMU = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = CMU
+				}
+				if = {
+					limit = {
+						country_exists = FSR
+						FSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					FSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = FSR
+				}
+				if = {
+					limit = {
+						country_exists = SPA
+						SPA = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SPA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SPA
+				}
+				if = {
+					limit = {
+						country_exists = PRS
+						PRS = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					PRS = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = PRS
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_exporting_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_for_sister_republics
+		icon = GFX_goal_INT_for_sister_republics
+		x = 33
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_exporting_revolution }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_sister_republics_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = GDR
+						GDR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					GDR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = GDR
+				}
+				if = {
+					limit = {
+						country_exists = SRB
+						SRB = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SRB = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SRB
+				}
+				if = {
+					limit = {
+						country_exists = ENG
+						ENG = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					ENG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = ENG
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_sister_republics_done
+		}
+	}
+
+	focus = {
+		id = INT_for_cascade_effect
+		icon = GFX_goal_INT_for_cascade_effect
+		x = 33
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_sister_republics }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_cascade_effect_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = YUG
+						YUG = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					YUG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = YUG
+				}
+				if = {
+					limit = {
+						country_exists = SSR
+						SSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					SSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = SSR
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_cascade_effect_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revolutionary_europe
+		icon = GFX_goal_INT_for_revolutionary_europe
+		x = 33
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_cascade_effect }
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_for_revolutionary_europe_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = GSR
+						GSR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					GSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = GSR
+				}
+				if = {
+					limit = {
+						country_exists = PPR
+						PPR = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					PPR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = PPR
+				}
+			}
+			swap_ideas = { remove_idea = INT_permanent_revolution add_idea = INT_revolutionary_europe }
+			set_country_flag = INT_for_revolutionary_europe_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revcom_russia
+		icon = GFX_goal_INT_for_revcom_russia
+		x = 33
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revolutionary_europe }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = RUS }
+				RUS = {
+					add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = { country_exists = SOV }
+				SOV = {
+					add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROOT }
+					add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = ROOT }
+				}
+			}
+			set_country_flag = INT_for_revcom_russia_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revcom_ukraine
+		icon = GFX_goal_INT_for_revcom_ukraine
+		x = 33
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revcom_russia }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = UKR }
+				UKR = {
+					add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+					add_stability = -0.05
+				}
+			}
+			set_country_flag = INT_for_revcom_ukraine_done
+		}
+	}
+
+	focus = {
+		id = INT_for_bring_revolution_russia
+		icon = GFX_goal_INT_for_bring_revolution_russia
+		x = 33
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_revcom_ukraine }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = RUS }
+				RUS = {
+					add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = RUS
+					RUS = { NOT = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism } } }
+				}
+				create_wargoal = { type = puppet_wargoal_focus target = RUS }
+			}
+			add_war_support = 0.05
+			set_country_flag = INT_for_bring_revolution_russia_done
+		}
+	}
+
+	focus = {
+		id = INT_for_bring_leninism_russia
+		icon = GFX_goal_INT_for_bring_leninism_russia
+		x = 29
 		y = 10
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redyugo }
-		prerequisite = { focus = LT_redgre }
-		prerequisite = { focus = LT_domino }
-		available = { NOT = { country_exists = SSR } }
+		prerequisite = { focus = INT_for_baltic_resistance }
+		prerequisite = { focus = INT_for_prepare_soviets_revolution }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			ITA_red_scandinavia_effect = yes
-			declare_war_on = { target = SWE type = annex_everything }
-		NOR = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		SWE = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
-        }
-		FIN = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		EST = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-        }
-		LAT = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		LIT = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.15 }
-		}
-		POL = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-		ICE = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-		}
-			
-			set_country_flag = LT_redscand_done
+			if = {
+				limit = { country_exists = RUS }
+				RUS = {
+					add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+				}
+			}
+			if = {
+				limit = {
+					country_exists = RUS
+					RUS = { NOT = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism } } }
+				}
+				create_wargoal = { type = puppet_wargoal_focus target = RUS }
+			}
+			if = {
+				limit = { country_exists = SOV }
+				add_opinion_modifier = { target = SOV modifier = INT_revolutionary_alliance }
+				SOV = { add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_alliance } }
+			}
+			add_war_support = 0.05
+			set_country_flag = INT_for_bring_leninism_russia_done
 		}
 	}
 
 	focus = {
-		id = LT_redyugo
-		icon = GFX_goal_domino
-		x = 2
+		id = INT_for_collapse_united_states
+		icon = GFX_goal_INT_for_collapse_united_states
+		x = 29
+		y = 11
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_bring_leninism_russia }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = USA }
+				USA = {
+					add_stability = -0.1
+					add_war_support = -0.05
+					add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+				}
+			}
+			custom_effect_tooltip = INT_for_collapse_united_states_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = RCA
+						RCA = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					RCA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = RCA
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_collapse_united_states_done
+		}
+	}
+
+	focus = {
+		id = INT_for_revolution_to_us
+		icon = GFX_goal_INT_for_revolution_to_us
+		x = 33
+		y = 10
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_for_bring_revolution_russia }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ANNEXATION }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = USA }
+				USA = {
+					add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+					add_stability = -0.1
+				}
+			}
+			custom_effect_tooltip = INT_for_revolution_to_us_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						country_exists = RCA
+						RCA = {
+							is_subject = no
+							OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+						}
+					}
+					RCA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
+					puppet = RCA
+				}
+			}
+			add_political_power = 50
+			set_country_flag = INT_for_revolution_to_us_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_military_decision_center
+		icon = GFX_goal_INT_mil_military_decision_center
+		x = 41
+		y = 0
+		cost = 10
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 25
+			add_command_power = 25
+			set_country_flag = INT_mil_military_decision_center_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_red_army
+		icon = GFX_goal_INT_mil_red_army
+		x = 38
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_military_decision_center }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_red_army
+			set_country_flag = INT_mil_red_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_military_commissars
+		icon = GFX_goal_INT_mil_military_commissars
+		x = 36
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 30
+			add_stability = 0.03
+			set_country_flag = INT_mil_military_commissars_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_reforming_military_corps
+		icon = GFX_goal_INT_mil_reforming_military_corps
+		x = 38
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_reforming_military_corps bonus = 0.5 uses = 1 category = land_doctrine }
+			add_command_power = 50
+			set_country_flag = INT_mil_reforming_military_corps_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_smart_military_manufacturing
+		icon = GFX_goal_INT_mil_smart_military_manufacturing
+		x = 40
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_army }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = INT_mil_smart_military_manufacturing bonus = 0.5 uses = 1 category = infantry_weapons }
+			set_country_flag = INT_mil_smart_military_manufacturing_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_political_commissars
+		icon = GFX_goal_INT_mil_political_commissars
+		x = 36
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_military_commissars }
+		prerequisite = { focus = INT_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 25
+			set_country_flag = INT_mil_political_commissars_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_trial_corrupt_traitors
+		icon = GFX_goal_INT_mil_trial_corrupt_traitors
+		x = 38
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+			set_country_flag = INT_mil_trial_corrupt_traitors_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_peer_to_peer_production
+		icon = GFX_goal_INT_mil_peer_to_peer_production
+		x = 40
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_smart_military_manufacturing }
+		prerequisite = { focus = INT_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = INT_mil_peer_to_peer_production bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_mil_peer_to_peer_production_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_loyal_to_revolution
+		icon = GFX_goal_INT_mil_loyal_to_revolution
+		x = 38
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_political_commissars }
+		prerequisite = { focus = INT_mil_trial_corrupt_traitors }
+		prerequisite = { focus = INT_mil_peer_to_peer_production }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_red_army add_idea = INT_red_army_2 }
+			set_country_flag = INT_mil_loyal_to_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_make_way_young
+		icon = GFX_goal_INT_mil_make_way_young
+		x = 36
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_loyal_to_revolution }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 30
+			set_country_flag = INT_mil_make_way_young_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_workers_army
+		icon = GFX_goal_INT_mil_workers_army
+		x = 38
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_loyal_to_revolution }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 50000
+			set_country_flag = INT_mil_workers_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_cult_blitzkrieg
+		icon = GFX_goal_INT_mil_cult_blitzkrieg
+		x = 40
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_loyal_to_revolution }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_cult_blitzkrieg bonus = 0.5 uses = 1 category = armor }
+			add_tech_bonus = { name = INT_mil_cult_blitzkrieg bonus = 0.5 uses = 1 category = motorized_equipment }
+			set_country_flag = INT_mil_cult_blitzkrieg_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_red_airforce
+		icon = GFX_goal_INT_mil_red_airforce
+		x = 36
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_make_way_young }
+		prerequisite = { focus = INT_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			air_experience = 50
+			add_tech_bonus = { name = INT_mil_red_airforce bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = INT_mil_red_airforce_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_red_navy
+		icon = GFX_goal_INT_mil_red_navy
+		x = 38
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			navy_experience = 50
+			add_tech_bonus = { name = INT_mil_red_navy bonus = 0.5 uses = 1 category = naval_doctrine }
+			set_country_flag = INT_mil_red_navy_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_mechanized_army
+		icon = GFX_goal_INT_mil_mechanized_army
+		x = 40
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_cult_blitzkrieg }
+		prerequisite = { focus = INT_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_mechanized_army bonus = 0.5 uses = 1 category = motorized_equipment }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 800 producer = ROOT }
+			set_country_flag = INT_mil_mechanized_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_study_new_doctrines
+		icon = GFX_goal_INT_mil_study_new_doctrines
+		x = 36
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_airforce focus = INT_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_study_new_doctrines bonus = 0.5 uses = 2 category = land_doctrine }
+			set_country_flag = INT_mil_study_new_doctrines_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_red_academies
+		icon = GFX_goal_INT_mil_red_academies
+		x = 38
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_navy focus = INT_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 50
+			navy_experience = 25
+			air_experience = 25
+			set_country_flag = INT_mil_red_academies_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_superiority_of_tanks
+		icon = GFX_goal_INT_mil_superiority_of_tanks
+		x = 40
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_superiority_of_tanks bonus = 0.5 uses = 2 category = armor }
+			set_country_flag = INT_mil_superiority_of_tanks_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_electronic_warfare
+		icon = GFX_goal_INT_mil_electronic_warfare
+		x = 36
 		y = 8
 		cost = 10
 		available_if_capitulated = no
-		prerequisite = { focus = LT_redeng }
-		prerequisite = { focus = LT_revspirit }
-		available = { NOT = { country_exists = YUG } }
+		prerequisite = { focus = INT_mil_study_new_doctrines }
+		prerequisite = { focus = INT_mil_red_academies }
+		search_filters = { FOCUS_FILTER_RESEARCH }
 		ai_will_do = { factor = 1 }
 		completion_reward = {
-			ITA_red_yugoslavia_effect = yes
-			declare_war_on = { target = SLV type = annex_everything }
-			declare_war_on = { target = CRO type = annex_everything }
-			declare_war_on = { target = BOS type = annex_everything }
-			declare_war_on = { target = SER type = annex_everything }
-			declare_war_on = { target = MNT type = annex_everything }
-			declare_war_on = { target = MAC type = annex_everything }
-		SLV = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		SER = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.35 }
-        }
-		CYP = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.20 }
-        }
-		BOS = { 
-            add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-        }
-		CRO = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.30 }
-		}
-		MAC = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.05 }
-		}
-		MNT = { 
-			add_party_popularity = { ideology = vanguard_socialism popularity = 0.25 }
-		}
-			set_country_flag = LT_redyugo_done
+			add_tech_bonus = { name = INT_mil_electronic_warfare bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = INT_mil_electronic_warfare_done
 		}
 	}
+
+	focus = {
+		id = INT_mil_quality_training
+		icon = GFX_goal_INT_mil_quality_training
+		x = 38
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_academies }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = { name = INT_mil_quality_training bonus = 0.5 uses = 1 category = land_doctrine }
+			set_country_flag = INT_mil_quality_training_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_overwhelming_superiority
+		icon = GFX_goal_INT_mil_overwhelming_superiority
+		x = 40
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_superiority_of_tanks }
+		prerequisite = { focus = INT_mil_red_academies }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 40
+			add_tech_bonus = { name = INT_mil_overwhelming_superiority bonus = 1.0 uses = 1 category = armor }
+			set_country_flag = INT_mil_overwhelming_superiority_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_workers_of_world_unite
+		icon = GFX_goal_INT_mil_workers_of_world_unite
+		x = 38
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_electronic_warfare }
+		prerequisite = { focus = INT_mil_quality_training }
+		prerequisite = { focus = INT_mil_overwhelming_superiority }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_red_army_2 add_idea = INT_red_army_3 }
+			add_command_power = 100
+			set_country_flag = INT_mil_workers_of_world_unite_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_proletarian_military_industries
+		icon = GFX_goal_INT_mil_proletarian_military_industries
+		x = 45
+		y = 1
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_military_decision_center }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = INT_mil_proletarian_military_industries bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_mil_proletarian_military_industries_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_national_academies_sciences
+		icon = GFX_goal_INT_mil_national_academies_sciences
+		x = 43
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_academies_of_sciences
+			set_country_flag = INT_mil_national_academies_sciences_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_total_industrial_mobilization
+		icon = GFX_goal_INT_mil_total_industrial_mobilization
+		x = 45
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = INT_mil_total_industrial_mobilization_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_ultra_engineered_equipment
+		icon = GFX_goal_INT_mil_ultra_engineered_equipment
+		x = 47
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_ultra_engineered_equipment bonus = 0.5 uses = 1 category = infantry_weapons }
+			add_tech_bonus = { name = INT_mil_ultra_engineered_equipment bonus = 0.5 uses = 1 category = armor }
+			set_country_flag = INT_mil_ultra_engineered_equipment_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_reindustrialization
+		icon = GFX_goal_INT_mil_reindustrialization
+		x = 43
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_national_academies_sciences }
+		prerequisite = { focus = INT_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = INT_mil_reindustrialization_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_optimize_production_lines
+		icon = GFX_goal_INT_mil_optimize_production_lines
+		x = 45
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_optimized_lines
+			set_country_flag = INT_mil_optimize_production_lines_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_tsunami_military_hardware
+		icon = GFX_goal_INT_mil_tsunami_military_hardware
+		x = 47
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_ultra_engineered_equipment focus = INT_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 1000 producer = ROOT }
+			add_equipment_to_stockpile = { type = anti_tank_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = anti_air_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 1000 producer = ROOT }
+			set_country_flag = INT_mil_tsunami_military_hardware_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_centralize_military_structures
+		icon = GFX_goal_INT_mil_centralize_military_structures
+		x = 45
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_reindustrialization }
+		prerequisite = { focus = INT_mil_optimize_production_lines }
+		prerequisite = { focus = INT_mil_tsunami_military_hardware }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_centralized_military
+			add_command_power = 100
+			set_country_flag = INT_mil_centralize_military_structures_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_expand_red_navy
+		icon = GFX_goal_INT_mil_expand_red_navy
+		x = 43
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_mil_expand_red_navy_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_expand_aircraft_industry
+		icon = GFX_goal_INT_mil_expand_aircraft_industry
+		x = 45
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			air_experience = 25
+			set_country_flag = INT_mil_expand_aircraft_industry_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_expand_army
+		icon = GFX_goal_INT_mil_expand_army
+		x = 47
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 40000
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = INT_mil_expand_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_submarine_warfare
+		icon = GFX_goal_INT_mil_submarine_warfare
+		x = 43
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_expand_red_navy }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_submarine_warfare bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 25
+			set_country_flag = INT_mil_submarine_warfare_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_increase_aircraft_production
+		icon = GFX_goal_INT_mil_increase_aircraft_production
+		x = 45
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_expand_aircraft_industry }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			air_experience = 25
+			set_country_flag = INT_mil_increase_aircraft_production_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_start_motorizing
+		icon = GFX_goal_INT_mil_start_motorizing
+		x = 47
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_expand_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_start_motorizing bonus = 0.5 uses = 1 category = motorized_equipment }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 1500 producer = ROOT }
+			set_country_flag = INT_mil_start_motorizing_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_offensive_maritime_strategy
+		icon = GFX_goal_INT_mil_offensive_maritime_strategy
+		x = 43
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_submarine_warfare }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_offensive_maritime_strategy bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 50
+			set_country_flag = INT_mil_offensive_maritime_strategy_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_automatic_aircraft_systems
+		icon = GFX_goal_INT_mil_automatic_aircraft_systems
+		x = 45
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_increase_aircraft_production }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_automatic_aircraft_systems bonus = 0.5 uses = 1 category = electronics }
+			add_tech_bonus = { name = INT_mil_automatic_aircraft_systems bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = INT_mil_automatic_aircraft_systems_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_adaptable_red_army
+		icon = GFX_goal_INT_mil_adaptable_red_army
+		x = 47
+		y = 7
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_start_motorizing }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_mil_adaptable_red_army bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 40
+			set_country_flag = INT_mil_adaptable_red_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_oceangoing_navy
+		icon = GFX_goal_INT_mil_oceangoing_navy
+		x = 43
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_offensive_maritime_strategy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			navy_experience = 50
+			set_country_flag = INT_mil_oceangoing_navy_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_reds_in_the_sky
+		icon = GFX_goal_INT_mil_reds_in_the_sky
+		x = 45
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_automatic_aircraft_systems }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			air_experience = 75
+			add_tech_bonus = { name = INT_mil_reds_in_the_sky bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = INT_mil_reds_in_the_sky_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_glory_red_army
+		icon = GFX_goal_INT_mil_glory_red_army
+		x = 47
+		y = 8
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_adaptable_red_army }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 75
+			add_war_support = 0.05
+			set_country_flag = INT_mil_glory_red_army_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_red_tsunami
+		icon = GFX_goal_INT_mil_red_tsunami
+		x = 45
+		y = 9
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_oceangoing_navy }
+		prerequisite = { focus = INT_mil_reds_in_the_sky }
+		prerequisite = { focus = INT_mil_glory_red_army }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 10000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 1000 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 2000 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 2000 producer = ROOT }
+			add_command_power = 100
+			set_country_flag = INT_mil_red_tsunami_done
+		}
+	}
+
+	focus = {
+		id = INT_mil_revolution_above_all
+		icon = GFX_goal_INT_mil_revolution_above_all
+		x = 45
+		y = 10
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = INT_mil_red_tsunami }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_revolution_above_all
+			add_war_support = 0.1
+			set_country_flag = INT_mil_revolution_above_all_done
+		}
+	}
+
 }

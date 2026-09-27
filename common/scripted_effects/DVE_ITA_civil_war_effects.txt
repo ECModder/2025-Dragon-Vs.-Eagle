@@ -71,6 +71,12 @@ ITA_cw_spawn_INT_effect = {
 				limit = { owns_state = 159 }
 				set_capital = { state = 159 }
 			}
+			# Civil war tree, loaded once (a re-spawn must not reset it).
+			if = {
+				limit = { NOT = { has_country_flag = INT_cw_tree_loaded } }
+				set_country_flag = INT_cw_tree_loaded
+				load_focus_tree = { tree = INT_civil_war_focus keep_completed = no }
+			}
 		}
 	}
 }

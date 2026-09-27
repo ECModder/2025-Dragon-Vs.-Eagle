@@ -1,0 +1,21 @@
+# INT civil war tree helpers (common/national_focus/INT_civil_war.txt).
+
+# Creates the "Guardia Internazionalista" template if INT lacks it.
+# Same layout as the one in ITA_civil_war_army_effect.
+INT_cw_guard_template_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Guardia Internazionalista" } }
+			division_template = {
+				name = "Guardia Internazionalista"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+}
