@@ -58,4 +58,52 @@ on_actions = {
         }
     }
 
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    tag = RFI
+                    FIN = { exists = no }
+                }
+                country_event = { id = finlandos.4 }
+            }
+        }
+    }
+
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    tag = FIN
+                    RFI = { exists = no }
+                }
+                country_event = { id = finlandos.4 }
+            }
+        }
+    }
+
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    tag = RFI
+                    SMI = { exists = no }
+                }
+                country_event = { id = finlandos.5 }
+            }
+        }
+    }
+
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    tag = FIN
+                    SMI = { exists = no }
+                }
+                country_event = { id = finlandos.6 }
+            }
+        }
+    }
+
 }
