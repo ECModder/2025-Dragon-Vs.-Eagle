@@ -157,6 +157,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FINl_side_with_the_government
 		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_preemptive_strike
+			}
+		}
 		
 		completion_reward = {
 			add_political_power = 50
@@ -175,6 +181,12 @@ focus_tree = {
 
 		prerequisite = {
 			focus = FINl_side_with_the_government
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_preemptive_strike
+			}
 		}
 		
 		completion_reward = {
@@ -220,7 +232,7 @@ focus_tree = {
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
-					army_ratio = 0.4
+					army_ratio = 0.5
 				}
 				transfer_units_fraction = {
 					target = SMI
@@ -278,6 +290,12 @@ focus_tree = {
 		prerequisite = {
 			focus = FINl_side_with_the_people
 		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_iniate_the_revolution
+			}
+		}
 		
 		completion_reward = {
 			add_political_power = 50
@@ -296,6 +314,12 @@ focus_tree = {
 
 		prerequisite = {
 			focus = FINl_side_with_the_people
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_iniate_the_revolution
+			}
 		}
 		
 		completion_reward = {
@@ -340,11 +364,20 @@ focus_tree = {
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
-					army_ratio = 0.5
+					army_ratio = 0.4
 				}
 				transfer_units_fraction = {
 					target = SMI
 					army_ratio = 0.2
+				}
+				if = {
+					limit = { has_completed_focus = FINl_get_the_army_on_our_side }
+					RFI = {
+						transfer_units_fraction = {
+							target = FIN
+							army_ratio = 0.25
+						}
+					}
 				}
 				every_state = {
 					limit = {
