@@ -253,6 +253,12 @@ FRA_civil_war_effect = {
 
 	# Second wave in 7 days: FRS collapses, FSR/ANF/GER carve up the rest.
 	country_event = { id = dve_fracw.1 days = 7 }
+
+	# A human player picks the faction to play (dve_fracw.2).
+	if = {
+		limit = { is_ai = no }
+		country_event = { id = dve_fracw.2 }
+	}
 }
 
 
@@ -275,6 +281,12 @@ FRA_civil_war_second_wave_effect = {
 	if = { limit = { country_exists = ANF } declare_war_on = { target = ANF type = annex_everything } }
 	if = { limit = { country_exists = BRY } declare_war_on = { target = BRY type = annex_everything } }
 	if = { limit = { country_exists = FAC } declare_war_on = { target = FAC type = annex_everything } }
+
+	# If the player is still France, they may switch to a day-7 faction (dve_fracw.3).
+	if = {
+		limit = { is_ai = no }
+		country_event = { id = dve_fracw.3 }
+	}
 }
 
 

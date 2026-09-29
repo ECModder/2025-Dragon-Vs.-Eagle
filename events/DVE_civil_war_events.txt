@@ -134,3 +134,54 @@ country_event = {
 		add_war_support = 0.10
 	}
 }
+
+# 2: a human Russia picks the faction to play (from RUS_second_civil_war_effect).
+country_event = {
+	id = dve_civilwar.2
+	title = dve_civilwar.2.t
+	desc = dve_civilwar.2.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_civilwar.2.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_civilwar.2.b
+		trigger = { country_exists = SOV }
+		ai_chance = { factor = 0 }
+		SOV = { change_tag_from = RUS }
+	}
+	option = {
+		name = dve_civilwar.2.c
+		trigger = { country_exists = RUR }
+		ai_chance = { factor = 0 }
+		RUR = { change_tag_from = RUS }
+	}
+	option = {
+		name = dve_civilwar.2.d
+		trigger = { country_exists = NRE }
+		ai_chance = { factor = 0 }
+		NRE = { change_tag_from = RUS }
+	}
+	option = {
+		name = dve_civilwar.2.e
+		trigger = { country_exists = KUB }
+		ai_chance = { factor = 0 }
+		KUB = { change_tag_from = RUS }
+	}
+	option = {
+		name = dve_civilwar.2.f
+		trigger = { country_exists = KAL }
+		ai_chance = { factor = 0 }
+		KAL = { change_tag_from = RUS }
+	}
+	option = {
+		name = dve_civilwar.2.g
+		trigger = { country_exists = CIN }
+		ai_chance = { factor = 0 }
+		CIN = { change_tag_from = RUS }
+	}
+}

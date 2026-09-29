@@ -605,4 +605,11 @@ RUS_second_civil_war_effect = {
 	SOV = { SOV_sovnarkom_chain_effect = yes }
 
 	country_event = { id = dve_civilwar.1 hours = 2 }
+
+	# A human player picks the faction to play (dve_civilwar.2),
+	# before Moscow's alliance choice above.
+	if = {
+		limit = { is_ai = no }
+		country_event = { id = dve_civilwar.2 }
+	}
 }
