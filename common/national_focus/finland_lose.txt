@@ -96,31 +96,33 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			RUS = {
+			hidden_effect = {
+				RUS = {
 				end_puppet = FIN
+				}
+				leave_faction = yes
+				RFI = { transfer_state = 928 }
+				RFI = { transfer_state = 930 }
+				RFI = { transfer_state = 150 }
+				RFI = { transfer_state = 111 }
+				RFI = { transfer_state = 1156 }
+				set_autonomy = {
+					target = RFI
+					autonomy_state = autonomy_puppet
+				}
+				end_puppet = RFI
+				drop_cosmetic_tag = yes
+				release = SMI
+				transfer_units_fraction = {
+					target = RFI
+					army_ratio = 0.4
+				}
+				transfer_units_fraction = {
+					target = SMI
+					army_ratio = 0.2
+				}
+				SMI = { change_tag_from = FIN }
 			}
-			leave_faction = yes
-			RFI = { transfer_state = 928 }
-			RFI = { transfer_state = 930 }
-			RFI = { transfer_state = 150 }
-			RFI = { transfer_state = 111 }
-			RFI = { transfer_state = 1156 }
-			set_autonomy = {
-				target = RFI
-				autonomy_state = autonomy_puppet
-			}
-			end_puppet = RFI
-			drop_cosmetic_tag = yes
-			release = SMI
-			transfer_units_fraction = {
-				target = RFI
-				army_ratio = 0.4
-			}
-			transfer_units_fraction = {
-				target = SMI
-				army_ratio = 0.2
-			}
-			SMI = { change_tag_from = FIN }
 		}
 	}
 
