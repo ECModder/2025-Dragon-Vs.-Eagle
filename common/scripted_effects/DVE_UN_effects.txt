@@ -1,0 +1,237 @@
+# ============================================================
+#   DvE - UNITED NATIONS
+#   Every country has a UN legitimacy (variable DVE_un_legitimacy,
+#   0-100). Members carry the flag DVE_un_member and the spirit
+#   DVE_un_member_spirit; everyone else carries
+#   DVE_un_unrecognized_spirit and can raise its legitimacy with
+#   decisions, then apply for membership at 100.
+# ============================================================
+
+# Adds the temp variable dve_un_delta to the country's legitimacy.
+DVE_un_change_legitimacy_effect = {
+	add_to_variable = { DVE_un_legitimacy = dve_un_delta }
+	clamp_variable = { var = DVE_un_legitimacy min = 0 max = 100 }
+	DVE_un_refresh_effect = yes
+}
+
+# Values shown by the panel: hemicycle frame (1-21) and how many
+# members recognise the country.
+DVE_un_refresh_effect = {
+	set_variable = { DVE_un_frame = DVE_un_legitimacy }
+	divide_variable = { DVE_un_frame = 5 }
+	round_variable = DVE_un_frame
+	add_to_variable = { DVE_un_frame = 1 }
+	set_variable = { DVE_un_recognizers = DVE_un_legitimacy }
+	multiply_variable = { DVE_un_recognizers = global.DVE_un_member_count }
+	divide_variable = { DVE_un_recognizers = 100 }
+	round_variable = DVE_un_recognizers
+}
+
+DVE_un_init_member_effect = {
+	set_country_flag = DVE_un_initialized
+	set_country_flag = DVE_un_member
+	set_variable = { DVE_un_legitimacy = 100 }
+	add_ideas = DVE_un_member_spirit
+	DVE_un_refresh_effect = yes
+}
+
+# Starting legitimacy comes in the temp variable dve_un_start.
+DVE_un_init_non_member_effect = {
+	set_country_flag = DVE_un_initialized
+	set_variable = { DVE_un_legitimacy = dve_un_start }
+	add_ideas = DVE_un_unrecognized_spirit
+	DVE_un_refresh_effect = yes
+}
+
+# Game start: who is in the UN and who is not. Runs once.
+DVE_un_startup_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_un_started } }
+		set_global_flag = DVE_un_started
+		set_variable = { global.DVE_un_member_count = 193 }
+		every_country = {
+			limit = { NOT = { tag = UNA } }
+			if = {
+				limit = { tag = PAP }
+				set_temp_variable = { dve_un_start = 80 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { tag = PAL }
+				set_temp_variable = { dve_un_start = 75 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { tag = KOS }
+				set_temp_variable = { dve_un_start = 55 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { OR = { tag = CHI tag = WES } }
+				set_temp_variable = { dve_un_start = 35 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { tag = AFG }
+				set_temp_variable = { dve_un_start = 30 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { tag = HOU }
+				set_temp_variable = { dve_un_start = 15 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { OR = { tag = ABK tag = NOA tag = NCY tag = SOD tag = YST tag = HNK tag = MCA } }
+				set_temp_variable = { dve_un_start = 10 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { OR = { tag = TNS tag = PUN tag = ROJ tag = HAM tag = RSF tag = SLM tag = YNR tag = KAS } }
+				set_temp_variable = { dve_un_start = 5 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else_if = {
+				limit = { OR = { tag = DRZ tag = SYA tag = TSY tag = IRS tag = ISS tag = CIN tag = EMZ tag = KMZ } }
+				set_temp_variable = { dve_un_start = 0 }
+				DVE_un_init_non_member_effect = yes
+			}
+			else = {
+				DVE_un_init_member_effect = yes
+			}
+		}
+	}
+}
+
+# Chance (5-95) that a membership application is accepted, stored
+# in DVE_un_accept_chance. Runs in the applicant's scope (ROOT).
+DVE_un_compute_chance_effect = {
+	set_variable = { DVE_un_accept_chance = 40 }
+
+	# stability: up to +30
+	set_temp_variable = { dve_un_t = stability }
+	multiply_temp_variable = { dve_un_t = 30 }
+	add_to_variable = { DVE_un_accept_chance = dve_un_t }
+
+	if = {
+		limit = { has_war = no }
+		add_to_variable = { DVE_un_accept_chance = 15 }
+	}
+	else = {
+		add_to_variable = { DVE_un_accept_chance = -25 }
+	}
+	if = {
+		limit = { is_subject = yes }
+		add_to_variable = { DVE_un_accept_chance = -30 }
+	}
+	# Hook for a future sanctions system.
+	if = {
+		limit = { has_country_flag = DVE_un_sanctioned }
+		add_to_variable = { DVE_un_accept_chance = -15 }
+	}
+
+	# The five veto powers weigh more than anyone else.
+	if = {
+		limit = { country_exists = USA NOT = { tag = USA } }
+		if = {
+			limit = { has_war_with = USA }
+			add_to_variable = { DVE_un_accept_chance = -25 }
+		}
+		else_if = {
+			limit = { USA = { has_opinion = { target = ROOT value < -20 } } }
+			add_to_variable = { DVE_un_accept_chance = -8 }
+		}
+		else_if = {
+			limit = { USA = { has_opinion = { target = ROOT value > 20 } } }
+			add_to_variable = { DVE_un_accept_chance = 5 }
+		}
+	}
+	if = {
+		limit = { country_exists = RUS NOT = { tag = RUS } }
+		if = {
+			limit = { has_war_with = RUS }
+			add_to_variable = { DVE_un_accept_chance = -25 }
+		}
+		else_if = {
+			limit = { RUS = { has_opinion = { target = ROOT value < -20 } } }
+			add_to_variable = { DVE_un_accept_chance = -8 }
+		}
+		else_if = {
+			limit = { RUS = { has_opinion = { target = ROOT value > 20 } } }
+			add_to_variable = { DVE_un_accept_chance = 5 }
+		}
+	}
+	if = {
+		limit = { country_exists = PRC NOT = { tag = PRC } }
+		if = {
+			limit = { has_war_with = PRC }
+			add_to_variable = { DVE_un_accept_chance = -25 }
+		}
+		else_if = {
+			limit = { PRC = { has_opinion = { target = ROOT value < -20 } } }
+			add_to_variable = { DVE_un_accept_chance = -8 }
+		}
+		else_if = {
+			limit = { PRC = { has_opinion = { target = ROOT value > 20 } } }
+			add_to_variable = { DVE_un_accept_chance = 5 }
+		}
+	}
+	if = {
+		limit = { country_exists = ENG NOT = { tag = ENG } }
+		if = {
+			limit = { has_war_with = ENG }
+			add_to_variable = { DVE_un_accept_chance = -25 }
+		}
+		else_if = {
+			limit = { ENG = { has_opinion = { target = ROOT value < -20 } } }
+			add_to_variable = { DVE_un_accept_chance = -8 }
+		}
+		else_if = {
+			limit = { ENG = { has_opinion = { target = ROOT value > 20 } } }
+			add_to_variable = { DVE_un_accept_chance = 5 }
+		}
+	}
+	if = {
+		limit = { country_exists = FRA NOT = { tag = FRA } }
+		if = {
+			limit = { has_war_with = FRA }
+			add_to_variable = { DVE_un_accept_chance = -25 }
+		}
+		else_if = {
+			limit = { FRA = { has_opinion = { target = ROOT value < -20 } } }
+			add_to_variable = { DVE_un_accept_chance = -8 }
+		}
+		else_if = {
+			limit = { FRA = { has_opinion = { target = ROOT value > 20 } } }
+			add_to_variable = { DVE_un_accept_chance = 5 }
+		}
+	}
+
+	clamp_variable = { var = DVE_un_accept_chance min = 5 max = 95 }
+	round_variable = DVE_un_accept_chance
+}
+
+# The Assembly votes yes.
+DVE_un_join_effect = {
+	clr_country_flag = DVE_un_application_pending
+	set_country_flag = DVE_un_member
+	remove_ideas = DVE_un_unrecognized_spirit
+	add_ideas = DVE_un_member_spirit
+	hidden_effect = {
+		set_variable = { DVE_un_legitimacy = 100 }
+		add_to_variable = { global.DVE_un_member_count = 1 }
+		DVE_un_refresh_effect = yes
+	}
+}
+
+# The Assembly votes no: -20 legitimacy, 180 days before a new application.
+DVE_un_rejected_effect = {
+	clr_country_flag = DVE_un_application_pending
+	custom_effect_tooltip = DVE_un_leg_minus_20_tt
+	custom_effect_tooltip = DVE_un_cooldown_tt
+	hidden_effect = {
+		set_country_flag = { flag = DVE_un_application_cooldown days = 180 value = 1 }
+		set_temp_variable = { dve_un_delta = -20 }
+		DVE_un_change_legitimacy_effect = yes
+	}
+}

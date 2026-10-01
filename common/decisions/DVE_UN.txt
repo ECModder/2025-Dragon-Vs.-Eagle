@@ -1,0 +1,267 @@
+# ============================================================
+#   DvE - United Nations decisions.
+#   Unrecognized states raise their UN legitimacy and, at 100,
+#   apply for membership (events/DVE_UN.txt). Members have
+#   their own decisions in the General Assembly.
+# ============================================================
+
+DVE_un_recognition_category = {
+
+	DVE_un_seek_recognition = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 45
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 4 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_diplomatic_outreach = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+		}
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_3_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 3 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_international_cooperation = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+			has_war = no
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 45
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 4 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_host_summit = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+			has_war = no
+			has_stability > 0.5
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_8_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 8 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_humanitarian_aid = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+		}
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_6_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 6 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_appeal_global_support = {
+		icon = GFX_decision_generic_nationalism
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 4 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_un_pursue_recognition = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_below_100_tt
+				check_variable = { DVE_un_legitimacy < 100 }
+			}
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_leg_plus_8_tt
+			hidden_effect = {
+				set_temp_variable = { dve_un_delta = 8 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	# Available at 100 legitimacy: the Assembly votes (dve_un.1).
+	DVE_un_submit_application = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_un_is_non_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_at_100_tt
+				check_variable = { DVE_un_legitimacy > 99.9 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_no_cooldown_tt
+				NOT = { has_country_flag = DVE_un_application_cooldown }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_un_no_pending_tt
+				NOT = { has_country_flag = DVE_un_application_pending }
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			country_event = { id = dve_un.1 }
+		}
+		ai_will_do = { base = 10 }
+	}
+}
+
+DVE_un_member_category = {
+
+	DVE_un_attend_assembly = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_member = yes }
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = DVE_un_attend_assembly_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { DVE_un_is_member = yes }
+					add_opinion_modifier = { target = ROOT modifier = DVE_un_assembly_goodwill }
+				}
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_un_support_development = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_un_is_member = yes }
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			add_stability = 0.02
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_un_fund_programs = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_un_is_member = yes }
+		available = {
+			NOT = { has_idea = DVE_un_program_donor }
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			add_timed_idea = { idea = DVE_un_program_donor days = 180 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_un_promote_cooperation = {
+		icon = GFX_decision_generic_nationalism
+		allowed = { always = yes }
+		visible = { DVE_un_is_member = yes }
+		available = {
+			has_war = no
+		}
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			add_named_threat = { threat = -1 name = DVE_un_promote_cooperation_threat }
+		}
+		ai_will_do = { base = 0 }
+	}
+}

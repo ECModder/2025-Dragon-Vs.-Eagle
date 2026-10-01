@@ -1,0 +1,87 @@
+add_namespace = dve_un
+
+# 1: the applicant confirms the application. The chance is computed here.
+country_event = {
+	id = dve_un.1
+	title = dve_un.1.t
+	desc = dve_un.1.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { DVE_un_compute_chance_effect = yes }
+	}
+
+	option = {
+		name = dve_un.1.a
+		ai_chance = { factor = 100 }
+		custom_effect_tooltip = DVE_un_vote_tt
+		hidden_effect = {
+			set_country_flag = DVE_un_application_pending
+			set_temp_variable = { dve_un_roll = random }
+			multiply_temp_variable = { dve_un_roll = 100 }
+			if = {
+				limit = { check_variable = { dve_un_roll < DVE_un_accept_chance } }
+				country_event = { id = dve_un.2 days = 5 }
+			}
+			else = {
+				country_event = { id = dve_un.3 days = 5 }
+			}
+		}
+	}
+	option = {
+		name = dve_un.1.b
+		ai_chance = { factor = 0 }
+	}
+}
+
+# 2: accepted.
+country_event = {
+	id = dve_un.2
+	title = dve_un.2.t
+	desc = dve_un.2.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_un.2.a
+		DVE_un_join_effect = yes
+		hidden_effect = {
+			save_global_event_target_as = DVE_un_new_member
+			every_other_country = {
+				news_event = { id = dve_un.4 hours = 6 }
+			}
+		}
+	}
+}
+
+# 3: rejected.
+country_event = {
+	id = dve_un.3
+	title = dve_un.3.t
+	desc = dve_un.3.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_un.3.a
+		DVE_un_rejected_effect = yes
+	}
+}
+
+# 4: news for everyone else.
+news_event = {
+	id = dve_un.4
+	title = dve_un.4.t
+	desc = dve_un.4.d
+	picture = GFX_news_event_generic_sign_treaty3
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_un.4.a
+	}
+}

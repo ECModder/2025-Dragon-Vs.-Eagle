@@ -219,8 +219,12 @@ focus_tree = {
 		completion_reward = {
 			add_ideas = war_economy
 			add_political_power = 150
-			add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
-			add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			# Buildings need a state scope: built in the capital.
+			capital_scope = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
 			add_stability = -0.10
 			set_country_flag = INT_cw_confiscate_means_of_production_done
 		}

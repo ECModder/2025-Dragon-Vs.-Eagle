@@ -1,0 +1,117 @@
+# DvE - United Nations panels (see common/scripted_guis/DVE_UN_gui.txt).
+# Background 480x262, hemicycle 240x128 with 21 frames.
+
+guiTypes = {
+
+	# ==========================================================
+	#   Unrecognized states: UN Legitimacy
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_un_recognition_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 262 }
+
+		iconType = {
+			name = "dve_un_background"
+			spriteType = "GFX_DVE_un_panel_recognition"
+			position = { x = 0 y = 0 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_status"
+			position = { x = 40 y = 62 }
+			font = "hoi_16mbs"
+			text = "DVE_un_panel_status"
+			format = center
+			maxWidth = 400
+			maxHeight = 18
+		}
+
+		iconType = {
+			name = "dve_un_hemicycle"
+			spriteType = "GFX_DVE_un_hemicycle"
+			position = { x = 120 y = 84 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_percent"
+			position = { x = 180 y = 150 }
+			font = "hoi_36header"
+			text = "DVE_un_panel_percent"
+			format = center
+			maxWidth = 120
+			maxHeight = 40
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_percent_label"
+			position = { x = 160 y = 190 }
+			font = "hoi_16mbs"
+			text = "DVE_un_panel_percent_label"
+			format = center
+			maxWidth = 160
+			maxHeight = 18
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_recognizers"
+			position = { x = 14 y = 218 }
+			font = "hoi_16mbs"
+			text = "DVE_un_panel_recognizers"
+			format = center
+			maxWidth = 452
+			maxHeight = 40
+		}
+	}
+
+	# ==========================================================
+	#   Members: The General Assembly
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_un_member_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 262 }
+
+		iconType = {
+			name = "dve_un_background"
+			spriteType = "GFX_DVE_un_panel_assembly"
+			position = { x = 0 y = 0 }
+		}
+
+		iconType = {
+			name = "dve_un_hemicycle"
+			spriteType = "GFX_DVE_un_hemicycle"
+			position = { x = 120 y = 84 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_member_count"
+			position = { x = 180 y = 150 }
+			font = "hoi_36header"
+			text = "DVE_un_panel_member_count"
+			format = center
+			maxWidth = 120
+			maxHeight = 40
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_member_count_label"
+			position = { x = 150 y = 190 }
+			font = "hoi_16mbs"
+			text = "DVE_un_panel_member_count_label"
+			format = center
+			maxWidth = 180
+			maxHeight = 18
+		}
+
+		instantTextBoxType = {
+			name = "dve_un_veto"
+			position = { x = 14 y = 218 }
+			font = "hoi_16mbs"
+			text = "DVE_un_panel_veto"
+			format = center
+			maxWidth = 452
+			maxHeight = 40
+		}
+	}
+}

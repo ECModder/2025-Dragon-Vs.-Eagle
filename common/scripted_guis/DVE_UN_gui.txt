@@ -1,0 +1,36 @@
+# DvE - United Nations panels, drawn on top of the two decision
+# categories (same mechanism as DVE_ukraine_war_gui.txt).
+# The hemicycle has 21 frames: DVE_un_frame = legitimacy / 5 + 1.
+
+scripted_gui = {
+
+	DVE_un_recognition_ui = {
+		context_type = decision_category
+		window_name = "DVE_un_recognition_window"
+
+		visible = {
+			DVE_un_is_non_member = yes
+		}
+
+		properties = {
+			dve_un_hemicycle = {
+				frame = DVE_un_frame
+			}
+		}
+	}
+
+	DVE_un_member_ui = {
+		context_type = decision_category
+		window_name = "DVE_un_member_window"
+
+		visible = {
+			DVE_un_is_member = yes
+		}
+
+		properties = {
+			dve_un_hemicycle = {
+				frame = DVE_un_frame
+			}
+		}
+	}
+}
