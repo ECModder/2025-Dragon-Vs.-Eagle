@@ -29,6 +29,15 @@ on_actions = {
 					}
 					DVE_intl_refresh_members_effect = yes
 				}
+				# Campaign seats fade once a month (first member to tick does it).
+				if = {
+					limit = {
+						has_country_flag = DVE_intl_member
+						NOT = { has_global_flag = DVE_intl_boost_decay_wait }
+					}
+					set_global_flag = { flag = DVE_intl_boost_decay_wait days = 30 value = 1 }
+					DVE_intl_decay_boosts_effect = yes
+				}
 				# The faction "The International": INT leads it, every member sits in it.
 				if = {
 					limit = { tag = INT }

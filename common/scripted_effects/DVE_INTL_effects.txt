@@ -157,20 +157,46 @@ DVE_intl_refresh_members_effect = {
 	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_pro }
 	if = {
 		limit = { check_variable = { dve_sum < 1 } }
-		set_variable = { global.DVE_intl_fs_van = 1 }
-		set_temp_variable = { dve_sum = 1 }
+		set_variable = { global.DVE_intl_fs_van = 999 }
+		set_temp_variable = { dve_sum = 999 }
 	}
-	multiply_variable = { global.DVE_intl_fs_tot = 999 }
-	divide_variable = { global.DVE_intl_fs_tot = dve_sum }
+
+	# seats won by the members' campaigns (DVE_intl_back_* decisions):
+	# dve_unit is what one seat is worth before the rescale
+	DVE_intl_ensure_boosts_effect = yes
+	set_temp_variable = { dve_unit = dve_sum }
+	divide_temp_variable = { dve_unit = 999 }
+	set_temp_variable = { dve_t = global.DVE_intl_boost_tot }
+	multiply_temp_variable = { dve_t = dve_unit }
+	add_to_variable = { global.DVE_intl_fs_tot = dve_t }
+	add_to_temp_variable = { dve_sum = dve_t }
+	set_temp_variable = { dve_t = global.DVE_intl_boost_aut }
+	multiply_temp_variable = { dve_t = dve_unit }
+	add_to_variable = { global.DVE_intl_fs_aut = dve_t }
+	add_to_temp_variable = { dve_sum = dve_t }
+	set_temp_variable = { dve_t = global.DVE_intl_boost_van }
+	multiply_temp_variable = { dve_t = dve_unit }
+	add_to_variable = { global.DVE_intl_fs_van = dve_t }
+	add_to_temp_variable = { dve_sum = dve_t }
+	set_temp_variable = { dve_t = global.DVE_intl_boost_rev }
+	multiply_temp_variable = { dve_t = dve_unit }
+	add_to_variable = { global.DVE_intl_fs_rev = dve_t }
+	add_to_temp_variable = { dve_sum = dve_t }
+	set_temp_variable = { dve_t = global.DVE_intl_boost_pro }
+	multiply_temp_variable = { dve_t = dve_unit }
+	add_to_variable = { global.DVE_intl_fs_pro = dve_t }
+	add_to_temp_variable = { dve_sum = dve_t }
+
+	# divide by the value of a seat (a multiplication by 999 would overflow)
+	set_temp_variable = { dve_unit = dve_sum }
+	divide_temp_variable = { dve_unit = 999 }
+	divide_variable = { global.DVE_intl_fs_tot = dve_unit }
 	round_variable = global.DVE_intl_fs_tot
-	multiply_variable = { global.DVE_intl_fs_aut = 999 }
-	divide_variable = { global.DVE_intl_fs_aut = dve_sum }
+	divide_variable = { global.DVE_intl_fs_aut = dve_unit }
 	round_variable = global.DVE_intl_fs_aut
-	multiply_variable = { global.DVE_intl_fs_van = 999 }
-	divide_variable = { global.DVE_intl_fs_van = dve_sum }
+	divide_variable = { global.DVE_intl_fs_van = dve_unit }
 	round_variable = global.DVE_intl_fs_van
-	multiply_variable = { global.DVE_intl_fs_rev = 999 }
-	divide_variable = { global.DVE_intl_fs_rev = dve_sum }
+	divide_variable = { global.DVE_intl_fs_rev = dve_unit }
 	round_variable = global.DVE_intl_fs_rev
 	set_variable = { global.DVE_intl_fs_pro = 999 }
 	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_tot }
@@ -214,6 +240,52 @@ DVE_intl_refresh_members_effect = {
 	set_variable = { global.DVE_intl_frame_5 = 26 }
 
 	DVE_intl_tally_effect = yes
+}
+
+# Campaign seats of the currents (DVE_intl_back_* decisions).
+DVE_intl_ensure_boosts_effect = {
+	if = {
+		limit = { NOT = { has_variable = global.DVE_intl_boost_van } }
+		DVE_intl_reset_boosts_effect = yes
+	}
+}
+
+DVE_intl_reset_boosts_effect = {
+	set_variable = { global.DVE_intl_boost_tot = 0 }
+	set_variable = { global.DVE_intl_boost_aut = 0 }
+	set_variable = { global.DVE_intl_boost_van = 0 }
+	set_variable = { global.DVE_intl_boost_rev = 0 }
+	set_variable = { global.DVE_intl_boost_pro = 0 }
+}
+
+# Once a month the campaign seats fade by a tenth.
+DVE_intl_decay_boosts_effect = {
+	DVE_intl_ensure_boosts_effect = yes
+	multiply_variable = { global.DVE_intl_boost_tot = 0.9 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_boost_tot < 1 } }
+		set_variable = { global.DVE_intl_boost_tot = 0 }
+	}
+	multiply_variable = { global.DVE_intl_boost_aut = 0.9 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_boost_aut < 1 } }
+		set_variable = { global.DVE_intl_boost_aut = 0 }
+	}
+	multiply_variable = { global.DVE_intl_boost_van = 0.9 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_boost_van < 1 } }
+		set_variable = { global.DVE_intl_boost_van = 0 }
+	}
+	multiply_variable = { global.DVE_intl_boost_rev = 0.9 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_boost_rev < 1 } }
+		set_variable = { global.DVE_intl_boost_rev = 0 }
+	}
+	multiply_variable = { global.DVE_intl_boost_pro = 0.9 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_boost_pro < 1 } }
+		set_variable = { global.DVE_intl_boost_pro = 0 }
+	}
 }
 
 # In favour and against so far: member votes for an admission,

@@ -127,6 +127,167 @@ DVE_intl_member_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	# --- campaigns: human members win seats for a current of the Council ---
+	DVE_intl_back_tot = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_tot < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_tot_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_tot = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_tot max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_aut = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_aut < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_aut_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_aut = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_aut max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_van = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_van < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_van_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_van = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_van max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_rev = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_rev < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_rev_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_rev = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_rev max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_pro = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_pro < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_pro_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_pro = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_pro max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	# --- motions: one at a time, a week of voting, then 30 days of recess ---
 	DVE_intl_motion_common_plan = {
 		icon = GFX_decision_generic_form_nation
