@@ -4,6 +4,9 @@
 guiTypes = {
 
 	# One member of the International: flag plus vote frame, in five sizes.
+	# The flag is never scaled: a masked flag sprite ignores "scale", so each
+	# size has its own sprite (82x52, 41x26, 27x17, 20x13, 14x9). Only the
+	# frame is scaled.
 	# Only the size that fits the number of members is shown (the *_visible
 	# triggers of the scripted GUI read global.DVE_intl_flag_tier).
 	containerWindowType = {
@@ -13,9 +16,8 @@ guiTypes = {
 
 		iconType = {
 			name = "dve_intl_entry_flag_1"
-			quadTextureSprite = "GFX_flag_small2"
+			quadTextureSprite = "GFX_shield_medium"
 			position = { x = 6 y = 8 }
-			scale = 2.0
 			pdx_tooltip = "DVE_intl_entry_tt"
 		}
 		iconType = {
@@ -35,7 +37,6 @@ guiTypes = {
 			name = "dve_intl_entry_flag_2"
 			quadTextureSprite = "GFX_flag_small2"
 			position = { x = 3 y = 4 }
-			scale = 1.0
 			pdx_tooltip = "DVE_intl_entry_tt"
 		}
 		iconType = {
@@ -53,9 +54,8 @@ guiTypes = {
 
 		iconType = {
 			name = "dve_intl_entry_flag_3"
-			quadTextureSprite = "GFX_flag_small2"
+			quadTextureSprite = "GFX_DVE_intl_flag_3"
 			position = { x = 2 y = 3 }
-			scale = 0.65
 			pdx_tooltip = "DVE_intl_entry_tt"
 		}
 		iconType = {
@@ -73,9 +73,8 @@ guiTypes = {
 
 		iconType = {
 			name = "dve_intl_entry_flag_4"
-			quadTextureSprite = "GFX_flag_small2"
+			quadTextureSprite = "GFX_DVE_intl_flag_4"
 			position = { x = 2 y = 2 }
-			scale = 0.5
 			pdx_tooltip = "DVE_intl_entry_tt"
 		}
 		iconType = {
@@ -93,9 +92,8 @@ guiTypes = {
 
 		iconType = {
 			name = "dve_intl_entry_flag_5"
-			quadTextureSprite = "GFX_flag_small2"
+			quadTextureSprite = "GFX_DVE_intl_flag_5"
 			position = { x = 1 y = 1 }
-			scale = 0.35
 			pdx_tooltip = "DVE_intl_entry_tt"
 		}
 		iconType = {
