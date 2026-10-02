@@ -77,6 +77,11 @@ ITA_cw_spawn_INT_effect = {
 				set_country_flag = INT_cw_tree_loaded
 				load_focus_tree = { tree = INT_civil_war_focus keep_completed = no }
 			}
+			# The International is founded with INT (DVE_INTL_effects.txt).
+			if = {
+				limit = { NOT = { has_global_flag = DVE_intl_founded } }
+				DVE_intl_found_effect = yes
+			}
 		}
 	}
 }

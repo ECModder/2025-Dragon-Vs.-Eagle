@@ -96,6 +96,11 @@ ITA_become_INT_effect = {
 			}
 
 			load_focus_tree = { tree = INT_focus keep_completed = no }
+			# The International is founded with INT (DVE_INTL_effects.txt).
+			if = {
+				limit = { NOT = { has_global_flag = DVE_intl_founded } }
+				DVE_intl_found_effect = yes
+			}
 			change_tag_from = ITA
 		}
 	}

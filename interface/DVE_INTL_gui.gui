@@ -1,0 +1,436 @@
+# DvE - The International panels (see common/scripted_guis/DVE_INTL_gui.txt).
+# Backgrounds are 480 wide; the hemicycle is 5 layers of 26 frames, 240x128 each.
+
+guiTypes = {
+
+	# One member of the International: flag plus vote frame.
+	containerWindowType = {
+		name = "DVE_intl_member_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 46 height = 34 }
+
+		iconType = {
+			name = "dve_intl_entry_flag"
+			quadTextureSprite = "GFX_flag_small2"
+			position = { x = 3 y = 4 }
+			pdx_tooltip = "DVE_intl_entry_tt"
+		}
+		iconType = {
+			name = "dve_intl_entry_frame"
+			spriteType = "GFX_DVE_intl_vote_frame"
+			position = { x = 0 y = 1 }
+			alwaystransparent = yes
+		}
+	}
+
+	containerWindowType = {
+		name = "DVE_intl_member_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 392 }
+
+		iconType = {
+			name = "dve_intl_background"
+			spriteType = "GFX_DVE_intl_panel_member"
+			position = { x = 0 y = 0 }
+		}
+
+		iconType = {
+			name = "dve_intl_hemicycle_5"
+			spriteType = "GFX_DVE_intl_hemicycle_5"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_4"
+			spriteType = "GFX_DVE_intl_hemicycle_4"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_3"
+			spriteType = "GFX_DVE_intl_hemicycle_3"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_2"
+			spriteType = "GFX_DVE_intl_hemicycle_2"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_1"
+			spriteType = "GFX_DVE_intl_hemicycle_1"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "dve_intl_total"
+			position = { x = 70 y = 132 }
+			font = "hoi_36header"
+			text = "DVE_intl_panel_total"
+			format = center
+			maxWidth = 120
+			maxHeight = 40
+		}
+		instantTextBoxType = {
+			name = "dve_intl_total_label"
+			position = { x = 50 y = 170 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_total_label"
+			format = center
+			maxWidth = 160
+			maxHeight = 18
+		}
+
+		iconType = {
+			name = "dve_intl_mark_van"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 73 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_van"
+			position = { x = 280 y = 69 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_van"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_rev"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 93 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_rev"
+			position = { x = 280 y = 89 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_rev"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_aut"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 113 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_aut"
+			position = { x = 280 y = 109 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_aut"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_tot"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 133 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_tot"
+			position = { x = 280 y = 129 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_tot"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_pro"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 153 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_pro"
+			position = { x = 280 y = 149 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_pro"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_ana"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 173 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_ana"
+			position = { x = 280 y = 169 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_ana"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		instantTextBoxType = {
+			name = "dve_intl_majority"
+			position = { x = 14 y = 197 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_majority"
+			format = center
+			maxWidth = 452
+			maxHeight = 18
+		}
+
+		instantTextBoxType = {
+			name = "dve_intl_floor"
+			position = { x = 14 y = 222 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_floor"
+			format = center
+			maxWidth = 452
+			maxHeight = 36
+		}
+		instantTextBoxType = {
+			name = "dve_intl_tally"
+			position = { x = 14 y = 258 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_tally"
+			format = center
+			maxWidth = 452
+			maxHeight = 18
+		}
+
+		containerWindowType = {
+			name = "dve_intl_members_box"
+			position = { x = 10 y = 280 }
+			size = { width = 460 height = 68 }
+			clipping = yes
+
+			gridboxtype = {
+				name = "dve_intl_members_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 46 height = 34 }
+				add_horizontal = yes
+				max_slots_horizontal = 10
+			}
+		}
+
+		buttonType = {
+			name = "dve_intl_vote_yes_button"
+			position = { x = 104 y = 353 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = "DVE_intl_vote_yes"
+			buttonFont = "hoi_18mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_intl_vote_yes_tt"
+		}
+		buttonType = {
+			name = "dve_intl_vote_no_button"
+			position = { x = 253 y = 353 }
+			quadTextureSprite = "GFX_button_123x34"
+			buttonText = "DVE_intl_vote_no"
+			buttonFont = "hoi_18mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_intl_vote_no_tt"
+		}
+	}
+
+	containerWindowType = {
+		name = "DVE_intl_applicant_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 380 }
+
+		iconType = {
+			name = "dve_intl_background"
+			spriteType = "GFX_DVE_intl_panel_applicant"
+			position = { x = 0 y = 0 }
+		}
+
+		iconType = {
+			name = "dve_intl_hemicycle_5"
+			spriteType = "GFX_DVE_intl_hemicycle_5"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_4"
+			spriteType = "GFX_DVE_intl_hemicycle_4"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_3"
+			spriteType = "GFX_DVE_intl_hemicycle_3"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_2"
+			spriteType = "GFX_DVE_intl_hemicycle_2"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+		iconType = {
+			name = "dve_intl_hemicycle_1"
+			spriteType = "GFX_DVE_intl_hemicycle_1"
+			position = { x = 10 y = 64 }
+			alwaystransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "dve_intl_total"
+			position = { x = 70 y = 132 }
+			font = "hoi_36header"
+			text = "DVE_intl_panel_total"
+			format = center
+			maxWidth = 120
+			maxHeight = 40
+		}
+		instantTextBoxType = {
+			name = "dve_intl_total_label"
+			position = { x = 50 y = 170 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_total_label"
+			format = center
+			maxWidth = 160
+			maxHeight = 18
+		}
+
+		iconType = {
+			name = "dve_intl_mark_van"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 73 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_van"
+			position = { x = 280 y = 69 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_van"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_rev"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 93 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_rev"
+			position = { x = 280 y = 89 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_rev"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_aut"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 113 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_aut"
+			position = { x = 280 y = 109 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_aut"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_tot"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 133 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_tot"
+			position = { x = 280 y = 129 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_tot"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_pro"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 153 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_pro"
+			position = { x = 280 y = 149 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_pro"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		iconType = {
+			name = "dve_intl_mark_ana"
+			spriteType = "GFX_DVE_intl_current_mark"
+			position = { x = 264 y = 173 }
+		}
+		instantTextBoxType = {
+			name = "dve_intl_cur_ana"
+			position = { x = 280 y = 169 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_cur_ana"
+			format = left
+			maxWidth = 188
+			maxHeight = 18
+		}
+		instantTextBoxType = {
+			name = "dve_intl_majority"
+			position = { x = 14 y = 197 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_majority"
+			format = center
+			maxWidth = 452
+			maxHeight = 18
+		}
+
+		instantTextBoxType = {
+			name = "dve_intl_floor"
+			position = { x = 14 y = 222 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_floor"
+			format = center
+			maxWidth = 452
+			maxHeight = 36
+		}
+		instantTextBoxType = {
+			name = "dve_intl_tally"
+			position = { x = 14 y = 258 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_tally"
+			format = center
+			maxWidth = 452
+			maxHeight = 18
+		}
+
+		containerWindowType = {
+			name = "dve_intl_members_box"
+			position = { x = 10 y = 280 }
+			size = { width = 460 height = 68 }
+			clipping = yes
+
+			gridboxtype = {
+				name = "dve_intl_members_grid"
+				position = { x = 0 y = 0 }
+				size = { width = 100% height = 100% }
+				slotsize = { width = 46 height = 34 }
+				add_horizontal = yes
+				max_slots_horizontal = 10
+			}
+		}
+
+		instantTextBoxType = {
+			name = "dve_intl_standing"
+			position = { x = 14 y = 354 }
+			font = "hoi_16mbs"
+			text = "DVE_intl_panel_standing"
+			format = center
+			maxWidth = 452
+			maxHeight = 18
+		}
+	}
+}

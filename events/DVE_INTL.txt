@@ -1,0 +1,68 @@
+add_namespace = dve_intl
+
+# 1: the count, a week after the motion was put (hidden, on the chair).
+country_event = {
+	id = dve_intl.1
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		DVE_intl_resolve_vote_effect = yes
+	}
+}
+
+# 2: the result, for human members and for a human applicant.
+country_event = {
+	id = dve_intl.2
+	title = dve_intl.2.t
+	desc = dve_intl.2.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intl.2.a
+	}
+}
+
+# 3: an admission is on the floor, for human members who still have to vote.
+country_event = {
+	id = dve_intl.3
+	title = dve_intl.3.t
+	desc = dve_intl.3.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intl.3.a
+	}
+}
+
+# 4: a motion is on the floor and the currents are voting (information only).
+country_event = {
+	id = dve_intl.4
+	title = dve_intl.4.t
+	desc = dve_intl.4.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intl.4.a
+	}
+}
+
+# 5: a human country enters the International as a subject of INT.
+country_event = {
+	id = dve_intl.5
+	title = dve_intl.5.t
+	desc = dve_intl.5.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intl.5.a
+	}
+}

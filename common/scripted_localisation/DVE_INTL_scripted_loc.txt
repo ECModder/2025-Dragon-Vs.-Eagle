@@ -1,0 +1,94 @@
+# DvE - The International: texts of the panel.
+
+# Name of the motion in global.DVE_intl_motion.
+defined_text = {
+	name = GetDVEIntlMotion
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 1 } }
+		localization_key = DVE_intl_motion_name_common_plan
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 2 } }
+		localization_key = DVE_intl_motion_name_solidarity_fund
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 3 } }
+		localization_key = DVE_intl_motion_name_open_borders
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 4 } }
+		localization_key = DVE_intl_motion_name_mobilization
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 5 } }
+		localization_key = DVE_intl_motion_name_red_helmets
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 10 } }
+		localization_key = DVE_intl_motion_admission
+	}
+	text = {
+		localization_key = DVE_intl_motion_none
+	}
+}
+
+# What is on the floor, or how the last vote went.
+defined_text = {
+	name = GetDVEIntlFloor
+	text = {
+		trigger = { has_global_flag = DVE_intl_vote_in_progress }
+		localization_key = DVE_intl_floor_voting
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_result = 2 } }
+		localization_key = DVE_intl_floor_passed
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_result = 3 } }
+		localization_key = DVE_intl_floor_rejected
+	}
+	text = {
+		trigger = { check_variable = { global.DVE_intl_result = 4 } }
+		localization_key = DVE_intl_floor_vetoed
+	}
+	text = {
+		localization_key = DVE_intl_floor_empty
+	}
+}
+
+# Admissions are counted in votes of the member states, motions in seats.
+defined_text = {
+	name = GetDVEIntlTally
+	text = {
+		trigger = { check_variable = { global.DVE_intl_motion = 10 } }
+		localization_key = DVE_intl_tally_votes
+	}
+	text = {
+		localization_key = DVE_intl_tally_seats
+	}
+}
+
+# The current with the most seats.
+defined_text = {
+	name = GetDVEIntlMajority
+	text = {
+		trigger = { NOT = { check_variable = { global.DVE_intl_fs_aut > global.DVE_intl_fs_tot } } NOT = { check_variable = { global.DVE_intl_fs_van > global.DVE_intl_fs_tot } } NOT = { check_variable = { global.DVE_intl_fs_rev > global.DVE_intl_fs_tot } } NOT = { check_variable = { global.DVE_intl_fs_pro > global.DVE_intl_fs_tot } } }
+		localization_key = DVE_intl_majority_tot
+	}
+	text = {
+		trigger = { NOT = { check_variable = { global.DVE_intl_fs_tot > global.DVE_intl_fs_aut } } NOT = { check_variable = { global.DVE_intl_fs_van > global.DVE_intl_fs_aut } } NOT = { check_variable = { global.DVE_intl_fs_rev > global.DVE_intl_fs_aut } } NOT = { check_variable = { global.DVE_intl_fs_pro > global.DVE_intl_fs_aut } } }
+		localization_key = DVE_intl_majority_aut
+	}
+	text = {
+		trigger = { NOT = { check_variable = { global.DVE_intl_fs_tot > global.DVE_intl_fs_van } } NOT = { check_variable = { global.DVE_intl_fs_aut > global.DVE_intl_fs_van } } NOT = { check_variable = { global.DVE_intl_fs_rev > global.DVE_intl_fs_van } } NOT = { check_variable = { global.DVE_intl_fs_pro > global.DVE_intl_fs_van } } }
+		localization_key = DVE_intl_majority_van
+	}
+	text = {
+		trigger = { NOT = { check_variable = { global.DVE_intl_fs_tot > global.DVE_intl_fs_rev } } NOT = { check_variable = { global.DVE_intl_fs_aut > global.DVE_intl_fs_rev } } NOT = { check_variable = { global.DVE_intl_fs_van > global.DVE_intl_fs_rev } } NOT = { check_variable = { global.DVE_intl_fs_pro > global.DVE_intl_fs_rev } } }
+		localization_key = DVE_intl_majority_rev
+	}
+	text = {
+		trigger = { NOT = { check_variable = { global.DVE_intl_fs_tot > global.DVE_intl_fs_pro } } NOT = { check_variable = { global.DVE_intl_fs_aut > global.DVE_intl_fs_pro } } NOT = { check_variable = { global.DVE_intl_fs_van > global.DVE_intl_fs_pro } } NOT = { check_variable = { global.DVE_intl_fs_rev > global.DVE_intl_fs_pro } } }
+		localization_key = DVE_intl_majority_pro
+	}
+}

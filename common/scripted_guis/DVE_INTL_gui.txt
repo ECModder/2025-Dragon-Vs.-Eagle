@@ -1,0 +1,101 @@
+# DvE - The International panels, on top of the two decision categories.
+# The hemicycle is five layers, one per current: layer N is filled up to
+# the cumulative share of the first N currents (global.DVE_intl_frame_N).
+# Motions are voted by the currents: each has a mark that is grey, green
+# (in favour) or red (against). Admissions are voted by the member states:
+# every member is one entry of the grid, its flag with a frame in the same
+# three colours.
+
+scripted_gui = {
+
+	DVE_intl_member_ui = {
+		context_type = decision_category
+		window_name = "DVE_intl_member_window"
+
+		visible = {
+			DVE_intl_is_member = yes
+		}
+
+		triggers = {
+			# the member states vote only on admissions
+			dve_intl_vote_yes_button_visible = {
+				has_global_flag = DVE_intl_vote_in_progress
+				check_variable = { global.DVE_intl_motion = 10 }
+			}
+			dve_intl_vote_no_button_visible = {
+				has_global_flag = DVE_intl_vote_in_progress
+				check_variable = { global.DVE_intl_motion = 10 }
+			}
+			dve_intl_vote_yes_button_click_enabled = { NOT = { check_variable = { DVE_intl_vote = 2 } } }
+			dve_intl_vote_no_button_click_enabled = { NOT = { check_variable = { DVE_intl_vote = 3 } } }
+		}
+
+		effects = {
+			dve_intl_vote_yes_button_click = {
+				set_variable = { DVE_intl_vote = 2 }
+				DVE_intl_tally_effect = yes
+			}
+			dve_intl_vote_no_button_click = {
+				set_variable = { DVE_intl_vote = 3 }
+				DVE_intl_tally_effect = yes
+			}
+		}
+
+		properties = {
+			dve_intl_hemicycle_1 = { frame = global.DVE_intl_frame_1 }
+			dve_intl_hemicycle_2 = { frame = global.DVE_intl_frame_2 }
+			dve_intl_hemicycle_3 = { frame = global.DVE_intl_frame_3 }
+			dve_intl_hemicycle_4 = { frame = global.DVE_intl_frame_4 }
+			dve_intl_hemicycle_5 = { frame = global.DVE_intl_frame_5 }
+			dve_intl_mark_van = { frame = global.DVE_intl_cv_van }
+			dve_intl_mark_rev = { frame = global.DVE_intl_cv_rev }
+			dve_intl_mark_aut = { frame = global.DVE_intl_cv_aut }
+			dve_intl_mark_tot = { frame = global.DVE_intl_cv_tot }
+			dve_intl_mark_pro = { frame = global.DVE_intl_cv_pro }
+			dve_intl_mark_ana = { frame = global.DVE_intl_cv_ana }
+			dve_intl_entry_flag = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame = { frame = This.DVE_intl_vote }
+		}
+
+		dynamic_lists = {
+			dve_intl_members_grid = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry"
+			}
+		}
+	}
+
+	DVE_intl_applicant_ui = {
+		context_type = decision_category
+		window_name = "DVE_intl_applicant_window"
+
+		visible = {
+			DVE_intl_is_applicant = yes
+		}
+
+		properties = {
+			dve_intl_hemicycle_1 = { frame = global.DVE_intl_frame_1 }
+			dve_intl_hemicycle_2 = { frame = global.DVE_intl_frame_2 }
+			dve_intl_hemicycle_3 = { frame = global.DVE_intl_frame_3 }
+			dve_intl_hemicycle_4 = { frame = global.DVE_intl_frame_4 }
+			dve_intl_hemicycle_5 = { frame = global.DVE_intl_frame_5 }
+			dve_intl_mark_van = { frame = global.DVE_intl_cv_van }
+			dve_intl_mark_rev = { frame = global.DVE_intl_cv_rev }
+			dve_intl_mark_aut = { frame = global.DVE_intl_cv_aut }
+			dve_intl_mark_tot = { frame = global.DVE_intl_cv_tot }
+			dve_intl_mark_pro = { frame = global.DVE_intl_cv_pro }
+			dve_intl_mark_ana = { frame = global.DVE_intl_cv_ana }
+			dve_intl_entry_flag = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame = { frame = This.DVE_intl_vote }
+		}
+
+		dynamic_lists = {
+			dve_intl_members_grid = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry"
+			}
+		}
+	}
+}

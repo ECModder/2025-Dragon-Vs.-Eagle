@@ -1,0 +1,44 @@
+# DvE - The International hooks. on_weekly runs for every country, in its scope.
+on_actions = {
+	on_weekly = {
+		effect = {
+			# INT founds the International as soon as it exists.
+			if = {
+				limit = {
+					tag = INT
+					NOT = { has_global_flag = DVE_intl_founded }
+				}
+				DVE_intl_found_effect = yes
+			}
+			else_if = {
+				limit = { has_global_flag = DVE_intl_founded }
+				# INT's subjects sit in the International by right.
+				if = {
+					limit = { is_subject_of = INT }
+					DVE_intl_subject_join_effect = yes
+				}
+				# The chair keeps the member list and the seats up to date.
+				if = {
+					limit = {
+						has_country_flag = DVE_intl_member
+						NOT = { has_global_flag = DVE_intl_vote_in_progress }
+						OR = {
+							tag = INT
+							NOT = { country_exists = INT }
+						}
+					}
+					DVE_intl_refresh_members_effect = yes
+				}
+				# The faction "The International": INT leads it, every member sits in it.
+				if = {
+					limit = { tag = INT }
+					DVE_intl_ensure_faction_effect = yes
+				}
+				else_if = {
+					limit = { has_country_flag = DVE_intl_member }
+					DVE_intl_enter_faction_effect = yes
+				}
+			}
+		}
+	}
+}

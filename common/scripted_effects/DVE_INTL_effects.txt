@@ -1,0 +1,717 @@
+# ============================================================
+#   DvE - THE INTERNATIONAL
+#   The organization of the socialist states led by INT.
+#   Members: flag DVE_intl_member, listed in the global array
+#   DVE_intl_members (drawn as flags in the panel). Each member
+#   holds seats in the Central Council (DVE_intl_seats, out of
+#   1000, by industry) and a standing (DVE_intl_standing, 0-100).
+#   Motions are voted by the CURRENTS of the Council, each with
+#   its seats (global.DVE_intl_cv_<current>: 1 no vote, 2 in
+#   favour, 3 against). Admissions are voted by the MEMBER
+#   STATES, one vote each (DVE_intl_vote, same values, drives the
+#   frame around each flag); INT has 5 votes and a veto.
+# ============================================================
+
+# INT founds the International and chairs it.
+DVE_intl_found_effect = {
+	set_global_flag = DVE_intl_founded
+	set_variable = { global.DVE_intl_motion = 0 }
+	set_variable = { global.DVE_intl_result = 0 }
+	DVE_intl_clear_current_votes_effect = yes
+	set_variable = { DVE_intl_standing = 60 }
+	DVE_intl_ensure_faction_effect = yes
+	DVE_intl_join_effect = yes
+}
+
+# INT leads the faction "The International". Scope: INT.
+DVE_intl_ensure_faction_effect = {
+	if = {
+		limit = {
+			is_in_faction = yes
+			NOT = { is_faction_leader = yes }
+		}
+		leave_faction = yes
+	}
+	if = {
+		limit = { is_in_faction = no }
+		create_faction_from_template = faction_template_internationale
+	}
+	# a faction INT already led keeps its members but takes the name (once)
+	if = {
+		limit = {
+			is_faction_leader = yes
+			NOT = { has_country_flag = DVE_intl_faction_named }
+		}
+		set_country_flag = DVE_intl_faction_named
+		set_faction_name = DVE_FACTION_THE_INTERNATIONAL
+	}
+}
+
+# A member of the International sits in INT's faction. Scope: the member.
+DVE_intl_enter_faction_effect = {
+	if = {
+		limit = {
+			NOT = { tag = INT }
+			country_exists = INT
+			INT = { is_faction_leader = yes }
+			NOT = { is_in_faction_with = INT }
+		}
+		if = {
+			limit = { is_in_faction = yes }
+			leave_faction = yes
+		}
+		INT = { add_to_faction = PREV }
+	}
+}
+
+# Runs in the new member's scope.
+DVE_intl_join_effect = {
+	set_country_flag = DVE_intl_member
+	set_variable = { DVE_intl_vote = 1 }
+	add_ideas = DVE_intl_member_spirit
+	DVE_intl_enter_faction_effect = yes
+	hidden_effect = {
+		if = {
+			limit = { check_variable = { DVE_intl_standing < 20 } }
+			set_variable = { DVE_intl_standing = 20 }
+		}
+		DVE_intl_refresh_members_effect = yes
+	}
+}
+
+# A state made a puppet of INT (focus tree, weekly check) becomes a member
+# at once. Scope: the new subject.
+DVE_intl_subject_join_effect = {
+	if = {
+		limit = {
+			has_global_flag = DVE_intl_founded
+			NOT = { has_country_flag = DVE_intl_member }
+			DVE_intl_can_join = yes
+		}
+		DVE_intl_join_effect = yes
+		if = {
+			limit = { is_ai = no }
+			country_event = { id = dve_intl.5 }
+		}
+	}
+}
+
+# Rebuilds the member list and recounts the seats.
+DVE_intl_refresh_members_effect = {
+	clear_array = global.DVE_intl_members
+	set_variable = { global.DVE_intl_weight_total = 0 }
+	every_country = {
+		limit = { has_country_flag = DVE_intl_member }
+		add_to_array = { global.DVE_intl_members = THIS }
+		# weight: industry, with a floor so small members still count
+		set_variable = { DVE_intl_weight = num_of_factories }
+		add_to_variable = { DVE_intl_weight = 5 }
+		add_to_variable = { global.DVE_intl_weight_total = DVE_intl_weight }
+		if = {
+			limit = { check_variable = { DVE_intl_vote < 1 } }
+			set_variable = { DVE_intl_vote = 1 }
+		}
+		# admission votes: one per state, five for the chair
+		set_variable = { DVE_intl_votes = 1 }
+		if = {
+			limit = { tag = INT }
+			set_variable = { DVE_intl_votes = 5 }
+		}
+	}
+
+	# seats of each member, and of each current by party popularity
+	set_variable = { global.DVE_intl_fs_tot = 0 }
+	set_variable = { global.DVE_intl_fs_aut = 0 }
+	set_variable = { global.DVE_intl_fs_van = 0 }
+	set_variable = { global.DVE_intl_fs_rev = 0 }
+	set_variable = { global.DVE_intl_fs_pro = 0 }
+	for_each_scope_loop = {
+		array = global.DVE_intl_members
+		set_variable = { DVE_intl_seats = DVE_intl_weight }
+		multiply_variable = { DVE_intl_seats = 1000 }
+		divide_variable = { DVE_intl_seats = global.DVE_intl_weight_total }
+		round_variable = DVE_intl_seats
+		set_temp_variable = { dve_t = party_popularity_100@totalitarian_socialism }
+		multiply_temp_variable = { dve_t = DVE_intl_seats }
+		add_to_variable = { global.DVE_intl_fs_tot = dve_t }
+		set_temp_variable = { dve_t = party_popularity_100@authoritarian_socialism }
+		multiply_temp_variable = { dve_t = DVE_intl_seats }
+		add_to_variable = { global.DVE_intl_fs_aut = dve_t }
+		set_temp_variable = { dve_t = party_popularity_100@vanguard_socialism }
+		multiply_temp_variable = { dve_t = DVE_intl_seats }
+		add_to_variable = { global.DVE_intl_fs_van = dve_t }
+		set_temp_variable = { dve_t = party_popularity_100@revolutionary_socialism }
+		multiply_temp_variable = { dve_t = DVE_intl_seats }
+		add_to_variable = { global.DVE_intl_fs_rev = dve_t }
+		set_temp_variable = { dve_t = party_popularity_100@progressive }
+		multiply_temp_variable = { dve_t = DVE_intl_seats }
+		add_to_variable = { global.DVE_intl_fs_pro = dve_t }
+	}
+
+	# currents rescaled to 999 seats (the Anarcho-Communists always hold 1)
+	set_temp_variable = { dve_sum = 0 }
+	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_tot }
+	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_aut }
+	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_van }
+	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_rev }
+	add_to_temp_variable = { dve_sum = global.DVE_intl_fs_pro }
+	if = {
+		limit = { check_variable = { dve_sum < 1 } }
+		set_variable = { global.DVE_intl_fs_van = 1 }
+		set_temp_variable = { dve_sum = 1 }
+	}
+	multiply_variable = { global.DVE_intl_fs_tot = 999 }
+	divide_variable = { global.DVE_intl_fs_tot = dve_sum }
+	round_variable = global.DVE_intl_fs_tot
+	multiply_variable = { global.DVE_intl_fs_aut = 999 }
+	divide_variable = { global.DVE_intl_fs_aut = dve_sum }
+	round_variable = global.DVE_intl_fs_aut
+	multiply_variable = { global.DVE_intl_fs_van = 999 }
+	divide_variable = { global.DVE_intl_fs_van = dve_sum }
+	round_variable = global.DVE_intl_fs_van
+	multiply_variable = { global.DVE_intl_fs_rev = 999 }
+	divide_variable = { global.DVE_intl_fs_rev = dve_sum }
+	round_variable = global.DVE_intl_fs_rev
+	set_variable = { global.DVE_intl_fs_pro = 999 }
+	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_tot }
+	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_aut }
+	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_van }
+	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_rev }
+	clamp_variable = { var = global.DVE_intl_fs_pro min = 0 }
+
+	# hemicycle: each layer is filled up to the cumulative share
+	set_temp_variable = { dve_cum = 0 }
+	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_tot }
+	set_variable = { global.DVE_intl_frame_1 = dve_cum }
+	multiply_variable = { global.DVE_intl_frame_1 = 25 }
+	divide_variable = { global.DVE_intl_frame_1 = 1000 }
+	round_variable = global.DVE_intl_frame_1
+	add_to_variable = { global.DVE_intl_frame_1 = 1 }
+	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_aut }
+	set_variable = { global.DVE_intl_frame_2 = dve_cum }
+	multiply_variable = { global.DVE_intl_frame_2 = 25 }
+	divide_variable = { global.DVE_intl_frame_2 = 1000 }
+	round_variable = global.DVE_intl_frame_2
+	add_to_variable = { global.DVE_intl_frame_2 = 1 }
+	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_van }
+	set_variable = { global.DVE_intl_frame_3 = dve_cum }
+	multiply_variable = { global.DVE_intl_frame_3 = 25 }
+	divide_variable = { global.DVE_intl_frame_3 = 1000 }
+	round_variable = global.DVE_intl_frame_3
+	add_to_variable = { global.DVE_intl_frame_3 = 1 }
+	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_rev }
+	set_variable = { global.DVE_intl_frame_4 = dve_cum }
+	multiply_variable = { global.DVE_intl_frame_4 = 25 }
+	divide_variable = { global.DVE_intl_frame_4 = 1000 }
+	round_variable = global.DVE_intl_frame_4
+	add_to_variable = { global.DVE_intl_frame_4 = 1 }
+	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_pro }
+	set_variable = { global.DVE_intl_frame_5 = dve_cum }
+	multiply_variable = { global.DVE_intl_frame_5 = 25 }
+	divide_variable = { global.DVE_intl_frame_5 = 1000 }
+	round_variable = global.DVE_intl_frame_5
+	add_to_variable = { global.DVE_intl_frame_5 = 1 }
+	set_variable = { global.DVE_intl_frame_5 = 26 }
+
+	DVE_intl_tally_effect = yes
+}
+
+# In favour and against so far: member votes for an admission,
+# seats of the currents for any other motion.
+DVE_intl_tally_effect = {
+	set_variable = { global.DVE_intl_yes = 0 }
+	set_variable = { global.DVE_intl_no = 0 }
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 10 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			if = {
+				limit = { check_variable = { DVE_intl_vote = 2 } }
+				add_to_variable = { global.DVE_intl_yes = DVE_intl_votes }
+			}
+			else_if = {
+				limit = { check_variable = { DVE_intl_vote = 3 } }
+				add_to_variable = { global.DVE_intl_no = DVE_intl_votes }
+			}
+		}
+	}
+	else = {
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_tot = 2 } }
+			add_to_variable = { global.DVE_intl_yes = global.DVE_intl_fs_tot }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_tot = 3 } }
+			add_to_variable = { global.DVE_intl_no = global.DVE_intl_fs_tot }
+		}
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_aut = 2 } }
+			add_to_variable = { global.DVE_intl_yes = global.DVE_intl_fs_aut }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_aut = 3 } }
+			add_to_variable = { global.DVE_intl_no = global.DVE_intl_fs_aut }
+		}
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_van = 2 } }
+			add_to_variable = { global.DVE_intl_yes = global.DVE_intl_fs_van }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_van = 3 } }
+			add_to_variable = { global.DVE_intl_no = global.DVE_intl_fs_van }
+		}
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_rev = 2 } }
+			add_to_variable = { global.DVE_intl_yes = global.DVE_intl_fs_rev }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_rev = 3 } }
+			add_to_variable = { global.DVE_intl_no = global.DVE_intl_fs_rev }
+		}
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_pro = 2 } }
+			add_to_variable = { global.DVE_intl_yes = global.DVE_intl_fs_pro }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_pro = 3 } }
+			add_to_variable = { global.DVE_intl_no = global.DVE_intl_fs_pro }
+		}
+		# the single Anarcho-Communist delegate
+		if = {
+			limit = { check_variable = { global.DVE_intl_cv_ana = 2 } }
+			add_to_variable = { global.DVE_intl_yes = 1 }
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_cv_ana = 3 } }
+			add_to_variable = { global.DVE_intl_no = 1 }
+		}
+	}
+}
+
+DVE_intl_clear_current_votes_effect = {
+	set_variable = { global.DVE_intl_cv_tot = 1 }
+	set_variable = { global.DVE_intl_cv_aut = 1 }
+	set_variable = { global.DVE_intl_cv_van = 1 }
+	set_variable = { global.DVE_intl_cv_rev = 1 }
+	set_variable = { global.DVE_intl_cv_pro = 1 }
+	set_variable = { global.DVE_intl_cv_ana = 1 }
+}
+
+# How the currents vote on a motion. Scope: the proposer.
+# A current follows the motion's leaning, the proposer's standing
+# and, above all, whether the proposer's government is its own.
+DVE_intl_cast_current_votes_effect = {
+	set_temp_variable = { dve_bonus = DVE_intl_standing }
+	multiply_temp_variable = { dve_bonus = 0.003 }
+
+	# Neo-Communists
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		set_temp_variable = { dve_chance = 0.75 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		set_temp_variable = { dve_chance = 0.35 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		set_temp_variable = { dve_chance = 0.2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.55 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		set_temp_variable = { dve_chance = 0.5 }
+	}
+	add_to_temp_variable = { dve_chance = dve_bonus }
+	if = {
+		limit = { has_government = totalitarian_socialism }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { global.DVE_intl_cv_tot = 2 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_cv_tot = 3 }
+	}
+
+	# Orthodox Marxists
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		set_temp_variable = { dve_chance = 0.75 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		set_temp_variable = { dve_chance = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		set_temp_variable = { dve_chance = 0.35 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		set_temp_variable = { dve_chance = 0.45 }
+	}
+	add_to_temp_variable = { dve_chance = dve_bonus }
+	if = {
+		limit = { has_government = authoritarian_socialism }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { global.DVE_intl_cv_aut = 2 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_cv_aut = 3 }
+	}
+
+	# Leninists
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		set_temp_variable = { dve_chance = 0.55 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		set_temp_variable = { dve_chance = 0.5 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		set_temp_variable = { dve_chance = 0.55 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.65 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		set_temp_variable = { dve_chance = 0.6 }
+	}
+	add_to_temp_variable = { dve_chance = dve_bonus }
+	if = {
+		limit = { has_government = vanguard_socialism }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { global.DVE_intl_cv_van = 2 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_cv_van = 3 }
+	}
+
+	# Trotskyists
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		set_temp_variable = { dve_chance = 0.4 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		set_temp_variable = { dve_chance = 0.55 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		set_temp_variable = { dve_chance = 0.75 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.75 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		set_temp_variable = { dve_chance = 0.7 }
+	}
+	add_to_temp_variable = { dve_chance = dve_bonus }
+	if = {
+		limit = { has_government = revolutionary_socialism }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { global.DVE_intl_cv_rev = 2 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_cv_rev = 3 }
+	}
+
+	# Left Communists
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		set_temp_variable = { dve_chance = 0.3 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		set_temp_variable = { dve_chance = 0.7 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		set_temp_variable = { dve_chance = 0.65 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.25 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		set_temp_variable = { dve_chance = 0.3 }
+	}
+	add_to_temp_variable = { dve_chance = dve_bonus }
+	if = {
+		limit = { has_government = progressive }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { global.DVE_intl_cv_pro = 2 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_cv_pro = 3 }
+	}
+	# the Anarcho-Communist delegate votes against, as always
+	set_variable = { global.DVE_intl_cv_ana = 3 }
+}
+
+# Changes the standing by the temp variable dve_intl_delta.
+DVE_intl_change_standing_effect = {
+	add_to_variable = { DVE_intl_standing = dve_intl_delta }
+	clamp_variable = { var = DVE_intl_standing min = 0 max = 100 }
+}
+
+# Puts a motion on the floor. Scope: the proposer (for an admission,
+# the applicant). The motion id comes in the temp variable dve_intl_motion_id.
+DVE_intl_start_vote_effect = {
+	set_variable = { global.DVE_intl_motion = dve_intl_motion_id }
+	set_variable = { global.DVE_intl_result = 1 }
+	set_global_flag = { flag = DVE_intl_vote_in_progress value = 1 days = 21 }
+	save_global_event_target_as = DVE_intl_proposer
+	set_variable = { global.DVE_intl_proposer_standing = DVE_intl_standing }
+
+	DVE_intl_clear_current_votes_effect = yes
+	for_each_scope_loop = {
+		array = global.DVE_intl_members
+		set_variable = { DVE_intl_vote = 1 }
+	}
+	if = {
+		# admission: the member states vote
+		limit = { check_variable = { global.DVE_intl_motion = 10 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			if = {
+				limit = { is_ai = yes }
+				DVE_intl_cast_ai_vote_effect = yes
+			}
+			else = {
+				country_event = { id = dve_intl.3 }
+			}
+		}
+	}
+	else = {
+		# any other motion: the currents vote
+		DVE_intl_cast_current_votes_effect = yes
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			if = {
+				limit = { is_ai = no NOT = { tag = event_target:DVE_intl_proposer } }
+				country_event = { id = dve_intl.4 }
+			}
+		}
+	}
+	DVE_intl_tally_effect = yes
+
+	# The count is in a week; the chair holds the clock.
+	if = {
+		limit = { country_exists = INT }
+		INT = { country_event = { id = dve_intl.1 days = 7 } }
+	}
+	else = {
+		country_event = { id = dve_intl.1 days = 7 }
+	}
+}
+
+# How an AI member votes on an admission. Scope: the member.
+# The applicant is event_target:DVE_intl_proposer.
+DVE_intl_cast_ai_vote_effect = {
+	set_temp_variable = { dve_chance = 0.30 }
+	set_temp_variable = { dve_t = global.DVE_intl_proposer_standing }
+	multiply_temp_variable = { dve_t = 0.006 }
+	add_to_temp_variable = { dve_chance = dve_t }
+
+	if = {
+		limit = { DVE_intl_same_current_as_proposer = yes }
+		add_to_temp_variable = { dve_chance = 0.15 }
+	}
+	else = {
+		add_to_temp_variable = { dve_chance = -0.10 }
+	}
+	if = {
+		limit = { has_opinion = { target = event_target:DVE_intl_proposer value > 30 } }
+		add_to_temp_variable = { dve_chance = 0.10 }
+	}
+	else_if = {
+		limit = { has_opinion = { target = event_target:DVE_intl_proposer value < -10 } }
+		add_to_temp_variable = { dve_chance = -0.20 }
+	}
+	# a subject follows its overlord, and nobody votes for an enemy
+	if = {
+		limit = { is_subject_of = event_target:DVE_intl_proposer }
+		set_temp_variable = { dve_chance = 1 }
+	}
+	if = {
+		limit = { has_war_with = event_target:DVE_intl_proposer }
+		set_temp_variable = { dve_chance = 0 }
+	}
+
+	set_temp_variable = { dve_roll = random }
+	if = {
+		limit = { check_variable = { dve_roll < dve_chance } }
+		set_variable = { DVE_intl_vote = 2 }
+	}
+	else = {
+		set_variable = { DVE_intl_vote = 3 }
+	}
+}
+
+# The count (from dve_intl.1). More in favour than against carries it.
+DVE_intl_resolve_vote_effect = {
+	if = {
+		limit = { check_variable = { global.DVE_intl_result = 1 } }
+		DVE_intl_refresh_members_effect = yes
+		if = {
+			# INT's veto, on admissions only
+			limit = {
+				check_variable = { global.DVE_intl_motion = 10 }
+				country_exists = INT
+				INT = {
+					has_country_flag = DVE_intl_member
+					check_variable = { DVE_intl_vote = 3 }
+				}
+			}
+			set_variable = { global.DVE_intl_result = 4 }
+			DVE_intl_motion_rejected_effect = yes
+		}
+		else_if = {
+			limit = { check_variable = { global.DVE_intl_yes > global.DVE_intl_no } }
+			set_variable = { global.DVE_intl_result = 2 }
+			DVE_intl_motion_passed_effect = yes
+		}
+		else = {
+			set_variable = { global.DVE_intl_result = 3 }
+			DVE_intl_motion_rejected_effect = yes
+		}
+		clr_global_flag = DVE_intl_vote_in_progress
+		set_global_flag = { flag = DVE_intl_session_cooldown value = 1 days = 30 }
+
+		# the result, to every human member and to the proposer
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			if = {
+				limit = { is_ai = no }
+				country_event = { id = dve_intl.2 }
+			}
+		}
+		event_target:DVE_intl_proposer = {
+			if = {
+				limit = { is_ai = no NOT = { has_country_flag = DVE_intl_member } }
+				country_event = { id = dve_intl.2 }
+			}
+		}
+	}
+}
+
+DVE_intl_motion_passed_effect = {
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 1 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			add_timed_idea = { idea = DVE_intl_common_plan days = 365 }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 2 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			if = {
+				limit = { NOT = { tag = event_target:DVE_intl_proposer } }
+				add_political_power = -10
+			}
+		}
+		event_target:DVE_intl_proposer = {
+			add_political_power = 100
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 }
+			add_equipment_to_stockpile = { type = support_equipment amount = 300 }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 3 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			add_timed_idea = { idea = DVE_intl_open_borders days = 365 }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		for_each_scope_loop = {
+			array = global.DVE_intl_members
+			add_timed_idea = { idea = DVE_intl_mobilization days = 180 }
+		}
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 5 } }
+		event_target:DVE_intl_proposer = { DVE_intl_red_helmets_effect = yes }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 10 } }
+		event_target:DVE_intl_proposer = { DVE_intl_join_effect = yes }
+	}
+}
+
+# Only a rejected admission has consequences.
+DVE_intl_motion_rejected_effect = {
+	if = {
+		limit = { check_variable = { global.DVE_intl_motion = 10 } }
+		event_target:DVE_intl_proposer = {
+			set_country_flag = { flag = DVE_intl_application_cooldown days = 180 value = 1 }
+			set_temp_variable = { dve_intl_delta = -20 }
+			DVE_intl_change_standing_effect = yes
+		}
+	}
+}
+
+# The International's own brigades, for the member that asked.
+DVE_intl_red_helmets_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Red Helmets" } }
+			division_template = {
+				name = "Red Helmets"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	capital_scope = {
+		create_unit = {
+			division = "name = \"Red Helmets\" division_template = \"Red Helmets\" start_experience_factor = 0.50 start_equipment_factor = 1.00"
+			owner = PREV
+			count = 6
+			allow_spawning_on_enemy_provs = yes
+		}
+	}
+	add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
+}
