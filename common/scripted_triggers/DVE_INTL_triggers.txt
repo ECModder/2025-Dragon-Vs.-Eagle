@@ -36,3 +36,17 @@ DVE_intl_same_current_as_proposer = {
 		AND = { has_government = progressive event_target:DVE_intl_proposer = { has_government = progressive } }
 	}
 }
+
+# A communist faction of a civil war that INT can back with
+# DVE_intl_back_faction_effect. Scope: the faction.
+DVE_intl_backable_faction = {
+	exists = yes
+	is_subject = no
+	NOT = { has_war_with = INT }
+	OR = {
+		has_government = vanguard_socialism
+		has_government = revolutionary_socialism
+		has_government = authoritarian_socialism
+		has_government = totalitarian_socialism
+	}
+}

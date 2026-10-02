@@ -96,13 +96,46 @@ DVE_intl_subject_join_effect = {
 	}
 }
 
+# INT backs a communist faction of a civil war (INT's "Leninist <country>"
+# focuses). Scope: the faction. It joins the International and INT's
+# faction, and INT joins every war it is fighting.
+DVE_intl_back_faction_effect = {
+	if = {
+		limit = {
+			country_exists = INT
+			NOT = { tag = INT }
+		}
+		INT = { DVE_intl_ensure_faction_effect = yes }
+		DVE_intl_subject_join_effect = yes
+		# in the faction even if it cannot sit in the International
+		DVE_intl_enter_faction_effect = yes
+		every_enemy_country = {
+			limit = {
+				NOT = { tag = INT }
+				NOT = { has_war_with = INT }
+				NOT = { is_in_faction_with = INT }
+				NOT = { is_subject_of = INT }
+			}
+			INT = {
+				add_to_war = {
+					targeted_alliance = PREV.PREV
+					enemy = PREV
+					hostility_reason = asked_to_join
+				}
+			}
+		}
+	}
+}
+
 # Rebuilds the member list and recounts the seats.
 DVE_intl_refresh_members_effect = {
 	clear_array = global.DVE_intl_members
 	set_variable = { global.DVE_intl_weight_total = 0 }
+	set_variable = { global.DVE_intl_member_count = 0 }
 	every_country = {
 		limit = { has_country_flag = DVE_intl_member }
 		add_to_array = { global.DVE_intl_members = THIS }
+		add_to_variable = { global.DVE_intl_member_count = 1 }
 		# weight: industry, with a floor so small members still count
 		set_variable = { DVE_intl_weight = num_of_factories }
 		add_to_variable = { DVE_intl_weight = 5 }
@@ -117,6 +150,27 @@ DVE_intl_refresh_members_effect = {
 			limit = { tag = INT }
 			set_variable = { DVE_intl_votes = 5 }
 		}
+	}
+
+	# size of the flags in the panel: 1 is the largest, 5 the smallest
+	if = {
+		limit = { check_variable = { global.DVE_intl_member_count < 6 } }
+		set_variable = { global.DVE_intl_flag_tier = 1 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_member_count < 21 } }
+		set_variable = { global.DVE_intl_flag_tier = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_member_count < 46 } }
+		set_variable = { global.DVE_intl_flag_tier = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { global.DVE_intl_member_count < 81 } }
+		set_variable = { global.DVE_intl_flag_tier = 4 }
+	}
+	else = {
+		set_variable = { global.DVE_intl_flag_tier = 5 }
 	}
 
 	# seats of each member, and of each current by party popularity
@@ -205,39 +259,87 @@ DVE_intl_refresh_members_effect = {
 	subtract_from_variable = { global.DVE_intl_fs_pro = global.DVE_intl_fs_rev }
 	clamp_variable = { var = global.DVE_intl_fs_pro min = 0 }
 
-	# hemicycle: each layer is filled up to the cumulative share
+	# hemicycle: 300 dots in 4 wedges of 75. A current's layer is filled up
+	# to the cumulative seats of the currents before and including it, so
+	# wedge W of layer L shows frame clamp(dots - 75 * (W - 1), 0, 75) + 1.
+	# The last current is the static base under the four layers.
 	set_temp_variable = { dve_cum = 0 }
 	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_tot }
-	set_variable = { global.DVE_intl_frame_1 = dve_cum }
-	multiply_variable = { global.DVE_intl_frame_1 = 25 }
-	divide_variable = { global.DVE_intl_frame_1 = 1000 }
-	round_variable = global.DVE_intl_frame_1
-	add_to_variable = { global.DVE_intl_frame_1 = 1 }
+	set_temp_variable = { dve_dots = dve_cum }
+	multiply_temp_variable = { dve_dots = 0.3 }
+	round_temp_variable = dve_dots
+	set_variable = { global.DVE_intl_hf_1_1 = dve_dots }
+	clamp_variable = { var = global.DVE_intl_hf_1_1 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_1_1 = 1 }
+	set_variable = { global.DVE_intl_hf_1_2 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_1_2 = 75 }
+	clamp_variable = { var = global.DVE_intl_hf_1_2 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_1_2 = 1 }
+	set_variable = { global.DVE_intl_hf_1_3 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_1_3 = 150 }
+	clamp_variable = { var = global.DVE_intl_hf_1_3 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_1_3 = 1 }
+	set_variable = { global.DVE_intl_hf_1_4 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_1_4 = 225 }
+	clamp_variable = { var = global.DVE_intl_hf_1_4 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_1_4 = 1 }
 	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_aut }
-	set_variable = { global.DVE_intl_frame_2 = dve_cum }
-	multiply_variable = { global.DVE_intl_frame_2 = 25 }
-	divide_variable = { global.DVE_intl_frame_2 = 1000 }
-	round_variable = global.DVE_intl_frame_2
-	add_to_variable = { global.DVE_intl_frame_2 = 1 }
+	set_temp_variable = { dve_dots = dve_cum }
+	multiply_temp_variable = { dve_dots = 0.3 }
+	round_temp_variable = dve_dots
+	set_variable = { global.DVE_intl_hf_2_1 = dve_dots }
+	clamp_variable = { var = global.DVE_intl_hf_2_1 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_2_1 = 1 }
+	set_variable = { global.DVE_intl_hf_2_2 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_2_2 = 75 }
+	clamp_variable = { var = global.DVE_intl_hf_2_2 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_2_2 = 1 }
+	set_variable = { global.DVE_intl_hf_2_3 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_2_3 = 150 }
+	clamp_variable = { var = global.DVE_intl_hf_2_3 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_2_3 = 1 }
+	set_variable = { global.DVE_intl_hf_2_4 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_2_4 = 225 }
+	clamp_variable = { var = global.DVE_intl_hf_2_4 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_2_4 = 1 }
 	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_van }
-	set_variable = { global.DVE_intl_frame_3 = dve_cum }
-	multiply_variable = { global.DVE_intl_frame_3 = 25 }
-	divide_variable = { global.DVE_intl_frame_3 = 1000 }
-	round_variable = global.DVE_intl_frame_3
-	add_to_variable = { global.DVE_intl_frame_3 = 1 }
+	set_temp_variable = { dve_dots = dve_cum }
+	multiply_temp_variable = { dve_dots = 0.3 }
+	round_temp_variable = dve_dots
+	set_variable = { global.DVE_intl_hf_3_1 = dve_dots }
+	clamp_variable = { var = global.DVE_intl_hf_3_1 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_3_1 = 1 }
+	set_variable = { global.DVE_intl_hf_3_2 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_3_2 = 75 }
+	clamp_variable = { var = global.DVE_intl_hf_3_2 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_3_2 = 1 }
+	set_variable = { global.DVE_intl_hf_3_3 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_3_3 = 150 }
+	clamp_variable = { var = global.DVE_intl_hf_3_3 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_3_3 = 1 }
+	set_variable = { global.DVE_intl_hf_3_4 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_3_4 = 225 }
+	clamp_variable = { var = global.DVE_intl_hf_3_4 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_3_4 = 1 }
 	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_rev }
-	set_variable = { global.DVE_intl_frame_4 = dve_cum }
-	multiply_variable = { global.DVE_intl_frame_4 = 25 }
-	divide_variable = { global.DVE_intl_frame_4 = 1000 }
-	round_variable = global.DVE_intl_frame_4
-	add_to_variable = { global.DVE_intl_frame_4 = 1 }
-	add_to_temp_variable = { dve_cum = global.DVE_intl_fs_pro }
-	set_variable = { global.DVE_intl_frame_5 = dve_cum }
-	multiply_variable = { global.DVE_intl_frame_5 = 25 }
-	divide_variable = { global.DVE_intl_frame_5 = 1000 }
-	round_variable = global.DVE_intl_frame_5
-	add_to_variable = { global.DVE_intl_frame_5 = 1 }
-	set_variable = { global.DVE_intl_frame_5 = 26 }
+	set_temp_variable = { dve_dots = dve_cum }
+	multiply_temp_variable = { dve_dots = 0.3 }
+	round_temp_variable = dve_dots
+	set_variable = { global.DVE_intl_hf_4_1 = dve_dots }
+	clamp_variable = { var = global.DVE_intl_hf_4_1 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_4_1 = 1 }
+	set_variable = { global.DVE_intl_hf_4_2 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_4_2 = 75 }
+	clamp_variable = { var = global.DVE_intl_hf_4_2 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_4_2 = 1 }
+	set_variable = { global.DVE_intl_hf_4_3 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_4_3 = 150 }
+	clamp_variable = { var = global.DVE_intl_hf_4_3 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_4_3 = 1 }
+	set_variable = { global.DVE_intl_hf_4_4 = dve_dots }
+	subtract_from_variable = { global.DVE_intl_hf_4_4 = 225 }
+	clamp_variable = { var = global.DVE_intl_hf_4_4 min = 0 max = 75 }
+	add_to_variable = { global.DVE_intl_hf_4_4 = 1 }
 
 	DVE_intl_tally_effect = yes
 }
@@ -370,39 +472,43 @@ DVE_intl_clear_current_votes_effect = {
 }
 
 # How the currents vote on a motion. Scope: the proposer.
-# A current follows the motion's leaning, the proposer's standing
-# and, above all, whether the proposer's government is its own.
+# The Leninists are the constructive centre of the Council; the
+# Neo-Communists and the Left Communists are its two oppositions:
+# low chances, half the standing bonus, and only a bonus (not a
+# sure yes) when the proposer's government is their own.
 DVE_intl_cast_current_votes_effect = {
 	set_temp_variable = { dve_bonus = DVE_intl_standing }
 	multiply_temp_variable = { dve_bonus = 0.003 }
+	set_temp_variable = { dve_half_bonus = dve_bonus }
+	multiply_temp_variable = { dve_half_bonus = 0.5 }
 
 	# Neo-Communists
 	if = {
 		limit = { check_variable = { global.DVE_intl_motion = 1 } }
-		set_temp_variable = { dve_chance = 0.75 }
+		set_temp_variable = { dve_chance = 0.4 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 2 } }
-		set_temp_variable = { dve_chance = 0.35 }
+		set_temp_variable = { dve_chance = 0.25 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 3 } }
-		set_temp_variable = { dve_chance = 0.2 }
+		set_temp_variable = { dve_chance = 0.15 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 4 } }
-		set_temp_variable = { dve_chance = 0.55 }
+		set_temp_variable = { dve_chance = 0.35 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 5 } }
-		set_temp_variable = { dve_chance = 0.5 }
+		set_temp_variable = { dve_chance = 0.3 }
 	}
-	add_to_temp_variable = { dve_chance = dve_bonus }
+	add_to_temp_variable = { dve_chance = dve_half_bonus }
 	if = {
 		limit = { has_government = totalitarian_socialism }
-		set_temp_variable = { dve_chance = 1 }
+		add_to_temp_variable = { dve_chance = 0.3 }
 	}
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { global.DVE_intl_cv_tot = 2 }
@@ -414,30 +520,30 @@ DVE_intl_cast_current_votes_effect = {
 	# Orthodox Marxists
 	if = {
 		limit = { check_variable = { global.DVE_intl_motion = 1 } }
-		set_temp_variable = { dve_chance = 0.75 }
+		set_temp_variable = { dve_chance = 0.7 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 2 } }
-		set_temp_variable = { dve_chance = 0.5 }
+		set_temp_variable = { dve_chance = 0.6 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 3 } }
-		set_temp_variable = { dve_chance = 0.35 }
-	}
-	else_if = {
-		limit = { check_variable = { global.DVE_intl_motion = 4 } }
 		set_temp_variable = { dve_chance = 0.5 }
 	}
 	else_if = {
+		limit = { check_variable = { global.DVE_intl_motion = 4 } }
+		set_temp_variable = { dve_chance = 0.6 }
+	}
+	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 5 } }
-		set_temp_variable = { dve_chance = 0.45 }
+		set_temp_variable = { dve_chance = 0.55 }
 	}
 	add_to_temp_variable = { dve_chance = dve_bonus }
 	if = {
 		limit = { has_government = authoritarian_socialism }
 		set_temp_variable = { dve_chance = 1 }
 	}
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { global.DVE_intl_cv_aut = 2 }
@@ -449,30 +555,30 @@ DVE_intl_cast_current_votes_effect = {
 	# Leninists
 	if = {
 		limit = { check_variable = { global.DVE_intl_motion = 1 } }
-		set_temp_variable = { dve_chance = 0.55 }
+		set_temp_variable = { dve_chance = 0.85 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 2 } }
-		set_temp_variable = { dve_chance = 0.5 }
+		set_temp_variable = { dve_chance = 0.8 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 3 } }
-		set_temp_variable = { dve_chance = 0.55 }
+		set_temp_variable = { dve_chance = 0.8 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 4 } }
-		set_temp_variable = { dve_chance = 0.65 }
+		set_temp_variable = { dve_chance = 0.9 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 5 } }
-		set_temp_variable = { dve_chance = 0.6 }
+		set_temp_variable = { dve_chance = 0.85 }
 	}
 	add_to_temp_variable = { dve_chance = dve_bonus }
 	if = {
 		limit = { has_government = vanguard_socialism }
 		set_temp_variable = { dve_chance = 1 }
 	}
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { global.DVE_intl_cv_van = 2 }
@@ -484,11 +590,11 @@ DVE_intl_cast_current_votes_effect = {
 	# Trotskyists
 	if = {
 		limit = { check_variable = { global.DVE_intl_motion = 1 } }
-		set_temp_variable = { dve_chance = 0.4 }
+		set_temp_variable = { dve_chance = 0.55 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 2 } }
-		set_temp_variable = { dve_chance = 0.55 }
+		set_temp_variable = { dve_chance = 0.65 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 3 } }
@@ -507,7 +613,7 @@ DVE_intl_cast_current_votes_effect = {
 		limit = { has_government = revolutionary_socialism }
 		set_temp_variable = { dve_chance = 1 }
 	}
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { global.DVE_intl_cv_rev = 2 }
@@ -519,30 +625,30 @@ DVE_intl_cast_current_votes_effect = {
 	# Left Communists
 	if = {
 		limit = { check_variable = { global.DVE_intl_motion = 1 } }
-		set_temp_variable = { dve_chance = 0.3 }
+		set_temp_variable = { dve_chance = 0.15 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 2 } }
-		set_temp_variable = { dve_chance = 0.7 }
+		set_temp_variable = { dve_chance = 0.4 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 3 } }
-		set_temp_variable = { dve_chance = 0.65 }
+		set_temp_variable = { dve_chance = 0.35 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 4 } }
-		set_temp_variable = { dve_chance = 0.25 }
+		set_temp_variable = { dve_chance = 0.15 }
 	}
 	else_if = {
 		limit = { check_variable = { global.DVE_intl_motion = 5 } }
-		set_temp_variable = { dve_chance = 0.3 }
+		set_temp_variable = { dve_chance = 0.2 }
 	}
-	add_to_temp_variable = { dve_chance = dve_bonus }
+	add_to_temp_variable = { dve_chance = dve_half_bonus }
 	if = {
 		limit = { has_government = progressive }
-		set_temp_variable = { dve_chance = 1 }
+		add_to_temp_variable = { dve_chance = 0.3 }
 	}
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { global.DVE_intl_cv_pro = 2 }
@@ -644,7 +750,7 @@ DVE_intl_cast_ai_vote_effect = {
 		set_temp_variable = { dve_chance = 0 }
 	}
 
-	set_temp_variable = { dve_roll = random }
+	set_temp_variable_to_random = { var = dve_roll min = 0 max = 1 }
 	if = {
 		limit = { check_variable = { dve_roll < dve_chance } }
 		set_variable = { DVE_intl_vote = 2 }

@@ -1,6 +1,7 @@
 # DvE - The International panels, on top of the two decision categories.
-# The hemicycle is five layers, one per current: layer N is filled up to
-# the cumulative share of the first N currents (global.DVE_intl_frame_N).
+# The hemicycle follows the seats dot by dot: a static base in the last
+# current's colour and, for each of the other four currents, four wedges
+# of 75 dots (frames global.DVE_intl_hf_<current>_<wedge>).
 # Motions are voted by the currents: each has a mark that is grey, green
 # (in favour) or red (against). Admissions are voted by the member states:
 # every member is one entry of the grid, its flag with a frame in the same
@@ -17,6 +18,43 @@ scripted_gui = {
 		}
 
 		triggers = {
+			# flag size by number of members (global.DVE_intl_flag_tier)
+			dve_intl_entry_flag_1_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 1 }
+			}
+			dve_intl_entry_frame_1_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 1 }
+			}
+			dve_intl_entry_flag_2_visible = {
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 1 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 3 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 4 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 5 } }
+			}
+			dve_intl_entry_frame_2_visible = {
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 1 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 3 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 4 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 5 } }
+			}
+			dve_intl_entry_flag_3_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 3 }
+			}
+			dve_intl_entry_frame_3_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 3 }
+			}
+			dve_intl_entry_flag_4_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 4 }
+			}
+			dve_intl_entry_frame_4_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 4 }
+			}
+			dve_intl_entry_flag_5_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 5 }
+			}
+			dve_intl_entry_frame_5_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 5 }
+			}
 			# the member states vote only on admissions
 			dve_intl_vote_yes_button_visible = {
 				has_global_flag = DVE_intl_vote_in_progress
@@ -42,26 +80,65 @@ scripted_gui = {
 		}
 
 		properties = {
-			dve_intl_hemicycle_1 = { frame = global.DVE_intl_frame_1 }
-			dve_intl_hemicycle_2 = { frame = global.DVE_intl_frame_2 }
-			dve_intl_hemicycle_3 = { frame = global.DVE_intl_frame_3 }
-			dve_intl_hemicycle_4 = { frame = global.DVE_intl_frame_4 }
-			dve_intl_hemicycle_5 = { frame = global.DVE_intl_frame_5 }
+			dve_intl_hemi_1_1 = { frame = global.DVE_intl_hf_1_1 }
+			dve_intl_hemi_1_2 = { frame = global.DVE_intl_hf_1_2 }
+			dve_intl_hemi_1_3 = { frame = global.DVE_intl_hf_1_3 }
+			dve_intl_hemi_1_4 = { frame = global.DVE_intl_hf_1_4 }
+			dve_intl_hemi_2_1 = { frame = global.DVE_intl_hf_2_1 }
+			dve_intl_hemi_2_2 = { frame = global.DVE_intl_hf_2_2 }
+			dve_intl_hemi_2_3 = { frame = global.DVE_intl_hf_2_3 }
+			dve_intl_hemi_2_4 = { frame = global.DVE_intl_hf_2_4 }
+			dve_intl_hemi_3_1 = { frame = global.DVE_intl_hf_3_1 }
+			dve_intl_hemi_3_2 = { frame = global.DVE_intl_hf_3_2 }
+			dve_intl_hemi_3_3 = { frame = global.DVE_intl_hf_3_3 }
+			dve_intl_hemi_3_4 = { frame = global.DVE_intl_hf_3_4 }
+			dve_intl_hemi_4_1 = { frame = global.DVE_intl_hf_4_1 }
+			dve_intl_hemi_4_2 = { frame = global.DVE_intl_hf_4_2 }
+			dve_intl_hemi_4_3 = { frame = global.DVE_intl_hf_4_3 }
+			dve_intl_hemi_4_4 = { frame = global.DVE_intl_hf_4_4 }
 			dve_intl_mark_van = { frame = global.DVE_intl_cv_van }
 			dve_intl_mark_rev = { frame = global.DVE_intl_cv_rev }
 			dve_intl_mark_aut = { frame = global.DVE_intl_cv_aut }
 			dve_intl_mark_tot = { frame = global.DVE_intl_cv_tot }
 			dve_intl_mark_pro = { frame = global.DVE_intl_cv_pro }
 			dve_intl_mark_ana = { frame = global.DVE_intl_cv_ana }
-			dve_intl_entry_flag = { image = "[This.GetFlag]" }
-			dve_intl_entry_frame = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_1 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_1 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_2 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_2 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_3 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_3 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_4 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_4 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_5 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_5 = { frame = This.DVE_intl_vote }
 		}
 
 		dynamic_lists = {
-			dve_intl_members_grid = {
+			dve_intl_members_grid_1 = {
 				array = global.DVE_intl_members
 				change_scope = yes
-				entry_container = "DVE_intl_member_entry"
+				entry_container = "DVE_intl_member_entry_1"
+			}
+			dve_intl_members_grid_2 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_2"
+			}
+			dve_intl_members_grid_3 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_3"
+			}
+			dve_intl_members_grid_4 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_4"
+			}
+			dve_intl_members_grid_5 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_5"
 			}
 		}
 	}
@@ -74,27 +151,106 @@ scripted_gui = {
 			DVE_intl_is_applicant = yes
 		}
 
+		triggers = {
+			# flag size by number of members (global.DVE_intl_flag_tier)
+			dve_intl_entry_flag_1_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 1 }
+			}
+			dve_intl_entry_frame_1_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 1 }
+			}
+			dve_intl_entry_flag_2_visible = {
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 1 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 3 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 4 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 5 } }
+			}
+			dve_intl_entry_frame_2_visible = {
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 1 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 3 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 4 } }
+				NOT = { check_variable = { global.DVE_intl_flag_tier = 5 } }
+			}
+			dve_intl_entry_flag_3_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 3 }
+			}
+			dve_intl_entry_frame_3_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 3 }
+			}
+			dve_intl_entry_flag_4_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 4 }
+			}
+			dve_intl_entry_frame_4_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 4 }
+			}
+			dve_intl_entry_flag_5_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 5 }
+			}
+			dve_intl_entry_frame_5_visible = {
+				check_variable = { global.DVE_intl_flag_tier = 5 }
+			}
+		}
+
 		properties = {
-			dve_intl_hemicycle_1 = { frame = global.DVE_intl_frame_1 }
-			dve_intl_hemicycle_2 = { frame = global.DVE_intl_frame_2 }
-			dve_intl_hemicycle_3 = { frame = global.DVE_intl_frame_3 }
-			dve_intl_hemicycle_4 = { frame = global.DVE_intl_frame_4 }
-			dve_intl_hemicycle_5 = { frame = global.DVE_intl_frame_5 }
+			dve_intl_hemi_1_1 = { frame = global.DVE_intl_hf_1_1 }
+			dve_intl_hemi_1_2 = { frame = global.DVE_intl_hf_1_2 }
+			dve_intl_hemi_1_3 = { frame = global.DVE_intl_hf_1_3 }
+			dve_intl_hemi_1_4 = { frame = global.DVE_intl_hf_1_4 }
+			dve_intl_hemi_2_1 = { frame = global.DVE_intl_hf_2_1 }
+			dve_intl_hemi_2_2 = { frame = global.DVE_intl_hf_2_2 }
+			dve_intl_hemi_2_3 = { frame = global.DVE_intl_hf_2_3 }
+			dve_intl_hemi_2_4 = { frame = global.DVE_intl_hf_2_4 }
+			dve_intl_hemi_3_1 = { frame = global.DVE_intl_hf_3_1 }
+			dve_intl_hemi_3_2 = { frame = global.DVE_intl_hf_3_2 }
+			dve_intl_hemi_3_3 = { frame = global.DVE_intl_hf_3_3 }
+			dve_intl_hemi_3_4 = { frame = global.DVE_intl_hf_3_4 }
+			dve_intl_hemi_4_1 = { frame = global.DVE_intl_hf_4_1 }
+			dve_intl_hemi_4_2 = { frame = global.DVE_intl_hf_4_2 }
+			dve_intl_hemi_4_3 = { frame = global.DVE_intl_hf_4_3 }
+			dve_intl_hemi_4_4 = { frame = global.DVE_intl_hf_4_4 }
 			dve_intl_mark_van = { frame = global.DVE_intl_cv_van }
 			dve_intl_mark_rev = { frame = global.DVE_intl_cv_rev }
 			dve_intl_mark_aut = { frame = global.DVE_intl_cv_aut }
 			dve_intl_mark_tot = { frame = global.DVE_intl_cv_tot }
 			dve_intl_mark_pro = { frame = global.DVE_intl_cv_pro }
 			dve_intl_mark_ana = { frame = global.DVE_intl_cv_ana }
-			dve_intl_entry_flag = { image = "[This.GetFlag]" }
-			dve_intl_entry_frame = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_1 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_1 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_2 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_2 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_3 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_3 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_4 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_4 = { frame = This.DVE_intl_vote }
+			dve_intl_entry_flag_5 = { image = "[This.GetFlag]" }
+			dve_intl_entry_frame_5 = { frame = This.DVE_intl_vote }
 		}
 
 		dynamic_lists = {
-			dve_intl_members_grid = {
+			dve_intl_members_grid_1 = {
 				array = global.DVE_intl_members
 				change_scope = yes
-				entry_container = "DVE_intl_member_entry"
+				entry_container = "DVE_intl_member_entry_1"
+			}
+			dve_intl_members_grid_2 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_2"
+			}
+			dve_intl_members_grid_3 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_3"
+			}
+			dve_intl_members_grid_4 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_4"
+			}
+			dve_intl_members_grid_5 = {
+				array = global.DVE_intl_members
+				change_scope = yes
+				entry_container = "DVE_intl_member_entry_5"
 			}
 		}
 	}

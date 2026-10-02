@@ -214,6 +214,32 @@ FRA_cw_spawn_FAC_effect = {
 
 
 # ============================================================
+#   Every faction against every other: without this the wars
+#   are only FRA vs each faction, and all end when FRA falls.
+#   Allies and subjects of each other are left alone.
+# ============================================================
+FRA_cw_total_war_effect = {
+	custom_effect_tooltip = FRA_cw_total_war_tt
+	hidden_effect = {
+		every_country = {
+			limit = { DVE_cw_france = yes }
+			every_country = {
+				limit = {
+					DVE_cw_france = yes
+					NOT = { tag = PREV }
+					NOT = { has_war_with = PREV }
+					NOT = { is_in_faction_with = PREV }
+					NOT = { is_subject_of = PREV }
+					PREV = { NOT = { is_subject_of = PREV } }
+				}
+				PREV = { declare_war_on = { target = PREV type = annex_everything } }
+			}
+		}
+	}
+}
+
+
+# ============================================================
 #   DAY 1 - full effect
 # ============================================================
 FRA_civil_war_effect = {
@@ -234,7 +260,7 @@ FRA_civil_war_effect = {
 		ruling_party = liberal
 		elections_allowed = no
 	}
-	create_country_leader = { name = "Jean-Luc Mélenchon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2035.1.1" ideology = left_populism }
+	create_country_leader = { name = "Jean-Luc Mélenchon" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jean_Luc_Mélenchon.dds" expire = "2035.1.1" ideology = left_populism }
 	add_popularity = { ideology = liberal popularity = 0.20 }
 
 	FRA_cw_spawn_FRS_effect = yes
@@ -250,6 +276,7 @@ FRA_civil_war_effect = {
 		limit = { country_exists = CMU country_exists = FRS }
 		CMU = { declare_war_on = { target = FRS type = annex_everything } }
 	}
+	FRA_cw_total_war_effect = yes
 
 	# Second wave in 7 days: FRS collapses, FSR/ANF/GER carve up the rest.
 	country_event = { id = dve_fracw.1 days = 7 }
@@ -281,6 +308,7 @@ FRA_civil_war_second_wave_effect = {
 	if = { limit = { country_exists = ANF } declare_war_on = { target = ANF type = annex_everything } }
 	if = { limit = { country_exists = BRY } declare_war_on = { target = BRY type = annex_everything } }
 	if = { limit = { country_exists = FAC } declare_war_on = { target = FAC type = annex_everything } }
+	FRA_cw_total_war_effect = yes
 
 	# If the player is still France, they may switch to a day-7 faction (dve_fracw.3).
 	if = {
