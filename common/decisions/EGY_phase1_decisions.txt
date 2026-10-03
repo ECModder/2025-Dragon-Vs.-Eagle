@@ -1,0 +1,513 @@
+# New Administrative Capital mini-game (Egypt). Three phases, each in its own category;
+# only the category of the current phase is visible.
+
+egypt_phase1_category = {
+
+	egypt_p1_consolidate_foundations = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 120
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_5
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 5 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p1_government_district = {
+		icon = generic_political_discourse
+		cost = 70
+		days_remove = 80
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_6
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 6 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p1_iconic_tower = {
+		icon = generic_construction
+		cost = 100
+		days_remove = 110
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_10
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 10 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p1_cbd_zoning = {
+		icon = generic_industry
+		cost = 70
+		days_remove = 50
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_5
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 5 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
+
+egypt_phase2_category = {
+
+	egypt_p2_diplomatic_quarter = {
+		icon = generic_political_discourse
+		cost = 90
+		days_remove = 100
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_6
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 6 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_east_monorail = {
+		icon = generic_construction
+		cost = 50
+		days_remove = 90
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 2 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_2
+			custom_effect_tooltip = egypt_capital_tt_gain_6
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 2 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 6 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_international_embassies = {
+		icon = generic_political_discourse
+		cost = 80
+		days_remove = 120
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.04 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_cg_4
+			custom_effect_tooltip = egypt_capital_tt_gain_9
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.04 }
+			set_temp_variable = { egypt_tmp_gain = 9 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_smart_grid = {
+		icon = generic_industry
+		cost = 100
+		days_remove = 100
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.02 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_cg_2
+			custom_effect_tooltip = egypt_capital_tt_gain_8
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.02 }
+			set_temp_variable = { egypt_tmp_gain = 8 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_new_garden_city = {
+		icon = generic_construction
+		cost = 80
+		days_remove = 80
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_5
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 5 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_tech_banking_parks = {
+		icon = generic_industry
+		cost = 110
+		days_remove = 120
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		visible = {
+			check_variable = { egypt_p2_tech_banking_parks_uses < 2 }
+		}
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_gain_8
+		}
+
+		remove_effect = {
+			add_to_variable = { egypt_p2_tech_banking_parks_uses = 1 }
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 8 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p2_knowledge_hub = {
+		icon = generic_construction
+		cost = 60
+		days_remove = 75
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 1 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_1
+			custom_effect_tooltip = egypt_capital_tt_gain_4
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 1 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 4 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
+
+egypt_phase3_category = {
+
+	egypt_p3_green_river_park = {
+		icon = generic_construction
+		cost = 40
+		days_remove = 60
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 3 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_3
+			custom_effect_tooltip = egypt_capital_tt_gain_6
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 3 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 6 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p3_suez_logistic_corridor = {
+		icon = generic_industry
+		cost = 120
+		days_remove = 150
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		visible = {
+			check_variable = { egypt_p3_suez_logistic_corridor_uses < 2 }
+		}
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 4 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_4
+			custom_effect_tooltip = egypt_capital_tt_gain_12
+		}
+
+		remove_effect = {
+			add_to_variable = { egypt_p3_suez_logistic_corridor_uses = 1 }
+			set_temp_variable = { egypt_tmp_civ = 4 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 12 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p3_gulf_real_estate = {
+		icon = generic_construction
+		cost = 90
+		days_remove = 120
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.06 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_cg_6
+			custom_effect_tooltip = egypt_capital_tt_gain_10
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.06 }
+			set_temp_variable = { egypt_tmp_gain = 10 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p3_smart_airport = {
+		icon = generic_industry
+		cost = 70
+		days_remove = 100
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 3 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_3
+			custom_effect_tooltip = egypt_capital_tt_gain_8
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 3 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 8 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p3_acud_bonds = {
+		icon = generic_political_discourse
+		cost = 150
+		days_remove = 120
+		days_re_enable = 1
+
+		allowed = { original_tag = EGY }
+		visible = {
+			check_variable = { egypt_p3_acud_bonds_uses < 2 }
+		}
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.04 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_cg_4
+			custom_effect_tooltip = egypt_capital_tt_gain_15
+		}
+
+		remove_effect = {
+			add_to_variable = { egypt_p3_acud_bonds_uses = 1 }
+			set_temp_variable = { egypt_tmp_civ = 0 }
+			set_temp_variable = { egypt_tmp_cg = 0.04 }
+			set_temp_variable = { egypt_tmp_gain = 15 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	egypt_p3_eco_industrial_zone = {
+		icon = generic_industry
+		cost = 60
+		days_remove = 90
+		fire_only_once = yes
+
+		allowed = { original_tag = EGY }
+		available = { egypt_capital_slot_free = yes }
+
+		complete_effect = {
+			set_temp_variable = { egypt_tmp_civ = 2 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			egypt_capital_start_project = yes
+			custom_effect_tooltip = egypt_capital_tt_civ_2
+			custom_effect_tooltip = egypt_capital_tt_gain_7
+		}
+
+		remove_effect = {
+			set_temp_variable = { egypt_tmp_civ = 2 }
+			set_temp_variable = { egypt_tmp_cg = 0.00 }
+			set_temp_variable = { egypt_tmp_gain = 7 }
+			egypt_capital_finish_project = yes
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
+
