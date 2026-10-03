@@ -42,7 +42,7 @@ on_actions = {
     on_daily = {
         effect = {
             if = {
-                limit = { has_completed_focus = FIN_rising_tensions }
+                limit = { has_completed_focus = FINl_rising_tensions }
                 country_event = { id = finlandos.2 days = 100 }
             }
         }
@@ -65,6 +65,9 @@ on_actions = {
                     tag = RFI
                     FIN = { exists = no }
                     from = { tag = FIN }
+                    SMI = {
+                        DVE_un_is_member = no
+                    }
                 }
                 country_event = { id = finlandos.4 days = 1 }
             }
@@ -78,6 +81,9 @@ on_actions = {
                     tag = FIN
                     RFI = { exists = no }
                     from = { tag = RFI }
+                    SMI = {
+                        DVE_un_is_member = no
+                    }
                 }
                 country_event = { id = finlandos.4 days = 1 }
             }

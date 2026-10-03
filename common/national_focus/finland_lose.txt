@@ -41,7 +41,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_defeat
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_defeat
 		x = 3
 		y = 0
 		cost = 1
@@ -55,7 +55,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_rising_tensions
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_rising_tensions
 		x = 3
 		y = 1
 		cost = 10
@@ -68,13 +68,13 @@ focus_tree = {
 			add_political_power = -25
 			add_stability = -0.15
 			add_war_support = 0.05
-			# If not anything chosen in 100 days, event to play as Sapmi
+			country_event = { id = finlandos.7 days = 100 }
 		}
 	}
 
 	focus = {
 		id = FINl_follow_our_ancestors
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_follow_our_ancestors
 		x = 3
 		y = 4
 		cost = 10
@@ -122,13 +122,19 @@ focus_tree = {
 					army_ratio = 0.2
 				}
 				SMI = { change_tag_from = FIN }
+				RFI = {
+					declare_war_on = {
+						target = FIN
+						type = take_state
+					}
+				}
 			}
 		}
 	}
 
 	focus = {
 		id = FINl_side_with_the_government
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_side_with_the_government
 		x = 2
 		y = 2
 		cost = 10
@@ -151,7 +157,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_arrest_revolutionaries
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_arrest_revolutionaries
 		x = 0
 		y = 3
 		cost = 5
@@ -176,7 +182,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_gather_support_from_russia
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_gather_support_from_russia
 		x = 2
 		y = 3
 		cost = 5
@@ -201,7 +207,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_preemptive_strike
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_preemptive_strike
 		x = 1
 		y = 4
 		cost = 5
@@ -277,7 +283,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_side_with_the_people
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_side_with_the_people
 		x = 4
 		y = 2
 		cost = 10
@@ -300,7 +306,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_help_from_our_brothers
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_help_from_our_brothers
 		x = 4
 		y = 3
 		cost = 5
@@ -325,7 +331,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_get_the_army_on_our_side
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_get_the_army_on_our_side
 		x = 6
 		y = 3
 		cost = 10
@@ -349,7 +355,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_iniate_the_revolution
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_iniate_the_revolution
 		x = 5
 		y = 4
 		cost = 5

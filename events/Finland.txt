@@ -450,6 +450,29 @@ country_event = {
 }
 
 country_event = {
+	id = finlandos.7
+	title = finlandos.7.t
+	desc = finlandos.7.d
+
+	fire_only_once = yes
+	trigger = {
+		tag = FIN
+		NOT = { has_completed_focus = FINl_follow_our_ancestors }
+		NOT = { has_completed_focus = FINl_side_with_the_government }
+		NOT = { has_completed_focus = FINl_side_with_the_people }
+	}
+
+	option = {
+		name = finlandos.7.a
+		ai_chance = { factor = 100 }
+		RUS = { end_puppet = FIN }
+		leave_faction = yes
+		release = SMI
+		SMI = { change_tag_from = FIN }
+	}
+}
+
+country_event = {
 	id = finlandos.3
 	title = finlandos.3.t
 	desc = finlandos.3.d
