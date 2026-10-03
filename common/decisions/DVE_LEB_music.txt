@@ -1,0 +1,72 @@
+# DvE - Lebanese civil war music: one decision per song of the side
+# Lebanon chose. The songs sit in hidden stations (music/dve_lebanon).
+
+DVE_LEB_music_government_category = {
+
+	DVE_LEB_play_el_tarikh_rtajaf = {
+		icon = GFX_decision_generic_speech
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			has_completed_focus = LEB_Trust_the_current_government
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_LEB_play_song_tt
+			hidden_effect = { scoped_play_song = "dve_leb_el_tarikh_rtajaf" }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_LEB_play_lebanese_forces_song = {
+		icon = GFX_decision_generic_speech
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			has_completed_focus = LEB_Trust_the_current_government
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_LEB_play_song_tt
+			hidden_effect = { scoped_play_song = "dve_leb_lebanese_forces_song" }
+		}
+		ai_will_do = { base = 0 }
+	}
+}
+
+DVE_LEB_music_resistance_category = {
+
+	DVE_LEB_play_the_most_beautiful_story = {
+		icon = GFX_decision_generic_speech
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			has_completed_focus = LEB_Go_with_the_Islamic_resistance
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_LEB_play_song_tt
+			hidden_effect = { scoped_play_song = "dve_leb_the_most_beautiful_story" }
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_LEB_play_strike_terror_into_your_enemy = {
+		icon = GFX_decision_generic_speech
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			has_completed_focus = LEB_Go_with_the_Islamic_resistance
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_LEB_play_song_tt
+			hidden_effect = { scoped_play_song = "dve_leb_strike_terror_into_your_enemy" }
+		}
+		ai_will_do = { base = 0 }
+	}
+}

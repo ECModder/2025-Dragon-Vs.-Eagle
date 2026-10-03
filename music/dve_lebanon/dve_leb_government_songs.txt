@@ -1,0 +1,27 @@
+# Lebanese civil war - "Voice of the Republic", the songs of one side.
+# Hidden station: it has a faceplate but no entry in the station list
+# (interface/DVE_LEB_music.gui), so nobody can pick it in the music player.
+# The songs are started by script for the country that completed the focus
+# (common/decisions/DVE_LEB_music.txt, common/on_actions/DVE_LEB_music_on_actions.txt)
+# and have no weight for anyone else.
+music_station = "dve_leb_government"
+
+music = {
+	song = "dve_leb_el_tarikh_rtajaf"
+	chance = {
+		modifier = {
+			factor = 1
+			has_completed_focus = LEB_Trust_the_current_government
+		}
+	}
+}
+
+music = {
+	song = "dve_leb_lebanese_forces_song"
+	chance = {
+		modifier = {
+			factor = 1
+			has_completed_focus = LEB_Trust_the_current_government
+		}
+	}
+}
