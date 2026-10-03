@@ -1,0 +1,30 @@
+# Rule 1: at most two capital decisions running at once (one while the Nile water option is active),
+# and none can be started during a labour strike.
+egypt_capital_slot_free = {
+	custom_trigger_tooltip = {
+		tooltip = egypt_capital_slot_free_tt
+		if = {
+			limit = { has_country_flag = egypt_capital_slot_limit }
+			check_variable = { egypt_capital_active_count < 1 }
+		}
+		else = {
+			check_variable = { egypt_capital_active_count < 2 }
+		}
+	}
+	custom_trigger_tooltip = {
+		tooltip = egypt_capital_no_strike_tt
+		NOT = { has_country_flag = egypt_capital_strike }
+	}
+}
+
+# Unexpected events: only during phase II/III, at most the per-game quota (0-2), never twice within a year.
+egypt_capital_random_event_ready = {
+	original_tag = EGY
+	has_country_flag = egypt_capital_active
+	OR = {
+		has_country_flag = egypt_capital_phase2
+		has_country_flag = egypt_capital_phase3
+	}
+	check_variable = { egypt_capital_events_fired < egypt_capital_event_quota }
+	NOT = { has_country_flag = egypt_capital_event_cooldown }
+}
