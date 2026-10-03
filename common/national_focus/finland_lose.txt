@@ -247,7 +247,22 @@ focus_tree = {
 					}
 					add_core_of = RFI
 				}
-
+				if = {
+					limit = { has_completed_focus = FINl_gather_support_from_russia }
+					RFI = {
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 2500
+						}
+						random_owned_state = {
+							create_unit = {
+								division = "name = \"Russian Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+								owner = ROOT
+								count = 3
+							}
+						}
+					}
+				}
 
 				declare_war_on = {
 					target = RFI
@@ -304,7 +319,7 @@ focus_tree = {
 			add_political_power = 50
 			add_stability = -0.05
 			add_war_support = -0.1
-			# Add division from russia and equipment
+			# Add division from Sweden, Norway and Denmark and equipment
 		}
 	}
 
@@ -379,6 +394,30 @@ focus_tree = {
 						transfer_units_fraction = {
 							target = FIN
 							army_ratio = 0.25
+						}
+					}
+				}
+				if = {
+					limit = { has_completed_focus = FINl_help_from_our_brothers }
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2500
+					}
+					random_owned_state = {
+						create_unit = {
+							division = "name = \"Swedish Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "name = \"Norwegian Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "name = \"Danish Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
 						}
 					}
 				}
