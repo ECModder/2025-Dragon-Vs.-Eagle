@@ -64,22 +64,18 @@ egypt_capital_check_phase = {
 		limit = { check_variable = { egypt_capital_progress > 99 } }
 		if = {
 			limit = { has_country_flag = egypt_capital_phase1 }
-			clr_country_flag = egypt_capital_phase1
-			set_country_flag = egypt_capital_phase2
-			set_variable = { egypt_capital_progress = 0 }
+			egypt_capital_enter_phase2 = yes
 			country_event = { id = egypt_capital.10 }
 		}
 		else_if = {
 			limit = { has_country_flag = egypt_capital_phase2 }
-			clr_country_flag = egypt_capital_phase2
-			set_country_flag = egypt_capital_phase3
-			set_variable = { egypt_capital_progress = 0 }
+			egypt_capital_enter_phase3 = yes
 			country_event = { id = egypt_capital.11 }
 		}
 		else_if = {
 			limit = { has_country_flag = egypt_capital_phase3 }
-			clr_country_flag = egypt_capital_phase3
 			egypt_capital_complete = yes
+			country_event = { id = egypt_capital.20 }
 		}
 	}
 	egypt_capital_update_bar = yes
@@ -94,7 +90,25 @@ egypt_capital_update_bar = {
 	clamp_variable = { var = egypt_capital_bar_frame min = 1 max = 51 }
 }
 
+egypt_capital_enter_phase2 = {
+	clr_country_flag = egypt_capital_phase1
+	set_country_flag = egypt_capital_phase2
+	set_variable = { egypt_capital_progress = 0 }
+	egypt_capital_update_bar = yes
+}
+
+egypt_capital_enter_phase3 = {
+	clr_country_flag = egypt_capital_phase1
+	clr_country_flag = egypt_capital_phase2
+	set_country_flag = egypt_capital_phase3
+	set_variable = { egypt_capital_progress = 0 }
+	egypt_capital_update_bar = yes
+}
+
 egypt_capital_complete = {
+	clr_country_flag = egypt_capital_phase1
+	clr_country_flag = egypt_capital_phase2
+	clr_country_flag = egypt_capital_phase3
 	set_country_flag = egypt_capital_completed
 	clr_country_flag = egypt_capital_active
 	set_variable = { egypt_capital_progress = 100 }
@@ -107,7 +121,7 @@ egypt_capital_complete = {
 		add_building_construction = { type = industrial_complex level = 3 instant_build = yes }
 		add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 	}
-	country_event = { id = egypt_capital.20 }
+	egypt_capital_update_bar = yes
 }
 
 egypt_capital_fail = {
