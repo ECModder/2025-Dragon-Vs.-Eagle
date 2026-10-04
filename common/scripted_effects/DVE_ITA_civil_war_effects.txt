@@ -89,12 +89,6 @@ ITA_cw_spawn_INT_effect = {
 				limit = { NOT = { has_global_flag = DVE_intl_founded } }
 				DVE_intl_found_effect = yes
 			}
-			# Civil war tree, loaded once (a re-spawn must not reset it).
-			if = {
-				limit = { NOT = { has_country_flag = INT_cw_tree_loaded } }
-				set_country_flag = INT_cw_tree_loaded
-				load_focus_tree = { tree = INT_civil_war_focus keep_completed = no }
-			}
 		}
 	}
 }
@@ -305,42 +299,43 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			# 36 divisions, spread over the provinces of its states
+			# 36 divisions, spread over the provinces of its states.
+			# create_unit only works inside a state scope.
 			# Torino
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6780 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9738 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11730 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11721 count = 1 allow_spawning_on_enemy_provs = yes }
+			158 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6780 count = 2 allow_spawning_on_enemy_provs = yes } }
+			158 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9738 count = 1 allow_spawning_on_enemy_provs = yes } }
+			158 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11730 count = 1 allow_spawning_on_enemy_provs = yes } }
+			158 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11721 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Milano-Pavia
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3780 count = 3 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11726 count = 2 allow_spawning_on_enemy_provs = yes }
+			159 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3780 count = 3 allow_spawning_on_enemy_provs = yes } }
+			159 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11726 count = 2 allow_spawning_on_enemy_provs = yes } }
 			# Liguria
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6788 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11891 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3772 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6973 count = 1 allow_spawning_on_enemy_provs = yes }
+			1176 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6788 count = 2 allow_spawning_on_enemy_provs = yes } }
+			1176 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11891 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1176 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3772 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1176 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6973 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Emilia
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3773 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6790 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3976 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9752 count = 1 allow_spawning_on_enemy_provs = yes }
+			1178 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3773 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1178 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6790 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1178 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3976 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1178 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9752 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Bologna-Romagna
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6606 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6793 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9924 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6985 count = 1 allow_spawning_on_enemy_provs = yes }
+			161 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6606 count = 1 allow_spawning_on_enemy_provs = yes } }
+			161 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6793 count = 1 allow_spawning_on_enemy_provs = yes } }
+			161 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9924 count = 1 allow_spawning_on_enemy_provs = yes } }
+			161 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6985 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Sud Toscana
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11833 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 910 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9879 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9750 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6875 count = 1 allow_spawning_on_enemy_provs = yes }
+			1181 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11833 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1181 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 910 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1181 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9879 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1181 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9750 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1181 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6875 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Trieste
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6626 count = 3 allow_spawning_on_enemy_provs = yes }
+			1155 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6626 count = 3 allow_spawning_on_enemy_provs = yes } }
 			# Taranto
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11837 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11998 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6979 count = 1 allow_spawning_on_enemy_provs = yes }
+			1189 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11837 count = 2 allow_spawning_on_enemy_provs = yes } }
+			1189 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11998 count = 2 allow_spawning_on_enemy_provs = yes } }
+			1189 = { create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6979 count = 1 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 
@@ -364,21 +359,21 @@ ITA_civil_war_army_effect = {
 			}
 			# 16 divisions, spread over the provinces of its states
 			# Campania-Napoli
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 819 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9826 count = 2 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 11803 count = 2 allow_spawning_on_enemy_provs = yes }
+			117 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 819 count = 2 allow_spawning_on_enemy_provs = yes } }
+			117 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9826 count = 2 allow_spawning_on_enemy_provs = yes } }
+			117 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 11803 count = 2 allow_spawning_on_enemy_provs = yes } }
 			# Puglia
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6980 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6939 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 883 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6843 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9784 count = 1 allow_spawning_on_enemy_provs = yes }
+			849 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6980 count = 1 allow_spawning_on_enemy_provs = yes } }
+			849 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6939 count = 1 allow_spawning_on_enemy_provs = yes } }
+			849 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 883 count = 1 allow_spawning_on_enemy_provs = yes } }
+			849 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6843 count = 1 allow_spawning_on_enemy_provs = yes } }
+			849 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9784 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Calabria
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 3901 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9990 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 10027 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12066 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12098 count = 1 allow_spawning_on_enemy_provs = yes }
+			156 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 3901 count = 1 allow_spawning_on_enemy_provs = yes } }
+			156 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9990 count = 1 allow_spawning_on_enemy_provs = yes } }
+			156 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 10027 count = 1 allow_spawning_on_enemy_provs = yes } }
+			156 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12066 count = 1 allow_spawning_on_enemy_provs = yes } }
+			156 = { create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12098 count = 1 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 
@@ -402,9 +397,9 @@ ITA_civil_war_army_effect = {
 			}
 			# 14 divisions, spread over the provinces of its states
 			# Latina
-			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11846 count = 5 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11882 count = 5 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 923 count = 4 allow_spawning_on_enemy_provs = yes }
+			1184 = { create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11846 count = 5 allow_spawning_on_enemy_provs = yes } }
+			1184 = { create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11882 count = 5 allow_spawning_on_enemy_provs = yes } }
+			1184 = { create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 923 count = 4 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 
@@ -425,16 +420,16 @@ ITA_civil_war_army_effect = {
 			}
 			# 8 divisions, spread over the provinces of its states
 			# Est Lombardia
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 773 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3776 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11568 count = 1 allow_spawning_on_enemy_provs = yes }
+			1177 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 773 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1177 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3776 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1177 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11568 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Padania
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 603 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3604 count = 1 allow_spawning_on_enemy_provs = yes }
+			1179 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 603 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1179 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3604 count = 1 allow_spawning_on_enemy_provs = yes } }
 			# Veneto
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11584 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 6656 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3657 count = 1 allow_spawning_on_enemy_provs = yes }
+			160 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11584 count = 1 allow_spawning_on_enemy_provs = yes } }
+			160 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 6656 count = 1 allow_spawning_on_enemy_provs = yes } }
+			160 = { create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3657 count = 1 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 
@@ -454,10 +449,10 @@ ITA_civil_war_army_effect = {
 			}
 			# 4 divisions, spread over the provinces of its states
 			# South Tyrol
-			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 656 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 6675 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 9630 count = 1 allow_spawning_on_enemy_provs = yes }
-			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 11598 count = 1 allow_spawning_on_enemy_provs = yes }
+			39 = { create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 656 count = 1 allow_spawning_on_enemy_provs = yes } }
+			39 = { create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 6675 count = 1 allow_spawning_on_enemy_provs = yes } }
+			39 = { create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 9630 count = 1 allow_spawning_on_enemy_provs = yes } }
+			39 = { create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 11598 count = 1 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 

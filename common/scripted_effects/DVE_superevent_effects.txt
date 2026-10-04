@@ -1,0 +1,61 @@
+# ============================================================
+#   DvE - SUPER EVENTS
+#   A super event is a number: 1 INT, 2 SRB, 3 SOV, 4 RCA win
+#   their civil war. Each fires once, for every human player,
+#   with its own music (music/dve_superevents).
+#   To add one: a frame in superevent_images.dds, the three
+#   DVE_SE_<n>_* loc keys, a block in the three defined_text and
+#   a wrapper like the ones below.
+# ============================================================
+
+# Shows super event number dve_superevent_id (temp variable).
+DVE_superevent_fire_effect = {
+	every_country = {
+		limit = { is_ai = no }
+		set_variable = { DVE_superevent = dve_superevent_id }
+	}
+}
+
+# INT wins its civil war.
+DVE_superevent_INT_victory_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_superevent_INT_victory } }
+		set_global_flag = DVE_superevent_INT_victory
+		set_temp_variable = { dve_superevent_id = 1 }
+		DVE_superevent_fire_effect = yes
+		play_song = "dve_se_int_victory"
+	}
+}
+
+# SRB wins its civil war.
+DVE_superevent_SRB_victory_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_superevent_SRB_victory } }
+		set_global_flag = DVE_superevent_SRB_victory
+		set_temp_variable = { dve_superevent_id = 2 }
+		DVE_superevent_fire_effect = yes
+		play_song = "dve_se_srb_victory"
+	}
+}
+
+# SOV wins its civil war.
+DVE_superevent_SOV_victory_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_superevent_SOV_victory } }
+		set_global_flag = DVE_superevent_SOV_victory
+		set_temp_variable = { dve_superevent_id = 3 }
+		DVE_superevent_fire_effect = yes
+		play_song = "dve_se_sov_victory"
+	}
+}
+
+# RCA wins its civil war.
+DVE_superevent_RCA_victory_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_superevent_RCA_victory } }
+		set_global_flag = DVE_superevent_RCA_victory
+		set_temp_variable = { dve_superevent_id = 4 }
+		DVE_superevent_fire_effect = yes
+		play_song = "dve_se_rca_victory"
+	}
+}

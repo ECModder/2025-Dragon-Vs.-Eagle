@@ -1,0 +1,27 @@
+# DvE super events. DVE_superevent (on the player's country) is the
+# number of the event to show; the button clears it. Events are fired
+# by common/scripted_effects/DVE_superevent_effects.txt.
+
+scripted_gui = {
+
+	DVE_superevent_ui = {
+		context_type = player_context
+		window_name = "DVE_superevent_window"
+		dirty = DVE_superevent
+
+		visible = {
+			is_ai = no
+			check_variable = { DVE_superevent > 0 }
+		}
+
+		properties = {
+			dve_se_image = { frame = DVE_superevent }
+		}
+
+		effects = {
+			dve_se_close_click = {
+				set_variable = { DVE_superevent = 0 }
+			}
+		}
+	}
+}

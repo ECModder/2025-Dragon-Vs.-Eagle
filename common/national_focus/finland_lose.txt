@@ -41,7 +41,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_defeat
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_side_with_the_people
 		x = 3
 		y = 0
 		cost = 1
@@ -55,7 +55,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_rising_tensions
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_rising_tensions
 		x = 3
 		y = 1
 		cost = 10
@@ -68,13 +68,13 @@ focus_tree = {
 			add_political_power = -25
 			add_stability = -0.15
 			add_war_support = 0.05
-			# If not anything chosen in 100 days, event to play as Sapmi
+			country_event = { id = finlandos.7 days = 100 }
 		}
 	}
 
 	focus = {
 		id = FINl_follow_our_ancestors
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_follow_our_ancestors
 		x = 3
 		y = 4
 		cost = 10
@@ -92,41 +92,52 @@ focus_tree = {
 
 		allow_branch = {
 			has_completed_focus = FINl_rising_tensions
+			has_country_flag = FINl_sami_focus
 			# If nothing chosen in 100 days, after event unlock.
 		}
 		
 		completion_reward = {
-			RUS = {
+			hidden_effect = {
+				RUS = {
 				end_puppet = FIN
+				}
+				leave_faction = yes
+				RFI = { transfer_state = 928 }
+				RFI = { transfer_state = 930 }
+				RFI = { transfer_state = 150 }
+				RFI = { transfer_state = 111 }
+				RFI = { transfer_state = 1156 }
+				set_autonomy = {
+					target = RFI
+					autonomy_state = autonomy_puppet
+				}
+				end_puppet = RFI
+				drop_cosmetic_tag = yes
+				release = SMI
+				transfer_units_fraction = {
+					target = RFI
+					size = 1
+					army_ratio = 0.4
+				}
+				transfer_units_fraction = {
+					target = SMI
+					size = 1
+					army_ratio = 0.2
+				}
+				SMI = { change_tag_from = FIN }
+				RFI = {
+					declare_war_on = {
+						target = FIN
+						type = take_state
+					}
+				}
 			}
-			leave_faction = yes
-			RFI = { transfer_state = 928 }
-			RFI = { transfer_state = 930 }
-			RFI = { transfer_state = 150 }
-			RFI = { transfer_state = 111 }
-			RFI = { transfer_state = 1156 }
-			set_autonomy = {
-				target = RFI
-				autonomy_state = autonomy_puppet
-			}
-			end_puppet = RFI
-			drop_cosmetic_tag = yes
-			release = SMI
-			transfer_units_fraction = {
-				target = RFI
-				army_ratio = 0.4
-			}
-			transfer_units_fraction = {
-				target = SMI
-				army_ratio = 0.2
-			}
-			SMI = { change_tag_from = FIN }
 		}
 	}
 
 	focus = {
 		id = FINl_side_with_the_government
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_gather_support_from_russia
 		x = 2
 		y = 2
 		cost = 10
@@ -149,13 +160,19 @@ focus_tree = {
 
 	focus = {
 		id = FINl_arrest_revolutionaries
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_arrest_revolutionaries
 		x = 0
 		y = 3
 		cost = 5
 
 		prerequisite = {
 			focus = FINl_side_with_the_government
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_preemptive_strike
+			}
 		}
 		
 		completion_reward = {
@@ -168,13 +185,19 @@ focus_tree = {
 
 	focus = {
 		id = FINl_gather_support_from_russia
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_side_with_the_government
 		x = 2
 		y = 3
 		cost = 5
 
 		prerequisite = {
 			focus = FINl_side_with_the_government
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_preemptive_strike
+			}
 		}
 		
 		completion_reward = {
@@ -187,7 +210,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_preemptive_strike
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_defeat
 		x = 1
 		y = 4
 		cost = 5
@@ -197,11 +220,12 @@ focus_tree = {
 		}
 		
 		completion_reward = {
-			add_political_power = 75
-			add_war_support = 0.1
-			add_stability = 0.15
+			custom_effect_tooltip = FINl_civil_war_1_tt
 
 			hidden_effect = {
+				add_political_power = 75
+				add_war_support = 0.1
+				add_stability = 0.15
 				RUS = {
 					end_puppet = FIN
 				}
@@ -220,10 +244,12 @@ focus_tree = {
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
-					army_ratio = 0.4
+					size = 1
+					army_ratio = 0.5
 				}
 				transfer_units_fraction = {
 					target = SMI
+					size = 1
 					army_ratio = 0.2
 				}
 				every_state = {
@@ -232,7 +258,22 @@ focus_tree = {
 					}
 					add_core_of = RFI
 				}
-
+				if = {
+					limit = { has_completed_focus = FINl_gather_support_from_russia }
+					RFI = {
+						add_equipment_to_stockpile = {
+							type = infantry_equipment
+							amount = 2500
+						}
+						random_owned_state = {
+							create_unit = {
+								division = "name = \"Russian Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+								owner = ROOT
+								count = 3
+							}
+						}
+					}
+				}
 
 				declare_war_on = {
 					target = RFI
@@ -247,7 +288,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_side_with_the_people
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_preemptive_strike
 		x = 4
 		y = 2
 		cost = 10
@@ -270,7 +311,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_help_from_our_brothers
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_help_from_our_brothers
 		x = 4
 		y = 3
 		cost = 5
@@ -278,24 +319,36 @@ focus_tree = {
 		prerequisite = {
 			focus = FINl_side_with_the_people
 		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_iniate_the_revolution
+			}
+		}
 		
 		completion_reward = {
 			add_political_power = 50
 			add_stability = -0.05
 			add_war_support = -0.1
-			# Add division from russia and equipment
+			# Add division from Sweden, Norway and Denmark and equipment
 		}
 	}
 
 	focus = {
 		id = FINl_get_the_army_on_our_side
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_get_the_army_on_our_side
 		x = 6
 		y = 3
 		cost = 10
 
 		prerequisite = {
 			focus = FINl_side_with_the_people
+		}
+
+		available = {
+			NOT = {
+				has_completed_focus = FINl_iniate_the_revolution
+			}
 		}
 		
 		completion_reward = {
@@ -307,7 +360,7 @@ focus_tree = {
 
 	focus = {
 		id = FINl_iniate_the_revolution
-		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		icon = GFX_goal_FINl_iniate_the_revolution
 		x = 5
 		y = 4
 		cost = 5
@@ -318,7 +371,7 @@ focus_tree = {
 		
 		completion_reward = {
 
-			# Tooltip
+			custom_effect_tooltip = FINl_civil_war_2_tt
 
 			hidden_effect = {
 				RUS = {
@@ -340,11 +393,47 @@ focus_tree = {
 				release = SMI
 				transfer_units_fraction = {
 					target = RFI
-					army_ratio = 0.5
+					size = 1
+					army_ratio = 0.4
 				}
 				transfer_units_fraction = {
 					target = SMI
+					size = 1
 					army_ratio = 0.2
+				}
+				if = {
+					limit = { has_completed_focus = FINl_get_the_army_on_our_side }
+					RFI = {
+						transfer_units_fraction = {
+							target = FIN
+								size = 1
+							army_ratio = 0.25
+						}
+					}
+				}
+				if = {
+					limit = { has_completed_focus = FINl_help_from_our_brothers }
+					add_equipment_to_stockpile = {
+						type = infantry_equipment
+						amount = 2500
+					}
+					random_owned_state = {
+						create_unit = {
+							division = "name = \"Swedish Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "name = \"Norwegian Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
+						}
+						create_unit = {
+							division = "name = \"Danish Volunteer Division\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+							owner = ROOT
+							count = 1
+						}
+					}
 				}
 				every_state = {
 					limit = {
@@ -356,6 +445,9 @@ focus_tree = {
 				declare_war_on = {
 					target = RFI
 					type = take_state
+				}
+				set_politics = {
+					ruling_party = conservative
 				}
 			}
 			# Aviable for 85 days after siding with the people

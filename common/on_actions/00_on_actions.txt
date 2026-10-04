@@ -42,16 +42,6 @@ on_actions = {
     on_daily = {
         effect = {
             if = {
-                limit = { has_completed_focus = FIN_rising_tensions }
-                country_event = { id = finlandos.2 days = 100 }
-            }
-        }
-    }
-
-
-    on_daily = {
-        effect = {
-            if = {
                 limit = { is_subject_of = RUS tag = FIN }
                 country_event = { id = finlandos.3 }
             }
@@ -64,8 +54,12 @@ on_actions = {
                 limit = {
                     tag = RFI
                     FIN = { exists = no }
+                    from = { tag = FIN }
+                    SMI = {
+                        DVE_un_is_member = no
+                    }
                 }
-                country_event = { id = finlandos.4 }
+                country_event = { id = finlandos.4 days = 1 }
             }
         }
     }
@@ -76,8 +70,12 @@ on_actions = {
                 limit = {
                     tag = FIN
                     RFI = { exists = no }
+                    from = { tag = RFI }
+                    SMI = {
+                        DVE_un_is_member = no
+                    }
                 }
-                country_event = { id = finlandos.4 }
+                country_event = { id = finlandos.4 days = 1 }
             }
         }
     }
@@ -88,8 +86,9 @@ on_actions = {
                 limit = {
                     tag = RFI
                     SMI = { exists = no }
+                    from = { tag = SMI }
                 }
-                country_event = { id = finlandos.5 }
+                country_event = { id = finlandos.5 days = 1 }
             }
         }
     }
@@ -100,8 +99,9 @@ on_actions = {
                 limit = {
                     tag = FIN
                     SMI = { exists = no }
+                    from = { tag = SMI }
                 }
-                country_event = { id = finlandos.6 }
+                country_event = { id = finlandos.6 days = 1 }
             }
         }
     }

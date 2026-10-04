@@ -1,0 +1,27 @@
+# DvE super events without a focus to hang on: SRB and RCA win when they
+# hold the capital and the old government is gone. INT and SOV fire from
+# their last civil war focus instead.
+on_actions = {
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					tag = SRB
+					NOT = { has_global_flag = DVE_superevent_SRB_victory }
+					owns_state = 126 # London
+					NOT = { country_exists = ENG }
+				}
+				DVE_superevent_SRB_victory_effect = yes
+			}
+			else_if = {
+				limit = {
+					tag = RCA
+					NOT = { has_global_flag = DVE_superevent_RCA_victory }
+					owns_state = 361 # Washington DC
+					NOT = { country_exists = USA }
+				}
+				DVE_superevent_RCA_victory_effect = yes
+			}
+		}
+	}
+}

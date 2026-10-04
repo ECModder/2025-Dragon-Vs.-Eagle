@@ -284,3 +284,21 @@ DVE_set_state_policies_effect = {
 		add_ideas = forbearing_discipline
 	}
 }
+
+
+# ============================================================
+#   Countries born after day one (civil war factions, released
+#   or revolutionary tags) never got the on_startup pass and kept
+#   the default laws. DVE_market_orders_active is set for every
+#   country at startup, so a country without it is a new one.
+#   Called weekly (DVE_new_country_laws_on_actions.txt) and at
+#   once by DVE_cw_new_faction_setup_effect.
+# ============================================================
+DVE_init_new_country_laws_effect = {
+	if = {
+		limit = { NOT = { has_variable = DVE_market_orders_active } }
+		set_variable = { DVE_market_orders_active = 0 }
+		DVE_set_economic_model_effect = yes
+		DVE_set_state_policies_effect = yes
+	}
+}
