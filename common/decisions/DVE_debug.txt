@@ -1273,3 +1273,29 @@ DVE_debug_greece_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+
+# ============================================================
+#   SYRIAN CIVIL WAR - SYR against SYA, TSY and DRZ
+# ============================================================
+DVE_debug_syria_category = {
+
+	# Fires the March 2025 uprising at once.
+	DVE_debug_syria_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = SYR }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_global_flag = SYR_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			SYR_civil_war_start_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

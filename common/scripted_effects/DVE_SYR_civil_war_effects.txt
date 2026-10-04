@@ -1,0 +1,246 @@
+# ============================================================
+#   DvE - SYRIAN CIVIL WAR, March 2025
+#   At game start the Interim Government (SYR) holds all of
+#   Syria except Rojava (ROJ, untouched). Between 5 and 7 March
+#   the rest breaks up and every faction fights every other:
+#     SYA  Latakia-Tartus (1070)
+#     TSY  Aleppo (1149), Herema Cizire (1135)
+#     DRZ  Druze (1150)
+#     ISS  Aleppo-Homs (677)
+#     SYR  keeps Damascus (554)
+#   Scheduled by common/on_actions/DVE_SYR_civil_war_on_actions.txt.
+# ============================================================
+
+# Starts the war from anywhere (schedule, debug, safety net).
+SYR_civil_war_start_effect = {
+	if = {
+		limit = {
+			country_exists = SYR
+			NOT = { has_global_flag = SYR_civil_war }
+		}
+		SYR = { country_event = { id = dve_syrcw.1 } }
+	}
+}
+
+SYR_cw_spawn_SYA_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1070 # Latakia-Tartus
+			}
+		}
+		add_core_of = SYA
+		SYA = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = SYA }
+		SYA = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 1070 }
+				set_capital = { state = 1070 }
+			}
+			SYR_cw_army_SYA_effect = yes
+		}
+	}
+}
+
+SYR_cw_spawn_TSY_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1149 # Aleppo
+				state = 1135 # Herema Cizire
+			}
+		}
+		add_core_of = TSY
+		TSY = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = TSY }
+		TSY = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 1149 }
+				set_capital = { state = 1149 }
+			}
+			SYR_cw_army_TSY_effect = yes
+		}
+	}
+}
+
+SYR_cw_spawn_DRZ_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1150 # Druze
+			}
+		}
+		add_core_of = DRZ
+		DRZ = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = DRZ }
+		DRZ = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 1150 }
+				set_capital = { state = 1150 }
+			}
+			SYR_cw_army_DRZ_effect = yes
+		}
+	}
+}
+
+SYR_cw_spawn_ISS_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 677 # Aleppo-Homs
+			}
+		}
+		add_core_of = ISS
+		ISS = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = ISS }
+		ISS = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 677 }
+				set_capital = { state = 677 }
+			}
+			SYR_cw_army_ISS_effect = yes
+		}
+	}
+}
+
+# Runs in SYR's scope from dve_syrcw.1 (ROOT = SYR).
+SYR_civil_war_effect = {
+	set_global_flag = SYR_civil_war
+	add_stability = -0.20
+	add_war_support = 0.10
+
+	# territory, kit and armies of the four breakaway factions
+	SYR_cw_spawn_SYA_effect = yes
+	SYR_cw_spawn_TSY_effect = yes
+	SYR_cw_spawn_DRZ_effect = yes
+	SYR_cw_spawn_ISS_effect = yes
+	SYR_cw_army_SYR_effect = yes
+
+	# every faction against every other (Rojava stays out)
+	every_country = {
+		limit = { DVE_cw_syria = yes }
+		every_country = {
+			limit = {
+				DVE_cw_syria = yes
+				NOT = { tag = PREV }
+				NOT = { has_war_with = PREV }
+				NOT = { is_in_faction_with = PREV }
+			}
+			PREV = { declare_war_on = { target = PREV type = annex_everything } }
+		}
+	}
+
+	every_country = {
+		limit = { NOT = { DVE_cw_syria = yes } }
+		news_event = { id = dve_syrcw.2 hours = 6 }
+	}
+}
+
+# SYR: 12 divisions, spread over its provinces. Scope: SYR.
+SYR_cw_army_SYR_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Syrian Army" } }
+			division_template = {
+				name = "Syrian Army"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+			}
+		}
+	}
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 4111 count = 3 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 4550 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 7184 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 7513 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 10383 count = 1 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 12316 count = 1 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian Army\" division_template = \"Syrian Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = SYR prioritize_location = 12442 count = 1 allow_spawning_on_enemy_provs = yes }
+}
+
+# SYA: 6 divisions, spread over its provinces. Scope: SYA.
+SYR_cw_army_SYA_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Coastal Shield" } }
+			division_template = {
+				name = "Coastal Shield"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	create_unit = { division = "name = \"Coastal Shield\" division_template = \"Coastal Shield\" start_experience_factor = 0.30 start_equipment_factor = 0.80" owner = SYA prioritize_location = 1088 count = 3 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Coastal Shield\" division_template = \"Coastal Shield\" start_experience_factor = 0.30 start_equipment_factor = 0.80" owner = SYA prioritize_location = 10087 count = 3 allow_spawning_on_enemy_provs = yes }
+}
+
+# TSY: 6 divisions, spread over its provinces. Scope: TSY.
+SYR_cw_army_TSY_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Syrian National Army" } }
+			division_template = {
+				name = "Syrian National Army"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	create_unit = { division = "name = \"Syrian National Army\" division_template = \"Syrian National Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = TSY prioritize_location = 12473 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian National Army\" division_template = \"Syrian National Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = TSY prioritize_location = 6883 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Syrian National Army\" division_template = \"Syrian National Army\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = TSY prioritize_location = 1578 count = 2 allow_spawning_on_enemy_provs = yes }
+}
+
+# DRZ: 4 divisions, spread over its provinces. Scope: DRZ.
+SYR_cw_army_DRZ_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Men of Dignity" } }
+			division_template = {
+				name = "Men of Dignity"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	create_unit = { division = "name = \"Men of Dignity\" division_template = \"Men of Dignity\" start_experience_factor = 0.25 start_equipment_factor = 0.75" owner = DRZ prioritize_location = 4486 count = 4 allow_spawning_on_enemy_provs = yes }
+}
+
+# ISS: 6 divisions, spread over its provinces. Scope: ISS.
+SYR_cw_army_ISS_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Islamic Brigades" } }
+			division_template = {
+				name = "Islamic Brigades"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	create_unit = { division = "name = \"Islamic Brigades\" division_template = \"Islamic Brigades\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = ISS prioritize_location = 1056 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Islamic Brigades\" division_template = \"Islamic Brigades\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = ISS prioritize_location = 1072 count = 2 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Islamic Brigades\" division_template = \"Islamic Brigades\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = ISS prioritize_location = 7140 count = 1 allow_spawning_on_enemy_provs = yes }
+	create_unit = { division = "name = \"Islamic Brigades\" division_template = \"Islamic Brigades\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = ISS prioritize_location = 7671 count = 1 allow_spawning_on_enemy_provs = yes }
+}

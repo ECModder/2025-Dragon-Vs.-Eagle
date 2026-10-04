@@ -1,0 +1,63 @@
+add_namespace = dve_syrcw
+
+# The March 2025 uprising. Fires for SYR; the country breaks up in
+# "immediate", then a human player may move to one of the factions.
+country_event = {
+	id = dve_syrcw.1
+	title = dve_syrcw.1.t
+	desc = dve_syrcw.1.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = SYR_civil_war }
+	}
+
+	immediate = {
+		hidden_effect = { SYR_civil_war_effect = yes }
+	}
+
+	option = {
+		name = dve_syrcw.1.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_syrcw.1.b
+		trigger = { is_ai = no country_exists = SYA }
+		ai_chance = { factor = 0 }
+		SYA = { change_tag_from = SYR }
+	}
+	option = {
+		name = dve_syrcw.1.c
+		trigger = { is_ai = no country_exists = TSY }
+		ai_chance = { factor = 0 }
+		TSY = { change_tag_from = SYR }
+	}
+	option = {
+		name = dve_syrcw.1.e
+		trigger = { is_ai = no country_exists = DRZ }
+		ai_chance = { factor = 0 }
+		DRZ = { change_tag_from = SYR }
+	}
+	option = {
+		name = dve_syrcw.1.f
+		trigger = { is_ai = no country_exists = ISS }
+		ai_chance = { factor = 0 }
+		ISS = { change_tag_from = SYR }
+	}
+}
+
+# News for every other country.
+news_event = {
+	id = dve_syrcw.2
+	title = dve_syrcw.2.t
+	desc = dve_syrcw.2.d
+	picture = GFX_news_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_syrcw.2.a
+	}
+}
