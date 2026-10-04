@@ -15,6 +15,7 @@ DVE_cw_greece = { OR = { tag = GRE tag = GSR tag = GNR } }
 DVE_cw_portugal = { OR = { tag = POR tag = PRS } }
 DVE_cw_scandinavia = { OR = { tag = SWE tag = NOR tag = DEN tag = SSR } }
 DVE_cw_yugoslavia = { OR = { tag = SER tag = BOS tag = CRO tag = MAC tag = MNT tag = SLV tag = YUG } }
+DVE_cw_syria = { OR = { tag = SYR tag = SYA tag = TSY tag = DRZ tag = ISS } }
 
 # Peace conference only: use at the top of a peace action's enable
 # block, where FROM = taker and FROM.FROM = giver.
@@ -34,6 +35,7 @@ DVE_pc_taker_and_giver_same_civil_war = {
 		AND = { FROM = { DVE_cw_poland = yes } FROM.FROM = { DVE_cw_poland = yes } }
 		AND = { FROM = { DVE_cw_greece = yes } FROM.FROM = { DVE_cw_greece = yes } }
 		AND = { FROM = { DVE_cw_portugal = yes } FROM.FROM = { DVE_cw_portugal = yes } }
+		AND = { FROM = { DVE_cw_syria = yes } FROM.FROM = { DVE_cw_syria = yes } }
 		AND = {
 			FROM = { DVE_cw_scandinavia = yes }
 			FROM.FROM = { DVE_cw_scandinavia = yes }
