@@ -409,6 +409,11 @@ focus_tree = {
 			add_war_support = 0.10
 			army_experience = 50
 			add_research_slot = 1
+			# the capital leaves Genoa for Milan
+			if = {
+				limit = { owns_state = 159 }
+				set_capital = { state = 159 }
+			}
 			set_country_flag = INT_civil_war_won
 			set_country_flag = INT_cw_if_lenin_could_see_us_done
 			load_focus_tree = { tree = INT_focus keep_completed = no }

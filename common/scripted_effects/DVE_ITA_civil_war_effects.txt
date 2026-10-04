@@ -11,26 +11,29 @@
 #   fazione a se') mantiene automaticamente tutto cio' che non e'
 #   nella lista di nessuno.
 #
-#   Spartizione (16 stati italiani, tutti assegnati):
-#     ITA   4  Abruzzo(157) Sicilia(115) Sardegna(114) Trentino(850)
-#     INT   5  Piemonte(158) Lombardia(159) Emilia-Romagna(161)
-#              Toscana(162) Trieste(1155)         - capitale 159
-#     SRI   3  Napoli/Campania(117) Calabria(156) Puglia(849)
-#                                                  - capitale 117
-#     RSI   1  Lazio/Roma(2)                       - capitale 2
-#     LOM   2  Veneto(160) Bergamo(1088)           - capitale 160
-#     TYR   1  Alto Adige(39)                       - capitale 39
+#   Partition of the 35 Italian states (ITA keeps what no list names):
+#     ITA 18  Roma(2) Cagliari(114) Sicily(115) Abruzzo(157)
+#              Trentino(850) Nord Lombardia(1088) Aosta(1173)
+#              Sud Piemonte(1174) Nord Piemonte(1175)
+#              Friuli-Venezia Giulia(1180) Umbria(1182)
+#              Nord-Lazio(1183) Marche(1185) Molise(1186)
+#              Campania-Salerno(1187) Basilicata(1188)
+#              Nord-Sardegna(1190) Centro-Sardegna(1191)
+#     INT  9  Torino(158) Milano-Pavia(159) Liguria(1176)
+#              Emilia(1178) Bologna-Romagna(161)
+#              Nord Toscana(162) Sud Toscana(1181)
+#              Trieste(1155) Taranto(1189)
+#              capital 1176 Genova, 159 Milano after the war
+#     SRI  3  Campania-Napoli(117) Puglia(849) Calabria(156)
+#              capital 117
+#     RSI  1  Latina(1184)
+#              capital 1184
+#     LOM  3  Est Lombardia(1177) Padania(1179) Veneto(160)
+#              capital 160
+#     TYR  1  South Tyrol(39)
 #
-#   Roma: RSI possiede lo stato per intero (come richiesto), ma
-#   l'ITA ci pianta comunque una guarnigione di truppe fedeli
-#   (allow_spawning_on_enemy_provs = yes, stesso trucco usato
-#   ovunque in questo file per le divisioni create in territorio
-#   non proprio) - una sacca di resistenza nella capitale persa,
-#   non un possedimento vero.
-#
-#   Gli stati che l'ITA mantiene per intero (Abruzzo, Sicilia,
-#   Sardegna, Trentino) ricevono ognuno 2 divisioni di guarnigione
-#   (template "Presidio Territoriale"), da ITA_civil_war_army_effect.
+#   Armies (ITA_civil_war_army_effect): INT 36, SRI 16, RSI 14, LOM 8,
+#   TYR 4, spread province by province; ITA 3 in Rome and 8 garrisons.
 #
 #   Guerre dichiarate quando scoppia tutto:
 #     ITA contro tutte e cinque le fazioni (il governo legittimo
@@ -45,18 +48,22 @@
 
 # ============================================================
 #   INT - Lotta Comunista / Vanguard-Revolutionary Front.
-#   5 stati, capitale Milano.
+#   9 states, capital Genova (Milano once the civil war is won).
 # ============================================================
 ITA_cw_spawn_INT_effect = {
 
 	every_owned_state = {
 		limit = {
 			OR = {
-				state = 158  # Piemonte
-				state = 159  # Lombardia
-				state = 161  # Emilia-Romagna
-				state = 162  # Toscana
+				state = 158  # Torino
+				state = 159  # Milano-Pavia
+				state = 1176 # Liguria
+				state = 1178 # Emilia
+				state = 161  # Bologna-Romagna
+				state = 162  # Nord Toscana
+				state = 1181 # Sud Toscana
 				state = 1155 # Trieste
+				state = 1189 # Taranto
 			}
 		}
 		add_core_of = INT
@@ -68,8 +75,8 @@ ITA_cw_spawn_INT_effect = {
 		INT = {
 			DVE_cw_new_faction_setup_effect = yes
 			if = {
-				limit = { owns_state = 159 }
-				set_capital = { state = 159 }
+				limit = { owns_state = 1176 }
+				set_capital = { state = 1176 } # Genoa until the civil war is won
 			}
 			# Civil war tree, loaded once (a re-spawn must not reset it).
 			if = {
@@ -88,16 +95,16 @@ ITA_cw_spawn_INT_effect = {
 
 # ============================================================
 #   SRI - PdRC-PaP Front (Stalinist).
-#   3 stati, capitale Napoli.
+#   3 states, capital Napoli.
 # ============================================================
 ITA_cw_spawn_SRI_effect = {
 
 	every_owned_state = {
 		limit = {
 			OR = {
-				state = 117  # Napoli/Campania
-				state = 156  # Calabria
+				state = 117  # Campania-Napoli
 				state = 849  # Puglia
+				state = 156  # Calabria
 			}
 		}
 		add_core_of = SRI
@@ -118,14 +125,14 @@ ITA_cw_spawn_SRI_effect = {
 
 # ============================================================
 #   RSI - Fascist Front.
-#   1 stato (Lazio/Roma).
+#   1 state (Latina).
 # ============================================================
 ITA_cw_spawn_RSI_effect = {
 
 	every_owned_state = {
 		limit = {
 			OR = {
-				state = 2  # Lazio - Roma
+				state = 1184 # Latina
 			}
 		}
 		add_core_of = RSI
@@ -137,8 +144,8 @@ ITA_cw_spawn_RSI_effect = {
 		RSI = {
 			DVE_cw_new_faction_setup_effect = yes
 			if = {
-				limit = { owns_state = 2 }
-				set_capital = { state = 2 }
+				limit = { owns_state = 1184 }
+				set_capital = { state = 1184 }
 			}
 		}
 	}
@@ -146,15 +153,16 @@ ITA_cw_spawn_RSI_effect = {
 
 # ============================================================
 #   LOM - Padania (separatista settentrionale).
-#   2 stati, capitale Veneto.
+#   3 states, capital Veneto.
 # ============================================================
 ITA_cw_spawn_LOM_effect = {
 
 	every_owned_state = {
 		limit = {
 			OR = {
+				state = 1177 # Est Lombardia
+				state = 1179 # Padania
 				state = 160  # Veneto
-				state = 1088 # Bergamo
 			}
 		}
 		add_core_of = LOM
@@ -291,14 +299,42 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
-					owner = INT
-					count = 24
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
+			# 36 divisions, spread over the provinces of its states
+			# Torino
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6780 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9738 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11730 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11721 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Milano-Pavia
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3780 count = 3 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11726 count = 2 allow_spawning_on_enemy_provs = yes }
+			# Liguria
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6788 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11891 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3772 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6973 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Emilia
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3773 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6790 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 3976 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9752 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Bologna-Romagna
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6606 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6793 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9924 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6985 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Sud Toscana
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11833 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 910 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9879 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 9750 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6875 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Trieste
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6626 count = 3 allow_spawning_on_enemy_provs = yes }
+			# Taranto
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11837 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 11998 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = INT prioritize_location = 6979 count = 1 allow_spawning_on_enemy_provs = yes }
 		}
 	}
 
@@ -320,14 +356,23 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90"
-					owner = SRI
-					count = 16
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
+			# 16 divisions, spread over the provinces of its states
+			# Campania-Napoli
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 819 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9826 count = 2 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 11803 count = 2 allow_spawning_on_enemy_provs = yes }
+			# Puglia
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6980 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6939 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 883 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 6843 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9784 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Calabria
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 3901 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 9990 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 10027 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12066 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia di Stato\" division_template = \"Guardia di Stato\" start_experience_factor = 0.30 start_equipment_factor = 0.90" owner = SRI prioritize_location = 12098 count = 1 allow_spawning_on_enemy_provs = yes }
 		}
 	}
 
@@ -349,14 +394,11 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80"
-					owner = RSI
-					count = 14
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
+			# 14 divisions, spread over the provinces of its states
+			# Latina
+			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11846 count = 5 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 11882 count = 5 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Nazionale Repubblicana\" division_template = \"Guardia Nazionale Repubblicana\" start_experience_factor = 0.25 start_equipment_factor = 0.80" owner = RSI prioritize_location = 923 count = 4 allow_spawning_on_enemy_provs = yes }
 		}
 	}
 
@@ -375,14 +417,18 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
-					owner = LOM
-					count = 8
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
+			# 8 divisions, spread over the provinces of its states
+			# Est Lombardia
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 773 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3776 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11568 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Padania
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 603 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3604 count = 1 allow_spawning_on_enemy_provs = yes }
+			# Veneto
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 11584 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 6656 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = LOM prioritize_location = 3657 count = 1 allow_spawning_on_enemy_provs = yes }
 		}
 	}
 
@@ -400,22 +446,16 @@ ITA_civil_war_army_effect = {
 					}
 				}
 			}
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
-					owner = TYR
-					count = 4
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
+			# 4 divisions, spread over the provinces of its states
+			# South Tyrol
+			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 656 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 6675 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 9630 count = 1 allow_spawning_on_enemy_provs = yes }
+			create_unit = { division = "name = \"Schützen\" division_template = \"Schützen\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = TYR prioritize_location = 11598 count = 1 allow_spawning_on_enemy_provs = yes }
 		}
 	}
 
-	# --- la guarnigione italiana a Roma: la RSI possiede lo stato,
-	#     ma il governo legittimo ci pianta comunque delle truppe.
-	#     Scope numerico diretto sullo stato 2, non capital_scope
-	#     (l'ITA non ha piu' Roma come capitale una volta che la
-	#     RSI se la prende) ---
+	# Rome stays with ITA: garrison of the capital.
 	hidden_effect = {
 		if = {
 			limit = { NOT = { has_template = "Presidio di Roma" } }
@@ -436,10 +476,7 @@ ITA_civil_war_army_effect = {
 		}
 	}
 
-	# --- guarnigioni sul territorio che l'Italia mantiene per intero
-	#     (Abruzzo, Sicilia, Sardegna, Trentino - nessuna fazione li
-	#     reclama): 2 divisioni per stato, stesso template condiviso,
-	#     nome diverso per stato per chiarezza sulla mappa ---
+	# Territorial garrisons: 8 divisions, one in each of 8 states ITA keeps.
 	hidden_effect = {
 		if = {
 			limit = { NOT = { has_template = "Presidio Territoriale" } }
@@ -455,28 +492,56 @@ ITA_civil_war_army_effect = {
 		create_unit = {
 			division = "name = \"Presidio d'Abruzzo\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
 			owner = ITA
-			count = 2
+			count = 1
 		}
 	}
-	115 = { # Sicilia
+	115 = { # Sicily
 		create_unit = {
 			division = "name = \"Presidio di Sicilia\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
 			owner = ITA
-			count = 2
+			count = 1
 		}
 	}
-	114 = { # Sardegna
+	114 = { # Cagliari
 		create_unit = {
 			division = "name = \"Presidio di Sardegna\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
 			owner = ITA
-			count = 2
+			count = 1
 		}
 	}
 	850 = { # Trentino
 		create_unit = {
 			division = "name = \"Presidio del Trentino\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
 			owner = ITA
-			count = 2
+			count = 1
+		}
+	}
+	1174 = { # Sud Piemonte
+		create_unit = {
+			division = "name = \"Presidio del Piemonte\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 1
+		}
+	}
+	1180 = { # Friuli-Venezia Giulia
+		create_unit = {
+			division = "name = \"Presidio del Friuli\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 1
+		}
+	}
+	1185 = { # Marche
+		create_unit = {
+			division = "name = \"Presidio delle Marche\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 1
+		}
+	}
+	1187 = { # Campania-Salerno
+		create_unit = {
+			division = "name = \"Presidio di Salerno\" division_template = \"Presidio Territoriale\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ITA
+			count = 1
 		}
 	}
 }
