@@ -1,0 +1,668 @@
+# ============================================================
+#   DvE - The International: decisions.
+#   Members act directly (and gain standing) or put a motion
+#   to the Central Council; outsiders build their standing and
+#   apply. Every vote is resolved by DVE_intl_resolve_vote_effect.
+# ============================================================
+
+DVE_intl_member_category = {
+
+	DVE_intl_attend_assembly = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_3_tt
+			custom_effect_tooltip = DVE_intl_attend_assembly_tt
+			hidden_effect = {
+				for_each_scope_loop = {
+					array = global.DVE_intl_members
+					if = {
+						limit = { NOT = { tag = ROOT } }
+						add_opinion_modifier = { target = ROOT modifier = DVE_intl_goodwill }
+					}
+				}
+			}
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 3 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_support_development = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_2_tt
+			add_stability = 0.01
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 2 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_cooperation = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_3_tt
+			add_tech_bonus = { name = DVE_intl_cooperation bonus = 0.25 uses = 1 category = industry }
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 3 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_host_summit = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			has_war = no
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_8_tt
+			add_stability = 0.02
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 8 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_humanitarian_aid = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_5_tt
+			add_war_support = 0.02
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 5 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_promote_internationalism = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_4_tt
+			add_popularity = { ideology = vanguard_socialism popularity = 0.02 }
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 4 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- campaigns: human members win seats for a current of the Council ---
+	DVE_intl_back_tot = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_tot < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_tot_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_tot = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_tot max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_aut = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_aut < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_aut_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_aut = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_aut max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_van = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_van < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_van_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_van = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_van max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_rev = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_rev < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_rev_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_rev = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_rev max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_intl_back_pro = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { always = yes }
+		visible = {
+			DVE_intl_is_member = yes
+			is_ai = no
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_back_cap_tt
+				check_variable = { global.DVE_intl_boost_pro < 250 }
+			}
+		}
+		cost = 60
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_back_pro_tt
+			hidden_effect = {
+				DVE_intl_ensure_boosts_effect = yes
+				add_to_variable = { global.DVE_intl_boost_pro = 25 }
+				clamp_variable = { var = global.DVE_intl_boost_pro max = 250 }
+				DVE_intl_refresh_members_effect = yes
+			}
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- motions: one at a time, a week of voting, then 30 days of recess ---
+	DVE_intl_motion_common_plan = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_recess_tt
+				NOT = { has_global_flag = DVE_intl_session_cooldown }
+			}
+		}
+		cost = 75
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_motion_vote_tt
+			custom_effect_tooltip = DVE_intl_motion_common_plan_effect_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 1 }
+				set_country_flag = { flag = DVE_intl_proposed_recently days = 365 value = 1 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		# the AI puts at most one motion a year
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = DVE_intl_proposed_recently
+			}
+		}
+	}
+
+	DVE_intl_motion_solidarity_fund = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_recess_tt
+				NOT = { has_global_flag = DVE_intl_session_cooldown }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_motion_vote_tt
+			custom_effect_tooltip = DVE_intl_motion_solidarity_fund_effect_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 2 }
+				set_country_flag = { flag = DVE_intl_proposed_recently days = 365 value = 1 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		# the AI puts at most one motion a year
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = DVE_intl_proposed_recently
+			}
+		}
+	}
+
+	DVE_intl_motion_open_borders = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_recess_tt
+				NOT = { has_global_flag = DVE_intl_session_cooldown }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_motion_vote_tt
+			custom_effect_tooltip = DVE_intl_motion_open_borders_effect_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 3 }
+				set_country_flag = { flag = DVE_intl_proposed_recently days = 365 value = 1 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		# the AI puts at most one motion a year
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = DVE_intl_proposed_recently
+			}
+		}
+	}
+
+	DVE_intl_motion_mobilization = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_recess_tt
+				NOT = { has_global_flag = DVE_intl_session_cooldown }
+			}
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_motion_vote_tt
+			custom_effect_tooltip = DVE_intl_motion_mobilization_effect_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 4 }
+				set_country_flag = { flag = DVE_intl_proposed_recently days = 365 value = 1 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		# the AI puts at most one motion a year
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = DVE_intl_proposed_recently
+			}
+		}
+	}
+
+	DVE_intl_motion_red_helmets = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_member = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_recess_tt
+				NOT = { has_global_flag = DVE_intl_session_cooldown }
+			}
+			has_war = yes
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_motion_vote_tt
+			custom_effect_tooltip = DVE_intl_motion_red_helmets_effect_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 5 }
+				set_country_flag = { flag = DVE_intl_proposed_recently days = 365 value = 1 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		# the AI puts at most one motion a year
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 0
+				has_country_flag = DVE_intl_proposed_recently
+			}
+		}
+	}
+
+}
+
+DVE_intl_applicant_category = {
+
+	DVE_intl_seek_recognition = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 45
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 4 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_outreach = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_3_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 3 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_app_cooperation = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 45
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 4 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_app_summit = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_8_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 8 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_sponsors = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 150
+		fire_only_once = no
+		days_re_enable = 240
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_15_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 15 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_appeal = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_4_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 4 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	DVE_intl_pursue = {
+		icon = GFX_decision_generic_political_address
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_below_100_tt
+				check_variable = { DVE_intl_standing < 100 }
+			}
+		}
+		cost = 100
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_standing_plus_8_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_delta = 8 }
+				DVE_intl_change_standing_effect = yes
+			}
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	# The members vote on the admission: the higher the standing, the better the odds.
+	DVE_intl_submit_application = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = { DVE_intl_is_applicant = yes }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_standing_50_tt
+				check_variable = { DVE_intl_standing > 49.9 }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_vote_tt
+				NOT = { has_global_flag = DVE_intl_vote_in_progress }
+			}
+			custom_trigger_tooltip = {
+				tooltip = DVE_intl_no_app_cooldown_tt
+				NOT = { has_country_flag = DVE_intl_application_cooldown }
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			custom_effect_tooltip = DVE_intl_admission_vote_tt
+			hidden_effect = {
+				set_temp_variable = { dve_intl_motion_id = 10 }
+				DVE_intl_start_vote_effect = yes
+			}
+		}
+		ai_will_do = { base = 10 }
+	}
+}

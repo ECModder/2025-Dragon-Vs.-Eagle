@@ -1,0 +1,53 @@
+# DvE - United Nations hooks.
+on_actions = {
+
+	# on_startup has no scope and a scripted effect needs one: run it
+	# inside a country (UNA owns the UN headquarters from day one).
+	on_startup = {
+		effect = {
+			UNA = { DVE_un_startup_effect = yes }
+		}
+	}
+
+	# Runs for every country, in its scope.
+	on_weekly = {
+		effect = {
+			# Safety net: saves started before the UN system existed.
+			if = {
+				limit = { NOT = { has_global_flag = DVE_un_started } }
+				DVE_un_startup_effect = yes
+			}
+			# Countries born during the game start as unrecognized states.
+			else_if = {
+				limit = {
+					NOT = { has_country_flag = DVE_un_initialized }
+					NOT = { tag = UNA }
+				}
+				set_temp_variable = { dve_un_start = 10 }
+				DVE_un_init_non_member_effect = yes
+			}
+		}
+	}
+
+	# ROOT is the attacker: an aggressive war costs a non-member 10 legitimacy.
+	on_declare_war = {
+		effect = {
+			if = {
+				limit = { DVE_un_is_non_member = yes }
+				set_temp_variable = { dve_un_delta = -10 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+	}
+
+	# ROOT is the capitulated country: a lost war costs a non-member 10 legitimacy.
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = { DVE_un_is_non_member = yes }
+				set_temp_variable = { dve_un_delta = -10 }
+				DVE_un_change_legitimacy_effect = yes
+			}
+		}
+	}
+}

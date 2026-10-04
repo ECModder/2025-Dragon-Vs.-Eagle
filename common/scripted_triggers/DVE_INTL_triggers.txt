@@ -1,0 +1,52 @@
+# DvE - The International: shared triggers.
+
+DVE_intl_is_member = {
+	has_country_flag = DVE_intl_member
+}
+
+# PRC, USA and RUS never sit in the International: their place belongs
+# to CSR/CCR, RCA and SOV.
+DVE_intl_can_join = {
+	NOT = { tag = PRC }
+	NOT = { tag = USA }
+	NOT = { tag = RUS }
+}
+
+# Left-wing governments outside the International, once it exists.
+DVE_intl_is_applicant = {
+	has_global_flag = DVE_intl_founded
+	NOT = { has_country_flag = DVE_intl_member }
+	DVE_intl_can_join = yes
+	OR = {
+		has_government = progressive
+		has_government = revolutionary_socialism
+		has_government = vanguard_socialism
+		has_government = authoritarian_socialism
+		has_government = totalitarian_socialism
+	}
+}
+
+# Same ruling current as the country that put the motion.
+DVE_intl_same_current_as_proposer = {
+	OR = {
+		AND = { has_government = vanguard_socialism event_target:DVE_intl_proposer = { has_government = vanguard_socialism } }
+		AND = { has_government = revolutionary_socialism event_target:DVE_intl_proposer = { has_government = revolutionary_socialism } }
+		AND = { has_government = authoritarian_socialism event_target:DVE_intl_proposer = { has_government = authoritarian_socialism } }
+		AND = { has_government = totalitarian_socialism event_target:DVE_intl_proposer = { has_government = totalitarian_socialism } }
+		AND = { has_government = progressive event_target:DVE_intl_proposer = { has_government = progressive } }
+	}
+}
+
+# A communist faction of a civil war that INT can back with
+# DVE_intl_back_faction_effect. Scope: the faction.
+DVE_intl_backable_faction = {
+	exists = yes
+	is_subject = no
+	NOT = { has_war_with = INT }
+	OR = {
+		has_government = vanguard_socialism
+		has_government = revolutionary_socialism
+		has_government = authoritarian_socialism
+		has_government = totalitarian_socialism
+	}
+}

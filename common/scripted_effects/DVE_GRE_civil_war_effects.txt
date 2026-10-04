@@ -1,0 +1,213 @@
+# ============================================================
+#   DvE - GREEK CIVIL WAR
+#   Popular Front of the Left (GSR, cosmetic GSR_LPF) against
+#   the National Front of the Right (GNR). Greece splits in two
+#   and GRE disappears; a human GRE picks a side in dve_grecw.1.
+#
+#   Left:  Attica, Crete, Aegean Islands        - capital Athens
+#   Right: Central Macedonia, Thrace, Epirus,
+#          Peloponnese, Dodecanese              - capital Thessaloniki
+#
+#   Order matters: tech, units and stockpile move while GRE
+#   still owns its states (same as DVE_RUS_tag_change.txt).
+# ============================================================
+
+# Starts the war from anywhere (debug, focus, event).
+GRE_civil_war_start_effect = {
+	if = {
+		limit = {
+			country_exists = GRE
+			NOT = { has_global_flag = GRE_civil_war }
+			NOT = { country_exists = GSR }
+			NOT = { country_exists = GNR }
+		}
+		GRE = { country_event = { id = dve_grecw.1 } }
+	}
+}
+
+# Runs in GRE's scope from dve_grecw.1 (ROOT = GRE).
+GRE_civil_war_effect = {
+	set_global_flag = GRE_civil_war
+
+	# Out of NATO and of every guarantee, or the allies join in.
+	if = {
+		limit = { is_in_faction = yes }
+		leave_faction = yes
+	}
+	every_other_country = {
+		limit = { PREV = { is_guaranteed_by = PREV } }
+		diplomatic_relation = {
+			country = PREV
+			relation = guarantee
+			active = no
+		}
+	}
+
+	# 1) Tech, units and stockpile, while GRE still has its states.
+	GSR = { inherit_technology = GRE }
+	GNR = { inherit_technology = GRE }
+	transfer_units_fraction = {
+		target = GSR
+		size = 0.45
+		stockpile_ratio = 0.45
+		army_ratio = 0.45
+		navy_ratio = 0.40
+		air_ratio = 0.45
+	}
+	transfer_units_fraction = {
+		target = GNR
+		size = 1.0
+		stockpile_ratio = 1.0
+		army_ratio = 1.0
+		navy_ratio = 1.0
+		air_ratio = 1.0
+	}
+
+	# 2) Territory, cores and claims on the other side's half.
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 47   # Attica
+				state = 182  # Crete
+				state = 187  # Aegean Islands
+			}
+		}
+		add_core_of = GSR
+		add_claim_by = GNR
+		GSR = { transfer_state = PREV }
+	}
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 731  # Central Macedonia
+				state = 184  # Thrace
+				state = 185  # Epirus
+				state = 186  # Peloponnese
+				state = 164  # Dodecanese
+			}
+		}
+		add_core_of = GNR
+		add_claim_by = GSR
+		GNR = { transfer_state = PREV }
+	}
+
+	# 3) The two fronts.
+	if = {
+		limit = { country_exists = GSR }
+		GSR = {
+			DVE_cw_new_faction_setup_effect = yes
+			set_cosmetic_tag = GSR_LPF
+			if = {
+				limit = { owns_state = 47 }
+				set_capital = { state = 47 }
+			}
+			create_country_leader = {
+				name = "Syntonistiki Epitropi"
+				desc = "POLITICS_LEADER_DESC"
+				picture = "portrait_large_workers_council.dds"
+				expire = "2100.1.1"
+				ideology = progressivism
+			}
+			set_politics = {
+				ruling_party = progressive
+				elections_allowed = no
+			}
+			# SYRIZA leads, with the KKE and the far left inside the front.
+			set_popularities = {
+				progressive = 45
+				authoritarian_socialism = 15
+				totalitarian_socialism = 10
+				vanguard_socialism = 10
+				revolutionary_socialism = 5
+				liberal = 10
+				conservative = 3
+				ultranationalism = 2
+			}
+			set_country_flag = GRE_cw_popular_front
+			GRE_cw_left_militia_effect = yes
+		}
+	}
+	if = {
+		limit = { country_exists = GNR }
+		GNR = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 731 }
+				set_capital = { state = 731 }
+			}
+			set_politics = {
+				ruling_party = ultranationalism
+				elections_allowed = no
+			}
+			set_country_flag = GRE_cw_national_front
+			GRE_cw_right_militia_effect = yes
+		}
+	}
+
+	# 4) The war, and the news for everyone else.
+	if = {
+		limit = {
+			country_exists = GSR
+			country_exists = GNR
+		}
+		GSR = { declare_war_on = { target = GNR type = annex_everything } }
+	}
+	every_country = {
+		limit = { NOT = { tag = GRE } }
+		news_event = { id = dve_grecw.2 hours = 6 }
+	}
+}
+
+# People's militia of the Popular Front, in its capital.
+GRE_cw_left_militia_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Laiki Politofylaki" } }
+			division_template = {
+				name = "Laiki Politofylaki"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	capital_scope = {
+		create_unit = {
+			division = "name = \"Laiki Politofylaki\" division_template = \"Laiki Politofylaki\" start_experience_factor = 0.25 start_equipment_factor = 0.80"
+			owner = GSR
+			count = 12
+			allow_spawning_on_enemy_provs = yes
+		}
+	}
+}
+
+# National guard of the National Front, in its capital.
+GRE_cw_right_militia_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Ethnofylaki" } }
+			division_template = {
+				name = "Ethnofylaki"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	capital_scope = {
+		create_unit = {
+			division = "name = \"Ethnofylaki\" division_template = \"Ethnofylaki\" start_experience_factor = 0.30 start_equipment_factor = 0.80"
+			owner = GNR
+			count = 12
+			allow_spawning_on_enemy_provs = yes
+		}
+	}
+}

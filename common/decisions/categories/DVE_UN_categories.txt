@@ -1,0 +1,31 @@
+# DvE - United Nations: one category for unrecognized states, one for members.
+# Each has its panel on top (common/scripted_guis/DVE_UN_gui.txt).
+
+DVE_un_recognition_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_un_recognition_ui
+	priority = 80
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		DVE_un_is_non_member = yes
+	}
+}
+
+DVE_un_member_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_un_member_ui
+	priority = 80
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		DVE_un_is_member = yes
+		NOT = { tag = UNA }
+	}
+}

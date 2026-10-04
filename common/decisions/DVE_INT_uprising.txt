@@ -95,6 +95,63 @@ INT_uprising_category = {
 # ============================================================
 INT_uprising_annex_category = {
 
+	# Step 1: a member of the International becomes INT's subject.
+	# The member gets dve_intup.3 and may refuse.
+	INT_intl_subordinate_member = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { tag = INT }
+
+		target_array = global.DVE_intl_members
+		target_root_trigger = { tag = INT }
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = { tag = INT }
+				has_country_flag = DVE_intl_member
+				is_subject = no
+			}
+		}
+
+		visible = { has_global_flag = DVE_intl_founded }
+
+		available = {
+			FROM = {
+				NOT = { has_war_with = ROOT }
+				custom_trigger_tooltip = {
+					tooltip = INT_intl_subordinate_not_asked_tt
+					NOT = { has_country_flag = INT_intl_union_asked }
+				}
+				custom_trigger_tooltip = {
+					tooltip = INT_intl_subordinate_not_refused_tt
+					NOT = { has_country_flag = INT_intl_union_refused }
+				}
+			}
+		}
+
+		cost = 150
+		fire_only_once = no
+
+		complete_effect = {
+			custom_effect_tooltip = INT_intl_subordinate_member_tt
+			hidden_effect = {
+				FROM = {
+					set_country_flag = { flag = INT_intl_union_asked days = 5 value = 1 }
+					country_event = { id = dve_intup.3 days = 1 }
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+			modifier = {
+				factor = 0
+				FROM = { is_ai = no }
+			}
+		}
+	}
+
+	# Step 2: the subject is absorbed.
 	INT_uprising_annex_puppet = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { tag = INT }
@@ -119,6 +176,8 @@ INT_uprising_annex_category = {
 			SYA SYR TAH TAJ TAN TAT TAY THU TIB TIG TML TMS TNS TOG TOS TRA TRI TSY TTS TUN TUR TUV
 			TZN UAE UBD UDM UGA UKK UKR UNK URG USA USB UZB VAN VEN VGE VIN VLA VOL WES WGR WIS WLA
 			WLS WPG WUR XIC XSM YAK YAM YEM YNR YST YUC YUG YUN ZAM ZIM
+			ALA ANF ATJ BLI BOU BOZ BRY CMU CPS CTL FAC FRS GAL GNR GOW HME LOM MOF OUL POK PRC RFI
+			RSI RUT SAV SDL SOV SRI SSI TNE TRK TYR VAF VAS
 		}
 
 		target_trigger = {
@@ -140,6 +199,15 @@ INT_uprising_annex_category = {
 				every_owned_state = { add_core_of = ROOT }
 			}
 			annex_country = { target = FROM transfer_troops = yes }
+			hidden_effect = {
+				if = {
+					limit = {
+						has_global_flag = DVE_intl_founded
+						NOT = { has_global_flag = DVE_intl_vote_in_progress }
+					}
+					DVE_intl_refresh_members_effect = yes
+				}
+			}
 		}
 
 		ai_will_do = { factor = 20 }

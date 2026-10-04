@@ -1247,3 +1247,29 @@ DVE_debug_france_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+
+# ============================================================
+#   GREEK CIVIL WAR - GSR (left) against GNR (right)
+# ============================================================
+DVE_debug_greece_category = {
+
+	# Sends the side-choice event: Greece splits and disappears.
+	DVE_debug_greece_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = GRE }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_global_flag = GRE_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			GRE_civil_war_start_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

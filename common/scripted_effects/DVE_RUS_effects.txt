@@ -363,6 +363,17 @@ RUS_second_civil_war_effect = {
 		add_equipment_to_stockpile = { type = support_equipment_1 amount = 1000 }
 		add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 250 }
 		add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 250 }
+
+		# Extra kit: Leningrad's and the Urals' depots.
+		add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 10000 }
+		add_equipment_to_stockpile = { type = support_equipment_1 amount = 500 }
+		add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 600 }
+		add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 400 }
+		add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 400 }
+		add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 2000 }
+		add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 500 }
+		add_equipment_to_stockpile = { type = fighter_equipment_1 amount = 100 }
+		add_equipment_to_stockpile = { type = CAS_equipment_1 amount = 50 }
 	}
 
 	# ========================================================
@@ -604,5 +615,14 @@ RUS_second_civil_war_effect = {
 	# (common/scripted_effects/DVE_sovnarkom_effects.txt)
 	SOV = { SOV_sovnarkom_chain_effect = yes }
 
-	country_event = { id = dve_civilwar.1 hours = 2 }
+	# A human player first picks the faction to play (dve_civilwar.2);
+	# that event then sends Moscow's alliance choice (dve_civilwar.1),
+	# so the two never pop up together. The AI gets it directly.
+	if = {
+		limit = { is_ai = no }
+		country_event = { id = dve_civilwar.2 }
+	}
+	else = {
+		country_event = { id = dve_civilwar.1 hours = 2 }
+	}
 }

@@ -1,0 +1,12 @@
+# DvE - United Nations: shared triggers.
+
+DVE_un_is_member = {
+	has_country_flag = DVE_un_member
+}
+
+# Countries that take part in the system as non-members (UNA itself never does).
+DVE_un_is_non_member = {
+	has_country_flag = DVE_un_initialized
+	NOT = { has_country_flag = DVE_un_member }
+	NOT = { tag = UNA }
+}

@@ -1,0 +1,55 @@
+# DvE - The International: national spirits.
+
+ideas = {
+	country = {
+
+		# Member of the International
+		DVE_intl_member_spirit = {
+			picture = generic_vanguard_socialism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Common Economic Plan
+		DVE_intl_common_plan = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.10
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# Open Borders of the International
+		DVE_intl_open_borders = {
+			picture = generic_volunteer_expedition_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				send_volunteer_size = 2
+				send_volunteers_tension = -0.50
+				lend_lease_tension = -0.50
+			}
+		}
+
+		# Internationalist Mobilization
+		DVE_intl_mobilization = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				conscription_factor = 0.05
+			}
+		}
+	}
+}
