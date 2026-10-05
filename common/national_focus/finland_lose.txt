@@ -454,4 +454,60 @@ focus_tree = {
 			# Less stability and war support = Stronger revolt
 		}
 	}
+
+	focus = {
+		id = FINl_raise_militias
+		icon = GFX_goal_FINl_side_with_the_people
+		x = 3
+		y = 6
+		cost = 5
+
+		allow_branch = {
+			has_completed_focus = FINl_iniate_the_revolution
+		}
+
+		bypass = {
+			has_war = no
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.05
+			random_owned_state = {
+				create_unit = {
+					division = "name = \"Revolutionary Militia\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FINl_push_eastwards
+		icon = GFX_goal_FINl_side_with_the_people
+		x = 4
+		y = 7
+		cost = 5
+
+		prerequisite = {
+			focus = FINl_raise_militias
+		}
+
+		bypass = {
+			has_war = no
+		}
+		
+		completion_reward = {
+			add_political_power = 25
+			add_war_support = 0.05
+			random_owned_state = {
+				create_unit = {
+					division = "name = \"Revolutionary Militia\" division_template = \"Jalkaväkidivisioona\" start_experience_factor = 0.0 start_equipment_factor = 1.0"
+					owner = ROOT
+					count = 3
+				}
+			}
+		}
+	}
 }

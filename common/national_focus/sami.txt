@@ -617,6 +617,22 @@ focus_tree = {
 			add_war_support = 0.15
 			# Positive buff
 			# Revolts in Karelia ands Murmansk
+			RUS = {
+				release = KAR
+				release = MUR
+				declare_war_on = {
+					target = KAR
+					type = take_core_state
+				}
+				declare_war_on = {
+					target = MUR
+					type = take_core_state
+				}
+			}
+			declare_war_on = {
+				target = RUS
+				type = take_claimed_state
+			}
 		}
 	}
 
@@ -704,6 +720,13 @@ focus_tree = {
 			add_war_support = 0.05
 			add_stability = 0.15
 			add_research_slot = 1
+			annex_country = {
+				target = MUR
+			}
+			set_autonomy = {
+				target = KAR
+				autonomy_state = autonomy_integrated_puppet
+			}
 		}
 	}
 
