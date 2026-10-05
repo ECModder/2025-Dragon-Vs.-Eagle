@@ -1,0 +1,472 @@
+﻿##### USA NAME LISTS #####
+### REGULAR DESTROYER NAMES###
+USA_DD_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_DESTROYERS
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+
+	#link_numbering_with = { USA_DE_HISTORICAL }				# IMPROVEMENT: Add script like this so that ships don't share same name when it occurs across multiple lists (confirmed that you can make multiple Albatross Mowe, etc. with GER currently)
+
+	prefix = "USS "							
+	fallback_name = "Destroyer DD-%d"					
+
+	unique = {											# TO CHECK: "unique = { }" working but does not seem to recognize names already in OOBs
+		"Allen M. Sumner" "Moale" "Ingraham" "Cofer" "Mansfield" "Lyman K. Swenson" "Collett" "Maddox" "Hyman G. Rickover" "Johnston" "Rogers" "Hopewell" "Taussig" "Samuel N. Moore" "Wallace L. Lind" "De Haven" "John S. McCain" "Benner" "Brinkley Bass" "Strong" 
+		"Charles S. Serry" "Corry" "Fiske" "Barry" "Decatur" "McKean" "Orleck" "Turner Joy" "Forest Sherman" "John Paul Jones" "Parsons" "Decatur" "Somers" "Morton" "MacDonough" "Furse" "Rook" "Brumby" "Hull" "Edwards" "Richard K. Turner" "George K. MacKenzie" 
+		"Sarsfield" "Ernest G. Small" "Power" "Glennon" "Noa" "Beale" "Basilone" "Strong" "Damato" "McMorris" "Robert H. Smith" "Charles R. Ware" "Preble" "Chandler" "James C. Owens" "Briscoe" "Spruance" "Paul F. Foster" "Conyngham" "Moore" "Meyerkord" "Fife" 
+		"Fletcher" "Radford" "Oldendorf" "John Young" "De Witt" "Comte de Grasse" "Stump" "John Hancock" "O'Brien" "Meredith" "John Rodgers" "Leftwich" "Cushing" "Harry W. Hill" "Fife" "Farragut" "Coontz" "King" "Parsons" "Decatur" "MacDonough" "Preble" "Sterett" 
+		"John S. McCain" "David W. Taylor" "De Haven" "Moore" "Shenandoah" "Stethem" "John C. Stennis" "Chandler" "Robert K. Huntington" "Fletcher" "Radford" "McClusky" "Paul F. Foster" "Carney" "Benfold" "Mahan" "Ramsey" "Lassen" "Shoup" "Higgins" "John Paul Jones" 
+		"Mustin" "Russell" "Churchill" "McCampbell" "Shiloh" "Decatur" "Winston S. Churchill" "Wayne E. Meyer" "Pinckney" "Momsen" "Chafee" "James E. Williams" "Bainbridge" "Halsey" "Preble" "Mustin" "Stockdale" "Gravely" "Barry" "Stout" "Gridley" "Samson" "Rafael Peralta" 
+		"Thomas Hudner" "Ralph Johnson" "Paul Ignatius" "Delbert D. Black" "Frank E. Petersen Jr." "John Basilone" "Lyndon B. Johnson" "Michael Monsoor" "Zumwalt" "Michael A. Monsoor" "Jack H. Lucas" "Lewis B. Puller" "Lenah Sutcliffe Higbee" "John E. Kilmer" "Harvey C. Barnum Jr." 
+		"Patrick Gallagher" "Jack H. Lucas" "Ted Stevens" "John Basilone" "George M. Neal" "Sam Nunn" "John F. Lehman" "Hyman G. Rickover" "Thad Cochran" "Richard M. McCool Jr." "Robert E. Simanek"
+	}
+}
+
+### ESCORT DESTROYER NAMES###
+USA_DE_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_DE
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }
+	
+	#link_numbering_with = { USA_DD_HISTORICAL }	
+
+	prefix = "USS "							
+	fallback_name = "Frigate FF-%d"
+
+	unique = {
+		"Bronstein" "McCloy" "Garcia" "Bradley" "Davidson" "Voge" "Sample" "Lang" "Joseph Hewes" "Bowen" "Paul" "Ainsworth" "McClintock" "Robert E. Peary" "Harold J. Ellison" "Trippe" "Blakely" "McCandless" "Klug" "Thorn" "Reasoner" "Lockwood" "Cook" "McClusky" "Vandegrift" "Bagley" 
+		"Downes" "Estocin" "Clifton Sprague" "Fanning" "Mahoney" "Thach" "R. L. G. Low" "Gary" "Ford" "Elrod" "Simpson" "Samuel Eliot Morison" "Carr" "Reuben James" "Copeland" "Antrim" "Flatley" "George Philip" "Maloy" "Estocin" "Klug" "Thorn" "Reid" "Stark" "Boone" "Stephen W. Groves" 
+		"Underwood" "Carr" "Doyle" "Ford" "Elrod" "Fahrion" "Taylor" "Gary" "McInerney" "Underwood" "Jarrett" "Aubrey Fitch" "Vandegrift" "Thach" "De Wert" "Nicholas""Van Riper" "Stephen W. Groves" "Reuben James" "Carr" "Elrod" "Gary" "McClusky" "Vandegrift" "Robert G. Bradley" "Haley" 
+		"Rentz" "Valley Forge"
+	}
+}
+
+### HEAVY CRUISER NAMES###
+USA_CA_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CA
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser }
+	
+	prefix = "USS "							
+	fallback_name = "Heavy Cruiser CG-%d"
+
+	unique = {
+		"Boston" "Canberra" "Baltimore" "Newport News" "Des Moines" "Salem" "Los Angeles" "Chicago" "Oregon City" "Rochester" "Bremerton" "Macon" "Toledo" "Long Beach" "Galveston" "Little Rock" "Oklahoma City" "Providence" "Springfield" "Topeka" "Albany" "Columbus" "Leahy" "Harry E. Yarnell" 
+		"Worden" "Dale" "Richmond K. Turner" "Gridley" "England" "Halsey" "Reeves" "Bainbridge" "Josephus Daniels" "Wainwright" "Belknap" "Jouett" "Horne" "Sterett" "Fox" "Biddle" "Truxtun" "California" "South Carolina" "Virginia" "Texas" "Vincennes" "Ticonderoga" "Yorktown" "Valley Forge" 
+		"Thomas S. Gates" "Bunker Hill" "Mobile Bay" "Antietam" "Chancellorsville" "Princeton" "Normandy" "Lake Champlain" "Shiloh" "Cowpens" "Gettysburg" "Chosin" "Hue City" "Anzio" "Vicksburg" "Lake Erie" "Port Royal" "San Jacinto" "Champlain" "Monterey" "Philippine Sea" "Princeton" 
+		"Robert Smalls" "Atlanta" "Juneau" "San Diego" "San Juan" "Oakland" "Reno" "Flint" "Tucson" "Juneau" "Spokane" "Fresno" "Tallahassee" "New Haven" "Wilmington" "Buffalo" "Newark" "Youngstown" "Vallejo" "Cheyenne" "Chattanooga" "Gary" 
+	}
+}
+
+### MINELAYER NAMES###
+USA_MINELAYERS_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_MINELAYERS
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_cruiser light_cruiser ship_hull_light destroyer }
+	
+	prefix = "USS "							
+	fallback_name = "Minelayer MCM-%d"
+
+	unique = {
+		"Miantonomah" "Salem" "Vulcan" "Amphitrite" "Monadnock" "Puritan" "Terror" "Keokuk" "Ozark" "Shawmut" "Roanoke" "Quinnebaug" "Canonicus" "Catamount" "Passaconaway" "Montauk" "Osage" "Onondaga" "Manhattan" "Manayunk" "Mahopac" "Neosho" "Saugus" "Chimo" "Monadnock" "Miantonomah" "Terror" 
+		"Keokuk" "Yosemite" "Harry F. Bauer" "Harry Lee" "Robert H. Smith" "Thomas E. Fraser" "Shannon" "Harry A. Parnell" "J. William Ditter" "Fred T. Berry" "Thomas J. Gary" "Henry A. Wiley" "James C. Owens" "Robert G. Bradley" "Thomas C. Kinkaid" "Frank Knox" "John W. Thomason" "Samuel N. Moore" 
+		"Harry E. Hubbard" "Raven" "Osprey" "Heron" "Oriole" "Kingfisher" "Curlew" "Firecrest" "Redwing" "Cardinal" "Thrush" "Lapwing" "Waxwing"
+	}
+}
+
+### BATTLESHIP NAMES ###
+USA_BB_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BB
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_heavy battleship }
+	
+	prefix = "USS "							
+	fallback_name = "Battleship BB-%d"		
+
+	unique = {
+		"North Carolina" "Washington" "South Dakota" "Indiana" "Massachusetts" "Alabama" "Iowa" "New Jersey" "Missouri" "Wisconsin" "Montana" "Ohio" "Illinois" "Kentucky"   
+		"Arkansas" "New York" "Texas" "Nevada" "Oklahoma" "Pennsylvania" "Arizona" "New Mexico" "Mississippi" "Idaho" "Tennessee" "California" "Colorado" "Maryland" "West Virginia" 
+	}
+}
+
+### BATTLECRUISER NAMES ###
+USA_BC_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BC
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_heavy battle_cruiser }
+	
+	prefix = "USS "							
+	fallback_name = "Battlecruiser BC-%d"		
+
+	unique = {
+		#wiki: Historic list of Alaska Class
+		"Alaska" "Guam" "Hawaii" "Philippines" "Puerto Rico" "Samoa" "Virgin Islands"  
+		#Additional US Territories/Districts during WW2 era
+		"District of Columbia" "Panama Canal" "Wake Island" "Midway Island" "Johnston Atoll" "Palmyra Island" "Baker Island" "Howland Island" "Jarvis Island"
+	}
+}
+
+### AIRCRAFT CARRIER NAMES ###
+USA_CV_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CARRIERS
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_carrier carrier }
+	
+	prefix = "USS "							
+	fallback_name = "Carrier CV-%d"	
+
+	unique = {
+		"Midway" "Coral Sea" "Franklin D. Roosevelt" "Essex" "Yorktown" "Intrepid" "Hornet" "Boxer" "Bon Homme Richard" "Antietam" "Princeton" "Shangri-La" "Lake Champlain" "Tarawa" "Valley Forge" "Philippine Sea" "Valley Forge" "Saipan" "Rendova" "Monterey" "Cabot" "Independence" "Belleau Wood" "Bataan" "San Jacinto" 
+		"Coral Sea" "Oriskany" "Ranger" "Forrestal" "Saratoga" "Ranger" "Independence" "Kitty Hawk" "Constellation" "America" "John F. Kennedy" "Enterprise" "America" "Nimitz" "Dwight D. Eisenhower" "Carl Vinson" "Theodore Roosevelt" "Abraham Lincoln" "George Washington" "John C. Stennis" "Harry S. Truman" "Ronald Reagan" 
+		"George H. W. Bush" "Gerald R. Ford" "John F. Kennedy" "Enterprise" "Doris Miller"
+	}
+}
+
+### LIGHT CARRIER NAMES ###
+USA_CVL_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CVL
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_carrier carrier }
+	
+	prefix = "USS "							
+	fallback_name = "Carrier LHA-%d"	
+
+	unique = {
+		"Block Island" "Guadalcanal" "Tripoli" "New Orleans" "Boxer" "Raleigh" "Vancouver" "New Orleans" "Inchon" "Tarawa" "Nassau" "Saipan" "Belleau Wood" "Guam" "Tripoli" "New Orleans" "Rabaul" "Saipan" "Bataan" "Bonhomme Richard" "Iwo Jima" "Okinawa" "Guadalcanal" "Guam" "Trenton" "Fort Mccoy" "San Diego" "Juneau" "Denver" 
+		"Anchorage" "Arlington" "America" "Tripoli" "Bougainville" "Fallujah"
+	}
+}
+
+### SUBMARINES ###
+USA_SS_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_SUBMARINES
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_submarine submarine }
+	
+	prefix = "USS "							
+	fallback_name = "Submarine SS-%d"	
+
+	unique = {
+		"Barracuda" "Bass" "Bonita" "Mackerel" "Marlin" "Tang" "Trigger" "Wahoo" "Trout" "Gudgeon" "Harder" "Albacore" "Nautilus" "Sailfish" "Salmon" "Grayback" "Seawolf" "Darter" "Growler" "Skate" "Swordfish" "Sargo" "Seadragon" "Seawolf" "Barbel" "Blueback" "Bonefish" "Skipjack" "Scamp" "Scorpion" "Sculpin" "Shark" "Snook" "Thresher" 
+		"Permit" "Plunger" "Barb" "Pollack" "Haddo" "Jack" "Tinosa" "Dace" "Guardfish" "Flasher" "Greenling" "Gato" "Haddock" "Sturgeon" "Whale" "Tautog" "Grayling" "Pogy" "Aspro" "Sunfish" "Pargo" "Queenfish" "Puffer" "Ray""Sand Lance" "Lapon" "Gurnard" "Hammerhead" "Sea Devil" "Guitarro" "Hawkbill" "Bergall" "Spadefish" "Seahorse" 
+		"Finback" "Pintado" "Flying Fish" "Trepang" "Bluefish" "Billfish" "Drum" "Archerfish" "Silversides" "William H. Bates" "Batfish" "Tunny" "Parche" "Cavalla" "L. Mendel Rivers" "Richard B. Russell" "Glenard P. Lipscomb" "Los Angeles" "Baton Rouge" "Philadelphia" "Memphis" "Omaha" "Cincinnati" "Groton" "Birmingham" "New York City" 
+		"Indianapolis" "Bremerton" "Jacksonville" "Dallas" "La Jolla" "Phoenix" "Boston" "Baltimore" "City of Corpus Christi" "Albuquerque" "Portsmouth" "Minneapolis-Saint Paul" "Hyman G. Rickover" "Augusta" "San Francisco" "Atlanta" "Houston" "Norfolk" "Buffalo" "Salt Lake City" "Olympia" "Honolulu" "Providence" "Pittsburgh" "Chicago" 
+		"Key West" "Oklahoma City" "Louisville" "Helena" "Newport News" "San Juan" "Pasadena" "Albany" "Topeka" "Miami" "Scranton" "Alexandria" "Asheville" "Jefferson City" "Annapolis" "Springfield" "Columbus" "Santa Fe" "Boise" "Montpelier" "Charlotte" "Hampton" "Hartford" "Toledo" "Tucson" "Columbia" "Greeneville" "Cheyenne" "Connecticut" 
+		"Jimmy Carter" "Virginia" "Texas" "Hawaii" "North Carolina" "New Hampshire" "Missouri" "California" "Mississippi" "Minnesota" "North Dakota" "John Warner" "Illinois" "Washington" "Colorado" "Indiana" "South Dakota" "Delaware" "Vermont" "Oregon" "Montana" "Hyman G. Rickover" "New Jersey" "Iowa" "Massachusetts" "Idaho" "George Washington" 
+		"Patrick Henry" "Theodore Roosevelt" "Robert E. Lee" "Abraham Lincoln" "Ethan Allen" "Sam Houston" "Thomas A. Edison" "John Marshall" "Thomas Jefferson" "Lafayette" "Alexander Hamilton" "Andrew Jackson" "John Adams" "James Monroe" "Nathan Hale" "Woodrow Wilson" "Henry Clay" "Daniel Webster" "James Madison" "Tecumseh" "Daniel Boone" 
+		"John C. Calhoun" "Ulysses S. Grant" "Von Steuben" "Casimir Pulaski" "Stonewall Jackson" "Sam Rayburn" "Nathanael Greene" "Benjamin Franklin" "Simon Bolivar" "Kamehameha" "George Bancroft" "Lewis and Clark" "James K. Polk" "George C. Marshall" "Henry L. Stimson" "George Washington Carver" "Francis Scott Key" "Mariano G. Vallejo" "Will Rogers" 
+		"Ohio" "Michigan" "Florida" "Georgia" "Henry M. Jackson" "Alabama" "Alaska" "Nevada" "Tennessee" "Pennsylvania" "West Virginia" "Kentucky" "Maryland" "Nebraska" "Rhode Island" "Maine" "Wyoming" "Louisiana"
+	}
+}
+
+### THEME: U.S. STATES ###
+USA_STATES = {
+	name = NAME_THEME_STATES
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_heavy ship_hull_carrier ship_hull_submarine }
+	
+	prefix = "USS "							
+
+	unique = {
+		"Alabama" "Arizona" "Arkansas" "California" "Colorado" "Connecticut" "Delaware" "Florida" "Georgia" "Indiana" "Idaho" "Iowa" "Illinois" "Kansas" "Kentucky"   
+		"Louisiana" "Maine" "Maryland" "Massachusetts" "Michigan" "Minnesota" "Mississippi" "Missouri" "Montana" 
+		"Nebraska" "Nevada" "New Hampshire" "New Jersey" "New Mexico" "New York" "North Carolina" "North Dakota" "Ohio" "Oklahoma" "Oregon"
+		"Pennsylvania" "Rhode Island" "South Carolina" "South Dakota" "Tennessee" "Texas" "Utah" "Vermont" "Virginia" "Washington" "West Virginia" "Wisconsin" "Wyoming" 
+	}
+}
+
+## THEME: U.S. CITIES ###
+USA_CITIES = {
+	name = NAME_THEME_CITIES
+
+	for_countries = { USA }
+
+	type = ship
+	ship_types = { ship_hull_cruiser ship_hull_submarine }
+	
+	prefix = "USS "							
+
+	unique = {
+		"Washington" "New York City" "Chicago" "Los Angeles" "San Francisco" "Detroit" "Boston" "Philadelphia" "Pittsburgh" "Cleveland" "St. Louis" "Baltimore" "Kansas City" "Milwaukee" "New Orleans" "Cincinnati" "Miami" 
+		"Indianapolis" "Seattle" "Dallas" "Atlanta" "Buffalo" "Minneapolis" "Denver" "Omaha" "San Diego" "Nashville" "Oklahoma City" "Louisville" "Phoenix" "Portland" "Rochester" 
+		"Albany" "Albuquerque" "Alexandria" "Amsterdam" "Annapolis" "Anniston" "Asheville" "Astoria" "Augusta" "Baton Rouge" "Biloxi" "Birmingham" "Boise" "Bremerton" "Bridgeport" "Brooklyn" "Cambridge" "Cheyenne" 
+		"Charleston" "Charlotte" "Chattanooga" "Chester" "Columbia" "Columbus" "Concord" "Corpus Christi" "Dayton" "Des Moines" "Duluth" "Fall River" "Fargo" "Flint" "Frederick" "Fresno" "Galena" "Galveston" "Gary" 
+		"Greenville" "Groton" "Hampton" "Hartford" "Helena" "Honolulu" "Houston" "Huntington" "Huron" "Jacksonville" "Jefferson City" "Juneau" "Key West" "La Jolla" "Lancaster" "Long Beach" "Little Rock" "Macon" 
+		"Manchester" "Marblehead" "Marion" "Memphis" "Missoula" "Mobile" "Mohican" "Montgomery" "Montpelier" "New Haven" "Newark" "Newport News" "Norfolk" "Northampton" "Oakland" "Olympia" "Oregon City" 
+		"Pasadena" "Pensacola" "Portsmouth" "Providence" "Pueblo" "Quincy" "Quinnebaug" "Raleigh" "Reno" "Richmond" "Roanoke" "St. Paul" "Salem" "Salt Lake City" "San Juan" "Santa Fe" "Saratoga" "Savannah" "Swatara" 
+		"Scranton" "Spokane" "Springfield" "Tacoma" "Tahoe" "Tallahassee" "Toledo" "Topeka" "Trenton" "Tucson" "Tulsa" "Tuscaloosa" "Vallejo" "Vicksburg" "Wichita" "Wilkes-Barre" "Wilmington" "Worcester" "Yosemite" 
+		"Youngstown"  
+	}
+}
+
+### THEME: HISTORICAL BATTLES ###
+USA_BATTLES = {
+	name = NAME_THEME_BATTLES
+
+	for_countries = { USA }
+
+	type = ship
+	
+	prefix = "USS "							
+	
+	unique = {
+		"Bunker Hill" "Valley Forge" "Princeton" "Lexington" "Saratoga" "Ticonderoga" "Bennington" "Vincennes" "Antietam" "Chancellorsville" "Gettysburg" "Shiloh" "Vicksburg" "Mobile Bay" "Lake Champlain" 
+		"Monterey" "San Jacinto" "Belleau Wood" "Cowpens" "Bataan" "Coral Sea" "Midway" "Leyte" "Tarawa" "Saipan" "Philippine Sea" "Iwo Jima" "Normandy" "Fallujah"
+	}
+}
+
+### THEME: HISTORICAL LEADERS ###
+USA_LEADERS = {
+	name = NAME_THEME_LEADERS
+
+	for_countries = { USA }
+
+	type = ship
+	
+	prefix = "USS "							
+	
+	unique = {
+		"George Washington" "Abraham Lincoln" "Thomas Jefferson" "James Madison" "James Monroe" "John Adams" "Benjamin Franklin" "Ulysses S Grant" "Andrew Jackson" "Patrick Henry" "Woodrow Wilson" "John Marshall" 
+		"Ethan Allen" "Sam Houston" "Lafayette" "Von Steuben" "Alexander Hamilton" "Casimir Pulaski" "Lewis & Clark" "James K. Polk"  
+		"Thomas A Edison" "Nathan Hale" "Henry Clay" "Daniel Webster" "Tecumseh" "Daniel Boone" "Nathanael Greene" "Simon Bolivar" "Kamehameha" "George Washington Carver" "Francis Scott Key" "Mariano G Vallejo" 
+		"Will Rogers" "George Bancroft" "Theodore Roosevelt" "Franklin D Roosevelt" "George C Marshall" "Chester W Nimitz" "Dwight D Eisenhower" "Henry L Stimson" 
+	}
+}
+
+## THEME: FISH (HISTORICAL SUBMARINES) ###
+USA_BIRDS = {
+	name = NAME_THEME_BIRDS
+
+	for_countries = { USA }
+
+	type = ship
+	
+	prefix = "USS "							
+
+	unique = {
+		"Lapwing" "Owl" "Robin" "Swallow" "Tanager" "Cardinal" "Oriole" "Curlew" "Finch" "Heron" "Turkey" "Woodcock" "Quail" "Partridge" "Eider" "Avocet" "Lark" "Teal" "Kingfisher" "Pelican" "Falcon" "Osprey" "Seagull" "Tern" "Flamingo" 
+		"Penguin" "Swan" "Whippoorwill" "Bittern" "Sanderling" "Auk" "Chewink" "Cormorant" "Gannet" "Grebe" "Mallard" "Ortolan" "Peacock" "Pigeon" "Redwing" "Sandpiper" "Vireo" "Warbler" "Willet" 
+		"Canary" "Raven" "Broadbill" "Chickadee" "Nuthatch" "Pheasant" "Sheldrake" "Skylark" "Starling" "Condor" "Plover" "Goshawk" "Shrike"  
+	}
+}
+
+### THEME: BIRDS (HISTORICAL MINESWEEPERS) ###
+USA_FISH = {
+	name = NAME_THEME_FISH
+
+	for_countries = { USA }
+
+	type = ship
+	
+	prefix = "USS "							
+
+	unique = {
+		"Albacore" "Amberjack" "Angler" "Apogon" "Aspro" "Archerfish" "Atule" "Barracuda" "Bass" "Bonita" "Barb" "Blackfish" "Bluefish" "Bonefish" "Bashaw" "Bluegill" "Bream" "Balao" "Billfish" "Bowfin" "Batfish" "Burrfish" 
+		"Barbel" "Barbero" "Baya" "Becuna" "Bang" "Bergall" "Besugo" "Blackfin" "Blenny" "Blower" "Blueback" "Boarfish" "Brill" "Bugara" "Bullhead" "Bumper" "Cachalot" "Cuttlefish" "Cavalla" "Cobia" "Croaker" "Cod" "Cero" 
+		"Corvina" "Cabrilla" "Capelin" "Cisco" "Crevalle" "Caiman" "Charr" "Chub" "Cabezon" "Capitaine" "Carbonero" "Carp" "Catfish" "Chivo" "Chopper" "Clamagore" "Cobbler" "Cochino" "Corporal" "Cubera" "Cusk" "Conger" "Comber" 
+		"Dolphin" "Darter" "Drum" "Devilfish" "Dragonet" "Dentuda" "Diodon" "Dogfish" "Dugong" "Escolar" "Entemedor" "Eel" "Espada" "Flying Fish" "Finback" "Flasher" "Flier" "Flounder" 
+		"Gar" "Grampus" "Grayback" "Grayling" "Gato" "Greenling" "Grouper" "Growler" "Grunion" "Guardfish" "Gabilan" "Gunnel" "Gurnard" "Greenfish" "Garlopa" "Garrupa" "Goldring" "Golet" "Guavina" "Guitarro" 
+		"Haddock" "Halibut" "Herring""Haddo" "Hake" "Harder" "Hoe" "Hackleback" "Halfbeak" "Hammerhead" "Hardhead" "Hawkbill" "Icefish" "Irex" "Jack" "Jawfish" "Jallao" "Kete" "Kraken" "Kingfish" 
+		"Lapon" "Lancetfish" "Ling" "Lionfish" "Lagarto" "Lamprey" "Lizardfish" "Loggerhead" "Manta" "Moray" "Mingo" "Muskallunge" "Mackerel" "Marlin" "Macabi" "Mapiro" "Menhaden" "Mero" "Medregal" 
+		"Narwhal" "Nautilus" "Needlefish" "Nerka" "Ono" "Odax" "Porpoise" "Pike" "Perch" "Pickerel" "Pompano" "Paddle" "Pargo" "Peto" "Pogy" "Pompon" "Puffer" "Piper" "Rasher" "Picuda" "Pampanito" "Parche" "Pilotfish" "Pintado" 
+		"Pipefish" "Piranha" "Plaice" "Pomfret" "Pomodon" "Queenfish" "Quillback" "Raton" "Ray" "Redfin" "Robalo" "Rock" "Runner" "Roncador" "Razorback" "Redfish" "Ronquil" "Requin" "Remora" 
+		"Shark" "Salmon" "Seal" "Skipjack" "Snapper" "Stingray" "Sturgeon" "Sargo" "Saury" "Spearfish" "Sculpin" "Sailfish" "Swordfish" "Seadragon" "Sealion" "Searaven" "Seawolf" "Shad" "Silversides" "Sawfish" "Scamp" "Scorpion" 
+		"Snook" "Steelhead" "Sunfish" "Sabalo" "Sablefish" "Seahorse" "Skate" "Sand Lance" "Sterlet" "Scabbardfish" "Segundo" "Sea Cat" "Sea Devil" "Sea Dog" "Sea Fox" "Spikefish" "Sea Owl" "Sea Poacher" "Sea Robin" "Sennet" 
+		"Spadefish" "Spot" "Springer" "Stickleback" "Sea Leopard" "Sirago" "Sarda" "Spinax" "Sea Panther" "Springeren" "Tarpon" "Tambor" "Tautog" "Thresher" "Trout" "Tuna" "Tunny" "Tinosa" "Tullibee" "Tang" "Tilefish" "Threadfin" 
+		"Trepang" "Tiru" "Tench" "Thornback" "Tigrone" "Tirante" "Trutta" "Toro" "Torsk" "Trumpetfish" "Tusk" "Turbot" "Tiburon" "Ulua" "Vendace" "Wahoo" "Whale" "Walrus" "Whitefish" "Whiting" "Wolffish" 
+	}
+}
+
+########## CONFEDERATE SHIP NAMES ##################
+### CSA DESTROYER NAMES###
+CSA_DD_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_DESTROYERS
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+
+	prefix = "CSS "							
+	fallback_name = "Destroyer DD-%d"					
+
+	unique = {										
+		# CSA army leaders - starts with all the Major Generals not cashiered, then goes to prominent Brigadiers, then to Brigadiers that lost their lives.  
+		"J.E.B. Stuart" "Jubal Early" "Joseph Wheeler" "George Pickett" "Gustavus Smith" "W.H.F. Rooney Lee" "John Brown Gordon" "Joseph B. Kershaw" "Prince de Polignac" "Fitzhugh Lee" 
+		"Daniel S. Donelson" "Isaac Trimble" "John B. Magruder" "Henry Heth" "Robert Ransom" "G.W. Custis Lee" "John C. Breckinridge" "Patrick Cleburne" "William Dorsey Pender"
+		"Matthew Butler" "Cadmus M. Wilcox" "Robert Hoke" "Bryan Grimes" "Thomas Churchill" "William Mahone" "John C. Brown" "William Loring" "Sterling Price" "Thomas L. Rosser" 
+		"Lunsford L. Lomax" "Benjamin Cheatham" "Samuel Jones" "Richard H. Anderson" "John Porter McCown" "Bushrod Johnson" "James L. Kemper" "D.H. Hill" "Edward C. Walthall"
+		"Stephen D. Ramseur" "Jones M. Withers" "Thomas Hindman" "Lafayette McLaws" "Samuel Gibbs French" "Carter Stevenson" "John H. Forney" "Dabney Maury" "Martin L. Smith" 
+		"John G. Walker" "Edward Johnson" "Robert E. Rodes"	"William H.T. Walker" "John S. Bowen" "Jeremy F. Gilmer" "Howell Cobb" "John A. Wharton" "William T. Martin"
+		"Charles W. Field" "James Patton Anderson" "William B. Bate" "James F. Fagan" "Henry Clayton" "Pierre M.B. Young" "William W. Allen" "Edward Porter Alexander" 
+		"Matt Ransom" "William Barksdale" "Barnard E. Bee" "William P. Hardeman" "Thomas Alexander Harris" "John Adams" "George B. Anderson" "Lewis A. Armistead" "Tyree Bell" 
+		"States Rights Gist" "John Pegram" "Francis S. Bartow" "Adley H. Gladden" "Robert Hatton" "Charles S. Winder" "William E. Starke" "Henry Little" "Thomas R. Cobb" 
+		"Maxcy Gregg" "E.D. Tracy" "E.F. Paxton" "Lloyd Tighman" "Martin E. Green" "Rhichard B. Garnett" "Paul J. Semmes" "J.J. Pettigrew" "Preston Smith" "Benjamin H. Helm" 
+		"James Deshler" "Carnot Posey" "Alfred Mouton" "Thomas Green" "W.R. Scurry" "John M. Jones" "C.H. Stevens" "Samuel Benton" "John R Chambliss" "J.C. Saunders" 
+		"John Morgan" "Archibald C. Godwin" "John Dunnovant" "John Gregg" "Stephen Elliot" "Victor J Girardey" "Archibald Gracie" "Oscar F. Strahl" "H.B. Granberry" "James Dearing"
+	}
+}
+
+### CSA HEAVY CRUISER NAMES###
+CSA_CA_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_CA
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser }
+	
+	prefix = "CSS "							
+	fallback_name = "Heavy Cruiser CA-%d"
+
+	unique = {
+		# Southern State cities.
+		"Birmingham" "New Orleans" "Miami" "Atlanta" "Charlotte" "Dallas" "Richmond" "Montgomery" "Houston" "Mobile" "Little Rock" "Baton Rouge" "Raleigh" "Jacksonville" "Vicksburg" 
+		"Nashville" "Ft Worth" "Pensacola" "Memphis" "Portsmouth" "San Antonio" "Knoxville" "Norfolk" "Tallahassee" "Lafayette" "Huntsville" "Savannah" "Jackson" "Fort Smith" 
+		"Chattanooga" "Alexandria" "Tampa" "Oklahoma City" "Austin" "Decatur" "Columbus" "Shreveport" "Fayetteville" "Tuscaloosa" "Wilmington" "Greensboro" "Biloxi" "Athens" 
+		"Jonesboro" "Macon" "Orlando" "Pine Bluff" "Tulsa" "Asheville" "Lake Charles" "Tupelo" "Winston-Salem" "Danville" "Shawnee" "Greenville" "Columbia" "Spartanburg" 
+		"Sumter" "Hattiesburg" "El Paso" "Roanoke" 
+	}
+}
+
+### CSA BATTLESHIP NAMES ###
+USA_BB_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_BB
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_heavy battleship }
+	
+	prefix = "CSS "							
+	fallback_name = "Battleship BB-%d"		
+
+	unique = {
+		"Virginia" "Alabama" "Texas" "Florida" "Georgia" "Mississippi" "North Carolina" "South Carolina" "Tennessee" "Louisiana" "Arkansas" 
+		"Oklahoma" "Kentucky" "Missouri" "Delaware" "Maryland" "Arizona" "Indiana" "Kansas" "New Mexico"  
+	}
+}
+
+### CSA BATTLECRUISER NAMES ###
+USA_BC_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_BC
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_heavy battle_cruiser }
+	
+	prefix = "CSS "							
+	fallback_name = "Battlecruiser BC-%d"		
+
+	unique = {
+			#List of stinging insects in the Southern States
+			"Yellow Jacket" "Copperhead" "Fire Ant" "Rattler" "Black Widow" "Hornet" "Water Moccasin" "Wasp" "Scorpion" "Honey Bee" "Coral Snake" "Bumble Bee" "Chigger" 
+	}
+}
+
+### CSA AIRCRAFT CARRIER NAMES ###
+USA_CV_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_CARRIERS
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_carrier carrier }
+	
+	prefix = "CSS "							
+	fallback_name = "Carrier CV-%d"	
+
+	unique = {
+		"Robert E. Lee" "Stonewall Jackson" "Nathan B. Forrest" "Patrick Henry" "Jefferson Davis" "James Longstreet" "Stephen Mallory" "Wade Hampton" "Thomas Jefferson" 
+		"Pierre T. G. Beauregard" "Kirby Smith" "Braxton Bragg" "Albert Sidney Johnston" "Joseph E. Johnston" "John Bell Hood" "A.P. Hill" "Richard Ewell" 
+		"Simon Bolivar Buckner" "William Hardee" "D.H. Hill" "John C. Pemberton" "Leonidas Polk" "Theophilus Holmes" 
+	}
+}
+
+### CSA SUBMARINES ###
+CSA_SS_CONFEDERATE = {
+	name = NAME_THEME_CONFEDERATE_SUBMARINES
+
+	for_countries = { CSA USA }
+	can_use = {
+		OR = {
+			tag = CSA
+			has_completed_focus = USA_honor_the_confederacy
+		}
+	}
+	type = ship
+	ship_types = { ship_hull_submarine submarine }
+	
+	prefix = "CSS "							
+	fallback_name = "Submarine SS-%d"	
+
+	unique = {
+		#Southern River list sorted by length
+		"Mississippi River" "Missouri River" "Red River" "Arkansas River" "Rio Grande" "Tennessee River" "Brazos River" "Pecos River" "White River" "James River" "Cimarron River" "Quachita River" "Sabine River" 
+		"Trinity River" "St Johns River" "Pearl River" "Roanoke River" "Cumberland River" "Trinity River" "James River" "Chattahoochie River" "St. Francis River" "Pee Dee River" "Savannah River" "Neches River" 
+		"Bayou Bartholomew" "Black River" "Coosa River" "Suwannee River" "Flint River" "Ogeechee River" "Big Black River" "New River" "Neosho River" "Clinch River" "Talapoosa River" "Catawba River" 
+		"Tombigbee River" "Little River" "Bayou Bacon" "Ochlockonee River" "Alapaha River" "Ocmulgee River" "Satilla River" "Oconee River" "Kentucky River" "Boeuf River" "Calcasieu River" "Hatchie River" 
+		"Chickasawhay River" "Tombigbee River" "Yazoo River" "Gasconade River" "Osage River" "Tar River" "Yadkin River" "Dan River" "French Broad River" "Cape Fear River" "Edisto River" "Saluda River" 
+		"Duck River" "Elk River" "Black Warrior River" "Rappahanock River" "Conecuh River" "Pea River" "Indian River" "Withlacoochee River" "Tensas River" "Tug Fork" "Leaf River" "Yalobusha River" "Meramac River" 
+		"Chariton River" "Wachita River" "Verdigris River" "Santee River" "Lynches River" "Lumber River" "Hiwassee River" "Caney Fork" "Nueshes River" "Appomattox River"
+	}
+}
+
+
+
