@@ -1,6 +1,9 @@
 # DvE - schedules the 2025 world news (events/DVE_news_2025.txt).
 # Delays are hours from the 2025.01.01 12:00 start, so each news
 # lands on its design date. The global flag makes it run once.
+# What is scheduled is the hidden sender (dve_news_send.N), not the
+# news: the sender gives the news to the countries existing on that
+# date, so a country created after the start gets it too.
 on_actions = {
 	on_startup = {
 		effect = {
@@ -8,12 +11,12 @@ on_actions = {
 				limit = { NOT = { has_global_flag = DVE_news_2025_scheduled } }
 				set_global_flag = DVE_news_2025_scheduled
 				every_country = {
-					news_event = { id = dve_news.13 hours = 1 }    # Somalia  - 01.01 01:00
-					news_event = { id = dve_news.11 hours = 337 }  # Yemen    - 01.15 13:00
-					news_event = { id = dve_news.1 hours = 414 }   # Gaza     - 01.18 18:00
-					news_event = { id = dve_news.5 hours = 462 }   # Sahel    - 01.20 18:00
-					news_event = { id = dve_news.12 hours = 524 }  # Tigray   - 01.23 08:00
-					news_event = { id = dve_news.7 hours = 746 }   # Myanmar  - 02.01 14:00
+					country_event = { id = dve_news_send.13 hours = 1 }    # Somalia  - 01.01 01:00
+					country_event = { id = dve_news_send.11 hours = 337 }  # Yemen    - 01.15 13:00
+					country_event = { id = dve_news_send.1 hours = 414 }   # Gaza     - 01.18 18:00
+					country_event = { id = dve_news_send.5 hours = 462 }   # Sahel    - 01.20 18:00
+					country_event = { id = dve_news_send.12 hours = 524 }  # Tigray   - 01.23 08:00
+					country_event = { id = dve_news_send.7 hours = 746 }   # Myanmar  - 02.01 14:00
 				}
 			}
 		}

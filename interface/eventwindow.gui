@@ -1,7 +1,8 @@
 # DvE: the base game's eventwindow.gui with the "bluetone" skin on the
 # country event window (EventWindow), the news window (EventWindow_News)
 # and the option button. Sprites in interface/DVE_eventwindow.gfx.
-# The operative and leader windows below are unchanged from the base game.
+# The operative and leader windows keep the base look (only their option
+# grids are aligned with the option strip).
 # Structure and element names must stay as the game expects them.
 guiTypes = {
 
@@ -14,35 +15,33 @@ guiTypes = {
 	containerWindowType = {
 		name = "EventWindow"
 		position = { x=-282 y=-380 }
-		size = { width = 581 height = 626 }
+		# The game sets the height itself: top_Window + midsection (stretched
+		# to the text) + the declared height of bottom_Window. What falls
+		# outside is cut, so bottom_Window is declared for 7 options.
+		size = { width = 581 height = 830 }
 		moveable = yes
+		clipping = no
 		Orientation = CENTER
 
 		show_sound = event_popup
 		hide_sound = menu_close_window
 
+		# header bar, picture slot and title bar. As in the base news window
+		# the art is the background of the root: it is what drags the window.
 		background = {
 			name = "Background"
-			spriteType ="GFX_tiled_window_transparent"
+			spriteType ="GFX_DVE_event_top_wide"
 		}
 
-		# header bar, picture and title bar.
-		# EXPERIMENTAL: in the base game (and in every mod checked) the
-		# picture sits in bottom_Window; here it is in top_Window, as in the
-		# news window. Fallback: interface/eventwindow_safe_layout.txt.
 		containerWindowType = {
 			name = "top_Window"
 			position = { x=0 y=0 }
 			size = { width = 581 height = 396 }
-			moveable = yes
 			Orientation = UPPER_LEFT
 
-			background = {
-				name = "Background"
-				spriteType ="GFX_DVE_event_top_wide"
-			}
-
-			# 210x176 pictures shown at 1.5x: 315x264
+			# NOTE: the game only looks for event_picture in bottom_Window
+			# (error.log: Could not find "event_picture" in window
+			# bottom_Window), so here it never gets the picture of the event.
 			iconType = {
 				name ="event_picture"
 				spriteType = "GFX_report_event_001"
@@ -81,12 +80,11 @@ guiTypes = {
 			}
 		}
 
-		# description: the game stretches this section to the text
+		# description: the game makes this section as tall as the text + 30
 		containerWindowType = {
 			name = "midsection"
 			position = { x=0 y=396 }
 			size = { width = 580 height = 60 }
-			moveable = yes
 			clipping = no
 			Orientation = UPPER_LEFT
 
@@ -102,30 +100,26 @@ guiTypes = {
 				borderSize = {x = 0 y = 0}
 				text = "Long text here!"
 				maxWidth = 518
-				maxHeight = 230
+				maxHeight = 900
 				format = left
 			}
 		}
 
-		# options, centred. The panel is drawn for three; more overflow below.
+		# options: the game moves this section under the text. No background:
+		# every option draws its own strip of panel (event_option_entry).
+		# Height = 7 options x 52 + 10 of closing frame.
 		containerWindowType = {
 			name = "bottom_Window"
 			position = { x=0 y=456 }
-			size = { width = 581 height = 170 }
-			moveable = yes
+			size = { width = 581 height = 374 }
 			clipping = no
 			Orientation = UPPER_LEFT
 
-			background = {
-				name = "Background"
-				spriteType ="GFX_DVE_event_bottom_wide"
-			}
-
 			gridBoxType = {
 				name = "options_grid"
-				position = { x = 114 y = 8 }
+				position = { x = 114 y = 0 }
 				size = { width = 300 height = 30 }
-				slotsize = { width = 300 height = 47 }
+				slotsize = { width = 300 height = 52 }
 				max_slots_horizontal = 1
 				format = "UPPER_LEFT"
 			}
@@ -294,9 +288,9 @@ guiTypes = {
 
 			gridBoxType = {
 				name = "options_grid"
-				position = { x = 90 y = 120 }
+				position = { x = 114 y = 120 }
 				size = { width = 300 height = 0 }
-				slotsize = { width = 300 height = 47 }
+				slotsize = { width = 300 height = 52 }
 				max_slots_horizontal = 1
 				Orientation = UPPER_LEFT
 			}
@@ -433,9 +427,9 @@ guiTypes = {
 
 			gridBoxType = {
 				name = "options_grid"
-				position = { x = 115 y = 10 }
+				position = { x = 114 y = 10 }
 				size = { width = 300 height = 0 }
-				slotsize = { width = 300 height = 47 }
+				slotsize = { width = 300 height = 52 }
 				max_slots_horizontal = 1
 				Orientation = UPPER_LEFT
 			}
@@ -464,36 +458,36 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "EventWindow_News"
-		position = { x=-264 y=-400 }
-		size = { width = 528 height = 476 }
+		position = { x=-290 y=-400 }
+		# The game never resizes this window and cuts what falls outside:
+		# the height must hold the longest news. 924 = 296 (top) + 462 (24
+		# lines of text + 30) + 166 (3 options). Shorter texts leave room for
+		# more options; nothing is drawn in the unused part.
+		size = { width = 581 height = 924 }
 		moveable = yes
+		clipping = no
 		Orientation = CENTER
 
 		show_sound = world_news_effect
 		hide_sound = menu_close_window
 
+		# header, picture slot and title bar; it also drags the window
 		background = {
 			name = "Background"
-			spriteType ="GFX_tiled_window_transparent"
+			spriteType ="GFX_DVE_event_news_top"
 		}
 
-		# header, picture and title bar
 		containerWindowType = {
 			name = "top_Window"
 			position = { x=0 y=0 }
-			size = { width = 528 height = 296 }
+			size = { width = 581 height = 296 }
 			Orientation = UPPER_LEFT
-
-			background = {
-				name = "Background"
-				spriteType ="GFX_DVE_event_news_top"
-			}
 
 			iconType =
 			{
 				name ="event_picture"
 				spriteType = "GFX_news_event_001"
-				position = { x = 59 y = 91 }
+				position = { x = 92 y = 70 }
 				Orientation = "UPPER_LEFT"
 				alwaystransparent = yes
 			}
@@ -501,91 +495,119 @@ guiTypes = {
 			iconType = {
 				name ="event_picture_overlay"
 				spriteType = "GFX_DVE_event_news_pic_overlay"
-				position = { x = 58 y = 90 }
+				position = { x = 91 y = 69 }
 				Orientation = "UPPER_LEFT"
 				alwaystransparent = yes
 			}
 
 			instantTextBoxType = {
 				name = "Title"
-				position = { x = 12 y = 262 }
+				position = { x = 12 y = 258 }
 				font = "hoi_24header"
 				borderSize = {x = 0 y = 0}
 				text = "Title text here!"
-				maxWidth = 504
+				maxWidth = 557
 				maxHeight = 32
 				format = centre
 			}
 
 			buttonType = {
 				name = "btn_minimize"
-				position = {x=490 y=34}
+				position = {x=541 y=16}
 				spriteType = "GFX_DVE_event_minimize"
 				clicksound = click_default
 			}
 		}
 
-		# text: this section stretches to its length, the button follows
+		# text: the game makes this section as tall as the text + 30 and
+		# moves bottom_Window right under it
 		containerWindowType = {
 			name = "midsection"
 			position = { x=0 y=296 }
-			size = { width = 528 height = 100 }
+			size = { width = 580 height = 60 }
 			clipping = no
 			Orientation = UPPER_LEFT
 
 			background = {
 				name = "Background"
-				quadTextureSprite ="GFX_DVE_event_news_mid"
+				quadTextureSprite ="GFX_DVE_event_mid"
 			}
 
 			instantTextBoxType = {
 				name = "Description"
-				position = { x = 39 y = 4 }
+				position = { x = 31 y = 4 }
 				font = "hoi_18mbs"
 				borderSize = {x = 0 y = 0}
 				text = "Long text here!"
-				maxWidth = 450
-				maxHeight = 560
+				maxWidth = 518
+				maxHeight = 900
 				format = left
 			}
 		}
 
+		# options: no background, see event_option_entry
 		containerWindowType = {
 			name = "bottom_Window"
-			position = { x=0 y=396 }
-			size = { width = 528 height = 80 }
+			position = { x=0 y=356 }
+			size = { width = 581 height = 166 }
 			clipping = no
 			Orientation = UPPER_LEFT
 
-			background = {
-				name = "Background"
-				spriteType ="GFX_DVE_event_news_bottom"
-			}
-
 			gridBoxType = {
 				name = "options_grid"
-				position = { x = 88 y = 15 }
+				position = { x = 114 y = 0 }
 				size = { width = 300 height = 30 }
-				slotsize = { width = 300 height = 47 }
+				slotsize = { width = 300 height = 52 }
 				max_slots_horizontal = 1
 				format = "UPPER_LEFT"
 			}
 		}
 	}
 	
+	# One option, shared by every event window. Besides the button, the entry
+	# draws its own 581x52 strip of panel (left, around the button, right)
+	# and a 10 px closing frame under it, which the next option covers: so
+	# the panel ends after the last option, whatever their number.
+	# options_grid must be at x = 114 with 52 px slots.
 	containerWindowType = {
 		name = "event_option_entry"
-		size = { width = 300 height = 47 }
+		size = { width = 300 height = 52 }
 		clipping = no
-		
+
 		background = {
-			name = "event_option_background"	
+			name = "event_option_background"
 			spriteType ="GFX_DVE_event_option"
 		}
-		
+
+		iconType = {
+			name = "option_row_left"
+			spriteType = "GFX_DVE_event_option_row_left"
+			position = { x = -114 y = 0 }
+		}
+
+		# panel around the button, with a hole the button shows through
+		iconType = {
+			name = "option_row_mid"
+			spriteType = "GFX_DVE_event_option_row_mid"
+			position = { x = 0 y = 0 }
+			alwaystransparent = yes
+		}
+
+		iconType = {
+			name = "option_row_right"
+			spriteType = "GFX_DVE_event_option_row_right"
+			position = { x = 352 y = 0 }
+		}
+
+		iconType = {
+			name = "option_row_cap"
+			spriteType = "GFX_DVE_event_option_cap"
+			position = { x = -114 y = 52 }
+		}
+
 		instantTextBoxType = {
 			name = "Name"
-			position = { x = 5 y = 0 }
+			position = { x = 5 y = 9 }
 			font = "hoi_20bs"
 			maxWidth = 340
 			maxHeight = 40

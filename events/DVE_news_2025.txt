@@ -1,11 +1,14 @@
 add_namespace = dve_news
+add_namespace = dve_news_send
 
 # ============================================================
 #   DvE - 2025 world news. Pure flavour, no effects.
 #   Ids follow the EVT numbers of the design (EVT.001 = .1).
-#   Sent to every country at game start with a delay that
-#   matches the design date (common/on_actions/
-#   DVE_news_2025_on_actions.txt).
+#   Each news is sent on its design date by a hidden event
+#   (dve_news_send.N, at the end of this file) scheduled at
+#   game start in common/on_actions/DVE_news_2025_on_actions.txt:
+#   it reaches every country that exists on that date, so also
+#   the ones born later (civil wars) and a player who changed tag.
 # ============================================================
 
 # EVT.001 - 2025.01.18 18:00
@@ -89,5 +92,95 @@ news_event = {
 
 	option = {
 		name = dve_news.13.a
+	}
+}
+
+# ------------------------------------------------------------
+#   Senders. Every country gets the hidden event at the same
+#   hour: the first one sends the news to all, the flag stops
+#   the others.
+# ------------------------------------------------------------
+
+country_event = {
+	id = dve_news_send.1
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_1_sent } }
+			set_global_flag = dve_news_1_sent
+			every_country = { news_event = { id = dve_news.1 } }
+		}
+	}
+}
+
+country_event = {
+	id = dve_news_send.5
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_5_sent } }
+			set_global_flag = dve_news_5_sent
+			every_country = { news_event = { id = dve_news.5 } }
+		}
+	}
+}
+
+country_event = {
+	id = dve_news_send.7
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_7_sent } }
+			set_global_flag = dve_news_7_sent
+			every_country = { news_event = { id = dve_news.7 } }
+		}
+	}
+}
+
+country_event = {
+	id = dve_news_send.11
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_11_sent } }
+			set_global_flag = dve_news_11_sent
+			every_country = { news_event = { id = dve_news.11 } }
+		}
+	}
+}
+
+country_event = {
+	id = dve_news_send.12
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_12_sent } }
+			set_global_flag = dve_news_12_sent
+			every_country = { news_event = { id = dve_news.12 } }
+		}
+	}
+}
+
+country_event = {
+	id = dve_news_send.13
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_news_13_sent } }
+			set_global_flag = dve_news_13_sent
+			every_country = { news_event = { id = dve_news.13 } }
+		}
 	}
 }

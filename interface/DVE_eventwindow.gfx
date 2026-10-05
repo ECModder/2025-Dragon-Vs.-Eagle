@@ -2,6 +2,8 @@
 # Art in gfx/interface/DVE_events/.
 
 spriteTypes = {
+	# GFX_DVE_event_top, _bottom and _pic_overlay are only used by the old
+	# fallback layout (interface/eventwindow_safe_layout.txt)
 	spriteType = {
 		name = "GFX_DVE_event_top"
 		texturefile = "gfx/interface/DVE_events/event_top.dds"
@@ -29,36 +31,43 @@ spriteTypes = {
 		name = "GFX_DVE_event_minimize"
 		texturefile = "gfx/interface/DVE_events/event_minimize.dds"
 	}
-	# news window: top, stretchable middle, bottom
+	# news window: header, picture slot and title bar (background of the
+	# root window); the text section reuses GFX_DVE_event_mid
 	spriteType = {
 		name = "GFX_DVE_event_news_top"
 		texturefile = "gfx/interface/DVE_events/event_news_top.dds"
-	}
-	corneredTileSpriteType = {
-		name = "GFX_DVE_event_news_mid"
-		size = { x = 528 y = 64 }
-		textureFile = "gfx/interface/DVE_events/event_news_mid.dds"
-		borderSize = { x = 264 y = 16 }
-	}
-	spriteType = {
-		name = "GFX_DVE_event_news_bottom"
-		texturefile = "gfx/interface/DVE_events/event_news_bottom.dds"
 	}
 	spriteType = {
 		name = "GFX_DVE_event_news_pic_overlay"
 		texturefile = "gfx/interface/DVE_events/event_news_pic_overlay.dds"
 	}
-	# "picture on top" layout of the country event window
+	# country event window: header, picture slot and title bar (background
+	# of the root window) and the overlay of the picture
 	spriteType = {
 		name = "GFX_DVE_event_top_wide"
 		texturefile = "gfx/interface/DVE_events/event_top_wide.dds"
 	}
 	spriteType = {
-		name = "GFX_DVE_event_bottom_wide"
-		texturefile = "gfx/interface/DVE_events/event_bottom_wide.dds"
-	}
-	spriteType = {
 		name = "GFX_DVE_event_pic_overlay_wide"
 		texturefile = "gfx/interface/DVE_events/event_pic_overlay_wide.dds"
+	}
+	# strip of panel drawn by every option (event_option_entry): left of the
+	# button, around it (with a hole for the button), right of it, and the
+	# closing frame under the last option
+	spriteType = {
+		name = "GFX_DVE_event_option_row_left"
+		texturefile = "gfx/interface/DVE_events/event_option_row_left.dds"
+	}
+	spriteType = {
+		name = "GFX_DVE_event_option_row_mid"
+		texturefile = "gfx/interface/DVE_events/event_option_row_mid.dds"
+	}
+	spriteType = {
+		name = "GFX_DVE_event_option_row_right"
+		texturefile = "gfx/interface/DVE_events/event_option_row_right.dds"
+	}
+	spriteType = {
+		name = "GFX_DVE_event_option_cap"
+		texturefile = "gfx/interface/DVE_events/event_option_cap.dds"
 	}
 }
