@@ -1,0 +1,196 @@
+##### UKRAINE NAME LISTS #####
+### REGULAR DESTROYER NAMES###
+UKR_DD_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_DESTROYERS
+
+	for_countries = { UKR }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+	
+	prefix = "UNS "
+	fallback_name = "L %d"					
+
+	unique = {											
+		"Hetman Sahaidachny" "Ukraina" "Slavutych" "Konstantin Olshansky" "Vinnytsia" "Cherkasy" "Priluki" "Sumy" "Fastiv" "Khmelnytskyi" "Luck" "Skadovsk" "Donbas" "Zaporizhzhia" "Yuri Olefirenko" "Balta" "Genichesk" "Akademik Shulgin" 
+		"Hetman Ivan Mazepa" "Hetman Ivan Vyhovsky"
+	}
+}
+
+### HEAVY CRUISER NAMES###
+UKR_CA_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CA
+
+	for_countries = { UKR }
+
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser }
+	
+	prefix = "UNS "
+	fallback_name = "F %d"
+
+	unique = {
+		"Ternopil" "Lviv" "Ukraina"
+	}
+}
+
+### MINELAYER NAMES###
+UKR_MINELAYERS_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_MINELAYERS
+
+	for_countries = { UKR }
+	
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser ship_hull_light destroyer }
+	
+	prefix = "UNS "
+	fallback_name = "M %d"
+
+	unique = {
+		"Chornomorsk" "Vylkove" "Izmail" "Reni" "Ochakiv" "Kinburn" "Tendra" "Arabatska" "Kerch" "Sevastopol" "Feodosia" "Yalta" "Balaklava" "Sudak" "Berdiansk" "Melitopol" "Kherson" "Mykolaiv" "Voznesensk" "Zaporizhzhia" "Donbas" "Podillia" 
+		"Galicia" "Bukovyna" "Volyn" "Zakarpattia" "Tavria" "Slobozhanshchyna"
+	}
+}
+
+### BATTLESHIP NAMES ###
+UKR_BB_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BB
+
+	for_countries = { UKR }
+
+	type = ship
+	ship_types = { ship_hull_heavy battleship }
+	
+	prefix = "UNS "
+	fallback_name = "Linkor %d"		
+
+	unique = {
+			"Ukraina" "Slava" "Kyiv" "Peremoha" 										
+			# Fictional names start here
+			 "Ukrayinsʹkyy Krym" "Ukrayinsʹkyy Donbas" "Ukrayinsʹkyy Luhansʹk"
+	}
+}
+
+### BATTLECRUISER NAMES ###
+UKR_BC_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BC
+
+	for_countries = { UKR }
+
+	type = ship
+	ship_types = { ship_hull_heavy battle_cruiser }
+	
+	prefix = "UNS "
+	fallback_name = "Liniynyy kreyser %d"		
+
+	unique = {			
+			"Ukraina" "Slava" "Kyiv" "Peremoha" 
+	}
+}
+
+### AIRCRAFT CARRIER NAMES ###
+UKR_CV_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CARRIERS
+
+	for_countries = { UKR }
+
+	
+	type = ship
+	ship_types = { ship_hull_carrier carrier }
+
+	prefix = "UNS "
+	fallback_name = "Avianosets %d"	
+
+	unique = {
+			# Fictional names start here
+			"Chorne More"
+	}
+}
+
+### SUBMARINES ###
+UKR_SS_CLASS_U = {
+	name = NAME_THEME_HISTORICAL_CLASS_U
+
+	for_countries = { UKR }
+
+	type = ship
+	ship_types = { ship_hull_cruiser_submarine submarine }
+	
+	fallback_name = "U-%d"
+	
+	ordered = {
+		1 = {"U-%d"}
+		2 = {"U-%d"}
+		3 = {"U-%d"}
+		4 = {"U-%d"} 
+		5 = {"U-%d"} 
+		6 = {"U-%d"} 
+		7 = {"U-%d"}
+		8 = {"U-%d"}
+		9 = {"U-%d"}
+	}
+}
+
+### THEME: UKRAINIAN REGIONS ###
+UKR_STATES = {
+	name = NAME_THEME_STATES
+
+	for_countries = { UKR }
+
+	
+	type = ship
+
+	prefix = "UNS "
+	unique = {
+		"Vinnytsia" "Volyn" "Dnipropetrovsk" "Donetsk" "Zhytomyr" "Zakarpattia" "Zaporizhzhia" "Ivano-Frankivsk" "Kyiv" "Kirovohrad" "Luhansk" "Lviv" "Mykolaiv" "Odesa" "Poltava" "Rivne" "Sumy" "Ternopil" "Kharkiv" "Kherson" "Khmelnytskyi" 
+		"Cherkasy" "Chernivtsi" "Chernihiv" "Crimea" "Kyiv City" "Sevastopol"
+	}
+}
+
+## THEME: UKRAINIAN CITIES ###
+UKR_CITIES = {
+	name = NAME_THEME_CITIES
+
+	for_countries = { UKR }
+
+	type = ship
+
+	prefix = "UNS "
+	unique = {
+		"Kyiv" "Kharkiv" "Odesa" "Dnipro" "Donetsk" "Lviv" "Zaporizhzhia" "Kryvyi Rih" "Mykolaiv" "Mariupol" "Luhansk" "Vinnytsia" "Poltava" "Chernihiv" "Cherkasy" "Kherson" "Khmelnytskyi" "Chernivtsi" "Zhytomyr" "Sumy" "Rivne" "Ivano-Frankivsk" 
+		"Ternopil" "Kropyvnytskyi" "Lutsk" "Uzhhorod" "Bila Tserkva" "Kremenchuk" "Melitopol" "Kerch" "Nikopol" "Berdiansk" "Sloviansk" "Uman" "Brovary" "Pavlohrad" "Sievierodonetsk" "Kamianets-Podilskyi" "Mukachevo" "Konotop" "Bakhmut" "Drohobych" 
+		"Chervonohrad" "Kovel" "Izmail" "Nizhyn" "Shostka" "Korosten" "Pokrovsk" "Kostiantynivka" "Berdychiv" "Fastiv" "Boryspil" "Irpin" "Vyshhorod" "Lubny" "Myrhorod" "Oleksandriia" "Smila" "Zolotonosha" "Horishni Plavni" "Dovzhansk" "Alchevsk" 
+		"Kramatorsk" "Horlivka" "Makiivka" "Yenakiieve" "Avdiivka" "Volnovakha" "Tokmak" "Enerhodar" "Berdyansk" "Vasylivka" "Nova Kakhovka" "Skadovsk" "Henichesk" "Yevpatoria" "Simferopol" "Sevastopol" "Yalta" "Feodosia" "Sudak" "Alushta"
+	}
+}
+
+## THEME: UKRAINIAN RIVERS ###
+UKR_RIVERS = {
+	name = NAME_THEME_RIVERS
+
+	for_countries = { UKR }
+
+	type = ship
+
+	prefix = "UNS "
+	unique = {
+		"Dnieper" "Dniester" "Danube" "Southern Buh" "Desna" "Donets" "Prut" "Tisza" "Severskyi Donets" "Pripyat" "Western Buh" "Ros" "Uzh" "Psel" "Vorskla" "Sula" "Samara" "Inhulets" "Styr" "Horyn" "Sluch" "Zbruch" "Seret" "Strypa" "Zbruch" "Ikva" 
+		"Udy" "Oskil" "Aidar" "Kalmius" "Miuss" "Molochna" "Ingul" "Codima" "Dnister" "Rata" "San" "Uzh" "Borzhava" "Latorytsia" "Teresva" "Rika" "Tereblia"
+	}
+}
+
+## THEME: UKRAINIAN LEADERS ###
+UKR_LEADERS = {
+	name = NAME_THEME_LEADERS
+
+	for_countries = { UKR }
+
+	type = ship
+
+	prefix = "UNS "
+	unique = {
+		"Askold" "Dir" "Oleg of Kyiv" "Igor of Kyiv" "Olga of Kyiv" "Sviatoslav the Brave" "Volodymyr the Great" "Yaroslav the Wise" "Izyaslav I" "Vsevolod I" "Vladimir Monomakh" "Mstislav the Great" "Roman the Great" "Daniel of Galicia" "Lev I of Galicia" 
+		"Yuri I of Galicia" "Bohdan Khmelnytsky" "Ivan Vyhovsky" "Petro Doroshenko" "Ivan Briukhovetsky" "Ivan Samoylovych" "Ivan Mazepa" "Pylyp Orlyk" "Kyrylo Rozumovsky" "Petro Kalnyshevsky" "Symon Petliura" "Volodymyr Vynnychenko" "Mykhailo Hrushevskyi" 
+		"Pavlo Skoropadskyi" "Yevhen Petrushevych" "Andriy Livytskyi" "Stepan Bandera" "Roman Shukhevych" "Viacheslav Chornovil" "Leonid Kravchuk" "Leonid Kuchma" "Viktor Yushchenko" "Viktor Yanukovych" "Petro Poroshenko" "Volodymyr Zelenskyy"
+	}
+}
