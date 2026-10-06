@@ -10,13 +10,21 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = fundamentalism long_name = "Harakat al-Muqawama al-Islamiyya" name = "Hamas" }
+set_party_name = { ideology = authoritarianism long_name = "Fatah" name = "Fatah" }
+set_party_name = { ideology = vanguard_socialism long_name = "Popular Front for the Liberation of Palestine" name = "PFLP" }
+create_country_leader = { name = "Khalil al-Hayya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Mohammed Sinwar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = jihadism }
+create_country_leader = { name = "Jamil Mezher" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = leninist_internationalism }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
+	ruling_party = fundamentalism
+	last_election = "2006.1.25"
 	election_frequency = 48
 	elections_allowed = no
 }
 set_popularities = {
-	centrist = 25
-	reactionary = 75
+	fundamentalism = 85
+	authoritarianism = 10
+	vanguard_socialism = 5
 }

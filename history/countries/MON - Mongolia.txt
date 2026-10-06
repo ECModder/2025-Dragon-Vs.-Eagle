@@ -64,15 +64,26 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = progressive long_name = "Mongolian People's Party" name = "MPP" }
+set_party_name = { ideology = conservative long_name = "Democratic Party" name = "DP" }
+set_party_name = { ideology = centrist long_name = "HUN Party" name = "HUN" }
+set_party_name = { ideology = reactionary long_name = "National Coalition" name = "NC" }
+create_country_leader = { name = "Luvsannamsrain Oyun-Erdene" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Luvsannyamyn Gantomor" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Togmidyn Dorjkhand" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Nyamtaishiryn Nomtoibayar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
+	ruling_party = progressive
+	last_election = "2024.6.28"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 50
-	reactionary = 50
+	progressive = 43
+	conservative = 37
+	centrist = 13
+	reactionary = 7
 }
 
 1939.1.1 = {

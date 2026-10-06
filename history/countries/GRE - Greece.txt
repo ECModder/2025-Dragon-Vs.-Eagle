@@ -33,15 +33,38 @@ set_grand_doctrine = new_strategic_destruction
 		project = sp:sp_air_radar
 	}
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = conservative long_name = "Nea Dimokratia" name = "ND" }
+set_party_name = { ideology = liberal long_name = "Synaspismos Rizospastikis Aristeras" name = "SYRIZA" }
+set_party_name = { ideology = progressive long_name = "PASOK - Kinima Allagis" name = "PASOK" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Kommounistiko Komma Elladas" name = "KKE" }
+set_party_name = { ideology = reactionary long_name = "Elliniki Lysi" name = "EL" }
+set_party_name = { ideology = ultranationalism long_name = "Spartiates" name = "Spartiates" }
+set_party_name = { ideology = fundamentalism long_name = "Dimokratiko Patriotiko Kinima - Niki" name = "Niki" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Plefsi Eleftherias" name = "PE" }
+create_country_leader = { name = "Kyriakos Mitsotakis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Sokratis Famellos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_populism }
+create_country_leader = { name = "Nikos Androulakis" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Dimitris Koutsoumpas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = stalinism }
+create_country_leader = { name = "Kyriakos Velopoulos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Vasilis Stigkas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = neo_fascist }
+create_country_leader = { name = "Dimitris Natsios" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Zoe Konstantopoulou" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = socialism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1935.6.9"
-	election_frequency = 7
-	elections_allowed = yes 
+	ruling_party = conservative
+	last_election = "2023.6.25"
+	election_frequency = 48
+	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 81
-	reactionary = 19
+	conservative = 43
+	liberal = 19
+	progressive = 13
+	totalitarian_socialism = 8
+	ultranationalism = 5
+	reactionary = 5
+	fundamentalism = 4
+	revolutionary_socialism = 3
 }
 add_ai_strategy = {
 	type = alliance
