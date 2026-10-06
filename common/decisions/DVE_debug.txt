@@ -190,6 +190,22 @@ DVE_debug_general_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	DVE_debug_rule_liberal = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_politics = { ruling_party = liberal elections_allowed = yes }
+			add_popularity = { ideology = liberal popularity = 0.50 }
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	DVE_debug_rule_centrist = {
 		icon = GFX_decision_generic_form_nation
 		allowed = { always = yes }

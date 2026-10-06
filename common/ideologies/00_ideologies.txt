@@ -207,6 +207,7 @@ rules = {
         ai_ideology_wanted_units_factor = 1.05
     }
 
+    # shown in game as "Reformist Socialism" (loc keys progressive, progressive_noun)
     progressive = {
         types = {
             # GFX: GFX_ideology_progressivism_icon
@@ -281,6 +282,13 @@ rules = {
         can_be_boosted = yes
         can_collaborate = yes
         can_host_government_in_exile = yes
+        rules = {
+            can_create_collaboration_government = no
+            can_puppet = no
+            can_lower_tension = yes
+            can_join_factions = no
+            can_send_volunteers = yes
+        }
 
 
         ai_ideology_wanted_units_factor = 0.90
@@ -718,3 +726,4 @@ rules = {
 
         ai_ideology_wanted_units_factor = 1.15
     }
+}

@@ -26,6 +26,7 @@ ideas = {
 					has_government = conservative
 					has_government = centrist
 					has_government = progressive
+					has_government = liberal
 				}
 			}
 
@@ -151,6 +152,7 @@ ideas = {
 			available = {
 				OR = {
 					has_government = progressive
+					has_government = liberal
 					has_government = centrist
 					has_government = conservative
 					has_government = vanguard_socialism
@@ -290,7 +292,12 @@ ideas = {
 
 		mixed_economy = {
 
-			available = { has_government = progressive }
+			available = {
+				OR = {
+					has_government = progressive
+					has_government = liberal
+				}
+			}
 
 			cost = 100
 			removal_cost = -1
@@ -504,6 +511,7 @@ ideas = {
 			available = {
 				OR = {
 					has_government = progressive
+					has_government = liberal
 					has_government = vanguard_socialism
 					has_government = revolutionary_socialism
 					has_government = totalitarian_socialism
@@ -535,7 +543,12 @@ ideas = {
 		use_list_view = yes
 
 		minimal_propaganda = {
-			available = { has_government = progressive }
+			available = {
+				OR = {
+					has_government = progressive
+					has_government = liberal
+				}
+			}
 
 
 			cost = 100
