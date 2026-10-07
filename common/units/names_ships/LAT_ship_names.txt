@@ -1,0 +1,176 @@
+﻿##### LATVIA NAME LISTS #####
+### REGULAR DESTROYER NAMES###
+LAT_DD_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_DESTROYERS
+
+	for_countries = { LAT }
+
+	type = ship
+	ship_types = { ship_hull_light destroyer }			
+	
+	prefix = "LVNS "
+	fallback_name = "D %d"					
+
+	unique = {											
+		"Latvija" "Rīga" "Liepāja" "Viesturs" "Ronis" "Spīdola" "Virsaitis" "Imanta"
+	}
+}
+
+### HEAVY CRUISER NAMES###
+LAT_CA_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CA
+
+	for_countries = { LAT }
+
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser }
+	
+	prefix = "LVNS "
+	fallback_name = "Kreiseris %d"
+
+	unique = {
+		"Viesturs" "Nameisis" "Imants" "Lāčplēsis" "Krišjānis Barons" "Krišjānis Valdemārs" "Andrejs Pumpurs" "Jānis Čakste" "Zigfrīds Anna Meierovics" "Kārlis Ulmanis" 
+		"Oskars Kalpaks" "Jukums Vācietis" "Frīdrihs Briedis" "Jānis Balodis" "Kārlis Goppers" "Rūdolfs Bangerskis" "Voldemārs Zālītis" "Eduards Kalniņš" "Žanis Lipke" 
+		"Herberts Cukurs"
+	}
+}
+
+### MINELAYER NAMES###
+LAT_MINELAYERS_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_MINELAYERS
+
+	for_countries = { LAT }
+	
+	type = ship
+	ship_types = { ship_hull_cruiser heavy_cruiser ship_hull_light destroyer }
+	
+	prefix = "LVNS "
+	fallback_name = "M %d"
+
+	unique = {
+		"Virsaitis" "Viesturs" "Imanta" "Namejs" "Tālivaldis" "Visvaldis" "Rūsiņš"
+	}
+}
+
+### BATTLESHIP NAMES ###
+LAT_BB_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BB
+
+	for_countries = { LAT }
+
+	type = ship
+	ship_types = { ship_hull_heavy battleship }
+	
+	prefix = "LVNS "
+	fallback_name = "Kaujas Kugis %d"		
+
+	unique = {
+			"Jānis Čakste" "Kārlis Ulmanis" "Zigfrīds Anna Meierovics" "Jānis Balodis" "Alberts Kviesis"
+	}
+}
+
+### BATTLECRUISER NAMES ###
+LAT_BC_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_BC
+
+	for_countries = { LAT }
+
+	type = ship
+	ship_types = { ship_hull_heavy battle_cruiser }
+	
+	prefix = "LVNS "
+	fallback_name = "Kaujas Kreiseris %d"		
+
+	unique = {			
+			 "Jānis Čakste" "Kārlis Ulmanis" "Zigfrīds Anna Meierovics" "Jānis Balodis" "Oskars Kalpaks" "Frīdrihs Briedis" "Kārlis Goppers" 
+			 "Jukums Vācietis" "Alberts Kviesis" "Marģers Skujenieks"
+	}
+}
+
+### AIRCRAFT CARRIER NAMES ###
+LAT_CV_HISTORICAL = {
+	name = NAME_THEME_HISTORICAL_CARRIERS
+
+	for_countries = { LAT }
+
+	
+	type = ship
+	ship_types = { ship_hull_carrier carrier }
+
+	prefix = "LVNS "
+	fallback_name = "Lidmašīnu Bāzes Kuģis %d"	
+
+	unique = {
+			# Fictional names start here
+			"Alūksne" "Drīdzis" "Babīte" "Lielupe" "Daugava" "Gauja"
+	}
+}
+
+### SUBMARINES ###
+LAT_SS_CLASS_S = {
+	name = NAME_THEME_HISTORICAL_CLASS_S
+
+	for_countries = { LAT }
+
+	type = ship
+	ship_types = { ship_hull_cruiser_submarine submarine }
+	
+	fallback_name = "S-%d"
+	
+	ordered = {
+		1 = {"S-%d"}
+		2 = {"S-%d"}
+		3 = {"S-%d"}
+		4 = {"S-%d"} 
+		5 = {"S-%d"} 
+		6 = {"S-%d"} 
+		7 = {"S-%d"}
+		8 = {"S-%d"}
+	}
+}
+
+### THEME: LATVIAN REGIONS ###
+LAT_STATES = {
+	name = NAME_THEME_STATES
+
+	for_countries = { LAT }
+
+	
+	type = ship
+
+	prefix = "LVNS "
+	unique = {
+		"Vidzeme" "Latgale" "Zemgale" "Kurzemes" "Selija" "Semigallia" "Livonia" "Courland"
+	}
+}
+
+## THEME: LATVIAN CITIES ###
+LAT_CITIES = {
+	name = NAME_THEME_CITIES
+
+	for_countries = { LAT }
+
+	type = ship
+
+	prefix = "LVNS "
+	unique = {
+		"Riga" "Daugavpils" "Liepaja" "Jelgava" "Jurmala" "Ventspils" "Rezekne" "Valmiera" "Jekabpils" "Salaspils" "Ogre" "Tukums" "Cesis" 
+		"Sigulda" "Kuldiga" "Saldus" "Talsi" "Bauska" "Madona" "Aizkraukle" "Aluksne" "Balvi" "Gulbene" "Livani" "Preili" "Krāslava" "Limbaži" 
+		"Smiltene" "Saulkrasti" "Valkа" "Auce" "Dobele" "Iecava" "Kandava" "Grobiņa" "Piltene" "Sabiles" "Valka" "Cesvaine"
+	}
+}
+
+## THEME: LATVIAN RIVERS ###
+LAT_RIVERS = {
+	name = NAME_THEME_RIVERS
+
+	for_countries = { LAT }
+
+	type = ship
+
+	prefix = "LVNS "
+	unique = {
+		"Daugava" "Gauja" "Lielupe" "Venta" "Salaca" "Abava" "Rīva" "Iecava" "Memele" "Dubna" "Rēzekne" "Pededze" "Malta" "Viesīte" 
+		"Mūsa" "Svete" "Virga" "Durbe" "Bārta" "Užava" "Irbe" "Vitrupe" "Skelde" "Roya" "Amata" "Brasla" "Mustjõgi"
+	}
+}

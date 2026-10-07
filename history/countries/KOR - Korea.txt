@@ -12,15 +12,26 @@ set_grand_doctrine = mass_assault
 
 set_convoys = 5
 
+# DvE: parties, leaders and politics at the 2025.1.1 start - President Yoon is suspended (impeached 2024.12.14), Choi Sang-mok is acting president
+set_party_name = { ideology = conservative long_name = "People Power Party" name = "PPP" }
+set_party_name = { ideology = liberal long_name = "Democratic Party of Korea" name = "DPK" }
+set_party_name = { ideology = progressive long_name = "Rebuilding Korea Party" name = "RKP" }
+set_party_name = { ideology = centrist long_name = "Reform Party" name = "RP" }
+create_country_leader = { name = "Yoon Suk Yeol" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Lee Jae-myung" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_liberal }
+create_country_leader = { name = "Cho Kuk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = progressivism }
+create_country_leader = { name = "Lee Jun-seok" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
+	ruling_party = conservative
+	last_election = "2024.4.10"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 75
-	reactionary = 25
+	liberal = 44
+	conservative = 40
+	progressive = 10
+	centrist = 6
 }
 
 
