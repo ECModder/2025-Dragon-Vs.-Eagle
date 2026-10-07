@@ -1,0 +1,117 @@
+# DvE - schedule of the Romanian, Libyan, French and Italian flavour
+# events and of May Day (events/DVE_ROM_2025.txt,
+# events/DVE_LBA_events.txt, events/DVE_FRA_protests.txt,
+# events/DVE_ITA_protests.txt, events/DVE_may_day.txt).
+# 2025 dates are hours from the 2025.01.01 12:00 start. The later ones
+# are a year or more away, so they are checked by date every day instead.
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = { NOT = { has_global_flag = DVE_flavor_2025_scheduled } }
+				set_global_flag = DVE_flavor_2025_scheduled
+				every_country = {
+					country_event = { id = dve_rom_send.1 hours = 1 }     # Schengen                - 01.01 00:00
+					country_event = { id = dve_rom_send.5 hours = 3288 }  # 2nd Romanian Revolution - 05.18 12:00
+					country_event = { id = dve_mayday_send.1 hours = 2886 } # May Day, then every year - 05.01 18:00
+				}
+				ROM = {
+					news_event = { id = dve_rom.2 hours = 42 }    # January strikes    - 01.03 06:00
+					news_event = { id = dve_rom.3 hours = 958 }   # Iohannis resigns   - 02.10 10:00
+					news_event = { id = dve_rom.4 hours = 1340 }  # Georgescu detained - 02.26 08:00
+				}
+			}
+		}
+	}
+	on_daily_LBA = {
+		effect = {
+			# 2026.02.17 06:00
+			if = {
+				limit = {
+					date > 2026.2.16
+					NOT = { has_global_flag = dve_lba_1_fired }
+				}
+				set_global_flag = dve_lba_1_fired
+				news_event = { id = dve_lba.1 hours = 6 }
+			}
+			# 2030.12.24 06:00
+			if = {
+				limit = {
+					date > 2030.12.23
+					NOT = { has_global_flag = dve_lba_2_fired }
+				}
+				set_global_flag = dve_lba_2_fired
+				news_event = { id = dve_lba.2 hours = 6 }
+			}
+		}
+	}
+	# France 2026: sent to every country, only while France is not in its
+	# civil war. Each has a window so that an old save does not get all
+	# three on the same day.
+	on_daily_FRA = {
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = FRA_civil_war } }
+				# 2026.09.17 08:00
+				if = {
+					limit = {
+						date > 2026.9.16
+						date < 2026.10.1
+						NOT = { has_global_flag = dve_frapro_1_fired }
+					}
+					set_global_flag = dve_frapro_1_fired
+					every_country = { news_event = { id = dve_frapro.1 hours = 8 } }
+				}
+				# 2026.10.01 06:00
+				if = {
+					limit = {
+						date > 2026.9.30
+						date < 2026.10.7
+						NOT = { has_global_flag = dve_frapro_2_fired }
+					}
+					set_global_flag = dve_frapro_2_fired
+					every_country = { news_event = { id = dve_frapro.2 hours = 6 } }
+				}
+				# 2026.10.07 08:00
+				if = {
+					limit = {
+						date > 2026.10.6
+						date < 2027.1.1
+						NOT = { has_global_flag = dve_frapro_3_fired }
+					}
+					set_global_flag = dve_frapro_3_fired
+					every_country = { news_event = { id = dve_frapro.3 hours = 8 } }
+				}
+			}
+		}
+	}
+	# Italy 2025: sent to every country, only while Italy is not in its
+	# civil war. Windows as for France.
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = ITA_civil_war } }
+				# 2025.10.18 08:00
+				if = {
+					limit = {
+						date > 2025.10.17
+						date < 2025.12.5
+						NOT = { has_global_flag = dve_itapro_1_fired }
+					}
+					set_global_flag = dve_itapro_1_fired
+					every_country = { news_event = { id = dve_itapro.1 hours = 8 } }
+				}
+				# 2025.12.05 08:00
+				if = {
+					limit = {
+						date > 2025.12.4
+						date < 2026.3.1
+						NOT = { has_global_flag = dve_itapro_2_fired }
+					}
+					set_global_flag = dve_itapro_2_fired
+					every_country = { news_event = { id = dve_itapro.2 hours = 8 } }
+				}
+			}
+		}
+	}
+}

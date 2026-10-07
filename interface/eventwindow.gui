@@ -1,6 +1,7 @@
 # DvE: the base game's eventwindow.gui with the "bluetone" skin on the
-# country event window (EventWindow), the news window (EventWindow_News)
-# and the option button. Sprites in interface/DVE_eventwindow.gfx.
+# country event window (EventWindow, text only), the news window
+# (EventWindow_News, big picture on top) and the option button.
+# Sprites in interface/DVE_eventwindow.gfx.
 # The operative and leader windows keep the base look (only their option
 # grids are aligned with the option strip).
 # Structure and element names must stay as the game expects them.
@@ -14,11 +15,11 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "EventWindow"
-		position = { x=-282 y=-380 }
+		position = { x=-282 y=-300 }
 		# The game sets the height itself: top_Window + midsection (stretched
 		# to the text) + the declared height of bottom_Window. What falls
 		# outside is cut, so bottom_Window is declared for 7 options.
-		size = { width = 581 height = 830 }
+		size = { width = 581 height = 538 }
 		moveable = yes
 		clipping = no
 		Orientation = CENTER
@@ -26,43 +27,26 @@ guiTypes = {
 		show_sound = event_popup
 		hide_sound = menu_close_window
 
-		# header bar, picture slot and title bar. As in the base news window
-		# the art is the background of the root: it is what drags the window.
+		# header bar and title bar. As in the base news window the art is the
+		# background of the root: it is what drags the window.
+		# No picture here: the game only puts the picture of a country event
+		# in bottom_Window, under the text. An event that needs its picture
+		# (on top, like the mock-ups) must be a news_event, see
+		# tools/EVENT_PICTURES.md.
 		background = {
 			name = "Background"
-			spriteType ="GFX_DVE_event_top_wide"
+			spriteType ="GFX_DVE_event_top"
 		}
 
 		containerWindowType = {
 			name = "top_Window"
 			position = { x=0 y=0 }
-			size = { width = 581 height = 396 }
+			size = { width = 581 height = 104 }
 			Orientation = UPPER_LEFT
-
-			# NOTE: the game only looks for event_picture in bottom_Window
-			# (error.log: Could not find "event_picture" in window
-			# bottom_Window), so here it never gets the picture of the event.
-			iconType = {
-				name ="event_picture"
-				spriteType = "GFX_report_event_001"
-				position = { x = 133 y = 70 }
-				Orientation = "UPPER_LEFT"
-				scale = 1.5
-				alwaystransparent = yes
-			}
-
-			# was the paper clip: now the screen overlay of the picture
-			iconType = {
-				name ="event_pic_clip"
-				spriteType = "GFX_DVE_event_pic_overlay_wide"
-				position = { x = 133 y = 70 }
-				Orientation = "UPPER_LEFT"
-				alwaystransparent = yes
-			}
 
 			instantTextBoxType = {
 				name = "Title"
-				position = { x = 24 y = 356 }
+				position = { x = 24 y = 62 }
 				font = "hoi_24header"
 				borderSize = {x = 0 y = 0}
 				text = "Title text here!"
@@ -83,7 +67,7 @@ guiTypes = {
 		# description: the game makes this section as tall as the text + 30
 		containerWindowType = {
 			name = "midsection"
-			position = { x=0 y=396 }
+			position = { x=0 y=104 }
 			size = { width = 580 height = 60 }
 			clipping = no
 			Orientation = UPPER_LEFT
@@ -110,10 +94,21 @@ guiTypes = {
 		# Height = 7 options x 52 + 10 of closing frame.
 		containerWindowType = {
 			name = "bottom_Window"
-			position = { x=0 y=456 }
+			position = { x=0 y=164 }
 			size = { width = 581 height = 374 }
 			clipping = no
 			Orientation = UPPER_LEFT
+
+			# The game sets the picture of the event on this icon and it has
+			# to exist here (else: error.log and a dummy). Parked far off
+			# screen, so nothing is ever drawn over the options.
+			iconType = {
+				name ="event_picture"
+				spriteType = "GFX_DVE_event_minimize"
+				position = { x = -8000 y = 0 }
+				Orientation = "UPPER_LEFT"
+				alwaystransparent = yes
+			}
 
 			gridBoxType = {
 				name = "options_grid"
@@ -458,12 +453,12 @@ guiTypes = {
 
 	containerWindowType = {
 		name = "EventWindow_News"
-		position = { x=-290 y=-400 }
+		position = { x=-290 y=-510 }
 		# The game never resizes this window and cuts what falls outside:
-		# the height must hold the longest news. 924 = 296 (top) + 462 (24
-		# lines of text + 30) + 166 (3 options). Shorter texts leave room for
-		# more options; nothing is drawn in the unused part.
-		size = { width = 581 height = 924 }
+		# the height must hold the longest news. 1040 = 490 (top) + 480 (25
+		# lines of text + 30) + 62 (one option) + a margin. Shorter texts
+		# leave room for more options; nothing is drawn in the unused part.
+		size = { width = 581 height = 1040 }
 		moveable = yes
 		clipping = no
 		Orientation = CENTER
@@ -471,7 +466,8 @@ guiTypes = {
 		show_sound = world_news_effect
 		hide_sound = menu_close_window
 
-		# header, picture slot and title bar; it also drags the window
+		# header ("WORLD NEWS"), empty screen and title bar: what shows when
+		# the event has no picture; it also drags the window
 		background = {
 			name = "Background"
 			spriteType ="GFX_DVE_event_news_top"
@@ -480,29 +476,26 @@ guiTypes = {
 		containerWindowType = {
 			name = "top_Window"
 			position = { x=0 y=0 }
-			size = { width = 581 height = 296 }
+			size = { width = 581 height = 490 }
 			Orientation = UPPER_LEFT
 
+			# The picture of a news event is a 581x436 "panel": header bar
+			# with its own label + the 557x372 picture (the game only puts
+			# the picture on top in this window). Made with
+			# tools/dve_event_panel.py; a plain 397x153 picture would end up
+			# in the top-left corner.
 			iconType =
 			{
 				name ="event_picture"
-				spriteType = "GFX_news_event_001"
-				position = { x = 92 y = 70 }
-				Orientation = "UPPER_LEFT"
-				alwaystransparent = yes
-			}
-
-			iconType = {
-				name ="event_picture_overlay"
-				spriteType = "GFX_DVE_event_news_pic_overlay"
-				position = { x = 91 y = 69 }
+				spriteType = "GFX_news_event_DVE_generic"
+				position = { x = 0 y = 0 }
 				Orientation = "UPPER_LEFT"
 				alwaystransparent = yes
 			}
 
 			instantTextBoxType = {
 				name = "Title"
-				position = { x = 12 y = 258 }
+				position = { x = 12 y = 452 }
 				font = "hoi_24header"
 				borderSize = {x = 0 y = 0}
 				text = "Title text here!"
@@ -523,7 +516,7 @@ guiTypes = {
 		# moves bottom_Window right under it
 		containerWindowType = {
 			name = "midsection"
-			position = { x=0 y=296 }
+			position = { x=0 y=490 }
 			size = { width = 580 height = 60 }
 			clipping = no
 			Orientation = UPPER_LEFT
@@ -548,7 +541,7 @@ guiTypes = {
 		# options: no background, see event_option_entry
 		containerWindowType = {
 			name = "bottom_Window"
-			position = { x=0 y=356 }
+			position = { x=0 y=550 }
 			size = { width = 581 height = 166 }
 			clipping = no
 			Orientation = UPPER_LEFT

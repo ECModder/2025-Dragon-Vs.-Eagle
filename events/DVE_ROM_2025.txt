@@ -1,0 +1,96 @@
+add_namespace = dve_rom
+add_namespace = dve_rom_send
+
+# ============================================================
+#   DvE - Romania 2025. Pure flavour, no effects.
+#   All of them are news_event: it is the only window where the
+#   game puts the picture on top. dve_rom.1 goes to every
+#   country, the others ("COUNTRY EVENT") to Romania only.
+#   Scheduled in common/on_actions/DVE_flavor_2025_on_actions.txt.
+# ============================================================
+
+# World news - 2025.01.01 00:00 (before the 12:00 start: shown at once)
+news_event = {
+	id = dve_rom.1
+	title = dve_rom.1.t
+	desc = dve_rom.1.d
+	picture = GFX_news_event_DVE_rom_schengen
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_rom.1.a
+	}
+}
+
+# Romania - 2025.01.03 06:00
+news_event = {
+	id = dve_rom.2
+	title = dve_rom.2.t
+	desc = dve_rom.2.d
+	picture = GFX_news_event_DVE_rom_january_strikes
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_rom.2.a
+	}
+}
+
+# Romania - 2025.02.10 10:00
+news_event = {
+	id = dve_rom.3
+	title = dve_rom.3.t
+	desc = dve_rom.3.d
+	picture = GFX_news_event_DVE_rom_iohannis_resigns
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_rom.3.a
+	}
+}
+
+# Romania - 2025.02.26 08:00
+news_event = {
+	id = dve_rom.4
+	title = dve_rom.4.t
+	desc = dve_rom.4.d
+	picture = GFX_news_event_DVE_rom_georgescu_detained
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_rom.4.a
+	}
+}
+
+# ------------------------------------------------------------
+#   Senders. Every country gets the hidden event at the same
+#   hour: the first one acts for all, the flag stops the others.
+# ------------------------------------------------------------
+
+country_event = {
+	id = dve_rom_send.1
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_rom_1_sent } }
+			set_global_flag = dve_rom_1_sent
+			every_country = { news_event = { id = dve_rom.1 } }
+		}
+	}
+}
+
+# Super event 5, "The 2nd Romanian Revolution" - 2025.05.18 12:00
+country_event = {
+	id = dve_rom_send.5
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		DVE_superevent_ROM_revolution_effect = yes
+	}
+}

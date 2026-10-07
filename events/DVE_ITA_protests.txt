@@ -1,0 +1,45 @@
+add_namespace = dve_itapro
+
+# ============================================================
+#   DvE - Italy, autumn 2025: Genoa as reported by
+#   "L'Internazionalista". news_event (picture on top), sent to
+#   every country; the popularity shift only happens in Italy.
+#   Scheduled in common/on_actions/DVE_flavor_2025_on_actions.txt,
+#   as long as Italy is not already in its civil war.
+# ============================================================
+
+# 2025.10.18 08:00
+news_event = {
+	id = dve_itapro.1
+	title = dve_itapro.1.t
+	desc = dve_itapro.1.d
+	picture = GFX_news_event_DVE_ita_march_against_wars
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itapro.1.a
+		if = {
+			limit = { tag = ITA }
+			DVE_ITA_march_popularity_effect = yes
+		}
+	}
+}
+
+# 2025.12.05 08:00
+news_event = {
+	id = dve_itapro.2
+	title = dve_itapro.2.t
+	desc = dve_itapro.2.d
+	picture = GFX_news_event_DVE_ita_ilva_strike
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itapro.2.a
+		if = {
+			limit = { tag = ITA }
+			DVE_ITA_ilva_popularity_effect = yes
+		}
+	}
+}
