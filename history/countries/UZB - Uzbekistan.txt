@@ -44,15 +44,23 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarianism long_name = "Uzbekistan Liberal Democratic Party" name = "UzLiDeP" }
+set_party_name = { ideology = conservative long_name = "Milliy Tiklanish" name = "MT" }
+set_party_name = { ideology = progressive long_name = "Adolat Social Democratic Party" name = "Adolat" }
+create_country_leader = { name = "Shavkat Mirziyoyev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Alisher Qodirov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Robakhon Makhmudova" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = authoritarianism
+	last_election = "2024.10.27"
+	election_frequency = 60
 	elections_allowed = no
 }
 set_popularities = {
-	centrist = 50
-	reactionary = 50
+	authoritarianism = 70
+	conservative = 16
+	progressive = 14
 }
 
 #create_country_leader = {

@@ -1,0 +1,25 @@
+# DvE - Syrian civil war schedule. The game starts on 2025.01.01:
+# 63 days later is 5 March, and random_days = 2 lands it on 5-7 March.
+# on_daily_SYR is the safety net (old saves, a missed event).
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = { NOT = { has_global_flag = SYR_civil_war_scheduled } }
+				set_global_flag = SYR_civil_war_scheduled
+				SYR = { country_event = { id = dve_syrcw.1 days = 63 random_days = 2 } }
+			}
+		}
+	}
+	on_daily_SYR = {
+		effect = {
+			if = {
+				limit = {
+					date > 2025.3.8
+					NOT = { has_global_flag = SYR_civil_war }
+				}
+				SYR_civil_war_start_effect = yes
+			}
+		}
+	}
+}

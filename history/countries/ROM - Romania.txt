@@ -32,11 +32,8 @@ set_grand_doctrine = new_operational_integrity
 		project = sp:sp_air_radar
 	}
 
-# DvE: Carol II guida anche il partito di governo (centrist), che prima
-# non aveva nessun leader e quindi in partita restava vuoto.
-create_country_leader = { name = "Carol II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
 			id = 550
-		}
+
 		#ROM = {
 		#	#Pick from list of the sane events first
 		#	random_list = {
@@ -56,18 +53,34 @@ create_country_leader = { name = "Carol II" desc = "POLITICS_LEADER_DESC" pictur
 			#complete_national_focus = construction_effort
 			#complete_national_focus = production_effort
 		}
-	}
-}
 
+
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = progressive long_name = "Partidul Social Democrat" name = "PSD" }
+set_party_name = { ideology = conservative long_name = "Partidul National Liberal" name = "PNL" }
+set_party_name = { ideology = centrist long_name = "Uniunea Salvati Romania" name = "USR" }
+set_party_name = { ideology = reactionary long_name = "Alianta pentru Unirea Romanilor" name = "AUR" }
+set_party_name = { ideology = ultranationalism long_name = "S.O.S. Romania" name = "SOS" }
+set_party_name = { ideology = authoritarianism long_name = "Partidul Oamenilor Tineri" name = "POT" }
+create_country_leader = { name = "Marcel Ciolacu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ilie Bolojan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Elena Lasconi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "George Simion" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Diana Sosoaca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = ultranationalism_party }
+create_country_leader = { name = "Anamaria Gavrila" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1933.12.20"
+	ruling_party = progressive
+	last_election = "2024.12.1"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 80
+	progressive = 25
+	conservative = 23
 	reactionary = 20
+	centrist = 14
+	ultranationalism = 9
+	authoritarianism = 9
 }
 add_ai_strategy = {
 	type = alliance

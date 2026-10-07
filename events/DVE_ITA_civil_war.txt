@@ -36,3 +36,48 @@ country_event = {
 		add_war_support = 0.05
 	}
 }
+
+# 2: a human Italy picks the faction to play (from ITA_civil_war_effect).
+country_event = {
+	id = dve_itacw.2
+	title = dve_itacw.2.t
+	desc = dve_itacw.2.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itacw.2.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_itacw.2.b
+		trigger = { country_exists = INT }
+		ai_chance = { factor = 0 }
+		INT = { change_tag_from = ITA }
+	}
+	option = {
+		name = dve_itacw.2.c
+		trigger = { country_exists = SRI }
+		ai_chance = { factor = 0 }
+		SRI = { change_tag_from = ITA }
+	}
+	option = {
+		name = dve_itacw.2.opt_d
+		trigger = { country_exists = RSI }
+		ai_chance = { factor = 0 }
+		RSI = { change_tag_from = ITA }
+	}
+	option = {
+		name = dve_itacw.2.e
+		trigger = { country_exists = LOM }
+		ai_chance = { factor = 0 }
+		LOM = { change_tag_from = ITA }
+	}
+	option = {
+		name = dve_itacw.2.f
+		trigger = { country_exists = TYR }
+		ai_chance = { factor = 0 }
+		TYR = { change_tag_from = ITA }
+	}
+}

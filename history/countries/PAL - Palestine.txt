@@ -23,9 +23,13 @@ if = {
 }
 
 # TODO_GoE - Add DLC checks
-set_cosmetic_tag = PAL_mandate
 
-
+add_ideas = {
+	PAL_partially_recognized_by_the_UN 
+	PAL_the_question_of_isreali_settler
+	PAL_not_fully_ours 
+	PAL_the_spirit_of_resistance
+}
 set_convoys = 5
 
 1939.1.1 = {
@@ -79,28 +83,31 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarianism long_name = "Fatah" name = "Fatah" }
+set_party_name = { ideology = fundamentalism long_name = "Hamas" name = "Hamas" }
+set_party_name = { ideology = progressive long_name = "Palestinian National Initiative" name = "PNI" }
+set_party_name = { ideology = vanguard_socialism long_name = "Popular Front for the Liberation of Palestine" name = "PFLP" }
+create_country_leader = { name = "Mahmoud Abbas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Mohammad Mustafa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = technocracy }
+create_country_leader = { name = "Zaher Jabarin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Mustafa Barghouti" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Ahmad Sa'adat" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = leninist_internationalism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
+	ruling_party = authoritarianism
+	last_election = "2006.1.25"
 	election_frequency = 48
-	elections_allowed = yes
+	elections_allowed = no
 }
 set_popularities = {
-	centrist = 90
-	reactionary = 10
+	authoritarianism = 45
+	fundamentalism = 35
+	progressive = 12
+	vanguard_socialism = 8
 }
 
 
 
-create_country_leader = {
-	name = "Ahmed Hilmi Pasha"
-	desc = ""
-	picture = GFX_portrait_Ahmed_Hilmi_Pasha
-	ideology = social_liberal
-	traits = {
-		#
-	}
-}
 
 IF = {
 	limit = {
@@ -108,23 +115,5 @@ IF = {
 			has_dlc = "Graveyard of Empires"
 		}
 	}
-	create_country_leader = {
-		name = "Amin al-Husseini"
-		desc = ""
-		picture = GFX_portrait_Amin_al_Husseini
-		ideology = fascist
-		traits = {
-			#
-		}
-	}
 }
 
-create_country_leader = {
-	name = "Bulus Farah"
-	desc = ""
-	picture = GFX_portrait_Bulus_Farah
-	ideology = leninist_internationalism
-	traits = {
-		#
-	}
-}

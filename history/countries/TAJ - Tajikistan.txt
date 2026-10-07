@@ -44,15 +44,20 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = autocracy long_name = "People's Democratic Party of Tajikistan" name = "PDPT" }
+set_party_name = { ideology = fundamentalism long_name = "Islamic Renaissance Party of Tajikistan" name = "IRPT" }
+create_country_leader = { name = "Emomali Rahmon" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = personalist_dictatorship }
+create_country_leader = { name = "Muhiddin Kabiri" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = islamic_fundamentalism }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = autocracy
+	last_election = "2020.3.1"
+	election_frequency = 60
 	elections_allowed = no
 }
 set_popularities = {
-	centrist = 40
-	reactionary = 60
+	autocracy = 93
+	fundamentalism = 7
 }
 
 #create_country_leader = {

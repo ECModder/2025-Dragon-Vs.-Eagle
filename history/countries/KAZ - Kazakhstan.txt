@@ -86,42 +86,30 @@ if = {
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarianism long_name = "Amanat" name = "Amanat" }
+set_party_name = { ideology = conservative long_name = "Aq Jol Democratic Party" name = "Aq Jol" }
+set_party_name = { ideology = authoritarian_socialism long_name = "People's Party of Kazakhstan" name = "QHP" }
+set_party_name = { ideology = autocracy long_name = "Nazarbayev Clan" name = "Elbasy" }
+create_country_leader = { name = "Kassym-Jomart Tokayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Azat Peruashev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Ermukhamet Ertysbayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = market_socialism }
+create_country_leader = { name = "Nursultan Nazarbayev" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = personalist_dictatorship }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = authoritarianism
+	last_election = "2023.3.19"
+	election_frequency = 60
 	elections_allowed = no
 }
 
 set_popularities = {
-	reactionary = 60
-	centrist = 40
+	authoritarianism = 70
+	conservative = 12
+	authoritarian_socialism = 10
+	autocracy = 8
 }
 
-create_country_leader = {
-	name = "Nikolay Aleksandrovich Skvortsov"
-	desc = ""
-	picture = GFX_portrait_Nikolay_Aleksandrovich_Skvortsov
-	expire = "1953.3.1"
-	ideology = stalinism
-	traits = {
-		
-	}
-# DvE: Nikolay Aleksandrovich Skvortsov guida anche il partito di governo (reactionary), che prima
-# non aveva nessun leader e quindi in partita restava vuoto.
-create_country_leader = { name = "Nikolay Aleksandrovich Skvortsov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = hardline_conservatism }
-}
 
-create_country_leader = {
-	name = "Ilyas Zhansugurov"
-	desc = ""
-	picture = GFX_portrait_Ilyas_Zhansugurov
-	expire = "1953.3.1"
-	ideology = conservatism
-	traits = {
-		
-	}
-}
 
 
 

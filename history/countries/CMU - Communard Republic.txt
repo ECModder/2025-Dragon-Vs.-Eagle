@@ -1,0 +1,56 @@
+capital = 18 # Champagne
+
+# ============================================================
+#   COMMUNARD REPUBLIC (CMU) - 2027
+#   Radical-left splinter led by Fabien Roussel (PCF).
+#   DEBUG-only (DVE_FRA_civil_war_effects.txt).
+#   Day 1: 2 states (Champagne, Centre Sud).
+# ============================================================
+
+# === party names (stesso roster condiviso di FRA) ===
+set_party_name = { ideology = totalitarian_socialism name = "PRCF" long_name = "Pôle de Renaissance Communiste en France" }
+set_party_name = { ideology = authoritarian_socialism name = "PCF" long_name = "Parti Communiste Français" }
+set_party_name = { ideology = vanguard_socialism long_name = "Internationaliste" name = "Parti de Internationaliste communiste" }
+set_party_name = { ideology = revolutionary_socialism name = "RC" long_name = "Comités révolutionnaires" }
+set_party_name = { ideology = progressive name = "CGT" long_name = "Confédération générale du travail" }
+set_party_name = { ideology = liberal name = "[Banned] PS" long_name = "Parti Socialiste" }
+set_party_name = { ideology = centrist name = "[Banned] Dem" long_name = "[Banned] Mouvement Démocrate" }
+set_party_name = { ideology = conservative name = "[Banned] LR" long_name = "[Banned] Les Républicains" }
+set_party_name = { ideology = reactionary name = "Armée Rouge" long_name = "Armée rouge des travailleurs de France" }
+set_party_name = { ideology = authoritarianism name = "[Banned] RN" long_name = "Rassemblement National" }
+set_party_name = { ideology = autocracy name = "[Banned] EMA" long_name = "[Banned] État-Major des Armées" }
+set_party_name = { ideology = absolutism name = "[Banned] AR" long_name = "[Banned] Alliance Royale" }
+set_party_name = { ideology = ultranationalism name = "[Banned] REC" long_name = "[Banned] Reconquête" }
+set_party_name = { ideology = fundamentalism name = "[Banned] VIA" long_name = "[Banned] Via, la voie du peuple" }
+
+create_country_leader = { name = "Fadi Kassem" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Fadi_Kassem.dds" expire = "2035.1.1" ideology = jacobinism }
+create_country_leader = { name = "Fabien Roussel" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Fabien_Roussel.dds" expire = "2035.1.1" ideology = Workerism }
+create_country_leader = { name = "Revolutionary Committees" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Commune_Government.dds" expire = "2100.1.1" ideology = socialism }
+create_country_leader = { name = "Committees of the CGT and Workers' Clubs" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_CGT.dds" expire = "2100.1.1" ideology = leninist_internationalism }
+set_politics = {
+	ruling_party = authoritarian_socialism
+	last_election = "2027.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 15
+	authoritarian_socialism = 50
+	vanguard_socialism = 10
+	revolutionary_socialism = 10
+	progressive = 5
+	centrist = 0
+	liberal = 2
+	conservative = 2
+	reactionary = 2
+	authoritarianism = 1
+	autocracy = 1
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 1
+}
+
+set_stability = 0.55
+set_war_support = 0.55
+set_research_slots = 2

@@ -402,7 +402,7 @@ country_event = {
 	option = {
 		name = "This is our historical claim!"
 		add_political_power = 20
-		add_stability = 0.025
+		add_stability = -0.05
 		ai_chance = {
 			base = 25
 		}
@@ -414,6 +414,7 @@ country_event = {
 	option = {
 		name = "Lets Give them a country"
 		add_political_power = -20
+		add_stability = 0.1
 		ai_chance = {
 			base = 75
 		}
@@ -430,5 +431,135 @@ country_event = {
 				freedom_level = 38
 			}
 
+	}
+}
+
+country_event = {
+	id = finlandos.2
+	title = finlandos.2.t
+	desc = finlandos.2.d
+
+    hidden = yes
+	fire_only_once = yes
+    
+    trigger = { always = yes }
+    
+    immediate = {
+        set_country_flag = Finland_end_of_a_nation
+    }
+}
+
+
+country_event = {
+	id = finlandos.3
+	title = finlandos.3.t
+	desc = finlandos.3.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "Under the russian boot again..."
+		add_political_power = -25
+		add_stability = -0.05
+		ai_chance = {
+			base = 100
+		}
+		set_cosmetic_tag = RUS_FIN
+		load_focus_tree = finnish_focus_defeat
+	}
+}
+
+country_event = {
+	id = finlandos.4
+	title = finlandos.4.t
+	desc = finlandos.4.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The last offensive!"
+		add_political_power = 25
+		add_war_support = 0.05
+		ai_chance = {
+			base = 100
+		}
+		declare_war_on = {
+			target = SMI
+			type = annex_everything
+		}
+	}
+}
+
+
+country_event = {
+	id = finlandos.5
+	title = finlandos.5.t
+	desc = finlandos.5.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The government holds."
+		add_political_power = 75
+		add_stability = 0.05
+		ai_chance = {
+			base = 100
+		}
+		RUS = {
+			puppet = {
+				target = RFI
+			}
+		}
+	}
+}
+
+country_event = {
+	id = finlandos.6
+	title = finlandos.6.t
+	desc = finlandos.6.d
+
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = "The revolution succeeded!"
+		add_political_power = 50
+		add_stability = 0.1
+		ai_chance = {
+			base = 100
+		}
+		add_opinion_modifier = {
+			target = RUS
+			modifier = large_decrease
+		}
+		RUS = {
+			add_opinion_modifier = {
+				target = FIN
+				modifier = large_decrease
+			}
+		}
+	}
+}
+
+country_event = {
+	id = finlandos.7
+	title = finlandos.7.t
+	desc = finlandos.7.d
+
+	fire_only_once = yes
+	trigger = {
+		tag = FIN
+		NOT = { has_completed_focus = FINl_side_with_the_government }
+		NOT = { has_completed_focus = FINl_side_with_the_people }
+	}
+
+	option = {
+		name = finlandos.7.a
+		ai_chance = { base = 100 }
+		add_stability = 0.05
+		set_global_flag = FINl_sami_focus
 	}
 }

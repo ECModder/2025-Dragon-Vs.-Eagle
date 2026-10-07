@@ -1,0 +1,30 @@
+# DvE - The International: one category for the members, one for the
+# socialist states that want in. Panels in common/scripted_guis/DVE_INTL_gui.txt.
+
+DVE_intl_member_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_intl_member_ui
+	priority = 85
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		DVE_intl_is_member = yes
+	}
+}
+
+DVE_intl_applicant_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_intl_applicant_ui
+	priority = 85
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		DVE_intl_is_applicant = yes
+	}
+}

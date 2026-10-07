@@ -1,0 +1,423 @@
+# ============================================================
+#   THE INTERNATIONALE (INT) - "Civilwar INT Path"
+#
+#   INT's starting tree while it fights the Italian civil war
+#   (ITA, the Stalinists of SRI and the Black Barons of RSI).
+#   The last focus, "If Lenin could see us...", needs the war
+#   won and swaps this tree for the main one (INT_focus).
+#
+#   Dotted links in the design are extra prerequisites (AND),
+#   as in SOV_civil_war_focus.
+#.  Buff and debuff are already done, please do not touch!!
+# ============================================================
+
+focus_tree = {
+	id = INT_civil_war_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = INT
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 200 y = 1400 }
+
+	# ========================================================
+	# |                   THE FRONT                          |
+	# ========================================================
+	focus = {
+		id = INT_cw_internationalist_united_front
+		icon = GFX_goal_INT_cw_internationalist_united_front
+		x = 6
+		y = 0
+		cost = 3.58
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 120
+			add_stability = 0.15
+			add_war_support = 0.10
+			add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.03 }
+			add_popularity = { ideology = progressive popularity = 0.02 }
+			INT_cw_guard_template_effect = yes
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Internazionalista\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.50 start_equipment_factor = 0.95"
+					owner = ROOT
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			set_country_flag = INT_cw_internationalist_united_front_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_against_stalinists_and_black_barons
+		icon = GFX_goal_INT_cw_against_stalinists_and_black_barons
+		x = 6
+		y = 1
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_internationalist_united_front }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.10
+			army_experience = 30
+			add_tech_bonus = {
+				name = INT_cw_against_stalinists_and_black_barons
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 600 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 800 producer = ROOT }
+			set_country_flag = INT_cw_against_stalinists_and_black_barons_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 2
+	# ========================================================
+	focus = {
+		id = INT_cw_permit_international_brigades
+		icon = GFX_goal_INT_cw_permit_international_brigades
+		x = 2
+		y = 2
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_against_stalinists_and_black_barons }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 40000
+			army_experience = 30
+			custom_effect_tooltip = INT_cw_permit_international_brigades_tt
+			hidden_effect = {
+				every_country = {
+					limit = {
+						NOT = { tag = ROOT }
+						OR = {
+							has_government = vanguard_socialism
+							has_government = revolutionary_socialism
+						}
+					}
+					add_ai_strategy = {
+						type = send_volunteers_desire
+						id = "INT"
+						value = 1000
+					}
+				}
+			}
+			INT_cw_guard_template_effect = yes
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Brigata Internazionale\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.45 start_equipment_factor = 0.90"
+					owner = ROOT
+					count = 10
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			set_country_flag = INT_cw_permit_international_brigades_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_leonardo_beretta_new_putilov
+		icon = GFX_goal_INT_cw_leonardo_beretta_new_putilov
+		x = 6
+		y = 2
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_against_stalinists_and_black_barons }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			if = {
+				limit = { owns_state = 158 }
+				158 = { # Piedmont
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			add_tech_bonus = {
+				name = INT_cw_leonardo_beretta_new_putilov
+				bonus = 0.50
+				uses = 1
+				category = infantry_weapons
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 500 producer = ROOT }
+			set_country_flag = INT_cw_leonardo_beretta_new_putilov_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_red_guards
+		icon = GFX_goal_INT_cw_red_guards
+		x = 10
+		y = 2
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_against_stalinists_and_black_barons }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 50000
+			add_war_support = 0.03
+			army_experience = 15
+			set_country_flag = INT_cw_red_guards_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 3
+	# ========================================================
+	focus = {
+		id = INT_cw_political_commissars
+		icon = GFX_goal_INT_cw_political_commissars
+		x = 2
+		y = 3
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_leonardo_beretta_new_putilov }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_war_support = 0.06
+			add_stability = 0.01
+			army_experience = 20
+			add_political_power = 100
+			set_country_flag = INT_cw_political_commissars_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_confiscate_means_of_production
+		icon = GFX_goal_INT_cw_confiscate_means_of_production
+		x = 6
+		y = 3
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_leonardo_beretta_new_putilov }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = war_economy
+			add_political_power = 150
+			# Buildings need a state scope: built in the capital.
+			capital_scope = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
+			add_stability = -0.10
+			set_country_flag = INT_cw_confiscate_means_of_production_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_conscription_for_women
+		icon = GFX_goal_INT_cw_conscription_for_women
+		x = 10
+		y = 3
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_red_guards }
+		prerequisite = { focus = INT_cw_leonardo_beretta_new_putilov }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_ideas = extensive_conscription
+			add_manpower = 80000
+			add_war_support = -0.04
+			set_country_flag = INT_cw_conscription_for_women_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 4
+	# ========================================================
+	focus = {
+		id = INT_cw_every_weapon_must_be_used
+		icon = GFX_goal_INT_cw_every_weapon_must_be_used
+		x = 2
+		y = 4
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_political_commissars }
+		prerequisite = { focus = INT_cw_confiscate_means_of_production }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			# Old first-generation stock on purpose
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 6000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 400 producer = ROOT }
+			army_experience = 20
+			set_country_flag = INT_cw_every_weapon_must_be_used_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_rehabilitating_factories
+		icon = GFX_goal_INT_cw_rehabilitating_factories
+		x = 6
+		y = 4
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_confiscate_means_of_production }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = {
+				name = INT_cw_rehabilitating_factories
+				bonus = 0.50
+				uses = 1
+				category = industry
+			}
+			set_country_flag = INT_cw_rehabilitating_factories_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_call_to_arms_proletariat
+		icon = GFX_goal_INT_cw_call_to_arms_proletariat
+		x = 10
+		y = 4
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_conscription_for_women }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 100000
+			army_experience = 40
+			add_war_support = 0.05
+			add_tech_bonus = {
+				name = INT_cw_call_to_arms_proletariat
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			set_country_flag = INT_cw_call_to_arms_proletariat_done
+		}
+	}
+
+	# ========================================================
+	#   THE FINAL PUSH
+	# ========================================================
+	focus = {
+		id = INT_cw_revolutionary_fervor
+		icon = GFX_goal_INT_cw_revolutionary_fervor
+		x = 4
+		y = 5
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_rehabilitating_factories }
+		prerequisite = { focus = INT_cw_every_weapon_must_be_used }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_war_support = 0.15
+			add_stability = 0.05
+			add_political_power = 100
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			set_country_flag = INT_cw_revolutionary_fervor_done
+		}
+	}
+
+	focus = {
+		id = INT_cw_revolutionary_vanguard_army
+		icon = GFX_goal_INT_cw_revolutionary_vanguard_army
+		x = 8
+		y = 5
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = INT_cw_rehabilitating_factories }
+		prerequisite = { focus = INT_cw_call_to_arms_proletariat }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			army_experience = 80
+			add_command_power = 100
+			add_tech_bonus = {
+				name = INT_cw_revolutionary_vanguard_army
+				bonus = 1.00
+				uses = 1
+				category = land_doctrine
+			}
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = ROOT }
+			INT_cw_guard_template_effect = yes
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Avanguardia Rivoluzionaria\" division_template = \"Guardia Internazionalista\" start_experience_factor = 0.75 start_equipment_factor = 1.00"
+					owner = ROOT
+					count = 4
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			set_country_flag = INT_cw_revolutionary_vanguard_army_done
+		}
+	}
+
+	# ========================================================
+	#   CLOSING - "Civil War Won by INT. Unlock the Main
+	#   Focustree": Rome held and no war left with ITA, SRI, RSI.
+	# ========================================================
+	focus = {
+		id = INT_cw_if_lenin_could_see_us
+		icon = GFX_goal_INT_cw_if_lenin_could_see_us
+		x = 6
+		y = 6
+		cost = 3.58
+		available_if_capitulated = no
+		prerequisite = { focus = INT_cw_revolutionary_fervor }
+		prerequisite = { focus = INT_cw_revolutionary_vanguard_army }
+
+		available = {
+			owns_state = 2 # Lazio
+			NOT = { has_war_with = ITA }
+			NOT = { has_war_with = SRI }
+			NOT = { has_war_with = RSI }
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 20 }
+
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.10
+			add_war_support = 0.10
+			army_experience = 50
+			add_research_slot = 1
+			# the capital leaves Genoa for Milan
+			if = {
+				limit = { owns_state = 159 }
+				set_capital = { state = 159 }
+			}
+			set_country_flag = INT_civil_war_won
+			hidden_effect = { DVE_superevent_INT_victory_effect = yes }
+			set_country_flag = INT_cw_if_lenin_could_see_us_done
+			load_focus_tree = { tree = INT_focus keep_completed = no }
+		}
+	}
+}

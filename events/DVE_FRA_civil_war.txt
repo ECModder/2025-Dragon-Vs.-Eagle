@@ -1,0 +1,94 @@
+add_namespace = dve_fracw
+
+# Day-7 second wave: FRS collapses, FSR/ANF/GER carve up the rest.
+country_event = {
+	id = dve_fracw.1
+	title = dve_fracw.1.t
+	desc = dve_fracw.1.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_fracw.1.a
+		FRA_civil_war_second_wave_effect = yes
+	}
+}
+
+# Day 1: a human France picks the faction to play (from FRA_civil_war_effect).
+country_event = {
+	id = dve_fracw.2
+	title = dve_fracw.2.t
+	desc = dve_fracw.2.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_fracw.2.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_fracw.2.b
+		trigger = { country_exists = FRS }
+		ai_chance = { factor = 0 }
+		FRS = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.2.c
+		trigger = { country_exists = CMU }
+		ai_chance = { factor = 0 }
+		CMU = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.2.opt_d
+		trigger = { country_exists = COR }
+		ai_chance = { factor = 0 }
+		COR = { change_tag_from = FRA }
+	}
+}
+
+# Day 7: a human France may switch to a new faction (from FRA_civil_war_second_wave_effect).
+country_event = {
+	id = dve_fracw.3
+	title = dve_fracw.3.t
+	desc = dve_fracw.3.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_fracw.3.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_fracw.3.b
+		trigger = { country_exists = MOF }
+		ai_chance = { factor = 0 }
+		MOF = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.3.c
+		trigger = { country_exists = FSR }
+		ai_chance = { factor = 0 }
+		FSR = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.3.opt_d
+		trigger = { country_exists = ANF }
+		ai_chance = { factor = 0 }
+		ANF = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.3.e
+		trigger = { country_exists = BRY }
+		ai_chance = { factor = 0 }
+		BRY = { change_tag_from = FRA }
+	}
+	option = {
+		name = dve_fracw.3.f
+		trigger = { country_exists = FAC }
+		ai_chance = { factor = 0 }
+		FAC = { change_tag_from = FRA }
+	}
+}

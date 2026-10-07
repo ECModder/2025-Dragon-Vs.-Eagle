@@ -1,42 +1,34 @@
 state = {
 	id = 2
-	name = "STATE_2" # Latium
-	manpower = 2781971
-	
-	state_category = city
+	name = "STATE_2" # Roma
+	manpower = 2742200
+
+	state_category = large_city
 
 	history = {
 		owner = ITA
-		victory_points = { 9904 40 } #Rome
-		victory_points = { 11846 1 } #Anzio (was 5)
+		victory_points = { 9904 40 } # Roma
 		buildings = {
 			infrastructure = 4
-			air_base = 8
 			arms_factory = 1
-			industrial_complex = 4
-			11751 = {
-				naval_base = 5
+			industrial_complex = 3
+			air_base = 5
+			9904 = {
+				landmark_colosseum = {
+					level = 1
+					allowed = {
+						has_dlc = "Gotterdammerung"
+					}
+				}
 			}
-			11846 = {
-				naval_base = 2
-			}
-            9904 = {
-                landmark_colosseum = {
-                    level = 1
-                    allowed = {
-                        has_dlc = "Gotterdammerung"
-                    }
-                }
-            }
 		}
 		add_core_of = ITA
 		add_core_of = PAP
-
 	}
 
 	provinces = {
-		923 6862 9794 9904 11751 11846 11882 
- 	}
+		9904
+	}
 
-	local_supplies = 0.0 
+	local_supplies = 0.0
 }

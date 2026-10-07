@@ -43,12 +43,12 @@ focus_tree = {
 		id = SMI_freedom
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 10
-		y = 1
+		y = 0
 		cost = 5
 		
 		completion_reward = {
-			add_political_power = 75
-			add_stability = 0.05
+			add_political_power = 50
+			add_stability = 0.1
 		}
 	}
 
@@ -56,7 +56,7 @@ focus_tree = {
 		id = SMI_fate_of_our_politics
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 10
-		y = 2
+		y = 1
 		cost = 10
 
 		prerequisite = {
@@ -73,7 +73,7 @@ focus_tree = {
 		id = SMI_reclaim_our_capital
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 10
-		y = 3
+		y = 2
 		cost = 10
 
 		prerequisite = {
@@ -617,6 +617,22 @@ focus_tree = {
 			add_war_support = 0.15
 			# Positive buff
 			# Revolts in Karelia ands Murmansk
+			RUS = {
+				release = KAR
+				release = MUR
+				declare_war_on = {
+					target = KAR
+					type = take_core_state
+				}
+				declare_war_on = {
+					target = MUR
+					type = take_core_state
+				}
+			}
+			declare_war_on = {
+				target = RUS
+				type = take_claimed_state
+			}
 		}
 	}
 
@@ -704,6 +720,13 @@ focus_tree = {
 			add_war_support = 0.05
 			add_stability = 0.15
 			add_research_slot = 1
+			annex_country = {
+				target = MUR
+			}
+			set_autonomy = {
+				target = KAR
+				autonomy_state = autonomy_integrated_puppet
+			}
 		}
 	}
 
@@ -744,6 +767,10 @@ focus_tree = {
 		prerequisite = {
 			focus = SMI_enact_universal_suffrage
 		}
+		mutually_exclusive = {
+			focus = SMI_jack_of_all_trades
+			focus = SMI_go_with_russia
+		}
 
 		
 		completion_reward = {
@@ -765,6 +792,10 @@ focus_tree = {
 
 		prerequisite = {
 			focus = SMI_focus_inwards
+		}
+		mutually_exclusive = {
+			focus = SMI_go_with_the_west
+			focus = SMI_go_with_russia
 		}
 
 		completion_reward = {
@@ -805,7 +836,7 @@ focus_tree = {
 		cost = 5
 
 		prerequisite = {
-			focus = SMI_jack_of_all_trades
+			focus = SMI_trade_with_both_sides
 		}
 
 		completion_reward = {
@@ -844,6 +875,10 @@ focus_tree = {
 
 		prerequisite = {
 			focus = SMI_strenghten_presidents_position
+		}
+		mutually_exclusive = {
+			focus = SMI_go_with_the_west
+			focus = SMI_jack_of_all_trades
 		}
 
 		
@@ -1198,7 +1233,7 @@ focus_tree = {
 		id = SMI_kickstart_our_industry
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 24
-		y = 1
+		y = 0
 		cost = 10
 		
 		completion_reward = {
@@ -1234,7 +1269,7 @@ focus_tree = {
 		id = SMI_extract_our_resources
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 21
-		y = 2
+		y = 1
 		cost = 10
 
 		prerequisite = {
@@ -1262,7 +1297,7 @@ focus_tree = {
 		id = SMI_iron_in_sweden
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 20
-		y = 3
+		y = 2
 		cost = 10
 
 		prerequisite = {
@@ -1287,7 +1322,7 @@ focus_tree = {
 		id = SMI_oil_from_sea
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 22
-		y = 3
+		y = 2
 		cost = 10
 
 		prerequisite = {
@@ -1312,7 +1347,7 @@ focus_tree = {
 		id = SMI_minerals_from_Murmansk
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 21
-		y = 4
+		y = 3
 		cost = 5
 
 		prerequisite = {
@@ -1344,7 +1379,7 @@ focus_tree = {
 		id = SMI_build_our_domestic_industry
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 27
-		y = 2
+		y = 1
 		cost = 10
 
 		prerequisite = {
@@ -1383,7 +1418,7 @@ focus_tree = {
 		id = SMI_civilian_industry
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 25
-		y = 3
+		y = 2
 		cost = 5
 
 		prerequisite = {
@@ -1411,10 +1446,46 @@ focus_tree = {
 	}
 
 	focus = {
+		id = SMI_invest_in_renevable_energy
+		icon = GFX_focus_FIN_a_new_course_for_kokoomus
+		x = 23.5
+		y = 3
+		cost = 10
+
+		prerequisite = {
+			focus = SMI_civilian_industry
+		}
+		prerequisite = {
+			focus = SMI_extract_our_resources
+		}
+		completion_reward = {
+			add_political_power = -75
+			add_stability = 0.05
+			add_resource = {
+				type = coal
+				amount = 8
+				state = 148
+			}
+        	148 = {
+            	add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+				}
+            	add_building_construction = {
+                	type = industrial_complex
+                	level = 2
+                	instant_build = yes
+            	}
+        	}
+		}
+	}
+
+	focus = {
 		id = SMI_military_industry
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 29
-		y = 3
+		y = 2
 		cost = 5
 
 		prerequisite = {
@@ -1448,7 +1519,7 @@ focus_tree = {
 		id = SMI_found_our_army
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 34
-		y = 1
+		y = 0
 		cost = 5
 
 		completion_reward = {
@@ -1478,7 +1549,7 @@ focus_tree = {
 		id = SMI_modernize_our_equipment
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 31
-		y = 2
+		y = 1
 		cost = 5
 		prerequisite = {
 			focus = SMI_found_our_army
@@ -1507,7 +1578,7 @@ focus_tree = {
 		id = SMI_build_our_navy
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 41
-		y = 1
+		y = 0
 		cost = 5
 
 		available = {
@@ -1523,6 +1594,13 @@ focus_tree = {
 			add_equipment_to_stockpile = {
 				type = convoy
 				amount = 15
+			}
+			add_tech_bonus = {
+				name = Research_bonus
+				bonus = 0.75
+				uses = 2
+				category = naval_equipment
+				category = dd_tech
 			}
         	random_owned_state = {
             	limit = {
@@ -1544,7 +1622,7 @@ focus_tree = {
 		id = SMI_build_air_bases
 		icon = GFX_focus_FIN_a_new_course_for_kokoomus
 		x = 49
-		y = 1
+		y = 0
 		cost = 5
 
 		completion_reward = {

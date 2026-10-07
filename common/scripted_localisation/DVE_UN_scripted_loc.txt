@@ -1,0 +1,23 @@
+# DvE - United Nations: the status shown in the panel, from the legitimacy.
+defined_text = {
+	name = GetDVEUNStatus
+	text = {
+		trigger = { check_variable = { DVE_un_legitimacy > 80 } }
+		localization_key = DVE_un_status_5
+	}
+	text = {
+		trigger = { check_variable = { DVE_un_legitimacy > 60 } }
+		localization_key = DVE_un_status_4
+	}
+	text = {
+		trigger = { check_variable = { DVE_un_legitimacy > 40 } }
+		localization_key = DVE_un_status_3
+	}
+	text = {
+		trigger = { check_variable = { DVE_un_legitimacy > 20 } }
+		localization_key = DVE_un_status_2
+	}
+	text = {
+		localization_key = DVE_un_status_1
+	}
+}

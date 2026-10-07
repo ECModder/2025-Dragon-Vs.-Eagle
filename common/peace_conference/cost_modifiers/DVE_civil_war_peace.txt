@@ -1,0 +1,36 @@
+# Peace costs between factions of the same civil war
+# (groups in common/scripted_triggers/DVE_civil_war_triggers.txt).
+# FROM = taker, FROM.FROM = giver, FROM.FROM.FROM = state.
+
+peace_action_modifiers = {
+
+	# Taking land from another faction of the same split counts as
+	# reunifying your own country: same discount as a core.
+	DVE_civil_war_same_country = {
+		category = is_core
+		peace_action_type = take_states
+
+		enable = {
+			DVE_pc_taker_and_giver_same_civil_war = yes
+		}
+
+		cost_multiplier = 0.25
+	}
+
+	# On capitulation the loser's last provinces get handed out among
+	# the winners, so whoever wants a state often doesn't control it
+	# and pays BASE_PEACE_TAKE_UNCONTROLLED_STATE_FACTOR (x10). Inside a
+	# civil war that makes the loser untakeable; this cancels it
+	# (10 x 0.1 = 1) without touching the global define.
+	DVE_civil_war_uncontrolled = {
+		category = occupation
+		peace_action_type = take_states
+
+		enable = {
+			DVE_pc_taker_and_giver_same_civil_war = yes
+			NOT = { FROM.FROM.FROM = { is_controlled_by = ROOT } }
+		}
+
+		cost_multiplier = 0.1
+	}
+}

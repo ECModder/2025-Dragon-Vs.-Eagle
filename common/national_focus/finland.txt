@@ -525,65 +525,81 @@ focus_tree = {
 		prerequisite = { 
 			focus = FIN_rising_tensions
 		}
+		allow_branch = {
+			has_completed_focus = FIN_rising_tensions
+			NOT = {
+				has_completed_focus = FIN_schedule_snap_elections
+			}
+			NOT = {
+				has_completed_focus = FIN_looming_coup
+			}
+			has_country_flag = Finland_end_of_a_nation
+		}
 
 		completion_reward = {
 			add_stability = -0.3
-			release = SAV
-			release = OUL
-			release = VAS
-			release = TRK
-			release = HME
-			release = SMI
-			release = ALA
-			release = KAR
 			leave_faction = yes
-			root = {
-				transfer_units_fraction = {
-					target = ALA
-					size = 1
-					army_ratio = 0.1
+			custom_effect_tooltip = FIN_collapse_tt
+
+			hidden_effect = {
+				release = SAV
+				release = OUL
+				release = VAS
+				release = TRK
+				release = HME
+				release = ALA
+				release = KAR
+				root = {
+					transfer_units_fraction = {
+						target = ALA
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = SAV
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = OUL
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = VAS
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = TRK
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = HME
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = SMI
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_units_fraction = {
+						target = KAR
+						size = 1
+						army_ratio = 0.1
+					}
+					transfer_navy = {
+						target = ALA
+					}
 				}
-				transfer_units_fraction = {
-					target = SAV
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = OUL
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = VAS
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = TRK
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = HME
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = SMI
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_units_fraction = {
-					target = KAR
-					size = 1
-					army_ratio = 0.1
-				}
-				transfer_navy = {
-					target = ALA
-				}
-			}
-			145 = {
+				145 = {
 				set_demilitarized_zone = no
+				}
+				148 = {
+					set_state_owner_to = SWE
+				}
 			}
 		}
 
@@ -1048,7 +1064,7 @@ focus_tree = {
 
 	focus = {
 		id = FIN_coup
-		icon = GFX_SOV_left_opposition_coup_ccp_2d_sov_compatibility
+		icon = GFX_goal_FINl_defeat
 		x = 21
 		y = 9
 		cost = 5

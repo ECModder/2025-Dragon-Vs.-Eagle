@@ -1,40 +1,188 @@
 scripted_gui = {
+	egypt_phase1_visual_sgui = {
+		context_type = decision_category
+		window_name = "egypt_phase1_visual_window"
+		visible = {
+			original_tag = EGY
+			has_country_flag = egypt_capital_phase1
+		}
+		triggers = {
+			egypt_p1_bar_1_visible = { check_variable = { egypt_capital_progress > -1.5 } check_variable = { egypt_capital_progress < 0.5 } }
+			egypt_p1_bar_2_visible = { check_variable = { egypt_capital_progress > 0.5 } check_variable = { egypt_capital_progress < 2.5 } }
+			egypt_p1_bar_3_visible = { check_variable = { egypt_capital_progress > 2.5 } check_variable = { egypt_capital_progress < 4.5 } }
+			egypt_p1_bar_4_visible = { check_variable = { egypt_capital_progress > 4.5 } check_variable = { egypt_capital_progress < 6.5 } }
+			egypt_p1_bar_5_visible = { check_variable = { egypt_capital_progress > 6.5 } check_variable = { egypt_capital_progress < 8.5 } }
+			egypt_p1_bar_6_visible = { check_variable = { egypt_capital_progress > 8.5 } check_variable = { egypt_capital_progress < 10.5 } }
+			egypt_p1_bar_7_visible = { check_variable = { egypt_capital_progress > 10.5 } check_variable = { egypt_capital_progress < 12.5 } }
+			egypt_p1_bar_8_visible = { check_variable = { egypt_capital_progress > 12.5 } check_variable = { egypt_capital_progress < 14.5 } }
+			egypt_p1_bar_9_visible = { check_variable = { egypt_capital_progress > 14.5 } check_variable = { egypt_capital_progress < 16.5 } }
+			egypt_p1_bar_10_visible = { check_variable = { egypt_capital_progress > 16.5 } check_variable = { egypt_capital_progress < 18.5 } }
+			egypt_p1_bar_11_visible = { check_variable = { egypt_capital_progress > 18.5 } check_variable = { egypt_capital_progress < 20.5 } }
+			egypt_p1_bar_12_visible = { check_variable = { egypt_capital_progress > 20.5 } check_variable = { egypt_capital_progress < 22.5 } }
+			egypt_p1_bar_13_visible = { check_variable = { egypt_capital_progress > 22.5 } check_variable = { egypt_capital_progress < 24.5 } }
+			egypt_p1_bar_14_visible = { check_variable = { egypt_capital_progress > 24.5 } check_variable = { egypt_capital_progress < 26.5 } }
+			egypt_p1_bar_15_visible = { check_variable = { egypt_capital_progress > 26.5 } check_variable = { egypt_capital_progress < 28.5 } }
+			egypt_p1_bar_16_visible = { check_variable = { egypt_capital_progress > 28.5 } check_variable = { egypt_capital_progress < 30.5 } }
+			egypt_p1_bar_17_visible = { check_variable = { egypt_capital_progress > 30.5 } check_variable = { egypt_capital_progress < 32.5 } }
+			egypt_p1_bar_18_visible = { check_variable = { egypt_capital_progress > 32.5 } check_variable = { egypt_capital_progress < 34.5 } }
+			egypt_p1_bar_19_visible = { check_variable = { egypt_capital_progress > 34.5 } check_variable = { egypt_capital_progress < 36.5 } }
+			egypt_p1_bar_20_visible = { check_variable = { egypt_capital_progress > 36.5 } check_variable = { egypt_capital_progress < 38.5 } }
+			egypt_p1_bar_21_visible = { check_variable = { egypt_capital_progress > 38.5 } check_variable = { egypt_capital_progress < 40.5 } }
+			egypt_p1_bar_22_visible = { check_variable = { egypt_capital_progress > 40.5 } check_variable = { egypt_capital_progress < 42.5 } }
+			egypt_p1_bar_23_visible = { check_variable = { egypt_capital_progress > 42.5 } check_variable = { egypt_capital_progress < 44.5 } }
+			egypt_p1_bar_24_visible = { check_variable = { egypt_capital_progress > 44.5 } check_variable = { egypt_capital_progress < 46.5 } }
+			egypt_p1_bar_25_visible = { check_variable = { egypt_capital_progress > 46.5 } check_variable = { egypt_capital_progress < 48.5 } }
+			egypt_p1_bar_26_visible = { check_variable = { egypt_capital_progress > 48.5 } check_variable = { egypt_capital_progress < 50.5 } }
+			egypt_p1_bar_27_visible = { check_variable = { egypt_capital_progress > 50.5 } check_variable = { egypt_capital_progress < 52.5 } }
+			egypt_p1_bar_28_visible = { check_variable = { egypt_capital_progress > 52.5 } check_variable = { egypt_capital_progress < 54.5 } }
+			egypt_p1_bar_29_visible = { check_variable = { egypt_capital_progress > 54.5 } check_variable = { egypt_capital_progress < 56.5 } }
+			egypt_p1_bar_30_visible = { check_variable = { egypt_capital_progress > 56.5 } check_variable = { egypt_capital_progress < 58.5 } }
+			egypt_p1_bar_31_visible = { check_variable = { egypt_capital_progress > 58.5 } check_variable = { egypt_capital_progress < 60.5 } }
+			egypt_p1_bar_32_visible = { check_variable = { egypt_capital_progress > 60.5 } check_variable = { egypt_capital_progress < 62.5 } }
+			egypt_p1_bar_33_visible = { check_variable = { egypt_capital_progress > 62.5 } check_variable = { egypt_capital_progress < 64.5 } }
+			egypt_p1_bar_34_visible = { check_variable = { egypt_capital_progress > 64.5 } check_variable = { egypt_capital_progress < 66.5 } }
+			egypt_p1_bar_35_visible = { check_variable = { egypt_capital_progress > 66.5 } check_variable = { egypt_capital_progress < 68.5 } }
+			egypt_p1_bar_36_visible = { check_variable = { egypt_capital_progress > 68.5 } check_variable = { egypt_capital_progress < 70.5 } }
+			egypt_p1_bar_37_visible = { check_variable = { egypt_capital_progress > 70.5 } check_variable = { egypt_capital_progress < 72.5 } }
+			egypt_p1_bar_38_visible = { check_variable = { egypt_capital_progress > 72.5 } check_variable = { egypt_capital_progress < 74.5 } }
+			egypt_p1_bar_39_visible = { check_variable = { egypt_capital_progress > 74.5 } check_variable = { egypt_capital_progress < 76.5 } }
+			egypt_p1_bar_40_visible = { check_variable = { egypt_capital_progress > 76.5 } check_variable = { egypt_capital_progress < 78.5 } }
+			egypt_p1_bar_41_visible = { check_variable = { egypt_capital_progress > 78.5 } check_variable = { egypt_capital_progress < 80.5 } }
+			egypt_p1_bar_42_visible = { check_variable = { egypt_capital_progress > 80.5 } check_variable = { egypt_capital_progress < 82.5 } }
+			egypt_p1_bar_43_visible = { check_variable = { egypt_capital_progress > 82.5 } check_variable = { egypt_capital_progress < 84.5 } }
+			egypt_p1_bar_44_visible = { check_variable = { egypt_capital_progress > 84.5 } check_variable = { egypt_capital_progress < 86.5 } }
+			egypt_p1_bar_45_visible = { check_variable = { egypt_capital_progress > 86.5 } check_variable = { egypt_capital_progress < 88.5 } }
+			egypt_p1_bar_46_visible = { check_variable = { egypt_capital_progress > 88.5 } check_variable = { egypt_capital_progress < 90.5 } }
+			egypt_p1_bar_47_visible = { check_variable = { egypt_capital_progress > 90.5 } check_variable = { egypt_capital_progress < 92.5 } }
+			egypt_p1_bar_48_visible = { check_variable = { egypt_capital_progress > 92.5 } check_variable = { egypt_capital_progress < 94.5 } }
+			egypt_p1_bar_49_visible = { check_variable = { egypt_capital_progress > 94.5 } check_variable = { egypt_capital_progress < 96.5 } }
+			egypt_p1_bar_50_visible = { check_variable = { egypt_capital_progress > 96.5 } check_variable = { egypt_capital_progress < 98.5 } }
+			egypt_p1_bar_51_visible = { check_variable = { egypt_capital_progress > 98.5 } check_variable = { egypt_capital_progress < 100.5 } }
+		}
+	}
 
-    egypt_capital_launcher = {
-        context_type = player_context
-        parent_window_token = top_bar
-        window_name = "egypt_capital_launcher"
+	egypt_phase2_visual_sgui = {
+		context_type = decision_category
+		window_name = "egypt_phase2_visual_window"
+		visible = {
+			original_tag = EGY
+			has_country_flag = egypt_capital_phase2
+		}
+		triggers = {
+			egypt_p2_bar_1_visible = { check_variable = { egypt_capital_progress > -1.5 } check_variable = { egypt_capital_progress < 0.5 } }
+			egypt_p2_bar_2_visible = { check_variable = { egypt_capital_progress > 0.5 } check_variable = { egypt_capital_progress < 2.5 } }
+			egypt_p2_bar_3_visible = { check_variable = { egypt_capital_progress > 2.5 } check_variable = { egypt_capital_progress < 4.5 } }
+			egypt_p2_bar_4_visible = { check_variable = { egypt_capital_progress > 4.5 } check_variable = { egypt_capital_progress < 6.5 } }
+			egypt_p2_bar_5_visible = { check_variable = { egypt_capital_progress > 6.5 } check_variable = { egypt_capital_progress < 8.5 } }
+			egypt_p2_bar_6_visible = { check_variable = { egypt_capital_progress > 8.5 } check_variable = { egypt_capital_progress < 10.5 } }
+			egypt_p2_bar_7_visible = { check_variable = { egypt_capital_progress > 10.5 } check_variable = { egypt_capital_progress < 12.5 } }
+			egypt_p2_bar_8_visible = { check_variable = { egypt_capital_progress > 12.5 } check_variable = { egypt_capital_progress < 14.5 } }
+			egypt_p2_bar_9_visible = { check_variable = { egypt_capital_progress > 14.5 } check_variable = { egypt_capital_progress < 16.5 } }
+			egypt_p2_bar_10_visible = { check_variable = { egypt_capital_progress > 16.5 } check_variable = { egypt_capital_progress < 18.5 } }
+			egypt_p2_bar_11_visible = { check_variable = { egypt_capital_progress > 18.5 } check_variable = { egypt_capital_progress < 20.5 } }
+			egypt_p2_bar_12_visible = { check_variable = { egypt_capital_progress > 20.5 } check_variable = { egypt_capital_progress < 22.5 } }
+			egypt_p2_bar_13_visible = { check_variable = { egypt_capital_progress > 22.5 } check_variable = { egypt_capital_progress < 24.5 } }
+			egypt_p2_bar_14_visible = { check_variable = { egypt_capital_progress > 24.5 } check_variable = { egypt_capital_progress < 26.5 } }
+			egypt_p2_bar_15_visible = { check_variable = { egypt_capital_progress > 26.5 } check_variable = { egypt_capital_progress < 28.5 } }
+			egypt_p2_bar_16_visible = { check_variable = { egypt_capital_progress > 28.5 } check_variable = { egypt_capital_progress < 30.5 } }
+			egypt_p2_bar_17_visible = { check_variable = { egypt_capital_progress > 30.5 } check_variable = { egypt_capital_progress < 32.5 } }
+			egypt_p2_bar_18_visible = { check_variable = { egypt_capital_progress > 32.5 } check_variable = { egypt_capital_progress < 34.5 } }
+			egypt_p2_bar_19_visible = { check_variable = { egypt_capital_progress > 34.5 } check_variable = { egypt_capital_progress < 36.5 } }
+			egypt_p2_bar_20_visible = { check_variable = { egypt_capital_progress > 36.5 } check_variable = { egypt_capital_progress < 38.5 } }
+			egypt_p2_bar_21_visible = { check_variable = { egypt_capital_progress > 38.5 } check_variable = { egypt_capital_progress < 40.5 } }
+			egypt_p2_bar_22_visible = { check_variable = { egypt_capital_progress > 40.5 } check_variable = { egypt_capital_progress < 42.5 } }
+			egypt_p2_bar_23_visible = { check_variable = { egypt_capital_progress > 42.5 } check_variable = { egypt_capital_progress < 44.5 } }
+			egypt_p2_bar_24_visible = { check_variable = { egypt_capital_progress > 44.5 } check_variable = { egypt_capital_progress < 46.5 } }
+			egypt_p2_bar_25_visible = { check_variable = { egypt_capital_progress > 46.5 } check_variable = { egypt_capital_progress < 48.5 } }
+			egypt_p2_bar_26_visible = { check_variable = { egypt_capital_progress > 48.5 } check_variable = { egypt_capital_progress < 50.5 } }
+			egypt_p2_bar_27_visible = { check_variable = { egypt_capital_progress > 50.5 } check_variable = { egypt_capital_progress < 52.5 } }
+			egypt_p2_bar_28_visible = { check_variable = { egypt_capital_progress > 52.5 } check_variable = { egypt_capital_progress < 54.5 } }
+			egypt_p2_bar_29_visible = { check_variable = { egypt_capital_progress > 54.5 } check_variable = { egypt_capital_progress < 56.5 } }
+			egypt_p2_bar_30_visible = { check_variable = { egypt_capital_progress > 56.5 } check_variable = { egypt_capital_progress < 58.5 } }
+			egypt_p2_bar_31_visible = { check_variable = { egypt_capital_progress > 58.5 } check_variable = { egypt_capital_progress < 60.5 } }
+			egypt_p2_bar_32_visible = { check_variable = { egypt_capital_progress > 60.5 } check_variable = { egypt_capital_progress < 62.5 } }
+			egypt_p2_bar_33_visible = { check_variable = { egypt_capital_progress > 62.5 } check_variable = { egypt_capital_progress < 64.5 } }
+			egypt_p2_bar_34_visible = { check_variable = { egypt_capital_progress > 64.5 } check_variable = { egypt_capital_progress < 66.5 } }
+			egypt_p2_bar_35_visible = { check_variable = { egypt_capital_progress > 66.5 } check_variable = { egypt_capital_progress < 68.5 } }
+			egypt_p2_bar_36_visible = { check_variable = { egypt_capital_progress > 68.5 } check_variable = { egypt_capital_progress < 70.5 } }
+			egypt_p2_bar_37_visible = { check_variable = { egypt_capital_progress > 70.5 } check_variable = { egypt_capital_progress < 72.5 } }
+			egypt_p2_bar_38_visible = { check_variable = { egypt_capital_progress > 72.5 } check_variable = { egypt_capital_progress < 74.5 } }
+			egypt_p2_bar_39_visible = { check_variable = { egypt_capital_progress > 74.5 } check_variable = { egypt_capital_progress < 76.5 } }
+			egypt_p2_bar_40_visible = { check_variable = { egypt_capital_progress > 76.5 } check_variable = { egypt_capital_progress < 78.5 } }
+			egypt_p2_bar_41_visible = { check_variable = { egypt_capital_progress > 78.5 } check_variable = { egypt_capital_progress < 80.5 } }
+			egypt_p2_bar_42_visible = { check_variable = { egypt_capital_progress > 80.5 } check_variable = { egypt_capital_progress < 82.5 } }
+			egypt_p2_bar_43_visible = { check_variable = { egypt_capital_progress > 82.5 } check_variable = { egypt_capital_progress < 84.5 } }
+			egypt_p2_bar_44_visible = { check_variable = { egypt_capital_progress > 84.5 } check_variable = { egypt_capital_progress < 86.5 } }
+			egypt_p2_bar_45_visible = { check_variable = { egypt_capital_progress > 86.5 } check_variable = { egypt_capital_progress < 88.5 } }
+			egypt_p2_bar_46_visible = { check_variable = { egypt_capital_progress > 88.5 } check_variable = { egypt_capital_progress < 90.5 } }
+			egypt_p2_bar_47_visible = { check_variable = { egypt_capital_progress > 90.5 } check_variable = { egypt_capital_progress < 92.5 } }
+			egypt_p2_bar_48_visible = { check_variable = { egypt_capital_progress > 92.5 } check_variable = { egypt_capital_progress < 94.5 } }
+			egypt_p2_bar_49_visible = { check_variable = { egypt_capital_progress > 94.5 } check_variable = { egypt_capital_progress < 96.5 } }
+			egypt_p2_bar_50_visible = { check_variable = { egypt_capital_progress > 96.5 } check_variable = { egypt_capital_progress < 98.5 } }
+			egypt_p2_bar_51_visible = { check_variable = { egypt_capital_progress > 98.5 } check_variable = { egypt_capital_progress < 100.5 } }
+		}
+	}
 
-        visible = {
-            original_tag = EGY
-        }
-
-        effects = {
-
-            egypt_capital_open_click = {
-                set_country_flag = egypt_capital_ui_open
-            }
-
-        }
-    }
-
-
-    egypt_phase1_visual_sgui = {
-        context_type = player_context
-        window_name = "egypt_phase1_visual_window"
-
-        visible = {
-            original_tag = EGY
-            has_country_flag = egypt_capital_ui_open
-        }
-
-        effects = {
-
-            egypt_capital_close_click = {
-                clr_country_flag = egypt_capital_ui_open
-            }
-
-        }
-    }
+	egypt_phase3_visual_sgui = {
+		context_type = decision_category
+		window_name = "egypt_phase3_visual_window"
+		visible = {
+			original_tag = EGY
+			has_country_flag = egypt_capital_phase3
+		}
+		triggers = {
+			egypt_p3_bar_1_visible = { check_variable = { egypt_capital_progress > -1.5 } check_variable = { egypt_capital_progress < 0.5 } }
+			egypt_p3_bar_2_visible = { check_variable = { egypt_capital_progress > 0.5 } check_variable = { egypt_capital_progress < 2.5 } }
+			egypt_p3_bar_3_visible = { check_variable = { egypt_capital_progress > 2.5 } check_variable = { egypt_capital_progress < 4.5 } }
+			egypt_p3_bar_4_visible = { check_variable = { egypt_capital_progress > 4.5 } check_variable = { egypt_capital_progress < 6.5 } }
+			egypt_p3_bar_5_visible = { check_variable = { egypt_capital_progress > 6.5 } check_variable = { egypt_capital_progress < 8.5 } }
+			egypt_p3_bar_6_visible = { check_variable = { egypt_capital_progress > 8.5 } check_variable = { egypt_capital_progress < 10.5 } }
+			egypt_p3_bar_7_visible = { check_variable = { egypt_capital_progress > 10.5 } check_variable = { egypt_capital_progress < 12.5 } }
+			egypt_p3_bar_8_visible = { check_variable = { egypt_capital_progress > 12.5 } check_variable = { egypt_capital_progress < 14.5 } }
+			egypt_p3_bar_9_visible = { check_variable = { egypt_capital_progress > 14.5 } check_variable = { egypt_capital_progress < 16.5 } }
+			egypt_p3_bar_10_visible = { check_variable = { egypt_capital_progress > 16.5 } check_variable = { egypt_capital_progress < 18.5 } }
+			egypt_p3_bar_11_visible = { check_variable = { egypt_capital_progress > 18.5 } check_variable = { egypt_capital_progress < 20.5 } }
+			egypt_p3_bar_12_visible = { check_variable = { egypt_capital_progress > 20.5 } check_variable = { egypt_capital_progress < 22.5 } }
+			egypt_p3_bar_13_visible = { check_variable = { egypt_capital_progress > 22.5 } check_variable = { egypt_capital_progress < 24.5 } }
+			egypt_p3_bar_14_visible = { check_variable = { egypt_capital_progress > 24.5 } check_variable = { egypt_capital_progress < 26.5 } }
+			egypt_p3_bar_15_visible = { check_variable = { egypt_capital_progress > 26.5 } check_variable = { egypt_capital_progress < 28.5 } }
+			egypt_p3_bar_16_visible = { check_variable = { egypt_capital_progress > 28.5 } check_variable = { egypt_capital_progress < 30.5 } }
+			egypt_p3_bar_17_visible = { check_variable = { egypt_capital_progress > 30.5 } check_variable = { egypt_capital_progress < 32.5 } }
+			egypt_p3_bar_18_visible = { check_variable = { egypt_capital_progress > 32.5 } check_variable = { egypt_capital_progress < 34.5 } }
+			egypt_p3_bar_19_visible = { check_variable = { egypt_capital_progress > 34.5 } check_variable = { egypt_capital_progress < 36.5 } }
+			egypt_p3_bar_20_visible = { check_variable = { egypt_capital_progress > 36.5 } check_variable = { egypt_capital_progress < 38.5 } }
+			egypt_p3_bar_21_visible = { check_variable = { egypt_capital_progress > 38.5 } check_variable = { egypt_capital_progress < 40.5 } }
+			egypt_p3_bar_22_visible = { check_variable = { egypt_capital_progress > 40.5 } check_variable = { egypt_capital_progress < 42.5 } }
+			egypt_p3_bar_23_visible = { check_variable = { egypt_capital_progress > 42.5 } check_variable = { egypt_capital_progress < 44.5 } }
+			egypt_p3_bar_24_visible = { check_variable = { egypt_capital_progress > 44.5 } check_variable = { egypt_capital_progress < 46.5 } }
+			egypt_p3_bar_25_visible = { check_variable = { egypt_capital_progress > 46.5 } check_variable = { egypt_capital_progress < 48.5 } }
+			egypt_p3_bar_26_visible = { check_variable = { egypt_capital_progress > 48.5 } check_variable = { egypt_capital_progress < 50.5 } }
+			egypt_p3_bar_27_visible = { check_variable = { egypt_capital_progress > 50.5 } check_variable = { egypt_capital_progress < 52.5 } }
+			egypt_p3_bar_28_visible = { check_variable = { egypt_capital_progress > 52.5 } check_variable = { egypt_capital_progress < 54.5 } }
+			egypt_p3_bar_29_visible = { check_variable = { egypt_capital_progress > 54.5 } check_variable = { egypt_capital_progress < 56.5 } }
+			egypt_p3_bar_30_visible = { check_variable = { egypt_capital_progress > 56.5 } check_variable = { egypt_capital_progress < 58.5 } }
+			egypt_p3_bar_31_visible = { check_variable = { egypt_capital_progress > 58.5 } check_variable = { egypt_capital_progress < 60.5 } }
+			egypt_p3_bar_32_visible = { check_variable = { egypt_capital_progress > 60.5 } check_variable = { egypt_capital_progress < 62.5 } }
+			egypt_p3_bar_33_visible = { check_variable = { egypt_capital_progress > 62.5 } check_variable = { egypt_capital_progress < 64.5 } }
+			egypt_p3_bar_34_visible = { check_variable = { egypt_capital_progress > 64.5 } check_variable = { egypt_capital_progress < 66.5 } }
+			egypt_p3_bar_35_visible = { check_variable = { egypt_capital_progress > 66.5 } check_variable = { egypt_capital_progress < 68.5 } }
+			egypt_p3_bar_36_visible = { check_variable = { egypt_capital_progress > 68.5 } check_variable = { egypt_capital_progress < 70.5 } }
+			egypt_p3_bar_37_visible = { check_variable = { egypt_capital_progress > 70.5 } check_variable = { egypt_capital_progress < 72.5 } }
+			egypt_p3_bar_38_visible = { check_variable = { egypt_capital_progress > 72.5 } check_variable = { egypt_capital_progress < 74.5 } }
+			egypt_p3_bar_39_visible = { check_variable = { egypt_capital_progress > 74.5 } check_variable = { egypt_capital_progress < 76.5 } }
+			egypt_p3_bar_40_visible = { check_variable = { egypt_capital_progress > 76.5 } check_variable = { egypt_capital_progress < 78.5 } }
+			egypt_p3_bar_41_visible = { check_variable = { egypt_capital_progress > 78.5 } check_variable = { egypt_capital_progress < 80.5 } }
+			egypt_p3_bar_42_visible = { check_variable = { egypt_capital_progress > 80.5 } check_variable = { egypt_capital_progress < 82.5 } }
+			egypt_p3_bar_43_visible = { check_variable = { egypt_capital_progress > 82.5 } check_variable = { egypt_capital_progress < 84.5 } }
+			egypt_p3_bar_44_visible = { check_variable = { egypt_capital_progress > 84.5 } check_variable = { egypt_capital_progress < 86.5 } }
+			egypt_p3_bar_45_visible = { check_variable = { egypt_capital_progress > 86.5 } check_variable = { egypt_capital_progress < 88.5 } }
+			egypt_p3_bar_46_visible = { check_variable = { egypt_capital_progress > 88.5 } check_variable = { egypt_capital_progress < 90.5 } }
+			egypt_p3_bar_47_visible = { check_variable = { egypt_capital_progress > 90.5 } check_variable = { egypt_capital_progress < 92.5 } }
+			egypt_p3_bar_48_visible = { check_variable = { egypt_capital_progress > 92.5 } check_variable = { egypt_capital_progress < 94.5 } }
+			egypt_p3_bar_49_visible = { check_variable = { egypt_capital_progress > 94.5 } check_variable = { egypt_capital_progress < 96.5 } }
+			egypt_p3_bar_50_visible = { check_variable = { egypt_capital_progress > 96.5 } check_variable = { egypt_capital_progress < 98.5 } }
+			egypt_p3_bar_51_visible = { check_variable = { egypt_capital_progress > 98.5 } check_variable = { egypt_capital_progress < 100.5 } }
+		}
+	}
 
 }

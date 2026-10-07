@@ -1,0 +1,45 @@
+add_namespace = dve_grecw
+
+# Sent to GRE by GRE_civil_war_start_effect. Splits Greece; a
+# human player moves to the side chosen here, the AI just splits.
+country_event = {
+	id = dve_grecw.1
+	title = dve_grecw.1.t
+	desc = dve_grecw.1.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_grecw.1.a
+		ai_chance = { factor = 50 }
+		GRE_civil_war_effect = yes
+		if = {
+			limit = { is_ai = no }
+			GSR = { change_tag_from = GRE }
+		}
+	}
+	option = {
+		name = dve_grecw.1.b
+		ai_chance = { factor = 50 }
+		GRE_civil_war_effect = yes
+		if = {
+			limit = { is_ai = no }
+			GNR = { change_tag_from = GRE }
+		}
+	}
+}
+
+# News for every other country.
+news_event = {
+	id = dve_grecw.2
+	title = dve_grecw.2.t
+	desc = dve_grecw.2.d
+	picture = GFX_news_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_grecw.2.a
+	}
+}

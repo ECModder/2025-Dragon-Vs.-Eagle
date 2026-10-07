@@ -1,0 +1,69 @@
+# DvE super events - debug: shows each one at once (debug mode only),
+# without touching the "fired once" flags.
+
+DVE_debug_general_category = {
+
+	DVE_debug_superevent_INT = {
+		icon = GFX_decision_generic_speech
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_variable = { DVE_superevent = 1 }
+			play_song = "dve_se_int_victory"
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_superevent_SRB = {
+		icon = GFX_decision_generic_speech
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_variable = { DVE_superevent = 2 }
+			play_song = "dve_se_srb_victory"
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_superevent_SOV = {
+		icon = GFX_decision_generic_speech
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_variable = { DVE_superevent = 3 }
+			play_song = "dve_se_sov_victory"
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	DVE_debug_superevent_RCA = {
+		icon = GFX_decision_generic_speech
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_variable = { DVE_superevent = 4 }
+			play_song = "dve_se_rca_victory"
+		}
+		ai_will_do = { base = 0 }
+	}
+}

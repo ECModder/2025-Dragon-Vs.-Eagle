@@ -1,0 +1,108 @@
+# DvE government formation - shared triggers.
+
+DVE_gov_has_formateur = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_totalitarian_socialism
+		has_country_flag = DVE_gov_formateur_authoritarian_socialism
+		has_country_flag = DVE_gov_formateur_progressive
+		has_country_flag = DVE_gov_formateur_liberal
+		has_country_flag = DVE_gov_formateur_centrist
+		has_country_flag = DVE_gov_formateur_conservative
+		has_country_flag = DVE_gov_formateur_reactionary
+		has_country_flag = DVE_gov_formateur_authoritarianism
+		has_country_flag = DVE_gov_formateur_autocracy
+		has_country_flag = DVE_gov_formateur_absolutism
+		has_country_flag = DVE_gov_formateur_ultranationalism
+	}
+}
+
+# At least one party that is allowed to form a government has 20%.
+DVE_gov_any_party_can_form = {
+	OR = {
+		totalitarian_socialism > 0.199
+		authoritarian_socialism > 0.199
+		progressive > 0.199
+		liberal > 0.199
+		centrist > 0.199
+		conservative > 0.199
+		reactionary > 0.199
+		authoritarianism > 0.199
+		autocracy > 0.199
+		absolutism > 0.199
+		ultranationalism > 0.199
+	}
+}
+
+# Party is the formateur or an accepted coalition partner.
+DVE_gov_in_coalition_totalitarian_socialism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_totalitarian_socialism
+		has_country_flag = DVE_gov_partner_totalitarian_socialism
+	}
+}
+DVE_gov_in_coalition_authoritarian_socialism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_authoritarian_socialism
+		has_country_flag = DVE_gov_partner_authoritarian_socialism
+	}
+}
+DVE_gov_in_coalition_progressive = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_progressive
+		has_country_flag = DVE_gov_partner_progressive
+	}
+}
+DVE_gov_in_coalition_liberal = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_liberal
+		has_country_flag = DVE_gov_partner_liberal
+	}
+}
+DVE_gov_in_coalition_centrist = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_centrist
+		has_country_flag = DVE_gov_partner_centrist
+	}
+}
+DVE_gov_in_coalition_conservative = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_conservative
+		has_country_flag = DVE_gov_partner_conservative
+	}
+}
+DVE_gov_in_coalition_reactionary = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_reactionary
+		has_country_flag = DVE_gov_partner_reactionary
+	}
+}
+DVE_gov_in_coalition_authoritarianism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_authoritarianism
+		has_country_flag = DVE_gov_partner_authoritarianism
+	}
+}
+DVE_gov_in_coalition_autocracy = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_autocracy
+		has_country_flag = DVE_gov_partner_autocracy
+	}
+}
+DVE_gov_in_coalition_absolutism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_absolutism
+		has_country_flag = DVE_gov_partner_absolutism
+	}
+}
+DVE_gov_in_coalition_ultranationalism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_ultranationalism
+		has_country_flag = DVE_gov_partner_ultranationalism
+	}
+}
+DVE_gov_in_coalition_revolutionary_socialism = {
+	OR = {
+		has_country_flag = DVE_gov_formateur_revolutionary_socialism
+		has_country_flag = DVE_gov_partner_revolutionary_socialism
+	}
+}

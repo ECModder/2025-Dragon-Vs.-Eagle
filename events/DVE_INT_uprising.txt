@@ -1,0 +1,126 @@
+add_namespace = dve_intup
+
+# Sent by one of INT's 5 trigger decisions. Fires in the
+# TARGET's own scope (ROOT = the nation being offered power).
+country_event = {
+	id = dve_intup.1
+	title = dve_intup.1.t
+	desc = dve_intup.1.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	immediate = {
+		# Marks that this event actually fired, so we can tell
+		# "declined" apart from "never triggered" when debugging.
+		set_country_flag = INT_uprising_offer_received
+	}
+
+	option = {
+		name = dve_intup.1.a
+		ai_chance = { factor = 90 }
+		INT_uprising_seize_power_effect = yes
+	}
+	option = {
+		name = dve_intup.1.b
+		ai_chance = { factor = 10 }
+		# Save who failed before switching scope to INT, so the
+		# report event can name them.
+		save_global_event_target_as = int_uprising_failed_target
+		INT = { country_event = { id = dve_intup.2 } }
+	}
+}
+
+# Sent to INT when a target declines the uprising offer.
+country_event = {
+	id = dve_intup.2
+	title = dve_intup.2.t
+	desc = dve_intup.2.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.2.a
+	}
+}
+
+# Sent by INT_intl_subordinate_member. ROOT = the member of the
+# International asked to place itself under INT.
+country_event = {
+	id = dve_intup.3
+	title = dve_intup.3.t
+	desc = dve_intup.3.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.3.a
+		ai_chance = {
+			base = 80
+			modifier = {
+				factor = 0.5
+				is_major = yes
+			}
+			modifier = {
+				factor = 0.6
+				has_government = progressive
+			}
+			modifier = {
+				factor = 1.5
+				check_variable = { DVE_intl_standing > 69 }
+			}
+		}
+		if = {
+			limit = {
+				country_exists = INT
+				is_subject = no
+				NOT = { has_war_with = INT }
+			}
+			INT = {
+				puppet = ROOT
+				country_event = { id = dve_intup.4 hours = 6 }
+			}
+		}
+	}
+	option = {
+		name = dve_intup.3.b
+		ai_chance = { base = 20 }
+		set_country_flag = { flag = INT_intl_union_refused days = 180 value = 1 }
+		custom_effect_tooltip = DVE_intl_standing_minus_15_tt
+		hidden_effect = {
+			set_temp_variable = { dve_intl_delta = -15 }
+			DVE_intl_change_standing_effect = yes
+			INT = { country_event = { id = dve_intup.5 hours = 6 } }
+		}
+	}
+}
+
+# Sent to INT: the member accepted. FROM = the new subject.
+country_event = {
+	id = dve_intup.4
+	title = dve_intup.4.t
+	desc = dve_intup.4.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.4.a
+	}
+}
+
+# Sent to INT: the member refused. FROM = the member.
+country_event = {
+	id = dve_intup.5
+	title = dve_intup.5.t
+	desc = dve_intup.5.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_intup.5.a
+	}
+}
