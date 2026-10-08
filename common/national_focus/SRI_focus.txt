@@ -39,7 +39,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_united_communist_front
 		x = 19
 		y = 0
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		ai_will_do = { factor = 10 }
@@ -50,14 +50,6 @@ focus_tree = {
 			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
 			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
 			SRI_guard_template_effect = yes
-			capital_scope = {
-				create_unit = {
-					division = "name = \"Guardia Rossa\" division_template = \"Guardia di Stato\" start_experience_factor = 0.50 start_equipment_factor = 0.95"
-					owner = ROOT
-					count = 6
-					allow_spawning_on_enemy_provs = yes
-				}
-			}
 			set_country_flag = SRI_cw_united_communist_front_done
 		}
 	}
@@ -67,7 +59,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_all_unite_in_a_party
 		x = 19
 		y = 1
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		prerequisite = { focus = SRI_cw_united_communist_front }
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -86,7 +78,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_buy_weapons_from_china
 		x = 18
 		y = 2
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		prerequisite = { focus = SRI_cw_all_unite_in_a_party }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -112,7 +104,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_against_trotskyists_and_black_barons
 		x = 20
 		y = 2
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		prerequisite = { focus = SRI_cw_all_unite_in_a_party }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
@@ -131,7 +123,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_request_chinese_forces
 		x = 18
 		y = 3
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		prerequisite = { focus = SRI_cw_buy_weapons_from_china }
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -157,7 +149,7 @@ focus_tree = {
 				create_unit = {
 					division = "name = \"Volontari Cinesi\" division_template = \"Guardia di Stato\" start_experience_factor = 0.60 start_equipment_factor = 1.00"
 					owner = ROOT
-					count = 6
+					count = 1
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -170,7 +162,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_red_militia
 		x = 20
 		y = 3
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = yes
 		prerequisite = { focus = SRI_cw_against_trotskyists_and_black_barons }
 		search_filters = { FOCUS_FILTER_MANPOWER }
@@ -183,7 +175,7 @@ focus_tree = {
 				create_unit = {
 					division = "name = \"Milizia Rossa\" division_template = \"Guardia di Stato\" start_experience_factor = 0.20 start_equipment_factor = 0.80"
 					owner = ROOT
-					count = 8
+					count = 3
 					allow_spawning_on_enemy_provs = yes
 				}
 			}
@@ -196,7 +188,7 @@ focus_tree = {
 		icon = GFX_goal_SRI_cw_victory_over_social_fascists
 		x = 19
 		y = 4
-		cost = 3.58
+		cost = 5
 		available_if_capitulated = no
 		prerequisite = { focus = SRI_cw_request_chinese_forces }
 		prerequisite = { focus = SRI_cw_red_militia }
