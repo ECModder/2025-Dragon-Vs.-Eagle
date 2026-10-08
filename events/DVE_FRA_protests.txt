@@ -1,0 +1,63 @@
+add_namespace = dve_frapro
+
+# ============================================================
+#   DvE - France, autumn 2026: the protests reported by
+#   "L'Internationaliste". news_event (picture on top), sent to
+#   every country; the popularity shift only happens in France.
+#   Scheduled in common/on_actions/DVE_flavor_2025_on_actions.txt,
+#   as long as France is not already in its civil war.
+# ============================================================
+
+# 2026.09.17 08:00
+news_event = {
+	id = dve_frapro.1
+	title = dve_frapro.1.t
+	desc = dve_frapro.1.d
+	picture = GFX_news_event_DVE_fra_protests
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_frapro.1.a
+		if = {
+			limit = { tag = FRA }
+			DVE_FRA_protests_popularity_effect = yes
+		}
+	}
+}
+
+# 2026.10.01 06:00
+news_event = {
+	id = dve_frapro.2
+	title = dve_frapro.2.t
+	desc = dve_frapro.2.d
+	picture = GFX_news_event_DVE_fra_occupied_schools
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_frapro.2.a
+		if = {
+			limit = { tag = FRA }
+			DVE_FRA_protests_popularity_effect = yes
+		}
+	}
+}
+
+# 2026.10.07 08:00
+news_event = {
+	id = dve_frapro.3
+	title = dve_frapro.3.t
+	desc = dve_frapro.3.d
+	picture = GFX_news_event_DVE_fra_protests_expand
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_frapro.3.a
+		if = {
+			limit = { tag = FRA }
+			DVE_FRA_protests_popularity_effect = yes
+		}
+	}
+}
