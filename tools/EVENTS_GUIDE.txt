@@ -1,0 +1,328 @@
+HOW TO CREATE EVENTS IN DRAGON VS. EAGLE: FOR ONE NATION ONLY, OR FOR EVERY NATION
+
+0. THE IDEA IN ONE MINUTE
+
+An event is never "shown on screen" by itself. It is delivered to a country. A player sees an event only if it was delivered to the country they are playing.
+
+- Deliver it to one country: only the player of that country sees it.
+- Deliver it to every country: everyone sees it.
+
+So the event itself is written the same way in both cases. What changes is who you send it to.
+
+Two rules are specific to this mod:
+
+1. An event with a picture must be a news_event. The game can only put a picture at the top of the window in the news window. A country_event is text only: if you write country_event, the picture will never appear.
+2. The picture is a "panel": a 581x436 image that contains the header bar (with its label, for example COUNTRY EVENT) and the 557x372 photo. A plain photo would land in the top-left corner of the window.
+
+A news_event is a normal event in every other way: it can go to one country only, have several options, and have effects.
+
+1. THE FILES YOU TOUCH
+
+- The event: events/<your_file>.txt
+- Title, text, button text: localisation/english/<your_file>_l_english.yml
+- The picture: gfx/event_pictures/DVE_news/<name>.png (or .dds)
+- Registering the picture: interface/DVE_event_panels.gfx
+- When it fires and for whom: common/on_actions/<your_file>.txt, or the effect of a focus, decision or other event
+
+2. WRITE THE EVENT
+
+Create a file in events/, for example events/DVE_ROM_2025.txt.
+
+    add_namespace = dve_rom
+
+    news_event = {
+    	id = dve_rom.2
+    	title = dve_rom.2.t
+    	desc = dve_rom.2.d
+    	picture = GFX_news_event_DVE_rom_january_strikes
+
+    	is_triggered_only = yes
+
+    	option = {
+    		name = dve_rom.2.a
+    	}
+    }
+
+Line by line:
+
+- add_namespace = dve_rom: must be at the top of the file, once. Every id in the file starts with this name. Pick a name nobody else uses. Already taken: dve_news, dve_rom, dve_lba, dve_frapro, dve_itapro, dve_mayday, and the same names ending in _send.
+- id = dve_rom.2: namespace, a dot, a number. An id must be unique in the whole mod. If two events share an id, only one of them works. Search the mod for the id before using it.
+- title / desc: localisation keys, not the text itself (see step 3).
+- picture: the sprite name of your panel (see step 4). Leave the line out for an event with no picture: the window then shows the WORLD NEWS header with an empty screen.
+- is_triggered_only = yes: the event fires only when something sends it. Always include it, otherwise the game fires it randomly for every country.
+- option: one button. name is the localisation key of the button text. Effects go inside the option.
+
+An option with effects:
+
+    	option = {
+    		name = dve_rom.2.a
+    		add_stability = -0.05
+    		add_popularity = { ideology = progressive popularity = 0.02 }
+    	}
+
+popularity = 0.02 means +2%. The ideology must be one of the 14 groups of the mod (progressive, revolutionary_socialism, vanguard_socialism, authoritarian_socialism, totalitarian_socialism, liberal, centrist, conservative, reactionary, authoritarianism, autocracy, absolutism, ultranationalism, fundamentalism).
+
+For several buttons, write several option blocks. AI countries pick an option by themselves.
+
+3. WRITE THE TEXTS
+
+Create localisation/english/DVE_ROM_2025_l_english.yml. The name must end in _l_english.yml.
+
+    l_english:
+     dve_rom.2.t:0 "The January Strikes"
+     dve_rom.2.d:0 "First paragraph of the text.\n\nSecond paragraph."
+     dve_rom.2.a:0 "Hope the people get what they want."
+
+Rules that break the game if ignored:
+
+- The file must be saved as UTF-8 with BOM.
+- The first line is exactly l_english:.
+- Every other line starts with one space, then key:0 "text".
+- Never put a double quote inside the text. Use single quotes: 'austerity ordinance'. An unclosed double quote in a localisation file can crash the game.
+- \n is a line break; \n\n leaves an empty line between paragraphs.
+- Avoid long dashes and unusual accented letters; plain - and é-style accents are fine.
+
+4. MAKE AND REGISTER THE PICTURE
+
+By hand:
+
+1. Open a template from tools/panel_templates/: panel_COUNTRY_EVENT.png, panel_WORLD_NEWS.png, or panel_no_label.png if you want to write your own header text.
+2. Resize or crop your photo to 557x372.
+3. Paste it with its top-left corner at x = 12, y = 60.
+4. Save as PNG in gfx/event_pictures/DVE_news/, for example news_event_DVE_rom_january_strikes.png.
+
+With Python and Pillow:
+
+    python3 tools/dve_event_panel.py photo.png "COUNTRY EVENT" gfx/event_pictures/DVE_news/news_event_DVE_rom_january_strikes.dds
+
+Register it by adding a block inside spriteTypes = { ... } in interface/DVE_event_panels.gfx:
+
+    	spriteType = {
+    		name = "GFX_news_event_DVE_rom_january_strikes"
+    		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_rom_january_strikes.png"
+    	}
+
+The name here is what you write after picture = in the event. The texturefile must match the real file name exactly, including capital letters and the extension.
+
+5. DECIDE WHO SEES IT
+
+A. Only one nation sees it
+
+Send the event to that country's tag:
+
+    ROM = { news_event = { id = dve_rom.2 } }
+
+Only the player of Romania sees it. Its options and effects apply to Romania only.
+
+If the effect already runs "as" Romania (for example inside a Romanian focus, a Romanian decision, or the option of another Romanian event), you do not need the tag:
+
+    news_event = { id = dve_rom.2 }
+
+B. Every nation sees it
+
+Send it to all existing countries:
+
+    every_country = { news_event = { id = dve_rom.1 } }
+
+Every player sees it. Be careful: the options and their effects now run in every country. If the option gives +2% popularity, every country gets +2%.
+
+C. Every nation sees it, but only one gets the effects
+
+Send it to everyone as in B, and wrap the effects in a check on the tag:
+
+    	option = {
+    		name = dve_frapro.1.a
+    		if = {
+    			limit = { tag = FRA }
+    			add_popularity = { ideology = progressive popularity = 0.02 }
+    			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+    		}
+    	}
+
+Everyone reads the event; only France gets the popularity change. Other countries see the button with no effect listed.
+
+6. DECIDE WHEN IT FIRES
+
+All scheduling goes in a file in common/on_actions/, for example common/on_actions/DVE_ROM_2025_on_actions.txt.
+
+6.1 From a focus, a decision or another event
+
+Put the line from step 5 directly in the effect:
+
+    completion_reward = {
+    	ROM = { news_event = { id = dve_rom.2 } }
+    }
+
+Add a delay with days or hours:
+
+    ROM = { news_event = { id = dve_rom.2 days = 3 } }
+
+6.2 On a fixed date in the first months (hours from game start)
+
+The game starts on 2025.01.01 at 12:00. Count the hours from that moment to your date.
+
+    hours = (days between 1 January and your date) x 24 + (your hour - 12)
+
+Days already passed at the start of each month: Jan 0, Feb 31, Mar 59, Apr 90, May 120, Jun 151, Jul 181, Aug 212, Sep 243, Oct 273, Nov 304, Dec 334. The game has no leap years: every year is 365 days.
+
+Examples:
+
+- 2025.01.03 06:00: 2 x 24 - 6 = 42 hours
+- 2025.02.10 10:00: 40 x 24 - 2 = 958 hours
+- 2025.05.18 12:00: 137 x 24 + 0 = 3288 hours
+
+For one nation:
+
+    on_actions = {
+    	on_startup = {
+    		effect = {
+    			if = {
+    				limit = { NOT = { has_global_flag = DVE_ROM_2025_scheduled } }
+    				set_global_flag = DVE_ROM_2025_scheduled
+    				ROM = {
+    					news_event = { id = dve_rom.2 hours = 42 }
+    				}
+    			}
+    		}
+    	}
+    }
+
+Two things matter here:
+
+- on_startup has no country behind it, so you must wrap the event in a tag (ROM = { ... }) or in every_country.
+- The global flag makes the block run once. Use your own flag name.
+
+For every nation, do not schedule the news directly. Countries that are born later (civil war factions) and players who change tag would miss it. Schedule a hidden "sender" event instead, and let it deliver the news on the day:
+
+In the events file:
+
+    add_namespace = dve_rom
+    add_namespace = dve_rom_send
+
+    country_event = {
+    	id = dve_rom_send.1
+    	hidden = yes
+    	is_triggered_only = yes
+
+    	immediate = {
+    		if = {
+    			limit = { NOT = { has_global_flag = dve_rom_1_sent } }
+    			set_global_flag = dve_rom_1_sent
+    			every_country = { news_event = { id = dve_rom.1 } }
+    		}
+    	}
+    }
+
+In the on_actions file, inside the same on_startup block:
+
+    				every_country = {
+    					country_event = { id = dve_rom_send.1 hours = 1 }
+    				}
+
+Every country receives the hidden sender at the same hour. The first one sends the news to all countries that exist at that moment; the flag stops the others from sending it again.
+
+6.3 On a date far in the future (checked every day)
+
+For dates a year or more away, check the date daily instead of counting hours. on_daily_TAG runs every day for that country, as long as it exists.
+
+For one nation:
+
+    on_actions = {
+    	on_daily_LBA = {
+    		effect = {
+    			if = {
+    				limit = {
+    					date > 2026.2.16
+    					NOT = { has_global_flag = dve_lba_1_fired }
+    				}
+    				set_global_flag = dve_lba_1_fired
+    				news_event = { id = dve_lba.1 hours = 6 }
+    			}
+    		}
+    	}
+    }
+
+- date > 2026.2.16 becomes true on 17 February: always write the day before the one you want.
+- hours = 6 makes it appear at 06:00 of that day.
+- The flag makes it fire once.
+- Inside on_daily_LBA you are already Libya, so no tag is needed.
+
+For every nation, use the same block but send to everyone. Use the tag of the country the event is about, so it only fires while that country exists:
+
+    	on_daily_FRA = {
+    		effect = {
+    			if = {
+    				limit = {
+    					date > 2026.9.16
+    					date < 2026.10.1
+    					NOT = { has_global_flag = dve_frapro_1_fired }
+    				}
+    				set_global_flag = dve_frapro_1_fired
+    				every_country = { news_event = { id = dve_frapro.1 hours = 8 } }
+    			}
+    		}
+    	}
+
+The second date < line is a window: it stops an old save from receiving a pile of outdated events on the same day.
+
+You can add any other condition to the limit, for example "only while France is not in its civil war":
+
+    				limit = { NOT = { has_country_flag = FRA_civil_war } }
+
+6.4 Every year on the same day
+
+Schedule the first one from game start with a sender (6.2), and let the sender book itself again 365 days later for every country:
+
+    			every_country = {
+    				news_event = { id = dve_mayday.1 }
+    				country_event = { id = dve_mayday_send.1 days = 365 }
+    			}
+
+Use a flag that expires so it can fire again next year:
+
+    			set_global_flag = { flag = dve_mayday_sent days = 30 value = 1 }
+
+7. TEST IT
+
+1. Restart the game after changing files, and start a new game if you changed anything in on_startup (it only runs when a game begins).
+2. Open the console and type the id to see the event at once, for the country you are playing:
+       event dve_rom.2
+3. To check effects that apply to one country only, switch to it first:
+       tag FRA
+       event dve_frapro.1
+4. If something is wrong, open logs/error.log in the game's documents folder and search for your namespace or file name.
+
+The console does not work in Ironman.
+
+8. CHECKLIST
+
+- add_namespace at the top of the events file, and the namespace is not used elsewhere.
+- The id is unique in the whole mod.
+- It is a news_event if it has a picture.
+- is_triggered_only = yes is there.
+- .t, .d and every option key exist in the _l_english.yml file.
+- The localisation file is UTF-8 with BOM, starts with l_english:, and has no double quotes inside the texts.
+- The picture is a 581x436 panel, and its sprite is in interface/DVE_event_panels.gfx with the exact file name.
+- One nation: sent with TAG = { news_event = { ... } }. All nations: sent with every_country = { news_event = { ... } }.
+- Effects meant for one country in an all-nations event are inside if = { limit = { tag = XXX } ... }.
+- A flag makes it fire only once.
+- Every { has its }.
+
+9. COMMON MISTAKES
+
+- Problem: No picture
+  Cause: The event is a country_event, or the sprite name / file name does not match.
+- Problem: Photo in the top-left corner, covering the header
+  Cause: The picture is a plain photo, not a 581x436 panel.
+- Problem: Title or text shows the key (dve_rom.2.t)
+  Cause: Missing localisation key, wrong file name, or file not saved with BOM.
+- Problem: The event never fires
+  Cause: on_startup without a tag or every_country; flag already set in an old save; wrong date (remember: the day before).
+- Problem: Only some players see an "all nations" event
+  Cause: It was scheduled directly at game start instead of through a sender, so later-born countries missed it.
+- Problem: Every country got the effects
+  Cause: Effects in the option without the tag check.
+- Problem: Another event appears instead of yours
+  Cause: Two events share the same id.
+- Problem: The event fires again and again
+  Cause: No flag, or is_triggered_only is missing.
