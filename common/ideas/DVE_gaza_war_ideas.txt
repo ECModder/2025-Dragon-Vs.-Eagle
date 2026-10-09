@@ -1,0 +1,73 @@
+# ============================================================
+#   DvE - The Gaza War minigame: national spirits
+#   Pictures reuse the DvE law icons (interface/DVE_ideas.gfx).
+# ============================================================
+
+ideas = {
+	country = {
+
+		# ---------- Hamas ----------
+		gaza_HAM_offensive_planning = {
+			picture = standard_discipline
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				planning_speed = 0.2
+				max_planning = 0.1
+			}
+		}
+
+		gaza_HAM_defensive_parameters = {
+			picture = strict_discipline
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.1
+			}
+		}
+
+		gaza_HAM_desperate_defense = {
+			picture = total_ideological_mobilisation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.15
+				army_org_factor = 0.1
+				conscription = 0.02
+			}
+		}
+
+		gaza_HAM_endured = {
+			picture = state_propaganda
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.1
+				political_power_factor = 0.1
+			}
+		}
+
+		# ---------- Israel ----------
+		gaza_ISR_victory = {
+			picture = functioning_state
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				war_support_factor = 0.05
+			}
+		}
+
+		gaza_ISR_stalemate = {
+			picture = lax_discipline
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.15
+				political_power_factor = -0.1
+			}
+		}
+	}
+}
