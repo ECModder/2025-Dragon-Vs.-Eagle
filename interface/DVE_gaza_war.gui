@@ -1,0 +1,75 @@
+# ============================================================
+#   DvE - The Gaza War panels
+#   The artwork (gfx/interface/gaza_war/*.dds) carries the frames,
+#   photos and titles; the game draws the briefing text and the
+#   live "Current Israeli Victory Points" counter on top of it.
+# ============================================================
+
+guiTypes = {
+
+	# ---------------- HAMAS ----------------
+	containerWindowType = {
+		name = "DVE_gaza_HAM_window"
+		position = { x = 0 y = 0 }
+		size = { width = 500 height = 496 }
+
+		iconType = {
+			name = "gaza_ham_art"
+			spriteType = "GFX_gaza_HAM_panel"
+			position = { x = 10 y = 0 }
+		}
+		instantTextBoxType = {
+			name = "gaza_ham_brief"
+			position = { x = 24 y = 268 }
+			font = "VCR02_12"
+			text = "gaza_HAM_brief"
+			maxWidth = 214
+			maxHeight = 152
+			fixedsize = yes
+			format = left
+		}
+		instantTextBoxType = {
+			name = "gaza_ham_vp"
+			position = { x = 68 y = 454 }
+			font = "VCR02_16"
+			text = "gaza_vp_counter"
+			maxWidth = 418
+			maxHeight = 22
+			fixedsize = yes
+			format = centre
+		}
+	}
+
+	# ---------------- ISRAEL ----------------
+	containerWindowType = {
+		name = "DVE_gaza_ISR_window"
+		position = { x = 0 y = 0 }
+		size = { width = 500 height = 496 }
+
+		iconType = {
+			name = "gaza_isr_art"
+			spriteType = "GFX_gaza_ISR_panel"
+			position = { x = 10 y = 0 }
+		}
+		instantTextBoxType = {
+			name = "gaza_isr_brief"
+			position = { x = 24 y = 268 }
+			font = "VCR02_12"
+			text = "gaza_ISR_brief"
+			maxWidth = 214
+			maxHeight = 152
+			fixedsize = yes
+			format = left
+		}
+		instantTextBoxType = {
+			name = "gaza_isr_vp"
+			position = { x = 68 y = 454 }
+			font = "VCR02_16"
+			text = "gaza_vp_counter"
+			maxWidth = 418
+			maxHeight = 22
+			fixedsize = yes
+			format = centre
+		}
+	}
+}
