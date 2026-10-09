@@ -1,0 +1,21 @@
+# ============================================================
+#   DvE - The Gaza War minigame: start
+#   Sets the counter to 24/250 and starts the weekly tick
+#   (event gaza_war.100, fired to Israel every 7 days).
+#   The war is fought through the two decision panels, not on
+#   the map: Hamas holds a single province, so a normal war
+#   would be over in days.
+#
+#   on_startup has no scope of its own, so the setup has to run
+#   inside a country (here Israel) - a bare "gaza_war_setup = yes"
+#   is rejected with "Invalid Scope ... provided: None".
+#   To start it on an old save: console "event gaza_war.99 ISR".
+# ============================================================
+
+on_actions = {
+	on_startup = {
+		effect = {
+			ISR = { gaza_war_setup = yes }
+		}
+	}
+}
