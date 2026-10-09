@@ -1,0 +1,114 @@
+# ============================================================
+#   DvE - The Gaza War minigame: scripted effects
+#
+#   global.gaza_israel_vp     Israeli Victory Points (0-250)
+#   global.gaza_weekly_gain   points Israel gained last week (shown in the panel tooltip)
+#
+#   Israel wins at 250 points (or if Hamas stops existing).
+#   Hamas wins by still being there on 8 November 2026.
+#
+#   Weekly gain = 1.5 base
+#     +0.25 gaza_us_backing           (Israel: Secure American Backing)
+#     +0.50 gaza_reserves_mobilized   (Israel: Mobilize the Reserves)
+#     -0.25 gaza_defensive_parameters (Hamas: Organize Defensive Parameters)
+#     -0.50 gaza_tunnels_active       (Hamas: Our Underground Infrastructure, until Israel clears them)
+#     -0.50 gaza_aid_pressure         (Hamas: A Cry for Humanitarian Aid, 60 days)
+#   never less than 0.25 per week.
+# ============================================================
+
+gaza_war_setup = {
+	if = {
+		limit = {
+			country_exists = ISR
+			country_exists = HAM
+			NOT = { has_global_flag = gaza_war_started }
+		}
+		set_global_flag = gaza_war_started
+		set_global_flag = gaza_war_active
+		set_variable = { global.gaza_israel_vp = 24 }
+		set_variable = { global.gaza_weekly_gain = 1.5 }
+		ISR = { country_event = { id = gaza_war.100 days = 7 } }
+	}
+}
+
+# set_temp_variable = { gaza_vp_delta = X } first, then call this
+gaza_vp_apply = {
+	add_to_variable = { var = global.gaza_israel_vp value = gaza_vp_delta }
+	clamp_variable = { var = global.gaza_israel_vp min = 0 max = 250 }
+	gaza_war_check_end = yes
+}
+
+gaza_war_weekly_effect = {
+	if = {
+		limit = {
+			has_global_flag = gaza_war_active
+			NOT = { has_global_flag = gaza_war_over }
+		}
+		set_temp_variable = { gaza_vp_delta = 1.5 }
+		if = { limit = { has_global_flag = gaza_us_backing } add_to_temp_variable = { gaza_vp_delta = 0.25 } }
+		if = { limit = { has_global_flag = gaza_reserves_mobilized } add_to_temp_variable = { gaza_vp_delta = 0.5 } }
+		if = { limit = { has_global_flag = gaza_defensive_parameters } add_to_temp_variable = { gaza_vp_delta = -0.25 } }
+		if = { limit = { has_global_flag = gaza_tunnels_active } add_to_temp_variable = { gaza_vp_delta = -0.5 } }
+		if = { limit = { has_global_flag = gaza_aid_pressure } add_to_temp_variable = { gaza_vp_delta = -0.5 } }
+		if = {
+			limit = { check_variable = { gaza_vp_delta < 0.25 } }
+			set_temp_variable = { gaza_vp_delta = 0.25 }
+		}
+		set_variable = { var = global.gaza_weekly_gain value = gaza_vp_delta }
+		gaza_vp_apply = yes
+	}
+}
+
+gaza_war_check_end = {
+	if = {
+		limit = {
+			has_global_flag = gaza_war_active
+			NOT = { has_global_flag = gaza_war_over }
+		}
+		if = {
+			limit = {
+				OR = {
+					check_variable = { global.gaza_israel_vp > 249.9 }
+					NOT = { country_exists = HAM }
+				}
+			}
+			gaza_war_israel_wins = yes
+		}
+		else_if = {
+			limit = { date > 2026.11.7 }
+			gaza_war_hamas_survives = yes
+		}
+		else_if = {
+			limit = { NOT = { country_exists = ISR } }
+			set_global_flag = gaza_war_over
+		}
+	}
+}
+
+gaza_war_israel_wins = {
+	set_global_flag = gaza_war_over
+	set_global_flag = gaza_war_israel_won
+	if = {
+		limit = { country_exists = ISR }
+		ISR = { country_event = { id = gaza_war.1 } }
+	}
+}
+
+# the two ceasefire events (.3 Israel, .4 Hamas) call each other through this flag,
+# so firing either one - by the deadline or from the console - ends the minigame for both
+gaza_war_hamas_survives = {
+	if = {
+		limit = { NOT = { has_global_flag = gaza_ceasefire_done } }
+		set_global_flag = gaza_ceasefire_done
+		set_global_flag = gaza_war_over
+		set_global_flag = gaza_war_hamas_survived
+		if = {
+			limit = { country_exists = ISR }
+			ISR = { country_event = { id = gaza_war.3 } }
+		}
+		if = {
+			limit = { country_exists = HAM }
+			HAM = { country_event = { id = gaza_war.4 } }
+		}
+	}
+}
