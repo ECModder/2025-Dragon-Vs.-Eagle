@@ -1,0 +1,27 @@
+# ============================================================
+#   DvE - The Gaza War minigame: panels on top of the
+#   "Our War in Gaza" / "Operation Swords of Iron" categories.
+# ============================================================
+
+scripted_gui = {
+
+	DVE_gaza_HAM_sgui = {
+		context_type = decision_category
+		window_name = "DVE_gaza_HAM_window"
+		visible = {
+			original_tag = HAM
+			has_global_flag = gaza_war_active
+			NOT = { has_global_flag = gaza_war_over }
+		}
+	}
+
+	DVE_gaza_ISR_sgui = {
+		context_type = decision_category
+		window_name = "DVE_gaza_ISR_window"
+		visible = {
+			original_tag = ISR
+			has_global_flag = gaza_war_active
+			NOT = { has_global_flag = gaza_war_over }
+		}
+	}
+}
