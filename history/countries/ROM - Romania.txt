@@ -12,6 +12,11 @@ set_technology = {
 	tech_mountaineers = 1
 	tech_trucks = 1
 	motorised_infantry = 1
+	mechanised_infantry = 1
+	tech_recon = 1
+	tech_logistics_company = 1
+	tech_maintenance_company = 1
+	tech_signal_company = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
 	gw_artillery = 1
@@ -28,32 +33,77 @@ set_grand_doctrine = grand_battleplan
 set_grand_doctrine = new_fleet_in_being
 set_grand_doctrine = new_operational_integrity
 
-	complete_special_project = {
-		project = sp:sp_air_radar
+complete_special_project = {
+	project = sp:sp_air_radar
+}
+
+oob = "ROM_2025"
+
+# Placeholder stockpile, tune it
+add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 8000 }
+add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 900 }
+add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 600 }
+add_equipment_to_stockpile = { type = medium_tank_equipment_1 amount = 150 }
+add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 250 }
+
+# Navy
+if = {
+	limit = { not = { has_dlc = "Man the Guns" } }
+	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		improved_destroyer = 1
+		transport = 1
 	}
+	set_naval_oob = "ROM_2025_naval_legacy"
+}
+if = {
+	limit = { has_dlc = "Man the Guns" }
+	set_technology = {
+		basic_naval_mines = 1
+		basic_depth_charges = 1
+		basic_torpedo = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		early_ship_hull_light = 1
+		basic_ship_hull_light = 1
+		improved_ship_hull_light = 1
+		mtg_transport = 1
+	}
+	set_naval_oob = "ROM_2025_naval_mtg"
+}
 
-			id = 550
-
-		#ROM = {
-		#	#Pick from list of the sane events first
-		#	random_list = {
-		#		100 = { country_event = { id = DOD_romania.80 days = 2 random_days = 20 } }
-		#	}
-		#}
-
-		else = {		
-			#generic focuses
-			#complete_national_focus = army_effort
-			#complete_national_focus = equipment_effort
-			#complete_national_focus = motorization_effort
-			#complete_national_focus = aviation_effort
-			#complete_national_focus = naval_effort
-			#complete_national_focus = large_navy
-			#complete_national_focus = industrial_effort
-			#complete_national_focus = construction_effort
-			#complete_national_focus = production_effort
-		}
-
+# Air force
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_air_oob = "ROM_2025_air_bba"
+	set_technology = {
+		engines_1 = 1
+		engines_2 = 1
+		engines_3 = 1
+		jet_engines = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		improved_small_airframe = 1
+		modern_small_airframe = 1 # F-16
+		bba_early_transport_plane = 1
+	}
+}
+if = {
+	limit = { not = { has_dlc = "By Blood Alone" } }
+	set_air_oob = "ROM_2025_air_legacy"
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		fighter2 = 1
+		fighter3 = 1
+		jet_fighter1 = 1
+		jet_fighter2 = 1
+		CAS1 = 1
+		CAS2 = 1
+		early_transport_plane = 1
+	}
+}
 
 # DvE: parties, leaders and politics at the 2025.1.1 start
 set_party_name = { ideology = progressive long_name = "Partidul Social Democrat" name = "PSD" }
@@ -63,13 +113,19 @@ set_party_name = { ideology = reactionary long_name = "Alianta pentru Unirea Rom
 set_party_name = { ideology = ultranationalism long_name = "S.O.S. Romania" name = "SOS" }
 set_party_name = { ideology = authoritarianism long_name = "Partidul Oamenilor Tineri" name = "POT" }
 create_country_leader = { name = "Marcel Ciolacu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
-create_country_leader = { name = "Ilie Bolojan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
 create_country_leader = { name = "Elena Lasconi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
 create_country_leader = { name = "George Simion" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
 create_country_leader = { name = "Diana Sosoaca" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = ultranationalism_party }
 create_country_leader = { name = "Anamaria Gavrila" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Klaus Iohannis" desc = "POLITICS_LEADER_DESC" picture = "gfx/leaders/ROM/portrait_large_klaus_iohannis.dds" expire = "2025.2.10" ideology = conservatism }
+# Klaus Iohannis leads the conservatives (PNL) at the start. Ilie Bolojan replaces him in the resignation event,
+# so he must NOT be created or recruited anywhere in this file, otherwise he takes over at the start.
+# (Both conservatism leaders share one slot, and whichever is created or recruited last wins.)
+recruit_character = ROM_Klaus_Iohannis
+
+
 set_politics = {
-	ruling_party = progressive
+	ruling_party = conservative
 	last_election = "2024.12.1"
 	election_frequency = 48
 	elections_allowed = yes
