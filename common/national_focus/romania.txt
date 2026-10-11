@@ -1,0 +1,117 @@
+focus_tree = {
+	id = Romania_Focus_Tree
+	country = {
+		factor = 0
+		modifier = { add = 100 tag = ROM }
+	}
+	default = no
+
+    focus = {
+        id = ROM_the_new_year
+        icon = GFX_goal_ROM_the_new_year
+        x = 10
+        y = 0
+        cost = 0.01
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.1
+        }
+    }
+
+    focus = {
+        id = ROM_remove_the_strikes
+        icon = GFX_goal_ROM_the_january_strikes
+        x = 10
+        y = 2
+        cost = 5
+        prerequisite = { focus = ROM_the_new_year }
+        available = {
+            has_idea = ROM_the_january_strikes
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            remove_ideas = ROM_the_january_strikes
+        }
+    }
+
+    focus = {
+        id = ROM_announce_the_new_candidates
+        icon = GFX_goal_ROM_announce_the_new_candidates
+        x = 8
+        y = 4
+        cost = 5
+        prerequisite = { focus = ROM_remove_the_strikes }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            country_event = {
+                id = romania.2
+                days = 1
+            }
+        }
+    }
+
+    focus = {
+        id = ROM_stagnate_the_economy
+        icon = GFX_goal_ROM_stagnation_economy
+        x = 12
+        y = 4
+        cost = 5
+        prerequisite = { focus = ROM_remove_the_strikes }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_stagnated_economy
+        }
+    }
+
+    focus = {
+        id = ROM_the_2025_elections
+        icon = GFX_goal_ROM_the_2025_elections
+        x = 10
+        y = 6
+        cost = 7
+        prerequisite = { focus = ROM_announce_the_new_candidates }
+        prerequisite = { focus = ROM_stagnate_the_economy }
+        mutually_exclusive = { focus = ROM_screw_the_elections }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            country_event = {
+                id = dve_rom.5
+                days = 1
+            }
+            load_focus_tree = romania_elections
+        }
+    }
+
+    focus = {
+        id = ROM_screw_the_elections
+        icon = GFX_goal_ROM_skip_the_elections
+        x = 14
+        y = 6
+        cost = 5
+        mutually_exclusive = { focus = ROM_the_2025_elections }
+        available = {
+            has_completed_focus = ROM_announce_the_new_candidates
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            country_event = {
+                id = event_id
+                days = 1
+            }
+            load_focus_tree = romania_uprise
+        }
+    }
+
+}

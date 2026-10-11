@@ -1,0 +1,969 @@
+focus_tree = {
+	id = romania_elections
+	country = {
+		factor = 0
+		modifier = { add = 100 tag = ROM }
+	}
+	default = no
+    
+    focus = {
+        id = ROM_nicusor_victory
+        icon = GFX_goal_unknown
+        x = 11
+        y = 1
+        cost = 0.1
+        available = {
+            has_country_flag = ROM_Nicusor_Dan_wins
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_stability = 0.05
+            add_popularity = { ideology = conservative popularity = 0.05 }
+        }
+    }
+
+    focus = {
+        id = ROM_victory_for_antonescu
+        icon = GFX_goal_unknown
+        x = 25
+        y = 1
+        cost = 0.1
+        available = {
+            has_country_flag = ROM_Crin_Antonescu_wins
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_stability = 0.05
+            add_popularity = { ideology = progressive popularity = 0.05 }
+        }
+    }
+
+    focus = {
+        id = ROM_simion_victory
+        icon = GFX_goal_unknown
+        x = 17
+        y = 1
+        cost = 0.1
+        available = {
+            has_country_flag = ROM_George_Simion_wins
+        }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_popularity = { ideology = reactionary popularity = 0.05 }
+            add_war_support = 0.05
+        }
+    }
+
+    focus = {
+        id = ROM_reform_the_goverment
+        icon = GFX_goal_unknown
+        x = 11
+        y = 3
+        cost = 5
+        prerequisite = { focus = ROM_nicusor_victory }
+        mutually_exclusive = { focus = ROM_a_nation_of_tradition }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_reformed_government_idea
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_the_investiture_of_prime_minister_bolojan
+        icon = GFX_goal_unknown
+        x = 10
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_reform_the_goverment }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            country_event = { id = ROM_elect.1 days = 1 }
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_cut_everything
+        icon = GFX_goal_unknown
+        x = 12
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_reform_the_goverment }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_austerity_idea
+            country_event = { id = ROM_elect.3 days = 3 }
+        }
+    }
+
+    focus = {
+        id = ROM_the_trial_of_georgescu
+        icon = GFX_goal_unknown
+        x = 10
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_the_investiture_of_prime_minister_bolojan }
+        prerequisite = { focus = ROM_cut_everything }
+        mutually_exclusive = { focus = ROM_national_reconciliation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            country_event = { id = ROM_elect.2 days = 2 }
+        }
+    }
+
+    focus = {
+        id = ROM_national_reconciliation
+        icon = GFX_goal_unknown
+        x = 12
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_the_investiture_of_prime_minister_bolojan }
+        prerequisite = { focus = ROM_cut_everything }
+        mutually_exclusive = { focus = ROM_the_trial_of_georgescu }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_reconciliation_idea
+            add_stability = 0.05
+        }
+    }
+
+    focus = {
+        id = ROM_increase_our_spending_for_defence
+        icon = GFX_goal_unknown
+        x = 11
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_the_trial_of_georgescu }
+        prerequisite = { focus = ROM_national_reconciliation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_defence_spending_idea
+            army_experience = 20
+        }
+    }
+
+    focus = {
+        id = ROM_address_corruption
+        icon = GFX_goal_unknown
+        x = 11
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_increase_our_spending_for_defence }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.03
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_focus
+        icon = GFX_goal_unknown
+        x = 12
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_address_corruption }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_anti_corruption_idea
+        }
+    }
+
+    focus = {
+        id = ROM_harsher_punishments_for_corruption
+        icon = GFX_goal_unknown
+        x = 12
+        y = 15
+        cost = 5
+        prerequisite = { focus = ROM_focus }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.05
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_improve_the_infastructure
+        icon = GFX_goal_unknown
+        x = 10
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_address_corruption }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_infrastructure_push_idea
+        }
+    }
+
+    focus = {
+        id = ROM_everything_was_a_lie
+        icon = GFX_goal_unknown
+        x = 11
+        y = 17
+        cost = 5
+        prerequisite = { focus = ROM_improve_the_infastructure }
+        prerequisite = { focus = ROM_harsher_punishments_for_corruption }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            set_country_flag = ROM_everything_was_a_lie_done
+            add_stability = 0.1
+            add_war_support = 0.05
+            add_popularity = { ideology = conservative popularity = 0.1 }
+            add_political_power = 100
+        }
+    }
+
+    focus = {
+        id = ROM_release_calin_georgecu
+        icon = GFX_goal_unknown
+        x = 17
+        y = 3
+        cost = 5
+        prerequisite = { focus = ROM_simion_victory }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = ultranationalism popularity = 0.05 }
+            add_war_support = 0.03
+            add_stability = -0.03
+            set_country_flag = ROM_georgescu_released
+        }
+    }
+
+    focus = {
+        id = ROM_implement_a_nationalist_idea
+        icon = GFX_goal_unknown
+        x = 17
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_release_calin_georgecu }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_nationalist_revival_idea
+        }
+    }
+
+    focus = {
+        id = ROM_fix_corruption
+        icon = GFX_goal_unknown
+        x = 17
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_implement_a_nationalist_idea }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_anti_corruption_idea
+        }
+    }
+
+    focus = {
+        id = ROM_increse_military_production
+        icon = GFX_goal_unknown
+        x = 16
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_fix_corruption }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_military_production_idea
+            add_tech_bonus = { name = ROM_increse_military_production bonus = 0.5 uses = 1 category = industry }
+        }
+    }
+
+    focus = {
+        id = ROM_promise_for_a_new_romania
+        icon = GFX_goal_unknown
+        x = 18
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_fix_corruption }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_political_power = 100
+            add_stability = 0.05
+            add_popularity = { ideology = reactionary popularity = 0.05 }
+        }
+    }
+
+    focus = {
+        id = ROM_focus_on_brining_back_our_people
+        icon = GFX_goal_unknown
+        x = 17
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_increse_military_production }
+        prerequisite = { focus = ROM_promise_for_a_new_romania }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_manpower = 15000
+            add_stability = 0.03
+            add_war_support = 0.03
+        }
+    }
+
+    focus = {
+        id = ROM_promote_nationalism
+        icon = GFX_goal_unknown
+        x = 16
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_focus_on_brining_back_our_people }
+        mutually_exclusive = { focus = ROM_go_full_fascism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = ultranationalism popularity = 0.1 }
+            add_war_support = 0.05
+        }
+    }
+
+    focus = {
+        id = ROM_go_full_fascism
+        icon = GFX_goal_unknown
+        x = 18
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_focus_on_brining_back_our_people }
+        mutually_exclusive = { focus = ROM_promote_nationalism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            set_politics = {
+                ruling_party = ultranationalism
+            }
+            add_popularity = { ideology = ultranationalism popularity = 0.2 }
+            add_ideas = ROM_totalitarian_mobilisation_idea
+            add_political_power = 100
+        }
+    }
+
+    focus = {
+        id = ROM_the_idea_of_a_greater_romania
+        icon = GFX_goal_unknown
+        x = 15
+        y = 15
+        cost = 5
+        prerequisite = { focus = ROM_promote_nationalism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_war_support = 0.05
+            78 = { add_claim_by = ROM }
+        }
+    }
+
+    focus = {
+        id = ROM_remember_the_great_fascist_leaders
+        icon = GFX_goal_unknown
+        x = 19
+        y = 15
+        cost = 5
+        prerequisite = { focus = ROM_go_full_fascism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_war_support = 0.05
+            add_popularity = { ideology = ultranationalism popularity = 0.05 }
+        }
+    }
+
+    focus = {
+        id = ROM_praise_codreanu
+        icon = GFX_goal_unknown
+        x = 18
+        y = 17
+        cost = 5
+        prerequisite = { focus = ROM_remember_the_great_fascist_leaders }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = ultranationalism popularity = 0.1 }
+            add_war_support = 0.05
+            add_stability = 0.03
+        }
+    }
+
+    focus = {
+        id = ROM_the_country_of_nationalism
+        icon = GFX_goal_unknown
+        x = 16
+        y = 17
+        cost = 5
+        prerequisite = { focus = ROM_the_idea_of_a_greater_romania }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = reactionary popularity = 0.1 }
+            add_war_support = 0.05
+            add_stability = 0.05
+            add_political_power = 100
+        }
+    }
+
+    focus = {
+        id = ROM_greater_romania
+        icon = GFX_goal_unknown
+        x = 17
+        y = 19
+        cost = 5
+        prerequisite = { focus = ROM_the_country_of_nationalism }
+        prerequisite = { focus = ROM_praise_codreanu }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            78 = { add_claim_by = ROM }
+            80 = { add_claim_by = ROM }
+            add_ideas = ROM_greater_romania_idea
+            add_manpower = 25000
+            set_country_flag = ROM_greater_romania_goal
+        }
+    }
+
+    focus = {
+        id = ROM_stick_with_socialism
+        icon = GFX_goal_unknown
+        x = 24
+        y = 3
+        cost = 5
+        prerequisite = { focus = ROM_victory_for_antonescu }
+        mutually_exclusive = { focus = ROM_turn_back_to_communism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = progressive popularity = 0.1 }
+            add_stability = 0.03
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_turn_back_to_communism
+        icon = GFX_goal_unknown
+        x = 26
+        y = 3
+        cost = 5
+        prerequisite = { focus = ROM_victory_for_antonescu }
+        mutually_exclusive = { focus = ROM_stick_with_socialism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_popularity = { ideology = vanguard_socialism popularity = 0.1 }
+            add_war_support = 0.03
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_a_nation_of_tradition
+        icon = GFX_goal_unknown
+        x = 6
+        y = 3
+        cost = 5
+        mutually_exclusive = { focus = ROM_reform_the_goverment }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_traditional_values_idea
+            add_popularity = { ideology = reactionary popularity = 0.05 }
+            add_stability = 0.03
+        }
+    }
+
+    focus = {
+        id = ROM_restore_social_order
+        icon = GFX_goal_unknown
+        x = 6
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_a_nation_of_tradition }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.05
+            add_war_support = 0.03
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_promote_the_family
+        icon = GFX_goal_unknown
+        x = 5
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_restore_social_order }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_pro_family_idea
+        }
+    }
+
+    focus = {
+        id = ROM_fix_the_atheism_in_our_nation
+        icon = GFX_goal_unknown
+        x = 7
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_restore_social_order }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.03
+            add_popularity = { ideology = reactionary popularity = 0.03 }
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_protect_private_properties
+        icon = GFX_goal_unknown
+        x = 5
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_promote_the_family }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.03
+            add_popularity = { ideology = conservative popularity = 0.03 }
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_build_religious_schools
+        icon = GFX_goal_unknown
+        x = 7
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_fix_the_atheism_in_our_nation }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_religious_schools_idea
+        }
+    }
+
+    focus = {
+        id = ROM_lower_the_tax_burden
+        icon = GFX_goal_unknown
+        x = 5
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_protect_private_properties }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_low_taxes_idea
+        }
+    }
+
+    focus = {
+        id = ROM_moral_values_in_law
+        icon = GFX_goal_unknown
+        x = 7
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_build_religious_schools }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_stability = 0.05
+            add_popularity = { ideology = reactionary popularity = 0.03 }
+        }
+    }
+
+    focus = {
+        id = ROM_romania_first_policy
+        icon = GFX_goal_unknown
+        x = 6
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_lower_the_tax_burden }
+        prerequisite = { focus = ROM_moral_values_in_law }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_romania_first_idea
+            set_country_flag = ROM_romania_first_policy_done
+        }
+    }
+
+    focus = {
+        id = ROM_remain_in_nato_but_in_our_terms
+        icon = GFX_goal_unknown
+        x = 6
+        y = 15
+        cost = 5
+        prerequisite = { focus = ROM_romania_first_policy }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_nato_hub
+            add_political_power = 50
+        }
+    }
+
+    focus = {
+        id = ROM_the_conservative_state_of_romania
+        icon = GFX_goal_unknown
+        x = 6
+        y = 17
+        cost = 5
+        prerequisite = { focus = ROM_remain_in_nato_but_in_our_terms }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            set_politics = {
+                ruling_party = conservative
+            }
+            add_popularity = { ideology = conservative popularity = 0.1 }
+            add_stability = 0.05
+            add_political_power = 150
+            set_country_flag = ROM_conservative_state
+        }
+    }
+
+    focus = {
+        id = ROM_pact
+        icon = GFX_goal_unknown
+        x = 24
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_stick_with_socialism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_union_pact_idea
+        }
+    }
+
+    focus = {
+        id = ROM_strenght
+        icon = GFX_goal_unknown
+        x = 22
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_stick_with_socialism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_welfare_state_idea
+        }
+    }
+
+    focus = {
+        id = ROM_invest
+        icon = GFX_goal_unknown
+        x = 23
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_strenght }
+        prerequisite = { focus = ROM_pact }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_recovery_funds_idea
+            add_tech_bonus = { name = ROM_invest bonus = 0.5 uses = 1 category = industry }
+        }
+    }
+
+    focus = {
+        id = ROM_nationalise
+        icon = GFX_goal_unknown
+        x = 26
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_turn_back_to_communism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_nationalised_industry_idea
+            add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+        }
+    }
+
+    focus = {
+        id = ROM_focus_1
+        icon = GFX_goal_unknown
+        x = 24
+        y = 5
+        cost = 5
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            # no reward yet: duplicate of ROM_nationalise at the same position, check if this focus is needed
+        }
+    }
+
+    focus = {
+        id = ROM_dissolve
+        icon = GFX_goal_unknown
+        x = 28
+        y = 5
+        cost = 5
+        prerequisite = { focus = ROM_turn_back_to_communism }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_one_party_state_idea
+            add_political_power = 100
+            add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+        }
+    }
+
+    focus = {
+        id = ROM_focus_2
+        icon = GFX_goal_unknown
+        x = 27
+        y = 7
+        cost = 5
+        prerequisite = { focus = ROM_nationalise }
+        prerequisite = { focus = ROM_dissolve }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_five_year_plan_idea
+            random_owned_controlled_state = {
+                limit = { is_core_of = ROOT }
+                add_extra_state_shared_building_slots = 1
+                add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+            }
+        }
+    }
+
+    focus = {
+        id = ROM_focus_3
+        icon = GFX_goal_unknown
+        x = 22
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_invest }
+        mutually_exclusive = { focus = ROM_focus_4 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_nato_hub
+            add_stability = 0.03
+            set_country_flag = ROM_west_aligned
+        }
+    }
+
+    focus = {
+        id = ROM_focus_4
+        icon = GFX_goal_unknown
+        x = 24
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_invest }
+        mutually_exclusive = { focus = ROM_focus_3 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_strategic_autonomy_idea
+            set_country_flag = ROM_strategic_autonomy_chosen
+        }
+    }
+
+    focus = {
+        id = ROM_focus_5
+        icon = GFX_goal_unknown
+        x = 23
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_focus_4 }
+        prerequisite = { focus = ROM_focus_3 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_modern_armed_forces_idea
+            army_experience = 25
+            add_tech_bonus = { name = ROM_focus_5 bonus = 0.5 uses = 1 category = land_doctrine }
+        }
+    }
+
+    focus = {
+        id = ROM_focus_6
+        icon = GFX_goal_unknown
+        x = 23
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_focus_5 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            set_politics = {
+                ruling_party = progressive
+            }
+            add_popularity = { ideology = progressive popularity = 0.1 }
+            add_stability = 0.05
+            add_political_power = 150
+            set_country_flag = ROM_socialist_state
+        }
+    }
+
+    focus = {
+        id = ROM_focus_7
+        icon = GFX_goal_unknown
+        x = 26
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_focus_2 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_collective_farms_idea
+        }
+    }
+
+    focus = {
+        id = ROM_focus_8
+        icon = GFX_goal_unknown
+        x = 28
+        y = 9
+        cost = 5
+        prerequisite = { focus = ROM_focus_2 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_security_apparatus_idea
+        }
+    }
+
+    focus = {
+        id = ROM_focus_9
+        icon = GFX_goal_unknown
+        x = 26
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_focus_7 }
+        mutually_exclusive = { focus = ROM_focus_10 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_eastern_alignment_idea
+            add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+            set_country_flag = ROM_joined_the_east
+        }
+    }
+
+    focus = {
+        id = ROM_focus_10
+        icon = GFX_goal_unknown
+        x = 28
+        y = 11
+        cost = 5
+        prerequisite = { focus = ROM_focus_8 }
+        mutually_exclusive = { focus = ROM_focus_9 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            add_ideas = ROM_national_communism_idea
+            add_stability = 0.03
+            set_country_flag = ROM_national_communism
+        }
+    }
+
+    focus = {
+        id = ROM_focus_11
+        icon = GFX_goal_unknown
+        x = 27
+        y = 13
+        cost = 5
+        prerequisite = { focus = ROM_focus_9 }
+        prerequisite = { focus = ROM_focus_10 }
+        ai_will_do = {
+            factor = 1
+        }
+        completion_reward = {
+            set_politics = {
+                ruling_party = vanguard_socialism
+            }
+            add_popularity = { ideology = vanguard_socialism popularity = 0.2 }
+            add_stability = 0.05
+            add_political_power = 150
+            set_country_flag = ROM_communist_state
+        }
+    }
+
+}
