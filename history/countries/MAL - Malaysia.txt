@@ -112,17 +112,37 @@ if = {
 	add_to_tech_sharing_group = commonwealth_research
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = liberal long_name = "Pakatan Harapan" name = "PH" }
+set_party_name = { ideology = conservative long_name = "Barisan Nasional (UMNO)" name = "BN" }
+set_party_name = { ideology = fundamentalism long_name = "Parti Islam Se-Malaysia" name = "PAS" }
+set_party_name = { ideology = reactionary long_name = "Parti Pribumi Bersatu Malaysia" name = "Bersatu" }
+set_party_name = { ideology = progressive long_name = "Democratic Action Party" name = "DAP" }
+set_party_name = { ideology = centrist long_name = "Gabungan Parti Sarawak" name = "GPS" }
+set_party_name = { ideology = absolutism long_name = "Conference of Rulers" name = "Rulers" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Parti Sosialis Malaysia" name = "PSM" }
+create_country_leader = { name = "Ahmad Zahid Hamidi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Abdul Hadi Awang" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Muhyiddin Yassin" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Anthony Loke" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Abang Johari Openg" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Sultan Ibrahim Iskandar" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = monarchism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = liberal
+	last_election = "2022.11.19"
+	election_frequency = 60
 	elections_allowed = yes
 }
-
 set_popularities = {
-	centrist = 100
+	liberal = 30
+	conservative = 20
+	fundamentalism = 15
+	reactionary = 14
+	progressive = 9
+	centrist = 6
+	absolutism = 5
+	revolutionary_socialism = 1
 }
-
 
 give_guarantee = NZL
 give_guarantee = AST

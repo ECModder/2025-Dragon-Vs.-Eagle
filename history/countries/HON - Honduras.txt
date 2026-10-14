@@ -61,14 +61,28 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = progressive long_name = "Partido Libertad y Refundación" name = "Libre" }
+set_party_name = { ideology = conservative long_name = "Partido Nacional de Honduras" name = "PNH" }
+set_party_name = { ideology = centrist long_name = "Partido Liberal de Honduras" name = "PLH" }
+set_party_name = { ideology = autocracy long_name = "Fuerzas Armadas de Honduras" name = "FFAA" }
+create_country_leader = { name = "Xiomara Castro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = reformist_socialism }
+create_country_leader = { name = "Nasry Asfura" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Salvador Nasralla" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "General Roosevelt Hernández" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1932.10.28"
+	ruling_party = progressive
+	last_election = "2021.11.28"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 100
+	progressive = 45
+	conservative = 33
+	centrist = 15
+	liberal = 3
+	autocracy = 2
+	reactionary = 2
 }
 
 1939.1.1 = {

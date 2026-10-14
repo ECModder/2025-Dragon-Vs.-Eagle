@@ -18,16 +18,29 @@ IF = {
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = conservative long_name = "Asociación Nacional Republicana - Partido Colorado" name = "ANR" }
+set_party_name = { ideology = liberal long_name = "Partido Liberal Radical Auténtico" name = "PLRA" }
+set_party_name = { ideology = reactionary long_name = "Cruzada Nacional" name = "CN" }
+set_party_name = { ideology = progressive long_name = "Frente Guasú" name = "FG" }
+create_country_leader = { name = "Santiago Peña" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Efraín Alegre" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_liberal }
+create_country_leader = { name = "Paraguayo Cubas" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Fernando Lugo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = conservative
+	last_election = "2023.4.30"
+	election_frequency = 60
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 50
-	reactionary = 40
-	totalitarian_socialism = 10
+	conservative = 45
+	liberal = 25
+	reactionary = 20
+	progressive = 6
+	centrist = 2
+	totalitarian_socialism = 1
+	revolutionary_socialism = 1
 }
 
 set_research_slots = 2

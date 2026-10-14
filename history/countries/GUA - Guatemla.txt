@@ -71,12 +71,34 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = progressive long_name = "Movimiento Semilla" name = "Semilla" }
+set_party_name = { ideology = conservative long_name = "Vamos por una Guatemala Diferente" name = "Vamos" }
+set_party_name = { ideology = liberal long_name = "Unidad Nacional de la Esperanza" name = "UNE" }
+set_party_name = { ideology = centrist long_name = "Partido Cabal" name = "Cabal" }
+set_party_name = { ideology = reactionary long_name = "Partido Valor" name = "Valor" }
+set_party_name = { ideology = fundamentalism long_name = "Visión con Valores" name = "VIVA" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Unidad Revolucionaria Nacional Guatemalteca" name = "URNG" }
+set_party_name = { ideology = autocracy long_name = "Ejército de Guatemala" name = "Ejército" }
+create_country_leader = { name = "Bernardo Arévalo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Manuel Conde" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Sandra Torres" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_populism }
+create_country_leader = { name = "Edmond Mulet" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Zury Ríos" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "General Henry Sáenz" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1931.2.8"
+	ruling_party = progressive
+	last_election = "2023.6.25"
 	election_frequency = 48
-	elections_allowed = no
+	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 100
+	progressive = 28
+	conservative = 22
+	liberal = 17
+	centrist = 12
+	reactionary = 10
+	fundamentalism = 5
+	revolutionary_socialism = 3
+	autocracy = 3
 }

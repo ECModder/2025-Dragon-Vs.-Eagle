@@ -129,13 +129,44 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarianism long_name = "Gobierno de Dina Boluarte (independientes)" name = "Gobierno" }
+set_party_name = { ideology = reactionary long_name = "Fuerza Popular" name = "FP" }
+set_party_name = { ideology = conservative long_name = "Renovación Popular" name = "RP" }
+set_party_name = { ideology = centrist long_name = "Alianza para el Progreso" name = "APP" }
+set_party_name = { ideology = progressive long_name = "Juntos por el Perú" name = "JP" }
+set_party_name = { ideology = liberal long_name = "Nuevo Perú" name = "NP" }
+set_party_name = { ideology = authoritarian_socialism long_name = "Perú Libre" name = "PL" }
+set_party_name = { ideology = ultranationalism long_name = "Movimiento Etnocacerista" name = "Etnocaceristas" }
+set_party_name = { ideology = autocracy long_name = "Comando Conjunto de las Fuerzas Armadas" name = "CCFFAA" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Militarizado Partido Comunista del Perú" name = "MPCP" }
+create_country_leader = { name = "Dina Boluarte" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = illiberal_democracy }
+create_country_leader = { name = "Keiko Fujimori" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Rafael López Aliaga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = trumpism }
+create_country_leader = { name = "César Acuña" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Roberto Sánchez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = reformist_socialism }
+create_country_leader = { name = "Verónika Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = green_leftist }
+create_country_leader = { name = "Vladimir Cerrón" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = authoritarian_communism }
+create_country_leader = { name = "Antauro Humala" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = ultranationalist_socialism }
+create_country_leader = { name = "General David Ojeda" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
+create_country_leader = { name = "Víctor Quispe Palomino" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = maoism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1931.10.11"
-	election_frequency = 96
+	ruling_party = authoritarianism
+	last_election = "2021.4.11"
+	election_frequency = 60
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 60
-	reactionary = 40
+	reactionary = 20
+	conservative = 14
+	centrist = 12
+	progressive = 10
+	liberal = 10
+	authoritarianism = 8
+	authoritarian_socialism = 8
+	revolutionary_socialism = 5
+	ultranationalism = 5
+	autocracy = 3
+	fundamentalism = 3
+	totalitarian_socialism = 2
 }

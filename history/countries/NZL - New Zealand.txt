@@ -219,14 +219,30 @@ set_grand_doctrine = new_strategic_destruction
 		}
 	}
 }
+
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = conservative long_name = "New Zealand National Party" name = "National" }
+set_party_name = { ideology = progressive long_name = "New Zealand Labour Party" name = "Labour" }
+set_party_name = { ideology = liberal long_name = "Green Party of Aotearoa New Zealand" name = "Greens" }
+set_party_name = { ideology = centrist long_name = "ACT New Zealand" name = "ACT" }
+set_party_name = { ideology = reactionary long_name = "New Zealand First" name = "NZ First" }
+create_country_leader = { name = "Chris Hipkins" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Chloe Swarbrick" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = green_leftist }
+create_country_leader = { name = "David Seymour" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = ultra_liberalism }
+create_country_leader = { name = "Winston Peters" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1935.11.27"
+	ruling_party = conservative
+	last_election = "2023.10.14"
 	election_frequency = 36
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 100
+	conservative = 39
+	progressive = 29
+	liberal = 14
+	centrist = 9
+	reactionary = 8
+	revolutionary_socialism = 1
 }
 
 set_convoys = 70

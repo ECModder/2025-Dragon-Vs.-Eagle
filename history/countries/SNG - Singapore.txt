@@ -54,15 +54,28 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarianism long_name = "People's Action Party" name = "PAP" }
+set_party_name = { ideology = liberal long_name = "Workers' Party" name = "WP" }
+set_party_name = { ideology = centrist long_name = "Progress Singapore Party" name = "PSP" }
+set_party_name = { ideology = progressive long_name = "Singapore Democratic Party" name = "SDP" }
+create_country_leader = { name = "Lawrence Wong" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = technocracy }
+create_country_leader = { name = "Pritam Singh" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_centrist }
+create_country_leader = { name = "Tan Cheng Bock" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Chee Soon Juan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
+	ruling_party = authoritarianism
+	last_election = "2020.7.10"
+	election_frequency = 60
+	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 55
-	reactionary = 45
+	authoritarianism = 60
+	liberal = 15
+	centrist = 12
+	progressive = 6
+	conservative = 4
+	reactionary = 3
 }
 
 give_guarantee = NZL

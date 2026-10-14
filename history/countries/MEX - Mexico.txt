@@ -231,13 +231,31 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = liberal long_name = "Movimiento Regeneración Nacional" name = "Morena" }
+set_party_name = { ideology = conservative long_name = "Partido Acción Nacional" name = "PAN" }
+set_party_name = { ideology = centrist long_name = "Partido Revolucionario Institucional" name = "PRI" }
+set_party_name = { ideology = progressive long_name = "Movimiento Ciudadano" name = "MC" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Partido del Trabajo" name = "PT" }
+set_party_name = { ideology = autocracy long_name = "Secretaría de la Defensa Nacional" name = "SEDENA" }
+create_country_leader = { name = "Claudia Sheinbaum" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_populism }
+create_country_leader = { name = "Jorge Romero Herrera" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = christian_democracy }
+create_country_leader = { name = "Alejandro Moreno" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Jorge Álvarez Máynez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Alberto Anaya" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = socialism }
+create_country_leader = { name = "General Ricardo Trevilla Trejo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
-	ruling_party = centrist
-	last_election = "1934.7.1"
+	ruling_party = liberal
+	last_election = "2024.6.2"
 	election_frequency = 72
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 71
-	reactionary = 29
+	liberal = 48
+	conservative = 18
+	centrist = 12
+	progressive = 11
+	revolutionary_socialism = 6
+	reactionary = 3
+	autocracy = 2
 }

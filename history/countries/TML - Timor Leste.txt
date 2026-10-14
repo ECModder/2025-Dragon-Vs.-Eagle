@@ -54,13 +54,25 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Congresso Nacional da Reconstrução Timorense" name = "CNRT" }
+set_party_name = { ideology = progressive long_name = "Frente Revolucionária de Timor-Leste Independente" name = "FRETILIN" }
+set_party_name = { ideology = conservative long_name = "Partido Democrático" name = "PD" }
+set_party_name = { ideology = liberal long_name = "Partido Libertação Popular" name = "PLP" }
+create_country_leader = { name = "Xanana Gusmão" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Mari Alkatiri" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "Mariano Sabino Lopes" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Taur Matan Ruak" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_centrist }
 set_politics = {
 	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
-	elections_allowed = no
+	last_election = "2023.5.21"
+	election_frequency = 60
+	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 85
-	reactionary = 15
+	centrist = 48
+	progressive = 27
+	conservative = 12
+	liberal = 8
+	reactionary = 5
 }
