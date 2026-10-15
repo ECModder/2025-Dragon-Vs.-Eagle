@@ -1,0 +1,40 @@
+entity = {
+    clone = "USA_infantry_entity"
+    name = "RUS_infantry_entity"
+    pdxmesh = "RUS_infantry_mesh"
+}
+
+entity = {
+    clone = "RUS_infantry_entity"
+    name = "RUS_infantry_2_entity"
+}
+
+entity = {
+    clone = "RUS_infantry_entity"
+    name = "RUS_infantry_3_entity"
+}
+entity = {
+    clone = "SOV_vehicle_infantry_rifle_entity"
+    name = "RUS_vehicle_infantry_rifle_entity"
+    pdxmesh = "RUS_infantry_mesh"
+}
+
+entity = {
+    clone = "SOV_motorized_entity"
+    name = "RUS_motorized_entity"
+
+    attach = {
+        name = "infantry"
+        infantry = "RUS_vehicle_infantry_rifle_entity"
+    }
+}
+
+entity = {
+    clone = "SOV_mechanized_entity"
+    name = "RUS_mechanized_entity"
+
+    attach = {
+        name = "infantry"
+        infantry = "RUS_vehicle_infantry_rifle_entity"
+    }
+}
