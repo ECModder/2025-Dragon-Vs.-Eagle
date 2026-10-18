@@ -24,7 +24,7 @@ news_event = {
 }
 
 # Romania - 2025.01.03 06:00
-news_event = {
+country_event = {
 	id = dve_rom.2
 	title = dve_rom.2.t
 	desc = dve_rom.2.d
@@ -34,6 +34,7 @@ news_event = {
 
 	option = {
 		name = dve_rom.2.a
+		add_ideas = ROM_the_january_strikes
 	}
 }
 
@@ -48,6 +49,9 @@ news_event = {
 
 	option = {
 		name = dve_rom.3.a
+		retire_character = ROM_klaus_iohannis
+		recruit_character = ROM_ilie_bolojan
+		promote_character = ROM_ilie_bolojan
 	}
 }
 
@@ -62,6 +66,45 @@ news_event = {
 
 	option = {
 		name = dve_rom.4.a
+	}
+}
+
+news_event = {
+	id = dve_rom.5
+	title = dve_rom.5.t
+	desc = dve_rom.5.d
+	picture = GFX_news_event_DVE_rom_the_2025_elections
+	is_triggered_only = yes
+
+	option = {
+        name = "Nicusor Is the Victorius"
+        set_country_flag = ROM_Nicusor_Dan_wins
+        set_politics = { ruling_party = conservative }
+		retire_character = ROM_ilie_bolojan
+		recruit_character = ROM_nicusor_dan
+		promote_character = ROM_nicusor_dan
+		}
+
+
+	option = {
+		name = "Crin Antonescu is our leader"
+		set_country_flag = ROM_Crin_Antonescu_wins
+		set_politics = {
+			ruling_party = progressive
+		}
+	}
+
+	option = {
+		name = "Simion should lead the nation"
+		set_country_flag = ROM_Gheorghe_Simion_wins
+		set_politics = {
+			ruling_party = reactionary
+		}
+	}
+
+	option = {
+		name = "We aren't convinced of these candidates"
+		set_country_flag = ROM_wait
 	}
 }
 
