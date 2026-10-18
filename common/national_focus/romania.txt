@@ -45,6 +45,7 @@ focus_tree = {
         y = 4
         cost = 5
         prerequisite = { focus = ROM_remove_the_strikes }
+        prerequisite = { focus = ROM_stagnate_the_economy }
         ai_will_do = {
             factor = 1
         }
@@ -97,7 +98,7 @@ focus_tree = {
         icon = GFX_goal_ROM_skip_the_elections
         x = 14
         y = 6
-        cost = 5
+        cost = 7
         mutually_exclusive = { focus = ROM_the_2025_elections }
         available = {
             has_completed_focus = ROM_announce_the_new_candidates
@@ -107,7 +108,7 @@ focus_tree = {
         }
         completion_reward = {
             country_event = {
-                id = event_id
+                id = dve_rom_send.5
                 days = 1
             }
             load_focus_tree = romania_uprise
