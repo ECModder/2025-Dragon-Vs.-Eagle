@@ -1,0 +1,1748 @@
+# ============================================================
+#   PADANIA (LOM) - focus tree
+#
+#   Trunk (war of independence) -> Italians First or Padanians
+#   First -> Victory over Roma Ladrona (needs peace with ITA) ->
+#   one of eight party focuses, all mutually exclusive:
+#     People's Workers' Party / Comunisti Padani -> communist branch
+#     Lavoro Padano -> liberal branch
+#     Forza Padania -> conservative branch
+#     Keep Salvini's Lega / Destra Padana -> Lega branch
+#     Bossi, Eternal Leader -> absolutist branch
+#     Unione Nazionalista Padana -> ultranationalist branch
+#
+#   Links of the design: several lines into one focus = all
+#   needed (AND), except when the parents exclude each other (OR).
+#   Every branch column gives a spirit on its first row and
+#   upgrades it on its third. All focuses cost 5 (35 days).
+#   National spirits: common/ideas/DVE_LOM_spirits.txt
+#   Effects: common/scripted_effects/DVE_LOM_effects.txt
+# ============================================================
+
+focus_tree = {
+	id = LOM_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = LOM
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		x = 11
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1200 }
+
+	# ========================================================
+	#   THE WAR OF INDEPENDENCE
+	# ========================================================
+	focus = {
+		id = LOM_prima_il_nord
+		icon = GFX_goal_LOM_prima_il_nord
+		x = 11
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = LOM_padanian_struggle # Add The Padanian Struggle national spirit
+			add_political_power = 100
+			add_popularity = { ideology = reactionary popularity = 0.03 }
+			set_country_flag = LOM_prima_il_nord_done
+		}
+	}
+
+	focus = {
+		id = LOM_padania_finally_free
+		icon = GFX_goal_LOM_padania_finally_free
+		x = 11
+		y = 1
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = LOM_prima_il_nord }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			custom_effect_tooltip = LOM_guard_units_tt
+			hidden_effect = { LOM_guard_units_effect = yes }
+			add_manpower = 10000
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 200 producer = ROOT }
+			army_experience = 15
+			set_country_flag = LOM_padania_finally_free_done
+		}
+	}
+
+	focus = {
+		id = LOM_italians_first
+		icon = GFX_goal_LOM_italians_first
+		x = 10
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = LOM_padania_finally_free }
+		mutually_exclusive = { focus = LOM_padanians_first }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_popularity = { ideology = centrist popularity = 0.05 }
+			set_country_flag = LOM_italians_first_done
+		}
+	}
+
+	focus = {
+		id = LOM_padanians_first
+		icon = GFX_goal_LOM_padanians_first
+		x = 12
+		y = 2
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = LOM_padania_finally_free }
+		mutually_exclusive = { focus = LOM_italians_first }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_war_support = 0.05
+			add_popularity = { ideology = reactionary popularity = 0.05 }
+			custom_effect_tooltip = LOM_padania_claims_tt
+			hidden_effect = { LOM_claim_padania_effect = yes }
+			set_country_flag = LOM_padanians_first_done
+		}
+	}
+
+	focus = {
+		id = LOM_myth_of_a_new_italy
+		icon = GFX_goal_LOM_myth_of_a_new_italy
+		x = 10
+		y = 3
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = LOM_italians_first }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = LOM_new_italy # Add A New Italy national spirit
+			custom_effect_tooltip = LOM_italy_claims_tt
+			hidden_effect = { LOM_claim_italy_effect = yes }
+			set_country_flag = LOM_myth_of_a_new_italy_done
+		}
+	}
+
+	focus = {
+		id = LOM_i_believe_in_the_padanians
+		icon = GFX_goal_LOM_i_believe_in_the_padanians
+		x = 12
+		y = 3
+		cost = 5
+		available_if_capitulated = yes
+		prerequisite = { focus = LOM_padanians_first }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_ideas = LOM_padanian_people # Add The Padanian People national spirit
+			custom_effect_tooltip = LOM_padania_cores_tt
+			hidden_effect = { LOM_core_padania_effect = yes }
+			set_country_flag = LOM_i_believe_in_the_padanians_done
+		}
+	}
+
+	focus = {
+		id = LOM_victory_over_roma_ladrona
+		icon = GFX_goal_LOM_victory_over_roma_ladrona
+		x = 11
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_myth_of_a_new_italy focus = LOM_i_believe_in_the_padanians }
+		available = {
+			NOT = { has_war_with = ITA }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 20 }
+		completion_reward = {
+			remove_ideas = LOM_padanian_struggle # Remove The Padanian Struggle national spirit
+			add_political_power = 150
+			add_stability = 0.10
+			add_research_slot = 1
+			custom_effect_tooltip = LOM_victory_cores_tt
+			hidden_effect = { LOM_core_owned_italy_effect = yes }
+			set_country_flag = LOM_independence_won
+			set_country_flag = LOM_victory_over_roma_ladrona_done
+		}
+	}
+
+	# ========================================================
+	#   THE PARTY CHOICE (all eight are mutually exclusive)
+	# ========================================================
+	focus = {
+		id = LOM_soc_peoples_workers_party
+		icon = GFX_goal_LOM_soc_peoples_workers_party
+		x = 0
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.25 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.1 }
+			set_party_name = { ideology = authoritarian_socialism name = LOM_pli_party long_name = LOM_pli_party_long } # Rename the party to Partito dei Lavoratori Italiani
+			set_cosmetic_tag = LOM_IPF # Rename the country to Italian People's Federation
+			add_political_power = 50
+			set_country_flag = LOM_soc_peoples_workers_party_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_comunisti_padani
+		icon = GFX_goal_LOM_soc_comunisti_padani
+		x = 2
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			set_politics = { ruling_party = totalitarian_socialism elections_allowed = no }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.25 }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.1 }
+			add_political_power = 50
+			set_country_flag = LOM_soc_comunisti_padani_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_lavoro_padano
+		icon = GFX_goal_LOM_lib_lavoro_padano
+		x = 5
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			set_politics = { ruling_party = liberal elections_allowed = yes }
+			add_popularity = { ideology = liberal popularity = 0.3 }
+			add_stability = 0.05
+			set_country_flag = LOM_lib_lavoro_padano_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_forza_padania
+		icon = GFX_goal_LOM_con_forza_padania
+		x = 9
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			set_politics = { ruling_party = conservative elections_allowed = yes }
+			add_popularity = { ideology = conservative popularity = 0.3 }
+			add_political_power = 50
+			set_country_flag = LOM_con_forza_padania_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_keep_salvinis_lega
+		icon = GFX_goal_LOM_lega_keep_salvinis_lega
+		x = 12
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_politics = { ruling_party = reactionary elections_allowed = yes }
+			add_popularity = { ideology = reactionary popularity = 0.2 }
+			add_stability = 0.05
+			set_country_flag = LOM_lega_keep_salvinis_lega_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_destra_padana
+		icon = GFX_goal_LOM_lega_destra_padana
+		x = 14
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_bossi_eternal_leader focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			set_politics = { ruling_party = authoritarianism elections_allowed = no }
+			add_popularity = { ideology = authoritarianism popularity = 0.3 }
+			add_war_support = 0.05
+			set_country_flag = LOM_lega_destra_padana_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_eternal_leader
+		icon = GFX_goal_LOM_bossi_eternal_leader
+		x = 17
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			set_politics = { ruling_party = absolutism elections_allowed = no }
+			create_country_leader = { name = "Umberto Bossi" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = monarchism traits = { } }
+			add_popularity = { ideology = absolutism popularity = 0.3 }
+			set_country_flag = LOM_bossi_eternal_leader_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_unione_nazionalista_padana
+		icon = GFX_goal_LOM_unp_unione_nazionalista_padana
+		x = 21
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_victory_over_roma_ladrona }
+		mutually_exclusive = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani focus = LOM_lib_lavoro_padano focus = LOM_con_forza_padania focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana focus = LOM_bossi_eternal_leader }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			set_politics = { ruling_party = ultranationalism elections_allowed = no }
+			add_popularity = { ideology = ultranationalism popularity = 0.3 }
+			add_war_support = 0.10
+			set_country_flag = LOM_unp_unione_nazionalista_padana_done
+		}
+	}
+
+	# ========================================================
+	#   COMMUNISTS - People's Workers' Party / Comunisti Padani
+	# ========================================================
+	focus = {
+		id = LOM_soc_peoples_democratic_republic
+		icon = GFX_goal_LOM_soc_peoples_democratic_republic
+		x = 0
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.05
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+			set_country_flag = LOM_soc_peoples_democratic_republic_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_north_korea_of_europe
+		icon = GFX_goal_LOM_soc_north_korea_of_europe
+		x = 2
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_workers_party focus = LOM_soc_comunisti_padani }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.10
+			army_experience = 25
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+			set_country_flag = LOM_soc_north_korea_of_europe_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_forced_reindustrialization
+		icon = GFX_goal_LOM_soc_forced_reindustrialization
+		x = 0
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_democratic_republic }
+		prerequisite = { focus = LOM_soc_north_korea_of_europe }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_forced_reindustrialization # Add Forced Reindustrialization national spirit
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_soc_forced_reindustrialization_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_central_committee
+		icon = GFX_goal_LOM_soc_central_committee
+		x = 1
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_democratic_republic }
+		prerequisite = { focus = LOM_soc_north_korea_of_europe }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_central_committee # Add Central Committee national spirit
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+			set_country_flag = LOM_soc_central_committee_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_peoples_workers_army
+		icon = GFX_goal_LOM_soc_peoples_workers_army
+		x = 2
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_democratic_republic }
+		prerequisite = { focus = LOM_soc_north_korea_of_europe }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_peoples_workers_army # Add People's Workers' Army national spirit
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			set_country_flag = LOM_soc_peoples_workers_army_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_bureaucratic_control_over_factories
+		icon = GFX_goal_LOM_soc_bureaucratic_control_over_factories
+		x = 0
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_forced_reindustrialization }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = LOM_soc_bureaucratic_control_over_factories bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = LOM_soc_bureaucratic_control_over_factories_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_central_political_bureau
+		icon = GFX_goal_LOM_soc_central_political_bureau
+		x = 1
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_central_committee }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.03 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.03 }
+			set_country_flag = LOM_soc_central_political_bureau_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_joint_armed_forces
+		icon = GFX_goal_LOM_soc_joint_armed_forces
+		x = 2
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_peoples_workers_army }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 25
+			add_tech_bonus = { name = LOM_soc_joint_armed_forces bonus = 0.5 uses = 1 category = land_doctrine }
+			set_country_flag = LOM_soc_joint_armed_forces_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_state_collective_farms
+		icon = GFX_goal_LOM_soc_state_collective_farms
+		x = 0
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_bureaucratic_control_over_factories }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_forced_reindustrialization add_idea = LOM_state_collective_farms } # Replace Forced Reindustrialization with State Collective Farms
+			add_stability = 0.05
+			set_country_flag = LOM_soc_state_collective_farms_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_supreme_peoples_assembly
+		icon = GFX_goal_LOM_soc_supreme_peoples_assembly
+		x = 1
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_central_political_bureau }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_central_committee add_idea = LOM_supreme_peoples_assembly } # Replace Central Committee with Supreme People's Assembly
+			set_country_flag = LOM_soc_supreme_peoples_assembly_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_centralized_command
+		icon = GFX_goal_LOM_soc_centralized_command
+		x = 2
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_joint_armed_forces }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_peoples_workers_army add_idea = LOM_centralized_command } # Replace People's Workers' Army with Centralized Command
+			add_command_power = 50
+			set_country_flag = LOM_soc_centralized_command_done
+		}
+	}
+
+	focus = {
+		id = LOM_soc_communism_nation_patriotism
+		icon = GFX_goal_LOM_soc_communism_nation_patriotism
+		x = 1
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_soc_state_collective_farms }
+		prerequisite = { focus = LOM_soc_supreme_peoples_assembly }
+		prerequisite = { focus = LOM_soc_centralized_command }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.05 }
+			add_popularity = { ideology = totalitarian_socialism popularity = 0.05 }
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_soc_communism_nation_patriotism_done
+		}
+	}
+
+	# ========================================================
+	#   LAVORO PADANO - liberal
+	# ========================================================
+	focus = {
+		id = LOM_lib_padania_social_and_liberal
+		icon = GFX_goal_LOM_lib_padania_social_and_liberal
+		x = 4
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_lavoro_padano }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = liberal popularity = 0.05 }
+			add_popularity = { ideology = progressive popularity = 0.03 }
+			add_stability = 0.05
+			set_country_flag = LOM_lib_padania_social_and_liberal_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_democrats_and_europeans
+		icon = GFX_goal_LOM_lib_democrats_and_europeans
+		x = 6
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_lavoro_padano }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 75
+			add_popularity = { ideology = liberal popularity = 0.05 }
+			add_tech_bonus = { name = LOM_lib_democrats_and_europeans bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = LOM_lib_democrats_and_europeans_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_revitalizing_the_economy
+		icon = GFX_goal_LOM_lib_revitalizing_the_economy
+		x = 4
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_padania_social_and_liberal }
+		prerequisite = { focus = LOM_lib_democrats_and_europeans }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_revitalized_economy # Add Revitalized Economy national spirit
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_lib_revitalizing_the_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_multiparty_democracy
+		icon = GFX_goal_LOM_lib_multiparty_democracy
+		x = 5
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_padania_social_and_liberal }
+		prerequisite = { focus = LOM_lib_democrats_and_europeans }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_multiparty_democracy # Add Multiparty Democracy national spirit
+			add_popularity = { ideology = liberal popularity = 0.03 }
+			set_country_flag = LOM_lib_multiparty_democracy_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_ministry_of_defence
+		icon = GFX_goal_LOM_lib_ministry_of_defence
+		x = 6
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_padania_social_and_liberal }
+		prerequisite = { focus = LOM_lib_democrats_and_europeans }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_ministry_of_defence # Add Ministry of Defence national spirit
+			army_experience = 20
+			set_country_flag = LOM_lib_ministry_of_defence_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_state_funded_industrialization
+		icon = GFX_goal_LOM_lib_state_funded_industrialization
+		x = 4
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_revitalizing_the_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_lib_state_funded_industrialization_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_local_welfare_management
+		icon = GFX_goal_LOM_lib_local_welfare_management
+		x = 5
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_multiparty_democracy }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+			set_country_flag = LOM_lib_local_welfare_management_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_centralized_local_guard
+		icon = GFX_goal_LOM_lib_centralized_local_guard
+		x = 6
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_ministry_of_defence }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = LOM_guard_units_tt
+			hidden_effect = { LOM_guard_units_effect = yes }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = ROOT }
+			set_country_flag = LOM_lib_centralized_local_guard_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_revitalize_the_italian_periphery
+		icon = GFX_goal_LOM_lib_revitalize_the_italian_periphery
+		x = 4
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_state_funded_industrialization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_revitalized_economy add_idea = LOM_revitalized_periphery } # Replace Revitalized Economy with Revitalized Periphery
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_lib_revitalize_the_italian_periphery_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_centralized_federal_system
+		icon = GFX_goal_LOM_lib_centralized_federal_system
+		x = 5
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_local_welfare_management }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_multiparty_democracy add_idea = LOM_centralized_federal_system } # Replace Multiparty Democracy with Centralized Federal System
+			set_country_flag = LOM_lib_centralized_federal_system_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_defending_padanian_democracy
+		icon = GFX_goal_LOM_lib_defending_padanian_democracy
+		x = 6
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_centralized_local_guard }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_ministry_of_defence add_idea = LOM_padanian_democracy_defence } # Replace Ministry of Defence with Defending Padanian Democracy
+			set_country_flag = LOM_lib_defending_padanian_democracy_done
+		}
+	}
+
+	focus = {
+		id = LOM_lib_padania_europe_freedom
+		icon = GFX_goal_LOM_lib_padania_europe_freedom
+		x = 5
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lib_revitalize_the_italian_periphery }
+		prerequisite = { focus = LOM_lib_centralized_federal_system }
+		prerequisite = { focus = LOM_lib_defending_padanian_democracy }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_popularity = { ideology = liberal popularity = 0.1 }
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = LOM_lib_padania_europe_freedom bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = LOM_lib_padania_europe_freedom_done
+		}
+	}
+
+	# ========================================================
+	#   FORZA PADANIA - conservative
+	# ========================================================
+	focus = {
+		id = LOM_con_free_market_economy
+		icon = GFX_goal_LOM_con_free_market_economy
+		x = 8
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_forza_padania }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_political_power = 50
+			set_country_flag = LOM_con_free_market_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_liberals_and_fiscally_libertarian
+		icon = GFX_goal_LOM_con_liberals_and_fiscally_libertarian
+		x = 10
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_forza_padania }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.05 }
+			add_political_power = 75
+			set_country_flag = LOM_con_liberals_and_fiscally_libertarian_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_fully_private_economy
+		icon = GFX_goal_LOM_con_fully_private_economy
+		x = 8
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_free_market_economy }
+		prerequisite = { focus = LOM_con_liberals_and_fiscally_libertarian }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_private_economy # Add Private Economy national spirit
+			set_country_flag = LOM_con_fully_private_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_regionalist_democracy
+		icon = GFX_goal_LOM_con_regionalist_democracy
+		x = 9
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_free_market_economy }
+		prerequisite = { focus = LOM_con_liberals_and_fiscally_libertarian }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_regionalist_democracy # Add Regionalist Democracy national spirit
+			add_stability = 0.03
+			set_country_flag = LOM_con_regionalist_democracy_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_local_level_defense
+		icon = GFX_goal_LOM_con_local_level_defense
+		x = 10
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_free_market_economy }
+		prerequisite = { focus = LOM_con_liberals_and_fiscally_libertarian }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_local_level_defence # Add Local-Level Defense national spirit
+			army_experience = 15
+			set_country_flag = LOM_con_local_level_defense_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_shopkeepers_and_medium_enterprises
+		icon = GFX_goal_LOM_con_shopkeepers_and_medium_enterprises
+		x = 8
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_fully_private_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_con_shopkeepers_and_medium_enterprises_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_not_a_new_roma_ladrona
+		icon = GFX_goal_LOM_con_not_a_new_roma_ladrona
+		x = 9
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_regionalist_democracy }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			set_country_flag = LOM_con_not_a_new_roma_ladrona_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_federal_local_guard
+		icon = GFX_goal_LOM_con_federal_local_guard
+		x = 10
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_local_level_defense }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = LOM_guard_units_tt
+			hidden_effect = { LOM_guard_units_effect = yes }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			set_country_flag = LOM_con_federal_local_guard_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_reduction_of_public_intervention
+		icon = GFX_goal_LOM_con_reduction_of_public_intervention
+		x = 8
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_shopkeepers_and_medium_enterprises }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_private_economy add_idea = LOM_reduced_public_intervention } # Replace Private Economy with Reduced Public Intervention
+			set_country_flag = LOM_con_reduction_of_public_intervention_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_localist_federal_system
+		icon = GFX_goal_LOM_con_localist_federal_system
+		x = 9
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_not_a_new_roma_ladrona }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_regionalist_democracy add_idea = LOM_localist_federal_system } # Replace Regionalist Democracy with Localist Federal System
+			set_country_flag = LOM_con_localist_federal_system_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_defending_padanian_liberty
+		icon = GFX_goal_LOM_con_defending_padanian_liberty
+		x = 10
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_federal_local_guard }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_local_level_defence add_idea = LOM_padanian_liberty_defence } # Replace Local-Level Defense with Defending Padanian Liberty
+			set_country_flag = LOM_con_defending_padanian_liberty_done
+		}
+	}
+
+	focus = {
+		id = LOM_con_padania_regionalism_freedom
+		icon = GFX_goal_LOM_con_padania_regionalism_freedom
+		x = 9
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_con_reduction_of_public_intervention }
+		prerequisite = { focus = LOM_con_localist_federal_system }
+		prerequisite = { focus = LOM_con_defending_padanian_liberty }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_popularity = { ideology = conservative popularity = 0.1 }
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = LOM_con_padania_regionalism_freedom bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = LOM_con_padania_regionalism_freedom_done
+		}
+	}
+
+	# ========================================================
+	#   LEGA - Keep Salvini's Lega (reactionary) / Destra Padana (authoritarianism)
+	# ========================================================
+	focus = {
+		id = LOM_lega_command_economy
+		icon = GFX_goal_LOM_lega_command_economy
+		x = 12
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_political_power = 50
+			set_country_flag = LOM_lega_command_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_traditionalists_and_paternalists
+		icon = GFX_goal_LOM_lega_traditionalists_and_paternalists
+		x = 14
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_keep_salvinis_lega focus = LOM_lega_destra_padana }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { has_government = reactionary }
+				add_popularity = { ideology = reactionary popularity = 0.05 }
+			}
+			else = {
+				add_popularity = { ideology = authoritarianism popularity = 0.05 }
+			}
+			add_stability = 0.05
+			set_country_flag = LOM_lega_traditionalists_and_paternalists_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_self_employed_based_economy
+		icon = GFX_goal_LOM_lega_self_employed_based_economy
+		x = 12
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_command_economy }
+		prerequisite = { focus = LOM_lega_traditionalists_and_paternalists }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_self_employed_economy # Add Self-Employed Economy national spirit
+			set_country_flag = LOM_lega_self_employed_based_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_presidentialist_and_federalist_republic
+		icon = GFX_goal_LOM_lega_presidentialist_and_federalist_republic
+		x = 13
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_command_economy }
+		prerequisite = { focus = LOM_lega_traditionalists_and_paternalists }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_presidential_federal_republic # Add Presidentialist and Federalist Republic national spirit
+			set_country_flag = LOM_lega_presidentialist_and_federalist_republic_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_national_defense_committee
+		icon = GFX_goal_LOM_lega_national_defense_committee
+		x = 14
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_command_economy }
+		prerequisite = { focus = LOM_lega_traditionalists_and_paternalists }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_national_defence_committee # Add National Defense Committee national spirit
+			add_command_power = 25
+			set_country_flag = LOM_lega_national_defense_committee_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_extend_flat_tax
+		icon = GFX_goal_LOM_lega_extend_flat_tax
+		x = 12
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_self_employed_based_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_stability = 0.05
+			set_country_flag = LOM_lega_extend_flat_tax_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_first_the_padanians
+		icon = GFX_goal_LOM_lega_first_the_padanians
+		x = 13
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_presidentialist_and_federalist_republic }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.05
+			add_political_power = 75
+			if = {
+				limit = { has_government = reactionary }
+				add_popularity = { ideology = reactionary popularity = 0.05 }
+			}
+			else = {
+				add_popularity = { ideology = authoritarianism popularity = 0.05 }
+			}
+			set_country_flag = LOM_lega_first_the_padanians_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_security_decree
+		icon = GFX_goal_LOM_lega_security_decree
+		x = 14
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_national_defense_committee }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			army_experience = 20
+			set_country_flag = LOM_lega_security_decree_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_low_tax_pressure_for_companies
+		icon = GFX_goal_LOM_lega_low_tax_pressure_for_companies
+		x = 12
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_extend_flat_tax }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_self_employed_economy add_idea = LOM_low_corporate_taxes } # Replace Self-Employed Economy with Low Tax Pressure for Companies
+			set_country_flag = LOM_lega_low_tax_pressure_for_companies_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_localist_presidential_system
+		icon = GFX_goal_LOM_lega_localist_presidential_system
+		x = 13
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_first_the_padanians }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_presidential_federal_republic add_idea = LOM_localist_presidential_system } # Replace Presidentialist and Federalist Republic with Localist Presidential System
+			set_country_flag = LOM_lega_localist_presidential_system_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_defense_of_the_north
+		icon = GFX_goal_LOM_lega_defense_of_the_north
+		x = 14
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_security_decree }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_national_defence_committee add_idea = LOM_defence_of_the_north } # Replace National Defense Committee with Defense of the North
+			set_country_flag = LOM_lega_defense_of_the_north_done
+		}
+	}
+
+	focus = {
+		id = LOM_lega_padania_nation_identity
+		icon = GFX_goal_LOM_lega_padania_nation_identity
+		x = 13
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_lega_low_tax_pressure_for_companies }
+		prerequisite = { focus = LOM_lega_localist_presidential_system }
+		prerequisite = { focus = LOM_lega_defense_of_the_north }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_war_support = 0.10
+			if = {
+				limit = { has_government = reactionary }
+				add_popularity = { ideology = reactionary popularity = 0.1 }
+			}
+			else = {
+				add_popularity = { ideology = authoritarianism popularity = 0.1 }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_lega_padania_nation_identity_done
+		}
+	}
+
+	# ========================================================
+	#   BOSSI - absolutism
+	# ========================================================
+	focus = {
+		id = LOM_bossi_territorial_and_local_economy
+		icon = GFX_goal_LOM_bossi_territorial_and_local_economy
+		x = 16
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_eternal_leader }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_political_power = 50
+			set_country_flag = LOM_bossi_territorial_and_local_economy_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_against_roma_ladrona
+		icon = GFX_goal_LOM_bossi_against_roma_ladrona
+		x = 18
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_eternal_leader }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.10
+			add_popularity = { ideology = absolutism popularity = 0.05 }
+			set_country_flag = LOM_bossi_against_roma_ladrona_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_shopkeepers_first
+		icon = GFX_goal_LOM_bossi_shopkeepers_first
+		x = 16
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_territorial_and_local_economy }
+		prerequisite = { focus = LOM_bossi_against_roma_ladrona }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_shopkeepers_first # Add Shopkeepers First national spirit
+			set_country_flag = LOM_bossi_shopkeepers_first_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_federalism_and_devolution
+		icon = GFX_goal_LOM_bossi_federalism_and_devolution
+		x = 17
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_territorial_and_local_economy }
+		prerequisite = { focus = LOM_bossi_against_roma_ladrona }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_federalism_and_devolution # Add Federalism and Devolution national spirit
+			set_country_flag = LOM_bossi_federalism_and_devolution_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_padanian_professional_army
+		icon = GFX_goal_LOM_bossi_padanian_professional_army
+		x = 18
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_territorial_and_local_economy }
+		prerequisite = { focus = LOM_bossi_against_roma_ladrona }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_padanian_professional_army # Add Padanian Professional Army national spirit
+			army_experience = 25
+			set_country_flag = LOM_bossi_padanian_professional_army_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_low_tax_pressure
+		icon = GFX_goal_LOM_bossi_low_tax_pressure
+		x = 16
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_shopkeepers_first }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_stability = 0.05
+			set_country_flag = LOM_bossi_low_tax_pressure_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_questione_settentrionale
+		icon = GFX_goal_LOM_bossi_questione_settentrionale
+		x = 17
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_federalism_and_devolution }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_war_support = 0.05
+			set_country_flag = LOM_bossi_questione_settentrionale_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_regionalization_of_security
+		icon = GFX_goal_LOM_bossi_regionalization_of_security
+		x = 18
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_padanian_professional_army }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = LOM_guard_units_tt
+			hidden_effect = { LOM_guard_units_effect = yes }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			set_country_flag = LOM_bossi_regionalization_of_security_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_finances_small_businesses
+		icon = GFX_goal_LOM_bossi_finances_small_businesses
+		x = 16
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_low_tax_pressure }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_shopkeepers_first add_idea = LOM_small_business_finance } # Replace Shopkeepers First with Finances Small Businesses
+			set_country_flag = LOM_bossi_finances_small_businesses_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_less_immigration_more_security
+		icon = GFX_goal_LOM_bossi_less_immigration_more_security
+		x = 17
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_questione_settentrionale }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_federalism_and_devolution add_idea = LOM_less_immigration_more_security } # Replace Federalism and Devolution with Less Immigration, More Security
+			set_country_flag = LOM_bossi_less_immigration_more_security_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_no_nato_and_no_eu
+		icon = GFX_goal_LOM_bossi_no_nato_and_no_eu
+		x = 18
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_regionalization_of_security }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_padanian_professional_army add_idea = LOM_sovereign_padanian_army } # Replace Padanian Professional Army with Sovereign Padanian Army
+			set_country_flag = LOM_bossi_no_nato_and_no_eu_done
+		}
+	}
+
+	focus = {
+		id = LOM_bossi_la_lega_ce_lha_duro
+		icon = GFX_goal_LOM_bossi_la_lega_ce_lha_duro
+		x = 17
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_bossi_finances_small_businesses }
+		prerequisite = { focus = LOM_bossi_less_immigration_more_security }
+		prerequisite = { focus = LOM_bossi_no_nato_and_no_eu }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_popularity = { ideology = absolutism popularity = 0.1 }
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_bossi_la_lega_ce_lha_duro_done
+		}
+	}
+
+	# ========================================================
+	#   UNIONE NAZIONALISTA PADANA - ultranationalism
+	# ========================================================
+	focus = {
+		id = LOM_unp_state_corporatism
+		icon = GFX_goal_LOM_unp_state_corporatism
+		x = 20
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_political_power = 50
+			set_country_flag = LOM_unp_state_corporatism_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_ethnic_and_identity_nationalism
+		icon = GFX_goal_LOM_unp_ethnic_and_identity_nationalism
+		x = 22
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_unione_nazionalista_padana }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.10
+			add_popularity = { ideology = ultranationalism popularity = 0.05 }
+			set_country_flag = LOM_unp_ethnic_and_identity_nationalism_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_public_sector_serving_the_private
+		icon = GFX_goal_LOM_unp_public_sector_serving_the_private
+		x = 20
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_state_corporatism }
+		prerequisite = { focus = LOM_unp_ethnic_and_identity_nationalism }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_public_serving_private # Add Public Sector Serving the Private national spirit
+			set_country_flag = LOM_unp_public_sector_serving_the_private_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_zero_immigration
+		icon = GFX_goal_LOM_unp_zero_immigration
+		x = 21
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_state_corporatism }
+		prerequisite = { focus = LOM_unp_ethnic_and_identity_nationalism }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_zero_immigration # Add Zero Immigration national spirit
+			set_country_flag = LOM_unp_zero_immigration_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_national_army
+		icon = GFX_goal_LOM_unp_national_army
+		x = 22
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_state_corporatism }
+		prerequisite = { focus = LOM_unp_ethnic_and_identity_nationalism }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = LOM_national_army # Add National Army national spirit
+			add_manpower = 10000
+			set_country_flag = LOM_unp_national_army_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_economic_sovereignty
+		icon = GFX_goal_LOM_unp_economic_sovereignty
+		x = 20
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_public_sector_serving_the_private }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_unp_economic_sovereignty_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_security_and_public_order
+		icon = GFX_goal_LOM_unp_security_and_public_order
+		x = 21
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_zero_immigration }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 75
+			set_country_flag = LOM_unp_security_and_public_order_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_party_command_of_the_army
+		icon = GFX_goal_LOM_unp_party_command_of_the_army
+		x = 22
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_national_army }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 25
+			set_country_flag = LOM_unp_party_command_of_the_army_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_industrial_self_sufficiency
+		icon = GFX_goal_LOM_unp_industrial_self_sufficiency
+		x = 20
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_economic_sovereignty }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_public_serving_private add_idea = LOM_industrial_self_sufficiency } # Replace Public Sector Serving the Private with Industrial Self-Sufficiency
+			set_country_flag = LOM_unp_industrial_self_sufficiency_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_hardline_catholics_and_traditionalists
+		icon = GFX_goal_LOM_unp_hardline_catholics_and_traditionalists
+		x = 21
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_security_and_public_order }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_zero_immigration add_idea = LOM_catholic_traditionalism } # Replace Zero Immigration with Hardline Catholics and Traditionalists
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			set_country_flag = LOM_unp_hardline_catholics_and_traditionalists_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_defense_of_the_padanian_nation
+		icon = GFX_goal_LOM_unp_defense_of_the_padanian_nation
+		x = 22
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_party_command_of_the_army }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = LOM_national_army add_idea = LOM_padanian_nation_defence } # Replace National Army with Defense of the Padanian Nation
+			set_country_flag = LOM_unp_defense_of_the_padanian_nation_done
+		}
+	}
+
+	focus = {
+		id = LOM_unp_for_the_state_god_and_padania
+		icon = GFX_goal_LOM_unp_for_the_state_god_and_padania
+		x = 21
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = LOM_unp_industrial_self_sufficiency }
+		prerequisite = { focus = LOM_unp_hardline_catholics_and_traditionalists }
+		prerequisite = { focus = LOM_unp_defense_of_the_padanian_nation }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = 0.10
+			add_war_support = 0.15
+			add_popularity = { ideology = ultranationalism popularity = 0.1 }
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = LOM_unp_for_the_state_god_and_padania_done
+		}
+	}
+
+}

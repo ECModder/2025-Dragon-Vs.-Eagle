@@ -1,0 +1,111 @@
+# Padania (LOM) - effects of the focus tree (LOM_focus.txt).
+
+# Makes sure the "Guardia Padana" template exists (same as the civil
+# war one in DVE_ITA_civil_war_effects.txt).
+LOM_guard_template_effect = {
+	if = {
+		limit = { NOT = { has_template = "Guardia Padana" } }
+		division_template = {
+			name = "Guardia Padana"
+			regiments = {
+				infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }
+				infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }
+			}
+		}
+	}
+}
+
+# Raises 2 Guardia Padana divisions in the capital.
+LOM_guard_units_effect = {
+	LOM_guard_template_effect = yes
+	capital_scope = {
+		create_unit = {
+			division = "name = \"Guardia Padana\" division_template = \"Guardia Padana\" start_experience_factor = 0.20 start_equipment_factor = 0.70"
+			owner = ROOT
+			count = 2
+		}
+	}
+}
+
+# Claims on the 15 states of Padania (South Tyrol excluded: TYR).
+LOM_claim_padania_effect = {
+	every_state = {
+		limit = {
+			OR = {
+				state = 1173 # Aosta
+				state = 1175 # Nord Piemonte
+				state = 1174 # Sud Piemonte
+				state = 158  # Torino
+				state = 1176 # Liguria
+				state = 159  # Milano-Pavia
+				state = 1088 # Nord Lombardia
+				state = 1177 # Est Lombardia
+				state = 1179 # Padania
+				state = 160  # Veneto
+				state = 850  # Trentino
+				state = 1180 # Friuli-Venezia Giulia
+				state = 1155 # Trieste
+				state = 1178 # Emilia
+				state = 161  # Bologna-Romagna
+			}
+			NOT = { is_core_of = ROOT }
+			NOT = { is_claimed_by = ROOT }
+		}
+		add_claim_by = ROOT
+	}
+}
+
+# Cores on the 15 states of Padania.
+LOM_core_padania_effect = {
+	every_state = {
+		limit = {
+			OR = {
+				state = 1173 # Aosta
+				state = 1175 # Nord Piemonte
+				state = 1174 # Sud Piemonte
+				state = 158  # Torino
+				state = 1176 # Liguria
+				state = 159  # Milano-Pavia
+				state = 1088 # Nord Lombardia
+				state = 1177 # Est Lombardia
+				state = 1179 # Padania
+				state = 160  # Veneto
+				state = 850  # Trentino
+				state = 1180 # Friuli-Venezia Giulia
+				state = 1155 # Trieste
+				state = 1178 # Emilia
+				state = 161  # Bologna-Romagna
+			}
+			NOT = { is_core_of = ROOT }
+		}
+		add_core_of = ROOT
+	}
+}
+
+# Claims on every Italian state, same exclusions as SRI_core_italy_effect.
+LOM_claim_italy_effect = {
+	every_state = {
+		limit = {
+			is_core_of = ITA
+			NOT = { is_core_of = ROOT }
+			NOT = { is_claimed_by = ROOT }
+			NOT = { state = 1059 } # Monaco
+			NOT = { state = 1065 } # San Marino
+			NOT = { state = 1067 } # Vatican City
+			NOT = { state = 116 }  # Malta
+			NOT = { state = 852 }  # Istria
+		}
+		add_claim_by = ROOT
+	}
+}
+
+# Cores on every Italian state LOM owns.
+LOM_core_owned_italy_effect = {
+	every_owned_state = {
+		limit = {
+			is_core_of = ITA
+			NOT = { is_core_of = ROOT }
+		}
+		add_core_of = ROOT
+	}
+}
