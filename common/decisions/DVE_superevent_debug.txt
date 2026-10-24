@@ -66,4 +66,19 @@ DVE_debug_general_category = {
 		}
 		ai_will_do = { base = 0 }
 	}
+
+	DVE_debug_superevent_ROM = {
+		icon = GFX_decision_generic_speech
+		allowed = { always = yes }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			set_variable = { DVE_superevent = 5 }
+		}
+		ai_will_do = { base = 0 }
+	}
 }

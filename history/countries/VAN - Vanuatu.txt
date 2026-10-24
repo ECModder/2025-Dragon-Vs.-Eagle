@@ -10,13 +10,25 @@ set_grand_doctrine = mass_assault
 
 set_convoys = 5
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Reunification Movement for Change" name = "RMC" }
+set_party_name = { ideology = liberal long_name = "Vanua'aku Pati" name = "VP" }
+set_party_name = { ideology = conservative long_name = "Union of Moderate Parties" name = "UMP" }
+set_party_name = { ideology = progressive long_name = "Graon mo Jastis Pati" name = "GJP" }
+create_country_leader = { name = "Charlot Salwai" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Bob Loughman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_centrist }
+create_country_leader = { name = "Ishmael Kalsakau" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Ralph Regenvanu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = progressivism }
 set_politics = {
 	ruling_party = centrist
-	last_election = "1936.1.1"
+	last_election = "2022.10.13"
 	election_frequency = 48
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 75
-	reactionary = 25
+	centrist = 28
+	liberal = 22
+	conservative = 22
+	progressive = 22
+	reactionary = 6
 }

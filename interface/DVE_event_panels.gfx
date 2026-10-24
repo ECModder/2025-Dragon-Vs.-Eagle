@@ -1,0 +1,86 @@
+# DvE - pictures of the events shown in the news window.
+#
+# The game puts the event picture on top only in the news window, so every
+# event that wants the big picture is a news_event (it can be sent to one
+# country only), and its picture is a "panel": header bar with the label of
+# the event + the 557x372 picture, 581x436 in all. Build one with
+#   python3 tools/dve_event_panel.py picture.png "HEADER TEXT" out.dds
+# and add the sprite here.
+
+spriteTypes = {
+	# header only, empty screen: also stands in for the base game pictures
+	# that the mod's news events still name
+	spriteType = {
+		name = "GFX_news_event_DVE_generic"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_generic.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_generic_sign_treaty2"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_generic.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_generic_sign_treaty3"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_generic.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_generic_rally2"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_generic.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_nuke"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_generic.dds"
+	}
+	# Romania 2025 (events/DVE_ROM_2025.txt)
+	spriteType = {
+		name = "GFX_news_event_DVE_rom_schengen"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_rom_schengen.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_rom_january_strikes"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_rom_january_strikes.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_rom_iohannis_resigns"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_rom_iohannis_resigns.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_rom_georgescu_detained"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_rom_georgescu_detained.dds"
+	}
+	# Libya (events/DVE_LBA_events.txt)
+	spriteType = {
+		name = "GFX_news_event_DVE_lba_militias_revolt"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_lba_militias_revolt.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_lba_haftar_dies"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_lba_haftar_dies.dds"
+	}
+	# France 2026, "L'Internationaliste" (events/DVE_FRA_protests.txt)
+	spriteType = {
+		name = "GFX_news_event_DVE_fra_protests"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_fra_protests.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_fra_occupied_schools"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_fra_occupied_schools.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_fra_protests_expand"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_fra_protests_expand.dds"
+	}
+	# Italy 2025, "L'Internazionalista" (events/DVE_ITA_protests.txt)
+	spriteType = {
+		name = "GFX_news_event_DVE_ita_march_against_wars"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_ita_march_against_wars.dds"
+	}
+	spriteType = {
+		name = "GFX_news_event_DVE_ita_ilva_strike"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_ita_ilva_strike.dds"
+	}
+	# May Day, every year (events/DVE_may_day.txt)
+	spriteType = {
+		name = "GFX_news_event_DVE_may_day"
+		texturefile = "gfx/event_pictures/DVE_news/news_event_DVE_may_day.dds"
+	}
+}

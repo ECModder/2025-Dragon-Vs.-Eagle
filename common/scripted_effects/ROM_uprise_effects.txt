@@ -1,0 +1,71 @@
+ROM_adopt_absolutist = {
+	set_politics = { ruling_party = neutrality elections_allowed = no }
+	set_country_flag = ROM_ideology_absolutist
+}
+
+ROM_adopt_autocratic = {
+	set_politics = { ruling_party = neutrality elections_allowed = no }
+	set_country_flag = ROM_ideology_autocratic
+}
+
+ROM_adopt_fundamentalist = {
+	set_politics = { ruling_party = neutrality elections_allowed = no }
+	set_country_flag = ROM_ideology_fundamentalist
+}
+
+ROM_claim_moldova = {
+	if = {
+		limit = { country_exists = MOL }
+		MOL = { every_owned_state = { add_claim_by = ROM } }
+	}
+}
+
+ROM_claim_bukovina = {
+	if = {
+		limit = { country_exists = UKR }
+		UKR = {
+			every_owned_state = {
+				limit = { any_neighbor_state = { is_owned_by = ROM } }
+				add_claim_by = ROM
+			}
+		}
+	}
+}
+
+ROM_claim_banat = {
+	if = {
+		limit = { country_exists = SER }
+		SER = {
+			every_owned_state = {
+				limit = { any_neighbor_state = { is_owned_by = ROM } }
+				add_claim_by = ROM
+			}
+		}
+	}
+}
+
+ROM_claim_dobruja = {
+	if = {
+		limit = { country_exists = BUL }
+		BUL = {
+			every_owned_state = {
+				limit = { any_neighbor_state = { is_owned_by = ROM } }
+				add_claim_by = ROM
+			}
+		}
+	}
+}
+
+ROM_wargoal_moldova = {
+	if = {
+		limit = { country_exists = MOL }
+		create_wargoal = { type = annex_everything target = MOL }
+	}
+}
+
+ROM_wargoal_dobruja = {
+	if = {
+		limit = { country_exists = BUL }
+		create_wargoal = { type = annex_everything target = BUL }
+	}
+}

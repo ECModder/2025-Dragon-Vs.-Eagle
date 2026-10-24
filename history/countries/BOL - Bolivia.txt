@@ -42,19 +42,40 @@ set_technology = {
 	fuel_silos = 1
 }
 
-	set_politics = {
-		ruling_party = centrist
-		last_election = "1934.11.11"
-		election_frequency = 72
-		elections_allowed = yes
-	}
-	
-set_popularities = {
-	centrist = 86
-	reactionary = 14
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = progressive long_name = "Movimiento al Socialismo" name = "MAS-IPSP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Movimiento al Socialismo (ala evista)" name = "MAS-E" }
+set_party_name = { ideology = centrist long_name = "Comunidad Ciudadana" name = "CC" }
+set_party_name = { ideology = reactionary long_name = "Creemos" name = "Creemos" }
+set_party_name = { ideology = conservative long_name = "Unidad Nacional" name = "UN" }
+set_party_name = { ideology = autocracy long_name = "Fuerzas Armadas de Bolivia" name = "FFAA" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Obrero Revolucionario" name = "POR" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista de Bolivia" name = "PCB" }
+create_country_leader = { name = "Luis Arce" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = reformist_socialism }
+create_country_leader = { name = "Evo Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = socialism }
+create_country_leader = { name = "Carlos Mesa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Luis Fernando Camacho" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = hardline_conservatism }
+create_country_leader = { name = "Samuel Doria Medina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = classical_liberalism }
+create_country_leader = { name = "General Juan José Zúñiga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
+create_country_leader = { name = "Ignacio Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = stalinism }
+set_politics = {
+	ruling_party = progressive
+	last_election = "2020.10.18"
+	election_frequency = 60
+	elections_allowed = yes
 }
-
-
+set_popularities = {
+	progressive = 25
+	revolutionary_socialism = 20
+	centrist = 18
+	reactionary = 14
+	conservative = 12
+	autocracy = 3
+	totalitarian_socialism = 2
+	vanguard_socialism = 2
+	fundamentalism = 2
+	liberal = 2
+}
 
 set_grand_doctrine = grand_battleplan
 set_grand_doctrine = new_fleet_in_being
@@ -64,48 +85,7 @@ set_grand_doctrine = new_strategic_destruction
 		project = sp:sp_air_radar
 	}
 
-	# ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_socialism long_name = "Partido Comunista de Bolivia" name = "PCB" }
-set_party_name = { ideology = vanguard_socialism long_name = "Partido Obrero Revolucionario" name = "POR" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Movimiento al Socialismo" name = "MAS" }
-set_party_name = { ideology = progressive long_name = "Frente Para la Victoria" name = "FPV" }
-set_party_name = { ideology = centrist long_name = "Comunidad Ciudadana" name = "CC" }
-set_party_name = { ideology = conservative long_name = "Creemos" name = "Creemos" }
-set_party_name = { ideology = reactionary long_name = "Partido Demócrata Cristiano" name = "PDC" }
-set_party_name = { ideology = authoritarianism long_name = "Directorio Civil de Emergencia" name = "DCE" }
-set_party_name = { ideology = autocracy long_name = "Fuerzas Armadas de Bolivia Directorate" name = "FAB" }
-set_party_name = { ideology = absolutism long_name = "Consejo Supremo del Qullasuyu" name = "Qullasuyu" }
-set_party_name = { ideology = ultranationalism long_name = "Falange Socialista Boliviana" name = "FSB" }
-set_party_name = { ideology = fundamentalism long_name = "Unión Juvenil Cruceñista Wing" name = "UJC" }
 
-create_country_leader = { name = "Luis Arce" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Carlos Mesa" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Luis Fernando Camacho" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Evo Morales" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
-create_country_leader = { name = "Chi Hyun Chung" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
-create_country_leader = { name = "Ignacio Mendoza" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Miguel Lora" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "Jeanine Anez Succession" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
-create_country_leader = { name = "General Gerardo Zabala" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Mallku Traditional Regency" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Johnny Fernandez" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Romulo Calvo" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = clerical_fascism }
 
-# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
-		# il governo moderno.
-#set_politics = {
-#	ruling_party = revolutionary_socialism
-#	last_election = "2020.10.18"
-#	election_frequency = 60
-#	elections_allowed = yes
-#}
 
-# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
-		# il governo moderno.
-#set_popularities = {
-#	revolutionary_socialism = 55
-#	centrist = 29
-#	conservative = 14
-#	reactionary = 2
-#}
 

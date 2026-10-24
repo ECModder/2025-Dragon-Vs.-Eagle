@@ -50,6 +50,27 @@
 #   INT - Lotta Comunista / Vanguard-Revolutionary Front.
 #   9 states, capital Genova (Milano once the civil war is won).
 # ============================================================
+# INT is Italy's own revolution: it has cores on all of Italy, the 35
+# states of the Republic (ITA's cores without its claims abroad), so the
+# land it takes during the civil war is national territory at once.
+# Any scope. Also run weekly as a safety net
+# (common/on_actions/DVE_INT_cores_on_actions.txt).
+INT_core_italy_effect = {
+	every_state = {
+		limit = {
+			is_core_of = ITA
+			NOT = { is_core_of = INT }
+			NOT = { state = 1059 } # Monaco
+			NOT = { state = 1065 } # San Marino
+			NOT = { state = 1067 } # Vatican City
+			NOT = { state = 116 }  # Malta
+			NOT = { state = 852 }  # Istria
+		}
+		add_core_of = INT
+	}
+	INT = { set_country_flag = INT_italy_cores }
+}
+
 ITA_cw_spawn_INT_effect = {
 
 	every_owned_state = {
@@ -74,6 +95,7 @@ ITA_cw_spawn_INT_effect = {
 		limit = { country_exists = INT }
 		INT = {
 			DVE_cw_new_faction_setup_effect = yes
+			INT_core_italy_effect = yes
 			if = {
 				limit = { owns_state = 1176 }
 				set_capital = { state = 1176 } # Genoa until the civil war is won
@@ -577,4 +599,5 @@ ITA_civil_war_reset_effect = {
 		remove_core_of = LOM
 		remove_core_of = TYR
 	}
+	INT = { clr_country_flag = INT_italy_cores }
 }

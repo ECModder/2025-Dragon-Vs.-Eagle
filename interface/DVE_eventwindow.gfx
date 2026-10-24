@@ -2,8 +2,9 @@
 # Art in gfx/interface/DVE_events/.
 
 spriteTypes = {
-	# GFX_DVE_event_top, _bottom and _pic_overlay are only used by the old
-	# fallback layout (interface/eventwindow_safe_layout.txt)
+	# country event window: header "EVENT REPORT" and title bar, 581x104
+	# (background of the root window). _bottom and _pic_overlay are only
+	# used by the old layout kept in interface/eventwindow_safe_layout.txt.
 	spriteType = {
 		name = "GFX_DVE_event_top"
 		texturefile = "gfx/interface/DVE_events/event_top.dds"
@@ -31,25 +32,12 @@ spriteTypes = {
 		name = "GFX_DVE_event_minimize"
 		texturefile = "gfx/interface/DVE_events/event_minimize.dds"
 	}
-	# news window: header, picture slot and title bar (background of the
-	# root window); the text section reuses GFX_DVE_event_mid
+	# news window: header "WORLD NEWS", empty screen and title bar, 581x490
+	# (background of the root window). The pictures are whole panels, see
+	# interface/DVE_event_panels.gfx. The text section reuses GFX_DVE_event_mid.
 	spriteType = {
 		name = "GFX_DVE_event_news_top"
 		texturefile = "gfx/interface/DVE_events/event_news_top.dds"
-	}
-	spriteType = {
-		name = "GFX_DVE_event_news_pic_overlay"
-		texturefile = "gfx/interface/DVE_events/event_news_pic_overlay.dds"
-	}
-	# country event window: header, picture slot and title bar (background
-	# of the root window) and the overlay of the picture
-	spriteType = {
-		name = "GFX_DVE_event_top_wide"
-		texturefile = "gfx/interface/DVE_events/event_top_wide.dds"
-	}
-	spriteType = {
-		name = "GFX_DVE_event_pic_overlay_wide"
-		texturefile = "gfx/interface/DVE_events/event_pic_overlay_wide.dds"
 	}
 	# strip of panel drawn by every option (event_option_entry): left of the
 	# button, around it (with a hole for the button), right of it, and the

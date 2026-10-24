@@ -75,15 +75,31 @@ set_grand_doctrine = new_strategic_destruction
 	}
 }
 
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarian_socialism long_name = "Frente Sandinista de Liberación Nacional" name = "FSLN" }
+set_party_name = { ideology = conservative long_name = "Partido Liberal Constitucionalista" name = "PLC" }
+set_party_name = { ideology = centrist long_name = "Ciudadanos por la Libertad (proscrito)" name = "CxL" }
+set_party_name = { ideology = liberal long_name = "Unión Democrática Renovadora (proscrita)" name = "UNAMOS" }
+set_party_name = { ideology = autocracy long_name = "Ejército de Nicaragua" name = "EN" }
+create_country_leader = { name = "Daniel Ortega" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_nationalism }
+create_country_leader = { name = "María Haydée Osuna" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Kitty Monterrey" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Suyen Barahona" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_centrist }
+create_country_leader = { name = "General Julio César Avilés" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1934.11.8"
-	election_frequency = 48
+	ruling_party = authoritarian_socialism
+	last_election = "2021.11.7"
+	election_frequency = 60
 	elections_allowed = no
 }
 set_popularities = {
-	centrist = 30
-	reactionary = 70
+	authoritarian_socialism = 62
+	conservative = 12
+	centrist = 10
+	liberal = 8
+	autocracy = 3
+	reactionary = 3
+	revolutionary_socialism = 2
 }
 
 1939.1.1 = {

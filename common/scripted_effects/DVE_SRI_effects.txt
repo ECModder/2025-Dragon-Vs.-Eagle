@@ -1,0 +1,36 @@
+# Socialist Republic of Italy (SRI) - effects of the focus tree.
+
+# Makes sure the infantry template used by the focus units exists.
+SRI_guard_template_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Guardia di Stato" } }
+			division_template = {
+				name = "Guardia di Stato"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+}
+
+# Cores on every Italian state, same exclusions as INT_core_italy_effect.
+SRI_core_italy_effect = {
+	every_state = {
+		limit = {
+			is_core_of = ITA
+			NOT = { is_core_of = SRI }
+			NOT = { state = 1059 } # Monaco
+			NOT = { state = 1065 } # San Marino
+			NOT = { state = 1067 } # Vatican City
+			NOT = { state = 116 }  # Malta
+			NOT = { state = 852 }  # Istria
+		}
+		add_core_of = SRI
+	}
+}

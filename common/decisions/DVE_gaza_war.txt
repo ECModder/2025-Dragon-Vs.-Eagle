@@ -1,0 +1,274 @@
+# ============================================================
+#   DvE - The Gaza War minigame: decisions
+#   Hamas: survive until 8 November 2026.
+#   Israel: reach 250 Victory Points before then.
+#   Points live in global.gaza_israel_vp (see DVE_gaza_war_effects.txt).
+# ============================================================
+
+# ==================== HAMAS ====================
+
+DVE_gaza_HAM_diplomacy_category = {
+
+	HAM_gaza_condemn_ethics = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 25
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_minus_5
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = -5 } gaza_vp_apply = yes }
+			ISR = { add_war_support = -0.01 }
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	HAM_gaza_humanitarian_aid = {
+		icon = GFX_decision_generic_welfare
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 50
+		days_re_enable = 90
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_minus_6
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = -6 } gaza_vp_apply = yes }
+			set_global_flag = { flag = gaza_aid_pressure days = 60 }
+			custom_effect_tooltip = gaza_tt_aid_pressure
+			add_stability = 0.03
+			add_manpower = 1500
+		}
+		ai_will_do = { base = 10 }
+	}
+}
+
+DVE_gaza_HAM_operations_category = {
+
+	HAM_gaza_plan_next_offensive = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = HAM_gaza_offensive_planned
+			add_timed_idea = { idea = gaza_HAM_offensive_planning days = 120 }
+			add_command_power = 15
+			custom_effect_tooltip = gaza_tt_unlocks_attacks
+		}
+		ai_will_do = { base = 20 }
+	}
+
+	HAM_gaza_defensive_parameters = {
+		icon = GFX_decision_generic_military
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = gaza_HAM_defensive_parameters
+			set_global_flag = gaza_defensive_parameters
+			custom_effect_tooltip = gaza_tt_slow_025
+		}
+		ai_will_do = { base = 15 }
+	}
+
+	HAM_gaza_underground_infrastructure = {
+		icon = GFX_decision_generic_construction
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		available = { NOT = { has_global_flag = gaza_tunnels_active } }
+		cost = 75
+		days_re_enable = 180
+		complete_effect = {
+			set_global_flag = gaza_tunnels_active
+			custom_effect_tooltip = gaza_tt_slow_05_tunnels
+			if = {
+				limit = { 1062 = { is_owned_and_controlled_by = ROOT } }
+				1062 = { add_building_construction = { type = bunker level = 1 province = 13391 instant_build = yes } }
+			}
+		}
+		ai_will_do = { base = 15 }
+	}
+
+	HAM_gaza_desperate_defense = {
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			add_ideas = gaza_HAM_desperate_defense
+			custom_effect_tooltip = gaza_tt_vp_minus_10
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = -10 } gaza_vp_apply = yes }
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	HAM_gaza_attack_idf_outposts = {
+		icon = GFX_decision_border_war
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		available = { has_country_flag = HAM_gaza_offensive_planned }
+		cost = 100
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_minus_15
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = -15 } gaza_vp_apply = yes }
+			army_experience = 10
+			ISR = { add_war_support = -0.02 }
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	HAM_gaza_incursion = {
+		icon = GFX_decision_generic_ignite_civil_war
+		allowed = { original_tag = HAM }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		available = { has_country_flag = HAM_gaza_offensive_planned }
+		cost = 100
+		days_re_enable = 180
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_minus_20
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = -20 } gaza_vp_apply = yes }
+			add_war_support = 0.05
+			ISR = {
+				add_war_support = 0.05
+				add_stability = -0.02
+			}
+		}
+		ai_will_do = { base = 8 }
+	}
+}
+
+# ==================== ISRAEL ====================
+
+DVE_gaza_ISR_diplomacy_category = {
+
+	ISR_gaza_us_backing = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 25
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = gaza_us_backing
+			custom_effect_tooltip = gaza_tt_speed_025
+			add_stability = 0.03
+			add_war_support = 0.02
+		}
+		ai_will_do = { base = 20 }
+	}
+
+	ISR_gaza_hostage_negotiations = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 50
+		days_re_enable = 120
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_plus_5
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 5 } gaza_vp_apply = yes }
+			add_stability = 0.05
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	ISR_gaza_counter_pressure = {
+		icon = GFX_decision_generic_political_rally
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 50
+		days_re_enable = 90
+		complete_effect = {
+			if = {
+				limit = { has_global_flag = gaza_aid_pressure }
+				clr_global_flag = gaza_aid_pressure
+			}
+			custom_effect_tooltip = gaza_tt_clear_pressure
+			custom_effect_tooltip = gaza_tt_vp_plus_4
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 4 } gaza_vp_apply = yes }
+		}
+		ai_will_do = {
+			base = 5
+			modifier = { add = 15 has_global_flag = gaza_aid_pressure }
+		}
+	}
+}
+
+DVE_gaza_ISR_operations_category = {
+
+	ISR_gaza_air_campaign = {
+		icon = GFX_decision_generic_air
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 25
+		days_re_enable = 60
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_plus_6
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 6 } gaza_vp_apply = yes }
+			air_experience = 5
+		}
+		ai_will_do = { base = 10 }
+	}
+
+	ISR_gaza_mobilize_reserves = {
+		icon = GFX_decision_generic_army_support
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			set_global_flag = gaza_reserves_mobilized
+			custom_effect_tooltip = gaza_tt_speed_05
+			add_manpower = 30000
+			add_war_support = 0.03
+		}
+		ai_will_do = { base = 20 }
+	}
+
+	ISR_gaza_clear_tunnels = {
+		icon = GFX_decision_generic_wreckers
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		available = { has_global_flag = gaza_tunnels_active }
+		cost = 75
+		days_re_enable = 120
+		complete_effect = {
+			clr_global_flag = gaza_tunnels_active
+			custom_effect_tooltip = gaza_tt_clear_tunnels
+			custom_effect_tooltip = gaza_tt_vp_plus_8
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 8 } gaza_vp_apply = yes }
+		}
+		ai_will_do = { base = 20 }
+	}
+
+	ISR_gaza_northern_ground_op = {
+		icon = GFX_decision_generic_tank
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = ISR_gaza_north_done
+			custom_effect_tooltip = gaza_tt_vp_plus_20
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 20 } gaza_vp_apply = yes }
+			army_experience = 10
+		}
+		ai_will_do = { base = 15 }
+	}
+
+	ISR_gaza_rafah_operation = {
+		icon = GFX_decision_border_war
+		allowed = { original_tag = ISR }
+		visible = { has_global_flag = gaza_war_active NOT = { has_global_flag = gaza_war_over } }
+		available = { has_country_flag = ISR_gaza_north_done }
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			custom_effect_tooltip = gaza_tt_vp_plus_25
+			hidden_effect = { set_temp_variable = { gaza_vp_delta = 25 } gaza_vp_apply = yes }
+			army_experience = 10
+		}
+		ai_will_do = { base = 15 }
+	}
+}

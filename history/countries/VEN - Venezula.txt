@@ -86,13 +86,36 @@ set_grand_doctrine = new_strategic_destruction
 }
 
 set_convoys = 10
+
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = authoritarian_socialism long_name = "Partido Socialista Unido de Venezuela" name = "PSUV" }
+set_party_name = { ideology = centrist long_name = "Plataforma Unitaria Democrática" name = "PUD" }
+set_party_name = { ideology = conservative long_name = "Vente Venezuela" name = "VV" }
+set_party_name = { ideology = liberal long_name = "Voluntad Popular" name = "VP" }
+set_party_name = { ideology = progressive long_name = "Acción Democrática" name = "AD" }
+set_party_name = { ideology = autocracy long_name = "Fuerza Armada Nacional Bolivariana" name = "FANB" }
+set_party_name = { ideology = vanguard_socialism long_name = "Partido Comunista de Venezuela" name = "PCV" }
+create_country_leader = { name = "Nicolás Maduro" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = populist_socialism }
+create_country_leader = { name = "Edmundo González Urrutia" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "María Corina Machado" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = classical_liberalism }
+create_country_leader = { name = "Leopoldo López" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_liberal }
+create_country_leader = { name = "Henry Ramos Allup" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "General Vladimir Padrino López" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
+create_country_leader = { name = "Óscar Figuera" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = leninist_internationalism }
 set_politics = {
-	ruling_party = reactionary
-	last_election = "1936.1.1"
-	election_frequency = 48
+	ruling_party = authoritarian_socialism
+	last_election = "2024.7.28"
+	election_frequency = 72
 	elections_allowed = no
 }
 set_popularities = {
-	centrist = 5
-	reactionary = 95
+	authoritarian_socialism = 35
+	centrist = 25
+	conservative = 15
+	liberal = 7
+	progressive = 6
+	autocracy = 6
+	vanguard_socialism = 2
+	reactionary = 2
+	revolutionary_socialism = 2
 }

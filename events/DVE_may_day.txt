@@ -1,0 +1,46 @@
+add_namespace = dve_mayday
+add_namespace = dve_mayday_send
+
+# ============================================================
+#   DvE - May Day, every 1 May at 18:00, for every country.
+#   news_event (picture on top); the option gives every country
+#   the popularity shift.
+#   The first one is scheduled at game start in
+#   common/on_actions/DVE_flavor_2025_on_actions.txt; each year
+#   the sender below books the next one, 365 days later (the
+#   game has no leap years).
+# ============================================================
+
+news_event = {
+	id = dve_mayday.1
+	title = dve_mayday.1.t
+	desc = dve_mayday.1.d
+	picture = GFX_news_event_DVE_may_day
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_mayday.1.a
+		DVE_may_day_popularity_effect = yes
+	}
+}
+
+# Sender. Every country has it booked for the same hour: the first one
+# sends the news to all and books next year for all the countries that
+# exist now; the flag (30 days) stops the others.
+country_event = {
+	id = dve_mayday_send.1
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = dve_mayday_sent } }
+			set_global_flag = { flag = dve_mayday_sent days = 30 value = 1 }
+			every_country = {
+				news_event = { id = dve_mayday.1 }
+				country_event = { id = dve_mayday_send.1 days = 365 }
+			}
+		}
+	}
+}

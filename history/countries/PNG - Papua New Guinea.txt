@@ -47,15 +47,28 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
+
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Pangu Pati" name = "Pangu" }
+set_party_name = { ideology = conservative long_name = "People's National Congress" name = "PNC" }
+set_party_name = { ideology = liberal long_name = "National Alliance Party" name = "NA" }
+set_party_name = { ideology = progressive long_name = "Social Democratic Party" name = "SDP" }
+create_country_leader = { name = "James Marape" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Peter O'Neill" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Patrick Pruaitch" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_centrist }
+create_country_leader = { name = "Powes Parkop" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
 set_politics = {
 	ruling_party = centrist
-	last_election = "1936.1.1"
-	election_frequency = 48
+	last_election = "2022.7.9"
+	election_frequency = 60
 	elections_allowed = yes
 }
 set_popularities = {
-	centrist = 98
-	reactionary = 2
+	centrist = 50
+	conservative = 20
+	liberal = 15
+	progressive = 8
+	reactionary = 7
 }
 
 #create_country_leader = {

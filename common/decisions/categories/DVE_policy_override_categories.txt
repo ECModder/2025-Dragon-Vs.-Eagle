@@ -1,7 +1,7 @@
 # ============================================================
 #   DvE - Better Laws and Policies: manual override, 350pp
-#   Visible to any country - every ideology has 11 ideology-locked
-#   law groups that could need overriding.
+#   Debug only: shown after typing "debug" in the console, like
+#   the DVE_debug categories.
 # ============================================================
 
 DVE_policy_override_category = {
@@ -13,5 +13,8 @@ DVE_policy_override_category = {
 
 	allowed = { always = yes }
 
-	visible = { always = yes }
+	visible = {
+		is_ai = no
+		is_debug = yes
+	}
 }

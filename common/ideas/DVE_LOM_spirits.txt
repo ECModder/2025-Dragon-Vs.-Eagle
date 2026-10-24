@@ -1,0 +1,511 @@
+# Padania (LOM) - national spirits of the focus tree (LOM_focus.txt).
+
+ideas = {
+	country = {
+
+		# ---------------- Trunk
+
+		# The Padanian Struggle
+		LOM_padanian_struggle = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				stability_factor = 0.05
+				conscription_factor = 0.10
+			}
+		}
+
+		# A New Italy
+		LOM_new_italy = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				army_org_factor = 0.05
+			}
+		}
+
+		# The Padanian People
+		LOM_padanian_people = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.10
+			}
+		}
+
+		# ---------------- Communists
+
+		# Forced Reindustrialization
+		LOM_forced_reindustrialization = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_industrial_complex_factor = 0.10
+				stability_factor = -0.05
+			}
+		}
+
+		# State Collective Farms
+		LOM_state_collective_farms = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				production_speed_industrial_complex_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		# Central Committee
+		LOM_central_committee = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				drift_defence_factor = 0.20
+			}
+		}
+
+		# Supreme People's Assembly
+		LOM_supreme_peoples_assembly = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				drift_defence_factor = 0.30
+				stability_factor = 0.05
+			}
+		}
+
+		# People's Workers' Army
+		LOM_peoples_workers_army = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.10
+				army_org_factor = 0.05
+			}
+		}
+
+		# Centralized Command
+		LOM_centralized_command = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.10
+				army_org_factor = 0.05
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# ---------------- Lavoro Padano
+
+		# Revitalized Economy
+		LOM_revitalized_economy = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_industrial_complex_factor = 0.10
+			}
+		}
+
+		# Revitalized Periphery
+		LOM_revitalized_periphery = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_industrial_complex_factor = 0.15
+				production_speed_infrastructure_factor = 0.15
+			}
+		}
+
+		# Multiparty Democracy
+		LOM_multiparty_democracy = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_gain = 0.10
+			}
+		}
+
+		# Centralized Federal System
+		LOM_centralized_federal_system = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_factor = 0.10
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Ministry of Defence
+		LOM_ministry_of_defence = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				experience_gain_army_factor = 0.10
+				army_org_factor = 0.05
+			}
+		}
+
+		# Defending Padanian Democracy
+		LOM_padanian_democracy_defence = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				experience_gain_army_factor = 0.10
+				army_org_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+
+		# ---------------- Forza Padania
+
+		# Private Economy
+		LOM_private_economy = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.10
+			}
+		}
+
+		# Reduced Public Intervention
+		LOM_reduced_public_intervention = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				production_speed_buildings_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		# Regionalist Democracy
+		LOM_regionalist_democracy = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.10
+			}
+		}
+
+		# Localist Federal System
+		LOM_localist_federal_system = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_factor = 0.10
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Local-Level Defense
+		LOM_local_level_defence = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				dig_in_speed_factor = 0.10
+			}
+		}
+
+		# Defending Padanian Liberty
+		LOM_padanian_liberty_defence = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.10
+				dig_in_speed_factor = 0.15
+				experience_gain_army_factor = 0.05
+			}
+		}
+
+		# ---------------- Lega
+
+		# Self-Employed Economy
+		LOM_self_employed_economy = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_industrial_complex_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		# Low Tax Pressure for Companies
+		LOM_low_corporate_taxes = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				production_speed_industrial_complex_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		# Presidentialist and Federalist Republic
+		LOM_presidential_federal_republic = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# Localist Presidential System
+		LOM_localist_presidential_system = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.10
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# National Defense Committee
+		LOM_national_defence_committee = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				experience_gain_army_factor = 0.10
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# Defense of the North
+		LOM_defence_of_the_north = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.10
+				experience_gain_army_factor = 0.10
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# ---------------- Bossi
+
+		# Shopkeepers First
+		LOM_shopkeepers_first = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_industrial_complex_factor = 0.10
+			}
+		}
+
+		# Finances Small Businesses
+		LOM_small_business_finance = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_industrial_complex_factor = 0.10
+				industrial_capacity_factory = 0.10
+			}
+		}
+
+		# Federalism and Devolution
+		LOM_federalism_and_devolution = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.10
+			}
+		}
+
+		# Less Immigration, More Security
+		LOM_less_immigration_more_security = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_factor = 0.10
+				drift_defence_factor = 0.20
+			}
+		}
+
+		# Padanian Professional Army
+		LOM_padanian_professional_army = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.10
+				conscription_factor = -0.05
+			}
+		}
+
+		# Sovereign Padanian Army
+		LOM_sovereign_padanian_army = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.10
+				army_attack_factor = 0.05
+				war_support_factor = 0.05
+				conscription_factor = -0.05
+			}
+		}
+
+		# ---------------- Unione Nazionalista Padana
+
+		# Public Sector Serving the Private
+		LOM_public_serving_private = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_arms_factory_factor = 0.10
+			}
+		}
+
+		# Industrial Self-Sufficiency
+		LOM_industrial_self_sufficiency = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				production_speed_arms_factory_factor = 0.10
+				local_resources_factor = 0.10
+			}
+		}
+
+		# Zero Immigration
+		LOM_zero_immigration = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.20
+			}
+		}
+
+		# Hardline Catholics and Traditionalists
+		LOM_catholic_traditionalism = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.30
+				political_power_factor = 0.10
+			}
+		}
+
+		# National Army
+		LOM_national_army = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.10
+				army_org_factor = 0.05
+			}
+		}
+
+		# Defense of the Padanian Nation
+		LOM_padanian_nation_defence = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.15
+				army_org_factor = 0.05
+				army_defence_factor = 0.05
+			}
+		}
+	}
+}

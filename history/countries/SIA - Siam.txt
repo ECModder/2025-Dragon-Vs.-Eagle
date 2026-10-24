@@ -144,14 +144,34 @@ set_grand_doctrine = new_fleet_in_being
 	}
 }
 
-
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Pheu Thai Party" name = "PTP" }
+set_party_name = { ideology = liberal long_name = "People's Party" name = "PP" }
+set_party_name = { ideology = conservative long_name = "Bhumjaithai Party" name = "BJT" }
+set_party_name = { ideology = reactionary long_name = "United Thai Nation Party" name = "UTN" }
+set_party_name = { ideology = authoritarianism long_name = "Palang Pracharath Party" name = "PPRP" }
+set_party_name = { ideology = absolutism long_name = "Royal House of Chakri" name = "Chakri" }
+set_party_name = { ideology = autocracy long_name = "Royal Thai Army" name = "RTA" }
+create_country_leader = { name = "Paetongtarn Shinawatra" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Natthaphong Ruengpanyawut" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_liberal }
+create_country_leader = { name = "Anutin Charnvirakul" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = classical_populism }
+create_country_leader = { name = "Pirapan Salirathavibhaga" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_democracy }
+create_country_leader = { name = "Prawit Wongsuwan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = guided_democracy }
+create_country_leader = { name = "Maha Vajiralongkorn" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = monarchism }
+create_country_leader = { name = "General Pana Klaewblaudtuk" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
 	ruling_party = centrist
-	last_election = "1936.1.1"
+	last_election = "2023.5.14"
 	election_frequency = 48
-	elections_allowed = no
+	elections_allowed = yes
 }
 set_popularities = {
-	reactionary = 20
-	centrist = 80
+	liberal = 36
+	centrist = 28
+	conservative = 14
+	reactionary = 9
+	authoritarianism = 5
+	absolutism = 4
+	autocracy = 2
+	progressive = 2
 }

@@ -1,0 +1,96 @@
+add_namespace = gaza_war
+
+# ============================================================
+#   DvE - The Gaza War minigame: events
+#   .1   Israel reaches 250 points (to Israel)
+#   .3   8 November 2026, Hamas still standing (to Israel)
+#   .4   8 November 2026, Hamas still standing (to Hamas)
+#   .99  manual start (console)
+#   .100 weekly tick (hidden, re-fires itself every 7 days)
+#   Every ending event closes the minigame itself (gaza_war_over),
+#   so they also work when fired from the console.
+# ============================================================
+
+country_event = {
+	id = gaza_war.1
+	title = gaza_war.1.t
+	desc = gaza_war.1.d
+	picture = GFX_gaza_event_israel
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = {
+			set_global_flag = gaza_war_over
+			set_global_flag = gaza_war_israel_won
+			if = {
+				limit = { country_exists = HAM }
+				annex_country = { target = HAM transfer_troops = no }
+			}
+		}
+	}
+
+	option = {
+		name = gaza_war.1.a
+		custom_effect_tooltip = gaza_tt_israel_annexes
+		add_timed_idea = { idea = gaza_ISR_victory days = 365 }
+	}
+}
+
+country_event = {
+	id = gaza_war.3
+	title = gaza_war.3.t
+	desc = gaza_war.3.d
+	picture = GFX_gaza_event_ceasefire
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { gaza_war_hamas_survives = yes }
+	}
+
+	option = {
+		name = gaza_war.3.a
+		add_timed_idea = { idea = gaza_ISR_stalemate days = 365 }
+	}
+}
+
+country_event = {
+	id = gaza_war.4
+	title = gaza_war.4.t
+	desc = gaza_war.4.d
+	picture = GFX_gaza_event_hamas
+	is_triggered_only = yes
+
+	immediate = {
+		hidden_effect = { gaza_war_hamas_survives = yes }
+	}
+
+	option = {
+		name = gaza_war.4.a
+		add_timed_idea = { idea = gaza_HAM_endured days = 365 }
+	}
+}
+
+# manual start for saves made before the minigame existed: "event gaza_war.99 ISR"
+country_event = {
+	id = gaza_war.99
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		gaza_war_setup = yes
+	}
+}
+
+country_event = {
+	id = gaza_war.100
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		gaza_war_weekly_effect = yes
+		if = {
+			limit = { NOT = { has_global_flag = gaza_war_over } }
+			country_event = { id = gaza_war.100 days = 7 }
+		}
+	}
+}

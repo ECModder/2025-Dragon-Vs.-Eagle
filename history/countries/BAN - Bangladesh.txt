@@ -48,44 +48,43 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
-# ==================== CUSTOM DVE MOD INJECTION ====================
-set_party_name = { ideology = totalitarian_socialism long_name = "Bangladesher Samyabadi Dal" name = "BSD" }
-set_party_name = { ideology = vanguard_socialism long_name = "Bangladesh Kommunist Party" name = "CPB" }
-set_party_name = { ideology = revolutionary_socialism long_name = "Jatiya Samajtantrik Dal" name = "JSD" }
-set_party_name = { ideology = progressive long_name = "Bangladesh Awami League" name = "AL" }
-set_party_name = { ideology = centrist long_name = "Interim National Reform Committee" name = "INRC" }
-set_party_name = { ideology = conservative long_name = "Bangladesh Jatiotabadi Dal" name = "BNP" }
-set_party_name = { ideology = reactionary long_name = "Jatiya Party" name = "JP" }
-set_party_name = { ideology = authoritarianism long_name = "Civil-Military Caretaker Directorate" name = "Caretaker" }
-set_party_name = { ideology = autocracy long_name = "Bangladesh Armed Forces Command" name = "ArmedForces" }
-set_party_name = { ideology = absolutism long_name = "Nawab House of Dhaka Restoration" name = "Nawab" }
-set_party_name = { ideology = ultranationalism long_name = "Amar Bangladesh Party" name = "AB" }
+
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Interim Government of Bangladesh" name = "IG" }
+set_party_name = { ideology = conservative long_name = "Bangladesh Nationalist Party" name = "BNP" }
 set_party_name = { ideology = fundamentalism long_name = "Bangladesh Jamaat-e-Islami" name = "Jamaat" }
-
-create_country_leader = { name = "Muhammad Yunus" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_liberal }
-create_country_leader = { name = "Tarique Rahman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
-create_country_leader = { name = "Sheikh Hasina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
-create_country_leader = { name = "Shafiqur Rahman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
-create_country_leader = { name = "G.M. Quader" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
-create_country_leader = { name = "Hasanul Haq Inu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
-create_country_leader = { name = "Shah Alam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
-create_country_leader = { name = "Dilip Barua" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
-create_country_leader = { name = "General Waker-uz-Zaman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = military_junta }
-create_country_leader = { name = "Khandakar Solaiman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
-create_country_leader = { name = "Nawab Khwaja Habibullah Remnant" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-create_country_leader = { name = "Zonayed Saki" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-
+set_party_name = { ideology = progressive long_name = "Bangladesh Awami League" name = "AL" }
+set_party_name = { ideology = reactionary long_name = "Jatiya Party (Ershad)" name = "JP" }
+set_party_name = { ideology = liberal long_name = "Gono Odhikar Parishad" name = "GOP" }
+set_party_name = { ideology = revolutionary_socialism long_name = "Jatiya Samajtantrik Dal" name = "JSD" }
+set_party_name = { ideology = vanguard_socialism long_name = "Communist Party of Bangladesh" name = "CPB" }
+set_party_name = { ideology = totalitarian_socialism long_name = "Bangladesher Samyabadi Dal (Marxbadi-Leninbadi)" name = "BSD-ML" }
+set_party_name = { ideology = autocracy long_name = "Bangladesh Armed Forces" name = "BAF" }
+create_country_leader = { name = "Muhammad Yunus" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = centrist_populism }
+create_country_leader = { name = "Tarique Rahman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = conservatism }
+create_country_leader = { name = "Shafiqur Rahman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = islamic_fundamentalism }
+create_country_leader = { name = "Sheikh Hasina" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = social_democracy }
+create_country_leader = { name = "G.M. Quader" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = paternalism }
+create_country_leader = { name = "Nurul Haque Nur" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = left_populism }
+create_country_leader = { name = "Hasanul Haq Inu" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = socialism }
+create_country_leader = { name = "Mohammad Shah Alam" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = leninist_internationalism }
+create_country_leader = { name = "Dilip Barua" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = stalinism }
+create_country_leader = { name = "General Waker-uz-Zaman" desc = "POLITICS_LEADER_DESC" picture = "" expire = "2065.1.1" ideology = military_junta }
 set_politics = {
 	ruling_party = centrist
 	last_election = "2024.1.7"
 	election_frequency = 60
-	elections_allowed = yes
+	elections_allowed = no
 }
-
 set_popularities = {
-	centrist = 40
-	conservative = 30
-	fundamentalism = 15
-	progressive = 10
+	conservative = 33
+	centrist = 25
+	fundamentalism = 16
+	progressive = 12
 	reactionary = 5
+	liberal = 4
+	revolutionary_socialism = 2
+	vanguard_socialism = 1
+	totalitarian_socialism = 1
+	autocracy = 1
 }

@@ -16,7 +16,6 @@ set_party_name = { ideology = absolutism long_name = "al-Usra al-Hashimiya" name
 set_party_name = { ideology = ultranationalism long_name = "al-Haraka al-Wataniya al-Urduniya" name = "Wataniya" }
 set_party_name = { ideology = fundamentalism long_name = "Wizarat al-Awqaf" name = "Awqaf" }
 
-create_country_leader = { name = "King Abdullah II" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
 create_country_leader = { name = "Jafar Hassan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = conservatism }
 create_country_leader = { name = "Crown Prince Hussein" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchic_monarchy }
 create_country_leader = { name = "Ahmad al-Zarqan" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = islamic_fundamentalism }
@@ -54,8 +53,6 @@ set_technology = {
 	infantry_weapons = 1
 }
 
-recruit_character = JOR_abdullah
-
 IF = {
 	limit = {
 		has_dlc = "Battle for the Bosporus"
@@ -74,14 +71,14 @@ if = {
 
 set_convoys = 5
 
+create_country_leader = { name = "King Abdullah II" desc = "POLITICS_LEADER_DESC" picture = "GFX_portrait_jor_abdullah" expire = "1965.1.1" ideology = absolute_monarchy }
+
 # TODO_GoE - Add DLC checks
 
 
 
 # DvE: Abdullah guida anche il partito di governo (absolutism), che prima
 # non aveva nessun leader.
-create_country_leader = { name = "Abdullah" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = absolute_monarchy }
-
 # DvE: disattivato - sovrascriveva il governo del 2025.
 #set_politics = {
 #	ruling_party = absolutism

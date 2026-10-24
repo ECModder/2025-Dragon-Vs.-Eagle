@@ -1,8 +1,9 @@
 # ============================================================
 #   DvE - SUPER EVENTS
 #   A super event is a number: 1 INT, 2 SRB, 3 SOV, 4 RCA win
-#   their civil war. Each fires once, for every human player,
-#   with its own music (music/dve_superevents).
+#   their civil war, 5 the 2nd Romanian Revolution. Each fires
+#   once, for every human player; 1-4 with their own music
+#   (music/dve_superevents).
 #   To add one: a frame in superevent_images.dds (and noOfFrames
 #   in DVE_superevent.gfx), the five DVE_SE_<n>_* loc keys, a
 #   block in each of the five defined_text and a wrapper like
@@ -58,5 +59,16 @@ DVE_superevent_RCA_victory_effect = {
 		set_temp_variable = { dve_superevent_id = 4 }
 		DVE_superevent_fire_effect = yes
 		play_song = "dve_se_rca_victory"
+	}
+}
+
+# The 2nd Romanian Revolution: 2025.05.18 12:00, scheduled in
+# common/on_actions/DVE_flavor_2025_on_actions.txt. No music.
+DVE_superevent_ROM_revolution_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_superevent_ROM_revolution } }
+		set_global_flag = DVE_superevent_ROM_revolution
+		set_temp_variable = { dve_superevent_id = 5 }
+		DVE_superevent_fire_effect = yes
 	}
 }

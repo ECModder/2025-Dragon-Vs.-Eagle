@@ -1,0 +1,17 @@
+# DvE - INT has cores on all of Italy (INT_core_italy_effect, in
+# common/scripted_effects/DVE_ITA_civil_war_effects.txt). The effect runs
+# when INT is born; this is the safety net for saves where INT already
+# exists and for any other way it may come to life.
+on_actions = {
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					tag = INT
+					NOT = { has_country_flag = INT_italy_cores }
+				}
+				INT_core_italy_effect = yes
+			}
+		}
+	}
+}
