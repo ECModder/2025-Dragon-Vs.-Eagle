@@ -3,7 +3,9 @@
 #
 #   Two waves, matching the Italian civil war's delayed-event
 #   pattern (DVE_ITA_civil_war_effects.txt):
-#     Day 1: FRS, CMU and COR break away. FRA keeps the rest.
+#     Day 1: FRS, CMU and COR break away. FRA keeps the rest and
+#            moves its capital to Versailles (Ile de France, 16)
+#            because Paris goes to the Communards.
 #     Day 7: FRS collapses (BRY takes Brittany, FAC takes the
 #            other 9 states), FSR and ANF carve territory out of
 #            FRA, and GER occupies Alsace-Lorraine.
@@ -12,9 +14,9 @@
 #   state ever assigned to them) - their history/country files
 #   stay registered but unused.
 #
-#   All 33 mainland+overseas states, verified with no gaps or
+#   All 35 mainland+overseas states, verified with no gaps or
 #   overlaps across both waves:
-#     Day 1  FRS 10  CMU 2  COR 1  FRA 20 (incl. 7 overseas)
+#     Day 1  FRS 10  CMU 4  COR 1  FRA 20 (incl. 7 overseas)
 #     Day 7  MOF 1(from FRA)  BRY 1(from FRS)  FAC 9(from FRS)
 #            FSR 2(from FRA)  ANF 3(from FRA)  GER 1(from FRA)
 #            FRS 0 (dissolved)  FRA 13 (6 metropolitan + 7 overseas)
@@ -59,16 +61,24 @@ FRA_cw_spawn_CMU_effect = {
 			OR = {
 				state = 18  # Champagne
 				state = 33  # Centre Sud
+				state = 1197  # Paris
+				state = 1198  # Marseille
 			}
 		}
 		add_core_of = CMU
 		CMU = { transfer_state = PREV }
 	}
+	# Paris went to the Communards: the government moves to Versailles.
+	if = {
+		limit = { NOT = { owns_state = 1197 } owns_state = 16 }
+		set_capital = { state = 16 }
+	}
 	if = {
 		limit = { country_exists = CMU }
 		CMU = {
 			DVE_cw_new_faction_setup_effect = yes
-			if = { limit = { owns_state = 18 } set_capital = { state = 18 } }
+			if = { limit = { owns_state = 1197 } set_capital = { state = 1197 } }
+			else_if = { limit = { owns_state = 18 } set_capital = { state = 18 } }
 		}
 	}
 }
@@ -572,5 +582,11 @@ FRA_civil_war_reset_effect = {
 		remove_core_of = FAC
 		remove_core_of = FSR
 		remove_core_of = ANF
+	}
+
+	# back to Paris
+	if = {
+		limit = { owns_state = 1197 }
+		set_capital = { state = 1197 }
 	}
 }
