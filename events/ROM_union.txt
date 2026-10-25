@@ -1,0 +1,78 @@
+add_namespace = ROM_union
+
+country_event = {
+	id = ROM_union.1
+	title = ROM_union.1.t
+	desc = ROM_union.1.d
+	picture = GFX_report_event_generic_handshake
+	is_triggered_only = yes
+	
+	option = {
+		name = ROM_union.1.a
+		ai_chance = {
+			base = 15
+			modifier = { add = 25 FROM = { has_country_flag = ROM_moldova_partnership } }
+			modifier = { add = 20 FROM = { has_country_flag = ROM_metropolis_of_bessarabia } }
+			modifier = { add = 15 FROM = { has_country_flag = ROM_crown_union_offer } }
+			modifier = { add = 15 has_opinion = { target = FROM value > 49 } }
+			modifier = { add = 10 FROM = { has_country_flag = ROM_junta_union_offer } }
+			modifier = { factor = 0.5 FROM = { has_government = ultranationalism } }
+		}
+		FROM = { country_event = { id = ROM_union.2} }
+	}
+	option = {
+		name = ROM_union.1.b
+		ai_chance = { base = 60 }
+		FROM = { country_event = { id = ROM_union.3} }
+	}
+}
+
+country_event = {
+	id = ROM_union.2
+	title = ROM_union.2.t
+	desc = ROM_union.2.d
+	picture = GFX_report_event_generic_handshake
+	is_triggered_only = yes
+	option = {
+		name = ROM_union.2.a
+		if = {
+			limit = { country_exists = MOL }
+			annex_country = { target = MOL transfer_troops = yes }
+		}
+		set_country_flag = ROM_moldova_united
+		add_ideas = ROM_union_integration_idea
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.2 days = 1 } } }
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+	id = ROM_union.3
+	title = ROM_union.3.t
+	desc = ROM_union.3.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	option = {
+		name = ROM_union.3.a
+		set_country_flag = ROM_union_refused
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.3 days = 1 } } }
+		if = {
+			limit = { country_exists = MOL }
+			MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_union_partner } }
+		}
+		add_political_power = 25
+	}
+	option = {
+		name = ROM_union.3.b
+		trigger = { has_country_flag = ROM_union_by_force_allowed }
+		set_country_flag = ROM_union_refused
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.3 days = 1 } } }
+		add_war_support = 0.05
+		if = {
+			limit = { country_exists = MOL }
+			create_wargoal = { type = annex_everything target = MOL }
+			MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_union_pressure } }
+		}
+	}
+}

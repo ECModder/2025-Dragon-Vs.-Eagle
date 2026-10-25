@@ -1,0 +1,984 @@
+ROM_corruption_category = {
+	ROM_corr_audit_contracts = {
+		icon = GFX_decision_generic_political_reform
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_10_tt
+				check_variable = { ROM_corruption > 9 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+			add_timed_idea = { idea = ROM_contracts_frozen_idea days = 60 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_replace_officials = {
+		icon = GFX_decision_generic_arrest
+		cost = 75
+		days_re_enable = 240
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_20_tt
+				check_variable = { ROM_corruption > 19 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m5_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -5 }
+				ROM_corruption_apply = yes
+			}
+			add_stability = -0.02
+			custom_effect_tooltip = ROM_corr_maj_m2_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = -2 }
+					ROM_update_majority = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_investigate_network = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 100
+		days_re_enable = 365
+		days_remove = 90
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_30_tt
+				check_variable = { ROM_corruption > 29 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_investigation_tt
+		}
+		remove_effect = {
+			random_list = {
+				60 = { country_event = { id = ROM_corrupt.5} }
+				40 = {
+					set_temp_variable = { rom_corr_delta = -3 }
+					ROM_corruption_apply = yes
+					country_event = { id = ROM_corrupt.16}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_donations = {
+		icon = GFX_decision_generic_political_address
+		cost = 50
+		days_re_enable = 270
+		visible = {
+			has_variable = ROM_corruption
+			NOT = {
+				has_country_flag = ROM_military_path
+				has_country_flag = ROM_dracula_path
+			}
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_10_tt
+				check_variable = { ROM_corruption > 9 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -4 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_maj_m2_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = -2 }
+					ROM_update_majority = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reform_audit = {
+		icon = GFX_decision_generic_political_reform
+		cost = 100
+		fire_only_once = yes
+		days_remove = 120
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+			NOT = { has_country_flag = ROM_corr_audit }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_below_70_tt
+				check_variable = { ROM_corruption < 70 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_reform_120_tt
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_audit
+			custom_effect_tooltip = ROM_corr_m4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -4 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reform_eproc = {
+		icon = GFX_decision_generic_industry
+		cost = 100
+		fire_only_once = yes
+		days_remove = 150
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+			NOT = { has_country_flag = ROM_corr_eproc }
+		}
+		available = {
+			has_country_flag = ROM_corr_audit
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_below_65_tt
+				check_variable = { ROM_corruption < 65 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_reform_150_tt
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_eproc
+			custom_effect_tooltip = ROM_corr_m5_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -5 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reform_whistle = {
+		icon = GFX_decision_generic_civil_support
+		cost = 75
+		fire_only_once = yes
+		days_remove = 90
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+			NOT = { has_country_flag = ROM_corr_whistle }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_below_75_tt
+				check_variable = { ROM_corruption < 75 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_reform_90_tt
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_whistle
+			custom_effect_tooltip = ROM_corr_m3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -3 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reform_civil = {
+		icon = GFX_decision_generic_political_reform
+		cost = 150
+		fire_only_once = yes
+		days_remove = 180
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+			NOT = { has_country_flag = ROM_corr_civil_service }
+		}
+		available = {
+			has_country_flag = ROM_corr_audit
+			has_country_flag = ROM_corr_eproc
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_below_60_tt
+				check_variable = { ROM_corruption < 60 }
+			}
+			has_stability > 0.4
+		}
+		complete_effect = {
+			add_timed_idea = { idea = ROM_civil_service_transition_idea days = 180 }
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_civil_service
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reform_agency = {
+		icon = GFX_decision_generic_arrest
+		cost = 125
+		fire_only_once = yes
+		days_remove = 120
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_corr_agency }
+			NOT = { has_country_flag = ROM_Nicusor_Dan_wins }
+			NOT = { has_country_flag = ROM_military_path }
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			has_country_flag = ROM_corr_whistle
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_below_60_tt
+				check_variable = { ROM_corruption < 60 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_reform_120_tt
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_agency
+			custom_effect_tooltip = ROM_corr_m5_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -5 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_maj_m4_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = -4 }
+					ROM_update_majority = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_reward_supporters = {
+		icon = GFX_decision_generic_political_rally
+		cost = 0
+		days_re_enable = 120
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		complete_effect = {
+			add_political_power = 60
+			custom_effect_tooltip = ROM_corr_p6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_steer_contracts = {
+		icon = GFX_decision_generic_construction
+		cost = 25
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		complete_effect = {
+			add_timed_idea = { idea = ROM_friendly_contractors_idea days = 180 }
+			custom_effect_tooltip = ROM_corr_maj_p3_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = 3 }
+					ROM_update_majority = yes
+				}
+			}
+			custom_effect_tooltip = ROM_corr_p8_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 8 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_bury_investigation = {
+		icon = GFX_decision_generic_confiscation
+		cost = 25
+		days_re_enable = 150
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_20_tt
+				check_variable = { ROM_corruption > 19 }
+			}
+		}
+		complete_effect = {
+			add_stability = 0.02
+			custom_effect_tooltip = ROM_corr_p5_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 5 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_buried_tt
+			hidden_effect = {
+				add_to_variable = { ROM_corr_buried = 1 }
+				if = {
+					limit = { has_country_flag = ROM_corr_whistle }
+					random = { chance = 40 country_event = { id = ROM_corrupt.7} }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_discretionary_fund = {
+		icon = GFX_decision_generic_political_address
+		cost = 0
+		days_re_enable = 365
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+			NOT = { has_country_flag = ROM_corr_audit }
+		}
+		complete_effect = {
+			add_political_power = 80
+			add_stability = 0.02
+			custom_effect_tooltip = ROM_corr_p10_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 10 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_hidden_fund_tt
+			hidden_effect = { add_to_variable = { ROM_corr_hidden_fund = 1 } }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_media_spin = {
+		icon = GFX_decision_generic_speech
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_20_tt
+				check_variable = { ROM_corruption > 19 }
+			}
+		}
+		complete_effect = {
+			add_stability = 0.03
+			custom_effect_tooltip = ROM_corr_p4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 4 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_dan_asset_registry = {
+		icon = GFX_decision_generic_political_reform
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_Nicusor_Dan_wins
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_maj_m3_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = -3 }
+					ROM_update_majority = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_dan_lift_immunity = {
+		icon = GFX_decision_generic_arrest
+		cost = 120
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_Nicusor_Dan_wins
+		}
+		available = {
+			has_country_flag = ROM_corr_agency
+			check_variable = { ROM_majority > 44 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m10_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -10 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_maj_m8_tt
+			hidden_effect = {
+				if = {
+					limit = { has_variable = ROM_majority }
+					add_to_variable = { ROM_majority = -8 }
+					ROM_update_majority = yes
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_ant_state_control = {
+		icon = GFX_decision_generic_military
+		cost = 100
+		fire_only_once = yes
+		days_remove = 90
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_Crin_Antonescu_wins
+			NOT = { has_country_flag = ROM_corr_state_control }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_reform_90_tt
+		}
+		remove_effect = {
+			set_country_flag = ROM_corr_state_control
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+			hidden_effect = {
+				add_to_variable = { ROM_consent = -3 }
+				ROM_update_consent = yes
+			}
+			custom_effect_tooltip = ROM_consent_m3_tt
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_ant_procurement_review = {
+		icon = GFX_decision_generic_army_support
+		cost = 75
+		days_re_enable = 240
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_Crin_Antonescu_wins
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_15_tt
+				check_variable = { ROM_corruption > 14 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+			add_timed_idea = { idea = ROM_procurement_frozen_idea days = 90 }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_ant_offsets = {
+		icon = GFX_decision_generic_tank
+		cost = 0
+		days_re_enable = 365
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_Crin_Antonescu_wins
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 150 producer = ROM }
+			army_experience = 10
+			custom_effect_tooltip = ROM_corr_p10_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 10 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_corr_offsets_tt
+			hidden_effect = { add_to_variable = { ROM_corr_offsets = 1 } }
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_sim_loyalty_commission = {
+		icon = GFX_decision_generic_political_address
+		cost = 75
+		days_re_enable = 300
+		visible = {
+			has_variable = ROM_corruption
+			OR = { has_country_flag = ROM_George_Simion_wins has_country_flag = ROM_Gheorghe_Simion_wins }
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_15_tt
+				check_variable = { ROM_corruption > 14 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_legitimacy_p4_tt
+			custom_effect_tooltip = ROM_faction_machine_m10_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 4 }
+				ROM_update_legitimacy = yes
+				add_to_variable = { ROM_faction_machine = -10 }
+				ROM_update_factions = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_sim_county_barons = {
+		icon = GFX_decision_generic_political_rally
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			OR = { has_country_flag = ROM_George_Simion_wins has_country_flag = ROM_Gheorghe_Simion_wins }
+		}
+		complete_effect = {
+			add_political_power = 50
+			custom_effect_tooltip = ROM_corr_p7_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 7 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_faction_machine_p10_tt
+			custom_effect_tooltip = ROM_legitimacy_m2_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_machine = 10 }
+				ROM_update_factions = yes
+				add_to_variable = { ROM_legitimacy = -2 }
+				ROM_update_legitimacy = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_sim_citizens_audit = {
+		icon = GFX_decision_generic_speech
+		cost = 100
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			OR = { has_country_flag = ROM_George_Simion_wins has_country_flag = ROM_Gheorghe_Simion_wins }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -4 }
+				ROM_corruption_apply = yes
+			}
+			add_stability = -0.02
+			custom_effect_tooltip = ROM_legitimacy_p6_tt
+			custom_effect_tooltip = ROM_faction_radicals_p5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 6 }
+				ROM_update_legitimacy = yes
+				add_to_variable = { ROM_faction_radicals = 5 }
+				ROM_update_factions = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_crown_audit_chamber = {
+		icon = GFX_decision_generic_political_reform
+		cost = 100
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_monarchy_path
+			NOT = { has_country_flag = ROM_corr_audit }
+		}
+		complete_effect = {
+			set_country_flag = ROM_corr_audit
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_crown_court_favours = {
+		icon = GFX_decision_generic_political_rally
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_monarchy_path
+		}
+		complete_effect = {
+			add_political_power = 50
+			add_stability = 0.01
+			custom_effect_tooltip = ROM_corr_p6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_junta_tribunals = {
+		icon = GFX_decision_generic_arrest
+		cost = 75
+		days_re_enable = 240
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_military_path
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_15_tt
+				check_variable = { ROM_corruption > 14 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m8_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -8 }
+				ROM_corruption_apply = yes
+			}
+			add_stability = -0.03
+			add_war_support = -0.02
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_junta_enterprises = {
+		icon = GFX_decision_generic_army_support
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_military_path
+		}
+		complete_effect = {
+			add_political_power = 40
+			army_experience = 10
+			custom_effect_tooltip = ROM_corr_p8_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 8 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_church_synod_ethics = {
+		icon = GFX_decision_generic_political_reform
+		cost = 100
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_orthodox_path
+			NOT = { has_country_flag = ROM_corr_church_ethics }
+		}
+		complete_effect = {
+			set_country_flag = ROM_corr_church_ethics
+			custom_effect_tooltip = ROM_corr_m6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_church_parish_funds = {
+		icon = GFX_decision_generic_welfare
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_orthodox_path
+		}
+		complete_effect = {
+			add_stability = 0.03
+			custom_effect_tooltip = ROM_corr_p6_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 6 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_crt_integrity_pledge = {
+		icon = GFX_decision_generic_political_address
+		cost = 25
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_wait
+			NOT = { has_country_flag = ROM_dracula_path }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -3 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_drac_ledger = {
+		icon = GFX_decision_generic_arrest
+		cost = 50
+		days_re_enable = 240
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_dracula_path
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_corr_above_10_tt
+				check_variable = { ROM_corruption > 9 }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_corr_m12_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -12 }
+				ROM_corruption_apply = yes
+			}
+			add_stability = -0.02
+			custom_effect_tooltip = ROM_dread_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 8 }
+				ROM_update_dread = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+
+	ROM_corr_drac_old_families = {
+		icon = GFX_decision_generic_political_rally
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_dracula_path
+		}
+		complete_effect = {
+			add_political_power = 60
+			custom_effect_tooltip = ROM_corr_p8_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 8 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption > 44 } }
+			modifier = { factor = 0.3 check_variable = { ROM_corruption > 29 } }
+		}
+	}
+
+	ROM_corr_drac_blood_oath = {
+		icon = GFX_decision_generic_military
+		cost = 100
+		fire_only_once = yes
+		visible = {
+			has_variable = ROM_corruption
+			has_country_flag = ROM_dracula_path
+			NOT = { has_country_flag = ROM_corr_blood_oath }
+		}
+		available = {
+			has_country_flag = ROM_drac_voivode_returned
+		}
+		complete_effect = {
+			set_country_flag = ROM_corr_blood_oath
+			custom_effect_tooltip = ROM_corr_m8_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -8 }
+				ROM_corruption_apply = yes
+			}
+			custom_effect_tooltip = ROM_dread_p10_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 10 }
+				ROM_update_dread = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_corruption < 25 } }
+			modifier = { factor = 3 check_variable = { ROM_corruption > 49 } }
+		}
+	}
+}

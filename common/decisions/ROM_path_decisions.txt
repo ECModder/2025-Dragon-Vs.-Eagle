@@ -1,0 +1,378 @@
+ROM_movement_category = {
+	ROM_sim_rally = {
+		icon = GFX_decision_generic_political_rally
+		cost = 50
+		days_re_enable = 120
+		visible = {
+			has_variable = ROM_legitimacy
+			has_country_flag = ROM_sim_rallies_unlocked
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_legitimacy_p5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 5 }
+				ROM_update_legitimacy = yes
+			}
+			custom_effect_tooltip = ROM_faction_radicals_p4_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_radicals = 4 }
+				ROM_update_factions = yes
+			}
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 check_variable = { ROM_legitimacy < 40 } }
+		}
+	}
+
+	ROM_sim_diaspora_tour = {
+		icon = GFX_decision_generic_speech
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_legitimacy
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_legitimacy_p4_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 4 }
+				ROM_update_legitimacy = yes
+			}
+			custom_effect_tooltip = ROM_faction_moderates_p3_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_moderates = 3 }
+				ROM_update_factions = yes
+			}
+			add_manpower = 3000
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_sim_promote_moderates = {
+		icon = GFX_decision_generic_political_address
+		cost = 75
+		days_re_enable = 150
+		visible = {
+			has_variable = ROM_legitimacy
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_faction_moderates_p10_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_moderates = 10 }
+				ROM_update_factions = yes
+			}
+			custom_effect_tooltip = ROM_legitimacy_m1_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = -1 }
+				ROM_update_legitimacy = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_sim_promote_radicals = {
+		icon = GFX_decision_generic_nationalism
+		cost = 75
+		days_re_enable = 150
+		visible = {
+			has_variable = ROM_legitimacy
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_faction_radicals_p10_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_radicals = 10 }
+				ROM_update_factions = yes
+			}
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_sim_train_cadres = {
+		icon = GFX_decision_generic_political_reform
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_legitimacy
+			has_country_flag = ROM_sim_cadres_unlocked
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_faction_machine_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_machine = 8 }
+				ROM_update_factions = yes
+			}
+			custom_effect_tooltip = ROM_corr_p2_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 2 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_sim_open_party = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 100
+		days_re_enable = 365
+		visible = {
+			has_variable = ROM_legitimacy
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_legitimacy_p6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 6 }
+				ROM_update_legitimacy = yes
+			}
+			custom_effect_tooltip = ROM_majority_p3_tt
+			hidden_effect = {
+				add_to_variable = { ROM_majority = 3 }
+				ROM_update_majority = yes
+			}
+			custom_effect_tooltip = ROM_faction_radicals_m6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_faction_radicals = -6 }
+				ROM_update_factions = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_sim_media_offensive = {
+		icon = GFX_decision_generic_speech
+		cost = 25
+		days_re_enable = 120
+		visible = {
+			has_variable = ROM_legitimacy
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_legitimacy_p3_tt
+			hidden_effect = {
+				add_to_variable = { ROM_legitimacy = 3 }
+				ROM_update_legitimacy = yes
+			}
+			custom_effect_tooltip = ROM_corr_p2_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 2 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+ROM_defence_planning_category = {
+	ROM_ant_raise_effort = {
+		icon = GFX_decision_generic_army_support
+		cost = 50
+		days_re_enable = 90
+		visible = {
+			has_country_flag = ROM_csat_planning
+		}
+		available = {
+			check_variable = { ROM_defence_effort < 5 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_defence_effort_p1_tt
+			hidden_effect = {
+				add_to_variable = { ROM_defence_effort = 1 }
+				ROM_update_defence_effort = yes
+			}
+			custom_effect_tooltip = ROM_consent_m4_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = -4 }
+				ROM_update_consent = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { ROM_consent < 40 } }
+			modifier = { factor = 3 has_war = yes }
+		}
+	}
+
+	ROM_ant_ease_effort = {
+		icon = GFX_decision_generic_civil_support
+		cost = 50
+		days_re_enable = 90
+		visible = {
+			has_country_flag = ROM_csat_planning
+		}
+		available = {
+			check_variable = { ROM_defence_effort > 1 }
+			has_war = no
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_defence_effort_m1_tt
+			hidden_effect = {
+				add_to_variable = { ROM_defence_effort = -1 }
+				ROM_update_defence_effort = yes
+			}
+			custom_effect_tooltip = ROM_consent_p3_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = 3 }
+				ROM_update_consent = yes
+			}
+			add_war_support = -0.01
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { add = 1 check_variable = { ROM_consent < 30 } }
+		}
+	}
+
+	ROM_ant_readiness_exercise = {
+		icon = GFX_decision_generic_military
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_csat_planning
+		}
+		complete_effect = {
+			army_experience = 15
+			custom_effect_tooltip = ROM_consent_m2_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = -2 }
+				ROM_update_consent = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_ant_explain_budget = {
+		icon = GFX_decision_generic_speech
+		cost = 75
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_csat_planning
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_consent_p6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = 6 }
+				ROM_update_consent = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 check_variable = { ROM_consent < 45 } }
+		}
+	}
+
+	ROM_ant_call_reserves = {
+		icon = GFX_decision_generic_army_support
+		cost = 50
+		days_re_enable = 365
+		visible = {
+			has_country_flag = ROM_csat_planning
+			has_country_flag = ROM_ant_reserves_unlocked
+		}
+		complete_effect = {
+			add_manpower = 25000
+			custom_effect_tooltip = ROM_consent_m5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = -5 }
+				ROM_update_consent = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_ant_emergency_requisition = {
+		icon = GFX_decision_generic_confiscation
+		cost = 0
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_csat_planning
+			has_country_flag = ROM_ant_emergency
+			NOT = { has_country_flag = ROM_ant_emergency_lifted }
+		}
+		complete_effect = {
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 300 producer = ROM }
+			add_political_power = 50
+			custom_effect_tooltip = ROM_consent_m6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_consent = -6 }
+				ROM_update_consent = yes
+			}
+			custom_effect_tooltip = ROM_corr_p3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 3 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+	ROM_dacia_category = {
+      ROM_form_dacia = {
+        icon = generic_form_nation
+        cost = 0
+
+        visible = {
+            has_country_flag = ROM_dacia_decision_unlocked
+			NOT = { has_country_flag = ROM_dacia_formed}
+        }
+
+        available = {
+            is_subject = no
+            controls_state = 78
+			controls_state = 766
+			controls_state = 80
+			controls_state = 1077
+			controls_state = 89
+			controls_state = 73
+			controls_state = 764
+			controls_state = 154
+			controls_state = 155
+			controls_state = 974
+			controls_state = 71
+			controls_state = 70
+			controls_state = 664
+			controls_state = 75
+        }
+
+        complete_effect = {
+            set_cosmetic_tag = ROM_DACIA
+			set_country_flag = ROM_dacia_formed
+			78 = { add_core_of = ROOT }
+			766 = { add_core_of = ROOT }
+			80 = { add_core_of = ROOT }
+			1077 = { add_core_of = ROOT }
+			89 = { add_core_of = ROOT }
+			73 = { add_core_of = ROOT }
+			764 = { add_core_of = ROOT }
+			154 = { add_core_of = ROOT }
+			155 = { add_core_of = ROOT }
+			974 = { add_core_of = ROOT }
+			71 = { add_core_of = ROOT }
+			70 = { add_core_of = ROOT }
+			664 = { add_core_of = ROOT }
+			75 = { add_core_of = ROOT }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+}

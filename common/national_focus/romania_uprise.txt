@@ -4,70 +4,342 @@ focus_tree = {
 		factor = 0
 	}
 	default = no
+	reset_on_civilwar = no
 
 	focus = {
 		id = ROM_a_new_era
-		icon = GFX_goal_unknown
-		x = 42
-		y = 0
-		cost = 0.01
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = spirit_name
-			set_country_flag = ROM_a_New_Era
-		}
-	}
-
-	focus = {
-		id = ROM_the_future_of_romania
-		icon = GFX_goal_unknown
-		x = 42
-		y = 2
-		cost = 5
-		prerequisite = { focus = ROM_a_new_era }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			news_event = {
-				id = news.1
-				days = 1
-			}
-		}
-	}
-
-	# ============================================================
-	# PATH 1 - THE CROWN RESTORED (absolutist monarchy)
-	# ============================================================
-	focus = {
-		id = ROM_bring_back_monarchy
-		icon = GFX_goal_unknown
-		x = 14
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_the_future_of_romania }
-		mutually_exclusive = { focus = ROM_a_military_rule focus = ROM_the_orthodox_state }
+		icon = GFX_goal_ROM_skip_the_elections
+		x = 32
+		y = 1
+		cost = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 100
-			add_stability = 0.05
-			add_ideas = ROM_crown_restored_idea
-			set_country_flag = ROM_monarchy_path
-			log = "[GetDateText]: [Root.GetName]: Focus ROM_bring_back_monarchy completed"
+			add_ideas = ROM_revolutionary_turmoil_idea
+			set_country_flag = ROM_a_New_Era
+			custom_effect_tooltip = ROM_pillars_intro_tt
+			hidden_effect = {
+				set_variable = { ROM_crown_support = 10 }
+				set_variable = { ROM_army_support = 20 }
+				set_variable = { ROM_church_support = 20 }
+			}
 		}
 	}
-	# ---- IDEOLOGY FOCUS ----
+
+	focus = {
+		id = ROM_the_future_of_romania
+		icon = GFX_goal_consolidate
+		x = 32
+		y = 2
+		cost = 3
+		prerequisite = { focus = ROM_a_new_era }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { id = ROM_uprise.1  }
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ROM_royal_appeal
+		icon = GFX_goal_restorecrown
+		x = 29
+		y = 3
+		cost = 3
+		prerequisite = { focus = ROM_the_future_of_romania }
+		mutually_exclusive = { focus = ROM_army_secures_bucharest focus = ROM_patriarchs_appeal }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_crown_p20_tt
+			hidden_effect = { add_to_variable = { ROM_crown_support = 20 } }
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = ROM_army_secures_bucharest
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 3
+		cost = 3
+		prerequisite = { focus = ROM_the_future_of_romania }
+		mutually_exclusive = { focus = ROM_royal_appeal focus = ROM_patriarchs_appeal }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_army_p20_tt
+			hidden_effect = { add_to_variable = { ROM_army_support = 20 } }
+			add_war_support = 0.05
+			army_experience = 10
+		}
+	}
+
+	focus = {
+		id = ROM_patriarchs_appeal
+		icon = GFX_goal_generic_national_unity
+		x = 35
+		y = 3
+		cost = 3
+		prerequisite = { focus = ROM_the_future_of_romania }
+		mutually_exclusive = { focus = ROM_royal_appeal focus = ROM_army_secures_bucharest }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_church_p20_tt
+			hidden_effect = { add_to_variable = { ROM_church_support = 20 } }
+			add_stability = 0.03
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = ROM_crisis_treasury
+		icon = GFX_goal_generic_production
+		x = 32
+		y = 4
+		cost = 3
+		prerequisite = { focus = ROM_royal_appeal focus = ROM_army_secures_bucharest focus = ROM_patriarchs_appeal }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = -25
+		}
+	}
+
+	focus = {
+		id = ROM_crown_credit
+		icon = GFX_goal_tradvalues
+		x = 29
+		y = 5
+		cost = 3
+		prerequisite = { focus = ROM_crisis_treasury }
+		mutually_exclusive = { focus = ROM_requisition focus = ROM_parish_relief }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_crown_p20_tt
+			hidden_effect = { add_to_variable = { ROM_crown_support = 20 } }
+			add_timed_idea = { idea = ROM_western_credit_idea days = 365 }
+		}
+	}
+
+	focus = {
+		id = ROM_requisition
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 32
+		y = 5
+		cost = 3
+		prerequisite = { focus = ROM_crisis_treasury }
+		mutually_exclusive = { focus = ROM_crown_credit focus = ROM_parish_relief }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_army_p20_tt
+			hidden_effect = { add_to_variable = { ROM_army_support = 20 } }
+			add_timed_idea = { idea = ROM_requisition_idea days = 365 }
+			add_manpower = 10000
+		}
+	}
+
+	focus = {
+		id = ROM_parish_relief
+		icon = GFX_goal_house
+		x = 35
+		y = 5
+		cost = 3
+		prerequisite = { focus = ROM_crisis_treasury }
+		mutually_exclusive = { focus = ROM_crown_credit focus = ROM_requisition }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_church_p20_tt
+			hidden_effect = { add_to_variable = { ROM_church_support = 20 } }
+			add_timed_idea = { idea = ROM_parish_relief_idea days = 365 }
+		}
+	}
+
+	focus = {
+		id = ROM_crisis_recognition
+		icon = GFX_goal_generic_improve_relations
+		x = 32
+		y = 6
+		cost = 3
+		prerequisite = { focus = ROM_crown_credit focus = ROM_requisition focus = ROM_parish_relief }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = ROM_crown_reassures_europe
+		icon = GFX_goal_kingparl
+		x = 29
+		y = 7
+		cost = 3
+		prerequisite = { focus = ROM_crisis_recognition }
+		mutually_exclusive = { focus = ROM_assure_the_pentagon focus = ROM_orthodox_world }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_crown_p20_tt
+			hidden_effect = { add_to_variable = { ROM_crown_support = 20 } }
+			set_country_flag = ROM_west_reassured
+			if = {
+				limit = { country_exists = GER }
+				add_opinion_modifier = { target = GER modifier = ROM_royal_kinship }
+				GER = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+			if = {
+				limit = { country_exists = FRA }
+				add_opinion_modifier = { target = FRA modifier = ROM_royal_kinship }
+				FRA = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_assure_the_pentagon
+		icon = GFX_goal_uenato
+		x = 32
+		y = 7
+		cost = 3
+		prerequisite = { focus = ROM_crisis_recognition }
+		mutually_exclusive = { focus = ROM_crown_reassures_europe focus = ROM_orthodox_world }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_army_p20_tt
+			hidden_effect = { add_to_variable = { ROM_army_support = 20 } }
+			if = {
+				limit = { country_exists = USA }
+				add_opinion_modifier = { target = USA modifier = ROM_eastern_flank_partner }
+				USA = { add_opinion_modifier = { target = ROOT modifier = ROM_eastern_flank_partner } }
+			}
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = ROM_orthodox_world
+		icon = GFX_goal_patriotic
+		x = 35
+		y = 7
+		cost = 3
+		prerequisite = { focus = ROM_crisis_recognition }
+		mutually_exclusive = { focus = ROM_crown_reassures_europe focus = ROM_assure_the_pentagon }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			custom_effect_tooltip = ROM_pillar_church_p20_tt
+			hidden_effect = { add_to_variable = { ROM_church_support = 20 } }
+			if = {
+				limit = { country_exists = SER }
+				add_opinion_modifier = { target = SER modifier = ROM_orthodox_concord }
+				SER = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = BUL }
+				add_opinion_modifier = { target = BUL modifier = ROM_orthodox_concord }
+				BUL = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = GRE }
+				add_opinion_modifier = { target = GRE modifier = ROM_orthodox_concord }
+				GRE = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = GEO }
+				add_opinion_modifier = { target = GEO modifier = ROM_orthodox_concord }
+				GEO = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_the_settlement
+		icon = GFX_goal_romania
+		x = 32
+		y = 8
+		cost = 5
+		prerequisite = { focus = ROM_crown_reassures_europe focus = ROM_assure_the_pentagon focus = ROM_orthodox_world }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = ROM_bring_back_monarchy
+		icon = GFX_goal_restorecrown
+		x = 19
+		y = 9
+		cost = 7
+		prerequisite = { focus = ROM_the_settlement }
+		mutually_exclusive = { focus = ROM_a_military_rule focus = ROM_the_orthodox_state }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_pillar_crown_req_40_tt
+				check_variable = { ROM_crown_support > 39 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = ROM_revolutionary_turmoil_idea }
+				swap_ideas = { remove_idea = ROM_revolutionary_turmoil_idea add_idea = ROM_crown_restored_idea }
+			}
+			else = { add_ideas = ROM_crown_restored_idea }
+			ROM_adopt_absolutist = yes
+			recruit_character = ROM_margareta
+			promote_character = ROM_margareta
+			set_country_flag = ROM_monarchy_path
+			retire_character = ROM_calin_georgescu
+			news_event = { id = ROM_uprise.2 days = 1 }
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_uprise.2 days = 1 } } }
+		}
+	}
+
 	focus = {
 		id = ROM_absolutist_restoration
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = 0
-		y = 1
+		icon = GFX_goal_tradvalues
+		x = 19
+		y = 10
 		cost = 5
 		prerequisite = { focus = ROM_bring_back_monarchy }
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -75,316 +347,213 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_adopt_absolutist = yes
-			add_stability = 0.05
-			add_political_power = 50
 			add_ideas = ROM_royal_prestige_idea
+			add_stability = 0.05
 			set_country_flag = ROM_monarchy_restored
 		}
 	}
 
-	# ---- POLITICAL TRACK ----
-	focus = {
-		id = ROM_crown_council
-		icon = GFX_goal_generic_political_pressure
-		relative_position_id = ROM_bring_back_monarchy
-		x = -10
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_absolutist_restoration }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 75
-			add_ideas = ROM_crown_council_idea
-		}
-	}
-
-	focus = {
-		id = ROM_constitutional_reform
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = -12
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_crown_council }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.05
-			add_political_power = 50
-			add_ideas = ROM_constitutional_monarchy_idea
-		}
-	}
-
-	focus = {
-		id = ROM_parliament_of_the_realm
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_bring_back_monarchy
-		x = -8
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_crown_council }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			add_popularity = { ideology = democratic popularity = 0.05 }
-			set_country_flag = ROM_parliament_restored
-		}
-	}
-
-	focus = {
-		id = ROM_royal_diplomacy
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_bring_back_monarchy
-		x = -12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_constitutional_reform }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 50
-			add_ideas = ROM_royal_diplomacy_idea
-		}
-	}
-
-	focus = {
-		id = ROM_free_press_act
-		icon = GFX_goal_generic_propaganda
-		relative_position_id = ROM_bring_back_monarchy
-		x = -8
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_parliament_of_the_realm }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_popularity = { ideology = democratic popularity = 0.05 }
-			add_ideas = ROM_free_press_idea
-		}
-	}
-
-	focus = {
-		id = ROM_reconciliation_commission
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = -10
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_royal_diplomacy }
-		prerequisite = { focus = ROM_free_press_act }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_popularity = { ideology = communism popularity = -0.1 }
-			add_stability = 0.05
-			add_timed_idea = { idea = ROM_reconciliation_tension_idea days = 180 }
-		}
-	}
-
-	focus = {
-		id = ROM_a_kingdom_reborn
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = -10
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_reconciliation_commission }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 150
-			add_stability = 0.05
-			add_ideas = ROM_kingdom_reborn_idea
-		}
-	}
-
-	# ---- ECONOMIC TRACK ----
 	focus = {
 		id = ROM_royal_treasury
 		icon = GFX_goal_generic_production
-		relative_position_id = ROM_bring_back_monarchy
-		x = -3
-		y = 2
-		cost = 10
+		x = 13
+		y = 11
+		cost = 5
 		prerequisite = { focus = ROM_absolutist_restoration }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
 			add_ideas = ROM_royal_treasury_idea
-		}
-	}
-
-	focus = {
-		id = ROM_crown_estates_reform
-		icon = GFX_goal_generic_construct_infrastructure
-		relative_position_id = ROM_bring_back_monarchy
-		x = -5
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_royal_treasury }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_crown_estates_idea
-			add_political_power = -25
+			add_political_power = 50
 		}
 	}
 
 	focus = {
 		id = ROM_danube_development
 		icon = GFX_goal_generic_construct_civ_factory
-		relative_position_id = ROM_bring_back_monarchy
-		x = -3
-		y = 3
-		cost = 10
+		x = 13
+		y = 13
+		cost = 7
 		prerequisite = { focus = ROM_royal_treasury }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			if = {
+				limit = { 971 = { is_owned_and_controlled_by = ROOT } }
+				971 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
 			}
-			add_tech_bonus = {
-				name = ROM_danube_dev
-				bonus = 0.5
-				uses = 1
-				category = construction_tech
+			if = {
+				limit = { 81 = { is_owned_and_controlled_by = ROOT } }
+				81 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
 			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			add_tech_bonus = { name = ROM_danube_development bonus = 0.5 uses = 1 category = construction_tech }
 		}
 	}
 
 	focus = {
-		id = ROM_black_sea_ports
-		icon = GFX_goal_generic_construct_mil_factory
-		relative_position_id = ROM_bring_back_monarchy
-		x = -1
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_royal_treasury }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = ROM_constitutional_reform
+		icon = GFX_goal_congress
+		x = 18
+		y = 11
+		cost = 7
+		prerequisite = { focus = ROM_absolutist_restoration }
+		mutually_exclusive = { focus = ROM_royal_prerogative }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { is_coastal = yes free_building_slots = { building = dockyard size > 0 } }
-				add_building_construction = { type = dockyard level = 1 instant_build = yes }
+			if = {
+				limit = { has_idea = ROM_crown_restored_idea }
+				swap_ideas = { remove_idea = ROM_crown_restored_idea add_idea = ROM_constitutional_monarchy_idea }
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
-			}
+			else = { add_ideas = ROM_constitutional_monarchy_idea }
+			add_popularity = { ideology = conservative popularity = 0.10 }
+			set_country_flag = ROM_constitutional_crown
 		}
 	}
 
 	focus = {
-		id = ROM_carpathian_oil
-		icon = GFX_goal_generic_production
-		relative_position_id = ROM_bring_back_monarchy
-		x = -5
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_crown_estates_reform }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = ROM_royal_prerogative
+		icon = GFX_goal_restorecrown
+		x = 20
+		y = 11
+		cost = 7
+		prerequisite = { focus = ROM_absolutist_restoration }
+		mutually_exclusive = { focus = ROM_constitutional_reform }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_ideas = ROM_oil_concessions_idea
-			add_political_power = 25
+			if = {
+				limit = { has_idea = ROM_crown_restored_idea }
+				swap_ideas = { remove_idea = ROM_crown_restored_idea add_idea = ROM_royal_prerogative_idea }
+			}
+			else = { add_ideas = ROM_royal_prerogative_idea }
+			add_political_power = 100
+			add_popularity = { ideology = absolutism popularity = 0.10 }
 		}
 	}
 
 	focus = {
-		id = ROM_royal_industrial_charter
-		icon = GFX_goal_generic_construct_civ_factory
-		relative_position_id = ROM_bring_back_monarchy
-		x = -1
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_black_sea_ports }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
+		id = ROM_parliament_of_the_realm
+		icon = GFX_goal_congress
+		x = 15
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_constitutional_reform }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			add_ideas = ROM_industrial_charter_idea
-			add_tech_bonus = {
-				name = ROM_charter_bonus
-				bonus = 0.5
-				uses = 1
-				category = industry
-			}
-		}
-	}
-
-	focus = {
-		id = ROM_golden_age
-		icon = GFX_goal_generic_research
-		relative_position_id = ROM_bring_back_monarchy
-		x = -3
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_carpathian_oil }
-		prerequisite = { focus = ROM_royal_industrial_charter }
-		prerequisite = { focus = ROM_danube_development }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_research_slot = 1
-			add_ideas = ROM_golden_age_idea
 			add_stability = 0.05
+			add_popularity = { ideology = conservative popularity = 0.05 }
 		}
 	}
 
-	# ---- MILITARY TRACK ----
+	focus = {
+		id = ROM_free_press_act
+		icon = GFX_goal_generic_propaganda
+		x = 17
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_constitutional_reform }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_free_press_idea
+			add_political_power = -25
+		}
+	}
+
+	focus = {
+		id = ROM_reconciliation_commission
+		icon = GFX_goal_patriotic
+		x = 16
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_parliament_of_the_realm }
+		prerequisite = { focus = ROM_free_press_act }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_timed_idea = { idea = ROM_reconciliation_tension_idea days = 180 }
+			add_stability = 0.08
+			add_popularity = { ideology = reactionary popularity = -0.05 }
+		}
+	}
+
+	focus = {
+		id = ROM_crown_council
+		icon = GFX_goal_consolidate
+		x = 21
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_royal_prerogative }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_crown_council_idea
+		}
+	}
+
+	focus = {
+		id = ROM_rule_by_decree
+		icon = GFX_goal_generic_political_pressure
+		x = 23
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_royal_prerogative }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.03
+		}
+	}
+
 	focus = {
 		id = ROM_royal_guard
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_bring_back_monarchy
-		x = 3
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_absolutist_restoration }
+		icon = GFX_goal_generic_special_forces
+		x = 22
+		y = 13
+		cost = 5
+		prerequisite = { focus = ROM_crown_council }
+		prerequisite = { focus = ROM_rule_by_decree }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
@@ -396,49 +565,90 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ROM_kings_command
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_bring_back_monarchy
-		x = 1
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_royal_guard }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		id = ROM_royal_diplomacy
+		icon = GFX_goal_kingparl
+		x = 19
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_constitutional_reform focus = ROM_royal_prerogative }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_command_power = 50
-			add_ideas = ROM_kings_command_idea
+			add_ideas = ROM_royal_diplomacy_idea
+			if = {
+				limit = { country_exists = ENG }
+				add_opinion_modifier = { target = ENG modifier = ROM_royal_kinship }
+				ENG = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+			if = {
+				limit = { country_exists = SPR }
+				add_opinion_modifier = { target = SPR modifier = ROM_royal_kinship }
+				SPR = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+			if = {
+				limit = { country_exists = HOL }
+				add_opinion_modifier = { target = HOL modifier = ROM_royal_kinship }
+				HOL = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+			if = {
+				limit = { country_exists = SWE }
+				add_opinion_modifier = { target = SWE modifier = ROM_royal_kinship }
+				SWE = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
 		}
 	}
 
 	focus = {
-		id = ROM_professional_army
-		icon = GFX_goal_generic_small_arms
-		relative_position_id = ROM_bring_back_monarchy
-		x = 5
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_royal_guard }
+		id = ROM_prut_union
+		icon = GFX_goal_generic_demand_territory
+		x = 19
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_royal_diplomacy }
+		available = {
+			country_exists = MOL
+			NOT = { has_war_with = MOL }
+		}
+		bypass = {
+			NOT = { country_exists = MOL }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = ROM_crown_union_offer
+			custom_effect_tooltip = ROM_union_offer_tt
+			hidden_effect = { ROM_offer_union_to_moldova = yes }
+		}
+	}
+
+	focus = {
+		id = ROM_army_of_the_crown
+		icon = GFX_goal_generic_army_doctrines
+		x = 25
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_absolutist_restoration }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_ideas = ROM_professional_army_idea
+			add_ideas = ROM_army_of_the_crown_idea
 			army_experience = 25
 		}
 	}
 
 	focus = {
 		id = ROM_carpathian_line
-		icon = GFX_goal_generic_forceful_treaty
-		relative_position_id = ROM_bring_back_monarchy
-		x = 1
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_kings_command }
+		icon = GFX_goal_generic_defence
+		x = 25
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_army_of_the_crown }
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
@@ -450,422 +660,213 @@ focus_tree = {
 	}
 
 	focus = {
-		id = ROM_modernised_equipment
-		icon = GFX_goal_generic_small_arms
-		relative_position_id = ROM_bring_back_monarchy
-		x = 5
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_professional_army }
-		available = {
-			has_completed_focus = ROM_danube_development
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			add_tech_bonus = {
-				name = ROM_modern_equip
-				bonus = 0.5
-				uses = 1
-				category = infantry_weapons
-			}
-		}
-	}
-
-	focus = {
-		id = ROM_royal_navy
-		icon = GFX_goal_generic_secret_weapons
-		relative_position_id = ROM_bring_back_monarchy
-		x = 3
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_carpathian_line }
-		prerequisite = { focus = ROM_modernised_equipment }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_state = {
-				limit = { is_coastal = yes free_building_slots = { building = dockyard size > 0 } }
-				add_building_construction = { type = dockyard level = 1 instant_build = yes }
-			}
-			add_ideas = ROM_royal_navy_idea
-		}
-	}
-
-	focus = {
-		id = ROM_army_of_the_crown
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_bring_back_monarchy
-		x = 3
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_royal_navy }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			army_experience = 50
-			add_ideas = ROM_army_of_the_crown_idea
-		}
-	}
-
-	# ---- EXPANSION TRACK ----
-	focus = {
-		id = ROM_historic_claims
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_bring_back_monarchy
-		x = 10
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_absolutist_restoration }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 75
-			add_ideas = ROM_dynastic_claims_idea
-			set_country_flag = ROM_irredentism
-		}
-	}
-
-	focus = {
-		id = ROM_prut_union
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_bring_back_monarchy
-		x = 10
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_historic_claims }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_moldova = yes
-			add_political_power = 50
-		}
-	}
-
-	focus = {
-		id = ROM_bukovina_question
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_bring_back_monarchy
-		x = 8
-		y = 4
-		cost = 10
+		id = ROM_a_kingdom_reborn
+		icon = GFX_goal_tradvalues
+		x = 19
+		y = 14
+		cost = 7
+		prerequisite = { focus = ROM_reconciliation_commission focus = ROM_royal_guard }
 		prerequisite = { focus = ROM_prut_union }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_bukovina = yes
-			add_political_power = 25
+			add_political_power = 150
+			add_stability = 0.05
+			news_event = { id = ROM_uprise.3 days = 1 }
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_uprise.3 days = 1 } } }
 		}
 	}
 
-	focus = {
-		id = ROM_banat_and_timok
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_bring_back_monarchy
-		x = 12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_prut_union }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_banat = yes
-			add_political_power = 25
-		}
-	}
-
-	focus = {
-		id = ROM_royal_integration
-		icon = GFX_goal_generic_construct_infrastructure
-		relative_position_id = ROM_bring_back_monarchy
-		x = 8
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_bukovina_question }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_royal_integration_idea
-			add_stability = 0.03
-		}
-	}
-
-	focus = {
-		id = ROM_dobruja_question
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_bring_back_monarchy
-		x = 12
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_banat_and_timok }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_dobruja = yes
-			add_political_power = 25
-		}
-	}
-
-	focus = {
-		id = ROM_greater_romania_restored
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = 10
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_royal_integration }
-		prerequisite = { focus = ROM_dobruja_question }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			every_owned_state = { add_core_of = ROM }
-			add_political_power = 100
-			add_war_support = 0.05
-			add_ideas = ROM_greater_romania_idea
-		}
-	}
-
-	# ---- CAPSTONE ----
 	focus = {
 		id = ROM_one_crown_one_nation
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_bring_back_monarchy
-		x = 0
-		y = 8
+		icon = GFX_goal_restorecrown
+		x = 19
+		y = 15
 		cost = 10
 		prerequisite = { focus = ROM_a_kingdom_reborn }
-		prerequisite = { focus = ROM_golden_age }
-		prerequisite = { focus = ROM_army_of_the_crown }
-		prerequisite = { focus = ROM_greater_romania_restored }
+		prerequisite = { focus = ROM_danube_development }
+		prerequisite = { focus = ROM_carpathian_line }
 		available = {
-			has_stability > 0.6
+			has_stability > 0.5
 		}
-		search_filters = { FOCUS_FILTER_STABILITY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.1
-			add_war_support = 0.1
-			add_political_power = 150
-			add_ideas = ROM_united_crown_idea
-			set_country_flag = ROM_monarchy_complete
-		}
-	}
-
-	# ============================================================
-	# PATH 2 - THE IRON MARSHALS (military rule)
-	# ============================================================
-	focus = {
-		id = ROM_a_military_rule
-		icon = GFX_goal_unknown
-		x = 42
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_the_future_of_romania }
-		mutually_exclusive = { focus = ROM_bring_back_monarchy focus = ROM_the_orthodox_state }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			add_ideas = ROM_military_junta_idea
-			set_country_flag = ROM_military_path
-			log = "[GetDateText]: [Root.GetName]: Focus ROM_a_military_rule completed"
-		}
-	}
-	# ---- IDEOLOGY FOCUS ----
-	focus = {
-		id = ROM_autocratic_regime
-		icon = GFX_goal_generic_dangerous_deal
-		relative_position_id = ROM_a_military_rule
-		x = 0
-		y = 1
-		cost = 5
-		prerequisite = { focus = ROM_a_military_rule }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_adopt_autocratic = yes
-			add_political_power = 75
-			add_stability = 0.05
-			add_ideas = ROM_martial_law_idea
-			set_country_flag = ROM_martial_law
-		}
-	}
-
-	# ---- POLITICAL TRACK ----
-	focus = {
-		id = ROM_supreme_defence_council
-		icon = GFX_goal_generic_political_pressure
-		relative_position_id = ROM_a_military_rule
-		x = -10
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_autocratic_regime }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			add_ideas = ROM_defence_council_idea
-		}
-	}
-
-	focus = {
-		id = ROM_reorganise_secret_police
-		icon = GFX_goal_generic_dangerous_deal
-		relative_position_id = ROM_a_military_rule
-		x = -10
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_supreme_defence_council }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
 			if = {
-				limit = { NOT = { has_intelligence_agency = yes } }
-				create_intelligence_agency = { name = "Serviciul Special de Siguranta" }
+				limit = { has_idea = ROM_royal_prestige_idea }
+				swap_ideas = { remove_idea = ROM_royal_prestige_idea add_idea = ROM_united_crown_idea }
 			}
-			add_ideas = ROM_secret_police_idea
+			else = { add_ideas = ROM_united_crown_idea }
+			add_war_support = 0.05
+			set_country_flag = ROM_monarchy_complete
 		}
 	}
 
 	focus = {
-		id = ROM_purge_the_disloyal
+		id = ROM_a_military_rule
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 9
+		cost = 7
+		prerequisite = { focus = ROM_the_settlement }
+		mutually_exclusive = { focus = ROM_bring_back_monarchy focus = ROM_the_orthodox_state }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_pillar_army_req_40_tt
+				check_variable = { ROM_army_support > 39 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = ROM_revolutionary_turmoil_idea }
+				swap_ideas = { remove_idea = ROM_revolutionary_turmoil_idea add_idea = ROM_military_junta_idea }
+			}
+			else = { add_ideas = ROM_military_junta_idea }
+			ROM_adopt_autocratic = yes
+			recruit_character = ROM_gheorghita_vlad
+			promote_character = ROM_gheorghita_vlad
+			set_country_flag = ROM_military_path
+			retire_character = ROM_calin_georgescu
+			news_event = { id = ROM_uprise.2 days = 1 }
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_uprise.2 days = 1 } } }
+		}
+	}
+
+	focus = {
+		id = ROM_autocratic_regime
 		icon = GFX_goal_generic_dangerous_deal
-		relative_position_id = ROM_a_military_rule
-		x = -12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_reorganise_secret_police }
+		x = 32
+		y = 10
+		cost = 3
+		prerequisite = { focus = ROM_a_military_rule }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
-			add_popularity = { ideology = communism popularity = -0.1 }
-			add_timed_idea = { idea = ROM_purge_aftermath_idea days = 365 }
+			add_ideas = ROM_martial_law_idea
+			set_country_flag = ROM_martial_law
+			add_political_power = 75
+			custom_effect_tooltip = ROM_martial_law_tt
 		}
 	}
 
 	focus = {
-		id = ROM_censorship_bureau
-		icon = GFX_goal_generic_propaganda
-		relative_position_id = ROM_a_military_rule
-		x = -8
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_reorganise_secret_police }
+		id = ROM_supreme_defence_council
+		icon = GFX_goal_consolidate
+		x = 32
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_autocratic_regime }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 25
-			add_ideas = ROM_censorship_idea
+			add_ideas = ROM_defence_council_idea
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ROM_reorganise_secret_police
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 32
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_supreme_defence_council }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_secret_police_idea
+			if = {
+				limit = { has_dlc = "La Resistance" NOT = { has_intelligence_agency = yes } }
+				create_intelligence_agency = { name = "Serviciul Roman de Informatii" }
+			}
 		}
 	}
 
 	focus = {
 		id = ROM_restore_civil_order
 		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_a_military_rule
-		x = -12
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_purge_the_disloyal }
+		x = 32
+		y = 13
+		cost = 5
+		prerequisite = { focus = ROM_reorganise_secret_police }
 		available = {
-			has_completed_focus = ROM_war_economy
+			has_stability > 0.35
 		}
-		search_filters = { FOCUS_FILTER_POLITICAL }
+		search_filters = { FOCUS_FILTER_STABILITY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
 			remove_ideas = ROM_martial_law_idea
-			add_stability = 0.1
-			add_war_support = -0.05
+			clr_country_flag = ROM_martial_law
+			add_stability = 0.10
+			add_war_support = -0.03
 		}
 	}
 
 	focus = {
-		id = ROM_national_security_doctrine
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_a_military_rule
-		x = -8
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_censorship_bureau }
+		id = ROM_return_to_the_barracks
+		icon = GFX_goal_election2027
+		x = 30
+		y = 14
+		cost = 7
+		prerequisite = { focus = ROM_restore_civil_order }
+		mutually_exclusive = { focus = ROM_the_iron_government }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_ideas = ROM_security_doctrine_idea
-			add_political_power = 50
+			swap_ideas = { remove_idea = ROM_defence_council_idea add_idea = ROM_guarded_democracy_idea }
+			add_popularity = { ideology = conservative popularity = 0.15 }
+			set_politics = { ruling_party = conservative elections_allowed = yes }
+			set_country_flag = ROM_junta_stood_down
+			add_stability = 0.05
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.22 days = 1 } } }
 		}
 	}
 
 	focus = {
 		id = ROM_the_iron_government
 		icon = GFX_goal_generic_political_pressure
-		relative_position_id = ROM_a_military_rule
-		x = -10
-		y = 6
-		cost = 10
+		x = 34
+		y = 14
+		cost = 7
 		prerequisite = { focus = ROM_restore_civil_order }
-		prerequisite = { focus = ROM_national_security_doctrine }
+		mutually_exclusive = { focus = ROM_return_to_the_barracks }
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 150
-			add_stability = 0.05
 			add_ideas = ROM_iron_government_idea
+			add_political_power = 150
+			add_stability = -0.05
+			add_popularity = { ideology = autocracy popularity = 0.10 }
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.23 days = 1 } } }
 		}
 	}
 
-	# ---- ECONOMIC TRACK ----
 	focus = {
 		id = ROM_war_economy
 		icon = GFX_goal_generic_production
-		relative_position_id = ROM_a_military_rule
-		x = -3
-		y = 2
-		cost = 10
+		x = 29
+		y = 11
+		cost = 5
 		prerequisite = { focus = ROM_autocratic_regime }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
@@ -880,27 +881,56 @@ focus_tree = {
 	focus = {
 		id = ROM_heavy_industry_drive
 		icon = GFX_goal_generic_construct_mil_factory
-		relative_position_id = ROM_a_military_rule
-		x = -5
-		y = 3
-		cost = 10
+		x = 28
+		y = 12
+		cost = 7
 		prerequisite = { focus = ROM_war_economy }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			if = {
+				limit = { 84 = { is_owned_and_controlled_by = ROOT } }
+				84 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			if = {
+				limit = { 81 = { is_owned_and_controlled_by = ROOT } }
+				81 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			if = {
+				limit = { 46 = { is_owned_and_controlled_by = ROOT } }
+				46 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				}
 			}
 		}
 	}
@@ -908,10 +938,9 @@ focus_tree = {
 	focus = {
 		id = ROM_labour_conscription
 		icon = GFX_goal_generic_construct_infrastructure
-		relative_position_id = ROM_a_military_rule
-		x = -1
-		y = 3
-		cost = 10
+		x = 30
+		y = 12
+		cost = 5
 		prerequisite = { focus = ROM_war_economy }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
@@ -919,447 +948,189 @@ focus_tree = {
 		}
 		completion_reward = {
 			add_ideas = ROM_labour_conscription_idea
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			if = {
+				limit = { 79 = { is_owned_and_controlled_by = ROOT } }
+				79 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
 			}
-		}
-	}
-
-	focus = {
-		id = ROM_military_industrial_complex
-		icon = GFX_goal_generic_construct_mil_factory
-		relative_position_id = ROM_a_military_rule
-		x = -5
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_heavy_industry_drive }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_military_industrial_idea
-			add_tech_bonus = {
-				name = ROM_mic_bonus
-				bonus = 0.5
-				uses = 1
-				category = industry
+			if = {
+				limit = { 46 = { is_owned_and_controlled_by = ROOT } }
+				46 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
 			}
 		}
 	}
 
 	focus = {
 		id = ROM_strategic_reserves
-		icon = GFX_goal_generic_production
-		relative_position_id = ROM_a_military_rule
-		x = -1
-		y = 4
-		cost = 10
+		icon = GFX_goal_generic_production2
+		x = 29
+		y = 13
+		cost = 5
+		prerequisite = { focus = ROM_heavy_industry_drive }
 		prerequisite = { focus = ROM_labour_conscription }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_manpower = 20000
-			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROM }
+			add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 3000 producer = ROM }
+			add_equipment_to_stockpile = { type = support_equipment_1 amount = 300 producer = ROM }
+			add_manpower = 15000
 		}
 	}
 
-	focus = {
-		id = ROM_autarky_programme
-		icon = GFX_goal_generic_secret_weapons
-		relative_position_id = ROM_a_military_rule
-		x = -3
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_military_industrial_complex }
-		prerequisite = { focus = ROM_strategic_reserves }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_autarky_idea
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
-			}
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_total_mobilisation
-		icon = GFX_goal_generic_production
-		relative_position_id = ROM_a_military_rule
-		x = -3
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_autarky_programme }
-		search_filters = { FOCUS_FILTER_INDUSTRY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_total_mobilisation_idea
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			add_research_slot = 1
-		}
-	}
-
-	# ---- MILITARY TRACK ----
-	focus = {
-		id = ROM_general_staff_reform
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 3
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_autocratic_regime }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_command_power = 75
-			add_ideas = ROM_general_staff_idea
-		}
-	}
-
-	focus = {
-		id = ROM_universal_conscription
-		icon = GFX_goal_generic_small_arms
-		relative_position_id = ROM_a_military_rule
-		x = 1
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_general_staff_reform }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_manpower = 25000
-			add_ideas = ROM_universal_conscription_idea
-		}
-	}
-
-	focus = {
-		id = ROM_doctrine_overhaul
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 3
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_general_staff_reform }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_tech_bonus = {
-				name = ROM_doctrine_bonus
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-			army_experience = 50
-		}
-	}
-
-	focus = {
-		id = ROM_war_academies
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 5
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_general_staff_reform }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_war_academies_idea
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_armoured_ambitions
-		icon = GFX_goal_generic_small_arms
-		relative_position_id = ROM_a_military_rule
-		x = 1
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_universal_conscription }
-		available = {
-			has_completed_focus = ROM_military_industrial_complex
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			add_tech_bonus = {
-				name = ROM_armour_bonus
-				bonus = 0.5
-				uses = 1
-				category = armor
-			}
-		}
-	}
-
-	focus = {
-		id = ROM_rebuild_the_air_force
-		icon = GFX_goal_generic_secret_weapons
-		relative_position_id = ROM_a_military_rule
-		x = 5
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_war_academies }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
-			}
-			add_tech_bonus = {
-				name = ROM_air_bonus
-				bonus = 0.5
-				uses = 1
-				category = air_techs
-			}
-		}
-	}
-
-	focus = {
-		id = ROM_the_nation_in_arms
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 3
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_armoured_ambitions }
-		prerequisite = { focus = ROM_rebuild_the_air_force }
-		prerequisite = { focus = ROM_doctrine_overhaul }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			army_experience = 100
-			add_war_support = 0.05
-			add_ideas = ROM_nation_in_arms_idea
-		}
-	}
-
-	# ---- EXPANSION TRACK ----
 	focus = {
 		id = ROM_greater_romania_war_plans
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 10
-		y = 2
-		cost = 10
+		icon = GFX_goal_generic_forceful_treaty
+		x = 35
+		y = 11
+		cost = 5
 		prerequisite = { focus = ROM_autocratic_regime }
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_command_power = 50
 			add_ideas = ROM_war_plans_idea
-			set_country_flag = ROM_war_plans
+			add_command_power = 25
+			set_country_flag = ROM_union_by_force_allowed
 		}
 	}
 
 	focus = {
 		id = ROM_moldovan_campaign
 		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_a_military_rule
-		x = 8
-		y = 3
-		cost = 10
+		x = 34
+		y = 12
+		cost = 5
 		prerequisite = { focus = ROM_greater_romania_war_plans }
+		available = {
+			country_exists = MOL
+			NOT = { has_war_with = MOL }
+		}
+		bypass = {
+			NOT = { country_exists = MOL }
+		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_moldova = yes
-			ROM_wargoal_moldova = yes
-			army_experience = 25
+			set_country_flag = ROM_junta_union_offer
+			if = {
+				limit = { country_exists = MOL }
+				MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_union_pressure } }
+			}
+			custom_effect_tooltip = ROM_union_offer_tt
+			hidden_effect = { ROM_offer_union_to_moldova = yes }
 		}
 	}
 
 	focus = {
-		id = ROM_northern_bukovina_offensive
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_a_military_rule
-		x = 10
-		y = 3
-		cost = 10
+		id = ROM_dniester_operation
+		icon = GFX_goal_generic_special_forces
+		x = 36
+		y = 12
+		cost = 7
 		prerequisite = { focus = ROM_greater_romania_war_plans }
+		available = {
+			country_exists = TNS
+		}
+		bypass = {
+			NOT = { country_exists = TNS }
+		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_bukovina = yes
-			army_experience = 25
-		}
-	}
-
-	focus = {
-		id = ROM_banat_contingency
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_a_military_rule
-		x = 12
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_greater_romania_war_plans }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_banat = yes
+			create_wargoal = { type = annex_everything target = TNS }
 			army_experience = 25
 		}
 	}
 
 	focus = {
 		id = ROM_crossing_the_prut
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 8
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_moldovan_campaign }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 35
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_moldovan_campaign focus = ROM_dniester_operation }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_ideas = ROM_prut_crossing_idea
+			add_ideas = ROM_army_of_the_prut_idea
 			army_experience = 25
 		}
 	}
 
 	focus = {
-		id = ROM_dobruja_revanche
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_a_military_rule
-		x = 12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_banat_contingency }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_dobruja = yes
-			ROM_wargoal_dobruja = yes
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_greater_romania_by_the_sword
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 10
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_crossing_the_prut }
-		prerequisite = { focus = ROM_dobruja_revanche }
-		prerequisite = { focus = ROM_northern_bukovina_offensive }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			every_owned_state = { add_core_of = ROM }
-			add_political_power = 100
-			add_war_support = 0.1
-			add_ideas = ROM_greater_romania_sword_idea
-		}
-	}
-
-	# ---- CAPSTONE ----
-	focus = {
 		id = ROM_the_iron_marshals
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_a_military_rule
-		x = 0
-		y = 8
+		icon = GFX_goal_generic_military_sphere
+		x = 32
+		y = 15
 		cost = 10
-		prerequisite = { focus = ROM_the_iron_government }
-		prerequisite = { focus = ROM_total_mobilisation }
-		prerequisite = { focus = ROM_the_nation_in_arms }
-		prerequisite = { focus = ROM_greater_romania_by_the_sword }
-		available = {
-			has_war_support > 0.6
-		}
-		search_filters = { FOCUS_FILTER_STABILITY }
+		prerequisite = { focus = ROM_return_to_the_barracks focus = ROM_the_iron_government }
+		prerequisite = { focus = ROM_strategic_reserves }
+		prerequisite = { focus = ROM_crossing_the_prut }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_war_support = 0.1
-			add_political_power = 150
 			add_ideas = ROM_iron_marshals_idea
+			if = {
+				limit = { has_country_flag = ROM_junta_stood_down }
+				add_stability = 0.05
+			}
+			else = {
+				add_war_support = 0.10
+				add_political_power = 100
+			}
 			set_country_flag = ROM_military_rule_complete
 		}
 	}
 
-	# ============================================================
-	# PATH 3 - HOLY ROMANIA (Orthodox state)
-	# ============================================================
 	focus = {
 		id = ROM_the_orthodox_state
-		icon = GFX_goal_unknown
-		x = 70
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_the_future_of_romania }
+		icon = GFX_goal_generic_national_unity
+		x = 45
+		y = 9
+		cost = 7
+		prerequisite = { focus = ROM_the_settlement }
 		mutually_exclusive = { focus = ROM_bring_back_monarchy focus = ROM_a_military_rule }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_pillar_church_req_40_tt
+				check_variable = { ROM_church_support > 39 }
+			}
+		}
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 100
-			add_ideas = ROM_orthodox_state_idea
+			if = {
+				limit = { has_idea = ROM_revolutionary_turmoil_idea }
+				swap_ideas = { remove_idea = ROM_revolutionary_turmoil_idea add_idea = ROM_orthodox_state_idea }
+			}
+			else = { add_ideas = ROM_orthodox_state_idea }
+			ROM_adopt_fundamentalist = yes
+			recruit_character = ROM_patriarch_daniel
+			promote_character = ROM_patriarch_daniel
 			set_country_flag = ROM_orthodox_path
-			log = "[GetDateText]: [Root.GetName]: Focus ROM_the_orthodox_state completed"
+			retire_character = ROM_calin_georgescu
+			news_event = { id = ROM_uprise.2 days = 1 }
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_uprise.2 days = 1 } } }
 		}
 	}
-	# ---- IDEOLOGY FOCUS ----
+
 	focus = {
 		id = ROM_fundamentalist_state
 		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = 0
-		y = 1
+		x = 45
+		y = 10
 		cost = 5
 		prerequisite = { focus = ROM_the_orthodox_state }
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -1367,172 +1138,20 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_adopt_fundamentalist = yes
-			add_political_power = 75
 			add_ideas = ROM_patriarchate_idea
+			add_political_power = 75
 			set_country_flag = ROM_church_concordat
-		}
-	}
-
-	# ---- POLITICAL TRACK ----
-	focus = {
-		id = ROM_church_and_state
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = -10
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_fundamentalist_state }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 50
-			add_ideas = ROM_church_state_idea
-		}
-	}
-
-	focus = {
-		id = ROM_monastic_revival
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = -12
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_church_and_state }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_stability = 0.05
-			add_ideas = ROM_monastic_idea
-		}
-	}
-
-	focus = {
-		id = ROM_religious_education
-		icon = GFX_goal_generic_scientific_exchange
-		relative_position_id = ROM_the_orthodox_state
-		x = -10
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_church_and_state }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_religious_education_idea
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_rebuild_the_cathedrals
-		icon = GFX_goal_generic_construct_infrastructure
-		relative_position_id = ROM_the_orthodox_state
-		x = -8
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_church_and_state }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_cathedral_idea
-			add_stability = 0.03
-		}
-	}
-
-	focus = {
-		id = ROM_the_third_rome
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_the_orthodox_state
-		x = -12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_monastic_revival }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			set_country_flag = ROM_third_rome
-			add_ideas = ROM_orthodox_leader_idea
-		}
-	}
-
-	focus = {
-		id = ROM_against_the_heterodox
-		icon = GFX_goal_generic_dangerous_deal
-		relative_position_id = ROM_the_orthodox_state
-		x = -8
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_rebuild_the_cathedrals }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_popularity = { ideology = communism popularity = -0.1 }
-			add_ideas = ROM_anti_heresy_idea
-		}
-	}
-
-	focus = {
-		id = ROM_the_orthodox_commonwealth
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_the_orthodox_state
-		x = -10
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_the_third_rome }
-		prerequisite = { focus = ROM_against_the_heterodox }
-		prerequisite = { focus = ROM_religious_education }
-		search_filters = { FOCUS_FILTER_POLITICAL }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_political_power = 100
-			add_stability = 0.05
-			add_ideas = ROM_commonwealth_idea
-		}
-	}
-
-	# ---- ECONOMIC TRACK ----
-	focus = {
-		id = ROM_the_sacred_nation
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = -3
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_fundamentalist_state }
-		search_filters = { FOCUS_FILTER_STABILITY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_war_support = 0.05
-			add_ideas = ROM_sacred_nation_idea
 		}
 	}
 
 	focus = {
 		id = ROM_the_peasant_state
-		icon = GFX_goal_generic_construct_infrastructure
-		relative_position_id = ROM_the_orthodox_state
-		x = -3
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_the_sacred_nation }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		icon = GFX_goal_house
+		x = 41
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_fundamentalist_state }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
@@ -1545,408 +1164,1100 @@ focus_tree = {
 	focus = {
 		id = ROM_parish_cooperatives
 		icon = GFX_goal_generic_construct_civ_factory
-		relative_position_id = ROM_the_orthodox_state
-		x = -5
-		y = 4
-		cost = 10
+		x = 40
+		y = 12
+		cost = 7
 		prerequisite = { focus = ROM_the_peasant_state }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			if = {
+				limit = { 79 = { is_owned_and_controlled_by = ROOT } }
+				79 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			if = {
+				limit = { 83 = { is_owned_and_controlled_by = ROOT } }
+				83 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
 			}
 			add_ideas = ROM_cooperatives_idea
 		}
 	}
 
 	focus = {
-		id = ROM_national_religious_culture
-		icon = GFX_goal_generic_propaganda
-		relative_position_id = ROM_the_orthodox_state
-		x = -1
-		y = 4
-		cost = 10
+		id = ROM_monastic_revival
+		icon = GFX_goal_generic_national_unity
+		x = 42
+		y = 12
+		cost = 5
 		prerequisite = { focus = ROM_the_peasant_state }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 50
-			add_ideas = ROM_culture_idea
+			add_ideas = ROM_monastic_idea
+			add_stability = 0.03
 		}
 	}
 
 	focus = {
-		id = ROM_industry_in_service_of_faith
-		icon = GFX_goal_generic_construct_mil_factory
-		relative_position_id = ROM_the_orthodox_state
-		x = -5
-		y = 5
-		cost = 10
+		id = ROM_rebuild_the_cathedrals
+		icon = GFX_goal_consolidate
+		x = 41
+		y = 13
+		cost = 7
 		prerequisite = { focus = ROM_parish_cooperatives }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		prerequisite = { focus = ROM_monastic_revival }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			random_owned_state = {
-				limit = { free_building_slots = { building = arms_factory size > 0 } }
-				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			add_ideas = ROM_cathedral_idea
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ROM_church_and_state
+		icon = GFX_goal_patriotic
+		x = 44
+		y = 11
+		cost = 7
+		prerequisite = { focus = ROM_fundamentalist_state }
+		mutually_exclusive = { focus = ROM_against_the_heterodox }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = ROM_orthodox_state_idea }
+				swap_ideas = { remove_idea = ROM_orthodox_state_idea add_idea = ROM_symphonia_idea }
 			}
-			random_owned_state = {
-				limit = { free_building_slots = { building = industrial_complex size > 0 } }
-				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			else = { add_ideas = ROM_symphonia_idea }
+			add_stability = 0.05
+			set_country_flag = ROM_symphonia
+		}
+	}
+
+	focus = {
+		id = ROM_against_the_heterodox
+		icon = GFX_goal_generic_dangerous_deal
+		x = 46
+		y = 11
+		cost = 7
+		prerequisite = { focus = ROM_fundamentalist_state }
+		mutually_exclusive = { focus = ROM_church_and_state }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { has_idea = ROM_orthodox_state_idea }
+				swap_ideas = { remove_idea = ROM_orthodox_state_idea add_idea = ROM_anti_heresy_idea }
 			}
-			add_tech_bonus = {
-				name = ROM_faith_industry
-				bonus = 0.5
-				uses = 1
-				category = industry
+			else = { add_ideas = ROM_anti_heresy_idea }
+			add_political_power = 100
+			country_event = { id = ROM_uprise.4 }
+		}
+	}
+
+	focus = {
+		id = ROM_ecumenical_ties
+		icon = GFX_goal_generic_improve_relations
+		x = 44
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_church_and_state }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { country_exists = GRE }
+				add_opinion_modifier = { target = GRE modifier = ROM_orthodox_concord }
+				GRE = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
 			}
+			if = {
+				limit = { country_exists = UKR }
+				add_opinion_modifier = { target = UKR modifier = ROM_orthodox_concord }
+				UKR = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = ROM_religious_education
+		icon = GFX_goal_generic_propaganda
+		x = 46
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_against_the_heterodox }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_religious_education_idea
+			add_stability = -0.03
 		}
 	}
 
 	focus = {
 		id = ROM_national_awakening
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = -1
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_national_religious_culture }
-		search_filters = { FOCUS_FILTER_STABILITY }
+		icon = GFX_goal_generic_propaganda
+		x = 45
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_ecumenical_ties focus = ROM_religious_education }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_popularity = { ideology = neutrality popularity = 0.1 }
+			add_popularity = { ideology = fundamentalism popularity = 0.10 }
 			add_stability = 0.05
-			add_manpower = 20000
+			add_manpower = 10000
 		}
 	}
 
-	focus = {
-		id = ROM_a_new_byzantium
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = -3
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_industry_in_service_of_faith }
-		prerequisite = { focus = ROM_national_awakening }
-		search_filters = { FOCUS_FILTER_STABILITY }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_new_byzantium_idea
-			add_political_power = 75
-			add_research_slot = 1
-		}
-	}
-
-	# ---- MILITARY TRACK ----
-	focus = {
-		id = ROM_the_holy_army
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_the_orthodox_state
-		x = 3
-		y = 2
-		cost = 10
-		prerequisite = { focus = ROM_fundamentalist_state }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			army_experience = 25
-			add_ideas = ROM_holy_army_idea
-		}
-	}
-
-	focus = {
-		id = ROM_military_chaplaincy
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_the_orthodox_state
-		x = 3
-		y = 3
-		cost = 10
-		prerequisite = { focus = ROM_the_holy_army }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_chaplaincy_idea
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_fortress_monasteries
-		icon = GFX_goal_generic_forceful_treaty
-		relative_position_id = ROM_the_orthodox_state
-		x = 1
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_military_chaplaincy }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_ideas = ROM_fortress_monasteries_idea
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_territorial_militia
-		icon = GFX_goal_generic_small_arms
-		relative_position_id = ROM_the_orthodox_state
-		x = 5
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_military_chaplaincy }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_manpower = 20000
-			add_ideas = ROM_militia_idea
-		}
-	}
-
-	focus = {
-		id = ROM_doctrine_of_the_holy_war
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_the_orthodox_state
-		x = 1
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_fortress_monasteries }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_tech_bonus = {
-				name = ROM_holy_war_doctrine
-				bonus = 0.5
-				uses = 1
-				category = land_doctrine
-			}
-			add_ideas = ROM_crusader_doctrine_idea
-		}
-	}
-
-	focus = {
-		id = ROM_defenders_of_the_faith
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_the_orthodox_state
-		x = 5
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_territorial_militia }
-		available = {
-			has_completed_focus = ROM_the_third_rome
-		}
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			add_war_support = 0.1
-			add_ideas = ROM_defenders_idea
-		}
-	}
-
-	focus = {
-		id = ROM_the_holy_crusade
-		icon = GFX_goal_generic_army_doctrines
-		relative_position_id = ROM_the_orthodox_state
-		x = 3
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_doctrine_of_the_holy_war }
-		prerequisite = { focus = ROM_defenders_of_the_faith }
-		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			army_experience = 100
-			add_ideas = ROM_holy_war_idea
-		}
-	}
-
-	# ---- EXPANSION TRACK ----
 	focus = {
 		id = ROM_orthodox_brotherhood
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_the_orthodox_state
-		x = 10
-		y = 2
-		cost = 10
+		icon = GFX_goal_generic_major_alliance
+		x = 49
+		y = 11
+		cost = 5
 		prerequisite = { focus = ROM_fundamentalist_state }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_political_power = 75
 			add_ideas = ROM_orthodox_brotherhood_idea
-			set_country_flag = ROM_orthodox_brotherhood
+			if = {
+				limit = { country_exists = SER }
+				SER = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = BUL }
+				BUL = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = GEO }
+				GEO = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
 		}
 	}
 
 	focus = {
 		id = ROM_gathering_of_moldova
 		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_the_orthodox_state
-		x = 8
-		y = 3
-		cost = 10
+		x = 48
+		y = 12
+		cost = 7
 		prerequisite = { focus = ROM_orthodox_brotherhood }
+		available = {
+			country_exists = MOL
+			NOT = { has_war_with = MOL }
+		}
+		bypass = {
+			NOT = { country_exists = MOL }
+		}
 		search_filters = { FOCUS_FILTER_ANNEXATION }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_moldova = yes
-			add_political_power = 50
+			set_country_flag = ROM_metropolis_of_bessarabia
+			custom_effect_tooltip = ROM_union_offer_tt
+			hidden_effect = { ROM_offer_union_to_moldova = yes }
 		}
 	}
 
 	focus = {
 		id = ROM_serbian_brethren
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_the_orthodox_state
-		x = 12
-		y = 3
-		cost = 10
+		icon = GFX_goal_patriotic
+		x = 50
+		y = 12
+		cost = 5
 		prerequisite = { focus = ROM_orthodox_brotherhood }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_banat = yes
+			if = { limit = { country_exists = SER } give_guarantee = SER }
+			if = { limit = { country_exists = BUL } give_guarantee = BUL }
 			add_political_power = 25
 		}
 	}
 
 	focus = {
-		id = ROM_return_to_bukovina
-		icon = GFX_goal_generic_demand_territory
-		relative_position_id = ROM_the_orthodox_state
-		x = 8
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_gathering_of_moldova }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
+		id = ROM_territorial_militia
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 49
+		y = 13
+		cost = 5
+		prerequisite = { focus = ROM_gathering_of_moldova focus = ROM_serbian_brethren }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			ROM_claim_bukovina = yes
-			add_stability = 0.03
+			add_ideas = ROM_militia_idea
+			add_manpower = 20000
 		}
 	}
 
-	focus = {
-		id = ROM_bulgarian_unity
-		icon = GFX_goal_generic_improve_relations
-		relative_position_id = ROM_the_orthodox_state
-		x = 12
-		y = 4
-		cost = 10
-		prerequisite = { focus = ROM_serbian_brethren }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_claim_dobruja = yes
-			add_political_power = 25
-		}
-	}
-
-	focus = {
-		id = ROM_the_holy_union
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = 10
-		y = 5
-		cost = 10
-		prerequisite = { focus = ROM_return_to_bukovina }
-		prerequisite = { focus = ROM_bulgarian_unity }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			ROM_wargoal_moldova = yes
-			add_war_support = 0.05
-			add_political_power = -25
-		}
-	}
-
-	focus = {
-		id = ROM_holy_romanian_realm
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = 10
-		y = 6
-		cost = 10
-		prerequisite = { focus = ROM_the_holy_union }
-		search_filters = { FOCUS_FILTER_ANNEXATION }
-		ai_will_do = {
-			factor = 1
-		}
-		completion_reward = {
-			every_owned_state = { add_core_of = ROM }
-			add_political_power = 100
-			add_stability = 0.05
-			add_ideas = ROM_holy_realm_idea
-		}
-	}
-
-	# ---- CAPSTONE ----
 	focus = {
 		id = ROM_holy_romania
-		icon = GFX_goal_generic_national_unity
-		relative_position_id = ROM_the_orthodox_state
-		x = 0
-		y = 8
+		icon = GFX_goal_romania
+		x = 45
+		y = 15
 		cost = 10
-		prerequisite = { focus = ROM_the_orthodox_commonwealth }
-		prerequisite = { focus = ROM_a_new_byzantium }
-		prerequisite = { focus = ROM_the_holy_crusade }
-		prerequisite = { focus = ROM_holy_romanian_realm }
+		prerequisite = { focus = ROM_rebuild_the_cathedrals }
+		prerequisite = { focus = ROM_national_awakening }
+		prerequisite = { focus = ROM_territorial_militia }
 		available = {
-			has_stability > 0.6
+			has_stability > 0.5
 		}
-		search_filters = { FOCUS_FILTER_STABILITY }
+		search_filters = { FOCUS_FILTER_POLITICAL }
 		ai_will_do = {
 			factor = 1
 		}
 		completion_reward = {
-			add_stability = 0.1
-			add_war_support = 0.1
-			add_political_power = 150
-			add_ideas = ROM_holy_romania_idea
+			if = {
+				limit = { has_idea = ROM_patriarchate_idea }
+				swap_ideas = { remove_idea = ROM_patriarchate_idea add_idea = ROM_holy_romania_idea }
+			}
+			else = { add_ideas = ROM_holy_romania_idea }
+			add_political_power = 100
 			set_country_flag = ROM_orthodox_state_complete
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.24 days = 1 } } }
 		}
 	}
+
+	focus = {
+		id = ROM_crown_royal_carpathians
+		icon = GFX_goal_house
+		x = 13
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_danube_development }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_royal_heritage_idea
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = ROM_crown_investment_bank
+		icon = GFX_goal_socialcredit
+		x = 13
+		y = 15
+		cost = 7
+		prerequisite = { focus = ROM_crown_royal_carpathians }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { 84 = { is_owned_and_controlled_by = ROOT } }
+				84 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			if = {
+				limit = { 46 = { is_owned_and_controlled_by = ROOT } }
+				46 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			custom_effect_tooltip = ROM_corr_m2_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -2 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_crown_royal_academies
+		icon = GFX_goal_publicschool
+		x = 16
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_reconciliation_commission }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_research_slot = 1
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = ROM_crown_order_of_the_star
+		icon = GFX_goal_tradvalues
+		x = 22
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_royal_guard }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = 0.02
+			custom_effect_tooltip = ROM_corr_p3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 3 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_crown_royal_air_arm
+		icon = GFX_goal_generic_build_airforce
+		x = 24
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_carpathian_line }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = { name = ROM_crown_royal_air_arm bonus = 0.5 uses = 1 category = air_equip }
+		}
+	}
+
+	focus = {
+		id = ROM_crown_danube_squadron
+		icon = GFX_goal_generic_build_navy
+		x = 26
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_carpathian_line }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = { 971 = { is_owned_and_controlled_by = ROOT } }
+				971 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = dockyard level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = dockyard level = 1 instant_build = yes }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_crown_royal_army_reform
+		icon = GFX_goal_generic_army_doctrines
+		x = 25
+		y = 15
+		cost = 7
+		prerequisite = { focus = ROM_crown_royal_air_arm }
+		prerequisite = { focus = ROM_crown_danube_squadron }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_royal_army_idea
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = ROM_crown_heir
+		icon = GFX_goal_kingparl
+		x = 19
+		y = 16
+		cost = 5
+		prerequisite = { focus = ROM_one_crown_one_nation }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { id = ROM_regime.1  }
+		}
+	}
+
+	focus = {
+		id = ROM_crown_jubilee
+		icon = GFX_goal_congress
+		x = 17
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_crown_heir }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_constitutional_crown_req_tt
+				has_country_flag = ROM_constitutional_crown
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = { ideology = conservative popularity = 0.05 }
+			custom_effect_tooltip = ROM_corr_m3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -3 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_crown_guardian_monarchy
+		icon = GFX_goal_restorecrown
+		x = 21
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_crown_heir }
+		available = {
+			NOT = { has_country_flag = ROM_constitutional_crown }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_war_support = 0.05
+			add_stability = -0.02
+			custom_effect_tooltip = ROM_corr_p4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 4 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_crown_both_banks
+		icon = GFX_goal_generic_demand_territory
+		x = 23
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_crown_heir }
+		available = {
+			has_country_flag = ROM_moldova_united
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 100
+			remove_ideas = ROM_union_integration_idea
+		}
+	}
+
+	focus = {
+		id = ROM_crown_kingdom_2035
+		icon = GFX_goal_tradvalues
+		x = 19
+		y = 18
+		cost = 10
+		prerequisite = { focus = ROM_crown_jubilee focus = ROM_crown_guardian_monarchy }
+		prerequisite = { focus = ROM_crown_investment_bank }
+		prerequisite = { focus = ROM_crown_royal_army_reform }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_after_2029_tt
+				date > 2029.1.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_kingdom_2035_idea
+			add_political_power = 100
+		}
+	}
+
+	focus = {
+		id = ROM_junta_arms_exports
+		icon = GFX_goal_generic_military_deal
+		x = 28
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_strategic_reserves }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 75
+			custom_effect_tooltip = ROM_corr_p4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 4 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_junta_drone_corps
+		icon = GFX_goal_generic_secret_weapon
+		x = 36
+		y = 13
+		cost = 5
+		prerequisite = { focus = ROM_dniester_operation }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_tech_bonus = { name = ROM_junta_drone_corps bonus = 0.75 uses = 1 category = electronics }
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = ROM_junta_air_mobility
+		icon = GFX_goal_generic_build_airforce
+		x = 36
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_junta_drone_corps }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			air_experience = 25
+			add_ideas = ROM_air_mobility_idea
+		}
+	}
+
+	focus = {
+		id = ROM_junta_army_charter
+		icon = GFX_goal_congress
+		x = 30
+		y = 15
+		cost = 5
+		prerequisite = { focus = ROM_return_to_the_barracks }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.03
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = ROM_junta_directorate
+		icon = GFX_goal_consolidate
+		x = 34
+		y = 15
+		cost = 5
+		prerequisite = { focus = ROM_the_iron_government }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 100
+			add_stability = -0.02
+			custom_effect_tooltip = ROM_corr_p3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 3 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_junta_civilian_handover
+		icon = GFX_goal_patriotic
+		x = 30
+		y = 16
+		cost = 5
+		prerequisite = { focus = ROM_junta_army_charter }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			custom_effect_tooltip = ROM_corr_m3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -3 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_junta_national_service
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 34
+		y = 16
+		cost = 7
+		prerequisite = { focus = ROM_junta_directorate }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_national_service_idea
+			add_manpower = 40000
+			add_stability = -0.03
+		}
+	}
+
+	focus = {
+		id = ROM_junta_succession
+		icon = GFX_goal_generic_army_doctrines
+		x = 32
+		y = 16
+		cost = 5
+		prerequisite = { focus = ROM_the_iron_marshals }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { id = ROM_regime.2 }
+		}
+	}
+
+	focus = {
+		id = ROM_junta_modern_army
+		icon = GFX_goal_generic_military_sphere
+		x = 32
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_junta_succession }
+		prerequisite = { focus = ROM_junta_drone_corps focus = ROM_junta_air_mobility }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = { name = ROM_junta_modern_army bonus = 0.5 uses = 2 category = armor }
+		}
+	}
+
+	focus = {
+		id = ROM_junta_black_sea_command
+		icon = GFX_goal_generic_build_navy
+		x = 30
+		y = 17
+		cost = 5
+		prerequisite = { focus = ROM_junta_civilian_handover }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			navy_experience = 25
+			if = {
+				limit = { country_exists = BUL }
+				add_opinion_modifier = { target = BUL modifier = ROM_black_sea_partner }
+				BUL = { add_opinion_modifier = { target = ROOT modifier = ROM_black_sea_partner } }
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_junta_regional_power
+		icon = GFX_goal_generic_major_alliance
+		x = 34
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_junta_national_service }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = ROM_junta_nation_under_arms
+		icon = GFX_goal_generic_military_sphere
+		x = 32
+		y = 18
+		cost = 10
+		prerequisite = { focus = ROM_junta_modern_army }
+		prerequisite = { focus = ROM_junta_black_sea_command focus = ROM_junta_regional_power }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_after_2029_tt
+				date > 2029.1.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_nation_under_arms_idea
+		}
+	}
+
+	focus = {
+		id = ROM_church_parish_schools
+		icon = GFX_goal_publicschool
+		x = 40
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_rebuild_the_cathedrals }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.02
+			add_manpower = 5000
+		}
+	}
+
+	focus = {
+		id = ROM_church_pilgrim_roads
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 42
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_rebuild_the_cathedrals }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { 83 = { is_owned_and_controlled_by = ROOT } }
+				83 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			}
+			if = {
+				limit = { 79 = { is_owned_and_controlled_by = ROOT } }
+				79 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			}
+			add_political_power = 25
+		}
+	}
+
+	focus = {
+		id = ROM_church_cooperative_bank
+		icon = GFX_goal_socialcredit
+		x = 41
+		y = 15
+		cost = 7
+		prerequisite = { focus = ROM_church_parish_schools }
+		prerequisite = { focus = ROM_church_pilgrim_roads }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { 83 = { is_owned_and_controlled_by = ROOT } }
+				83 = {
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			else = {
+				random_owned_controlled_state = {
+					limit = { is_core_of = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+				}
+			}
+			custom_effect_tooltip = ROM_corr_m2_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -2 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_church_minority_charter
+		icon = GFX_goal_patriotic
+		x = 44
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_ecumenical_ties }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.04
+			if = {
+				limit = { country_exists = HUN }
+				add_opinion_modifier = { target = HUN modifier = ROM_royal_kinship }
+				HUN = { add_opinion_modifier = { target = ROOT modifier = ROM_royal_kinship } }
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_church_morality_code
+		icon = GFX_goal_generic_propaganda
+		x = 46
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_religious_education }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 75
+			add_stability = -0.03
+			add_ideas = ROM_morality_code_idea
+		}
+	}
+
+	focus = {
+		id = ROM_church_bessarabian_synod
+		icon = GFX_goal_generic_demand_territory
+		x = 48
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_territorial_militia }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { has_country_flag = ROM_moldova_united }
+				add_stability = 0.05
+				remove_ideas = ROM_union_integration_idea
+			}
+			else = {
+				if = {
+					limit = { country_exists = MOL }
+					MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_brotherly_attention } }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_church_relief_corps
+		icon = GFX_goal_welfare
+		x = 50
+		y = 14
+		cost = 5
+		prerequisite = { focus = ROM_territorial_militia }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = {
+				limit = { country_exists = SER }
+				add_opinion_modifier = { target = SER modifier = ROM_orthodox_concord }
+				SER = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = GEO }
+				add_opinion_modifier = { target = GEO modifier = ROM_orthodox_concord }
+				GEO = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+			if = {
+				limit = { country_exists = GRE }
+				add_opinion_modifier = { target = GRE modifier = ROM_orthodox_concord }
+				GRE = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } }
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_church_orthodox_league
+		icon = GFX_goal_generic_major_alliance
+		x = 49
+		y = 15
+		cost = 7
+		prerequisite = { focus = ROM_church_bessarabian_synod focus = ROM_church_relief_corps }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			if = { limit = { country_exists = SER } SER = { add_opinion_modifier = { target = ROOT modifier = ROM_orthodox_concord } } }
+			if = { limit = { country_exists = BUL } give_guarantee = BUL }
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = ROM_church_succession
+		icon = GFX_goal_generic_national_unity
+		x = 45
+		y = 16
+		cost = 5
+		prerequisite = { focus = ROM_holy_romania }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			country_event = { id = ROM_regime.3 }
+		}
+	}
+
+	focus = {
+		id = ROM_church_return_to_laymen
+		icon = GFX_goal_election2027
+		x = 43
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_church_succession }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_church_reformer_req_tt
+				has_country_flag = ROM_church_reformer
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_politics = { ruling_party = conservative elections_allowed = yes }
+			add_popularity = { ideology = conservative popularity = 0.10 }
+			add_stability = 0.05
+			custom_effect_tooltip = ROM_corr_m4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = -4 }
+				ROM_corruption_apply = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_church_holy_synod_governs
+		icon = GFX_goal_consolidate
+		x = 47
+		y = 17
+		cost = 7
+		prerequisite = { focus = ROM_church_succession }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_church_hardliner_req_tt
+				has_country_flag = ROM_church_hardliner
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 150
+			add_war_support = 0.05
+			add_stability = -0.03
+			add_popularity = { ideology = fundamentalism popularity = 0.10 }
+		}
+	}
+
+	focus = {
+		id = ROM_church_covenant_nation
+		icon = GFX_goal_romania
+		x = 45
+		y = 18
+		cost = 10
+		prerequisite = { focus = ROM_church_return_to_laymen focus = ROM_church_holy_synod_governs }
+		prerequisite = { focus = ROM_church_cooperative_bank }
+		prerequisite = { focus = ROM_church_orthodox_league }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_after_2029_tt
+				date > 2029.1.1
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_ideas = ROM_covenant_nation_idea
+			add_political_power = 100
+		}
+	}
+
 }

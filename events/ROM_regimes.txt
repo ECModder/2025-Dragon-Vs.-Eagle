@@ -1,0 +1,75 @@
+add_namespace = ROM_regime
+
+country_event = {
+	id = ROM_regime.1
+	title = ROM_regime.1.t
+	desc = ROM_regime.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_regime.1.a
+		set_country_flag = ROM_crown_heir_dynastic
+		add_stability = 0.05
+		add_political_power = 50
+	}
+	option = {
+		name = ROM_regime.1.b
+		set_country_flag = ROM_crown_heir_elective
+		add_stability = 0.03
+		add_popularity = { ideology = conservative popularity = 0.05 }
+	}
+	option = {
+		name = ROM_regime.1.c
+		add_political_power = 75
+		add_stability = -0.03
+	}
+}
+
+country_event = {
+	id = ROM_regime.2
+	title = ROM_regime.2.t
+	desc = ROM_regime.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_regime.2.a
+		add_stability = 0.03
+		add_political_power = 50
+	}
+	option = {
+		name = ROM_regime.2.b
+		add_political_power = 100
+		add_stability = -0.02
+		army_experience = 15
+	}
+	option = {
+		name = ROM_regime.2.c
+		trigger = { has_country_flag = ROM_junta_stood_down }
+		add_stability = 0.06
+		custom_effect_tooltip = ROM_corr_m3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_regime.3
+	title = ROM_regime.3.t
+	desc = ROM_regime.3.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_regime.3.a
+		trigger = { NOT = { has_idea = ROM_anti_heresy_idea } }
+		set_country_flag = ROM_church_reformer
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_regime.3.b
+		trigger = { NOT = { has_idea = ROM_symphonia_idea } }
+		set_country_flag = ROM_church_hardliner
+		add_political_power = 75
+	}
+}

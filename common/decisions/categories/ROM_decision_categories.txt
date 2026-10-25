@@ -1,0 +1,41 @@
+ROM_parliament_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = ROM }
+	visible = { has_dynamic_modifier = { modifier = ROM_parliamentary_majority } }
+	priority = 50
+}
+
+ROM_corruption_category = {
+	icon = generic_crisis
+	allowed = { original_tag = ROM }
+	visible = { has_variable = ROM_corruption }
+	priority = 60
+}
+
+ROM_movement_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = ROM }
+	visible = { has_variable = ROM_legitimacy }
+	priority = 55
+}
+
+ROM_defence_planning_category = {
+	icon = generic_tank
+	allowed = { original_tag = ROM }
+	visible = { has_country_flag = ROM_csat_planning }
+	priority = 55
+}
+
+ROM_snagov_category = {
+	icon = generic_crisis
+	allowed = { original_tag = ROM }
+	visible = { has_country_flag = ROM_dracula_path }
+	priority = 70
+}
+
+ROM_dacia_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = ROM }
+	visible = { has_country_flag = ROM_dacia_decision_unlocked }
+	priority = 10
+}

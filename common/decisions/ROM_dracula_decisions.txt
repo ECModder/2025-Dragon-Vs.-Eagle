@@ -1,0 +1,332 @@
+ROM_snagov_category = {
+	ROM_drac_dig_targoviste = {
+		icon = GFX_decision_generic_construction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_drac_dig_tt
+		}
+		remove_effect = {
+			custom_effect_tooltip = ROM_ritual_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 8 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -5 }
+				ROM_update_veil = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_dig_bran = {
+		icon = GFX_decision_generic_construction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_drac_dig_tt
+		}
+		remove_effect = {
+			custom_effect_tooltip = ROM_ritual_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 8 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -5 }
+				ROM_update_veil = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_dig_valea_alba = {
+		icon = GFX_decision_generic_construction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_drac_dig_tt
+		}
+		remove_effect = {
+			custom_effect_tooltip = ROM_ritual_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 8 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -5 }
+				ROM_update_veil = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_dig_tismana = {
+		icon = GFX_decision_generic_construction
+		cost = 50
+		fire_only_once = yes
+		days_remove = 60
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_drac_dig_tt
+		}
+		remove_effect = {
+			custom_effect_tooltip = ROM_ritual_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 8 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -5 }
+				ROM_update_veil = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_buy_silence = {
+		icon = GFX_decision_generic_speech
+		cost = 50
+		days_re_enable = 120
+		visible = {
+			has_variable = ROM_veil
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_veil_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = 8 }
+				ROM_update_veil = yes
+			}
+			custom_effect_tooltip = ROM_corr_p4_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 4 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 check_variable = { ROM_veil < 40 } }
+		}
+	}
+
+	ROM_drac_cover_story = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 75
+		days_re_enable = 180
+		visible = {
+			has_variable = ROM_veil
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_veil_p6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = 6 }
+				ROM_update_veil = yes
+			}
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_rare_materials = {
+		icon = GFX_decision_generic_industry
+		cost = 50
+		days_re_enable = 90
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+			has_country_flag = ROM_drac_project_started
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_ritual_p8_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 8 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_corr_p2_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 2 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_night_rites = {
+		icon = GFX_decision_generic_nationalism
+		cost = 50
+		days_re_enable = 120
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+			has_country_flag = ROM_drac_occult
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_ritual_p12_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 12 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -6 }
+				ROM_update_veil = yes
+			}
+			custom_effect_tooltip = ROM_dread_p4_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 4 }
+				ROM_update_dread = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_lab_trials = {
+		icon = GFX_decision_generic_research
+		cost = 50
+		days_re_enable = 120
+		visible = {
+			has_country_flag = ROM_drac_digs_unlocked
+			NOT = { has_country_flag = ROM_drac_voivode_returned }
+			has_country_flag = ROM_drac_science
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_ritual_p12_tt
+			hidden_effect = {
+				add_to_variable = { ROM_ritual = 12 }
+				ROM_update_ritual = yes
+			}
+			custom_effect_tooltip = ROM_veil_m4_tt
+			hidden_effect = {
+				add_to_variable = { ROM_veil = -4 }
+				ROM_update_veil = yes
+			}
+			add_manpower = -1000
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_hold_court = {
+		icon = GFX_decision_generic_political_rally
+		cost = 0
+		days_re_enable = 90
+		visible = {
+			has_country_flag = ROM_drac_voivode_returned
+		}
+		complete_effect = {
+			add_political_power = 60
+			custom_effect_tooltip = ROM_dread_p3_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 3 }
+				ROM_update_dread = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_show_mercy = {
+		icon = GFX_decision_generic_civil_support
+		cost = 75
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_drac_voivode_returned
+		}
+		available = {
+			check_variable = { ROM_dread > 9 }
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_dread_m10_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = -10 }
+				ROM_update_dread = yes
+			}
+			add_stability = 0.03
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 check_variable = { ROM_dread > 59 } }
+		}
+	}
+
+	ROM_drac_feast_of_the_order = {
+		icon = GFX_decision_generic_political_address
+		cost = 50
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_drac_voivode_returned
+		}
+		complete_effect = {
+			add_stability = 0.04
+			custom_effect_tooltip = ROM_corr_p3_tt
+			hidden_effect = {
+				set_temp_variable = { rom_corr_delta = 3 }
+				ROM_corruption_apply = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	ROM_drac_blood_levy = {
+		icon = GFX_decision_generic_army_support
+		cost = 25
+		days_re_enable = 180
+		visible = {
+			has_country_flag = ROM_drac_voivode_returned
+			has_completed_focus = ROM_drac_the_host
+		}
+		complete_effect = {
+			add_manpower = 20000
+			custom_effect_tooltip = ROM_dread_p6_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 6 }
+				ROM_update_dread = yes
+			}
+			add_stability = -0.02
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

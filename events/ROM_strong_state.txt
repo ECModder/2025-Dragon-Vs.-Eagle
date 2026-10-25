@@ -1,0 +1,180 @@
+add_namespace = ROM_ant
+
+country_event = {
+	id = ROM_ant.1
+	title = ROM_ant.1.t
+	desc = ROM_ant.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_ant.1.a
+		custom_effect_tooltip = ROM_defence_effort_p1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 1 }
+			ROM_update_defence_effort = yes
+		}
+		add_political_power = 25
+	}
+	option = {
+		name = ROM_ant.1.b
+		custom_effect_tooltip = ROM_defence_effort_p2_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 2 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_m8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -8 }
+			ROM_update_consent = yes
+		}
+		army_experience = 15
+	}
+	option = {
+		name = ROM_ant.1.c
+		custom_effect_tooltip = ROM_consent_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 5 }
+			ROM_update_consent = yes
+		}
+		add_political_power = 50
+		add_war_support = -0.02
+	}
+}
+
+country_event = {
+	id = ROM_ant.2
+	title = ROM_ant.2.t
+	desc = ROM_ant.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_ant.2.a
+		custom_effect_tooltip = ROM_defence_effort_p1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_m6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -6 }
+			ROM_update_consent = yes
+		}
+		add_tech_bonus = { name = ROM_ant_budget_guns bonus = 0.5 uses = 1 category = artillery }
+	}
+	option = {
+		name = ROM_ant.2.b
+		custom_effect_tooltip = ROM_defence_effort_m1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = -1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 8 }
+			ROM_update_consent = yes
+		}
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_ant.2.c
+		custom_effect_tooltip = ROM_consent_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 3 }
+			ROM_update_consent = yes
+		}
+		add_stability = -0.03
+		custom_effect_tooltip = ROM_corr_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+		}
+		add_timed_idea = { idea = ROM_austerity_softened_idea days = 365 }
+	}
+}
+
+country_event = {
+	id = ROM_ant.3
+	title = ROM_ant.3.t
+	desc = ROM_ant.3.d
+	picture = GFX_report_event_worker_protests
+	is_triggered_only = yes
+	option = {
+		name = ROM_ant.3.a
+		custom_effect_tooltip = ROM_defence_effort_m1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = -1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 10 }
+			ROM_update_consent = yes
+		}
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_ant.3.b
+		custom_effect_tooltip = ROM_consent_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -3 }
+			ROM_update_consent = yes
+		}
+		add_stability = -0.05
+		add_war_support = 0.03
+	}
+	option = {
+		name = ROM_ant.3.c
+		custom_effect_tooltip = ROM_consent_p6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 6 }
+			ROM_update_consent = yes
+		}
+		add_political_power = -75
+		custom_effect_tooltip = ROM_corr_p2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 2 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_ant.7
+	title = ROM_ant.7.t
+	desc = ROM_ant.7.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_ant.7.a
+		add_political_power = -25
+		custom_effect_tooltip = ROM_consent_p2_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 2 }
+			ROM_update_consent = yes
+		}
+	}
+	option = {
+		name = ROM_ant.7.b
+		add_political_power = 100
+		army_experience = 5
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_consent_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -3 }
+			ROM_update_consent = yes
+		}
+	}
+	option = {
+		name = ROM_ant.7.c
+		add_political_power = 25
+		if = {
+			limit = { country_exists = POL }
+			add_opinion_modifier = { target = POL modifier = ROM_eastern_flank_partner }
+			POL = { add_opinion_modifier = { target = ROOT modifier = ROM_eastern_flank_partner } }
+		}
+	}
+}

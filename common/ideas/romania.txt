@@ -1,5 +1,6 @@
 ideas = {
 	country = {
+		# ---- prelude tree (romania.txt) ----
 		ROM_the_january_strikes = {
 			picture = generic_pp_unity
 			modifier = {
@@ -19,52 +20,536 @@ ideas = {
 				production_speed_buildings_factor = 0.1
 			}
 		}
-		ROM_euro_atlantic_idea = {
-			picture = generic_pp_unity
+
+		# ---- romania_elections ----
+		ROM_austerity_idea = {
+			picture = FRA_factory_strikes
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				stability_factor = 0.04
-				trade_opinion_factor = 0.10
-				army_defence_factor = 0.03
+				stability_factor = -0.06
+				political_power_gain = -0.10
+				consumer_goods_factor = -0.04
 			}
 		}
-		ROM_ukraine_support_idea = {
-			picture = generic_infantry_bonus
+		ROM_austerity_softened_idea = {
+			picture = generic_economic_recovery
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				war_support_factor = 0.05
-				land_reinforce_rate = 0.05
+				stability_factor = -0.03
+				consumer_goods_factor = -0.02
 			}
 		}
-		ROM_three_seas_idea = {
+		ROM_fiscal_discipline_idea = {
 			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				faction_trade_opinion_factor = 0.10
-				production_speed_infrastructure_factor = 0.10
+				stability_factor = 0.02
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.02
 			}
 		}
-		ROM_black_sea_pact_idea = {
+		ROM_reformed_government_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.08
+				consumer_goods_factor = -0.01
+			}
+		}
+		ROM_reconciliation_idea = {
 			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.15
+			}
+		}
+		ROM_interference_exposed_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				civilian_intel_to_others = -10.0
+			}
+		}
+		ROM_anti_corruption_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.03
+				political_power_factor = 0.05
+			}
+		}
+		ROM_civic_compact_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+				stability_factor = 0.03
+			}
+		}
+		ROM_presidential_movement_idea = {
+			picture = generic_centrist_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				centrist_drift = 0.03
+			}
+		}
+		ROM_republic_of_merit_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		ROM_digital_state_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.05
+				production_speed_buildings_factor = 0.03
+			}
+		}
+		ROM_cyber_shield_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = -15.0
+				drift_defence_factor = 0.10
+			}
+		}
+		ROM_prosecutors_charter_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.02
+				drift_defence_factor = 0.05
+			}
+		}
+		ROM_oecd_member_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.03
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_erm_discipline_idea = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.02
+				stability_factor = -0.02
+			}
+		}
+		ROM_eurozone_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.04
+				production_speed_buildings_factor = 0.05
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_rural_doctors_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				monthly_population = 0.05
+				stability_factor = 0.03
+			}
+		}
+		ROM_europe_core_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				research_speed_factor = 0.03
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_eu_funds_frozen_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.10
+				trade_opinion_factor = -0.15
+			}
+		}
+		ROM_romania_first_idea = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.04
+				consumer_goods_factor = 0.02
+			}
+		}
+		ROM_diaspora_return_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				monthly_population = 0.10
+				conscription_factor = 0.03
+			}
+		}
+		ROM_purged_institutions_idea = {
+			picture = state_propaganda
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.20
+				research_speed_factor = -0.03
+				stability_factor = -0.03
+			}
+		}
+		ROM_flank_leverage_idea = {
+			picture = generic_volunteer_expedition_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				army_defence_factor = 0.03
-				naval_hit_chance = 0.05
+				production_speed_arms_factory_factor = 0.05
 			}
 		}
-		ROM_guardian_idea = {
+		ROM_alliance_pariah_idea = {
+			picture = isolation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = -0.25
+				stability_factor = -0.03
+				war_support_factor = 0.05
+			}
+		}
+		ROM_sovereign_romania_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_factor = 0.10
+				war_support_factor = 0.03
+			}
+		}
+		ROM_greater_romania_idea = {
+			picture = generic_ultranationalism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				justify_war_goal_time = -0.25
+				conscription_factor = 0.05
+				stability_factor = -0.05
+			}
+		}
+		ROM_farmers_charter_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.03
+				monthly_population = 0.03
+				consumer_goods_factor = -0.01
+			}
+		}
+		ROM_national_curriculum_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.04
+				research_speed_factor = -0.01
+			}
+		}
+		ROM_sim_line_moderate_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.04
+				trade_opinion_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+		ROM_sim_line_radical_idea = {
+			picture = generic_ultranationalism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.06
+				political_power_gain = 0.10
+				stability_factor = -0.03
+			}
+		}
+		ROM_sim_line_machine_idea = {
 			picture = generic_pp_unity
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
+				political_power_gain = 0.15
+				production_speed_buildings_factor = -0.03
+			}
+		}
+		ROM_sovereignty_mandate_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.04
+			}
+		}
+		ROM_referendum_defeat_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.10
+				stability_factor = -0.04
+			}
+		}
+		ROM_party_state_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				stability_factor = 0.03
+				research_speed_factor = -0.03
+			}
+		}
+		ROM_movement_endures_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				war_support_factor = 0.03
+				political_power_factor = 0.05
+			}
+		}
+		ROM_union_pact_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.02
+			}
+		}
+		ROM_welfare_state_idea = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				consumer_goods_factor = 0.03
+			}
+		}
+		ROM_public_housing_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				monthly_population = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		ROM_low_taxes_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.03
+				production_speed_industrial_complex_factor = 0.08
+			}
+		}
+		ROM_recovery_funds_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.10
+				production_speed_infrastructure_factor = 0.15
+			}
+		}
+		ROM_free_market_boom_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.10
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		ROM_social_pact_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
 				stability_factor = 0.08
-				war_support_factor = 0.05
+				production_factory_max_efficiency_factor = 0.03
+			}
+		}
+		ROM_liberal_romania_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.05
+				research_speed_factor = 0.03
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_romarm_holding_idea = {
+			picture = generic_industrial_concern_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.10
+				industrial_capacity_factory = 0.03
+			}
+		}
+		ROM_powder_works_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				equipment_conversion_speed = 0.10
+				production_factory_efficiency_gain_factor = 0.05
+			}
+		}
+		ROM_mobilisation_law_idea = {
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				mobilization_speed = 0.15
+				conscription_factor = 0.03
+			}
+		}
+		ROM_central_administration_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.08
+				stability_factor = 0.02
+			}
+		}
+		ROM_services_reform_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				civilian_intel_to_others = -10.0
+			}
+		}
+		ROM_state_capacity_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.08
+				political_power_factor = 0.05
+				stability_factor = 0.03
+			}
+		}
+		ROM_american_brigade_idea = {
+			picture = generic_volunteer_expedition_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				war_support_factor = 0.03
+			}
+		}
+		ROM_bucharest_format_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				opinion_gain_monthly_factor = 0.15
+				political_power_factor = 0.05
+			}
+		}
+		ROM_state_of_emergency_idea = {
+			picture = strict_discipline
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = -0.04
+				research_speed_factor = -0.02
+				mobilization_speed = 0.10
+			}
+		}
+		ROM_permanent_emergency_idea = {
+			picture = total_ideological_mobilisation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
 				political_power_gain = 0.20
-				justify_war_goal_time = -0.15
+				stability_factor = -0.06
+				research_speed_factor = -0.04
+				trade_opinion_factor = -0.15
+				war_support_factor = 0.05
+			}
+		}
+		ROM_total_defence_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.08
+				stability_factor = 0.03
+				mobilization_speed = 0.10
+			}
+		}
+		ROM_strong_state_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				production_speed_arms_factory_factor = 0.10
+				political_power_factor = 0.10
+			}
+		}
+		ROM_strong_state_authoritarian_idea = {
+			picture = total_ideological_mobilisation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.15
+				political_power_gain = 0.20
+				stability_factor = -0.05
+				trade_opinion_factor = -0.10
 			}
 		}
 		ROM_one_nation_idea = {
@@ -76,880 +561,467 @@ ideas = {
 				conscription_factor = 0.05
 			}
 		}
-		ROM_sovereign_bloc_idea = {
-			picture = generic_pp_unity
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				war_support_factor = 0.05
-				political_power_gain = 0.10
-				trade_opinion_factor = -0.05
-			}
-		}
-		ROM_lost_lands_idea = {
-			picture = generic_infantry_bonus
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				justify_war_goal_time = -0.25
-				war_support_factor = 0.05
-			}
-		}
-		ROM_black_sea_brotherhood_idea = {
-			picture = generic_pp_unity
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.03
-				trade_opinion_factor = 0.05
-			}
-		}
-		ROM_public_housing_idea = {
+		ROM_union_integration_idea = {
 			picture = generic_economic_recovery
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				stability_factor = 0.05
+				stability_factor = -0.05
 				consumer_goods_factor = 0.03
+				political_power_gain = -0.10
 			}
 		}
-		ROM_peoples_militia_idea = {
+		ROM_grain_corridor_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = 0.10
+				production_speed_infrastructure_factor = 0.10
+			}
+		}
+		ROM_ukraine_support_idea = {
 			picture = generic_infantry_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				conscription_factor = 0.05
-				land_reinforce_rate = 0.05
-				stability_factor = -0.02
-			}
-		}
-		ROM_fraternal_ties_idea = {
-			picture = generic_pp_unity
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				political_power_gain = 0.10
-				trade_opinion_factor = 0.05
-			}
-		}
-		ROM_balkan_union_idea = {
-			picture = generic_pp_unity
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				faction_trade_opinion_factor = 0.10
-				stability_factor = 0.03
-			}
-		}
-		ROM_socialist_beacon_idea = {
-			picture = generic_pp_unity
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.08
 				war_support_factor = 0.05
-				political_power_gain = 0.20
+				experience_gain_army_factor = 0.10
 			}
 		}
-        ROM_crown_restored_idea = {
+		ROM_three_seas_idea = {
+			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.1
-				war_support_factor = -0.05
+				production_speed_infrastructure_factor = 0.10
+				trade_opinion_factor = 0.10
 			}
 		}
-		ROM_military_junta_idea = {
+		ROM_iron_gates_idea = {
+			picture = generic_production_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				war_support_factor = 0.1
-				stability_factor = 0.05
-				political_power_gain = -0.1
-				opinion_gain_monthly_factor = -0.25
+				industrial_capacity_factory = 0.03
 			}
 		}
-		ROM_orthodox_state_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				war_support_factor = 0.05
-				research_speed_factor = -0.1
-			}
-		}
-		ROM_royal_prestige_idea = {
+		ROM_guardian_idea = {
+			picture = generic_sea_focused_navy
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				stability_factor = 0.05
-				political_power_gain = 0.05
+				war_support_factor = 0.05
+				political_power_factor = 0.10
+				naval_hit_chance = 0.05
 			}
 		}
-		ROM_crown_council_idea = {
+		ROM_sovereign_fund_idea = {
+			picture = generic_industrial_concern_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				political_power_gain = 0.1
-				production_factory_efficiency_gain_factor = -0.05
+				production_speed_buildings_factor = 0.05
+				political_power_gain = -0.05
 			}
 		}
-		ROM_constitutional_monarchy_idea = {
+		ROM_neptun_deep_idea = {
+			picture = generic_production_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.05
-				war_support_factor = -0.05
+				production_factory_max_efficiency_factor = 0.03
+				consumer_goods_factor = -0.02
 			}
 		}
-		ROM_free_press_idea = {
+		ROM_tech_sector_idea = {
+			picture = generic_research_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				research_speed_factor = 0.05
-				war_support_factor = -0.05
 			}
 		}
-		ROM_royal_diplomacy_idea = {
+		ROM_nuclear_power_idea = {
+			picture = generic_production_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				justify_war_goal_time = -0.2
-				opinion_gain_monthly_factor = 0.25
-			}
-		}
-		ROM_reconciliation_tension_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = -0.1
-			}
-		}
-		ROM_kingdom_reborn_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.15
-				war_support_factor = 0.05
-			}
-		}
-		ROM_royal_treasury_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.05
+				production_factory_efficiency_gain_factor = 0.05
 				industrial_capacity_factory = 0.05
 			}
 		}
-		ROM_crown_estates_idea = {
+		ROM_infrastructure_push_idea = {
+			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				production_speed_buildings_factor = 0.1
-				stability_factor = -0.03
-			}
-		}
-		ROM_oil_concessions_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_factory_max_efficiency_factor = 0.1
-				political_power_gain = -0.05
-			}
-		}
-		ROM_industrial_charter_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.1
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_golden_age_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				research_speed_factor = 0.1
-				stability_factor = 0.05
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_royal_guard_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.05
-				army_defence_factor = 0.05
-			}
-		}
-		ROM_kings_command_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				command_power_gain_mult = 0.15
-				army_org_factor = 0.05
-			}
-		}
-		ROM_professional_army_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				training_time_factor = -0.15
-				conscription_factor = -0.05
-			}
-		}
-		ROM_carpathian_line_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				dig_in_speed_factor = 0.15
-				army_defence_factor = 0.05
-			}
-		}
-		ROM_royal_navy_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_dockyard = 0.15
-			}
-		}
-		ROM_army_of_the_crown_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.05
-				army_org_factor = 0.05
-				experience_gain_army_factor = 0.1
-			}
-		}
-		ROM_united_crown_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				war_support_factor = 0.1
-				political_power_gain = 0.1
-			}
-		}
-		ROM_martial_law_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				political_power_gain = -0.05
-				consumer_goods_factor = 0.03
-			}
-		}
-		ROM_defence_council_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				political_power_gain = 0.1
-				planning_speed = 0.1
-			}
-		}
-		ROM_secret_police_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				drift_defence_factor = 0.25
-				political_power_gain = -0.05
-			}
-		}
-		ROM_purge_aftermath_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_org_factor = -0.1
-				army_attack_factor = -0.05
-			}
-		}
-		ROM_censorship_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				war_support_factor = 0.1
-				stability_factor = 0.05
-				research_speed_factor = -0.05
-				opinion_gain_monthly_factor = -0.25
-			}
-		}
-		ROM_security_doctrine_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				surrender_limit = 0.1
-				stability_factor = 0.03
-			}
-		}
-		ROM_iron_government_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.15
-				war_support_factor = 0.05
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_war_economy_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.1
-				consumer_goods_factor = -0.05
-			}
-		}
-		ROM_labour_conscription_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_speed_buildings_factor = 0.15
-				stability_factor = -0.05
-			}
-		}
-		ROM_military_industrial_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_factory_efficiency_gain_factor = 0.15
-				production_factory_max_efficiency_factor = 0.1
-			}
-		}
-		ROM_autarky_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.05
-				research_speed_factor = -0.05
-				industrial_capacity_factory = 0.05
-			}
-		}
-		ROM_total_mobilisation_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				conscription_factor = 0.1
-				consumer_goods_factor = -0.1
-				stability_factor = -0.1
-			}
-		}
-		ROM_general_staff_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				planning_speed = 0.1
-				max_planning = 0.05
-			}
-		}
-		ROM_universal_conscription_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				conscription_factor = 0.1
-				stability_factor = -0.03
-			}
-		}
-		ROM_war_academies_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				experience_gain_army_factor = 0.15
-				training_time_factor = -0.1
-			}
-		}
-		ROM_nation_in_arms_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.1
-				army_defence_factor = 0.05
-				war_support_factor = 0.05
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_iron_marshals_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				war_support_factor = 0.1
-				army_org_factor = 0.1
-				political_power_gain = 0.1
-				stability_factor = -0.05
-			}
-		}
-		ROM_patriarchate_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.05
-				political_power_gain = 0.05
-			}
-		}
-		ROM_church_state_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.05
-				war_support_factor = 0.05
-				research_speed_factor = -0.03
-			}
-		}
-		ROM_monastic_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				political_power_gain = 0.05
-				consumer_goods_factor = 0.02
-			}
-		}
-		ROM_religious_education_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.05
-				war_support_factor = 0.05
-				drift_defence_factor = 0.25
-				research_speed_factor = -0.05
-			}
-		}
-		ROM_cathedral_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_speed_buildings_factor = 0.1
-				consumer_goods_factor = 0.03
-			}
-		}
-		ROM_orthodox_leader_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				opinion_gain_monthly_factor = 0.25
-				stability_factor = 0.03
-			}
-		}
-		ROM_anti_heresy_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				drift_defence_factor = 0.25
-				opinion_gain_monthly_factor = -0.25
-				stability_factor = -0.03
-			}
-		}
-		ROM_commonwealth_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				political_power_gain = 0.1
-				stability_factor = 0.05
-			}
-		}
-		ROM_sacred_nation_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				war_support_factor = 0.1
-				conscription_factor = 0.03
-			}
-		}
-		ROM_peasant_state_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.03
-				consumer_goods_factor = -0.05
-				industrial_capacity_factory = -0.05
-			}
-		}
-		ROM_cooperatives_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_speed_buildings_factor = 0.1
-			}
-		}
-		ROM_culture_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				political_power_gain = 0.05
-				war_support_factor = 0.05
-				research_speed_factor = -0.03
-			}
-		}
-		ROM_new_byzantium_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.1
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_holy_army_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_org_factor = 0.05
-				war_support_factor = 0.05
-			}
-		}
-		ROM_chaplaincy_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				land_reinforce_rate = 0.05
-				army_org_factor = 0.03
-			}
-		}
-		ROM_fortress_monasteries_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				dig_in_speed_factor = 0.1
-				army_defence_factor = 0.1
-				surrender_limit = 0.05
-			}
-		}
-		ROM_militia_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				conscription_factor = 0.1
-				experience_gain_army_factor = -0.1
-			}
-		}
-		ROM_crusader_doctrine_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.05
-				army_org_factor = 0.03
-			}
-		}
-		ROM_defenders_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				justify_war_goal_time = -0.25
-				war_support_factor = 0.05
-			}
-		}
-		ROM_holy_war_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.1
-				army_org_factor = 0.05
-				stability_factor = -0.05
-			}
-		}
-		ROM_holy_romania_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				war_support_factor = 0.1
-				political_power_gain = 0.1
-			}
-		}
-		ROM_dynastic_claims_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				justify_war_goal_time = -0.25
-				political_power_gain = 0.03
-			}
-		}
-		ROM_royal_integration_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				non_core_manpower = 0.25
+				production_speed_infrastructure_factor = 0.20
 				production_speed_buildings_factor = 0.05
-				political_power_gain = -0.03
 			}
 		}
-		ROM_greater_romania_idea = {
+		ROM_energy_exporter_idea = {
+			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				stability_factor = 0.1
-				war_support_factor = 0.1
-				political_power_gain = 0.1
-				conscription_factor = 0.05
-			}
-		}
-		ROM_war_plans_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				planning_speed = 0.1
-				justify_war_goal_time = -0.25
-				stability_factor = -0.03
-			}
-		}
-		ROM_prut_crossing_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.05
-				army_org_factor = 0.05
-			}
-		}
-		ROM_greater_romania_sword_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.1
-				war_support_factor = 0.1
-				stability_factor = -0.05
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_orthodox_brotherhood_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				opinion_gain_monthly_factor = 0.25
-				justify_war_goal_time = -0.15
-			}
-		}
-		ROM_holy_realm_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				war_support_factor = 0.1
-				political_power_gain = 0.1
-				consumer_goods_factor = 0.05
-			}
-		}
-		ROM_industrial_plan_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
+				trade_opinion_factor = 0.15
 				industrial_capacity_factory = 0.05
-				consumer_goods_factor = 0.03
 			}
 		}
-		ROM_infrastructure_idea = {
+		ROM_rail_revival_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				supply_consumption_factor = -0.05
+				production_speed_rail_way_factor = 0.15
+			}
+		}
+		ROM_irrigation_idea = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.02
+				monthly_population = 0.03
+			}
+		}
+		ROM_growth_consumer_idea = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				consumer_goods_factor = 0.03
+				monthly_population = 0.05
+			}
+		}
+		ROM_growth_investment_idea = {
+			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				production_speed_buildings_factor = 0.15
+				consumer_goods_factor = -0.02
+				stability_factor = -0.02
 			}
 		}
-		ROM_oil_fields_idea = {
+		ROM_growth_military_idea = {
+			picture = generic_volunteer_expedition_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.15
+				production_factory_max_efficiency_factor = 0.03
+				stability_factor = -0.03
+			}
+		}
+		ROM_vocational_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				research_speed_factor = 0.02
+			}
+		}
+		ROM_guest_workers_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.08
+				monthly_population = 0.05
+				stability_factor = -0.01
+			}
+		}
+		ROM_strategic_industries_idea = {
+			picture = generic_industrial_concern_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.03
+				industrial_capacity_factory = 0.03
+			}
+		}
+		ROM_offshore_wind_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.04
+				trade_opinion_factor = 0.05
+			}
+		}
+		ROM_plan_2035_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.08
+				research_speed_factor = 0.03
+				political_power_factor = 0.05
+			}
+		}
+		ROM_convergence_idea = {
+			picture = generic_economic_increase
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				production_factory_max_efficiency_factor = 0.05
-				industrial_capacity_factory = 0.05
-			}
-		}
-		ROM_danube_canal_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_speed_buildings_factor = 0.1
-			}
-		}
-		ROM_energy_grid_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.03
-				industrial_capacity_factory = 0.05
-			}
-		}
-		ROM_state_capitalism_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.1
-				research_speed_factor = -0.03
-			}
-		}
-		ROM_free_market_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.1
-				stability_factor = -0.03
-			}
-		}
-		ROM_five_year_plan_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				production_factory_efficiency_gain_factor = 0.15
-				stability_factor = -0.03
-			}
-		}
-		ROM_foreign_investment_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.1
-				political_power_gain = -0.05
-			}
-		}
-		ROM_polytechnic_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				research_speed_factor = 0.05
-			}
-		}
-		ROM_agrarian_modernisation_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				consumer_goods_factor = -0.05
-				stability_factor = 0.03
-			}
-		}
-		ROM_economic_miracle_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_factory = 0.1
-				consumer_goods_factor = -0.05
 				stability_factor = 0.05
-				research_speed_factor = 0.05
+				monthly_population = 0.05
 			}
 		}
-		ROM_infantry_training_idea = {
+		ROM_defence_spending_idea = {
+			picture = generic_volunteer_expedition_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				training_time_factor = -0.1
+				production_speed_arms_factory_factor = 0.10
+				consumer_goods_factor = 0.02
 			}
 		}
-		ROM_staff_college_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				planning_speed = 0.1
-				army_org_factor = 0.03
-			}
-		}
-		ROM_mountain_troops_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				dig_in_speed_factor = 0.1
-				army_defence_factor = 0.03
-			}
-		}
-		ROM_carpathian_doctrine_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				dig_in_speed_factor = 0.1
-				army_defence_factor = 0.05
-			}
-		}
-		ROM_mobile_warfare_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_speed_factor = 0.1
-				army_defence_factor = -0.05
-			}
-		}
-		ROM_combined_arms_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_attack_factor = 0.03
-				army_org_factor = 0.03
-			}
-		}
-		ROM_defence_in_depth_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				army_defence_factor = 0.1
-				army_speed_factor = -0.05
-			}
-		}
-		ROM_fortified_belt_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				dig_in_speed_factor = 0.15
-				political_power_gain = -0.03
-			}
-		}
-		ROM_officer_corps_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				experience_gain_army_factor = 0.1
-				army_org_factor = 0.05
-			}
-		}
-		ROM_reserve_system_idea = {
+		ROM_voluntary_service_idea = {
+			picture = generic_manpower_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				conscription_factor = 0.05
-				land_reinforce_rate = 0.05
+				training_time_factor = -0.10
 			}
 		}
-		ROM_romanian_army_idea = {
+		ROM_officer_corps_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				experience_gain_army_factor = 0.10
+				planning_speed = 0.10
+			}
+		}
+		ROM_nation_in_arms_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.08
+				mobilization_speed = 0.15
+				training_time_factor = -0.10
+			}
+		}
+		ROM_professional_force_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				army_attack_factor = 0.05
+				conscription_factor = -0.03
+			}
+		}
+		ROM_army_logistics_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				supply_consumption_factor = -0.08
+				attrition = -0.05
+			}
+		}
+		ROM_territorial_defence_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.08
+			}
+		}
+		ROM_conscription_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.10
+				stability_factor = -0.02
+			}
+		}
+		ROM_special_operations_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				special_forces_cap = 0.15
+				experience_gain_army_factor = 0.05
+			}
+		}
+		ROM_focsani_line_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				max_dig_in_factor = 0.10
+			}
+		}
+		ROM_drone_battalions_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.04
+				recon_factor = 0.15
+			}
+		}
+		ROM_mountain_hunters_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.05
+				terrain_penalty_reduction = 0.10
+			}
+		}
+		ROM_carpathian_doctrine_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				army_org_factor = 0.03
+				max_dig_in_factor = 0.10
+			}
+		}
+		ROM_tank_line_idea = {
+			picture = generic_tank_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.05
+				army_armor_attack_factor = 0.05
+			}
+		}
+		ROM_bastion_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				army_org_factor = 0.05
+				production_speed_arms_factory_factor = 0.10
+			}
+		}
+		ROM_army_2035_idea = {
+			picture = generic_infantry_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				army_attack_factor = 0.05
 				army_defence_factor = 0.05
-				army_org_factor = 0.05
+				experience_gain_army_factor = 0.10
 			}
 		}
-		ROM_iar_works_idea = {
+		ROM_flight_school_idea = {
+			picture = generic_air_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
+				air_training_xp_gain_factor = 0.15
+				experience_gain_air_factor = 0.10
+			}
+		}
+		ROM_air_maintenance_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				experience_gain_air_factor = 0.05
+				air_accidents_factor = -0.15
+			}
+		}
+		ROM_aviation_industry_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.03
+			}
+		}
+		ROM_air_doctrine_superiority_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_superiority_efficiency = 0.05
+				air_defence_factor = 0.03
+			}
+		}
+		ROM_air_doctrine_strike_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_cas_efficiency = 0.10
+				air_close_air_support_org_damage_factor = 0.10
+			}
+		}
+		ROM_air_doctrine_drones_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.03
+				air_attack_factor = 0.03
+			}
+		}
+		ROM_integrated_air_defence_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_defence_factor = 0.10
+				air_detection = 0.10
+			}
+		}
+		ROM_air_tankers_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_range_factor = 0.15
+			}
+		}
+		ROM_fighter_wing_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_superiority_efficiency = 0.05
+				air_agility_factor = 0.05
+			}
+		}
+		ROM_strike_wing_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_cas_efficiency = 0.05
 				air_attack_factor = 0.05
 			}
 		}
-		ROM_air_defence_idea = {
+		ROM_loitering_munitions_idea = {
+			picture = generic_air_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				air_defence_factor = 0.1
+				army_attack_factor = 0.03
+				air_attack_factor = 0.05
 			}
 		}
-		ROM_pilot_academies_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				experience_gain_air_factor = 0.15
-			}
-		}
-		ROM_airfield_network_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				air_range_factor = 0.1
-			}
-		}
-		ROM_licence_production_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				air_attack_factor = 0.03
-				political_power_gain = -0.03
-			}
-		}
-		ROM_domestic_aircraft_idea = {
+		ROM_next_gen_fighter_idea = {
+			picture = generic_air_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
@@ -957,72 +1029,984 @@ ideas = {
 				air_defence_factor = 0.05
 			}
 		}
-		ROM_air_force_idea = {
+		ROM_naval_academy_idea = {
+			picture = generic_naval_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				air_attack_factor = 0.1
-				air_defence_factor = 0.1
-				experience_gain_air_factor = 0.1
+				experience_gain_navy_factor = 0.10
 			}
 		}
-		ROM_naval_command_idea = {
+		ROM_danube_flotilla_idea = {
+			picture = generic_naval_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				experience_gain_navy_factor = 0.15
+				naval_coordination = 0.05
 			}
 		}
-		ROM_coastal_batteries_idea = {
+		ROM_navy_coastal_idea = {
+			picture = generic_naval_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				war_support_factor = 0.03
-				stability_factor = 0.02
+				naval_mines_effect_factor = 0.15
+				navy_screen_defence_factor = 0.05
 			}
 		}
-		ROM_black_sea_yards_idea = {
+		ROM_navy_commerce_idea = {
+			picture = generic_naval_manufacturer_1
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				industrial_capacity_dockyard = 0.15
+				convoy_escort_efficiency = 0.10
+				naval_detection = 0.05
+			}
+		}
+		ROM_navy_submarine_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				navy_submarine_attack_factor = 0.08
+				navy_submarine_detection_factor = -0.05
+			}
+		}
+		ROM_navy_surface_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				navy_capital_ship_attack_factor = 0.05
+				navy_screen_attack_factor = 0.05
+			}
+		}
+		ROM_naval_aviation_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				naval_detection = 0.10
+			}
+		}
+		ROM_coastal_missiles_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				navy_screen_defence_factor = 0.05
+				naval_hit_chance = 0.03
+			}
+		}
+		ROM_eez_patrol_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				naval_detection = 0.05
+				production_factory_max_efficiency_factor = 0.02
+			}
+		}
+		ROM_beyond_straits_idea = {
+			picture = generic_naval_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				experience_gain_navy_factor = 0.10
+				naval_coordination = 0.05
+			}
+		}
+		ROM_fleet_2035_idea = {
+			picture = generic_sea_focused_navy
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				naval_hit_chance = 0.05
+				navy_org_factor = 0.05
+			}
+		}
+		ROM_technocrats_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				research_speed_factor = 0.02
+			}
+		}
+
+		# ---- romania_uprise ----
+		ROM_revolutionary_turmoil_idea = {
+			picture = FRA_factory_strikes
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.10
+				political_power_gain = -0.15
+				production_factory_efficiency_gain_factor = -0.10
+			}
+		}
+		ROM_western_credit_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+		ROM_requisition_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				stability_factor = -0.05
+			}
+		}
+		ROM_parish_relief_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
 				consumer_goods_factor = 0.02
 			}
 		}
-		ROM_harbour_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_dockyard = 0.1
-				consumer_goods_factor = 0.02
-			}
-		}
-		ROM_merchant_marine_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				industrial_capacity_dockyard = 0.05
-				consumer_goods_factor = -0.03
-			}
-		}
-		ROM_navy_doctrine_idea = {
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				experience_gain_navy_factor = 0.1
-				war_support_factor = 0.03
-			}
-		}
-		ROM_black_sea_power_idea = {
+		ROM_crown_restored_idea = {
+			picture = generic_pp_unity_bonus
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
 				stability_factor = 0.05
+				political_power_gain = 0.10
+			}
+		}
+		ROM_royal_prestige_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.03
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_constitutional_monarchy_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
+				drift_defence_factor = 0.20
+				political_power_gain = 0.05
+			}
+		}
+		ROM_royal_prerogative_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				stability_factor = -0.02
+				war_support_factor = 0.03
+			}
+		}
+		ROM_free_press_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.03
+				drift_defence_factor = 0.10
+			}
+		}
+		ROM_reconciliation_tension_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.10
+			}
+		}
+		ROM_crown_council_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				research_speed_factor = 0.02
+			}
+		}
+		ROM_royal_treasury_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				consumer_goods_factor = -0.02
+			}
+		}
+		ROM_royal_guard_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.03
+				stability_factor = 0.03
+			}
+		}
+		ROM_royal_diplomacy_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = 0.10
+				opinion_gain_monthly_factor = 0.15
+			}
+		}
+		ROM_army_of_the_crown_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_morale_factor = 0.05
+				experience_gain_army_factor = 0.05
+			}
+		}
+		ROM_carpathian_line_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.08
+				max_dig_in_factor = 0.10
+			}
+		}
+		ROM_united_crown_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
 				war_support_factor = 0.05
-				industrial_capacity_dockyard = 0.1
-				experience_gain_navy_factor = 0.1
+				political_power_gain = 0.15
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_military_junta_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = -0.03
+				political_power_gain = 0.10
+			}
+		}
+		ROM_martial_law_idea = {
+			picture = strict_discipline
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = -0.05
+				consumer_goods_factor = 0.03
+				conscription_factor = 0.05
+				research_speed_factor = -0.05
+			}
+		}
+		ROM_defence_council_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				command_power_gain_mult = 0.10
+			}
+		}
+		ROM_secret_police_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				stability_factor = 0.03
+				research_speed_factor = -0.02
+			}
+		}
+		ROM_guarded_democracy_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.05
+				experience_gain_army_factor = 0.05
+			}
+		}
+		ROM_iron_government_idea = {
+			picture = total_ideological_mobilisation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.20
+				war_support_factor = 0.08
+				stability_factor = -0.03
+				trade_opinion_factor = -0.15
+			}
+		}
+		ROM_war_economy_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = 0.15
+				consumer_goods_factor = -0.03
+				stability_factor = -0.02
+			}
+		}
+		ROM_labour_conscription_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.08
+				production_speed_infrastructure_factor = 0.15
+				stability_factor = -0.02
+			}
+		}
+		ROM_war_plans_idea = {
+			picture = generic_reserve_divisions
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				planning_speed = 0.10
+				justify_war_goal_time = -0.15
+			}
+		}
+		ROM_army_of_the_prut_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				supply_consumption_factor = -0.05
+			}
+		}
+		ROM_iron_marshals_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.10
+				mobilization_speed = 0.10
+			}
+		}
+		ROM_orthodox_state_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				war_support_factor = 0.02
+			}
+		}
+		ROM_patriarchate_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				fundamentalism_drift = 0.03
+			}
+		}
+		ROM_symphonia_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
+				drift_defence_factor = 0.15
+			}
+		}
+		ROM_anti_heresy_idea = {
+			picture = state_propaganda
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				war_support_factor = 0.05
+				stability_factor = -0.04
+				trade_opinion_factor = -0.10
+			}
+		}
+		ROM_peasant_state_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.04
+				monthly_population = 0.05
+			}
+		}
+		ROM_cooperatives_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.03
+				consumer_goods_factor = -0.02
+			}
+		}
+		ROM_monastic_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.03
+				research_speed_factor = 0.02
+			}
+		}
+		ROM_cathedral_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.04
+				stability_factor = 0.03
+			}
+		}
+		ROM_religious_education_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.03
+				research_speed_factor = -0.03
+				war_support_factor = 0.03
+			}
+		}
+		ROM_orthodox_brotherhood_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				opinion_gain_monthly_factor = 0.20
+				trade_opinion_factor = 0.05
+			}
+		}
+		ROM_militia_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+		ROM_holy_romania_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
+				war_support_factor = 0.05
+				political_power_gain = 0.15
+			}
+		}
+		ROM_royal_heritage_idea = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = 0.05
+				consumer_goods_factor = -0.01
+			}
+		}
+		ROM_royal_army_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.04
+				experience_gain_army_factor = 0.05
+				experience_gain_air_factor = 0.05
+			}
+		}
+		ROM_kingdom_2035_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				political_power_factor = 0.10
+				trade_opinion_factor = 0.05
+			}
+		}
+		ROM_air_mobility_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_speed_factor = 0.05
+				air_range_factor = 0.10
+			}
+		}
+		ROM_national_service_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.10
+				training_time_factor = -0.10
+				stability_factor = -0.02
+			}
+		}
+		ROM_nation_under_arms_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.05
+				mobilization_speed = 0.15
+				experience_gain_army_factor = 0.10
+			}
+		}
+		ROM_morality_code_idea = {
+			picture = state_propaganda
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				research_speed_factor = -0.04
+				stability_factor = -0.02
+			}
+		}
+		ROM_covenant_nation_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.06
+				war_support_factor = 0.04
+				political_power_gain = 0.10
+			}
+		}
+
+		# ---- corruption ----
+		ROM_corruption_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_max_efficiency_factor = 0.02
+				stability_factor = 0.02
+				political_power_gain = -0.05
+			}
+		}
+		ROM_corruption_2 = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.03
+				consumer_goods_factor = 0.01
+			}
+		}
+		ROM_corruption_3 = {
+			picture = ETH_corrupt_bureaucracy
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.08
+				production_factory_max_efficiency_factor = -0.03
+				stability_factor = -0.03
+				consumer_goods_factor = 0.02
+			}
+		}
+		ROM_corruption_4 = {
+			picture = ETH_corrupt_bureaucracy
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.15
+				production_factory_max_efficiency_factor = -0.06
+				stability_factor = -0.07
+				consumer_goods_factor = 0.04
+				research_speed_factor = -0.03
+				trade_opinion_factor = -0.10
+				political_power_gain = 0.10
+			}
+		}
+		ROM_corruption_5 = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.25
+				production_factory_max_efficiency_factor = -0.10
+				production_factory_efficiency_gain_factor = -0.15
+				stability_factor = -0.12
+				war_support_factor = -0.05
+				consumer_goods_factor = 0.06
+				research_speed_factor = -0.06
+				trade_opinion_factor = -0.20
+				political_power_gain = 0.15
+			}
+		}
+		ROM_contracts_frozen_idea = {
+			picture = generic_economic_recovery
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.10
+			}
+		}
+		ROM_friendly_contractors_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.10
+			}
+		}
+		ROM_civil_service_transition_idea = {
+			picture = generic_pp_unity
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.10
+			}
+		}
+		ROM_procurement_frozen_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_arms_factory_factor = -0.15
+			}
+		}
+		ROM_scandal_paralysis_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = -0.15
+				stability_factor = -0.03
+			}
+		}
+
+		# ---- romania_dracula ----
+		ROM_drac_snagov_files_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = -0.10
+				stability_factor = -0.03
+				drift_defence_factor = 0.10
+			}
+		}
+		ROM_drac_project_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				consumer_goods_factor = 0.03
+			}
+		}
+		ROM_drac_black_budget_idea = {
+			picture = generic_army_problems
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = -0.08
+				political_power_gain = 0.10
+			}
+		}
+		ROM_drac_voivode_returned_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.20
+				war_support_factor = 0.10
+				stability_factor = -0.05
+			}
+		}
+		ROM_drac_night_economy_idea = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.05
+				consumer_goods_factor = -0.02
+				stability_factor = -0.02
+			}
+		}
+		ROM_drac_eyes_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = -20.0
+				drift_defence_factor = 0.25
+			}
+		}
+		ROM_drac_order_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.15
+				stability_factor = 0.04
+			}
+		}
+		ROM_drac_messengers_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_detection = 0.10
+				recon_factor = 0.10
+			}
+		}
+		ROM_drac_wolves_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.05
+				terrain_penalty_reduction = 0.10
+			}
+		}
+		ROM_drac_thralls_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				foreign_subversive_activites = -0.25
+				opinion_gain_monthly_factor = 0.10
+			}
+		}
+		ROM_drac_dominion_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.25
+				war_support_factor = 0.10
+				stability_factor = 0.03
+				trade_opinion_factor = -0.15
+			}
+		}
+		ROM_drac_strigoi_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				special_forces_cap = 0.20
+				special_forces_attack_factor = 0.15
+			}
+		}
+		ROM_drac_night_legion_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.08
+				attrition = -0.10
+				army_speed_factor = 0.05
+			}
+		}
+		ROM_drac_iron_flesh_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.08
+				attrition = -0.05
+			}
+		}
+		ROM_drac_serum_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_org_regain = 0.10
+				experience_gain_army_factor = 0.10
+			}
+		}
+		ROM_drac_darksight_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.05
+				recon_factor = 0.15
+			}
+		}
+		ROM_drac_night_ops_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				special_forces_attack_factor = 0.10
+				supply_consumption_factor = -0.05
+			}
+		}
+		ROM_drac_swarms_idea = {
+			picture = generic_air_manufacturer_1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				air_superiority_efficiency = 0.08
+				air_detection = 0.10
+			}
+		}
+		ROM_drac_mist_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_defence_factor = 0.06
+				max_dig_in_factor = 0.15
+			}
+		}
+		ROM_drac_storm_idea = {
+			picture = generic_sea_focused_navy
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				navy_screen_defence_factor = 0.08
+				naval_hit_chance = 0.05
+			}
+		}
+		ROM_drac_host_idea = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.08
+				army_defence_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+		ROM_drac_containment_idea = {
+			picture = isolation
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				trade_opinion_factor = -0.30
+				production_factory_max_efficiency_factor = -0.05
+			}
+		}
+		ROM_drac_spy_war_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				civilian_intel_to_others = -15.0
+				foreign_subversive_activites = -0.20
+			}
+		}
+		ROM_drac_turned_agents_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				civilian_intel_factor = 0.20
+				military_intel_factor = 0.20
+			}
+		}
+		ROM_drac_empire_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				justify_war_goal_time = -0.30
+				army_attack_factor = 0.05
+				stability_factor = -0.03
+			}
+		}
+		ROM_drac_transfiguration_idea = {
+			picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.08
+				monthly_population = 0.15
+				stability_factor = 0.03
+			}
+		}
+		ROM_drac_long_night_idea = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				opinion_gain_monthly_factor = 0.25
+				political_power_factor = 0.10
+				trade_opinion_factor = 0.10
+			}
+		}
+		ROM_drac_dawn_accord_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
+				trade_opinion_factor = 0.10
+				production_factory_max_efficiency_factor = 0.05
+			}
+		}
+		ROM_drac_long_life_idea = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				monthly_population = 0.20
+				experience_gain_army_factor = 0.10
+			}
+		}
+		ROM_drac_courts_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				opinion_gain_monthly_factor = 0.20
+				political_power_gain = 0.15
+			}
+		}
+		ROM_drac_warden_idea = {
+			picture = generic_supply_depot
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_core_defence_factor = 0.10
+				stability_factor = 0.05
+			}
+		}
+		ROM_drac_door_closed_idea = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.08
+				research_speed_factor = 0.03
+			}
+		}
+		ROM_drac_door_opened_idea = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				army_attack_factor = 0.10
+				war_support_factor = 0.10
+				stability_factor = -0.08
+				political_power_gain = 0.25
 			}
 		}
 	}
 }
- 

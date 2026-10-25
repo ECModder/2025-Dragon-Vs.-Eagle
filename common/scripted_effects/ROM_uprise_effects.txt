@@ -1,18 +1,24 @@
+# Regime adoption for the three paths of romania_uprise.
+# The ideology groups are the mod's own (common/ideologies/00_ideologies.txt).
 ROM_adopt_absolutist = {
-	set_politics = { ruling_party = neutrality elections_allowed = no }
+	add_popularity = { ideology = absolutism popularity = 0.30 }
+	set_politics = { ruling_party = absolutism elections_allowed = no }
 	set_country_flag = ROM_ideology_absolutist
 }
 
 ROM_adopt_autocratic = {
-	set_politics = { ruling_party = neutrality elections_allowed = no }
+	add_popularity = { ideology = autocracy popularity = 0.30 }
+	set_politics = { ruling_party = autocracy elections_allowed = no }
 	set_country_flag = ROM_ideology_autocratic
 }
 
 ROM_adopt_fundamentalist = {
-	set_politics = { ruling_party = neutrality elections_allowed = no }
+	add_popularity = { ideology = fundamentalism popularity = 0.30 }
+	set_politics = { ruling_party = fundamentalism elections_allowed = no }
 	set_country_flag = ROM_ideology_fundamentalist
 }
 
+# Kept for compatibility with older content; the redesigned trees name their states explicitly.
 ROM_claim_moldova = {
 	if = {
 		limit = { country_exists = MOL }

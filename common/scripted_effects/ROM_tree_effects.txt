@@ -1,0 +1,20 @@
+# Shared effects for romania_elections and romania_uprise.
+
+# Parliamentary Majority (romania_elections). ROM_majority is 0-100 seats.
+# Each seat above or below 50 is worth 0.4% political power and 0.2% stability.
+ROM_update_majority = {
+	clamp_variable = { var = ROM_majority min = 0 max = 100 }
+	set_variable = { ROM_majority_pp = ROM_majority }
+	subtract_from_variable = { ROM_majority_pp = 50 }
+	set_variable = { ROM_majority_stab = ROM_majority_pp }
+	divide_variable = { ROM_majority_pp = 250 }
+	divide_variable = { ROM_majority_stab = 500 }
+}
+
+# Ask Moldova to accept union. The answer arrives as ROM_union.2 or ROM_union.3.
+ROM_offer_union_to_moldova = {
+	if = {
+		limit = { country_exists = MOL }
+		MOL = { country_event = { id = ROM_union.1 days = 3 } }
+	}
+}
