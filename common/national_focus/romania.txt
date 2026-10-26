@@ -11,7 +11,7 @@ focus_tree = {
         icon = GFX_goal_ROM_the_new_year
         x = 10
         y = 0
-        cost = 0.01
+        cost = 1
         ai_will_do = {
             factor = 1
         }
@@ -43,7 +43,7 @@ focus_tree = {
         icon = GFX_goal_ROM_announce_the_new_candidates
         x = 8
         y = 4
-        cost = 5
+        cost = 4.2
         prerequisite = { focus = ROM_remove_the_strikes }
         prerequisite = { focus = ROM_stagnate_the_economy }
         ai_will_do = {
@@ -76,7 +76,7 @@ focus_tree = {
         icon = GFX_goal_ROM_the_2025_elections
         x = 10
         y = 6
-        cost = 7
+        cost = 4.4
         prerequisite = { focus = ROM_announce_the_new_candidates }
         prerequisite = { focus = ROM_stagnate_the_economy }
         mutually_exclusive = { focus = ROM_screw_the_elections }
@@ -96,7 +96,7 @@ focus_tree = {
         icon = GFX_goal_ROM_skip_the_elections
         x = 14
         y = 6
-        cost = 7
+        cost = 4.4
         mutually_exclusive = { focus = ROM_the_2025_elections }
         available = {
             has_completed_focus = ROM_announce_the_new_candidates
@@ -106,7 +106,7 @@ focus_tree = {
         }
         completion_reward = {
             country_event = {
-                id = dve_rom_send.5
+                id = dve_rom.6
             }
             load_focus_tree = romania_uprise
         }

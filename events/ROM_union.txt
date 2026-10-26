@@ -1,6 +1,12 @@
-add_namespace = ROM_union
+﻿add_namespace = ROM_union
 
-country_event = {
+news_event = {
+
+	show_major = {
+
+		tag = ROM
+
+	}
 	id = ROM_union.1
 	title = ROM_union.1.t
 	desc = ROM_union.1.d
@@ -18,16 +24,22 @@ country_event = {
 			modifier = { add = 10 FROM = { has_country_flag = ROM_junta_union_offer } }
 			modifier = { factor = 0.5 FROM = { has_government = ultranationalism } }
 		}
-		FROM = { country_event = { id = ROM_union.2} }
+		FROM = { news_event = { id = ROM_union.2} }
 	}
 	option = {
 		name = ROM_union.1.b
 		ai_chance = { base = 60 }
-		FROM = { country_event = { id = ROM_union.3} }
+		FROM = { news_event = { id = ROM_union.3} }
 	}
 }
 
-country_event = {
+news_event = {
+
+	show_major = {
+
+		tag = ROM
+
+	}
 	id = ROM_union.2
 	title = ROM_union.2.t
 	desc = ROM_union.2.d
@@ -47,7 +59,13 @@ country_event = {
 	}
 }
 
-country_event = {
+news_event = {
+
+	show_major = {
+
+		tag = ROM
+
+	}
 	id = ROM_union.3
 	title = ROM_union.3.t
 	desc = ROM_union.3.d

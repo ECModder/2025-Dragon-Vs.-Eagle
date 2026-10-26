@@ -1,4 +1,4 @@
-add_namespace = dve_rom
+﻿add_namespace = dve_rom
 add_namespace = dve_rom_send
 
 # ============================================================
@@ -11,6 +11,9 @@ add_namespace = dve_rom_send
 
 # World news - 2025.01.01 00:00 (before the 12:00 start: shown at once)
 news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom.1
 	title = dve_rom.1.t
 	desc = dve_rom.1.d
@@ -25,6 +28,9 @@ news_event = {
 
 # Romania - 2025.01.03 06:00
 news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom.2
 	title = dve_rom.2.t
 	desc = dve_rom.2.d
@@ -40,6 +46,9 @@ news_event = {
 
 # Romania - 2025.02.10 10:00
 news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom.3
 	title = dve_rom.3.t
 	desc = dve_rom.3.d
@@ -57,6 +66,9 @@ news_event = {
 
 # Romania - 2025.02.26 08:00
 news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom.4
 	title = dve_rom.4.t
 	desc = dve_rom.4.d
@@ -70,6 +82,9 @@ news_event = {
 }
 
 news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom.5
 	title = dve_rom.5.t
 	desc = dve_rom.5.d
@@ -114,9 +129,31 @@ news_event = {
 	desc = dve_rom.7.d
 	picture = GFX_news_event_DVE_rom_announce_the_new_candidates
 	is_triggered_only = yes
+	show_major = {
+		tag = ROM
+	}
 
 	option = {
 		name = "Intresting Choice"
+		
+	}
+}
+
+news_event = {
+	id = dve_rom.6
+	title = dve_rom.6.t
+	desc = dve_rom.6.d
+	picture = GFX_news_event_DVE_rom_screw_the_elections
+	is_triggered_only = yes
+	show_major = {
+		tag = ROM
+	}
+
+	option = {
+		name = "We shall fight!"
+		country_event = {
+                id = dve_rom_send.5
+            }
 		
 	}
 }
@@ -126,7 +163,13 @@ news_event = {
 #   hour: the first one acts for all, the flag stops the others.
 # ------------------------------------------------------------
 
-country_event = {
+news_event = {
+
+	show_major = {
+
+		tag = ROM
+
+	}
 	id = dve_rom_send.1
 	hidden = yes
 	is_triggered_only = yes
@@ -141,12 +184,15 @@ country_event = {
 }
 
 # Super event 5, "The 2nd Romanian Revolution" - 2025.05.18 12:00
-country_event = {
+news_event = {
+	show_major = {
+		tag = ROM
+	}
 	id = dve_rom_send.5
 	hidden = yes
 	is_triggered_only = yes
 
-	immediate = {
+	trigger = {
 		DVE_superevent_ROM_revolution_effect = yes
 	}
 }
