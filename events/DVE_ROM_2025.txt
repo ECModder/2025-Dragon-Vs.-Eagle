@@ -1,15 +1,16 @@
+# Merged every news_event txt file for more organisation
 add_namespace = dve_rom
 add_namespace = dve_rom_send
+add_namespace = ROM_corrupt
+add_namespace = ROM_drac
+add_namespace = ROM_elect
+add_namespace = ROM_sim
+add_namespace = ROM_news
+add_namespace = ROM_regime
+add_namespace = ROM_ant
+add_namespace = ROM_union
+add_namespace = ROM_uprise
 
-# ============================================================
-#   DvE - Romania 2025. Pure flavour, no effects.
-#   All of them are news_event: it is the only window where the
-#   game puts the picture on top. dve_rom.1 goes to every
-#   country, the others ("COUNTRY EVENT") to Romania only.
-#   Scheduled in common/on_actions/DVE_flavor_2025_on_actions.txt.
-# ============================================================
-
-# World news - 2025.01.01 00:00 (before the 12:00 start: shown at once)
 news_event = {
 	id = dve_rom.1
 	title = dve_rom.1.t
@@ -93,6 +94,7 @@ news_event = {
 		retire_character = ROM_ilie_bolojan
 		recruit_character = ROM_nicusor_dan
 		promote_character = ROM_nicusor_dan
+		mark_focus_tree_layout_dirty = yes
 		}
 
 
@@ -102,19 +104,22 @@ news_event = {
 		set_politics = {
 			ruling_party = progressive
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 
 	option = {
 		name = "Simion should lead the nation"
-		set_country_flag = ROM_Gheorghe_Simion_wins
+		set_country_flag = ROM_George_Simion_wins
 		set_politics = {
 			ruling_party = reactionary
 		}
+		mark_focus_tree_layout_dirty = yes
 	}
 
 	option = {
 		name = "We aren't convinced of these candidates"
 		set_country_flag = ROM_wait
+		mark_focus_tree_layout_dirty = yes
 	}
 }
 
@@ -156,7 +161,7 @@ news_event = {
 #   hour: the first one acts for all, the flag stops the others.
 # ------------------------------------------------------------
 
-news_event = {
+country_event = {
 
 	id = dve_rom_send.1
 	hidden = yes
@@ -174,14 +179,2480 @@ news_event = {
 }
 
 # Super event 5, "The 2nd Romanian Revolution" - 2025.05.18 12:00
-news_event = {
+country_event = {
 	id = dve_rom_send.5
 	hidden = yes
 	is_triggered_only = yes
 	show_major = {
 		tag = ROM
 	}
-	trigger = {
+	immediate = {
 		DVE_superevent_ROM_revolution_effect = yes
+	}
+}
+
+# ============================================================
+#   from ROM_corruption.txt
+# ============================================================
+
+country_event = {
+	id = ROM_corrupt.1
+	title = ROM_corrupt.1.t
+	desc = ROM_corrupt.1.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s1_recent} } }
+	option = {
+		name = ROM_corrupt.1.a
+		add_political_power = -50
+		custom_effect_tooltip = ROM_corr_m3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_small_tt
+		hidden_effect = { ROM_scandal_fallout_small = yes }
+	}
+	option = {
+		name = ROM_corrupt.1.b
+		custom_effect_tooltip = ROM_corr_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.02
+	}
+	option = {
+		name = ROM_corrupt.1.c
+		add_political_power = -25
+		add_stability = -0.01
+		custom_effect_tooltip = ROM_corr_m1_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -1 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.2
+	title = ROM_corrupt.2.t
+	desc = ROM_corrupt.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s2_recent} } }
+	option = {
+		name = ROM_corrupt.2.a
+		add_political_power = -75
+		custom_effect_tooltip = ROM_corr_m5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -5 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_corr_maj_m3_tt
+		hidden_effect = {
+			if = {
+				limit = { has_variable = ROM_majority }
+				add_to_variable = { ROM_majority = -3 }
+				ROM_update_majority = yes
+			}
+		}
+	}
+	option = {
+		name = ROM_corrupt.2.b
+		add_political_power = 25
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+	}
+	option = {
+		name = ROM_corrupt.2.c
+		add_stability = -0.02
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.3
+	title = ROM_corrupt.3.t
+	desc = ROM_corrupt.3.d
+	picture = GFX_report_event_worker_protests
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s3_recent} } }
+	option = {
+		name = ROM_corrupt.3.a
+		add_political_power = -50
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.02
+	}
+	option = {
+		name = ROM_corrupt.3.b
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.04
+	}
+	option = {
+		name = ROM_corrupt.3.c
+		add_political_power = -35
+		custom_effect_tooltip = ROM_corr_m2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -2 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_small_tt
+		hidden_effect = { ROM_scandal_fallout_small = yes }
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.4
+	title = ROM_corrupt.4.t
+	desc = ROM_corrupt.4.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s4_recent} } }
+	option = {
+		name = ROM_corrupt.4.a
+		custom_effect_tooltip = ROM_corr_m6_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -6 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_small_tt
+		hidden_effect = { ROM_scandal_fallout_small = yes }
+	}
+	option = {
+		name = ROM_corrupt.4.b
+		custom_effect_tooltip = ROM_corr_m2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -2 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_corrupt.4.c
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.03
+		if = {
+			limit = { has_country_flag = ROM_corr_whistle }
+			add_stability = -0.03
+		}
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.5
+	title = ROM_corrupt.5.t
+	desc = ROM_corrupt.5.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.5.a
+		custom_effect_tooltip = ROM_corr_m10_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -10 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_large_tt
+		hidden_effect = { ROM_scandal_fallout_large = yes }
+	}
+	option = {
+		name = ROM_corrupt.5.b
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = 25
+	}
+	option = {
+		name = ROM_corrupt.5.c
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = 0.01
+		add_to_variable = { ROM_corr_buried = 1 }
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.6
+	title = ROM_corrupt.6.t
+	desc = ROM_corrupt.6.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = {
+		hidden_effect = {
+			set_country_flag = { flag = ROM_corr_s6_recent}
+			every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.20 days = 1 } }
+		}
+	}
+	option = {
+		name = ROM_corrupt.6.a
+		add_political_power = -100
+		custom_effect_tooltip = ROM_corr_m6_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -6 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = 0.02
+		custom_effect_tooltip = ROM_corr_maj_m5_tt
+		hidden_effect = {
+			if = {
+				limit = { has_variable = ROM_majority }
+				add_to_variable = { ROM_majority = -5 }
+				ROM_update_majority = yes
+			}
+		}
+	}
+	option = {
+		name = ROM_corrupt.6.b
+		add_political_power = -50
+		custom_effect_tooltip = ROM_scandal_fallout_small_tt
+		hidden_effect = { ROM_scandal_fallout_small = yes }
+	}
+	option = {
+		name = ROM_corrupt.6.c
+		custom_effect_tooltip = ROM_corr_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.06
+		add_timed_idea = { idea = ROM_scandal_paralysis_idea days = 120 }
+		custom_effect_tooltip = ROM_scandal_fallout_large_tt
+		hidden_effect = { ROM_scandal_fallout_large = yes }
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.7
+	title = ROM_corrupt.7.t
+	desc = ROM_corrupt.7.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.7.a
+		add_political_power = -50
+		custom_effect_tooltip = ROM_corr_m3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_small_tt
+		hidden_effect = { ROM_scandal_fallout_small = yes }
+		add_to_variable = { ROM_corr_buried = -1 }
+	}
+	option = {
+		name = ROM_corrupt.7.b
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_large_tt
+		hidden_effect = { ROM_scandal_fallout_large = yes }
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.8
+	title = ROM_corrupt.8.t
+	desc = ROM_corrupt.8.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.8.a
+		add_political_power = -100
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_large_tt
+		hidden_effect = { ROM_scandal_fallout_large = yes }
+	}
+	option = {
+		name = ROM_corrupt.8.b
+		custom_effect_tooltip = ROM_corr_p6_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 6 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.05
+		clr_country_flag = ROM_corr_audit
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.9
+	title = ROM_corrupt.9.t
+	desc = ROM_corrupt.9.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s9_recent} } }
+	option = {
+		name = ROM_corrupt.9.a
+		custom_effect_tooltip = ROM_corr_m6_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -6 }
+			ROM_corruption_apply = yes
+		}
+		army_experience = -10
+		add_war_support = -0.02
+	}
+	option = {
+		name = ROM_corrupt.9.b
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = 25
+		custom_effect_tooltip = ROM_consent_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -3 }
+			ROM_update_consent = yes
+		}
+	}
+	option = {
+		name = ROM_corrupt.9.c
+		add_political_power = -50
+		add_stability = -0.02
+		custom_effect_tooltip = ROM_corr_m2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -2 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.10
+	title = ROM_corrupt.10.t
+	desc = ROM_corrupt.10.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s10_recent} } }
+	option = {
+		name = ROM_corrupt.10.a
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_p4_tt
+		custom_effect_tooltip = ROM_faction_machine_m10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 4 }
+			ROM_update_legitimacy = yes
+			add_to_variable = { ROM_faction_machine = -10 }
+			ROM_update_factions = yes
+		}
+	}
+	option = {
+		name = ROM_corrupt.10.b
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_m6_tt
+		custom_effect_tooltip = ROM_faction_machine_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -6 }
+			ROM_update_legitimacy = yes
+			add_to_variable = { ROM_faction_machine = 10 }
+			ROM_update_factions = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.11
+	title = ROM_corrupt.11.t
+	desc = ROM_corrupt.11.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s11_recent} } }
+	option = {
+		name = ROM_corrupt.11.a
+		custom_effect_tooltip = ROM_corr_m5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -5 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_corrupt.11.b
+		custom_effect_tooltip = ROM_corr_p2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 2 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = -50
+		army_experience = 5
+	}
+	option = {
+		name = ROM_corrupt.11.c
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.12
+	title = ROM_corrupt.12.t
+	desc = ROM_corrupt.12.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s12_recent} } }
+	option = {
+		name = ROM_corrupt.12.a
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_corrupt.12.b
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.13
+	title = ROM_corrupt.13.t
+	desc = ROM_corrupt.13.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s13_recent} } }
+	option = {
+		name = ROM_corrupt.13.a
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_corrupt.13.b
+		custom_effect_tooltip = ROM_corr_p4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 4 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.03
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.14
+	title = ROM_corrupt.14.t
+	desc = ROM_corrupt.14.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = {
+		hidden_effect = {
+			every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.21 days = 1 } }
+		}
+	}
+	option = {
+		name = ROM_corrupt.14.a
+		add_political_power = -150
+		custom_effect_tooltip = ROM_corr_m15_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -15 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = -0.03
+	}
+	option = {
+		name = ROM_corrupt.14.b
+		add_political_power = -50
+		custom_effect_tooltip = ROM_corr_m4_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -4 }
+			ROM_corruption_apply = yes
+		}
+		add_timed_idea = { idea = ROM_scandal_paralysis_idea days = 180 }
+	}
+	option = {
+		name = ROM_corrupt.14.c
+		add_stability = -0.10
+		add_war_support = -0.05
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_scandal_fallout_large_tt
+		hidden_effect = { ROM_scandal_fallout_large = yes }
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.15
+	title = ROM_corrupt.15.t
+	desc = ROM_corrupt.15.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	immediate = { hidden_effect = { set_country_flag = { flag = ROM_corr_s15_recent} } }
+	option = {
+		name = ROM_corrupt.15.a
+		custom_effect_tooltip = ROM_corr_m6_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -6 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_dread_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 8 }
+			ROM_update_dread = yes
+		}
+	}
+	option = {
+		name = ROM_corrupt.15.b
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		add_political_power = 50
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.16
+	title = ROM_corrupt.16.t
+	desc = ROM_corrupt.16.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.16.a
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.30
+	title = ROM_corrupt.30.t
+	desc = ROM_corrupt.30.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.30.a
+	}
+	option = {
+		name = ROM_corrupt.30.b
+		add_political_power = 25
+		custom_effect_tooltip = ROM_corr_p2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 2 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+	id = ROM_corrupt.31
+	title = ROM_corrupt.31.t
+	desc = ROM_corrupt.31.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_corrupt.31.a
+	}
+}
+
+# ============================================================
+#   from ROM_dracula.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_drac.1
+	title = ROM_drac.1.t
+	desc = ROM_drac.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.1.a
+		custom_effect_tooltip = ROM_veil_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = 5 }
+			ROM_update_veil = yes
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_drac.1.b
+		custom_effect_tooltip = ROM_ritual_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = 5 }
+			ROM_update_ritual = yes
+		}
+		custom_effect_tooltip = ROM_veil_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = -5 }
+			ROM_update_veil = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.2
+	title = ROM_drac.2.t
+	desc = ROM_drac.2.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.2.a
+		custom_effect_tooltip = ROM_veil_m10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = -10 }
+			ROM_update_veil = yes
+		}
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_drac.2.b
+		custom_effect_tooltip = ROM_veil_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = 5 }
+			ROM_update_veil = yes
+		}
+		add_stability = -0.05
+		add_political_power = 50
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.3
+	title = ROM_drac.3.t
+	desc = ROM_drac.3.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.3.a
+		custom_effect_tooltip = ROM_veil_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = -5 }
+			ROM_update_veil = yes
+		}
+		add_stability = -0.02
+	}
+	option = {
+		name = ROM_drac.3.b
+		custom_effect_tooltip = ROM_veil_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = 3 }
+			ROM_update_veil = yes
+		}
+		custom_effect_tooltip = ROM_dread_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 3 }
+			ROM_update_dread = yes
+		}
+	}
+	option = {
+		name = ROM_drac.3.c
+		custom_effect_tooltip = ROM_ritual_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = 10 }
+			ROM_update_ritual = yes
+		}
+		add_manpower = -500
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.4
+	title = ROM_drac.4.t
+	desc = ROM_drac.4.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.4.a
+		set_country_flag = ROM_drac_bolojan_stays
+		add_stability = 0.03
+		custom_effect_tooltip = ROM_veil_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = 5 }
+			ROM_update_veil = yes
+		}
+	}
+	option = {
+		name = ROM_drac.4.b
+		set_country_flag = ROM_drac_brotherhood_government
+		add_political_power = 100
+		add_stability = -0.05
+		custom_effect_tooltip = ROM_ritual_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = 10 }
+			ROM_update_ritual = yes
+		}
+		add_popularity = { ideology = absolutism popularity = 0.10 }
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.5
+	title = ROM_drac.5.t
+	desc = ROM_drac.5.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.5.a
+		custom_effect_tooltip = ROM_ritual_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = -5 }
+			ROM_update_ritual = yes
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_drac.5.b
+		custom_effect_tooltip = ROM_ritual_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = 10 }
+			ROM_update_ritual = yes
+		}
+		add_manpower = -2000
+		custom_effect_tooltip = ROM_dread_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 5 }
+			ROM_update_dread = yes
+		}
+	}
+	option = {
+		name = ROM_drac.5.c
+		custom_effect_tooltip = ROM_ritual_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_ritual = 5 }
+			ROM_update_ritual = yes
+		}
+		custom_effect_tooltip = ROM_veil_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_veil = -5 }
+			ROM_update_veil = yes
+		}
+		add_stability = -0.02
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.8
+	title = ROM_drac.8.t
+	desc = ROM_drac.8.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.8.a
+		custom_effect_tooltip = ROM_dread_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 10 }
+			ROM_update_dread = yes
+		}
+		add_political_power = 100
+		set_country_flag = ROM_drac_unbound
+	}
+	option = {
+		name = ROM_drac.8.b
+		custom_effect_tooltip = ROM_dread_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 3 }
+			ROM_update_dread = yes
+		}
+		add_stability = 0.05
+		set_country_flag = ROM_drac_bound
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.9
+	title = ROM_drac.9.t
+	desc = ROM_drac.9.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.9.a
+		add_stability = 0.05
+		custom_effect_tooltip = ROM_dread_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = -3 }
+			ROM_update_dread = yes
+		}
+		add_popularity = { ideology = fundamentalism popularity = 0.05 }
+	}
+	option = {
+		name = ROM_drac.9.b
+		custom_effect_tooltip = ROM_dread_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 8 }
+			ROM_update_dread = yes
+		}
+		add_stability = -0.05
+		add_political_power = 50
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.10
+	title = ROM_drac.10.t
+	desc = ROM_drac.10.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.10.a
+		custom_effect_tooltip = ROM_dread_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = -5 }
+			ROM_update_dread = yes
+		}
+		add_stability = 0.02
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_drac.10.b
+		custom_effect_tooltip = ROM_dread_p12_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 12 }
+			ROM_update_dread = yes
+		}
+		add_stability = -0.03
+		army_experience = 10
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.11
+	title = ROM_drac.11.t
+	desc = ROM_drac.11.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.11.a
+		add_manpower = -20000
+		army_experience = 25
+		custom_effect_tooltip = ROM_dread_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 5 }
+			ROM_update_dread = yes
+		}
+	}
+	option = {
+		name = ROM_drac.11.b
+		add_stability = 0.03
+		add_political_power = 50
+	}
+	option = {
+		name = ROM_drac.11.c
+		add_war_support = 0.10
+		custom_effect_tooltip = ROM_dread_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 5 }
+			ROM_update_dread = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.12
+	title = ROM_drac.12.t
+	desc = ROM_drac.12.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.12.a
+		add_war_support = 0.10
+		custom_effect_tooltip = ROM_dread_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 5 }
+			ROM_update_dread = yes
+		}
+		set_country_flag = ROM_drac_defied_coalition
+	}
+	option = {
+		name = ROM_drac.12.b
+		add_stability = 0.03
+		add_political_power = 75
+		set_country_flag = ROM_drac_negotiating
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.13
+	title = ROM_drac.13.t
+	desc = ROM_drac.13.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.13.a
+		custom_effect_tooltip = ROM_dread_m15_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = -15 }
+			ROM_update_dread = yes
+		}
+		add_stability = 0.05
+		add_political_power = -75
+	}
+	option = {
+		name = ROM_drac.13.b
+		custom_effect_tooltip = ROM_dread_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 5 }
+			ROM_update_dread = yes
+		}
+		add_stability = -0.08
+		army_experience = 15
+		add_manpower = -10000
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.14
+	title = ROM_drac.14.t
+	desc = ROM_drac.14.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.14.a
+		add_war_support = 0.03
+		hidden_effect = { every_neighbor_country = { add_opinion_modifier = { target = ROOT modifier = ROM_drac_fear } } }
+	}
+}
+
+country_event = {
+
+	id = ROM_drac.15
+	title = ROM_drac.15.t
+	desc = ROM_drac.15.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_drac.15.a
+		add_stability = 0.10
+		add_ideas = ROM_drac_door_closed_idea
+	}
+	option = {
+		name = ROM_drac.15.b
+		add_ideas = ROM_drac_door_opened_idea
+		custom_effect_tooltip = ROM_dread_p20_tt
+		hidden_effect = {
+			add_to_variable = { ROM_dread = 20 }
+			ROM_update_dread = yes
+		}
+		add_war_support = 0.10
+	}
+}
+
+# ============================================================
+#   from ROM_elections_tree.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_elect.1
+	title = ROM_elect.1.t
+	desc = ROM_elect.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.1.a
+		custom_effect_tooltip = ROM_majority_p15_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 15 }
+			ROM_update_majority = yes
+		}
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_elect.1.b
+		custom_effect_tooltip = ROM_majority_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = -5 }
+			ROM_update_majority = yes
+		}
+		add_political_power = 100
+		add_ideas = ROM_technocrats_idea
+	}
+}
+
+country_event = {
+
+	id = ROM_elect.2
+	title = ROM_elect.2.t
+	desc = ROM_elect.2.d
+	picture = GFX_report_event_journalists_speech
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.2.a
+		add_ideas = ROM_interference_exposed_idea
+		add_popularity = { ideology = reactionary popularity = -0.05 }
+		if = {
+			limit = { country_exists = RUS }
+			add_opinion_modifier = { target = RUS modifier = ROM_interference_exposed }
+		}
+		add_stability = -0.03
+	}
+	option = {
+		name = ROM_elect.2.b
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+		add_stability = 0.02
+	}
+}
+
+country_event = {
+
+	id = ROM_elect.3
+	title = ROM_elect.3.t
+	desc = ROM_elect.3.d
+	picture = GFX_report_event_worker_protests
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	trigger = { has_idea = ROM_austerity_idea }
+	option = {
+		name = ROM_elect.3.a
+		if = {
+			limit = { has_idea = ROM_austerity_idea }
+			swap_ideas = { remove_idea = ROM_austerity_idea add_idea = ROM_austerity_softened_idea }
+		}
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+	}
+	option = {
+		name = ROM_elect.3.b
+		custom_effect_tooltip = ROM_majority_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = -5 }
+			ROM_update_majority = yes
+		}
+		add_stability = -0.03
+		add_political_power = 50
+	}
+}
+
+country_event = {
+
+	id = ROM_elect.4
+	title = ROM_elect.4.t
+	desc = ROM_elect.4.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.4.a
+		custom_effect_tooltip = ROM_majority_p15_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 15 }
+			ROM_update_majority = yes
+		}
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_elect.4.b
+		add_political_power = 125
+		add_stability = -0.05
+		set_country_flag = ROM_simion_ordinances
+	}
+}
+
+country_event = {
+
+	id = ROM_elect.5
+	title = ROM_elect.5.t
+	desc = ROM_elect.5.d
+	picture = GFX_report_event_generic_handshake
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.5.a
+		custom_effect_tooltip = ROM_majority_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 10 }
+			ROM_update_majority = yes
+		}
+		add_stability = 0.03
+		add_political_power = -25
+	}
+	option = {
+		name = ROM_elect.5.b
+		custom_effect_tooltip = ROM_majority_m15_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = -15 }
+			ROM_update_majority = yes
+		}
+		add_political_power = 100
+	}
+}
+
+news_event = {
+	id = ROM_elect.6
+	title = ROM_elect.6.t
+	desc = ROM_elect.6.d
+	picture = GFX_news_event_DVE_rom_eu_freeze_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.6.a
+	}
+}
+
+country_event = {
+
+	id = ROM_elect.7
+	title = ROM_elect.7.t
+	desc = ROM_elect.7.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_elect.7.a
+		trigger = { has_stability > 0.55 }
+		set_country_flag = ROM_dan_reelected
+		add_stability = 0.05
+		add_political_power = 100
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.18 days = 1 } } }
+	}
+	option = {
+		name = ROM_elect.7.b
+		trigger = { NOT = { has_stability > 0.55 } }
+		add_stability = -0.05
+		set_politics = { ruling_party = conservative elections_allowed = yes }
+		add_popularity = { ideology = conservative popularity = 0.05 }
+	}
+}
+
+# ============================================================
+#   from ROM_movement.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_sim.1
+	title = ROM_sim.1.t
+	desc = ROM_sim.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.1.a
+		custom_effect_tooltip = ROM_faction_moderates_p12_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_moderates = 12 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_m2_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -2 }
+			ROM_update_legitimacy = yes
+		}
+		custom_effect_tooltip = ROM_majority_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 3 }
+			ROM_update_majority = yes
+		}
+	}
+	option = {
+		name = ROM_sim.1.b
+		custom_effect_tooltip = ROM_faction_radicals_p12_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = 12 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_p4_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 4 }
+			ROM_update_legitimacy = yes
+		}
+		add_stability = -0.02
+	}
+	option = {
+		name = ROM_sim.1.c
+		custom_effect_tooltip = ROM_faction_machine_p12_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_machine = 12 }
+			ROM_update_factions = yes
+		}
+		add_political_power = 50
+		custom_effect_tooltip = ROM_corr_p2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 2 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_sim.2
+	title = ROM_sim.2.t
+	desc = ROM_sim.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.2.a
+		trigger = { has_country_flag = ROM_sim_dominant_moderates }
+		add_ideas = ROM_sim_line_moderate_idea
+		set_country_flag = ROM_sim_line_moderate
+		custom_effect_tooltip = ROM_legitimacy_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -3 }
+			ROM_update_legitimacy = yes
+		}
+	}
+	option = {
+		name = ROM_sim.2.b
+		trigger = { has_country_flag = ROM_sim_dominant_radicals }
+		add_ideas = ROM_sim_line_radical_idea
+		set_country_flag = ROM_sim_line_radical
+		custom_effect_tooltip = ROM_legitimacy_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 5 }
+			ROM_update_legitimacy = yes
+		}
+	}
+	option = {
+		name = ROM_sim.2.c
+		trigger = { has_country_flag = ROM_sim_dominant_machine }
+		add_ideas = ROM_sim_line_machine_idea
+		set_country_flag = ROM_sim_line_machine
+		custom_effect_tooltip = ROM_corr_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+		}
+	}
+	option = {
+		name = ROM_sim.2.e
+		add_political_power = -150
+		custom_effect_tooltip = ROM_legitimacy_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -5 }
+			ROM_update_legitimacy = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_sim.3
+	title = ROM_sim.3.t
+	desc = ROM_sim.3.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.3.a
+		trigger = { has_country_flag = ROM_sim_dominant_moderates }
+		custom_effect_tooltip = ROM_faction_moderates_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_moderates = 10 }
+			ROM_update_factions = yes
+		}
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_sim.3.b
+		trigger = { has_country_flag = ROM_sim_dominant_radicals }
+		custom_effect_tooltip = ROM_faction_radicals_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = 10 }
+			ROM_update_factions = yes
+		}
+		add_war_support = 0.05
+	}
+	option = {
+		name = ROM_sim.3.c
+		trigger = { has_country_flag = ROM_sim_dominant_machine }
+		custom_effect_tooltip = ROM_faction_machine_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_machine = 10 }
+			ROM_update_factions = yes
+		}
+		add_political_power = 75
+	}
+	option = {
+		name = ROM_sim.3.e
+		trigger = { NOT = { has_country_flag = ROM_sim_dominant_moderates } }
+		add_political_power = -100
+		custom_effect_tooltip = ROM_faction_moderates_p25_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_moderates = 25 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_m6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -6 }
+			ROM_update_legitimacy = yes
+		}
+	}
+	option = {
+		name = ROM_sim.3.f
+		trigger = { NOT = { has_country_flag = ROM_sim_dominant_radicals } }
+		add_political_power = -100
+		custom_effect_tooltip = ROM_faction_radicals_p25_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = 25 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_m6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -6 }
+			ROM_update_legitimacy = yes
+		}
+	}
+	option = {
+		name = ROM_sim.3.g
+		trigger = { NOT = { has_country_flag = ROM_sim_dominant_machine } }
+		add_political_power = -100
+		custom_effect_tooltip = ROM_faction_machine_p25_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_machine = 25 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_legitimacy_m6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -6 }
+			ROM_update_legitimacy = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_sim.4
+	title = ROM_sim.4.t
+	desc = ROM_sim.4.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.4.a
+		custom_effect_tooltip = ROM_legitimacy_p6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 6 }
+			ROM_update_legitimacy = yes
+		}
+		add_stability = -0.04
+		custom_effect_tooltip = ROM_faction_radicals_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = 5 }
+			ROM_update_factions = yes
+		}
+	}
+	option = {
+		name = ROM_sim.4.b
+		custom_effect_tooltip = ROM_legitimacy_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 3 }
+			ROM_update_legitimacy = yes
+		}
+		add_stability = 0.03
+		custom_effect_tooltip = ROM_faction_moderates_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_moderates = 5 }
+			ROM_update_factions = yes
+		}
+		custom_effect_tooltip = ROM_faction_radicals_m5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = -5 }
+			ROM_update_factions = yes
+		}
+	}
+	option = {
+		name = ROM_sim.4.c
+		add_political_power = -100
+		custom_effect_tooltip = ROM_legitimacy_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 8 }
+			ROM_update_legitimacy = yes
+		}
+		custom_effect_tooltip = ROM_majority_m4_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = -4 }
+			ROM_update_majority = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_sim.5
+	title = ROM_sim.5.t
+	desc = ROM_sim.5.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.5.a
+		add_ideas = ROM_sovereignty_mandate_idea
+		custom_effect_tooltip = ROM_legitimacy_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = 10 }
+			ROM_update_legitimacy = yes
+		}
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.15 days = 1 } } }
+	}
+}
+
+country_event = {
+
+	id = ROM_sim.6
+	title = ROM_sim.6.t
+	desc = ROM_sim.6.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_sim.6.a
+		add_timed_idea = { idea = ROM_referendum_defeat_idea}
+		custom_effect_tooltip = ROM_legitimacy_m8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -8 }
+			ROM_update_legitimacy = yes
+		}
+		custom_effect_tooltip = ROM_faction_moderates_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_moderates = 8 }
+			ROM_update_factions = yes
+		}
+		add_stability = 0.02
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.16 days = 1 } } }
+	}
+	option = {
+		name = ROM_sim.6.b
+		add_timed_idea = { idea = ROM_referendum_defeat_idea days = 365 }
+		custom_effect_tooltip = ROM_legitimacy_m4_tt
+		hidden_effect = {
+			add_to_variable = { ROM_legitimacy = -4 }
+			ROM_update_legitimacy = yes
+		}
+		custom_effect_tooltip = ROM_faction_radicals_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_faction_radicals = 10 }
+			ROM_update_factions = yes
+		}
+		add_stability = -0.05
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.16 days = 1 } } }
+	}
+}
+
+# ============================================================
+#   from ROM_news.txt
+# ============================================================
+
+news_event = {
+	id = ROM_news.1
+	title = ROM_news.1.t
+	desc = ROM_news.1.d
+	picture = GFX_news_event_DVE_rom_inauguration
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.1.a
+	}
+}
+
+news_event = {
+	id = ROM_news.2
+	title = ROM_news.2.t
+	desc = ROM_news.2.d
+	picture = GFX_news_event_DVE_rom_prut_union
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.2.a
+	}
+}
+
+news_event = {
+	id = ROM_news.3
+	title = ROM_news.3.t
+	desc = ROM_news.3.d
+	picture = GFX_news_event_DVE_rom_prut_refused
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.3.a
+	}
+}
+
+news_event = {
+	id = ROM_news.4
+	title = ROM_news.4.t
+	desc = ROM_news.4.d
+	picture = GFX_news_event_DVE_rom_greater_romania
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.4.a
+	}
+}
+
+news_event = {
+	id = ROM_news.5
+	title = ROM_news.5.t
+	desc = ROM_news.5.d
+	picture = GFX_news_event_DVE_rom_claims_map
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.5.a
+	}
+}
+
+news_event = {
+	id = ROM_news.12
+	title = ROM_news.12.t
+	desc = ROM_news.12.d
+	picture = GFX_news_event_DVE_rom_emergency
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.12.a
+	}
+}
+
+news_event = {
+	id = ROM_news.13
+	title = ROM_news.13.t
+	desc = ROM_news.13.d
+	picture = GFX_news_event_DVE_rom_emergency_lifted
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.13.a
+	}
+}
+
+news_event = {
+	id = ROM_news.14
+	title = ROM_news.14.t
+	desc = ROM_news.14.d
+	picture = GFX_news_event_DVE_rom_american_brigade
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.14.a
+	}
+}
+
+news_event = {
+	id = ROM_news.15
+	title = ROM_news.15.t
+	desc = ROM_news.15.d
+	picture = GFX_news_event_DVE_rom_referendum_won
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.15.a
+	}
+}
+
+news_event = {
+	id = ROM_news.16
+	title = ROM_news.16.t
+	desc = ROM_news.16.d
+	picture = GFX_news_event_DVE_rom_referendum_lost
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.16.a
+	}
+}
+
+news_event = {
+	id = ROM_news.17
+	title = ROM_news.17.t
+	desc = ROM_news.17.d
+	picture = GFX_news_event_DVE_rom_eurozone
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.17.a
+	}
+}
+
+news_event = {
+	id = ROM_news.18
+	title = ROM_news.18.t
+	desc = ROM_news.18.d
+	picture = GFX_news_event_DVE_rom_dan_reelected
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.18.a
+	}
+}
+
+news_event = {
+	id = ROM_news.19
+	title = ROM_news.19.t
+	desc = ROM_news.19.d
+	picture = GFX_news_event_DVE_rom_bucharest_summit
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.19.a
+	}
+}
+
+news_event = {
+	id = ROM_news.20
+	title = ROM_news.20.t
+	desc = ROM_news.20.d
+	picture = GFX_news_event_DVE_rom_protest_night
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.20.a
+	}
+}
+
+news_event = {
+	id = ROM_news.21
+	title = ROM_news.21.t
+	desc = ROM_news.21.d
+	picture = GFX_news_event_DVE_rom_thieves_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.21.a
+	}
+}
+
+news_event = {
+	id = ROM_news.22
+	title = ROM_news.22.t
+	desc = ROM_news.22.d
+	picture = GFX_news_event_DVE_rom_junta_barracks
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.22.a
+	}
+}
+
+news_event = {
+	id = ROM_news.23
+	title = ROM_news.23.t
+	desc = ROM_news.23.d
+	picture = GFX_news_event_DVE_rom_junta_directorate
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.23.a
+	}
+}
+
+news_event = {
+	id = ROM_news.24
+	title = ROM_news.24.t
+	desc = ROM_news.24.d
+	picture = GFX_news_event_DVE_rom_holy_romania
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.24.a
+	}
+}
+
+news_event = {
+	id = ROM_news.26
+	title = ROM_news.26.t
+	desc = ROM_news.26.d
+	picture = GFX_news_event_DVE_rom_rally_unity
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.26.a
+	}
+}
+
+news_event = {
+	id = ROM_news.30
+	title = ROM_news.30.t
+	desc = ROM_news.30.d
+	picture = GFX_news_event_DVE_rom_snagov
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.30.a
+	}
+}
+
+news_event = {
+	id = ROM_news.31
+	title = ROM_news.31.t
+	desc = ROM_news.31.d
+	picture = GFX_news_event_DVE_rom_carpathian_vanishings
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.31.a
+	}
+}
+
+news_event = {
+	id = ROM_news.32
+	title = ROM_news.32.t
+	desc = ROM_news.32.d
+	picture = GFX_news_event_DVE_rom_resurrection
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.32.a
+	}
+}
+
+news_event = {
+	id = ROM_news.33
+	title = ROM_news.33.t
+	desc = ROM_news.33.d
+	picture = GFX_news_event_DVE_rom_voivode_throne
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.33.a
+	}
+}
+
+news_event = {
+	id = ROM_news.34
+	title = ROM_news.34.t
+	desc = ROM_news.34.d
+	picture = GFX_news_event_DVE_rom_containment_summit
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.34.a
+	}
+}
+
+news_event = {
+	id = ROM_news.35
+	title = ROM_news.35.t
+	desc = ROM_news.35.d
+	picture = GFX_news_event_DVE_rom_night_legions
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.35.a
+	}
+}
+
+news_event = {
+	id = ROM_news.36
+	title = ROM_news.36.t
+	desc = ROM_news.36.d
+	picture = GFX_news_event_DVE_rom_night_empire
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.36.a
+	}
+}
+
+news_event = {
+	id = ROM_news.37
+	title = ROM_news.37.t
+	desc = ROM_news.37.d
+	picture = GFX_news_event_DVE_rom_dawn_accord
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_news.37.a
+	}
+}
+
+# ============================================================
+#   from ROM_regimes.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_regime.1
+	title = ROM_regime.1.t
+	desc = ROM_regime.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_regime.1.a
+		set_country_flag = ROM_crown_heir_dynastic
+		add_stability = 0.05
+		add_political_power = 50
+	}
+	option = {
+		name = ROM_regime.1.b
+		set_country_flag = ROM_crown_heir_elective
+		add_stability = 0.03
+		add_popularity = { ideology = conservative popularity = 0.05 }
+	}
+	option = {
+		name = ROM_regime.1.c
+		add_political_power = 75
+		add_stability = -0.03
+	}
+}
+
+country_event = {
+
+	id = ROM_regime.2
+	title = ROM_regime.2.t
+	desc = ROM_regime.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_regime.2.a
+		add_stability = 0.03
+		add_political_power = 50
+	}
+	option = {
+		name = ROM_regime.2.b
+		add_political_power = 100
+		add_stability = -0.02
+		army_experience = 15
+	}
+	option = {
+		name = ROM_regime.2.c
+		trigger = { has_country_flag = ROM_junta_stood_down }
+		add_stability = 0.06
+		custom_effect_tooltip = ROM_corr_m3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_regime.3
+	title = ROM_regime.3.t
+	desc = ROM_regime.3.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_regime.3.a
+		trigger = { NOT = { has_idea = ROM_anti_heresy_idea } }
+		set_country_flag = ROM_church_reformer
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_regime.3.b
+		trigger = { NOT = { has_idea = ROM_symphonia_idea } }
+		set_country_flag = ROM_church_hardliner
+		add_political_power = 75
+	}
+}
+
+# ============================================================
+#   from ROM_strong_state.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_ant.1
+	title = ROM_ant.1.t
+	desc = ROM_ant.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_ant.1.a
+		custom_effect_tooltip = ROM_defence_effort_p1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 1 }
+			ROM_update_defence_effort = yes
+		}
+		add_political_power = 25
+	}
+	option = {
+		name = ROM_ant.1.b
+		custom_effect_tooltip = ROM_defence_effort_p2_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 2 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_m8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -8 }
+			ROM_update_consent = yes
+		}
+		army_experience = 15
+	}
+	option = {
+		name = ROM_ant.1.c
+		custom_effect_tooltip = ROM_consent_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 5 }
+			ROM_update_consent = yes
+		}
+		add_political_power = 50
+		add_war_support = -0.02
+	}
+}
+
+country_event = {
+
+	id = ROM_ant.2
+	title = ROM_ant.2.t
+	desc = ROM_ant.2.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_ant.2.a
+		custom_effect_tooltip = ROM_defence_effort_p1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = 1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_m6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -6 }
+			ROM_update_consent = yes
+		}
+		add_tech_bonus = { name = ROM_ant_budget_guns bonus = 0.5 uses = 1 category = artillery }
+	}
+	option = {
+		name = ROM_ant.2.b
+		custom_effect_tooltip = ROM_defence_effort_m1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = -1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_p8_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 8 }
+			ROM_update_consent = yes
+		}
+		add_stability = 0.03
+	}
+	option = {
+		name = ROM_ant.2.c
+		custom_effect_tooltip = ROM_consent_p3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 3 }
+			ROM_update_consent = yes
+		}
+		add_stability = -0.03
+		custom_effect_tooltip = ROM_corr_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+		}
+		add_timed_idea = { idea = ROM_austerity_softened_idea days = 365 }
+	}
+}
+
+country_event = {
+
+	id = ROM_ant.3
+	title = ROM_ant.3.t
+	desc = ROM_ant.3.d
+	picture = GFX_report_event_worker_protests
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_ant.3.a
+		custom_effect_tooltip = ROM_defence_effort_m1_tt
+		hidden_effect = {
+			add_to_variable = { ROM_defence_effort = -1 }
+			ROM_update_defence_effort = yes
+		}
+		custom_effect_tooltip = ROM_consent_p10_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 10 }
+			ROM_update_consent = yes
+		}
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_ant.3.b
+		custom_effect_tooltip = ROM_consent_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -3 }
+			ROM_update_consent = yes
+		}
+		add_stability = -0.05
+		add_war_support = 0.03
+	}
+	option = {
+		name = ROM_ant.3.c
+		custom_effect_tooltip = ROM_consent_p6_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 6 }
+			ROM_update_consent = yes
+		}
+		add_political_power = -75
+		custom_effect_tooltip = ROM_corr_p2_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 2 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+country_event = {
+
+	id = ROM_ant.7
+	title = ROM_ant.7.t
+	desc = ROM_ant.7.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_ant.7.a
+		add_political_power = -25
+		custom_effect_tooltip = ROM_consent_p2_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = 2 }
+			ROM_update_consent = yes
+		}
+	}
+	option = {
+		name = ROM_ant.7.b
+		add_political_power = 100
+		army_experience = 5
+		custom_effect_tooltip = ROM_corr_p5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 5 }
+			ROM_corruption_apply = yes
+		}
+		custom_effect_tooltip = ROM_consent_m3_tt
+		hidden_effect = {
+			add_to_variable = { ROM_consent = -3 }
+			ROM_update_consent = yes
+		}
+	}
+	option = {
+		name = ROM_ant.7.c
+		add_political_power = 25
+		if = {
+			limit = { country_exists = POL }
+			add_opinion_modifier = { target = POL modifier = ROM_eastern_flank_partner }
+			POL = { add_opinion_modifier = { target = ROOT modifier = ROM_eastern_flank_partner } }
+		}
+	}
+}
+
+# ============================================================
+#   from ROM_union.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_union.1
+	title = ROM_union.1.t
+	desc = ROM_union.1.d
+	picture = GFX_report_event_generic_handshake
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_union.1.a
+		ai_chance = {
+			base = 15
+			modifier = { add = 25 FROM = { has_country_flag = ROM_moldova_partnership } }
+			modifier = { add = 20 FROM = { has_country_flag = ROM_metropolis_of_bessarabia } }
+			modifier = { add = 15 FROM = { has_country_flag = ROM_crown_union_offer } }
+			modifier = { add = 15 has_opinion = { target = FROM value > 49 } }
+			modifier = { add = 10 FROM = { has_country_flag = ROM_junta_union_offer } }
+			modifier = { factor = 0.5 FROM = { has_government = ultranationalism } }
+		}
+		FROM = { news_event = { id = ROM_union.2} }
+	}
+	option = {
+		name = ROM_union.1.b
+		ai_chance = { base = 60 }
+		FROM = { news_event = { id = ROM_union.3} }
+	}
+}
+
+country_event = {
+
+	id = ROM_union.2
+	title = ROM_union.2.t
+	desc = ROM_union.2.d
+	picture = GFX_report_event_generic_handshake
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_union.2.a
+		if = {
+			limit = { country_exists = MOL }
+			annex_country = { target = MOL transfer_troops = yes }
+		}
+		set_country_flag = ROM_moldova_united
+		add_ideas = ROM_union_integration_idea
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.2 days = 1 } } }
+		add_stability = 0.05
+		add_war_support = 0.05
+	}
+}
+
+country_event = {
+
+	id = ROM_union.3
+	title = ROM_union.3.t
+	desc = ROM_union.3.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_union.3.a
+		set_country_flag = ROM_union_refused
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.3 days = 1 } } }
+		if = {
+			limit = { country_exists = MOL }
+			MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_union_partner } }
+		}
+		add_political_power = 25
+	}
+	option = {
+		name = ROM_union.3.b
+		trigger = { has_country_flag = ROM_union_by_force_allowed }
+		set_country_flag = ROM_union_refused
+		hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.3 days = 1 } } }
+		add_war_support = 0.05
+		if = {
+			limit = { country_exists = MOL }
+			create_wargoal = { type = annex_everything target = MOL }
+			MOL = { add_opinion_modifier = { target = ROOT modifier = ROM_union_pressure } }
+		}
+	}
+}
+
+# ============================================================
+#   from ROM_uprise_tree.txt
+# ============================================================
+
+country_event = {
+
+	id = ROM_uprise.1
+	title = ROM_uprise.1.t
+	desc = ROM_uprise.1.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_uprise.1.a
+	}
+}
+
+news_event = {
+	id = ROM_uprise.2
+	title = ROM_uprise.2.t
+	desc = ROM_uprise.2.d
+	picture = GFX_news_event_DVE_rom_revolution_settles
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_uprise.2.a
+	}
+}
+
+news_event = {
+	id = ROM_uprise.3
+	title = ROM_uprise.3.t
+	desc = ROM_uprise.3.d
+	picture = GFX_news_event_DVE_rom_coronation
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_uprise.3.a
+	}
+}
+
+country_event = {
+
+	id = ROM_uprise.4
+	title = ROM_uprise.4.t
+	desc = ROM_uprise.4.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	show_major = {
+		 tag = ROM
+	}
+	option = {
+		name = ROM_uprise.4.a
+		add_stability = 0.03
+		add_political_power = -50
+	}
+	option = {
+		name = ROM_uprise.4.b
+		add_stability = -0.05
+		add_war_support = 0.03
+		if = {
+			limit = { country_exists = HUN }
+			HUN = { add_opinion_modifier = { target = ROOT modifier = ROM_heterodox_persecution } }
+		}
 	}
 }
