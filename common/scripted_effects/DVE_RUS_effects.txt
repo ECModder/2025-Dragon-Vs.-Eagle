@@ -59,6 +59,8 @@ RUS_lost_war_settlement_effect = {
 	#   I quattro oblast occupati nel 2022 tornano indietro e la
 	#   Crimea con loro, tutti a core: erano territorio ucraino e
 	#   tornano a esserlo.
+	#   Kherson is two states: 196 (right bank, Ukrainian from day one) and
+	#   1168 Skadovsk (left bank, occupied). Sevastopol is 1171, cut from Crimea.
 	#   Kursk e Belgorod invece NON entrano qui: sono russe, e vanno
 	#   alla zona d'occupazione poco piu' sotto.
 	#   NOTA: Belgorod in HOI4 non e' uno stato a se': la sua
@@ -66,16 +68,20 @@ RUS_lost_war_settlement_effect = {
 	#   d'occupazione si prende tutto il 240.
 	UKR = {
 		transfer_state = 196   # Kherson
+		transfer_state = 1168  # Skadovsk
 		transfer_state = 200   # Zaporizhzhia
 		transfer_state = 227   # Donetsk
 		transfer_state = 228   # Luhansk
 		transfer_state = 137   # Crimea
+		transfer_state = 1171  # Sevastopol
 
 		add_state_core = 196
+		add_state_core = 1168
 		add_state_core = 200
 		add_state_core = 227
 		add_state_core = 228
 		add_state_core = 137
+		add_state_core = 1171
 	}
 
 	# ---------- la zona d'occupazione di Belgorod ----------
@@ -112,10 +118,12 @@ RUS_lost_war_settlement_effect = {
 
 	# Mosca non rinuncia a niente sulla carta
 	add_state_claim = 196
+	add_state_claim = 1168
 	add_state_claim = 200
 	add_state_claim = 227
 	add_state_claim = 228
 	add_state_claim = 137
+	add_state_claim = 1171
 	add_state_claim = 220
 	add_state_claim = 240
 	add_state_claim = 537
@@ -165,6 +173,7 @@ RUS_won_war_settlement_effect = {
 		every_owned_state = {
 			limit = {
 				OR = {
+					state = 196   # Kherson (right bank, still Ukrainian at start)
 					state = 192   # Odessa
 					state = 197   # Mykolaiv
 					state = 226   # Nikopol
@@ -185,7 +194,9 @@ RUS_won_war_settlement_effect = {
 	#   si limita a metterli a core, cosi' la vittoria li rende
 	#   definitivi anche sulla carta.
 	add_state_core = 137   # Crimea
+	add_state_core = 1171  # Sevastopol
 	add_state_core = 196   # Kherson
+	add_state_core = 1168  # Skadovsk
 	add_state_core = 200   # Zaporizhzhia
 	add_state_core = 227   # Donetsk
 	add_state_core = 228   # Luhansk

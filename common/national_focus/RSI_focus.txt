@@ -1,0 +1,414 @@
+# ============================================================
+#   ITALIAN SOCIAL REPUBLIC (RSI) - focus tree
+#
+#   The "Good Old Days" branch, moved here as it was from the
+#   Italian tree (common/national_focus/italy.txt): the root, the
+#   Savoy half (Casa Savoia!) and the Second March on Rome half,
+#   which meet again in "The Empire Returns to Rome".
+#   Focus ids, icons (interface/ITA_icone_focus.gfx) and text
+#   (localisation/english/ITA_custom_focus_l_english.yml) are
+#   unchanged; positions were shifted 57 columns to the left and
+#   the root re-centred above its two halves.
+# ============================================================
+
+focus_tree = {
+	id = RSI_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = RSI
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		x = 8
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1000 }
+
+	focus = {
+		id = ITA_goodolddays
+		icon = GFX_goal_goodolddays
+		x = 8
+		y = 0
+		cost = 10
+		available_if_capitulated = no
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_politics = { ruling_party = reactionary elections_allowed = no last_election = 2025.1.1 }
+			set_country_flag = ITA_goodolddays_done
+		}
+	}
+
+	focus = {
+		id = MO_casasavoia
+		icon = GFX_goal_casasavoia
+		x = 2
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = ITA_goodolddays }
+		mutually_exclusive = { focus = MO_marchrome2 }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = -5
+			set_country_flag = MO_casasavoia_done
+		}
+	}
+
+	focus = {
+		id = MO_marchrome2
+		icon = GFX_goal_marchrome2
+		x = 15
+		y = 2
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = ITA_goodolddays }
+		mutually_exclusive = { focus = MO_casasavoia }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_war_support = 0.5
+			add_stability = -0.2
+			set_country_flag = MO_marchrome2_done
+		}
+	}
+
+	focus = {
+		id = MO_reorgstate
+		icon = GFX_goal_reorgstate
+		x = 1
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_casasavoia }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.05
+			set_country_flag = MO_reorgstate_done
+		}
+	}
+
+	focus = {
+		id = MO_restorecrown
+		icon = GFX_goal_restorecrown
+		x = 3
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_casasavoia }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.1
+			promote_character = GER_erwin_rommel
+			# NOTA: 'Ideology = neutrality' indicato nel testo originale non e' un parametro valido per promote_character in HOI4 vanilla, quindi e' stato omesso.
+			set_country_flag = MO_restorecrown_done
+		}
+	}
+
+	focus = {
+		id = MO_irredentism
+		icon = GFX_goal_irredentism
+		x = 8
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_casasavoia }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_irredentism_done
+		}
+	}
+
+	focus = {
+		id = MO_loyaladmin
+		icon = GFX_goal_loyaladmin
+		x = 1
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_reorgstate }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 75
+			set_country_flag = MO_loyaladmin_done
+		}
+	}
+
+	focus = {
+		id = MO_emanuele
+		icon = GFX_goal_emanuele
+		x = 3
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_restorecrown }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 2
+			set_country_flag = MO_emanuele_done
+		}
+	}
+
+	focus = {
+		id = MO_istria
+		icon = GFX_goal_istria
+		x = 6
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_irredentism }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_istria_done
+		}
+	}
+
+	focus = {
+		id = MO_corsica
+		icon = GFX_goal_corsica
+		x = 10
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_irredentism }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_corsica_done
+		}
+	}
+
+	focus = {
+		id = MO_tradvalues
+		icon = GFX_goal_tradvalues
+		x = 8
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_irredentism }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 0.05
+			set_country_flag = MO_tradvalues_done
+		}
+	}
+
+	focus = {
+		id = MO_kingparl
+		icon = GFX_goal_kingparl
+		x = 1
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_loyaladmin }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = -0.1
+			add_war_support = 0.1
+			add_popularity = { ideology = fascism popularity = 0.2 }
+			set_country_flag = MO_kingparl_done
+		}
+	}
+
+	focus = {
+		id = MO_kingindustry
+		icon = GFX_goal_kingindustry
+		x = 3
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_emanuele }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_kingindustry_done
+		}
+	}
+
+	focus = {
+		id = MO_kingdomreborn
+		icon = GFX_goal_kingdomreborn
+		x = 2
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_kingparl focus = MO_kingindustry focus = MO_tradvalues}
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_kingdomreborn_done
+		}
+	}
+
+	focus = {
+		id = MO_fascismback
+		icon = GFX_goal_fascismback
+		x = 15
+		y = 3
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_marchrome2 }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = -10
+			set_country_flag = MO_fascismback_done
+		}
+	}
+
+	focus = {
+		id = MO_expandstate
+		icon = GFX_goal_expandstate
+		x = 13
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_fascismback }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = MO_expandstate_done
+		}
+	}
+
+	focus = {
+		id = MO_dvxback
+		icon = GFX_goal_dvxback
+		x = 15
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_fascismback }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 2
+			set_country_flag = MO_dvxback_done
+		}
+	}
+
+	focus = {
+		id = MO_natrevival
+		icon = GFX_goal_natrevival
+		x = 17
+		y = 4
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_fascismback }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_war_support = 1.5
+			set_country_flag = MO_natrevival_done
+		}
+	}
+
+	focus = {
+		id = MO_restorealliance
+		icon = GFX_goal_restorealliance
+		x = 13
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_expandstate }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.5
+			set_country_flag = MO_restorealliance_done
+		}
+	}
+
+	focus = {
+		id = MO_granconsiglio
+		icon = GFX_goal_granconsiglio
+		x = 15
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_dvxback }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			# "add_political_power_daily" non esiste come effetto in HOI4: sostituito con
+			# una concessione una tantum equivalente (2/giorno x 100 giorni).
+			add_political_power = 200
+			set_country_flag = MO_granconsiglio_done
+		}
+	}
+
+	focus = {
+		id = MO_propagandamanifest
+		icon = GFX_goal_propagandamanifest
+		x = 17
+		y = 5
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_natrevival }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_political_power = 50
+			add_stability = 0.5
+			army_experience = 20
+			set_country_flag = MO_propagandamanifest_done
+		}
+	}
+
+	focus = {
+		id = MO_empirereturns
+		icon = GFX_goal_empirereturns
+		x = 15
+		y = 6
+		cost = 10
+		available_if_capitulated = no
+		prerequisite = { focus = MO_tradvalues focus = MO_restorealliance focus = MO_granconsiglio focus = MO_propagandamanifest }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			add_stability = 0.5
+			add_war_support = 0.5
+			set_country_flag = MO_empirereturns_done
+		}
+	}
+}
