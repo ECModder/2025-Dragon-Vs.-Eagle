@@ -1,0 +1,190 @@
+division_template = {
+    name = "Panzerbrigade"
+    regiments = {
+        medium_armor = { x = 0 y = 0 }
+        medium_armor = { x = 0 y = 1 }
+        medium_armor = { x = 0 y = 2 }
+        medium_armor = { x = 0 y = 3 }
+        mechanized = { x = 0 y = 4 }
+        mechanized = { x = 1 y = 0 }
+        mechanized = { x = 1 y = 1 }
+        mechanized = { x = 1 y = 2 }
+        mechanized = { x = 1 y = 3 }
+        mechanized = { x = 1 y = 4 }
+        mechanized = { x = 2 y = 0 }
+        artillery_brigade = { x = 2 y = 1 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        maintenance_company = { x = 0 y = 2 }
+        logistics_company = { x = 0 y = 3 }
+        artillery = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Artillerieverband"
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 0 y = 3 }
+        infantry = { x = 0 y = 4 }
+        artillery_brigade = { x = 1 y = 0 }
+        artillery_brigade = { x = 1 y = 1 }
+        artillery_brigade = { x = 1 y = 2 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        artillery = { x = 0 y = 2 }
+        logistics_company = { x = 0 y = 3 }
+        anti_air = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Territorialdivision"
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 0 y = 3 }
+        infantry = { x = 0 y = 4 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        infantry = { x = 1 y = 2 }
+        infantry = { x = 1 y = 3 }
+        infantry = { x = 1 y = 4 }
+        infantry = { x = 2 y = 0 }
+        infantry = { x = 2 y = 1 }
+        infantry = { x = 2 y = 2 }
+        infantry = { x = 2 y = 3 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        artillery = { x = 0 y = 2 }
+        anti_air = { x = 0 y = 3 }
+        logistics_company = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Alpine Territorialdivision"
+    regiments = {
+        infantry = { x = 0 y = 0 }
+        infantry = { x = 0 y = 1 }
+        infantry = { x = 0 y = 2 }
+        infantry = { x = 0 y = 3 }
+        infantry = { x = 0 y = 4 }
+        infantry = { x = 1 y = 0 }
+        infantry = { x = 1 y = 1 }
+        mountaineers = { x = 1 y = 2 }
+        mountaineers = { x = 1 y = 3 }
+        mountaineers = { x = 1 y = 4 }
+        mountaineers = { x = 2 y = 0 }
+        mountaineers = { x = 2 y = 1 }
+        mountaineers = { x = 2 y = 2 }
+        mountaineers = { x = 2 y = 3 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        artillery = { x = 0 y = 2 }
+        anti_tank = { x = 0 y = 3 }
+        logistics_company = { x = 0 y = 4 }
+    }
+}
+
+division_template = {
+    name = "Gebirgsinfanteriebataillon"
+    regiments = {
+        mountaineers = { x = 0 y = 0 }
+        mountaineers = { x = 0 y = 1 }
+        mountaineers = { x = 0 y = 2 }
+        mountaineers = { x = 0 y = 3 }
+        mountaineers = { x = 0 y = 4 }
+    }
+
+    support = {
+        engineer = { x = 0 y = 0 }
+        recon = { x = 0 y = 1 }
+        artillery = { x = 0 y = 2 }
+        logistics_company = { x = 0 y = 3 }
+    }
+}
+
+units = {
+    division = {
+        name = "Mechanisierte Brigade 1"
+        location = 6666
+        division_template = "Panzerbrigade"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Mechanisierte Brigade 4"
+        location = 663
+        division_template = "Artillerieverband"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Mechanisierte Brigade 11"
+        location = 11623
+        division_template = "Panzerbrigade"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Territorialdivision 1"
+        location = 11590
+        division_template = "Territorialdivision"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Territorialdivision 2"
+        location = 11604
+        division_template = "Territorialdivision"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Territorialdivision 3"
+        location = 658
+        division_template = "Alpine Territorialdivision"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Territorialdivision 4"
+        location = 663
+        division_template = "Territorialdivision"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Gebirgsinfanteriebataillon 29"
+        location = 636
+        division_template = "Gebirgsinfanteriebataillon"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Gebirgsinfanteriebataillon 48"
+        location = 9600
+        division_template = "Gebirgsinfanteriebataillon"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Gebirgsinfanteriebataillon 85"
+        location = 11601
+        division_template = "Gebirgsinfanteriebataillon"
+        start_experience_factor = 0.1
+    }
+    division = {
+        name = "Gebirgsinfanteriebataillon 91"
+        location = 3612
+        division_template = "Gebirgsinfanteriebataillon"
+        start_experience_factor = 0.1
+    }
+}
