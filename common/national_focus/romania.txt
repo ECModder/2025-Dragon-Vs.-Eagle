@@ -105,10 +105,19 @@ focus_tree = {
             factor = 1
         }
         completion_reward = {
-            country_event = {
-                id = dve_rom.6
+            custom_effect_tooltip = ROM_screw_the_elections_tt
+            hidden_effect = {
+                set_politics = { ruling_party = reactionary elections_allowed = no }
+                if = {
+                    limit = { NOT = { has_character = ROM_calin_georgescu } }
+                    recruit_character = ROM_calin_georgescu
+                }
+                promote_character = ROM_calin_georgescu
+                news_event = {
+                    id = dve_rom.6
+                }
+                load_focus_tree = romania_uprise
             }
-            load_focus_tree = romania_uprise
         }
     }
 

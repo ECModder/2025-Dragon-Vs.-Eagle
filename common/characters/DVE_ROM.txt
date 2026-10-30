@@ -32,7 +32,7 @@ characters = {
         portraits = {
             civilian = {
                 large = GFX_ROM_Klaus_Iohannis
-                }
+            }
         }
         country_leader = {
             ideology = conservatism
@@ -63,7 +63,7 @@ characters = {
             }
         }
         country_leader = {
-            ideology = paleoconservatism   
+            ideology = paleoconservatism
             traits = { }
             desc = ROM_calin_georgescu_desc
         }
@@ -71,6 +71,11 @@ characters = {
 
     ROM_margareta = {
         name = ROM_margareta
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Margareta
+            }
+        }
         country_leader = {
             ideology = monarchism
             traits = { }
@@ -80,6 +85,22 @@ characters = {
 
     ROM_gheorghita_vlad = {
         name = ROM_gheorghita_vlad
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Gheorghita_Vlad
+            }
+            army = {
+                large = GFX_ROM_Gheorghita_Vlad_Marshal
+            }
+        }
+        field_marshal = {
+            traits = { organizer career_officer }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            planning_skill = 4
+            logistics_skill = 3
+        }
         country_leader = {
             ideology = military_junta
             traits = { }
@@ -89,6 +110,11 @@ characters = {
 
     ROM_patriarch_daniel = {
         name = ROM_patriarch_daniel
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Patriarch_Daniel
+            }
+        }
         country_leader = {
             ideology = christian_fundamentalism
             traits = { }
@@ -107,6 +133,414 @@ characters = {
             ideology = imperial_autocracy
             traits = { }
             desc = ROM_vlad_voivode_desc
+        }
+    }
+
+    # ---- 2025 party leaders (moved here from the legacy create_country_leader lines in history) ----
+    ROM_crin_antonescu = {
+        name = ROM_crin_antonescu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Crin_Antonescu
+            }
+        }
+        country_leader = {
+            ideology = social_democracy
+            traits = { }
+            desc = ROM_crin_antonescu_desc
+        }
+    }
+
+    ROM_elena_lasconi = {
+        name = ROM_elena_lasconi
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Elena_Lasconi
+            }
+        }
+        country_leader = {
+            ideology = centrist_populism
+            traits = { }
+            desc = ROM_elena_lasconi_desc
+        }
+    }
+
+    ROM_diana_sosoaca = {
+        name = ROM_diana_sosoaca
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Diana_Sosoaca
+            }
+        }
+        country_leader = {
+            ideology = ultranationalism_party
+            traits = { }
+            desc = ROM_diana_sosoaca_desc
+        }
+    }
+
+    ROM_anamaria_gavrila = {
+        name = ROM_anamaria_gavrila
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Anamaria_Gavrila
+            }
+        }
+        country_leader = {
+            ideology = illiberal_democracy
+            traits = { }
+            desc = ROM_anamaria_gavrila_desc
+        }
+    }
+
+    # ---- Generals recruited by the romania_uprise Army branch (fictional officers) ----
+    ROM_upr_gen_mircea_ionescu = {
+        name = ROM_upr_gen_mircea_ionescu
+        corps_commander = {
+            traits = { }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 3
+            logistics_skill = 2
+        }
+    }
+
+    ROM_upr_gen_ana_stoica = {
+        name = ROM_upr_gen_ana_stoica
+        corps_commander = {
+            traits = { }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 3
+            planning_skill = 3
+            logistics_skill = 3
+        }
+    }
+
+    ROM_upr_gen_victor_dobre = {
+        name = ROM_upr_gen_victor_dobre
+        field_marshal = {
+            traits = { }
+            skill = 4
+            attack_skill = 3
+            defense_skill = 4
+            planning_skill = 4
+            logistics_skill = 3
+        }
+    }
+
+    # ---- Romanian Armed Forces, 2025 (real officers; posts as of 2024-2025) ----
+    ROM_ciprian_marin = {
+        name = ROM_ciprian_marin
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Ciprian_Marin
+                small = "gfx/leaders/ROM/ROM_ciprian_marin_small.dds"
+            }
+            army = {
+                large = GFX_ROM_Ciprian_Marin
+            }
+        }
+        field_marshal = {
+            traits = { career_officer }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 3
+            logistics_skill = 3
+        }
+        advisor = {
+            slot = army_chief
+            idea_token = ROM_ciprian_marin_chief
+            ledger = army
+            allowed = { original_tag = ROM }
+            traits = { army_chief_planning_1 }
+            cost = 100
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_dragos_iacob = {
+        name = ROM_dragos_iacob
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Dragos_Iacob
+            }
+            army = {
+                large = GFX_ROM_Dragos_Iacob
+            }
+        }
+        corps_commander = {
+            traits = { organizer }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 2
+            logistics_skill = 2
+        }
+    }
+
+    ROM_gabriel_turculet = {
+        name = ROM_gabriel_turculet
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Gabriel_Turculet
+            }
+            army = {
+                large = GFX_ROM_Gabriel_Turculet
+            }
+        }
+        corps_commander = {
+            traits = { infantry_officer }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 2
+            logistics_skill = 2
+        }
+    }
+
+    ROM_bogdan_cernat = {
+        name = ROM_bogdan_cernat
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Bogdan_Cernat
+            }
+            army = {
+                large = GFX_ROM_Bogdan_Cernat
+            }
+        }
+        corps_commander = {
+            traits = { infantry_officer }
+            skill = 3
+            attack_skill = 3
+            defense_skill = 3
+            planning_skill = 2
+            logistics_skill = 2
+        }
+    }
+
+    ROM_mihai_panait = {
+        name = ROM_mihai_panait
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Mihai_Panait
+            }
+            army = {
+                large = GFX_ROM_Mihai_Panait
+            }
+        }
+        navy_leader = {
+            traits = { }
+            skill = 3
+            attack_skill = 2
+            defense_skill = 3
+            maneuvering_skill = 2
+            coordination_skill = 3
+        }
+    }
+
+    ROM_leonard_baraboi = {
+        name = ROM_leonard_baraboi
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Leonard_Baraboi
+                small = "gfx/leaders/ROM/ROM_leonard_baraboi_small.dds"
+            }
+            army = {
+                large = GFX_ROM_Leonard_Baraboi
+            }
+        }
+        advisor = {
+            slot = air_chief
+            idea_token = ROM_leonard_baraboi_chief
+            ledger = air
+            allowed = { original_tag = ROM }
+            traits = { air_chief_reform_1 }
+            cost = 100
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    # ---- Political advisors (real politicians) ----
+    ROM_adv_catalin_predoiu = {
+        name = ROM_adv_catalin_predoiu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Catalin_Predoiu
+                small = "gfx/leaders/ROM/ROM_catalin_predoiu_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_catalin_predoiu_token
+            allowed = { original_tag = ROM }
+            traits = { silent_workhorse }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_alexandru_nazare = {
+        name = ROM_adv_alexandru_nazare
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Alexandru_Nazare
+                small = "gfx/leaders/ROM/ROM_alexandru_nazare_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_alexandru_nazare_token
+            allowed = { original_tag = ROM }
+            traits = { financial_expert }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_oana_toiu = {
+        name = ROM_adv_oana_toiu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Oana_Toiu
+                small = "gfx/leaders/ROM/ROM_oana_toiu_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_oana_toiu_token
+            allowed = { original_tag = ROM }
+            traits = { smooth_talking_charmer }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_dragos_pislaru = {
+        name = ROM_adv_dragos_pislaru
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Dragos_Pislaru
+                small = "gfx/leaders/ROM/ROM_dragos_pislaru_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_dragos_pislaru_token
+            allowed = { original_tag = ROM }
+            traits = { captain_of_industry }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_tanczos_barna = {
+        name = ROM_adv_tanczos_barna
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Tanczos_Barna
+                small = "gfx/leaders/ROM/ROM_tanczos_barna_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_tanczos_barna_token
+            allowed = { original_tag = ROM }
+            traits = { compassionate_gentleman }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_ionut_mosteanu = {
+        name = ROM_adv_ionut_mosteanu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Ionut_Mosteanu
+                small = "gfx/leaders/ROM/ROM_ionut_mosteanu_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_ionut_mosteanu_token
+            allowed = { original_tag = ROM }
+            traits = { war_industrialist }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_radu_miruta = {
+        name = ROM_adv_radu_miruta
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Radu_Miruta
+                small = "gfx/leaders/ROM/ROM_radu_miruta_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_radu_miruta_token
+            allowed = { original_tag = ROM }
+            traits = { armaments_organizer }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_marcel_ciolacu = {
+        name = ROM_adv_marcel_ciolacu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Marcel_Ciolacu
+                small = "gfx/leaders/ROM/ROM_marcel_ciolacu_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_marcel_ciolacu_token
+            allowed = { original_tag = ROM }
+            traits = { popular_figurehead }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_sorin_grindeanu = {
+        name = ROM_adv_sorin_grindeanu
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Sorin_Grindeanu
+                small = "gfx/leaders/ROM/ROM_sorin_grindeanu_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_sorin_grindeanu_token
+            allowed = { original_tag = ROM }
+            traits = { backroom_backstabber }
+            cost = 150
+            ai_will_do = { factor = 1 }
+        }
+    }
+
+    ROM_adv_mircea_geoana = {
+        name = ROM_adv_mircea_geoana
+        portraits = {
+            civilian = {
+                large = GFX_ROM_Mircea_Geoana
+                small = "gfx/leaders/ROM/ROM_mircea_geoana_small.dds"
+            }
+        }
+        advisor = {
+            slot = political_advisor
+            idea_token = ROM_adv_mircea_geoana_token
+            allowed = { original_tag = ROM }
+            traits = { smooth_talking_charmer }
+            cost = 150
+            ai_will_do = { factor = 1 }
         }
     }
 
