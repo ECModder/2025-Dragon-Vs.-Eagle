@@ -1,5 +1,13 @@
-# ROM_2025 order of battle (approximate, see notes in chat)
-# Unit names and locations are from memory; verify against the map.
+﻿# ROM_2025 land order of battle (without No Step Back: the armoured brigade fights as heavy mechanised)
+# Romanian Land Forces at the 2025 start, one HOI4 division per real brigade.
+# 2nd Infantry Division "Getica" (HQ Buzau): 1st Mech "Argedava", 9th Mech "Marasesti",
+#   282nd Armoured "Unirea Principatelor", 8th LAROM Artillery.
+# 4th Infantry Division "Gemina" (HQ Cluj-Napoca): 2nd and 61st Mountain, 81st Mech,
+#   15th Mech "Podu Inalt", 18th Infantry "Banat".
+# Independent: 30th Guard Brigade, 6th Special Operations Brigade.
+# Provinces are chosen inside the correct state for each garrison city.
+# Templates "Brigada Vanatori de Munte" and "Brigada de Infanterie" are also used by
+# history/units/ROM_uprise_reserves.txt - keep the names.
 
 division_template = {
 	name = "Brigada Mecanizata"
@@ -9,7 +17,7 @@ division_template = {
 		mechanized = { x = 0 y = 1 }
 		mechanized = { x = 0 y = 2 }
 		motorized = { x = 1 y = 0 }
-		motorized = { x = 1 y = 1 }
+		artillery_brigade = { x = 2 y = 0 }
 	}
 
 	support = {
@@ -17,6 +25,7 @@ division_template = {
 		recon = { x = 0 y = 1 }
 		logistics_company = { x = 0 y = 2 }
 		maintenance_company = { x = 0 y = 3 }
+		signal_company = { x = 0 y = 4 }
 	}
 }
 
@@ -27,8 +36,9 @@ division_template = {
 		infantry = { x = 0 y = 0 }
 		infantry = { x = 0 y = 1 }
 		infantry = { x = 0 y = 2 }
-		infantry = { x = 1 y = 0 }
+		motorized = { x = 1 y = 0 }
 		motorized = { x = 1 y = 1 }
+		artillery_brigade = { x = 2 y = 0 }
 	}
 
 	support = {
@@ -46,127 +56,161 @@ division_template = {
 		mountaineers = { x = 0 y = 1 }
 		mountaineers = { x = 0 y = 2 }
 		mountaineers = { x = 1 y = 0 }
-	}
-
-	support = {
-		engineer = { x = 0 y = 0 }
-		logistics_company = { x = 0 y = 1 }
-	}
-}
-
-division_template = {
-	name = "Divizia de Infanterie"
-
-	regiments = {
-		infantry = { x = 0 y = 0 }
-		infantry = { x = 0 y = 1 }
-		infantry = { x = 0 y = 2 }
-		infantry = { x = 1 y = 0 }
-		infantry = { x = 1 y = 1 }
-		infantry = { x = 1 y = 2 }
-		mechanized = { x = 2 y = 0 }
-		mechanized = { x = 2 y = 1 }
-		mechanized = { x = 2 y = 2 }
+		artillery_brigade = { x = 2 y = 0 }
 	}
 
 	support = {
 		engineer = { x = 0 y = 0 }
 		recon = { x = 0 y = 1 }
 		logistics_company = { x = 0 y = 2 }
-		maintenance_company = { x = 0 y = 3 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Garda"
+
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+		infantry = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+	}
+
+	support = {
+		logistics_company = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Operatii Speciale"
+
+	regiments = {
+		paratrooper = { x = 0 y = 0 }
+		paratrooper = { x = 0 y = 1 }
+		paratrooper = { x = 0 y = 2 }
+	}
+
+	support = {
+		recon = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Artilerie LAROM"
+
+	regiments = {
+		artillery_brigade = { x = 0 y = 0 }
+		artillery_brigade = { x = 0 y = 1 }
+		artillery_brigade = { x = 0 y = 2 }
+		motorized = { x = 1 y = 0 }
+	}
+
+	support = {
+		logistics_company = { x = 0 y = 0 }
+		maintenance_company = { x = 0 y = 1 }
 	}
 }
 
 units = {
 
-	# Bucharest
+	# Bucharest - independent ceremonial and security brigade
 	division = {
-		name = "30th Guard Brigade 'Mihai Viteazul'"
+		name = "Brigada 30 Garda "Mihai Viteazul""
 		location = 9617
-		division_template = "Brigada de Infanterie"
-		start_experience_factor = 0.7
-		start_equipment_factor = 0.85
+		division_template = "Brigada de Garda"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.9
 	}
 
-	# Muntenia
+	# Targu Mures (Transylvania) - Special Operations Forces Command
 	division = {
-		name = "81st Mechanized Brigade 'General Grigore Balan'"
+		name = "Brigada 6 Operatii Speciale "Mihai Viteazul""
+		location = 3665
+		division_template = "Brigada de Operatii Speciale"
+		start_experience_factor = 0.8
+		start_equipment_factor = 0.9
+	}
+
+	# 2nd Infantry Division "Getica" - Bucharest area (Muntenia)
+	division = {
+		name = "Brigada 1 Mecanizata "Argedava""
 		location = 3663
 		division_template = "Brigada Mecanizata"
 		start_experience_factor = 0.6
-		start_equipment_factor = 0.78
+		start_equipment_factor = 0.85
 	}
 
-	# Muntenia
+	# 2nd Infantry Division "Getica" - Constanta (Dobruja); has a TR-85 tank battalion
 	division = {
-		name = "2nd Infantry Division 'Getica'"
-		location = 6677
-		division_template = "Divizia de Infanterie"
-		start_experience_factor = 0.55
-		start_equipment_factor = 0.72
-	}
-
-	# Oltenia (Craiova area)
-	division = {
-		name = "2nd Infantry Brigade 'Rovine'"
-		location = 6652
+		name = "Brigada 9 Mecanizata "Marasesti""
+		location = 657
 		division_template = "Brigada Mecanizata"
 		start_experience_factor = 0.6
-		start_equipment_factor = 0.76
+		start_equipment_factor = 0.85
 	}
 
-	# Northern Transylvania (Cluj area)
+	# 2nd Infantry Division "Getica" - Focsani (Vrancea); TR-85M1 "Bizon" and MLI-84M "Jder"
 	division = {
-		name = "4th Infantry Division 'Gemina'"
-		location = 6711
-		division_template = "Divizia de Infanterie"
-		start_experience_factor = 0.55
-		start_equipment_factor = 0.72
-	}
-
-	# Transylvania (Harghita area)
-	division = {
-		name = "61st Mountain Brigade 'General Gheorghe Dragalina'"
-		location = 690
-		division_template = "Brigada Vanatori de Munte"
-		start_experience_factor = 0.62
-		start_equipment_factor = 0.74
-	}
-
-	# Moldavia (Focsani area)
-	division = {
-		name = "282nd Mechanized Brigade 'Unirea Principatelor'"
+		name = "Brigada 282 Blindata "Unirea Principatelor""
 		location = 9716
 		division_template = "Brigada Mecanizata"
 		start_experience_factor = 0.6
-		start_equipment_factor = 0.76
+		start_equipment_factor = 0.85
 	}
 
-	# Moldavia (Iasi area)
+	# 2nd Infantry Division "Getica" - Focsani area; LAROM rocket artillery
 	division = {
-		name = "15th Mechanized Brigade 'Podu Inalt'"
+		name = "Brigada 8 Artilerie LAROM"
+		location = 6729
+		division_template = "Brigada de Artilerie LAROM"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.85
+	}
+
+	# 4th Infantry Division "Gemina" - Brasov (Transylvania)
+	division = {
+		name = "Brigada 2 Vanatori de Munte "Sarmizegetusa""
+		location = 6679
+		division_template = "Brigada Vanatori de Munte"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.85
+	}
+
+	# 4th Infantry Division "Gemina" - Miercurea Ciuc (Transylvania)
+	division = {
+		name = "Brigada 61 Vanatori de Munte "General Virgil Badulescu""
+		location = 690
+		division_template = "Brigada Vanatori de Munte"
+		start_experience_factor = 0.65
+		start_equipment_factor = 0.85
+	}
+
+	# 4th Infantry Division "Gemina" - Bistrita (Northern Transylvania); Piranha V
+	division = {
+		name = "Brigada 81 Mecanizata "General Grigore Balan""
+		location = 6711
+		division_template = "Brigada Mecanizata"
+		start_experience_factor = 0.6
+		start_equipment_factor = 0.85
+	}
+
+	# 4th Infantry Division "Gemina" - Iasi (Moldavia)
+	division = {
+		name = "Brigada 15 Mecanizata "Podu Inalt""
 		location = 6706
 		division_template = "Brigada Mecanizata"
 		start_experience_factor = 0.6
-		start_equipment_factor = 0.76
+		start_equipment_factor = 0.85
 	}
 
-	# Dobruja (coast)
+	# 4th Infantry Division "Gemina" - Timisoara (Banat)
 	division = {
-		name = "9th Mechanized Brigade 'Marasesti'"
-		location = 657
-		division_template = "Brigada Mecanizata"
-		start_experience_factor = 0.58
-		start_equipment_factor = 0.74
-	}
-
-	# Banat (Timisoara area), placeholder name
-	division = {
-		name = "Banat Infantry Brigade"
+		name = "Brigada 18 Infanterie "Banat""
 		location = 9606
 		division_template = "Brigada de Infanterie"
-		start_experience_factor = 0.5
-		start_equipment_factor = 0.7
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.8
 	}
 
 }

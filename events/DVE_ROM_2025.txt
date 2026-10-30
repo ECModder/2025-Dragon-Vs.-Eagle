@@ -88,7 +88,7 @@ news_event = {
 		tag = ROM
 	}
 	option = {
-        name = "Nicusor Is the Victorius"
+        name = dve_rom.5.a
         set_country_flag = ROM_Nicusor_Dan_wins
         set_politics = { ruling_party = conservative }
 		retire_character = ROM_ilie_bolojan
@@ -99,7 +99,7 @@ news_event = {
 
 
 	option = {
-		name = "Crin Antonescu is our leader"
+		name = dve_rom.5.b
 		set_country_flag = ROM_Crin_Antonescu_wins
 		set_politics = {
 			ruling_party = progressive
@@ -108,7 +108,7 @@ news_event = {
 	}
 
 	option = {
-		name = "Simion should lead the nation"
+		name = dve_rom.5.c
 		set_country_flag = ROM_George_Simion_wins
 		set_politics = {
 			ruling_party = reactionary
@@ -117,7 +117,7 @@ news_event = {
 	}
 
 	option = {
-		name = "We aren't convinced of these candidates"
+		name = dve_rom.5.e
 		set_country_flag = ROM_wait
 		mark_focus_tree_layout_dirty = yes
 	}
@@ -133,7 +133,7 @@ news_event = {
 		tag = ROM
 	}
 	option = {
-		name = "Intresting Choice"
+		name = dve_rom.7.a
 		
 	}
 }
@@ -148,7 +148,7 @@ news_event = {
 		tag = ROM
 	}
 	option = {
-		name = "We shall fight!"
+		name = dve_rom.6.a
 		country_event = {
                 id = dve_rom_send.5
             }
@@ -1789,7 +1789,7 @@ country_event = {
 	}
 	option = {
 		name = ROM_sim.6.a
-		add_timed_idea = { idea = ROM_referendum_defeat_idea}
+		add_timed_idea = { idea = ROM_referendum_defeat_idea days = 180 }
 		custom_effect_tooltip = ROM_legitimacy_m8_tt
 		hidden_effect = {
 			add_to_variable = { ROM_legitimacy = -8 }
@@ -2517,12 +2517,12 @@ country_event = {
 			modifier = { add = 10 FROM = { has_country_flag = ROM_junta_union_offer } }
 			modifier = { factor = 0.5 FROM = { has_government = ultranationalism } }
 		}
-		FROM = { news_event = { id = ROM_union.2} }
+		FROM = { country_event = { id = ROM_union.2 } }
 	}
 	option = {
 		name = ROM_union.1.b
 		ai_chance = { base = 60 }
-		FROM = { news_event = { id = ROM_union.3} }
+		FROM = { country_event = { id = ROM_union.3 } }
 	}
 }
 
@@ -2654,5 +2654,206 @@ country_event = {
 			limit = { country_exists = HUN }
 			HUN = { add_opinion_modifier = { target = ROOT modifier = ROM_heterodox_persecution } }
 		}
+	}
+}
+
+# ---- romania_uprise standalone branch finals (added in audit) ----
+country_event = {
+	id = ROM_uprise.20
+	title = ROM_uprise.20.t
+	desc = ROM_uprise.20.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_uprise.20.a
+		add_stability = 0.02
+	}
+}
+
+country_event = {
+	id = ROM_uprise.21
+	title = ROM_uprise.21.t
+	desc = ROM_uprise.21.d
+	picture = GFX_report_event_gathering_protest
+	is_triggered_only = yes
+	option = {
+		name = ROM_uprise.21.a
+		add_war_support = 0.03
+	}
+}
+
+country_event = {
+	id = ROM_uprise.22
+	title = ROM_uprise.22.t
+	desc = ROM_uprise.22.d
+	picture = GFX_report_event_generic_conference
+	is_triggered_only = yes
+	option = {
+		name = ROM_uprise.22.a
+		navy_experience = 15
+	}
+}
+
+# ---- The Settlement of the Revolution (focus ROM_the_settlement) ----
+# Fired only for ROM by the focus. Each option opens one path by setting a
+# ROM_settlement_* flag that the matching path focus checks in `available`.
+news_event = {
+	id = ROM_uprise.30
+	title = ROM_uprise.30.t
+	desc = {
+		text = ROM_uprise.30.d_none
+		trigger = {
+			check_variable = { ROM_crown_support < 40 }
+			check_variable = { ROM_army_support < 40 }
+			check_variable = { ROM_church_support < 40 }
+		}
+	}
+	desc = {
+		text = ROM_uprise.30.d_crown
+		trigger = {
+			check_variable = { ROM_crown_support > 39 }
+			check_variable = { ROM_army_support < 40 }
+			check_variable = { ROM_church_support < 40 }
+		}
+	}
+	desc = {
+		text = ROM_uprise.30.d_army
+		trigger = {
+			check_variable = { ROM_crown_support < 40 }
+			check_variable = { ROM_army_support > 39 }
+			check_variable = { ROM_church_support < 40 }
+		}
+	}
+	desc = {
+		text = ROM_uprise.30.d_church
+		trigger = {
+			check_variable = { ROM_crown_support < 40 }
+			check_variable = { ROM_army_support < 40 }
+			check_variable = { ROM_church_support > 39 }
+		}
+	}
+	desc = {
+		text = ROM_uprise.30.d_contested
+		trigger = {
+			OR = {
+				AND = {
+					check_variable = { ROM_crown_support > 39 }
+					check_variable = { ROM_army_support > 39 }
+				}
+				AND = {
+					check_variable = { ROM_crown_support > 39 }
+					check_variable = { ROM_church_support > 39 }
+				}
+				AND = {
+					check_variable = { ROM_army_support > 39 }
+					check_variable = { ROM_church_support > 39 }
+				}
+			}
+		}
+	}
+	picture = GFX_news_event_DVE_rom_settlement
+	is_triggered_only = yes
+
+	# A: the Crown
+	option = {
+		name = ROM_uprise.30.a
+		trigger = { check_variable = { ROM_crown_support > 39 } }
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				check_variable = { ROM_crown_support > ROM_army_support }
+				check_variable = { ROM_crown_support > ROM_church_support }
+			}
+		}
+		set_country_flag = ROM_settlement_crown
+		add_political_power = 50
+		custom_effect_tooltip = ROM_pillar_crown_p5_tt
+		hidden_effect = { add_to_variable = { ROM_crown_support = 5 } }
+		custom_effect_tooltip = ROM_settlement_opens_crown_tt
+	}
+
+	# B: the Army
+	option = {
+		name = ROM_uprise.30.b
+		trigger = { check_variable = { ROM_army_support > 39 } }
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				check_variable = { ROM_army_support > ROM_crown_support }
+				check_variable = { ROM_army_support > ROM_church_support }
+			}
+		}
+		set_country_flag = ROM_settlement_army
+		add_political_power = 50
+		custom_effect_tooltip = ROM_pillar_army_p5_tt
+		hidden_effect = { add_to_variable = { ROM_army_support = 5 } }
+		custom_effect_tooltip = ROM_settlement_opens_army_tt
+	}
+
+	# C: the Church
+	option = {
+		name = ROM_uprise.30.c
+		trigger = { check_variable = { ROM_church_support > 39 } }
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 5
+				check_variable = { ROM_church_support > ROM_crown_support }
+				check_variable = { ROM_church_support > ROM_army_support }
+			}
+		}
+		set_country_flag = ROM_settlement_church
+		add_political_power = 50
+		custom_effect_tooltip = ROM_pillar_church_p5_tt
+		hidden_effect = { add_to_variable = { ROM_church_support = 5 } }
+		custom_effect_tooltip = ROM_settlement_opens_church_tt
+	}
+
+	# Fallback: no pillar has 40 support. +10 to the strongest pillar
+	# (ties: Crown, then Army, then Church) and the Council meets again in 30 days.
+	option = {
+		name = ROM_uprise.30.e
+		trigger = {
+			check_variable = { ROM_crown_support < 40 }
+			check_variable = { ROM_army_support < 40 }
+			check_variable = { ROM_church_support < 40 }
+		}
+		ai_chance = { base = 1 }
+		if = {
+			limit = {
+				NOT = { check_variable = { ROM_crown_support < ROM_army_support } }
+				NOT = { check_variable = { ROM_crown_support < ROM_church_support } }
+			}
+			custom_effect_tooltip = ROM_pillar_crown_p10_tt
+			hidden_effect = { add_to_variable = { ROM_crown_support = 10 } }
+		}
+		else_if = {
+			limit = {
+				NOT = { check_variable = { ROM_army_support < ROM_church_support } }
+			}
+			custom_effect_tooltip = ROM_pillar_army_p10_tt
+			hidden_effect = { add_to_variable = { ROM_army_support = 10 } }
+		}
+		else = {
+			custom_effect_tooltip = ROM_pillar_church_p10_tt
+			hidden_effect = { add_to_variable = { ROM_church_support = 10 } }
+		}
+		custom_effect_tooltip = ROM_settlement_deferred_tt
+		news_event = { id = ROM_uprise.30 days = 30 }
+	}
+}
+
+# ---- Communism returns (focus ROM_soc_communist_romania, added in audit) ----
+news_event = {
+	id = ROM_elect.40
+	title = ROM_elect.40.t
+	desc = ROM_elect.40.d
+	picture = GFX_report_event_gathering_protest
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ROM_elect.40.a
 	}
 }
