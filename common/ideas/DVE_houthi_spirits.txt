@@ -1,0 +1,26 @@
+ideas = {
+
+	country = {
+       HOU_Bring_an_age_of_Islamic_Glory_to_Yemen = {
+			picture = HOU_Bring_an_age_of_Islamic_Glory_to_Yemen
+			allowed = {
+				original_tag = HOU
+			}
+			removal_cost = -1
+
+			on_add = {
+				if = {
+					limit = { country_exists = PER }
+					add_opinion_modifier = { target = PER modifier = HOU_islamic_glory_goodwill }
+					reverse_add_opinion_modifier = { target = PER modifier = HOU_islamic_glory_goodwill }
+				}
+			}
+
+			modifier = {
+				political_power_gain = 0.02
+				war_support_factor = 0.05
+				opinion_gain_monthly_factor = 0.25
+			}
+		}
+    }
+}
