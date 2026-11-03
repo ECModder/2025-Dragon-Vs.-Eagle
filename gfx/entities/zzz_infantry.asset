@@ -328,7 +328,6 @@ entity = {
         infantry = "USA_vehicle_infantry_rifle_entity"
     }
 }
-
 ###POLAND#######
 entity = {
     clone = "USA_infantry_entity"
@@ -371,6 +370,49 @@ entity = {
         infantry = "POL_vehicle_infantry_rifle_entity"
     }
 }
+####ITALY####
+entity = {
+    clone = "USA_infantry_entity"
+    name = "ITA_infantry_entity"
+    pdxmesh = "ITA_infantry_mesh"
+}
+
+entity = {
+    clone = "USA_infantry_entity"
+    name = "ITA_infantry_2_entity"
+    pdxmesh = "ITA_infantry_2_mesh"
+}
+
+entity = {
+    clone = "ITA_infantry_2_entity"
+    name = "ITA_infantry_3_entity"
+}
+entity = {
+    clone = "SOV_vehicle_infantry_rifle_entity"
+    name = "ITA_vehicle_infantry_rifle_entity"
+    pdxmesh = "ITA_infantry_mesh"
+}
+
+entity = {
+    clone = "SOV_motorized_entity"
+    name = "ITA_motorized_entity"
+
+    attach = {
+        name = "infantry"
+        infantry = "ITA_vehicle_infantry_rifle_entity"
+    }
+}
+
+entity = {
+    clone = "SOV_mechanized_entity"
+    name = "ITA_mechanized_entity"
+
+    attach = {
+        name = "infantry"
+        infantry = "ITA_vehicle_infantry_rifle_entity"
+    }
+}
+
 ####Non high priority countries (I can give them a custom model later, if asked)###
 entity = {
     clone = "USA_infantry_entity"
