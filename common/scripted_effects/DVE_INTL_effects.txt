@@ -893,3 +893,31 @@ DVE_intl_red_helmets_effect = {
 	}
 	add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 }
 }
+
+# INT sends volunteer divisions to a civil war faction it backs (INT's
+# "Leninist <country>" and revolution export focuses). Scope: the faction.
+DVE_intl_support_divisions_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Internationalist Volunteers" } }
+			division_template = {
+				name = "Internationalist Volunteers"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+		capital_scope = {
+			create_unit = {
+				division = "name = \"Internationalist Volunteers\" division_template = \"Internationalist Volunteers\" start_experience_factor = 0.50 start_equipment_factor = 1.00"
+				owner = PREV
+				count = 10
+				allow_spawning_on_enemy_provs = yes
+			}
+		}
+	}
+}

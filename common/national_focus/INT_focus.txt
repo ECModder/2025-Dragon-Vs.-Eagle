@@ -1668,7 +1668,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_leninist_france
 		x = 28
 		y = 2
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_councils_international }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1686,11 +1686,11 @@ focus_tree = {
 				}
 				if = {
 					limit = { CMU = { DVE_intl_backable_faction = yes } }
-					CMU = { DVE_intl_back_faction_effect = yes }
+					CMU = { DVE_intl_back_faction_effect = yes DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = { FSR = { DVE_intl_backable_faction = yes } }
-					FSR = { DVE_intl_back_faction_effect = yes }
+					FSR = { DVE_intl_back_faction_effect = yes DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1709,7 +1709,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_leninist_spain
 		x = 28
 		y = 3
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_leninist_france }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1728,6 +1728,7 @@ focus_tree = {
 					SPA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SPA
 					SPA = { DVE_intl_subject_join_effect = yes }
+					SPA = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -1740,6 +1741,7 @@ focus_tree = {
 					PRS = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = PRS
 					PRS = { DVE_intl_subject_join_effect = yes }
+					PRS = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1758,7 +1760,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_leninist_germany
 		x = 28
 		y = 4
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_leninist_spain }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1777,6 +1779,7 @@ focus_tree = {
 					GDR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = GDR
 					GDR = { DVE_intl_subject_join_effect = yes }
+					GDR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1795,7 +1798,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_leninist_brittany
 		x = 28
 		y = 5
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_leninist_germany }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1814,6 +1817,7 @@ focus_tree = {
 					SRB = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SRB
 					SRB = { DVE_intl_subject_join_effect = yes }
+					SRB = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -1826,6 +1830,7 @@ focus_tree = {
 					ENG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = ENG
 					ENG = { DVE_intl_subject_join_effect = yes }
+					ENG = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1844,7 +1849,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_yugoslav_revolution
 		x = 30
 		y = 2
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_councils_international }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1863,6 +1868,7 @@ focus_tree = {
 					YUG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = YUG
 					YUG = { DVE_intl_subject_join_effect = yes }
+					YUG = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1881,7 +1887,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_scandinavian_revolution
 		x = 30
 		y = 3
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_yugoslav_revolution }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1900,6 +1906,7 @@ focus_tree = {
 					SSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SSR
 					SSR = { DVE_intl_subject_join_effect = yes }
+					SSR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1918,7 +1925,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_world_is_burning
 		x = 30
 		y = 4
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_scandinavian_revolution }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1937,6 +1944,7 @@ focus_tree = {
 					GSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = GSR
 					GSR = { DVE_intl_subject_join_effect = yes }
+					GSR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -1955,7 +1963,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_domino_effect
 		x = 30
 		y = 5
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_world_is_burning }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -1974,6 +1982,7 @@ focus_tree = {
 					PPR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = PPR
 					PPR = { DVE_intl_subject_join_effect = yes }
+					PPR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			if = {
@@ -2175,7 +2184,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_exporting_revolution
 		x = 33
 		y = 3
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_permanent_revolution_principle }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -2194,6 +2203,7 @@ focus_tree = {
 					CMU = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = CMU
 					CMU = { DVE_intl_subject_join_effect = yes }
+					CMU = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2206,6 +2216,7 @@ focus_tree = {
 					FSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = FSR
 					FSR = { DVE_intl_subject_join_effect = yes }
+					FSR = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2218,6 +2229,7 @@ focus_tree = {
 					SPA = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SPA
 					SPA = { DVE_intl_subject_join_effect = yes }
+					SPA = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2230,6 +2242,7 @@ focus_tree = {
 					PRS = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = PRS
 					PRS = { DVE_intl_subject_join_effect = yes }
+					PRS = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			add_political_power = 50
@@ -2242,7 +2255,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_sister_republics
 		x = 33
 		y = 4
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_exporting_revolution }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -2261,6 +2274,7 @@ focus_tree = {
 					GDR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = GDR
 					GDR = { DVE_intl_subject_join_effect = yes }
+					GDR = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2273,6 +2287,7 @@ focus_tree = {
 					SRB = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SRB
 					SRB = { DVE_intl_subject_join_effect = yes }
+					SRB = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2285,6 +2300,7 @@ focus_tree = {
 					ENG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = ENG
 					ENG = { DVE_intl_subject_join_effect = yes }
+					ENG = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			add_political_power = 50
@@ -2297,7 +2313,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_cascade_effect
 		x = 33
 		y = 5
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_sister_republics }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -2316,6 +2332,7 @@ focus_tree = {
 					YUG = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = YUG
 					YUG = { DVE_intl_subject_join_effect = yes }
+					YUG = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2328,6 +2345,7 @@ focus_tree = {
 					SSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = SSR
 					SSR = { DVE_intl_subject_join_effect = yes }
+					SSR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			add_political_power = 50
@@ -2340,7 +2358,7 @@ focus_tree = {
 		icon = GFX_goal_INT_for_revolutionary_europe
 		x = 33
 		y = 6
-		cost = 5
+		cost = 1
 		available_if_capitulated = no
 		prerequisite = { focus = INT_for_cascade_effect }
 		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_POLITICAL }
@@ -2359,6 +2377,7 @@ focus_tree = {
 					GSR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = GSR
 					GSR = { DVE_intl_subject_join_effect = yes }
+					GSR = { DVE_intl_support_divisions_effect = yes }
 				}
 				if = {
 					limit = {
@@ -2371,6 +2390,7 @@ focus_tree = {
 					PPR = { if = { limit = { is_in_faction = yes } leave_faction = yes } }
 					puppet = PPR
 					PPR = { DVE_intl_subject_join_effect = yes }
+					PPR = { DVE_intl_support_divisions_effect = yes }
 				}
 			}
 			swap_ideas = { remove_idea = INT_permanent_revolution add_idea = INT_revolutionary_europe }
