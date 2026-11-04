@@ -1,0 +1,3085 @@
+# DvE - Italian parliament window: opened from the decisions category, shows seats (dots) and votes.
+scripted_gui = {
+
+	ITA_parliament_open = {
+		context_type = decision_category
+		window_name = "ITA_parliament_open_window"
+
+		visible = {
+			tag = ITA
+		}
+		effects = {
+			ITA_Parliament_GUI_click = {
+				if = {
+					limit = { has_country_flag = ITA_Parliament_GUI_Open }
+					clr_country_flag = ITA_Parliament_GUI_Open
+				}
+				else = { set_country_flag = ITA_Parliament_GUI_Open }
+				ITA_parliament_recalc_effect = yes
+			}
+		}
+		ai_enabled = {
+			tag = ITA
+		}
+	}
+
+	ITA_parliament_base = {
+		context_type = player_context
+		window_name = "ITA_parliament_window"
+
+		visible = {
+			tag = ITA
+			has_country_flag = ITA_Parliament_GUI_Open
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = ITA_Parliament_GUI_Open
+			}
+		}
+		properties = {
+			ITA_camera_dot_0 = {
+				x = ITA_cam_x^0
+				y = ITA_cam_y^0
+				frame = ITA_cam_fr^0
+			}
+			ITA_camera_dot_1 = {
+				x = ITA_cam_x^1
+				y = ITA_cam_y^1
+				frame = ITA_cam_fr^1
+			}
+			ITA_camera_dot_2 = {
+				x = ITA_cam_x^2
+				y = ITA_cam_y^2
+				frame = ITA_cam_fr^2
+			}
+			ITA_camera_dot_3 = {
+				x = ITA_cam_x^3
+				y = ITA_cam_y^3
+				frame = ITA_cam_fr^3
+			}
+			ITA_camera_dot_4 = {
+				x = ITA_cam_x^4
+				y = ITA_cam_y^4
+				frame = ITA_cam_fr^4
+			}
+			ITA_camera_dot_5 = {
+				x = ITA_cam_x^5
+				y = ITA_cam_y^5
+				frame = ITA_cam_fr^5
+			}
+			ITA_camera_dot_6 = {
+				x = ITA_cam_x^6
+				y = ITA_cam_y^6
+				frame = ITA_cam_fr^6
+			}
+			ITA_camera_dot_7 = {
+				x = ITA_cam_x^7
+				y = ITA_cam_y^7
+				frame = ITA_cam_fr^7
+			}
+			ITA_camera_dot_8 = {
+				x = ITA_cam_x^8
+				y = ITA_cam_y^8
+				frame = ITA_cam_fr^8
+			}
+			ITA_camera_dot_9 = {
+				x = ITA_cam_x^9
+				y = ITA_cam_y^9
+				frame = ITA_cam_fr^9
+			}
+			ITA_camera_dot_10 = {
+				x = ITA_cam_x^10
+				y = ITA_cam_y^10
+				frame = ITA_cam_fr^10
+			}
+			ITA_camera_dot_11 = {
+				x = ITA_cam_x^11
+				y = ITA_cam_y^11
+				frame = ITA_cam_fr^11
+			}
+			ITA_camera_dot_12 = {
+				x = ITA_cam_x^12
+				y = ITA_cam_y^12
+				frame = ITA_cam_fr^12
+			}
+			ITA_camera_dot_13 = {
+				x = ITA_cam_x^13
+				y = ITA_cam_y^13
+				frame = ITA_cam_fr^13
+			}
+			ITA_camera_dot_14 = {
+				x = ITA_cam_x^14
+				y = ITA_cam_y^14
+				frame = ITA_cam_fr^14
+			}
+			ITA_camera_dot_15 = {
+				x = ITA_cam_x^15
+				y = ITA_cam_y^15
+				frame = ITA_cam_fr^15
+			}
+			ITA_camera_dot_16 = {
+				x = ITA_cam_x^16
+				y = ITA_cam_y^16
+				frame = ITA_cam_fr^16
+			}
+			ITA_camera_dot_17 = {
+				x = ITA_cam_x^17
+				y = ITA_cam_y^17
+				frame = ITA_cam_fr^17
+			}
+			ITA_camera_dot_18 = {
+				x = ITA_cam_x^18
+				y = ITA_cam_y^18
+				frame = ITA_cam_fr^18
+			}
+			ITA_camera_dot_19 = {
+				x = ITA_cam_x^19
+				y = ITA_cam_y^19
+				frame = ITA_cam_fr^19
+			}
+			ITA_camera_dot_20 = {
+				x = ITA_cam_x^20
+				y = ITA_cam_y^20
+				frame = ITA_cam_fr^20
+			}
+			ITA_camera_dot_21 = {
+				x = ITA_cam_x^21
+				y = ITA_cam_y^21
+				frame = ITA_cam_fr^21
+			}
+			ITA_camera_dot_22 = {
+				x = ITA_cam_x^22
+				y = ITA_cam_y^22
+				frame = ITA_cam_fr^22
+			}
+			ITA_camera_dot_23 = {
+				x = ITA_cam_x^23
+				y = ITA_cam_y^23
+				frame = ITA_cam_fr^23
+			}
+			ITA_camera_dot_24 = {
+				x = ITA_cam_x^24
+				y = ITA_cam_y^24
+				frame = ITA_cam_fr^24
+			}
+			ITA_camera_dot_25 = {
+				x = ITA_cam_x^25
+				y = ITA_cam_y^25
+				frame = ITA_cam_fr^25
+			}
+			ITA_camera_dot_26 = {
+				x = ITA_cam_x^26
+				y = ITA_cam_y^26
+				frame = ITA_cam_fr^26
+			}
+			ITA_camera_dot_27 = {
+				x = ITA_cam_x^27
+				y = ITA_cam_y^27
+				frame = ITA_cam_fr^27
+			}
+			ITA_camera_dot_28 = {
+				x = ITA_cam_x^28
+				y = ITA_cam_y^28
+				frame = ITA_cam_fr^28
+			}
+			ITA_camera_dot_29 = {
+				x = ITA_cam_x^29
+				y = ITA_cam_y^29
+				frame = ITA_cam_fr^29
+			}
+			ITA_camera_dot_30 = {
+				x = ITA_cam_x^30
+				y = ITA_cam_y^30
+				frame = ITA_cam_fr^30
+			}
+			ITA_camera_dot_31 = {
+				x = ITA_cam_x^31
+				y = ITA_cam_y^31
+				frame = ITA_cam_fr^31
+			}
+			ITA_camera_dot_32 = {
+				x = ITA_cam_x^32
+				y = ITA_cam_y^32
+				frame = ITA_cam_fr^32
+			}
+			ITA_camera_dot_33 = {
+				x = ITA_cam_x^33
+				y = ITA_cam_y^33
+				frame = ITA_cam_fr^33
+			}
+			ITA_camera_dot_34 = {
+				x = ITA_cam_x^34
+				y = ITA_cam_y^34
+				frame = ITA_cam_fr^34
+			}
+			ITA_camera_dot_35 = {
+				x = ITA_cam_x^35
+				y = ITA_cam_y^35
+				frame = ITA_cam_fr^35
+			}
+			ITA_camera_dot_36 = {
+				x = ITA_cam_x^36
+				y = ITA_cam_y^36
+				frame = ITA_cam_fr^36
+			}
+			ITA_camera_dot_37 = {
+				x = ITA_cam_x^37
+				y = ITA_cam_y^37
+				frame = ITA_cam_fr^37
+			}
+			ITA_camera_dot_38 = {
+				x = ITA_cam_x^38
+				y = ITA_cam_y^38
+				frame = ITA_cam_fr^38
+			}
+			ITA_camera_dot_39 = {
+				x = ITA_cam_x^39
+				y = ITA_cam_y^39
+				frame = ITA_cam_fr^39
+			}
+			ITA_camera_dot_40 = {
+				x = ITA_cam_x^40
+				y = ITA_cam_y^40
+				frame = ITA_cam_fr^40
+			}
+			ITA_camera_dot_41 = {
+				x = ITA_cam_x^41
+				y = ITA_cam_y^41
+				frame = ITA_cam_fr^41
+			}
+			ITA_camera_dot_42 = {
+				x = ITA_cam_x^42
+				y = ITA_cam_y^42
+				frame = ITA_cam_fr^42
+			}
+			ITA_camera_dot_43 = {
+				x = ITA_cam_x^43
+				y = ITA_cam_y^43
+				frame = ITA_cam_fr^43
+			}
+			ITA_camera_dot_44 = {
+				x = ITA_cam_x^44
+				y = ITA_cam_y^44
+				frame = ITA_cam_fr^44
+			}
+			ITA_camera_dot_45 = {
+				x = ITA_cam_x^45
+				y = ITA_cam_y^45
+				frame = ITA_cam_fr^45
+			}
+			ITA_camera_dot_46 = {
+				x = ITA_cam_x^46
+				y = ITA_cam_y^46
+				frame = ITA_cam_fr^46
+			}
+			ITA_camera_dot_47 = {
+				x = ITA_cam_x^47
+				y = ITA_cam_y^47
+				frame = ITA_cam_fr^47
+			}
+			ITA_camera_dot_48 = {
+				x = ITA_cam_x^48
+				y = ITA_cam_y^48
+				frame = ITA_cam_fr^48
+			}
+			ITA_camera_dot_49 = {
+				x = ITA_cam_x^49
+				y = ITA_cam_y^49
+				frame = ITA_cam_fr^49
+			}
+			ITA_camera_dot_50 = {
+				x = ITA_cam_x^50
+				y = ITA_cam_y^50
+				frame = ITA_cam_fr^50
+			}
+			ITA_camera_dot_51 = {
+				x = ITA_cam_x^51
+				y = ITA_cam_y^51
+				frame = ITA_cam_fr^51
+			}
+			ITA_camera_dot_52 = {
+				x = ITA_cam_x^52
+				y = ITA_cam_y^52
+				frame = ITA_cam_fr^52
+			}
+			ITA_camera_dot_53 = {
+				x = ITA_cam_x^53
+				y = ITA_cam_y^53
+				frame = ITA_cam_fr^53
+			}
+			ITA_camera_dot_54 = {
+				x = ITA_cam_x^54
+				y = ITA_cam_y^54
+				frame = ITA_cam_fr^54
+			}
+			ITA_camera_dot_55 = {
+				x = ITA_cam_x^55
+				y = ITA_cam_y^55
+				frame = ITA_cam_fr^55
+			}
+			ITA_camera_dot_56 = {
+				x = ITA_cam_x^56
+				y = ITA_cam_y^56
+				frame = ITA_cam_fr^56
+			}
+			ITA_camera_dot_57 = {
+				x = ITA_cam_x^57
+				y = ITA_cam_y^57
+				frame = ITA_cam_fr^57
+			}
+			ITA_camera_dot_58 = {
+				x = ITA_cam_x^58
+				y = ITA_cam_y^58
+				frame = ITA_cam_fr^58
+			}
+			ITA_camera_dot_59 = {
+				x = ITA_cam_x^59
+				y = ITA_cam_y^59
+				frame = ITA_cam_fr^59
+			}
+			ITA_camera_dot_60 = {
+				x = ITA_cam_x^60
+				y = ITA_cam_y^60
+				frame = ITA_cam_fr^60
+			}
+			ITA_camera_dot_61 = {
+				x = ITA_cam_x^61
+				y = ITA_cam_y^61
+				frame = ITA_cam_fr^61
+			}
+			ITA_camera_dot_62 = {
+				x = ITA_cam_x^62
+				y = ITA_cam_y^62
+				frame = ITA_cam_fr^62
+			}
+			ITA_camera_dot_63 = {
+				x = ITA_cam_x^63
+				y = ITA_cam_y^63
+				frame = ITA_cam_fr^63
+			}
+			ITA_camera_dot_64 = {
+				x = ITA_cam_x^64
+				y = ITA_cam_y^64
+				frame = ITA_cam_fr^64
+			}
+			ITA_camera_dot_65 = {
+				x = ITA_cam_x^65
+				y = ITA_cam_y^65
+				frame = ITA_cam_fr^65
+			}
+			ITA_camera_dot_66 = {
+				x = ITA_cam_x^66
+				y = ITA_cam_y^66
+				frame = ITA_cam_fr^66
+			}
+			ITA_camera_dot_67 = {
+				x = ITA_cam_x^67
+				y = ITA_cam_y^67
+				frame = ITA_cam_fr^67
+			}
+			ITA_camera_dot_68 = {
+				x = ITA_cam_x^68
+				y = ITA_cam_y^68
+				frame = ITA_cam_fr^68
+			}
+			ITA_camera_dot_69 = {
+				x = ITA_cam_x^69
+				y = ITA_cam_y^69
+				frame = ITA_cam_fr^69
+			}
+			ITA_camera_dot_70 = {
+				x = ITA_cam_x^70
+				y = ITA_cam_y^70
+				frame = ITA_cam_fr^70
+			}
+			ITA_camera_dot_71 = {
+				x = ITA_cam_x^71
+				y = ITA_cam_y^71
+				frame = ITA_cam_fr^71
+			}
+			ITA_camera_dot_72 = {
+				x = ITA_cam_x^72
+				y = ITA_cam_y^72
+				frame = ITA_cam_fr^72
+			}
+			ITA_camera_dot_73 = {
+				x = ITA_cam_x^73
+				y = ITA_cam_y^73
+				frame = ITA_cam_fr^73
+			}
+			ITA_camera_dot_74 = {
+				x = ITA_cam_x^74
+				y = ITA_cam_y^74
+				frame = ITA_cam_fr^74
+			}
+			ITA_camera_dot_75 = {
+				x = ITA_cam_x^75
+				y = ITA_cam_y^75
+				frame = ITA_cam_fr^75
+			}
+			ITA_camera_dot_76 = {
+				x = ITA_cam_x^76
+				y = ITA_cam_y^76
+				frame = ITA_cam_fr^76
+			}
+			ITA_camera_dot_77 = {
+				x = ITA_cam_x^77
+				y = ITA_cam_y^77
+				frame = ITA_cam_fr^77
+			}
+			ITA_camera_dot_78 = {
+				x = ITA_cam_x^78
+				y = ITA_cam_y^78
+				frame = ITA_cam_fr^78
+			}
+			ITA_camera_dot_79 = {
+				x = ITA_cam_x^79
+				y = ITA_cam_y^79
+				frame = ITA_cam_fr^79
+			}
+			ITA_camera_dot_80 = {
+				x = ITA_cam_x^80
+				y = ITA_cam_y^80
+				frame = ITA_cam_fr^80
+			}
+			ITA_camera_dot_81 = {
+				x = ITA_cam_x^81
+				y = ITA_cam_y^81
+				frame = ITA_cam_fr^81
+			}
+			ITA_camera_dot_82 = {
+				x = ITA_cam_x^82
+				y = ITA_cam_y^82
+				frame = ITA_cam_fr^82
+			}
+			ITA_camera_dot_83 = {
+				x = ITA_cam_x^83
+				y = ITA_cam_y^83
+				frame = ITA_cam_fr^83
+			}
+			ITA_camera_dot_84 = {
+				x = ITA_cam_x^84
+				y = ITA_cam_y^84
+				frame = ITA_cam_fr^84
+			}
+			ITA_camera_dot_85 = {
+				x = ITA_cam_x^85
+				y = ITA_cam_y^85
+				frame = ITA_cam_fr^85
+			}
+			ITA_camera_dot_86 = {
+				x = ITA_cam_x^86
+				y = ITA_cam_y^86
+				frame = ITA_cam_fr^86
+			}
+			ITA_camera_dot_87 = {
+				x = ITA_cam_x^87
+				y = ITA_cam_y^87
+				frame = ITA_cam_fr^87
+			}
+			ITA_camera_dot_88 = {
+				x = ITA_cam_x^88
+				y = ITA_cam_y^88
+				frame = ITA_cam_fr^88
+			}
+			ITA_camera_dot_89 = {
+				x = ITA_cam_x^89
+				y = ITA_cam_y^89
+				frame = ITA_cam_fr^89
+			}
+			ITA_camera_dot_90 = {
+				x = ITA_cam_x^90
+				y = ITA_cam_y^90
+				frame = ITA_cam_fr^90
+			}
+			ITA_camera_dot_91 = {
+				x = ITA_cam_x^91
+				y = ITA_cam_y^91
+				frame = ITA_cam_fr^91
+			}
+			ITA_camera_dot_92 = {
+				x = ITA_cam_x^92
+				y = ITA_cam_y^92
+				frame = ITA_cam_fr^92
+			}
+			ITA_camera_dot_93 = {
+				x = ITA_cam_x^93
+				y = ITA_cam_y^93
+				frame = ITA_cam_fr^93
+			}
+			ITA_camera_dot_94 = {
+				x = ITA_cam_x^94
+				y = ITA_cam_y^94
+				frame = ITA_cam_fr^94
+			}
+			ITA_camera_dot_95 = {
+				x = ITA_cam_x^95
+				y = ITA_cam_y^95
+				frame = ITA_cam_fr^95
+			}
+			ITA_camera_dot_96 = {
+				x = ITA_cam_x^96
+				y = ITA_cam_y^96
+				frame = ITA_cam_fr^96
+			}
+			ITA_camera_dot_97 = {
+				x = ITA_cam_x^97
+				y = ITA_cam_y^97
+				frame = ITA_cam_fr^97
+			}
+			ITA_camera_dot_98 = {
+				x = ITA_cam_x^98
+				y = ITA_cam_y^98
+				frame = ITA_cam_fr^98
+			}
+			ITA_camera_dot_99 = {
+				x = ITA_cam_x^99
+				y = ITA_cam_y^99
+				frame = ITA_cam_fr^99
+			}
+			ITA_camera_dot_100 = {
+				x = ITA_cam_x^100
+				y = ITA_cam_y^100
+				frame = ITA_cam_fr^100
+			}
+			ITA_camera_dot_101 = {
+				x = ITA_cam_x^101
+				y = ITA_cam_y^101
+				frame = ITA_cam_fr^101
+			}
+			ITA_camera_dot_102 = {
+				x = ITA_cam_x^102
+				y = ITA_cam_y^102
+				frame = ITA_cam_fr^102
+			}
+			ITA_camera_dot_103 = {
+				x = ITA_cam_x^103
+				y = ITA_cam_y^103
+				frame = ITA_cam_fr^103
+			}
+			ITA_camera_dot_104 = {
+				x = ITA_cam_x^104
+				y = ITA_cam_y^104
+				frame = ITA_cam_fr^104
+			}
+			ITA_camera_dot_105 = {
+				x = ITA_cam_x^105
+				y = ITA_cam_y^105
+				frame = ITA_cam_fr^105
+			}
+			ITA_camera_dot_106 = {
+				x = ITA_cam_x^106
+				y = ITA_cam_y^106
+				frame = ITA_cam_fr^106
+			}
+			ITA_camera_dot_107 = {
+				x = ITA_cam_x^107
+				y = ITA_cam_y^107
+				frame = ITA_cam_fr^107
+			}
+			ITA_camera_dot_108 = {
+				x = ITA_cam_x^108
+				y = ITA_cam_y^108
+				frame = ITA_cam_fr^108
+			}
+			ITA_camera_dot_109 = {
+				x = ITA_cam_x^109
+				y = ITA_cam_y^109
+				frame = ITA_cam_fr^109
+			}
+			ITA_camera_dot_110 = {
+				x = ITA_cam_x^110
+				y = ITA_cam_y^110
+				frame = ITA_cam_fr^110
+			}
+			ITA_camera_dot_111 = {
+				x = ITA_cam_x^111
+				y = ITA_cam_y^111
+				frame = ITA_cam_fr^111
+			}
+			ITA_camera_dot_112 = {
+				x = ITA_cam_x^112
+				y = ITA_cam_y^112
+				frame = ITA_cam_fr^112
+			}
+			ITA_camera_dot_113 = {
+				x = ITA_cam_x^113
+				y = ITA_cam_y^113
+				frame = ITA_cam_fr^113
+			}
+			ITA_camera_dot_114 = {
+				x = ITA_cam_x^114
+				y = ITA_cam_y^114
+				frame = ITA_cam_fr^114
+			}
+			ITA_camera_dot_115 = {
+				x = ITA_cam_x^115
+				y = ITA_cam_y^115
+				frame = ITA_cam_fr^115
+			}
+			ITA_camera_dot_116 = {
+				x = ITA_cam_x^116
+				y = ITA_cam_y^116
+				frame = ITA_cam_fr^116
+			}
+			ITA_camera_dot_117 = {
+				x = ITA_cam_x^117
+				y = ITA_cam_y^117
+				frame = ITA_cam_fr^117
+			}
+			ITA_camera_dot_118 = {
+				x = ITA_cam_x^118
+				y = ITA_cam_y^118
+				frame = ITA_cam_fr^118
+			}
+			ITA_camera_dot_119 = {
+				x = ITA_cam_x^119
+				y = ITA_cam_y^119
+				frame = ITA_cam_fr^119
+			}
+			ITA_camera_dot_120 = {
+				x = ITA_cam_x^120
+				y = ITA_cam_y^120
+				frame = ITA_cam_fr^120
+			}
+			ITA_camera_dot_121 = {
+				x = ITA_cam_x^121
+				y = ITA_cam_y^121
+				frame = ITA_cam_fr^121
+			}
+			ITA_camera_dot_122 = {
+				x = ITA_cam_x^122
+				y = ITA_cam_y^122
+				frame = ITA_cam_fr^122
+			}
+			ITA_camera_dot_123 = {
+				x = ITA_cam_x^123
+				y = ITA_cam_y^123
+				frame = ITA_cam_fr^123
+			}
+			ITA_camera_dot_124 = {
+				x = ITA_cam_x^124
+				y = ITA_cam_y^124
+				frame = ITA_cam_fr^124
+			}
+			ITA_camera_dot_125 = {
+				x = ITA_cam_x^125
+				y = ITA_cam_y^125
+				frame = ITA_cam_fr^125
+			}
+			ITA_camera_dot_126 = {
+				x = ITA_cam_x^126
+				y = ITA_cam_y^126
+				frame = ITA_cam_fr^126
+			}
+			ITA_camera_dot_127 = {
+				x = ITA_cam_x^127
+				y = ITA_cam_y^127
+				frame = ITA_cam_fr^127
+			}
+			ITA_camera_dot_128 = {
+				x = ITA_cam_x^128
+				y = ITA_cam_y^128
+				frame = ITA_cam_fr^128
+			}
+			ITA_camera_dot_129 = {
+				x = ITA_cam_x^129
+				y = ITA_cam_y^129
+				frame = ITA_cam_fr^129
+			}
+			ITA_camera_dot_130 = {
+				x = ITA_cam_x^130
+				y = ITA_cam_y^130
+				frame = ITA_cam_fr^130
+			}
+			ITA_camera_dot_131 = {
+				x = ITA_cam_x^131
+				y = ITA_cam_y^131
+				frame = ITA_cam_fr^131
+			}
+			ITA_camera_dot_132 = {
+				x = ITA_cam_x^132
+				y = ITA_cam_y^132
+				frame = ITA_cam_fr^132
+			}
+			ITA_camera_dot_133 = {
+				x = ITA_cam_x^133
+				y = ITA_cam_y^133
+				frame = ITA_cam_fr^133
+			}
+			ITA_camera_dot_134 = {
+				x = ITA_cam_x^134
+				y = ITA_cam_y^134
+				frame = ITA_cam_fr^134
+			}
+			ITA_camera_dot_135 = {
+				x = ITA_cam_x^135
+				y = ITA_cam_y^135
+				frame = ITA_cam_fr^135
+			}
+			ITA_camera_dot_136 = {
+				x = ITA_cam_x^136
+				y = ITA_cam_y^136
+				frame = ITA_cam_fr^136
+			}
+			ITA_camera_dot_137 = {
+				x = ITA_cam_x^137
+				y = ITA_cam_y^137
+				frame = ITA_cam_fr^137
+			}
+			ITA_camera_dot_138 = {
+				x = ITA_cam_x^138
+				y = ITA_cam_y^138
+				frame = ITA_cam_fr^138
+			}
+			ITA_camera_dot_139 = {
+				x = ITA_cam_x^139
+				y = ITA_cam_y^139
+				frame = ITA_cam_fr^139
+			}
+			ITA_camera_dot_140 = {
+				x = ITA_cam_x^140
+				y = ITA_cam_y^140
+				frame = ITA_cam_fr^140
+			}
+			ITA_camera_dot_141 = {
+				x = ITA_cam_x^141
+				y = ITA_cam_y^141
+				frame = ITA_cam_fr^141
+			}
+			ITA_camera_dot_142 = {
+				x = ITA_cam_x^142
+				y = ITA_cam_y^142
+				frame = ITA_cam_fr^142
+			}
+			ITA_camera_dot_143 = {
+				x = ITA_cam_x^143
+				y = ITA_cam_y^143
+				frame = ITA_cam_fr^143
+			}
+			ITA_camera_dot_144 = {
+				x = ITA_cam_x^144
+				y = ITA_cam_y^144
+				frame = ITA_cam_fr^144
+			}
+			ITA_camera_dot_145 = {
+				x = ITA_cam_x^145
+				y = ITA_cam_y^145
+				frame = ITA_cam_fr^145
+			}
+			ITA_camera_dot_146 = {
+				x = ITA_cam_x^146
+				y = ITA_cam_y^146
+				frame = ITA_cam_fr^146
+			}
+			ITA_camera_dot_147 = {
+				x = ITA_cam_x^147
+				y = ITA_cam_y^147
+				frame = ITA_cam_fr^147
+			}
+			ITA_camera_dot_148 = {
+				x = ITA_cam_x^148
+				y = ITA_cam_y^148
+				frame = ITA_cam_fr^148
+			}
+			ITA_camera_dot_149 = {
+				x = ITA_cam_x^149
+				y = ITA_cam_y^149
+				frame = ITA_cam_fr^149
+			}
+			ITA_camera_dot_150 = {
+				x = ITA_cam_x^150
+				y = ITA_cam_y^150
+				frame = ITA_cam_fr^150
+			}
+			ITA_camera_dot_151 = {
+				x = ITA_cam_x^151
+				y = ITA_cam_y^151
+				frame = ITA_cam_fr^151
+			}
+			ITA_camera_dot_152 = {
+				x = ITA_cam_x^152
+				y = ITA_cam_y^152
+				frame = ITA_cam_fr^152
+			}
+			ITA_camera_dot_153 = {
+				x = ITA_cam_x^153
+				y = ITA_cam_y^153
+				frame = ITA_cam_fr^153
+			}
+			ITA_camera_dot_154 = {
+				x = ITA_cam_x^154
+				y = ITA_cam_y^154
+				frame = ITA_cam_fr^154
+			}
+			ITA_camera_dot_155 = {
+				x = ITA_cam_x^155
+				y = ITA_cam_y^155
+				frame = ITA_cam_fr^155
+			}
+			ITA_camera_dot_156 = {
+				x = ITA_cam_x^156
+				y = ITA_cam_y^156
+				frame = ITA_cam_fr^156
+			}
+			ITA_camera_dot_157 = {
+				x = ITA_cam_x^157
+				y = ITA_cam_y^157
+				frame = ITA_cam_fr^157
+			}
+			ITA_camera_dot_158 = {
+				x = ITA_cam_x^158
+				y = ITA_cam_y^158
+				frame = ITA_cam_fr^158
+			}
+			ITA_camera_dot_159 = {
+				x = ITA_cam_x^159
+				y = ITA_cam_y^159
+				frame = ITA_cam_fr^159
+			}
+			ITA_camera_dot_160 = {
+				x = ITA_cam_x^160
+				y = ITA_cam_y^160
+				frame = ITA_cam_fr^160
+			}
+			ITA_camera_dot_161 = {
+				x = ITA_cam_x^161
+				y = ITA_cam_y^161
+				frame = ITA_cam_fr^161
+			}
+			ITA_camera_dot_162 = {
+				x = ITA_cam_x^162
+				y = ITA_cam_y^162
+				frame = ITA_cam_fr^162
+			}
+			ITA_camera_dot_163 = {
+				x = ITA_cam_x^163
+				y = ITA_cam_y^163
+				frame = ITA_cam_fr^163
+			}
+			ITA_camera_dot_164 = {
+				x = ITA_cam_x^164
+				y = ITA_cam_y^164
+				frame = ITA_cam_fr^164
+			}
+			ITA_camera_dot_165 = {
+				x = ITA_cam_x^165
+				y = ITA_cam_y^165
+				frame = ITA_cam_fr^165
+			}
+			ITA_camera_dot_166 = {
+				x = ITA_cam_x^166
+				y = ITA_cam_y^166
+				frame = ITA_cam_fr^166
+			}
+			ITA_camera_dot_167 = {
+				x = ITA_cam_x^167
+				y = ITA_cam_y^167
+				frame = ITA_cam_fr^167
+			}
+			ITA_camera_dot_168 = {
+				x = ITA_cam_x^168
+				y = ITA_cam_y^168
+				frame = ITA_cam_fr^168
+			}
+			ITA_camera_dot_169 = {
+				x = ITA_cam_x^169
+				y = ITA_cam_y^169
+				frame = ITA_cam_fr^169
+			}
+			ITA_camera_dot_170 = {
+				x = ITA_cam_x^170
+				y = ITA_cam_y^170
+				frame = ITA_cam_fr^170
+			}
+			ITA_camera_dot_171 = {
+				x = ITA_cam_x^171
+				y = ITA_cam_y^171
+				frame = ITA_cam_fr^171
+			}
+			ITA_camera_dot_172 = {
+				x = ITA_cam_x^172
+				y = ITA_cam_y^172
+				frame = ITA_cam_fr^172
+			}
+			ITA_camera_dot_173 = {
+				x = ITA_cam_x^173
+				y = ITA_cam_y^173
+				frame = ITA_cam_fr^173
+			}
+			ITA_camera_dot_174 = {
+				x = ITA_cam_x^174
+				y = ITA_cam_y^174
+				frame = ITA_cam_fr^174
+			}
+			ITA_camera_dot_175 = {
+				x = ITA_cam_x^175
+				y = ITA_cam_y^175
+				frame = ITA_cam_fr^175
+			}
+			ITA_camera_dot_176 = {
+				x = ITA_cam_x^176
+				y = ITA_cam_y^176
+				frame = ITA_cam_fr^176
+			}
+			ITA_camera_dot_177 = {
+				x = ITA_cam_x^177
+				y = ITA_cam_y^177
+				frame = ITA_cam_fr^177
+			}
+			ITA_camera_dot_178 = {
+				x = ITA_cam_x^178
+				y = ITA_cam_y^178
+				frame = ITA_cam_fr^178
+			}
+			ITA_camera_dot_179 = {
+				x = ITA_cam_x^179
+				y = ITA_cam_y^179
+				frame = ITA_cam_fr^179
+			}
+			ITA_camera_dot_180 = {
+				x = ITA_cam_x^180
+				y = ITA_cam_y^180
+				frame = ITA_cam_fr^180
+			}
+			ITA_camera_dot_181 = {
+				x = ITA_cam_x^181
+				y = ITA_cam_y^181
+				frame = ITA_cam_fr^181
+			}
+			ITA_camera_dot_182 = {
+				x = ITA_cam_x^182
+				y = ITA_cam_y^182
+				frame = ITA_cam_fr^182
+			}
+			ITA_camera_dot_183 = {
+				x = ITA_cam_x^183
+				y = ITA_cam_y^183
+				frame = ITA_cam_fr^183
+			}
+			ITA_camera_dot_184 = {
+				x = ITA_cam_x^184
+				y = ITA_cam_y^184
+				frame = ITA_cam_fr^184
+			}
+			ITA_camera_dot_185 = {
+				x = ITA_cam_x^185
+				y = ITA_cam_y^185
+				frame = ITA_cam_fr^185
+			}
+			ITA_camera_dot_186 = {
+				x = ITA_cam_x^186
+				y = ITA_cam_y^186
+				frame = ITA_cam_fr^186
+			}
+			ITA_camera_dot_187 = {
+				x = ITA_cam_x^187
+				y = ITA_cam_y^187
+				frame = ITA_cam_fr^187
+			}
+			ITA_camera_dot_188 = {
+				x = ITA_cam_x^188
+				y = ITA_cam_y^188
+				frame = ITA_cam_fr^188
+			}
+			ITA_camera_dot_189 = {
+				x = ITA_cam_x^189
+				y = ITA_cam_y^189
+				frame = ITA_cam_fr^189
+			}
+			ITA_camera_dot_190 = {
+				x = ITA_cam_x^190
+				y = ITA_cam_y^190
+				frame = ITA_cam_fr^190
+			}
+			ITA_camera_dot_191 = {
+				x = ITA_cam_x^191
+				y = ITA_cam_y^191
+				frame = ITA_cam_fr^191
+			}
+			ITA_camera_dot_192 = {
+				x = ITA_cam_x^192
+				y = ITA_cam_y^192
+				frame = ITA_cam_fr^192
+			}
+			ITA_camera_dot_193 = {
+				x = ITA_cam_x^193
+				y = ITA_cam_y^193
+				frame = ITA_cam_fr^193
+			}
+			ITA_camera_dot_194 = {
+				x = ITA_cam_x^194
+				y = ITA_cam_y^194
+				frame = ITA_cam_fr^194
+			}
+			ITA_camera_dot_195 = {
+				x = ITA_cam_x^195
+				y = ITA_cam_y^195
+				frame = ITA_cam_fr^195
+			}
+			ITA_camera_dot_196 = {
+				x = ITA_cam_x^196
+				y = ITA_cam_y^196
+				frame = ITA_cam_fr^196
+			}
+			ITA_camera_dot_197 = {
+				x = ITA_cam_x^197
+				y = ITA_cam_y^197
+				frame = ITA_cam_fr^197
+			}
+			ITA_camera_dot_198 = {
+				x = ITA_cam_x^198
+				y = ITA_cam_y^198
+				frame = ITA_cam_fr^198
+			}
+			ITA_camera_dot_199 = {
+				x = ITA_cam_x^199
+				y = ITA_cam_y^199
+				frame = ITA_cam_fr^199
+			}
+			ITA_camera_dot_200 = {
+				x = ITA_cam_x^200
+				y = ITA_cam_y^200
+				frame = ITA_cam_fr^200
+			}
+			ITA_camera_dot_201 = {
+				x = ITA_cam_x^201
+				y = ITA_cam_y^201
+				frame = ITA_cam_fr^201
+			}
+			ITA_camera_dot_202 = {
+				x = ITA_cam_x^202
+				y = ITA_cam_y^202
+				frame = ITA_cam_fr^202
+			}
+			ITA_camera_dot_203 = {
+				x = ITA_cam_x^203
+				y = ITA_cam_y^203
+				frame = ITA_cam_fr^203
+			}
+			ITA_camera_dot_204 = {
+				x = ITA_cam_x^204
+				y = ITA_cam_y^204
+				frame = ITA_cam_fr^204
+			}
+			ITA_camera_dot_205 = {
+				x = ITA_cam_x^205
+				y = ITA_cam_y^205
+				frame = ITA_cam_fr^205
+			}
+			ITA_camera_dot_206 = {
+				x = ITA_cam_x^206
+				y = ITA_cam_y^206
+				frame = ITA_cam_fr^206
+			}
+			ITA_camera_dot_207 = {
+				x = ITA_cam_x^207
+				y = ITA_cam_y^207
+				frame = ITA_cam_fr^207
+			}
+			ITA_camera_dot_208 = {
+				x = ITA_cam_x^208
+				y = ITA_cam_y^208
+				frame = ITA_cam_fr^208
+			}
+			ITA_camera_dot_209 = {
+				x = ITA_cam_x^209
+				y = ITA_cam_y^209
+				frame = ITA_cam_fr^209
+			}
+			ITA_camera_dot_210 = {
+				x = ITA_cam_x^210
+				y = ITA_cam_y^210
+				frame = ITA_cam_fr^210
+			}
+			ITA_camera_dot_211 = {
+				x = ITA_cam_x^211
+				y = ITA_cam_y^211
+				frame = ITA_cam_fr^211
+			}
+			ITA_camera_dot_212 = {
+				x = ITA_cam_x^212
+				y = ITA_cam_y^212
+				frame = ITA_cam_fr^212
+			}
+			ITA_camera_dot_213 = {
+				x = ITA_cam_x^213
+				y = ITA_cam_y^213
+				frame = ITA_cam_fr^213
+			}
+			ITA_camera_dot_214 = {
+				x = ITA_cam_x^214
+				y = ITA_cam_y^214
+				frame = ITA_cam_fr^214
+			}
+			ITA_camera_dot_215 = {
+				x = ITA_cam_x^215
+				y = ITA_cam_y^215
+				frame = ITA_cam_fr^215
+			}
+			ITA_camera_dot_216 = {
+				x = ITA_cam_x^216
+				y = ITA_cam_y^216
+				frame = ITA_cam_fr^216
+			}
+			ITA_camera_dot_217 = {
+				x = ITA_cam_x^217
+				y = ITA_cam_y^217
+				frame = ITA_cam_fr^217
+			}
+			ITA_camera_dot_218 = {
+				x = ITA_cam_x^218
+				y = ITA_cam_y^218
+				frame = ITA_cam_fr^218
+			}
+			ITA_camera_dot_219 = {
+				x = ITA_cam_x^219
+				y = ITA_cam_y^219
+				frame = ITA_cam_fr^219
+			}
+			ITA_camera_dot_220 = {
+				x = ITA_cam_x^220
+				y = ITA_cam_y^220
+				frame = ITA_cam_fr^220
+			}
+			ITA_camera_dot_221 = {
+				x = ITA_cam_x^221
+				y = ITA_cam_y^221
+				frame = ITA_cam_fr^221
+			}
+			ITA_camera_dot_222 = {
+				x = ITA_cam_x^222
+				y = ITA_cam_y^222
+				frame = ITA_cam_fr^222
+			}
+			ITA_camera_dot_223 = {
+				x = ITA_cam_x^223
+				y = ITA_cam_y^223
+				frame = ITA_cam_fr^223
+			}
+			ITA_camera_dot_224 = {
+				x = ITA_cam_x^224
+				y = ITA_cam_y^224
+				frame = ITA_cam_fr^224
+			}
+			ITA_camera_dot_225 = {
+				x = ITA_cam_x^225
+				y = ITA_cam_y^225
+				frame = ITA_cam_fr^225
+			}
+			ITA_camera_dot_226 = {
+				x = ITA_cam_x^226
+				y = ITA_cam_y^226
+				frame = ITA_cam_fr^226
+			}
+			ITA_camera_dot_227 = {
+				x = ITA_cam_x^227
+				y = ITA_cam_y^227
+				frame = ITA_cam_fr^227
+			}
+			ITA_camera_dot_228 = {
+				x = ITA_cam_x^228
+				y = ITA_cam_y^228
+				frame = ITA_cam_fr^228
+			}
+			ITA_camera_dot_229 = {
+				x = ITA_cam_x^229
+				y = ITA_cam_y^229
+				frame = ITA_cam_fr^229
+			}
+			ITA_camera_dot_230 = {
+				x = ITA_cam_x^230
+				y = ITA_cam_y^230
+				frame = ITA_cam_fr^230
+			}
+			ITA_camera_dot_231 = {
+				x = ITA_cam_x^231
+				y = ITA_cam_y^231
+				frame = ITA_cam_fr^231
+			}
+			ITA_camera_dot_232 = {
+				x = ITA_cam_x^232
+				y = ITA_cam_y^232
+				frame = ITA_cam_fr^232
+			}
+			ITA_camera_dot_233 = {
+				x = ITA_cam_x^233
+				y = ITA_cam_y^233
+				frame = ITA_cam_fr^233
+			}
+			ITA_camera_dot_234 = {
+				x = ITA_cam_x^234
+				y = ITA_cam_y^234
+				frame = ITA_cam_fr^234
+			}
+			ITA_camera_dot_235 = {
+				x = ITA_cam_x^235
+				y = ITA_cam_y^235
+				frame = ITA_cam_fr^235
+			}
+			ITA_camera_dot_236 = {
+				x = ITA_cam_x^236
+				y = ITA_cam_y^236
+				frame = ITA_cam_fr^236
+			}
+			ITA_camera_dot_237 = {
+				x = ITA_cam_x^237
+				y = ITA_cam_y^237
+				frame = ITA_cam_fr^237
+			}
+			ITA_camera_dot_238 = {
+				x = ITA_cam_x^238
+				y = ITA_cam_y^238
+				frame = ITA_cam_fr^238
+			}
+			ITA_camera_dot_239 = {
+				x = ITA_cam_x^239
+				y = ITA_cam_y^239
+				frame = ITA_cam_fr^239
+			}
+			ITA_camera_dot_240 = {
+				x = ITA_cam_x^240
+				y = ITA_cam_y^240
+				frame = ITA_cam_fr^240
+			}
+			ITA_camera_dot_241 = {
+				x = ITA_cam_x^241
+				y = ITA_cam_y^241
+				frame = ITA_cam_fr^241
+			}
+			ITA_camera_dot_242 = {
+				x = ITA_cam_x^242
+				y = ITA_cam_y^242
+				frame = ITA_cam_fr^242
+			}
+			ITA_camera_dot_243 = {
+				x = ITA_cam_x^243
+				y = ITA_cam_y^243
+				frame = ITA_cam_fr^243
+			}
+			ITA_camera_dot_244 = {
+				x = ITA_cam_x^244
+				y = ITA_cam_y^244
+				frame = ITA_cam_fr^244
+			}
+			ITA_camera_dot_245 = {
+				x = ITA_cam_x^245
+				y = ITA_cam_y^245
+				frame = ITA_cam_fr^245
+			}
+			ITA_camera_dot_246 = {
+				x = ITA_cam_x^246
+				y = ITA_cam_y^246
+				frame = ITA_cam_fr^246
+			}
+			ITA_camera_dot_247 = {
+				x = ITA_cam_x^247
+				y = ITA_cam_y^247
+				frame = ITA_cam_fr^247
+			}
+			ITA_camera_dot_248 = {
+				x = ITA_cam_x^248
+				y = ITA_cam_y^248
+				frame = ITA_cam_fr^248
+			}
+			ITA_camera_dot_249 = {
+				x = ITA_cam_x^249
+				y = ITA_cam_y^249
+				frame = ITA_cam_fr^249
+			}
+			ITA_camera_dot_250 = {
+				x = ITA_cam_x^250
+				y = ITA_cam_y^250
+				frame = ITA_cam_fr^250
+			}
+			ITA_camera_dot_251 = {
+				x = ITA_cam_x^251
+				y = ITA_cam_y^251
+				frame = ITA_cam_fr^251
+			}
+			ITA_camera_dot_252 = {
+				x = ITA_cam_x^252
+				y = ITA_cam_y^252
+				frame = ITA_cam_fr^252
+			}
+			ITA_camera_dot_253 = {
+				x = ITA_cam_x^253
+				y = ITA_cam_y^253
+				frame = ITA_cam_fr^253
+			}
+			ITA_camera_dot_254 = {
+				x = ITA_cam_x^254
+				y = ITA_cam_y^254
+				frame = ITA_cam_fr^254
+			}
+			ITA_camera_dot_255 = {
+				x = ITA_cam_x^255
+				y = ITA_cam_y^255
+				frame = ITA_cam_fr^255
+			}
+			ITA_camera_dot_256 = {
+				x = ITA_cam_x^256
+				y = ITA_cam_y^256
+				frame = ITA_cam_fr^256
+			}
+			ITA_camera_dot_257 = {
+				x = ITA_cam_x^257
+				y = ITA_cam_y^257
+				frame = ITA_cam_fr^257
+			}
+			ITA_camera_dot_258 = {
+				x = ITA_cam_x^258
+				y = ITA_cam_y^258
+				frame = ITA_cam_fr^258
+			}
+			ITA_camera_dot_259 = {
+				x = ITA_cam_x^259
+				y = ITA_cam_y^259
+				frame = ITA_cam_fr^259
+			}
+			ITA_camera_dot_260 = {
+				x = ITA_cam_x^260
+				y = ITA_cam_y^260
+				frame = ITA_cam_fr^260
+			}
+			ITA_camera_dot_261 = {
+				x = ITA_cam_x^261
+				y = ITA_cam_y^261
+				frame = ITA_cam_fr^261
+			}
+			ITA_camera_dot_262 = {
+				x = ITA_cam_x^262
+				y = ITA_cam_y^262
+				frame = ITA_cam_fr^262
+			}
+			ITA_camera_dot_263 = {
+				x = ITA_cam_x^263
+				y = ITA_cam_y^263
+				frame = ITA_cam_fr^263
+			}
+			ITA_camera_dot_264 = {
+				x = ITA_cam_x^264
+				y = ITA_cam_y^264
+				frame = ITA_cam_fr^264
+			}
+			ITA_camera_dot_265 = {
+				x = ITA_cam_x^265
+				y = ITA_cam_y^265
+				frame = ITA_cam_fr^265
+			}
+			ITA_camera_dot_266 = {
+				x = ITA_cam_x^266
+				y = ITA_cam_y^266
+				frame = ITA_cam_fr^266
+			}
+			ITA_camera_dot_267 = {
+				x = ITA_cam_x^267
+				y = ITA_cam_y^267
+				frame = ITA_cam_fr^267
+			}
+			ITA_camera_dot_268 = {
+				x = ITA_cam_x^268
+				y = ITA_cam_y^268
+				frame = ITA_cam_fr^268
+			}
+			ITA_camera_dot_269 = {
+				x = ITA_cam_x^269
+				y = ITA_cam_y^269
+				frame = ITA_cam_fr^269
+			}
+			ITA_camera_dot_270 = {
+				x = ITA_cam_x^270
+				y = ITA_cam_y^270
+				frame = ITA_cam_fr^270
+			}
+			ITA_camera_dot_271 = {
+				x = ITA_cam_x^271
+				y = ITA_cam_y^271
+				frame = ITA_cam_fr^271
+			}
+			ITA_camera_dot_272 = {
+				x = ITA_cam_x^272
+				y = ITA_cam_y^272
+				frame = ITA_cam_fr^272
+			}
+			ITA_camera_dot_273 = {
+				x = ITA_cam_x^273
+				y = ITA_cam_y^273
+				frame = ITA_cam_fr^273
+			}
+			ITA_camera_dot_274 = {
+				x = ITA_cam_x^274
+				y = ITA_cam_y^274
+				frame = ITA_cam_fr^274
+			}
+			ITA_camera_dot_275 = {
+				x = ITA_cam_x^275
+				y = ITA_cam_y^275
+				frame = ITA_cam_fr^275
+			}
+			ITA_camera_dot_276 = {
+				x = ITA_cam_x^276
+				y = ITA_cam_y^276
+				frame = ITA_cam_fr^276
+			}
+			ITA_camera_dot_277 = {
+				x = ITA_cam_x^277
+				y = ITA_cam_y^277
+				frame = ITA_cam_fr^277
+			}
+			ITA_camera_dot_278 = {
+				x = ITA_cam_x^278
+				y = ITA_cam_y^278
+				frame = ITA_cam_fr^278
+			}
+			ITA_camera_dot_279 = {
+				x = ITA_cam_x^279
+				y = ITA_cam_y^279
+				frame = ITA_cam_fr^279
+			}
+			ITA_camera_dot_280 = {
+				x = ITA_cam_x^280
+				y = ITA_cam_y^280
+				frame = ITA_cam_fr^280
+			}
+			ITA_camera_dot_281 = {
+				x = ITA_cam_x^281
+				y = ITA_cam_y^281
+				frame = ITA_cam_fr^281
+			}
+			ITA_camera_dot_282 = {
+				x = ITA_cam_x^282
+				y = ITA_cam_y^282
+				frame = ITA_cam_fr^282
+			}
+			ITA_camera_dot_283 = {
+				x = ITA_cam_x^283
+				y = ITA_cam_y^283
+				frame = ITA_cam_fr^283
+			}
+			ITA_camera_dot_284 = {
+				x = ITA_cam_x^284
+				y = ITA_cam_y^284
+				frame = ITA_cam_fr^284
+			}
+			ITA_camera_dot_285 = {
+				x = ITA_cam_x^285
+				y = ITA_cam_y^285
+				frame = ITA_cam_fr^285
+			}
+			ITA_camera_dot_286 = {
+				x = ITA_cam_x^286
+				y = ITA_cam_y^286
+				frame = ITA_cam_fr^286
+			}
+			ITA_camera_dot_287 = {
+				x = ITA_cam_x^287
+				y = ITA_cam_y^287
+				frame = ITA_cam_fr^287
+			}
+			ITA_camera_dot_288 = {
+				x = ITA_cam_x^288
+				y = ITA_cam_y^288
+				frame = ITA_cam_fr^288
+			}
+			ITA_camera_dot_289 = {
+				x = ITA_cam_x^289
+				y = ITA_cam_y^289
+				frame = ITA_cam_fr^289
+			}
+			ITA_camera_dot_290 = {
+				x = ITA_cam_x^290
+				y = ITA_cam_y^290
+				frame = ITA_cam_fr^290
+			}
+			ITA_camera_dot_291 = {
+				x = ITA_cam_x^291
+				y = ITA_cam_y^291
+				frame = ITA_cam_fr^291
+			}
+			ITA_camera_dot_292 = {
+				x = ITA_cam_x^292
+				y = ITA_cam_y^292
+				frame = ITA_cam_fr^292
+			}
+			ITA_camera_dot_293 = {
+				x = ITA_cam_x^293
+				y = ITA_cam_y^293
+				frame = ITA_cam_fr^293
+			}
+			ITA_camera_dot_294 = {
+				x = ITA_cam_x^294
+				y = ITA_cam_y^294
+				frame = ITA_cam_fr^294
+			}
+			ITA_camera_dot_295 = {
+				x = ITA_cam_x^295
+				y = ITA_cam_y^295
+				frame = ITA_cam_fr^295
+			}
+			ITA_camera_dot_296 = {
+				x = ITA_cam_x^296
+				y = ITA_cam_y^296
+				frame = ITA_cam_fr^296
+			}
+			ITA_camera_dot_297 = {
+				x = ITA_cam_x^297
+				y = ITA_cam_y^297
+				frame = ITA_cam_fr^297
+			}
+			ITA_camera_dot_298 = {
+				x = ITA_cam_x^298
+				y = ITA_cam_y^298
+				frame = ITA_cam_fr^298
+			}
+			ITA_camera_dot_299 = {
+				x = ITA_cam_x^299
+				y = ITA_cam_y^299
+				frame = ITA_cam_fr^299
+			}
+			ITA_camera_dot_300 = {
+				x = ITA_cam_x^300
+				y = ITA_cam_y^300
+				frame = ITA_cam_fr^300
+			}
+			ITA_camera_dot_301 = {
+				x = ITA_cam_x^301
+				y = ITA_cam_y^301
+				frame = ITA_cam_fr^301
+			}
+			ITA_camera_dot_302 = {
+				x = ITA_cam_x^302
+				y = ITA_cam_y^302
+				frame = ITA_cam_fr^302
+			}
+			ITA_camera_dot_303 = {
+				x = ITA_cam_x^303
+				y = ITA_cam_y^303
+				frame = ITA_cam_fr^303
+			}
+			ITA_camera_dot_304 = {
+				x = ITA_cam_x^304
+				y = ITA_cam_y^304
+				frame = ITA_cam_fr^304
+			}
+			ITA_camera_dot_305 = {
+				x = ITA_cam_x^305
+				y = ITA_cam_y^305
+				frame = ITA_cam_fr^305
+			}
+			ITA_camera_dot_306 = {
+				x = ITA_cam_x^306
+				y = ITA_cam_y^306
+				frame = ITA_cam_fr^306
+			}
+			ITA_camera_dot_307 = {
+				x = ITA_cam_x^307
+				y = ITA_cam_y^307
+				frame = ITA_cam_fr^307
+			}
+			ITA_camera_dot_308 = {
+				x = ITA_cam_x^308
+				y = ITA_cam_y^308
+				frame = ITA_cam_fr^308
+			}
+			ITA_camera_dot_309 = {
+				x = ITA_cam_x^309
+				y = ITA_cam_y^309
+				frame = ITA_cam_fr^309
+			}
+			ITA_camera_dot_310 = {
+				x = ITA_cam_x^310
+				y = ITA_cam_y^310
+				frame = ITA_cam_fr^310
+			}
+			ITA_camera_dot_311 = {
+				x = ITA_cam_x^311
+				y = ITA_cam_y^311
+				frame = ITA_cam_fr^311
+			}
+			ITA_camera_dot_312 = {
+				x = ITA_cam_x^312
+				y = ITA_cam_y^312
+				frame = ITA_cam_fr^312
+			}
+			ITA_camera_dot_313 = {
+				x = ITA_cam_x^313
+				y = ITA_cam_y^313
+				frame = ITA_cam_fr^313
+			}
+			ITA_camera_dot_314 = {
+				x = ITA_cam_x^314
+				y = ITA_cam_y^314
+				frame = ITA_cam_fr^314
+			}
+			ITA_camera_dot_315 = {
+				x = ITA_cam_x^315
+				y = ITA_cam_y^315
+				frame = ITA_cam_fr^315
+			}
+			ITA_camera_dot_316 = {
+				x = ITA_cam_x^316
+				y = ITA_cam_y^316
+				frame = ITA_cam_fr^316
+			}
+			ITA_camera_dot_317 = {
+				x = ITA_cam_x^317
+				y = ITA_cam_y^317
+				frame = ITA_cam_fr^317
+			}
+			ITA_camera_dot_318 = {
+				x = ITA_cam_x^318
+				y = ITA_cam_y^318
+				frame = ITA_cam_fr^318
+			}
+			ITA_camera_dot_319 = {
+				x = ITA_cam_x^319
+				y = ITA_cam_y^319
+				frame = ITA_cam_fr^319
+			}
+			ITA_camera_dot_320 = {
+				x = ITA_cam_x^320
+				y = ITA_cam_y^320
+				frame = ITA_cam_fr^320
+			}
+			ITA_camera_dot_321 = {
+				x = ITA_cam_x^321
+				y = ITA_cam_y^321
+				frame = ITA_cam_fr^321
+			}
+			ITA_camera_dot_322 = {
+				x = ITA_cam_x^322
+				y = ITA_cam_y^322
+				frame = ITA_cam_fr^322
+			}
+			ITA_camera_dot_323 = {
+				x = ITA_cam_x^323
+				y = ITA_cam_y^323
+				frame = ITA_cam_fr^323
+			}
+			ITA_camera_dot_324 = {
+				x = ITA_cam_x^324
+				y = ITA_cam_y^324
+				frame = ITA_cam_fr^324
+			}
+			ITA_camera_dot_325 = {
+				x = ITA_cam_x^325
+				y = ITA_cam_y^325
+				frame = ITA_cam_fr^325
+			}
+			ITA_camera_dot_326 = {
+				x = ITA_cam_x^326
+				y = ITA_cam_y^326
+				frame = ITA_cam_fr^326
+			}
+			ITA_camera_dot_327 = {
+				x = ITA_cam_x^327
+				y = ITA_cam_y^327
+				frame = ITA_cam_fr^327
+			}
+			ITA_camera_dot_328 = {
+				x = ITA_cam_x^328
+				y = ITA_cam_y^328
+				frame = ITA_cam_fr^328
+			}
+			ITA_camera_dot_329 = {
+				x = ITA_cam_x^329
+				y = ITA_cam_y^329
+				frame = ITA_cam_fr^329
+			}
+			ITA_camera_dot_330 = {
+				x = ITA_cam_x^330
+				y = ITA_cam_y^330
+				frame = ITA_cam_fr^330
+			}
+			ITA_camera_dot_331 = {
+				x = ITA_cam_x^331
+				y = ITA_cam_y^331
+				frame = ITA_cam_fr^331
+			}
+			ITA_camera_dot_332 = {
+				x = ITA_cam_x^332
+				y = ITA_cam_y^332
+				frame = ITA_cam_fr^332
+			}
+			ITA_camera_dot_333 = {
+				x = ITA_cam_x^333
+				y = ITA_cam_y^333
+				frame = ITA_cam_fr^333
+			}
+			ITA_camera_dot_334 = {
+				x = ITA_cam_x^334
+				y = ITA_cam_y^334
+				frame = ITA_cam_fr^334
+			}
+			ITA_camera_dot_335 = {
+				x = ITA_cam_x^335
+				y = ITA_cam_y^335
+				frame = ITA_cam_fr^335
+			}
+			ITA_camera_dot_336 = {
+				x = ITA_cam_x^336
+				y = ITA_cam_y^336
+				frame = ITA_cam_fr^336
+			}
+			ITA_camera_dot_337 = {
+				x = ITA_cam_x^337
+				y = ITA_cam_y^337
+				frame = ITA_cam_fr^337
+			}
+			ITA_camera_dot_338 = {
+				x = ITA_cam_x^338
+				y = ITA_cam_y^338
+				frame = ITA_cam_fr^338
+			}
+			ITA_camera_dot_339 = {
+				x = ITA_cam_x^339
+				y = ITA_cam_y^339
+				frame = ITA_cam_fr^339
+			}
+			ITA_camera_dot_340 = {
+				x = ITA_cam_x^340
+				y = ITA_cam_y^340
+				frame = ITA_cam_fr^340
+			}
+			ITA_camera_dot_341 = {
+				x = ITA_cam_x^341
+				y = ITA_cam_y^341
+				frame = ITA_cam_fr^341
+			}
+			ITA_camera_dot_342 = {
+				x = ITA_cam_x^342
+				y = ITA_cam_y^342
+				frame = ITA_cam_fr^342
+			}
+			ITA_camera_dot_343 = {
+				x = ITA_cam_x^343
+				y = ITA_cam_y^343
+				frame = ITA_cam_fr^343
+			}
+			ITA_camera_dot_344 = {
+				x = ITA_cam_x^344
+				y = ITA_cam_y^344
+				frame = ITA_cam_fr^344
+			}
+			ITA_camera_dot_345 = {
+				x = ITA_cam_x^345
+				y = ITA_cam_y^345
+				frame = ITA_cam_fr^345
+			}
+			ITA_camera_dot_346 = {
+				x = ITA_cam_x^346
+				y = ITA_cam_y^346
+				frame = ITA_cam_fr^346
+			}
+			ITA_camera_dot_347 = {
+				x = ITA_cam_x^347
+				y = ITA_cam_y^347
+				frame = ITA_cam_fr^347
+			}
+			ITA_camera_dot_348 = {
+				x = ITA_cam_x^348
+				y = ITA_cam_y^348
+				frame = ITA_cam_fr^348
+			}
+			ITA_camera_dot_349 = {
+				x = ITA_cam_x^349
+				y = ITA_cam_y^349
+				frame = ITA_cam_fr^349
+			}
+			ITA_camera_dot_350 = {
+				x = ITA_cam_x^350
+				y = ITA_cam_y^350
+				frame = ITA_cam_fr^350
+			}
+			ITA_camera_dot_351 = {
+				x = ITA_cam_x^351
+				y = ITA_cam_y^351
+				frame = ITA_cam_fr^351
+			}
+			ITA_camera_dot_352 = {
+				x = ITA_cam_x^352
+				y = ITA_cam_y^352
+				frame = ITA_cam_fr^352
+			}
+			ITA_camera_dot_353 = {
+				x = ITA_cam_x^353
+				y = ITA_cam_y^353
+				frame = ITA_cam_fr^353
+			}
+			ITA_camera_dot_354 = {
+				x = ITA_cam_x^354
+				y = ITA_cam_y^354
+				frame = ITA_cam_fr^354
+			}
+			ITA_camera_dot_355 = {
+				x = ITA_cam_x^355
+				y = ITA_cam_y^355
+				frame = ITA_cam_fr^355
+			}
+			ITA_camera_dot_356 = {
+				x = ITA_cam_x^356
+				y = ITA_cam_y^356
+				frame = ITA_cam_fr^356
+			}
+			ITA_camera_dot_357 = {
+				x = ITA_cam_x^357
+				y = ITA_cam_y^357
+				frame = ITA_cam_fr^357
+			}
+			ITA_camera_dot_358 = {
+				x = ITA_cam_x^358
+				y = ITA_cam_y^358
+				frame = ITA_cam_fr^358
+			}
+			ITA_camera_dot_359 = {
+				x = ITA_cam_x^359
+				y = ITA_cam_y^359
+				frame = ITA_cam_fr^359
+			}
+			ITA_camera_dot_360 = {
+				x = ITA_cam_x^360
+				y = ITA_cam_y^360
+				frame = ITA_cam_fr^360
+			}
+			ITA_camera_dot_361 = {
+				x = ITA_cam_x^361
+				y = ITA_cam_y^361
+				frame = ITA_cam_fr^361
+			}
+			ITA_camera_dot_362 = {
+				x = ITA_cam_x^362
+				y = ITA_cam_y^362
+				frame = ITA_cam_fr^362
+			}
+			ITA_camera_dot_363 = {
+				x = ITA_cam_x^363
+				y = ITA_cam_y^363
+				frame = ITA_cam_fr^363
+			}
+			ITA_camera_dot_364 = {
+				x = ITA_cam_x^364
+				y = ITA_cam_y^364
+				frame = ITA_cam_fr^364
+			}
+			ITA_camera_dot_365 = {
+				x = ITA_cam_x^365
+				y = ITA_cam_y^365
+				frame = ITA_cam_fr^365
+			}
+			ITA_camera_dot_366 = {
+				x = ITA_cam_x^366
+				y = ITA_cam_y^366
+				frame = ITA_cam_fr^366
+			}
+			ITA_camera_dot_367 = {
+				x = ITA_cam_x^367
+				y = ITA_cam_y^367
+				frame = ITA_cam_fr^367
+			}
+			ITA_camera_dot_368 = {
+				x = ITA_cam_x^368
+				y = ITA_cam_y^368
+				frame = ITA_cam_fr^368
+			}
+			ITA_camera_dot_369 = {
+				x = ITA_cam_x^369
+				y = ITA_cam_y^369
+				frame = ITA_cam_fr^369
+			}
+			ITA_camera_dot_370 = {
+				x = ITA_cam_x^370
+				y = ITA_cam_y^370
+				frame = ITA_cam_fr^370
+			}
+			ITA_camera_dot_371 = {
+				x = ITA_cam_x^371
+				y = ITA_cam_y^371
+				frame = ITA_cam_fr^371
+			}
+			ITA_camera_dot_372 = {
+				x = ITA_cam_x^372
+				y = ITA_cam_y^372
+				frame = ITA_cam_fr^372
+			}
+			ITA_camera_dot_373 = {
+				x = ITA_cam_x^373
+				y = ITA_cam_y^373
+				frame = ITA_cam_fr^373
+			}
+			ITA_camera_dot_374 = {
+				x = ITA_cam_x^374
+				y = ITA_cam_y^374
+				frame = ITA_cam_fr^374
+			}
+			ITA_camera_dot_375 = {
+				x = ITA_cam_x^375
+				y = ITA_cam_y^375
+				frame = ITA_cam_fr^375
+			}
+			ITA_camera_dot_376 = {
+				x = ITA_cam_x^376
+				y = ITA_cam_y^376
+				frame = ITA_cam_fr^376
+			}
+			ITA_camera_dot_377 = {
+				x = ITA_cam_x^377
+				y = ITA_cam_y^377
+				frame = ITA_cam_fr^377
+			}
+			ITA_camera_dot_378 = {
+				x = ITA_cam_x^378
+				y = ITA_cam_y^378
+				frame = ITA_cam_fr^378
+			}
+			ITA_camera_dot_379 = {
+				x = ITA_cam_x^379
+				y = ITA_cam_y^379
+				frame = ITA_cam_fr^379
+			}
+			ITA_camera_dot_380 = {
+				x = ITA_cam_x^380
+				y = ITA_cam_y^380
+				frame = ITA_cam_fr^380
+			}
+			ITA_camera_dot_381 = {
+				x = ITA_cam_x^381
+				y = ITA_cam_y^381
+				frame = ITA_cam_fr^381
+			}
+			ITA_camera_dot_382 = {
+				x = ITA_cam_x^382
+				y = ITA_cam_y^382
+				frame = ITA_cam_fr^382
+			}
+			ITA_camera_dot_383 = {
+				x = ITA_cam_x^383
+				y = ITA_cam_y^383
+				frame = ITA_cam_fr^383
+			}
+			ITA_camera_dot_384 = {
+				x = ITA_cam_x^384
+				y = ITA_cam_y^384
+				frame = ITA_cam_fr^384
+			}
+			ITA_camera_dot_385 = {
+				x = ITA_cam_x^385
+				y = ITA_cam_y^385
+				frame = ITA_cam_fr^385
+			}
+			ITA_camera_dot_386 = {
+				x = ITA_cam_x^386
+				y = ITA_cam_y^386
+				frame = ITA_cam_fr^386
+			}
+			ITA_camera_dot_387 = {
+				x = ITA_cam_x^387
+				y = ITA_cam_y^387
+				frame = ITA_cam_fr^387
+			}
+			ITA_camera_dot_388 = {
+				x = ITA_cam_x^388
+				y = ITA_cam_y^388
+				frame = ITA_cam_fr^388
+			}
+			ITA_camera_dot_389 = {
+				x = ITA_cam_x^389
+				y = ITA_cam_y^389
+				frame = ITA_cam_fr^389
+			}
+			ITA_camera_dot_390 = {
+				x = ITA_cam_x^390
+				y = ITA_cam_y^390
+				frame = ITA_cam_fr^390
+			}
+			ITA_camera_dot_391 = {
+				x = ITA_cam_x^391
+				y = ITA_cam_y^391
+				frame = ITA_cam_fr^391
+			}
+			ITA_camera_dot_392 = {
+				x = ITA_cam_x^392
+				y = ITA_cam_y^392
+				frame = ITA_cam_fr^392
+			}
+			ITA_camera_dot_393 = {
+				x = ITA_cam_x^393
+				y = ITA_cam_y^393
+				frame = ITA_cam_fr^393
+			}
+			ITA_camera_dot_394 = {
+				x = ITA_cam_x^394
+				y = ITA_cam_y^394
+				frame = ITA_cam_fr^394
+			}
+			ITA_camera_dot_395 = {
+				x = ITA_cam_x^395
+				y = ITA_cam_y^395
+				frame = ITA_cam_fr^395
+			}
+			ITA_camera_dot_396 = {
+				x = ITA_cam_x^396
+				y = ITA_cam_y^396
+				frame = ITA_cam_fr^396
+			}
+			ITA_camera_dot_397 = {
+				x = ITA_cam_x^397
+				y = ITA_cam_y^397
+				frame = ITA_cam_fr^397
+			}
+			ITA_camera_dot_398 = {
+				x = ITA_cam_x^398
+				y = ITA_cam_y^398
+				frame = ITA_cam_fr^398
+			}
+			ITA_camera_dot_399 = {
+				x = ITA_cam_x^399
+				y = ITA_cam_y^399
+				frame = ITA_cam_fr^399
+			}
+			ITA_senate_dot_0 = {
+				x = ITA_sen_x^0
+				y = ITA_sen_y^0
+				frame = ITA_sen_fr^0
+			}
+			ITA_senate_dot_1 = {
+				x = ITA_sen_x^1
+				y = ITA_sen_y^1
+				frame = ITA_sen_fr^1
+			}
+			ITA_senate_dot_2 = {
+				x = ITA_sen_x^2
+				y = ITA_sen_y^2
+				frame = ITA_sen_fr^2
+			}
+			ITA_senate_dot_3 = {
+				x = ITA_sen_x^3
+				y = ITA_sen_y^3
+				frame = ITA_sen_fr^3
+			}
+			ITA_senate_dot_4 = {
+				x = ITA_sen_x^4
+				y = ITA_sen_y^4
+				frame = ITA_sen_fr^4
+			}
+			ITA_senate_dot_5 = {
+				x = ITA_sen_x^5
+				y = ITA_sen_y^5
+				frame = ITA_sen_fr^5
+			}
+			ITA_senate_dot_6 = {
+				x = ITA_sen_x^6
+				y = ITA_sen_y^6
+				frame = ITA_sen_fr^6
+			}
+			ITA_senate_dot_7 = {
+				x = ITA_sen_x^7
+				y = ITA_sen_y^7
+				frame = ITA_sen_fr^7
+			}
+			ITA_senate_dot_8 = {
+				x = ITA_sen_x^8
+				y = ITA_sen_y^8
+				frame = ITA_sen_fr^8
+			}
+			ITA_senate_dot_9 = {
+				x = ITA_sen_x^9
+				y = ITA_sen_y^9
+				frame = ITA_sen_fr^9
+			}
+			ITA_senate_dot_10 = {
+				x = ITA_sen_x^10
+				y = ITA_sen_y^10
+				frame = ITA_sen_fr^10
+			}
+			ITA_senate_dot_11 = {
+				x = ITA_sen_x^11
+				y = ITA_sen_y^11
+				frame = ITA_sen_fr^11
+			}
+			ITA_senate_dot_12 = {
+				x = ITA_sen_x^12
+				y = ITA_sen_y^12
+				frame = ITA_sen_fr^12
+			}
+			ITA_senate_dot_13 = {
+				x = ITA_sen_x^13
+				y = ITA_sen_y^13
+				frame = ITA_sen_fr^13
+			}
+			ITA_senate_dot_14 = {
+				x = ITA_sen_x^14
+				y = ITA_sen_y^14
+				frame = ITA_sen_fr^14
+			}
+			ITA_senate_dot_15 = {
+				x = ITA_sen_x^15
+				y = ITA_sen_y^15
+				frame = ITA_sen_fr^15
+			}
+			ITA_senate_dot_16 = {
+				x = ITA_sen_x^16
+				y = ITA_sen_y^16
+				frame = ITA_sen_fr^16
+			}
+			ITA_senate_dot_17 = {
+				x = ITA_sen_x^17
+				y = ITA_sen_y^17
+				frame = ITA_sen_fr^17
+			}
+			ITA_senate_dot_18 = {
+				x = ITA_sen_x^18
+				y = ITA_sen_y^18
+				frame = ITA_sen_fr^18
+			}
+			ITA_senate_dot_19 = {
+				x = ITA_sen_x^19
+				y = ITA_sen_y^19
+				frame = ITA_sen_fr^19
+			}
+			ITA_senate_dot_20 = {
+				x = ITA_sen_x^20
+				y = ITA_sen_y^20
+				frame = ITA_sen_fr^20
+			}
+			ITA_senate_dot_21 = {
+				x = ITA_sen_x^21
+				y = ITA_sen_y^21
+				frame = ITA_sen_fr^21
+			}
+			ITA_senate_dot_22 = {
+				x = ITA_sen_x^22
+				y = ITA_sen_y^22
+				frame = ITA_sen_fr^22
+			}
+			ITA_senate_dot_23 = {
+				x = ITA_sen_x^23
+				y = ITA_sen_y^23
+				frame = ITA_sen_fr^23
+			}
+			ITA_senate_dot_24 = {
+				x = ITA_sen_x^24
+				y = ITA_sen_y^24
+				frame = ITA_sen_fr^24
+			}
+			ITA_senate_dot_25 = {
+				x = ITA_sen_x^25
+				y = ITA_sen_y^25
+				frame = ITA_sen_fr^25
+			}
+			ITA_senate_dot_26 = {
+				x = ITA_sen_x^26
+				y = ITA_sen_y^26
+				frame = ITA_sen_fr^26
+			}
+			ITA_senate_dot_27 = {
+				x = ITA_sen_x^27
+				y = ITA_sen_y^27
+				frame = ITA_sen_fr^27
+			}
+			ITA_senate_dot_28 = {
+				x = ITA_sen_x^28
+				y = ITA_sen_y^28
+				frame = ITA_sen_fr^28
+			}
+			ITA_senate_dot_29 = {
+				x = ITA_sen_x^29
+				y = ITA_sen_y^29
+				frame = ITA_sen_fr^29
+			}
+			ITA_senate_dot_30 = {
+				x = ITA_sen_x^30
+				y = ITA_sen_y^30
+				frame = ITA_sen_fr^30
+			}
+			ITA_senate_dot_31 = {
+				x = ITA_sen_x^31
+				y = ITA_sen_y^31
+				frame = ITA_sen_fr^31
+			}
+			ITA_senate_dot_32 = {
+				x = ITA_sen_x^32
+				y = ITA_sen_y^32
+				frame = ITA_sen_fr^32
+			}
+			ITA_senate_dot_33 = {
+				x = ITA_sen_x^33
+				y = ITA_sen_y^33
+				frame = ITA_sen_fr^33
+			}
+			ITA_senate_dot_34 = {
+				x = ITA_sen_x^34
+				y = ITA_sen_y^34
+				frame = ITA_sen_fr^34
+			}
+			ITA_senate_dot_35 = {
+				x = ITA_sen_x^35
+				y = ITA_sen_y^35
+				frame = ITA_sen_fr^35
+			}
+			ITA_senate_dot_36 = {
+				x = ITA_sen_x^36
+				y = ITA_sen_y^36
+				frame = ITA_sen_fr^36
+			}
+			ITA_senate_dot_37 = {
+				x = ITA_sen_x^37
+				y = ITA_sen_y^37
+				frame = ITA_sen_fr^37
+			}
+			ITA_senate_dot_38 = {
+				x = ITA_sen_x^38
+				y = ITA_sen_y^38
+				frame = ITA_sen_fr^38
+			}
+			ITA_senate_dot_39 = {
+				x = ITA_sen_x^39
+				y = ITA_sen_y^39
+				frame = ITA_sen_fr^39
+			}
+			ITA_senate_dot_40 = {
+				x = ITA_sen_x^40
+				y = ITA_sen_y^40
+				frame = ITA_sen_fr^40
+			}
+			ITA_senate_dot_41 = {
+				x = ITA_sen_x^41
+				y = ITA_sen_y^41
+				frame = ITA_sen_fr^41
+			}
+			ITA_senate_dot_42 = {
+				x = ITA_sen_x^42
+				y = ITA_sen_y^42
+				frame = ITA_sen_fr^42
+			}
+			ITA_senate_dot_43 = {
+				x = ITA_sen_x^43
+				y = ITA_sen_y^43
+				frame = ITA_sen_fr^43
+			}
+			ITA_senate_dot_44 = {
+				x = ITA_sen_x^44
+				y = ITA_sen_y^44
+				frame = ITA_sen_fr^44
+			}
+			ITA_senate_dot_45 = {
+				x = ITA_sen_x^45
+				y = ITA_sen_y^45
+				frame = ITA_sen_fr^45
+			}
+			ITA_senate_dot_46 = {
+				x = ITA_sen_x^46
+				y = ITA_sen_y^46
+				frame = ITA_sen_fr^46
+			}
+			ITA_senate_dot_47 = {
+				x = ITA_sen_x^47
+				y = ITA_sen_y^47
+				frame = ITA_sen_fr^47
+			}
+			ITA_senate_dot_48 = {
+				x = ITA_sen_x^48
+				y = ITA_sen_y^48
+				frame = ITA_sen_fr^48
+			}
+			ITA_senate_dot_49 = {
+				x = ITA_sen_x^49
+				y = ITA_sen_y^49
+				frame = ITA_sen_fr^49
+			}
+			ITA_senate_dot_50 = {
+				x = ITA_sen_x^50
+				y = ITA_sen_y^50
+				frame = ITA_sen_fr^50
+			}
+			ITA_senate_dot_51 = {
+				x = ITA_sen_x^51
+				y = ITA_sen_y^51
+				frame = ITA_sen_fr^51
+			}
+			ITA_senate_dot_52 = {
+				x = ITA_sen_x^52
+				y = ITA_sen_y^52
+				frame = ITA_sen_fr^52
+			}
+			ITA_senate_dot_53 = {
+				x = ITA_sen_x^53
+				y = ITA_sen_y^53
+				frame = ITA_sen_fr^53
+			}
+			ITA_senate_dot_54 = {
+				x = ITA_sen_x^54
+				y = ITA_sen_y^54
+				frame = ITA_sen_fr^54
+			}
+			ITA_senate_dot_55 = {
+				x = ITA_sen_x^55
+				y = ITA_sen_y^55
+				frame = ITA_sen_fr^55
+			}
+			ITA_senate_dot_56 = {
+				x = ITA_sen_x^56
+				y = ITA_sen_y^56
+				frame = ITA_sen_fr^56
+			}
+			ITA_senate_dot_57 = {
+				x = ITA_sen_x^57
+				y = ITA_sen_y^57
+				frame = ITA_sen_fr^57
+			}
+			ITA_senate_dot_58 = {
+				x = ITA_sen_x^58
+				y = ITA_sen_y^58
+				frame = ITA_sen_fr^58
+			}
+			ITA_senate_dot_59 = {
+				x = ITA_sen_x^59
+				y = ITA_sen_y^59
+				frame = ITA_sen_fr^59
+			}
+			ITA_senate_dot_60 = {
+				x = ITA_sen_x^60
+				y = ITA_sen_y^60
+				frame = ITA_sen_fr^60
+			}
+			ITA_senate_dot_61 = {
+				x = ITA_sen_x^61
+				y = ITA_sen_y^61
+				frame = ITA_sen_fr^61
+			}
+			ITA_senate_dot_62 = {
+				x = ITA_sen_x^62
+				y = ITA_sen_y^62
+				frame = ITA_sen_fr^62
+			}
+			ITA_senate_dot_63 = {
+				x = ITA_sen_x^63
+				y = ITA_sen_y^63
+				frame = ITA_sen_fr^63
+			}
+			ITA_senate_dot_64 = {
+				x = ITA_sen_x^64
+				y = ITA_sen_y^64
+				frame = ITA_sen_fr^64
+			}
+			ITA_senate_dot_65 = {
+				x = ITA_sen_x^65
+				y = ITA_sen_y^65
+				frame = ITA_sen_fr^65
+			}
+			ITA_senate_dot_66 = {
+				x = ITA_sen_x^66
+				y = ITA_sen_y^66
+				frame = ITA_sen_fr^66
+			}
+			ITA_senate_dot_67 = {
+				x = ITA_sen_x^67
+				y = ITA_sen_y^67
+				frame = ITA_sen_fr^67
+			}
+			ITA_senate_dot_68 = {
+				x = ITA_sen_x^68
+				y = ITA_sen_y^68
+				frame = ITA_sen_fr^68
+			}
+			ITA_senate_dot_69 = {
+				x = ITA_sen_x^69
+				y = ITA_sen_y^69
+				frame = ITA_sen_fr^69
+			}
+			ITA_senate_dot_70 = {
+				x = ITA_sen_x^70
+				y = ITA_sen_y^70
+				frame = ITA_sen_fr^70
+			}
+			ITA_senate_dot_71 = {
+				x = ITA_sen_x^71
+				y = ITA_sen_y^71
+				frame = ITA_sen_fr^71
+			}
+			ITA_senate_dot_72 = {
+				x = ITA_sen_x^72
+				y = ITA_sen_y^72
+				frame = ITA_sen_fr^72
+			}
+			ITA_senate_dot_73 = {
+				x = ITA_sen_x^73
+				y = ITA_sen_y^73
+				frame = ITA_sen_fr^73
+			}
+			ITA_senate_dot_74 = {
+				x = ITA_sen_x^74
+				y = ITA_sen_y^74
+				frame = ITA_sen_fr^74
+			}
+			ITA_senate_dot_75 = {
+				x = ITA_sen_x^75
+				y = ITA_sen_y^75
+				frame = ITA_sen_fr^75
+			}
+			ITA_senate_dot_76 = {
+				x = ITA_sen_x^76
+				y = ITA_sen_y^76
+				frame = ITA_sen_fr^76
+			}
+			ITA_senate_dot_77 = {
+				x = ITA_sen_x^77
+				y = ITA_sen_y^77
+				frame = ITA_sen_fr^77
+			}
+			ITA_senate_dot_78 = {
+				x = ITA_sen_x^78
+				y = ITA_sen_y^78
+				frame = ITA_sen_fr^78
+			}
+			ITA_senate_dot_79 = {
+				x = ITA_sen_x^79
+				y = ITA_sen_y^79
+				frame = ITA_sen_fr^79
+			}
+			ITA_senate_dot_80 = {
+				x = ITA_sen_x^80
+				y = ITA_sen_y^80
+				frame = ITA_sen_fr^80
+			}
+			ITA_senate_dot_81 = {
+				x = ITA_sen_x^81
+				y = ITA_sen_y^81
+				frame = ITA_sen_fr^81
+			}
+			ITA_senate_dot_82 = {
+				x = ITA_sen_x^82
+				y = ITA_sen_y^82
+				frame = ITA_sen_fr^82
+			}
+			ITA_senate_dot_83 = {
+				x = ITA_sen_x^83
+				y = ITA_sen_y^83
+				frame = ITA_sen_fr^83
+			}
+			ITA_senate_dot_84 = {
+				x = ITA_sen_x^84
+				y = ITA_sen_y^84
+				frame = ITA_sen_fr^84
+			}
+			ITA_senate_dot_85 = {
+				x = ITA_sen_x^85
+				y = ITA_sen_y^85
+				frame = ITA_sen_fr^85
+			}
+			ITA_senate_dot_86 = {
+				x = ITA_sen_x^86
+				y = ITA_sen_y^86
+				frame = ITA_sen_fr^86
+			}
+			ITA_senate_dot_87 = {
+				x = ITA_sen_x^87
+				y = ITA_sen_y^87
+				frame = ITA_sen_fr^87
+			}
+			ITA_senate_dot_88 = {
+				x = ITA_sen_x^88
+				y = ITA_sen_y^88
+				frame = ITA_sen_fr^88
+			}
+			ITA_senate_dot_89 = {
+				x = ITA_sen_x^89
+				y = ITA_sen_y^89
+				frame = ITA_sen_fr^89
+			}
+			ITA_senate_dot_90 = {
+				x = ITA_sen_x^90
+				y = ITA_sen_y^90
+				frame = ITA_sen_fr^90
+			}
+			ITA_senate_dot_91 = {
+				x = ITA_sen_x^91
+				y = ITA_sen_y^91
+				frame = ITA_sen_fr^91
+			}
+			ITA_senate_dot_92 = {
+				x = ITA_sen_x^92
+				y = ITA_sen_y^92
+				frame = ITA_sen_fr^92
+			}
+			ITA_senate_dot_93 = {
+				x = ITA_sen_x^93
+				y = ITA_sen_y^93
+				frame = ITA_sen_fr^93
+			}
+			ITA_senate_dot_94 = {
+				x = ITA_sen_x^94
+				y = ITA_sen_y^94
+				frame = ITA_sen_fr^94
+			}
+			ITA_senate_dot_95 = {
+				x = ITA_sen_x^95
+				y = ITA_sen_y^95
+				frame = ITA_sen_fr^95
+			}
+			ITA_senate_dot_96 = {
+				x = ITA_sen_x^96
+				y = ITA_sen_y^96
+				frame = ITA_sen_fr^96
+			}
+			ITA_senate_dot_97 = {
+				x = ITA_sen_x^97
+				y = ITA_sen_y^97
+				frame = ITA_sen_fr^97
+			}
+			ITA_senate_dot_98 = {
+				x = ITA_sen_x^98
+				y = ITA_sen_y^98
+				frame = ITA_sen_fr^98
+			}
+			ITA_senate_dot_99 = {
+				x = ITA_sen_x^99
+				y = ITA_sen_y^99
+				frame = ITA_sen_fr^99
+			}
+			ITA_senate_dot_100 = {
+				x = ITA_sen_x^100
+				y = ITA_sen_y^100
+				frame = ITA_sen_fr^100
+			}
+			ITA_senate_dot_101 = {
+				x = ITA_sen_x^101
+				y = ITA_sen_y^101
+				frame = ITA_sen_fr^101
+			}
+			ITA_senate_dot_102 = {
+				x = ITA_sen_x^102
+				y = ITA_sen_y^102
+				frame = ITA_sen_fr^102
+			}
+			ITA_senate_dot_103 = {
+				x = ITA_sen_x^103
+				y = ITA_sen_y^103
+				frame = ITA_sen_fr^103
+			}
+			ITA_senate_dot_104 = {
+				x = ITA_sen_x^104
+				y = ITA_sen_y^104
+				frame = ITA_sen_fr^104
+			}
+			ITA_senate_dot_105 = {
+				x = ITA_sen_x^105
+				y = ITA_sen_y^105
+				frame = ITA_sen_fr^105
+			}
+			ITA_senate_dot_106 = {
+				x = ITA_sen_x^106
+				y = ITA_sen_y^106
+				frame = ITA_sen_fr^106
+			}
+			ITA_senate_dot_107 = {
+				x = ITA_sen_x^107
+				y = ITA_sen_y^107
+				frame = ITA_sen_fr^107
+			}
+			ITA_senate_dot_108 = {
+				x = ITA_sen_x^108
+				y = ITA_sen_y^108
+				frame = ITA_sen_fr^108
+			}
+			ITA_senate_dot_109 = {
+				x = ITA_sen_x^109
+				y = ITA_sen_y^109
+				frame = ITA_sen_fr^109
+			}
+			ITA_senate_dot_110 = {
+				x = ITA_sen_x^110
+				y = ITA_sen_y^110
+				frame = ITA_sen_fr^110
+			}
+			ITA_senate_dot_111 = {
+				x = ITA_sen_x^111
+				y = ITA_sen_y^111
+				frame = ITA_sen_fr^111
+			}
+			ITA_senate_dot_112 = {
+				x = ITA_sen_x^112
+				y = ITA_sen_y^112
+				frame = ITA_sen_fr^112
+			}
+			ITA_senate_dot_113 = {
+				x = ITA_sen_x^113
+				y = ITA_sen_y^113
+				frame = ITA_sen_fr^113
+			}
+			ITA_senate_dot_114 = {
+				x = ITA_sen_x^114
+				y = ITA_sen_y^114
+				frame = ITA_sen_fr^114
+			}
+			ITA_senate_dot_115 = {
+				x = ITA_sen_x^115
+				y = ITA_sen_y^115
+				frame = ITA_sen_fr^115
+			}
+			ITA_senate_dot_116 = {
+				x = ITA_sen_x^116
+				y = ITA_sen_y^116
+				frame = ITA_sen_fr^116
+			}
+			ITA_senate_dot_117 = {
+				x = ITA_sen_x^117
+				y = ITA_sen_y^117
+				frame = ITA_sen_fr^117
+			}
+			ITA_senate_dot_118 = {
+				x = ITA_sen_x^118
+				y = ITA_sen_y^118
+				frame = ITA_sen_fr^118
+			}
+			ITA_senate_dot_119 = {
+				x = ITA_sen_x^119
+				y = ITA_sen_y^119
+				frame = ITA_sen_fr^119
+			}
+			ITA_senate_dot_120 = {
+				x = ITA_sen_x^120
+				y = ITA_sen_y^120
+				frame = ITA_sen_fr^120
+			}
+			ITA_senate_dot_121 = {
+				x = ITA_sen_x^121
+				y = ITA_sen_y^121
+				frame = ITA_sen_fr^121
+			}
+			ITA_senate_dot_122 = {
+				x = ITA_sen_x^122
+				y = ITA_sen_y^122
+				frame = ITA_sen_fr^122
+			}
+			ITA_senate_dot_123 = {
+				x = ITA_sen_x^123
+				y = ITA_sen_y^123
+				frame = ITA_sen_fr^123
+			}
+			ITA_senate_dot_124 = {
+				x = ITA_sen_x^124
+				y = ITA_sen_y^124
+				frame = ITA_sen_fr^124
+			}
+			ITA_senate_dot_125 = {
+				x = ITA_sen_x^125
+				y = ITA_sen_y^125
+				frame = ITA_sen_fr^125
+			}
+			ITA_senate_dot_126 = {
+				x = ITA_sen_x^126
+				y = ITA_sen_y^126
+				frame = ITA_sen_fr^126
+			}
+			ITA_senate_dot_127 = {
+				x = ITA_sen_x^127
+				y = ITA_sen_y^127
+				frame = ITA_sen_fr^127
+			}
+			ITA_senate_dot_128 = {
+				x = ITA_sen_x^128
+				y = ITA_sen_y^128
+				frame = ITA_sen_fr^128
+			}
+			ITA_senate_dot_129 = {
+				x = ITA_sen_x^129
+				y = ITA_sen_y^129
+				frame = ITA_sen_fr^129
+			}
+			ITA_senate_dot_130 = {
+				x = ITA_sen_x^130
+				y = ITA_sen_y^130
+				frame = ITA_sen_fr^130
+			}
+			ITA_senate_dot_131 = {
+				x = ITA_sen_x^131
+				y = ITA_sen_y^131
+				frame = ITA_sen_fr^131
+			}
+			ITA_senate_dot_132 = {
+				x = ITA_sen_x^132
+				y = ITA_sen_y^132
+				frame = ITA_sen_fr^132
+			}
+			ITA_senate_dot_133 = {
+				x = ITA_sen_x^133
+				y = ITA_sen_y^133
+				frame = ITA_sen_fr^133
+			}
+			ITA_senate_dot_134 = {
+				x = ITA_sen_x^134
+				y = ITA_sen_y^134
+				frame = ITA_sen_fr^134
+			}
+			ITA_senate_dot_135 = {
+				x = ITA_sen_x^135
+				y = ITA_sen_y^135
+				frame = ITA_sen_fr^135
+			}
+			ITA_senate_dot_136 = {
+				x = ITA_sen_x^136
+				y = ITA_sen_y^136
+				frame = ITA_sen_fr^136
+			}
+			ITA_senate_dot_137 = {
+				x = ITA_sen_x^137
+				y = ITA_sen_y^137
+				frame = ITA_sen_fr^137
+			}
+			ITA_senate_dot_138 = {
+				x = ITA_sen_x^138
+				y = ITA_sen_y^138
+				frame = ITA_sen_fr^138
+			}
+			ITA_senate_dot_139 = {
+				x = ITA_sen_x^139
+				y = ITA_sen_y^139
+				frame = ITA_sen_fr^139
+			}
+			ITA_senate_dot_140 = {
+				x = ITA_sen_x^140
+				y = ITA_sen_y^140
+				frame = ITA_sen_fr^140
+			}
+			ITA_senate_dot_141 = {
+				x = ITA_sen_x^141
+				y = ITA_sen_y^141
+				frame = ITA_sen_fr^141
+			}
+			ITA_senate_dot_142 = {
+				x = ITA_sen_x^142
+				y = ITA_sen_y^142
+				frame = ITA_sen_fr^142
+			}
+			ITA_senate_dot_143 = {
+				x = ITA_sen_x^143
+				y = ITA_sen_y^143
+				frame = ITA_sen_fr^143
+			}
+			ITA_senate_dot_144 = {
+				x = ITA_sen_x^144
+				y = ITA_sen_y^144
+				frame = ITA_sen_fr^144
+			}
+			ITA_senate_dot_145 = {
+				x = ITA_sen_x^145
+				y = ITA_sen_y^145
+				frame = ITA_sen_fr^145
+			}
+			ITA_senate_dot_146 = {
+				x = ITA_sen_x^146
+				y = ITA_sen_y^146
+				frame = ITA_sen_fr^146
+			}
+			ITA_senate_dot_147 = {
+				x = ITA_sen_x^147
+				y = ITA_sen_y^147
+				frame = ITA_sen_fr^147
+			}
+			ITA_senate_dot_148 = {
+				x = ITA_sen_x^148
+				y = ITA_sen_y^148
+				frame = ITA_sen_fr^148
+			}
+			ITA_senate_dot_149 = {
+				x = ITA_sen_x^149
+				y = ITA_sen_y^149
+				frame = ITA_sen_fr^149
+			}
+			ITA_senate_dot_150 = {
+				x = ITA_sen_x^150
+				y = ITA_sen_y^150
+				frame = ITA_sen_fr^150
+			}
+			ITA_senate_dot_151 = {
+				x = ITA_sen_x^151
+				y = ITA_sen_y^151
+				frame = ITA_sen_fr^151
+			}
+			ITA_senate_dot_152 = {
+				x = ITA_sen_x^152
+				y = ITA_sen_y^152
+				frame = ITA_sen_fr^152
+			}
+			ITA_senate_dot_153 = {
+				x = ITA_sen_x^153
+				y = ITA_sen_y^153
+				frame = ITA_sen_fr^153
+			}
+			ITA_senate_dot_154 = {
+				x = ITA_sen_x^154
+				y = ITA_sen_y^154
+				frame = ITA_sen_fr^154
+			}
+			ITA_senate_dot_155 = {
+				x = ITA_sen_x^155
+				y = ITA_sen_y^155
+				frame = ITA_sen_fr^155
+			}
+			ITA_senate_dot_156 = {
+				x = ITA_sen_x^156
+				y = ITA_sen_y^156
+				frame = ITA_sen_fr^156
+			}
+			ITA_senate_dot_157 = {
+				x = ITA_sen_x^157
+				y = ITA_sen_y^157
+				frame = ITA_sen_fr^157
+			}
+			ITA_senate_dot_158 = {
+				x = ITA_sen_x^158
+				y = ITA_sen_y^158
+				frame = ITA_sen_fr^158
+			}
+			ITA_senate_dot_159 = {
+				x = ITA_sen_x^159
+				y = ITA_sen_y^159
+				frame = ITA_sen_fr^159
+			}
+			ITA_senate_dot_160 = {
+				x = ITA_sen_x^160
+				y = ITA_sen_y^160
+				frame = ITA_sen_fr^160
+			}
+			ITA_senate_dot_161 = {
+				x = ITA_sen_x^161
+				y = ITA_sen_y^161
+				frame = ITA_sen_fr^161
+			}
+			ITA_senate_dot_162 = {
+				x = ITA_sen_x^162
+				y = ITA_sen_y^162
+				frame = ITA_sen_fr^162
+			}
+			ITA_senate_dot_163 = {
+				x = ITA_sen_x^163
+				y = ITA_sen_y^163
+				frame = ITA_sen_fr^163
+			}
+			ITA_senate_dot_164 = {
+				x = ITA_sen_x^164
+				y = ITA_sen_y^164
+				frame = ITA_sen_fr^164
+			}
+			ITA_senate_dot_165 = {
+				x = ITA_sen_x^165
+				y = ITA_sen_y^165
+				frame = ITA_sen_fr^165
+			}
+			ITA_senate_dot_166 = {
+				x = ITA_sen_x^166
+				y = ITA_sen_y^166
+				frame = ITA_sen_fr^166
+			}
+			ITA_senate_dot_167 = {
+				x = ITA_sen_x^167
+				y = ITA_sen_y^167
+				frame = ITA_sen_fr^167
+			}
+			ITA_senate_dot_168 = {
+				x = ITA_sen_x^168
+				y = ITA_sen_y^168
+				frame = ITA_sen_fr^168
+			}
+			ITA_senate_dot_169 = {
+				x = ITA_sen_x^169
+				y = ITA_sen_y^169
+				frame = ITA_sen_fr^169
+			}
+			ITA_senate_dot_170 = {
+				x = ITA_sen_x^170
+				y = ITA_sen_y^170
+				frame = ITA_sen_fr^170
+			}
+			ITA_senate_dot_171 = {
+				x = ITA_sen_x^171
+				y = ITA_sen_y^171
+				frame = ITA_sen_fr^171
+			}
+			ITA_senate_dot_172 = {
+				x = ITA_sen_x^172
+				y = ITA_sen_y^172
+				frame = ITA_sen_fr^172
+			}
+			ITA_senate_dot_173 = {
+				x = ITA_sen_x^173
+				y = ITA_sen_y^173
+				frame = ITA_sen_fr^173
+			}
+			ITA_senate_dot_174 = {
+				x = ITA_sen_x^174
+				y = ITA_sen_y^174
+				frame = ITA_sen_fr^174
+			}
+			ITA_senate_dot_175 = {
+				x = ITA_sen_x^175
+				y = ITA_sen_y^175
+				frame = ITA_sen_fr^175
+			}
+			ITA_senate_dot_176 = {
+				x = ITA_sen_x^176
+				y = ITA_sen_y^176
+				frame = ITA_sen_fr^176
+			}
+			ITA_senate_dot_177 = {
+				x = ITA_sen_x^177
+				y = ITA_sen_y^177
+				frame = ITA_sen_fr^177
+			}
+			ITA_senate_dot_178 = {
+				x = ITA_sen_x^178
+				y = ITA_sen_y^178
+				frame = ITA_sen_fr^178
+			}
+			ITA_senate_dot_179 = {
+				x = ITA_sen_x^179
+				y = ITA_sen_y^179
+				frame = ITA_sen_fr^179
+			}
+			ITA_senate_dot_180 = {
+				x = ITA_sen_x^180
+				y = ITA_sen_y^180
+				frame = ITA_sen_fr^180
+			}
+			ITA_senate_dot_181 = {
+				x = ITA_sen_x^181
+				y = ITA_sen_y^181
+				frame = ITA_sen_fr^181
+			}
+			ITA_senate_dot_182 = {
+				x = ITA_sen_x^182
+				y = ITA_sen_y^182
+				frame = ITA_sen_fr^182
+			}
+			ITA_senate_dot_183 = {
+				x = ITA_sen_x^183
+				y = ITA_sen_y^183
+				frame = ITA_sen_fr^183
+			}
+			ITA_senate_dot_184 = {
+				x = ITA_sen_x^184
+				y = ITA_sen_y^184
+				frame = ITA_sen_fr^184
+			}
+			ITA_senate_dot_185 = {
+				x = ITA_sen_x^185
+				y = ITA_sen_y^185
+				frame = ITA_sen_fr^185
+			}
+			ITA_senate_dot_186 = {
+				x = ITA_sen_x^186
+				y = ITA_sen_y^186
+				frame = ITA_sen_fr^186
+			}
+			ITA_senate_dot_187 = {
+				x = ITA_sen_x^187
+				y = ITA_sen_y^187
+				frame = ITA_sen_fr^187
+			}
+			ITA_senate_dot_188 = {
+				x = ITA_sen_x^188
+				y = ITA_sen_y^188
+				frame = ITA_sen_fr^188
+			}
+			ITA_senate_dot_189 = {
+				x = ITA_sen_x^189
+				y = ITA_sen_y^189
+				frame = ITA_sen_fr^189
+			}
+			ITA_senate_dot_190 = {
+				x = ITA_sen_x^190
+				y = ITA_sen_y^190
+				frame = ITA_sen_fr^190
+			}
+			ITA_senate_dot_191 = {
+				x = ITA_sen_x^191
+				y = ITA_sen_y^191
+				frame = ITA_sen_fr^191
+			}
+			ITA_senate_dot_192 = {
+				x = ITA_sen_x^192
+				y = ITA_sen_y^192
+				frame = ITA_sen_fr^192
+			}
+			ITA_senate_dot_193 = {
+				x = ITA_sen_x^193
+				y = ITA_sen_y^193
+				frame = ITA_sen_fr^193
+			}
+			ITA_senate_dot_194 = {
+				x = ITA_sen_x^194
+				y = ITA_sen_y^194
+				frame = ITA_sen_fr^194
+			}
+			ITA_senate_dot_195 = {
+				x = ITA_sen_x^195
+				y = ITA_sen_y^195
+				frame = ITA_sen_fr^195
+			}
+			ITA_senate_dot_196 = {
+				x = ITA_sen_x^196
+				y = ITA_sen_y^196
+				frame = ITA_sen_fr^196
+			}
+			ITA_senate_dot_197 = {
+				x = ITA_sen_x^197
+				y = ITA_sen_y^197
+				frame = ITA_sen_fr^197
+			}
+			ITA_senate_dot_198 = {
+				x = ITA_sen_x^198
+				y = ITA_sen_y^198
+				frame = ITA_sen_fr^198
+			}
+			ITA_senate_dot_199 = {
+				x = ITA_sen_x^199
+				y = ITA_sen_y^199
+				frame = ITA_sen_fr^199
+			}
+			ITA_legend_dot_0 = {
+				x = ITA_leg_x^0
+				y = ITA_leg_y^0
+				frame = ITA_leg_fr^0
+			}
+			ITA_legend_dot_1 = {
+				x = ITA_leg_x^1
+				y = ITA_leg_y^1
+				frame = ITA_leg_fr^1
+			}
+			ITA_legend_dot_2 = {
+				x = ITA_leg_x^2
+				y = ITA_leg_y^2
+				frame = ITA_leg_fr^2
+			}
+			ITA_legend_dot_3 = {
+				x = ITA_leg_x^3
+				y = ITA_leg_y^3
+				frame = ITA_leg_fr^3
+			}
+			ITA_legend_dot_4 = {
+				x = ITA_leg_x^4
+				y = ITA_leg_y^4
+				frame = ITA_leg_fr^4
+			}
+			ITA_legend_dot_5 = {
+				x = ITA_leg_x^5
+				y = ITA_leg_y^5
+				frame = ITA_leg_fr^5
+			}
+			ITA_legend_dot_6 = {
+				x = ITA_leg_x^6
+				y = ITA_leg_y^6
+				frame = ITA_leg_fr^6
+			}
+			ITA_legend_dot_7 = {
+				x = ITA_leg_x^7
+				y = ITA_leg_y^7
+				frame = ITA_leg_fr^7
+			}
+		}
+		ai_enabled = {
+			tag = ITA
+		}
+	}
+}

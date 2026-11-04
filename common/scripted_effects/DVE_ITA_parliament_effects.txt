@@ -1,0 +1,356 @@
+# DvE - Italian parliament: seats and vote shares for the ITA parliament window.
+# Recalculated weekly (DVE_INTL_on_actions.txt) and after each propaganda campaign.
+# Chamber 400 seats, Senate 200 seats. The 8 parties that run share the seats by
+# popularity. Cumulative rounding makes the totals add up exactly.
+
+ITA_parliament_recalc_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = ITA_parliament_layout_v2_done } }
+		ITA_parliament_seat_layout_effect = yes
+		set_country_flag = ITA_parliament_layout_v2_done
+	}
+	# raw popularity of the 14 groups (fractions)
+	set_temp_variable = { temp1 = party_popularity@totalitarian_socialism }
+	set_variable = { pm_p1 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@authoritarian_socialism }
+	set_variable = { pm_p2 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@progressive }
+	set_variable = { pm_p3 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@liberal }
+	set_variable = { pm_p4 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@centrist }
+	set_variable = { pm_p5 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@conservative }
+	set_variable = { pm_p6 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@reactionary }
+	set_variable = { pm_p7 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@authoritarianism }
+	set_variable = { pm_p8 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@vanguard_socialism }
+	set_variable = { pm_p9 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@revolutionary_socialism }
+	set_variable = { pm_p10 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@ultranationalism }
+	set_variable = { pm_p11 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@absolutism }
+	set_variable = { pm_p12 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@autocracy }
+	set_variable = { pm_p13 = temp1 }
+	set_temp_variable = { temp1 = party_popularity@fundamentalism }
+	set_variable = { pm_p14 = temp1 }
+	set_variable = { pm_part = 0 }
+	add_to_variable = { pm_part = pm_p1 }
+	add_to_variable = { pm_part = pm_p2 }
+	add_to_variable = { pm_part = pm_p3 }
+	add_to_variable = { pm_part = pm_p4 }
+	add_to_variable = { pm_part = pm_p5 }
+	add_to_variable = { pm_part = pm_p6 }
+	add_to_variable = { pm_part = pm_p7 }
+	add_to_variable = { pm_part = pm_p8 }
+	set_variable = { pm_all = pm_part }
+	add_to_variable = { pm_all = pm_p9 }
+	add_to_variable = { pm_all = pm_p10 }
+	add_to_variable = { pm_all = pm_p11 }
+	add_to_variable = { pm_all = pm_p12 }
+	add_to_variable = { pm_all = pm_p13 }
+	add_to_variable = { pm_all = pm_p14 }
+	if = {
+		limit = { check_variable = { pm_part > 0 } }
+		set_variable = { pm_run = 0 }
+		add_to_variable = { pm_run = pm_p1 }
+		set_variable = { pm_cs1 = pm_run }
+		divide_variable = { pm_cs1 = pm_part }
+		multiply_variable = { pm_cs1 = 400 }
+		round_variable = pm_cs1
+		set_variable = { pm_ss1 = pm_run }
+		divide_variable = { pm_ss1 = pm_part }
+		multiply_variable = { pm_ss1 = 200 }
+		round_variable = pm_ss1
+		set_variable = { pm_cp1 = pm_run }
+		divide_variable = { pm_cp1 = pm_part }
+		multiply_variable = { pm_cp1 = 100 }
+		round_variable = pm_cp1
+		add_to_variable = { pm_run = pm_p2 }
+		set_variable = { pm_cs2 = pm_run }
+		divide_variable = { pm_cs2 = pm_part }
+		multiply_variable = { pm_cs2 = 400 }
+		round_variable = pm_cs2
+		set_variable = { pm_ss2 = pm_run }
+		divide_variable = { pm_ss2 = pm_part }
+		multiply_variable = { pm_ss2 = 200 }
+		round_variable = pm_ss2
+		set_variable = { pm_cp2 = pm_run }
+		divide_variable = { pm_cp2 = pm_part }
+		multiply_variable = { pm_cp2 = 100 }
+		round_variable = pm_cp2
+		add_to_variable = { pm_run = pm_p3 }
+		set_variable = { pm_cs3 = pm_run }
+		divide_variable = { pm_cs3 = pm_part }
+		multiply_variable = { pm_cs3 = 400 }
+		round_variable = pm_cs3
+		set_variable = { pm_ss3 = pm_run }
+		divide_variable = { pm_ss3 = pm_part }
+		multiply_variable = { pm_ss3 = 200 }
+		round_variable = pm_ss3
+		set_variable = { pm_cp3 = pm_run }
+		divide_variable = { pm_cp3 = pm_part }
+		multiply_variable = { pm_cp3 = 100 }
+		round_variable = pm_cp3
+		add_to_variable = { pm_run = pm_p4 }
+		set_variable = { pm_cs4 = pm_run }
+		divide_variable = { pm_cs4 = pm_part }
+		multiply_variable = { pm_cs4 = 400 }
+		round_variable = pm_cs4
+		set_variable = { pm_ss4 = pm_run }
+		divide_variable = { pm_ss4 = pm_part }
+		multiply_variable = { pm_ss4 = 200 }
+		round_variable = pm_ss4
+		set_variable = { pm_cp4 = pm_run }
+		divide_variable = { pm_cp4 = pm_part }
+		multiply_variable = { pm_cp4 = 100 }
+		round_variable = pm_cp4
+		add_to_variable = { pm_run = pm_p5 }
+		set_variable = { pm_cs5 = pm_run }
+		divide_variable = { pm_cs5 = pm_part }
+		multiply_variable = { pm_cs5 = 400 }
+		round_variable = pm_cs5
+		set_variable = { pm_ss5 = pm_run }
+		divide_variable = { pm_ss5 = pm_part }
+		multiply_variable = { pm_ss5 = 200 }
+		round_variable = pm_ss5
+		set_variable = { pm_cp5 = pm_run }
+		divide_variable = { pm_cp5 = pm_part }
+		multiply_variable = { pm_cp5 = 100 }
+		round_variable = pm_cp5
+		add_to_variable = { pm_run = pm_p6 }
+		set_variable = { pm_cs6 = pm_run }
+		divide_variable = { pm_cs6 = pm_part }
+		multiply_variable = { pm_cs6 = 400 }
+		round_variable = pm_cs6
+		set_variable = { pm_ss6 = pm_run }
+		divide_variable = { pm_ss6 = pm_part }
+		multiply_variable = { pm_ss6 = 200 }
+		round_variable = pm_ss6
+		set_variable = { pm_cp6 = pm_run }
+		divide_variable = { pm_cp6 = pm_part }
+		multiply_variable = { pm_cp6 = 100 }
+		round_variable = pm_cp6
+		add_to_variable = { pm_run = pm_p7 }
+		set_variable = { pm_cs7 = pm_run }
+		divide_variable = { pm_cs7 = pm_part }
+		multiply_variable = { pm_cs7 = 400 }
+		round_variable = pm_cs7
+		set_variable = { pm_ss7 = pm_run }
+		divide_variable = { pm_ss7 = pm_part }
+		multiply_variable = { pm_ss7 = 200 }
+		round_variable = pm_ss7
+		set_variable = { pm_cp7 = pm_run }
+		divide_variable = { pm_cp7 = pm_part }
+		multiply_variable = { pm_cp7 = 100 }
+		round_variable = pm_cp7
+		add_to_variable = { pm_run = pm_p8 }
+		set_variable = { pm_cs8 = pm_run }
+		divide_variable = { pm_cs8 = pm_part }
+		multiply_variable = { pm_cs8 = 400 }
+		round_variable = pm_cs8
+		set_variable = { pm_ss8 = pm_run }
+		divide_variable = { pm_ss8 = pm_part }
+		multiply_variable = { pm_ss8 = 200 }
+		round_variable = pm_ss8
+		set_variable = { pm_cp8 = pm_run }
+		divide_variable = { pm_cp8 = pm_part }
+		multiply_variable = { pm_cp8 = 100 }
+		round_variable = pm_cp8
+		set_variable = { ITA_cam_1 = pm_cs1 }
+		set_variable = { ITA_sen_1 = pm_ss1 }
+		set_variable = { ITA_pp_1 = pm_cp1 }
+		set_variable = { ITA_cam_2 = pm_cs2 }
+		subtract_from_variable = { ITA_cam_2 = pm_cs1 }
+		set_variable = { ITA_sen_2 = pm_ss2 }
+		subtract_from_variable = { ITA_sen_2 = pm_ss1 }
+		set_variable = { ITA_pp_2 = pm_cp2 }
+		subtract_from_variable = { ITA_pp_2 = pm_cp1 }
+		set_variable = { ITA_cam_3 = pm_cs3 }
+		subtract_from_variable = { ITA_cam_3 = pm_cs2 }
+		set_variable = { ITA_sen_3 = pm_ss3 }
+		subtract_from_variable = { ITA_sen_3 = pm_ss2 }
+		set_variable = { ITA_pp_3 = pm_cp3 }
+		subtract_from_variable = { ITA_pp_3 = pm_cp2 }
+		set_variable = { ITA_cam_4 = pm_cs4 }
+		subtract_from_variable = { ITA_cam_4 = pm_cs3 }
+		set_variable = { ITA_sen_4 = pm_ss4 }
+		subtract_from_variable = { ITA_sen_4 = pm_ss3 }
+		set_variable = { ITA_pp_4 = pm_cp4 }
+		subtract_from_variable = { ITA_pp_4 = pm_cp3 }
+		set_variable = { ITA_cam_5 = pm_cs5 }
+		subtract_from_variable = { ITA_cam_5 = pm_cs4 }
+		set_variable = { ITA_sen_5 = pm_ss5 }
+		subtract_from_variable = { ITA_sen_5 = pm_ss4 }
+		set_variable = { ITA_pp_5 = pm_cp5 }
+		subtract_from_variable = { ITA_pp_5 = pm_cp4 }
+		set_variable = { ITA_cam_6 = pm_cs6 }
+		subtract_from_variable = { ITA_cam_6 = pm_cs5 }
+		set_variable = { ITA_sen_6 = pm_ss6 }
+		subtract_from_variable = { ITA_sen_6 = pm_ss5 }
+		set_variable = { ITA_pp_6 = pm_cp6 }
+		subtract_from_variable = { ITA_pp_6 = pm_cp5 }
+		set_variable = { ITA_cam_7 = pm_cs7 }
+		subtract_from_variable = { ITA_cam_7 = pm_cs6 }
+		set_variable = { ITA_sen_7 = pm_ss7 }
+		subtract_from_variable = { ITA_sen_7 = pm_ss6 }
+		set_variable = { ITA_pp_7 = pm_cp7 }
+		subtract_from_variable = { ITA_pp_7 = pm_cp6 }
+		set_variable = { ITA_cam_8 = pm_cs8 }
+		subtract_from_variable = { ITA_cam_8 = pm_cs7 }
+		set_variable = { ITA_sen_8 = pm_ss8 }
+		subtract_from_variable = { ITA_sen_8 = pm_ss7 }
+		set_variable = { ITA_pp_8 = pm_cp8 }
+		subtract_from_variable = { ITA_pp_8 = pm_cp7 }
+		ITA_parliament_seat_frames_effect = yes
+	}
+	else = {
+		set_variable = { ITA_cam_1 = 0 }
+		set_variable = { ITA_sen_1 = 0 }
+		set_variable = { ITA_pp_1 = 0 }
+		set_variable = { ITA_cam_2 = 0 }
+		set_variable = { ITA_sen_2 = 0 }
+		set_variable = { ITA_pp_2 = 0 }
+		set_variable = { ITA_cam_3 = 0 }
+		set_variable = { ITA_sen_3 = 0 }
+		set_variable = { ITA_pp_3 = 0 }
+		set_variable = { ITA_cam_4 = 0 }
+		set_variable = { ITA_sen_4 = 0 }
+		set_variable = { ITA_pp_4 = 0 }
+		set_variable = { ITA_cam_5 = 0 }
+		set_variable = { ITA_sen_5 = 0 }
+		set_variable = { ITA_pp_5 = 0 }
+		set_variable = { ITA_cam_6 = 0 }
+		set_variable = { ITA_sen_6 = 0 }
+		set_variable = { ITA_pp_6 = 0 }
+		set_variable = { ITA_cam_7 = 0 }
+		set_variable = { ITA_sen_7 = 0 }
+		set_variable = { ITA_pp_7 = 0 }
+		set_variable = { ITA_cam_8 = 0 }
+		set_variable = { ITA_sen_8 = 0 }
+		set_variable = { ITA_pp_8 = 0 }
+		ITA_parliament_seat_frames_reset_effect = yes
+	}
+	# share of the total consensus: the parties that run first, then the others
+	if = {
+		limit = { check_variable = { pm_all > 0 } }
+		set_variable = { pm_run2 = 0 }
+		add_to_variable = { pm_run2 = pm_p1 }
+		set_variable = { pm_ca1 = pm_run2 }
+		divide_variable = { pm_ca1 = pm_all }
+		multiply_variable = { pm_ca1 = 100 }
+		round_variable = pm_ca1
+		add_to_variable = { pm_run2 = pm_p2 }
+		set_variable = { pm_ca2 = pm_run2 }
+		divide_variable = { pm_ca2 = pm_all }
+		multiply_variable = { pm_ca2 = 100 }
+		round_variable = pm_ca2
+		add_to_variable = { pm_run2 = pm_p3 }
+		set_variable = { pm_ca3 = pm_run2 }
+		divide_variable = { pm_ca3 = pm_all }
+		multiply_variable = { pm_ca3 = 100 }
+		round_variable = pm_ca3
+		add_to_variable = { pm_run2 = pm_p4 }
+		set_variable = { pm_ca4 = pm_run2 }
+		divide_variable = { pm_ca4 = pm_all }
+		multiply_variable = { pm_ca4 = 100 }
+		round_variable = pm_ca4
+		add_to_variable = { pm_run2 = pm_p5 }
+		set_variable = { pm_ca5 = pm_run2 }
+		divide_variable = { pm_ca5 = pm_all }
+		multiply_variable = { pm_ca5 = 100 }
+		round_variable = pm_ca5
+		add_to_variable = { pm_run2 = pm_p6 }
+		set_variable = { pm_ca6 = pm_run2 }
+		divide_variable = { pm_ca6 = pm_all }
+		multiply_variable = { pm_ca6 = 100 }
+		round_variable = pm_ca6
+		add_to_variable = { pm_run2 = pm_p7 }
+		set_variable = { pm_ca7 = pm_run2 }
+		divide_variable = { pm_ca7 = pm_all }
+		multiply_variable = { pm_ca7 = 100 }
+		round_variable = pm_ca7
+		add_to_variable = { pm_run2 = pm_p8 }
+		set_variable = { pm_ca8 = pm_run2 }
+		divide_variable = { pm_ca8 = pm_all }
+		multiply_variable = { pm_ca8 = 100 }
+		round_variable = pm_ca8
+		add_to_variable = { pm_run2 = pm_p9 }
+		set_variable = { pm_ca9 = pm_run2 }
+		divide_variable = { pm_ca9 = pm_all }
+		multiply_variable = { pm_ca9 = 100 }
+		round_variable = pm_ca9
+		add_to_variable = { pm_run2 = pm_p10 }
+		set_variable = { pm_ca10 = pm_run2 }
+		divide_variable = { pm_ca10 = pm_all }
+		multiply_variable = { pm_ca10 = 100 }
+		round_variable = pm_ca10
+		add_to_variable = { pm_run2 = pm_p11 }
+		set_variable = { pm_ca11 = pm_run2 }
+		divide_variable = { pm_ca11 = pm_all }
+		multiply_variable = { pm_ca11 = 100 }
+		round_variable = pm_ca11
+		add_to_variable = { pm_run2 = pm_p12 }
+		set_variable = { pm_ca12 = pm_run2 }
+		divide_variable = { pm_ca12 = pm_all }
+		multiply_variable = { pm_ca12 = 100 }
+		round_variable = pm_ca12
+		add_to_variable = { pm_run2 = pm_p13 }
+		set_variable = { pm_ca13 = pm_run2 }
+		divide_variable = { pm_ca13 = pm_all }
+		multiply_variable = { pm_ca13 = 100 }
+		round_variable = pm_ca13
+		add_to_variable = { pm_run2 = pm_p14 }
+		set_variable = { pm_ca14 = pm_run2 }
+		divide_variable = { pm_ca14 = pm_all }
+		multiply_variable = { pm_ca14 = 100 }
+		round_variable = pm_ca14
+		set_variable = { ITA_pa_1 = pm_ca1 }
+		set_variable = { ITA_pa_2 = pm_ca2 }
+		subtract_from_variable = { ITA_pa_2 = pm_ca1 }
+		set_variable = { ITA_pa_3 = pm_ca3 }
+		subtract_from_variable = { ITA_pa_3 = pm_ca2 }
+		set_variable = { ITA_pa_4 = pm_ca4 }
+		subtract_from_variable = { ITA_pa_4 = pm_ca3 }
+		set_variable = { ITA_pa_5 = pm_ca5 }
+		subtract_from_variable = { ITA_pa_5 = pm_ca4 }
+		set_variable = { ITA_pa_6 = pm_ca6 }
+		subtract_from_variable = { ITA_pa_6 = pm_ca5 }
+		set_variable = { ITA_pa_7 = pm_ca7 }
+		subtract_from_variable = { ITA_pa_7 = pm_ca6 }
+		set_variable = { ITA_pa_8 = pm_ca8 }
+		subtract_from_variable = { ITA_pa_8 = pm_ca7 }
+		set_variable = { ITA_pa_9 = pm_ca9 }
+		subtract_from_variable = { ITA_pa_9 = pm_ca8 }
+		set_variable = { ITA_pa_10 = pm_ca10 }
+		subtract_from_variable = { ITA_pa_10 = pm_ca9 }
+		set_variable = { ITA_pa_11 = pm_ca11 }
+		subtract_from_variable = { ITA_pa_11 = pm_ca10 }
+		set_variable = { ITA_pa_12 = pm_ca12 }
+		subtract_from_variable = { ITA_pa_12 = pm_ca11 }
+		set_variable = { ITA_pa_13 = pm_ca13 }
+		subtract_from_variable = { ITA_pa_13 = pm_ca12 }
+		set_variable = { ITA_pa_14 = pm_ca14 }
+		subtract_from_variable = { ITA_pa_14 = pm_ca13 }
+	}
+	else = {
+		set_variable = { ITA_pa_1 = 0 }
+		set_variable = { ITA_pa_2 = 0 }
+		set_variable = { ITA_pa_3 = 0 }
+		set_variable = { ITA_pa_4 = 0 }
+		set_variable = { ITA_pa_5 = 0 }
+		set_variable = { ITA_pa_6 = 0 }
+		set_variable = { ITA_pa_7 = 0 }
+		set_variable = { ITA_pa_8 = 0 }
+		set_variable = { ITA_pa_9 = 0 }
+		set_variable = { ITA_pa_10 = 0 }
+		set_variable = { ITA_pa_11 = 0 }
+		set_variable = { ITA_pa_12 = 0 }
+		set_variable = { ITA_pa_13 = 0 }
+		set_variable = { ITA_pa_14 = 0 }
+	}
+}
