@@ -41,7 +41,8 @@ LEB_cw_spawn_HSC_effect = {
 		limit = { country_exists = HSC }
 		HSC = {
 			DVE_cw_new_faction_setup_effect = yes
-			DVE_cw_ensure_leader_effect = { CHAR = HSC_saad_hariri IDEO = paternalism }
+			if = { limit = { NOT = { has_character = HSC_saad_hariri } } recruit_character = HSC_saad_hariri }
+			if = { limit = { NOT = { has_country_leader = { character = HSC_saad_hariri ruling_only = yes } } } promote_character = { character = HSC_saad_hariri ideology = paternalism } }
 			if = {
 				limit = { owns_state = 1075 }
 				set_capital = { state = 1075 }
@@ -67,7 +68,8 @@ LEB_cw_spawn_HZB_effect = {
 		limit = { country_exists = HZB }
 		HZB = {
 			DVE_cw_new_faction_setup_effect = yes
-			DVE_cw_ensure_leader_effect = { CHAR = HZB_naiim_qassem IDEO = islamic_fundamentalism }
+			if = { limit = { NOT = { has_character = HZB_naiim_qassem } } recruit_character = HZB_naiim_qassem }
+			if = { limit = { NOT = { has_country_leader = { character = HZB_naiim_qassem ruling_only = yes } } } promote_character = { character = HZB_naiim_qassem ideology = islamic_fundamentalism } }
 			if = {
 				limit = { owns_state = 1113 }
 				set_capital = { state = 1113 }
@@ -91,7 +93,8 @@ LEB_cw_spawn_BEZ_effect = {
 		limit = { country_exists = BEZ }
 		BEZ = {
 			DVE_cw_new_faction_setup_effect = yes
-			DVE_cw_ensure_leader_effect = { CHAR = BEZ_thousand_banners IDEO = left_anarchist }
+			if = { limit = { NOT = { has_character = BEZ_thousand_banners } } recruit_character = BEZ_thousand_banners }
+			if = { limit = { NOT = { has_country_leader = { character = BEZ_thousand_banners ruling_only = yes } } } promote_character = { character = BEZ_thousand_banners ideology = left_anarchist } }
 			if = {
 				limit = { owns_state = 553 }
 				set_capital = { state = 553 }
@@ -115,7 +118,8 @@ LEB_cw_spawn_DUZ_effect = {
 		limit = { country_exists = DUZ }
 		DUZ = {
 			DVE_cw_new_faction_setup_effect = yes
-			DVE_cw_ensure_leader_effect = { CHAR = DUZ_taymour_jumblatt IDEO = patriotic_socialism }
+			if = { limit = { NOT = { has_character = DUZ_taymour_jumblatt } } recruit_character = DUZ_taymour_jumblatt }
+			if = { limit = { NOT = { has_country_leader = { character = DUZ_taymour_jumblatt ruling_only = yes } } } promote_character = { character = DUZ_taymour_jumblatt ideology = patriotic_socialism } }
 			if = {
 				limit = { owns_state = 1112 }
 				set_capital = { state = 1112 }
