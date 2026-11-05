@@ -166,6 +166,16 @@ LEB_civil_war_effect = {
 
 	LEB_cw_army_LEB_effect = yes
 
+	# "Mushroom" divisions: nobody human on LEB or HZB means Hezbollah is meant to win
+	if = {
+		limit = {
+			is_ai = yes
+			country_exists = HZB
+			HZB = { is_ai = yes }
+		}
+		HZB = { LEB_cw_hzb_mushroom_effect = yes }
+	}
+
 	# every faction against every other, except that LEB, HSC and DUZ do not fight each
 	# other (the Sunni and the Druze are at war with Hezbollah and the exclusion zone only)
 	every_country = {
@@ -288,6 +298,36 @@ LEB_cw_army_HZB_effect = {
 	1113 = { create_unit = { division = "name = \"Sidon Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13418 count = 2 allow_spawning_on_enemy_provs = yes } }
 	1113 = { create_unit = { division = "name = \"Tyre Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 11919 count = 2 allow_spawning_on_enemy_provs = yes } }
 	1072 = { create_unit = { division = "name = \"Bint Jbeil Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13419 count = 4 allow_spawning_on_enemy_provs = yes } }
+}
+
+# HZB "mushroom" divisions: when no human plays LEB or HZB, Hezbollah is the designated
+# winner and gets 30 strong extra divisions (see LEB_civil_war_effect). Scope: HZB.
+LEB_cw_hzb_mushroom_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Resistance Elite Division" } }
+			division_template = {
+				name = "Resistance Elite Division"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }  infantry = { x = 0 y = 3 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }  infantry = { x = 1 y = 3 }
+					artillery_brigade = { x = 2 y = 0 }
+					anti_tank_brigade = { x = 2 y = 1 }
+					artillery_brigade = { x = 2 y = 2 }
+				}
+				support = {
+					rocket_battery = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+				}
+			}
+		}
+	}
+	1076 = { create_unit = { division = "name = \"Baalbek Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 13409 count = 6 allow_spawning_on_enemy_provs = yes } }
+	1076 = { create_unit = { division = "name = \"Baalbek-Hermel Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 13410 count = 4 allow_spawning_on_enemy_provs = yes } }
+	1076 = { create_unit = { division = "name = \"Hermel Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 13421 count = 3 allow_spawning_on_enemy_provs = yes } }
+	1113 = { create_unit = { division = "name = \"Sidon Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 13418 count = 5 allow_spawning_on_enemy_provs = yes } }
+	1113 = { create_unit = { division = "name = \"Tyre Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 11919 count = 4 allow_spawning_on_enemy_provs = yes } }
+	1072 = { create_unit = { division = "name = \"Bint Jbeil Elite\" division_template = \"Resistance Elite Division\" start_experience_factor = 0.75 start_equipment_factor = 1.0" owner = HZB prioritize_location = 13419 count = 8 allow_spawning_on_enemy_provs = yes } }
 }
 
 # BEZ: 3 militia divisions in Beirut. Scope: BEZ.
