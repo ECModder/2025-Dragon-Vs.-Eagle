@@ -3,6 +3,12 @@
 # Recalculated weekly (on_actions) and when opened.
 
 INT_parliament_recalc_effect = {
+	# seat positions, once
+	if = {
+		limit = { NOT = { has_country_flag = INT_parliament_layout_done } }
+		INT_parliament_seat_layout_effect = yes
+		set_country_flag = INT_parliament_layout_done
+	}
 	# popularity of the three relevant ideologies (fractions)
 	set_temp_variable = { temp1 = party_popularity@vanguard_socialism }
 	set_variable = { INT_p_int = temp1 }
@@ -34,26 +40,27 @@ INT_parliament_recalc_effect = {
 		divide_variable = { INT_cc_max = INT_p_sum }
 		multiply_variable = { INT_cc_max = 6000 }
 		round_variable = INT_cc_max
-		# Fix rounding errors (ensure total = 6000)
+		# Fix rounding errors: the Internationalist block takes the difference so the total is 6000
 		set_variable = { INT_cc_total = INT_cc_int }
 		add_to_variable = { INT_cc_total = INT_cc_rev }
 		add_to_variable = { INT_cc_total = INT_cc_max }
-		if = {
-			limit = { check_variable = { INT_cc_total < 6000 } }
-			subtract_from_variable = { INT_cc_int = INT_cc_total }
-			subtract_from_variable = { INT_cc_int = 6000 }
-			multiply_variable = { INT_cc_int = -1 }
-		}
-		else_if = {
-			limit = { check_variable = { INT_cc_total > 6000 } }
-			subtract_from_variable = { INT_cc_int = INT_cc_total }
-			subtract_from_variable = { INT_cc_int = 6000 }
-		}
+		add_to_variable = { INT_cc_int = 6000 }
+		subtract_from_variable = { INT_cc_int = INT_cc_total }
+		# seat dots: one dot = 10 delegates; cumulative thresholds give the colour of each dot
+		set_variable = { INT_cs1 = INT_cc_int }
+		divide_variable = { INT_cs1 = 10 }
+		round_variable = INT_cs1
+		set_variable = { INT_cs2 = INT_cc_int }
+		add_to_variable = { INT_cs2 = INT_cc_rev }
+		divide_variable = { INT_cs2 = 10 }
+		round_variable = INT_cs2
+		INT_parliament_seat_frames_effect = yes
 	}
 	else = {
 		set_variable = { INT_cc_int = 0 }
 		set_variable = { INT_cc_rev = 0 }
 		set_variable = { INT_cc_max = 0 }
+		INT_parliament_seat_frames_reset_effect = yes
 	}
 
 	# CentralComm: fixed 32 members (26 Int, 4 Rev, 2 Max)

@@ -91,21 +91,3 @@ LEB_cw_emergency_coalition_politics_effect = {
 		add_popularity = { ideology = authoritarianism popularity = 0.05 }
 	}
 }
-
-# Scope: any faction tag, right after DVE_cw_new_faction_setup_effect.
-# Belt and braces for the "leaderless at war start" bug: the leader is
-# recruited in the history file, this only repairs a tag that has none.
-# Usage: HSC = { DVE_cw_ensure_leader_effect = { CHAR = HSC_saad_hariri IDEO = paternalism } }
-#   HZB: HZB_naiim_qassem / islamic_fundamentalism
-#   DUZ: DUZ_taymour_jumblatt / patriotic_socialism
-#   BEZ: BEZ_thousand_banners / left_anarchist
-DVE_cw_ensure_leader_effect = {
-	if = {
-		limit = { NOT = { has_character = $CHAR$ } }
-		recruit_character = $CHAR$
-	}
-	if = {
-		limit = { NOT = { has_country_leader = { character = $CHAR$ ruling_only = yes } } }
-		promote_character = { character = $CHAR$ ideology = $IDEO$ }
-	}
-}

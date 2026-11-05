@@ -1,4 +1,18 @@
-# DvE - INT parliament category. Opened from scripted gui, shows Central Council & CentralComm.
+# DvE - INT parliament: the decision category that holds the parliament window.
+# Unlocked by focus INT_pol_lotta_comunista_majority (flag INT_parliament_unlocked).
+# The panel is the scripted gui INT_parliament_open (common/scripted_guis/DVE_INT_parliament_scripted_gui.txt).
+
 INT_parliament_category = {
+
+	icon = GFX_decision_category_generic_political_actions
 	scripted_gui = INT_parliament_open
+	priority = 80
+	visible_when_empty = yes
+
+	allowed = { tag = INT }
+
+	visible = {
+		tag = INT
+		has_country_flag = INT_parliament_unlocked
+	}
 }
