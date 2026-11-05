@@ -132,6 +132,8 @@ LEB_cw_spawn_DUZ_effect = {
 # Runs in LEB's scope from dve_lebcw.1 (ROOT = LEB).
 LEB_civil_war_effect = {
 	set_global_flag = LEB_civil_war
+	# wartime name and flag of the government (cosmetic tag LEB_GNU)
+	set_cosmetic_tag = LEB_GNU
 	add_stability = -0.20
 	add_war_support = 0.10
 
@@ -159,20 +161,25 @@ LEB_civil_war_effect = {
 		}
 	}
 
-	# Adwan runs the emergency administration, Aoun replaces him
-	# in 30 days (dve_lebcw.3); Geagea stays as fallback leader
+	# General Aoun leads the emergency administration (reactionary / military_democracy)
 	LEB_cw_adwan_takes_over_effect = yes
-	country_event = { id = dve_lebcw.3 days = 30 }
 
 	LEB_cw_army_LEB_effect = yes
 
-	# every faction against every other
+	# every faction against every other, except that LEB, HSC and DUZ do not fight each
+	# other (the Sunni and the Druze are at war with Hezbollah and the exclusion zone only)
 	every_country = {
 		limit = { DVE_cw_lebanon = yes }
 		every_country = {
 			limit = {
 				DVE_cw_lebanon = yes
 				NOT = { tag = PREV }
+				NOT = {
+					AND = {
+						OR = { tag = LEB tag = HSC tag = DUZ }
+						PREV = { OR = { tag = LEB tag = HSC tag = DUZ } }
+					}
+				}
 				NOT = { has_war_with = PREV }
 				NOT = { is_in_faction_with = PREV }
 			}
@@ -240,7 +247,7 @@ LEB_cw_army_HSC_effect = {
 	1075 = { create_unit = { division = "name = \"Tripoli Brigade\" division_template = \"Salvation Council Brigade\" start_experience_factor = 0.25 start_equipment_factor = 0.75" owner = HSC prioritize_location = 1108 count = 4 allow_spawning_on_enemy_provs = yes } }
 }
 
-# HZB: 12 divisions, the best army after LEB's, with artillery,
+# HZB: 14 divisions, the best army after LEB's, with artillery,
 # anti-tank and rocket support. Scope: HZB.
 LEB_cw_army_HZB_effect = {
 	# anti-tank guns and rockets need their equipment unlocked
@@ -275,12 +282,12 @@ LEB_cw_army_HZB_effect = {
 		add_equipment_to_stockpile = { type = anti_tank_equipment amount = 250 }
 		add_equipment_to_stockpile = { type = rocket_artillery_equipment amount = 150 }
 	}
-	1076 = { create_unit = { division = "name = \"Baalbek Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13409 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1076 = { create_unit = { division = "name = \"Baalbek Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13409 count = 3 allow_spawning_on_enemy_provs = yes } }
 	1076 = { create_unit = { division = "name = \"Baalbek-Hermel Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13410 count = 2 allow_spawning_on_enemy_provs = yes } }
 	1076 = { create_unit = { division = "name = \"Hermel Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13421 count = 1 allow_spawning_on_enemy_provs = yes } }
 	1113 = { create_unit = { division = "name = \"Sidon Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13418 count = 2 allow_spawning_on_enemy_provs = yes } }
 	1113 = { create_unit = { division = "name = \"Tyre Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 11919 count = 2 allow_spawning_on_enemy_provs = yes } }
-	1072 = { create_unit = { division = "name = \"Bint Jbeil Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13419 count = 3 allow_spawning_on_enemy_provs = yes } }
+	1072 = { create_unit = { division = "name = \"Bint Jbeil Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13419 count = 4 allow_spawning_on_enemy_provs = yes } }
 }
 
 # BEZ: 3 militia divisions in Beirut. Scope: BEZ.
@@ -339,14 +346,16 @@ LEB_emergency_coalition_effect = {
 		set_global_flag = LEB_emergency_coalition
 
 		# peace first: the wars stop before anybody joins
-		if = { limit = { country_exists = HSC } white_peace = HSC }
-		if = { limit = { country_exists = DUZ } white_peace = DUZ }
+		if = { limit = { country_exists = HSC has_war_with = HSC } white_peace = HSC }
+		if = { limit = { country_exists = DUZ has_war_with = DUZ } white_peace = DUZ }
 		if = {
 			limit = {
 				country_exists = HSC
 				country_exists = DUZ
 			}
-			HSC = { white_peace = DUZ }
+			HSC = {
+				if = { limit = { has_war_with = DUZ } white_peace = DUZ }
+			}
 		}
 
 		# one faction led by LEB
@@ -574,6 +583,7 @@ LEB_civil_war_reset_effect = {
 
 	clr_global_flag = LEB_civil_war
 	clr_global_flag = LEB_emergency_coalition
+	drop_cosmetic_tag = yes
 	clr_country_flag = LEB_emergency_administration
 	clr_country_flag = LEB_aoun_in_charge
 	clr_country_flag = LEB_cw_coalition_politics_done

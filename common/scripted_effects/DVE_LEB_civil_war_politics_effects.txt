@@ -8,19 +8,21 @@
 # ============================================================
 
 # Scope: LEB. Run once when the war starts (from LEB_civil_war_effect).
-# Geagea (conservatism, created in the LEB history) stays as fallback
-# leader of the conservative party, so LEB is never leaderless.
+# General Joseph Aoun heads the emergency administration: reactionary group,
+# sub-ideology military_democracy (martial law, institutions kept, no elections
+# until the war ends). Hariri (reactionary) and Geagea (conservative) stay in
+# the LEB history as fallback party leaders, so LEB is never leaderless.
 LEB_cw_adwan_takes_over_effect = {
-
-	# Lebanese Forces vice president leads the emergency administration.
 	if = {
-		limit = { NOT = { has_character = LEB_georges_adwan } }
-		recruit_character = LEB_georges_adwan
+		limit = { NOT = { has_character = LEB_Aoun } }
+		recruit_character = LEB_Aoun
 	}
-
-	# Martial law, but the institutions stay: LF-led coalition, no elections until the war ends.
+	# Wartime picture (beret), registered in interface/DVE_LEB_leaders.gfx.
+	LEB_Aoun = {
+		set_portraits = { civilian = { large = GFX_portrait_leb_aoun_general } }
+	}
 	set_politics = {
-		ruling_party = conservative
+		ruling_party = reactionary
 		elections_allowed = no
 	}
 	set_popularities = {
@@ -30,9 +32,9 @@ LEB_cw_adwan_takes_over_effect = {
 		revolutionary_socialism = 1
 		progressive = 8
 		liberal = 7
-		centrist = 20
-		conservative = 41
-		reactionary = 6
+		centrist = 6
+		conservative = 20
+		reactionary = 41
 		authoritarianism = 3
 		autocracy = 4
 		absolutism = 2
@@ -41,31 +43,16 @@ LEB_cw_adwan_takes_over_effect = {
 	}
 	set_party_name = { ideology = fundamentalism name = "[Banned] Hezbollah" long_name = "[Banned] Hezbollah" }
 
-	# After the ruling party is set: head of the (now ruling) LF party = country leader.
-	promote_character = { character = LEB_georges_adwan ideology = christian_democracy }
+	# After the ruling party is set: Aoun (second role of LEB_Aoun) = country leader.
+	promote_character = { character = LEB_Aoun ideology = military_democracy }
 
 	set_country_flag = LEB_emergency_administration
+	set_country_flag = LEB_aoun_in_charge
 }
 
 # Same effect under the name of the first draft.
 LEB_cw_government_effect = {
 	LEB_cw_adwan_takes_over_effect = yes
-}
-
-# Scope: LEB. Fire ~30 days after the war starts (hidden event dve_lebcw.3).
-# "Shortly replaced by former president and General Joseph Aoun".
-LEB_cw_aoun_takes_over_effect = {
-	if = {
-		limit = { NOT = { has_character = LEB_Aoun } }
-		recruit_character = LEB_Aoun
-	}
-	# Wartime picture (beret), registered in interface/DVE_LEB_leaders.gfx.
-	LEB_Aoun = {
-		set_portraits = { civilian = { large = GFX_portrait_leb_aoun_general } }
-	}
-	# Second role of LEB_Aoun (conservative group, see common/characters/DVE_LEB.txt).
-	promote_character = { character = LEB_Aoun ideology = constitutionalist }
-	set_country_flag = LEB_aoun_in_charge
 }
 
 # Scope: LEB. Beirut goes to the exclusion zone: the capital moves.

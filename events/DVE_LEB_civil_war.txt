@@ -44,25 +44,3 @@ news_event = {
 		name = dve_lebcw.2.a
 	}
 }
-
-# 30 days after the war starts (LEB_civil_war_effect): General Aoun
-# replaces Georges Adwan. Fires in LEB scope even if a human moved to HZB.
-country_event = {
-	id = dve_lebcw.3
-	title = dve_lebcw.3.t
-	desc = dve_lebcw.3.d
-	picture = GFX_report_event_generic_army
-
-	is_triggered_only = yes
-
-	trigger = {
-		has_global_flag = LEB_civil_war
-		has_country_flag = LEB_emergency_administration
-		NOT = { has_country_flag = LEB_aoun_in_charge }
-	}
-
-	option = {
-		name = dve_lebcw.3.a
-		LEB_cw_aoun_takes_over_effect = yes
-	}
-}
