@@ -1315,3 +1315,68 @@ DVE_debug_syria_category = {
 		ai_will_do = { base = 0 }
 	}
 }
+
+
+# ============================================================
+#   SECOND LEBANESE CIVIL WAR - LEB, HSC, HZB, BEZ and DUZ
+#   The territory, armies and wars are in common/scripted_effects/
+#   DVE_LEB_civil_war_effects.txt. The future Lebanese focus tree
+#   calls the same start and coalition effects.
+# ============================================================
+DVE_debug_lebanon_category = {
+
+	# Fires the war-start news event: the country breaks up at once.
+	DVE_debug_lebanon_civil_war = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			NOT = { has_global_flag = LEB_civil_war }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			LEB_civil_war_start_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# HSC and DUZ make peace and join the Government in one faction.
+	DVE_debug_lebanon_emergency_coalition = {
+		icon = GFX_decision_generic_political_address
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		available = {
+			has_global_flag = LEB_civil_war
+			NOT = { has_global_flag = LEB_emergency_coalition }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			LEB_emergency_coalition_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# Lebanon takes everything back, so the test can be run again.
+	DVE_debug_lebanon_reset = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = LEB }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			LEB_civil_war_reset_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+}

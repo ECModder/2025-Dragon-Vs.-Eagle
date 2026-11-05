@@ -1,0 +1,270 @@
+guiTypes = {
+
+	containerWindowType = {
+		name = "INT_parliament_open_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 76 }
+
+		buttonType = {
+			name = "INT_Parliament_GUI"
+			quadTextureSprite = "GFX_INT_parliament_button"
+			orientation = center
+			centerposition = yes
+			position = { x = 0 y = 0 }
+			pdx_tooltip = "INT_parl_open_tooltip"
+		}
+	}
+
+	containerWindowType = {
+		name = "INT_parliament_window"
+		size = { width = 1100 height = 720 }
+		position = { x = 130 y = 24 }
+		moveable = yes
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_bg"
+		}
+		buttonType = {
+			name = "close_button"
+			position = { x = -45 y = 14 }
+			quadTextureSprite = "GFX_closebutton"
+			buttonFont = "hoi_24header"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
+
+		# Title
+		textType = {
+			name = "INT_parl_title_text"
+			position = { x = 50 y = 30 }
+			text = "INT_parl_title"
+			font = "hoi_24header"
+			format = center
+			maxWidth = 1000
+		}
+
+		# Central Council section
+		textType = {
+			name = "INT_parl_cc_header"
+			position = { x = 50 y = 90 }
+			text = "INT_parl_cc_header"
+			font = "hoi_20header"
+			format = left
+			maxWidth = 1000
+		}
+
+		# Central Council - Internationalist
+		textType = {
+			name = "INT_parl_cc_int_name"
+			position = { x = 70 y = 130 }
+			text = "INT_parl_faction_int"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cc_int_seats"
+			position = { x = 400 y = 130 }
+			text = "[?INT_cc_int]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cc_int_pct"
+			position = { x = 600 y = 130 }
+			text = "[?INT_pp_int]%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# Central Council - Rev. Communist
+		textType = {
+			name = "INT_parl_cc_rev_name"
+			position = { x = 70 y = 170 }
+			text = "INT_parl_faction_rev"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cc_rev_seats"
+			position = { x = 400 y = 170 }
+			text = "[?INT_cc_rev]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cc_rev_pct"
+			position = { x = 600 y = 170 }
+			text = "[?INT_pp_rev]%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# Central Council - Maximalist
+		textType = {
+			name = "INT_parl_cc_max_name"
+			position = { x = 70 y = 210 }
+			text = "INT_parl_faction_max"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cc_max_seats"
+			position = { x = 400 y = 210 }
+			text = "[?INT_cc_max]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cc_max_pct"
+			position = { x = 600 y = 210 }
+			text = "[?INT_pp_max]%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# Central Council Total
+		textType = {
+			name = "INT_parl_cc_total_label"
+			position = { x = 70 y = 250 }
+			text = "INT_parl_total"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cc_total_seats"
+			position = { x = 400 y = 250 }
+			text = "6000"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+
+		# CentralComm section
+		textType = {
+			name = "INT_parl_cmc_header"
+			position = { x = 50 y = 320 }
+			text = "INT_parl_cmc_header"
+			font = "hoi_20header"
+			format = left
+			maxWidth = 1000
+		}
+
+		# CentralComm - Internationalist (26 fixed)
+		textType = {
+			name = "INT_parl_cmc_int_name"
+			position = { x = 70 y = 360 }
+			text = "INT_parl_faction_int"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cmc_int_seats"
+			position = { x = 400 y = 360 }
+			text = "[?INT_cmc_int]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cmc_int_pct"
+			position = { x = 600 y = 360 }
+			text = "81%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# CentralComm - Rev. Communist (4 fixed)
+		textType = {
+			name = "INT_parl_cmc_rev_name"
+			position = { x = 70 y = 400 }
+			text = "INT_parl_faction_rev"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cmc_rev_seats"
+			position = { x = 400 y = 400 }
+			text = "[?INT_cmc_rev]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cmc_rev_pct"
+			position = { x = 600 y = 400 }
+			text = "13%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# CentralComm - Maximalist (2 fixed)
+		textType = {
+			name = "INT_parl_cmc_max_name"
+			position = { x = 70 y = 440 }
+			text = "INT_parl_faction_max"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cmc_max_seats"
+			position = { x = 400 y = 440 }
+			text = "[?INT_cmc_max]"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+		textType = {
+			name = "INT_parl_cmc_max_pct"
+			position = { x = 600 y = 440 }
+			text = "6%"
+			font = "hoi_18"
+			format = right
+			maxWidth = 100
+		}
+
+		# CentralComm Total
+		textType = {
+			name = "INT_parl_cmc_total_label"
+			position = { x = 70 y = 480 }
+			text = "INT_parl_total"
+			font = "hoi_18"
+			format = left
+			maxWidth = 300
+		}
+		textType = {
+			name = "INT_parl_cmc_total_seats"
+			position = { x = 400 y = 480 }
+			text = "32"
+			font = "hoi_18"
+			format = right
+			maxWidth = 150
+		}
+
+		# Note about weekly recalculation
+		textType = {
+			name = "INT_parl_note"
+			position = { x = 50 y = 560 }
+			text = "INT_parl_note"
+			font = "hoi_14"
+			format = left
+			maxWidth = 1000
+		}
+	}
+}

@@ -1,0 +1,576 @@
+# ============================================================
+#   DvE - SECOND LEBANESE CIVIL WAR
+#   Five factions, every one against every other:
+#     LEB  Lebanese Government: Mount Lebanon (1074), Bekaa (1073)
+#     HSC  Hariri Salvation Council: Tripoli-Akkar (1075)
+#     HZB  Islamic Resistance in Lebanon: Baalbek-Hermel (1076),
+#          Al-Janoub (1113), Aqsa Al-Janoub (1072)
+#     BEZ  Beirut Exclusion Zone: Beirut (553)
+#     DUZ  Druze Mountain Authority: Chouf-Aley (1112)
+#   No date: the future Lebanese focus tree (or the debug decision)
+#   calls LEB_civil_war_start_effect, which fires dve_lebcw.1 in LEB
+#   scope. Politics and leaders: DVE_LEB_civil_war_politics_effects.txt.
+#   Every effect below runs in LEB scope with ROOT = LEB, except
+#   the army effects, which run in the scope of their own tag.
+# ============================================================
+
+# Starts the war from anywhere (focus, event, debug).
+LEB_civil_war_start_effect = {
+	if = {
+		limit = {
+			country_exists = LEB
+			NOT = { has_global_flag = LEB_civil_war }
+		}
+		LEB = { news_event = { id = dve_lebcw.1 } }
+	}
+}
+
+# --- Spawn effects: states and cores, kit, leader, capital, army ---
+
+LEB_cw_spawn_HSC_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1075 # Tripoli-Akkar
+			}
+		}
+		add_core_of = HSC
+		HSC = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = HSC }
+		HSC = {
+			DVE_cw_new_faction_setup_effect = yes
+			DVE_cw_ensure_leader_effect = { CHAR = HSC_saad_hariri IDEO = paternalism }
+			if = {
+				limit = { owns_state = 1075 }
+				set_capital = { state = 1075 }
+			}
+			LEB_cw_army_HSC_effect = yes
+		}
+	}
+}
+
+LEB_cw_spawn_HZB_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1076 # Baalbek-Hermel
+				state = 1113 # Al-Janoub
+				state = 1072 # Aqsa Al-Janoub
+			}
+		}
+		add_core_of = HZB
+		HZB = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = HZB }
+		HZB = {
+			DVE_cw_new_faction_setup_effect = yes
+			DVE_cw_ensure_leader_effect = { CHAR = HZB_naiim_qassem IDEO = islamic_fundamentalism }
+			if = {
+				limit = { owns_state = 1113 }
+				set_capital = { state = 1113 }
+			}
+			LEB_cw_army_HZB_effect = yes
+		}
+	}
+}
+
+LEB_cw_spawn_BEZ_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 553 # Beirut
+			}
+		}
+		add_core_of = BEZ
+		BEZ = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = BEZ }
+		BEZ = {
+			DVE_cw_new_faction_setup_effect = yes
+			DVE_cw_ensure_leader_effect = { CHAR = BEZ_thousand_banners IDEO = left_anarchist }
+			if = {
+				limit = { owns_state = 553 }
+				set_capital = { state = 553 }
+			}
+			LEB_cw_army_BEZ_effect = yes
+		}
+	}
+}
+
+LEB_cw_spawn_DUZ_effect = {
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1112 # Chouf-Aley
+			}
+		}
+		add_core_of = DUZ
+		DUZ = { transfer_state = PREV }
+	}
+	if = {
+		limit = { country_exists = DUZ }
+		DUZ = {
+			DVE_cw_new_faction_setup_effect = yes
+			DVE_cw_ensure_leader_effect = { CHAR = DUZ_taymour_jumblatt IDEO = patriotic_socialism }
+			if = {
+				limit = { owns_state = 1112 }
+				set_capital = { state = 1112 }
+			}
+			LEB_cw_army_DUZ_effect = yes
+		}
+	}
+}
+
+# Runs in LEB's scope from dve_lebcw.1 (ROOT = LEB).
+LEB_civil_war_effect = {
+	set_global_flag = LEB_civil_war
+	add_stability = -0.20
+	add_war_support = 0.10
+
+	# territory, kit, leader and army of the four breakaway factions
+	LEB_cw_spawn_HSC_effect = yes
+	LEB_cw_spawn_HZB_effect = yes
+	LEB_cw_spawn_BEZ_effect = yes
+	LEB_cw_spawn_DUZ_effect = yes
+
+	# Beirut is gone, so the capital moves (politics effects file)
+	LEB_cw_capital_effect = yes
+
+	# Hezbollah's national spirits follow Hezbollah
+	if = {
+		limit = { country_exists = HZB }
+		if = {
+			limit = { has_idea = LEB_parallel_institutions }
+			remove_ideas = LEB_parallel_institutions
+			HZB = { add_ideas = LEB_parallel_institutions }
+		}
+		if = {
+			limit = { has_idea = LEB_shadow_of_litani }
+			remove_ideas = LEB_shadow_of_litani
+			HZB = { add_ideas = LEB_shadow_of_litani }
+		}
+	}
+
+	# Adwan runs the emergency administration, Aoun replaces him
+	# in 30 days (dve_lebcw.3); Geagea stays as fallback leader
+	LEB_cw_adwan_takes_over_effect = yes
+	country_event = { id = dve_lebcw.3 days = 30 }
+
+	LEB_cw_army_LEB_effect = yes
+
+	# every faction against every other
+	every_country = {
+		limit = { DVE_cw_lebanon = yes }
+		every_country = {
+			limit = {
+				DVE_cw_lebanon = yes
+				NOT = { tag = PREV }
+				NOT = { has_war_with = PREV }
+				NOT = { is_in_faction_with = PREV }
+			}
+			PREV = { declare_war_on = { target = PREV type = annex_everything } }
+		}
+	}
+
+	every_country = {
+		limit = { NOT = { DVE_cw_lebanon = yes } }
+		news_event = { id = dve_lebcw.2 hours = 6 }
+	}
+}
+
+# --- Armies. Nobody has a start OOB, so every division is created here. ---
+
+# LEB: 10 divisions of regular army. Scope: LEB.
+LEB_cw_army_LEB_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Lebanese Army Brigade" } }
+			division_template = {
+				name = "Lebanese Army Brigade"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+					artillery_brigade = { x = 2 y = 0 }
+				}
+				support = {
+					recon = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+	# LEB has no OOB and no stockpile: the kit of the new tags (DVE_cw_new_faction_setup_effect),
+	# minus the anti-tank and anti-air lines, whose tech LEB does not have
+	if = {
+		limit = { NOT = { has_country_flag = LEB_cw_kit_given } }
+		set_country_flag = LEB_cw_kit_given
+		add_equipment_to_stockpile = { type = infantry_equipment amount = 6000 }
+		add_equipment_to_stockpile = { type = support_equipment amount = 600 }
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 400 }
+		add_equipment_to_stockpile = { type = motorized_equipment amount = 800 }
+	}
+	1074 = { create_unit = { division = "name = \"Jounieh Brigade\" division_template = \"Lebanese Army Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.85" owner = LEB prioritize_location = 13412 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1074 = { create_unit = { division = "name = \"Zahle Brigade\" division_template = \"Lebanese Army Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.85" owner = LEB prioritize_location = 13414 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1074 = { create_unit = { division = "name = \"Mount Lebanon Brigade\" division_template = \"Lebanese Army Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.85" owner = LEB prioritize_location = 13413 count = 1 allow_spawning_on_enemy_provs = yes } }
+	1074 = { create_unit = { division = "name = \"Baabda Brigade\" division_template = \"Lebanese Army Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.85" owner = LEB prioritize_location = 13411 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1073 = { create_unit = { division = "name = \"Bekaa Brigade\" division_template = \"Lebanese Army Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.85" owner = LEB prioritize_location = 13416 count = 3 allow_spawning_on_enemy_provs = yes } }
+}
+
+# HSC: 4 militia divisions. Scope: HSC.
+LEB_cw_army_HSC_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Salvation Council Brigade" } }
+			division_template = {
+				name = "Salvation Council Brigade"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	1075 = { create_unit = { division = "name = \"Tripoli Brigade\" division_template = \"Salvation Council Brigade\" start_experience_factor = 0.25 start_equipment_factor = 0.75" owner = HSC prioritize_location = 1108 count = 4 allow_spawning_on_enemy_provs = yes } }
+}
+
+# HZB: 12 divisions, the best army after LEB's, with artillery,
+# anti-tank and rocket support. Scope: HZB.
+LEB_cw_army_HZB_effect = {
+	# anti-tank guns and rockets need their equipment unlocked
+	set_technology = {
+		interwar_antitank = 1
+		rocket_artillery = 1
+		popup = no
+	}
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Islamic Resistance Brigade" } }
+			division_template = {
+				name = "Islamic Resistance Brigade"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					artillery_brigade = { x = 2 y = 0 }
+					anti_tank_brigade = { x = 2 y = 1 }
+				}
+				support = {
+					rocket_battery = { x = 0 y = 0 }
+					recon = { x = 0 y = 1 }
+				}
+			}
+		}
+	}
+	# on top of the standard kit
+	if = {
+		limit = { NOT = { has_country_flag = LEB_cw_hzb_kit_given } }
+		set_country_flag = LEB_cw_hzb_kit_given
+		add_equipment_to_stockpile = { type = artillery_equipment amount = 200 }
+		add_equipment_to_stockpile = { type = anti_tank_equipment amount = 250 }
+		add_equipment_to_stockpile = { type = rocket_artillery_equipment amount = 150 }
+	}
+	1076 = { create_unit = { division = "name = \"Baalbek Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13409 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1076 = { create_unit = { division = "name = \"Baalbek-Hermel Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13410 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1076 = { create_unit = { division = "name = \"Hermel Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13421 count = 1 allow_spawning_on_enemy_provs = yes } }
+	1113 = { create_unit = { division = "name = \"Sidon Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13418 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1113 = { create_unit = { division = "name = \"Tyre Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 11919 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1072 = { create_unit = { division = "name = \"Bint Jbeil Brigade\" division_template = \"Islamic Resistance Brigade\" start_experience_factor = 0.50 start_equipment_factor = 0.85" owner = HZB prioritize_location = 13419 count = 3 allow_spawning_on_enemy_provs = yes } }
+}
+
+# BEZ: 3 militia divisions in Beirut. Scope: BEZ.
+LEB_cw_army_BEZ_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Thousand Banners Militia" } }
+			division_template = {
+				name = "Thousand Banners Militia"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	553 = { create_unit = { division = "name = \"Beirut Committee Militia\" division_template = \"Thousand Banners Militia\" start_experience_factor = 0.20 start_equipment_factor = 0.70" owner = BEZ prioritize_location = 792 count = 3 allow_spawning_on_enemy_provs = yes } }
+}
+
+# DUZ: 4 militia divisions. Scope: DUZ.
+LEB_cw_army_DUZ_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Mountain Guard Brigade" } }
+			division_template = {
+				name = "Mountain Guard Brigade"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+				}
+			}
+		}
+	}
+	1112 = { create_unit = { division = "name = \"Deir el Qamar Brigade\" division_template = \"Mountain Guard Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = DUZ prioritize_location = 13415 count = 2 allow_spawning_on_enemy_provs = yes } }
+	1112 = { create_unit = { division = "name = \"Chouf Brigade\" division_template = \"Mountain Guard Brigade\" start_experience_factor = 0.30 start_equipment_factor = 0.75" owner = DUZ prioritize_location = 13417 count = 2 allow_spawning_on_enemy_provs = yes } }
+}
+
+# ============================================================
+#   THE EMERGENCY COALITION
+#   The Sunni and Druze factions join the Government: white
+#   peace between LEB, HSC and DUZ, then one faction led by LEB.
+#   The wars against HZB and BEZ go on. Called by the future
+#   Lebanese focus "The Emergency Coalition" and by the debug
+#   decision. Scope: LEB.
+# ============================================================
+LEB_emergency_coalition_effect = {
+	if = {
+		limit = {
+			has_global_flag = LEB_civil_war
+			NOT = { has_global_flag = LEB_emergency_coalition }
+			OR = {
+				country_exists = HSC
+				country_exists = DUZ
+			}
+		}
+		set_global_flag = LEB_emergency_coalition
+
+		# peace first: the wars stop before anybody joins
+		if = { limit = { country_exists = HSC } white_peace = HSC }
+		if = { limit = { country_exists = DUZ } white_peace = DUZ }
+		if = {
+			limit = {
+				country_exists = HSC
+				country_exists = DUZ
+			}
+			HSC = { white_peace = DUZ }
+		}
+
+		# one faction led by LEB
+		if = {
+			limit = {
+				is_in_faction = yes
+				NOT = { is_faction_leader = yes }
+			}
+			leave_faction = yes
+		}
+		if = {
+			limit = { is_in_faction = no }
+			create_faction = "DVE_FACTION_LEB_UNITY"
+		}
+		if = {
+			limit = { country_exists = HSC }
+			HSC = {
+				if = {
+					limit = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = LEB }
+					}
+					leave_faction = yes
+				}
+			}
+			if = {
+				limit = { NOT = { is_in_faction_with = HSC } }
+				add_to_faction = HSC
+			}
+			give_military_access = HSC
+			HSC = { give_military_access = LEB }
+		}
+		if = {
+			limit = { country_exists = DUZ }
+			DUZ = {
+				if = {
+					limit = {
+						is_in_faction = yes
+						NOT = { is_in_faction_with = LEB }
+					}
+					leave_faction = yes
+				}
+			}
+			if = {
+				limit = { NOT = { is_in_faction_with = DUZ } }
+				add_to_faction = DUZ
+			}
+			give_military_access = DUZ
+			DUZ = { give_military_access = LEB }
+		}
+
+		# Hariri's and Jumblat's followers now count in the Government
+		LEB_cw_emergency_coalition_politics_effect = yes
+	}
+}
+
+# ============================================================
+#   RESET (debug only)
+#   Puts back what can really be undone: faction, divisions and
+#   templates of the five tags, states and cores, capital,
+#   politics, leaders, spirits, stability and flags. The
+#   equipment already handed out stays in the stockpiles. Scope: LEB.
+# ============================================================
+LEB_civil_war_reset_effect = {
+
+	# the coalition faction (HSC and DUZ leave with it)
+	if = {
+		limit = {
+			has_global_flag = LEB_emergency_coalition
+			is_faction_leader = yes
+		}
+		dismantle_faction = yes
+	}
+
+	# stability and war support of the war start
+	if = {
+		limit = { has_global_flag = LEB_civil_war }
+		add_stability = 0.20
+		add_war_support = -0.10
+	}
+
+	# politics and leaders of the Government, back to the pre-war values of
+	# history/countries/LEB - Lebanon.txt (only if the war changed them)
+	if = {
+		limit = { has_country_flag = LEB_emergency_administration }
+		set_politics = {
+			ruling_party = centrist
+			elections_allowed = yes
+		}
+		set_popularities = {
+			totalitarian_socialism = 0
+			authoritarian_socialism = 0
+			vanguard_socialism = 0
+			revolutionary_socialism = 0
+			progressive = 11
+			liberal = 0
+			centrist = 22
+			conservative = 20
+			reactionary = 12
+			authoritarianism = 4
+			autocracy = 12
+			absolutism = 0
+			ultranationalism = 1
+			fundamentalism = 18
+		}
+		set_party_name = { ideology = fundamentalism name = "Hezbollah" long_name = "Hezbollah" }
+		if = { limit = { has_character = LEB_georges_adwan } retire_character = LEB_georges_adwan }
+		if = { limit = { has_character = LEB_Aoun } retire_character = LEB_Aoun }
+	}
+
+	# Hezbollah's spirits come back
+	if = {
+		limit = { NOT = { has_idea = LEB_parallel_institutions } }
+		add_ideas = LEB_parallel_institutions
+	}
+	if = {
+		limit = { NOT = { has_idea = LEB_shadow_of_litani } }
+		add_ideas = LEB_shadow_of_litani
+	}
+	if = {
+		limit = { country_exists = HZB }
+		HZB = {
+			if = { limit = { has_idea = LEB_parallel_institutions } remove_ideas = LEB_parallel_institutions }
+			if = { limit = { has_idea = LEB_shadow_of_litani } remove_ideas = LEB_shadow_of_litani }
+		}
+	}
+
+	# divisions, templates and kit flags (while the tags still exist)
+	if = {
+		limit = { has_template = "Lebanese Army Brigade" }
+		delete_unit_template_and_units = { division_template = "Lebanese Army Brigade" disband = yes }
+	}
+	if = {
+		limit = { country_exists = HSC }
+		HSC = {
+			if = {
+				limit = { has_template = "Salvation Council Brigade" }
+				delete_unit_template_and_units = { division_template = "Salvation Council Brigade" disband = yes }
+			}
+			clr_country_flag = DVE_cw_kit_given
+		}
+	}
+	if = {
+		limit = { country_exists = HZB }
+		HZB = {
+			if = {
+				limit = { has_template = "Islamic Resistance Brigade" }
+				delete_unit_template_and_units = { division_template = "Islamic Resistance Brigade" disband = yes }
+			}
+			clr_country_flag = DVE_cw_kit_given
+			clr_country_flag = LEB_cw_hzb_kit_given
+		}
+	}
+	if = {
+		limit = { country_exists = BEZ }
+		BEZ = {
+			if = {
+				limit = { has_template = "Thousand Banners Militia" }
+				delete_unit_template_and_units = { division_template = "Thousand Banners Militia" disband = yes }
+			}
+			clr_country_flag = DVE_cw_kit_given
+		}
+	}
+	if = {
+		limit = { country_exists = DUZ }
+		DUZ = {
+			if = {
+				limit = { has_template = "Mountain Guard Brigade" }
+				delete_unit_template_and_units = { division_template = "Mountain Guard Brigade" disband = yes }
+			}
+			clr_country_flag = DVE_cw_kit_given
+		}
+	}
+
+	# the four factions give back the Lebanese states they hold
+	if = {
+		limit = { country_exists = HSC }
+		HSC = {
+			every_owned_state = {
+				limit = { OR = { state = 553 state = 1072 state = 1073 state = 1074 state = 1075 state = 1076 state = 1112 state = 1113 } }
+				LEB = { transfer_state = PREV }
+			}
+		}
+	}
+	if = {
+		limit = { country_exists = HZB }
+		HZB = {
+			every_owned_state = {
+				limit = { OR = { state = 553 state = 1072 state = 1073 state = 1074 state = 1075 state = 1076 state = 1112 state = 1113 } }
+				LEB = { transfer_state = PREV }
+			}
+		}
+	}
+	if = {
+		limit = { country_exists = BEZ }
+		BEZ = {
+			every_owned_state = {
+				limit = { OR = { state = 553 state = 1072 state = 1073 state = 1074 state = 1075 state = 1076 state = 1112 state = 1113 } }
+				LEB = { transfer_state = PREV }
+			}
+		}
+	}
+	if = {
+		limit = { country_exists = DUZ }
+		DUZ = {
+			every_owned_state = {
+				limit = { OR = { state = 553 state = 1072 state = 1073 state = 1074 state = 1075 state = 1076 state = 1112 state = 1113 } }
+				LEB = { transfer_state = PREV }
+			}
+		}
+	}
+
+	every_owned_state = {
+		remove_core_of = HSC
+		remove_core_of = HZB
+		remove_core_of = BEZ
+		remove_core_of = DUZ
+	}
+
+	# back to Beirut
+	if = {
+		limit = { owns_state = 553 }
+		set_capital = { state = 553 }
+	}
+
+	clr_global_flag = LEB_civil_war
+	clr_global_flag = LEB_emergency_coalition
+	clr_country_flag = LEB_emergency_administration
+	clr_country_flag = LEB_aoun_in_charge
+	clr_country_flag = LEB_cw_coalition_politics_done
+}

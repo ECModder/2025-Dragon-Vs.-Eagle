@@ -1,0 +1,68 @@
+add_namespace = dve_lebcw
+
+# The Second Lebanese Civil War. Sent to LEB by LEB_civil_war_start_effect;
+# the country breaks up in "immediate", then a human player may move to
+# Hezbollah. News window: the picture is the war-start panel.
+news_event = {
+	id = dve_lebcw.1
+	title = dve_lebcw.1.t
+	desc = dve_lebcw.1.d
+	picture = GFX_news_event_DVE_lebanese_civil_war
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = LEB_civil_war }
+	}
+
+	immediate = {
+		hidden_effect = { LEB_civil_war_effect = yes }
+	}
+
+	option = {
+		name = dve_lebcw.1.a
+		ai_chance = { factor = 100 }
+	}
+	option = {
+		name = dve_lebcw.1.b
+		trigger = { is_ai = no country_exists = HZB }
+		ai_chance = { factor = 0 }
+		HZB = { change_tag_from = LEB }
+	}
+}
+
+# News for every other country.
+news_event = {
+	id = dve_lebcw.2
+	title = dve_lebcw.2.t
+	desc = dve_lebcw.2.d
+	picture = GFX_news_event_generic_rally2
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_lebcw.2.a
+	}
+}
+
+# 30 days after the war starts (LEB_civil_war_effect): General Aoun
+# replaces Georges Adwan. Fires in LEB scope even if a human moved to HZB.
+country_event = {
+	id = dve_lebcw.3
+	title = dve_lebcw.3.t
+	desc = dve_lebcw.3.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_global_flag = LEB_civil_war
+		has_country_flag = LEB_emergency_administration
+		NOT = { has_country_flag = LEB_aoun_in_charge }
+	}
+
+	option = {
+		name = dve_lebcw.3.a
+		LEB_cw_aoun_takes_over_effect = yes
+	}
+}

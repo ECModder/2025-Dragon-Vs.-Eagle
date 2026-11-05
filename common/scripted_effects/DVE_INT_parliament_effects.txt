@@ -1,0 +1,88 @@
+# DvE - INT parliament: Central Council (6000 delegates, proportional) & CentralComm (32 fixed).
+# Central Council factions: Internationalist (vanguard_socialism), Rev. Communist (revolutionary_socialism), Maximalist (authoritarian_socialism)
+# Recalculated weekly (on_actions) and when opened.
+
+INT_parliament_recalc_effect = {
+	# popularity of the three relevant ideologies (fractions)
+	set_temp_variable = { temp1 = party_popularity@vanguard_socialism }
+	set_variable = { INT_p_int = temp1 }
+	set_temp_variable = { temp1 = party_popularity@revolutionary_socialism }
+	set_variable = { INT_p_rev = temp1 }
+	set_temp_variable = { temp1 = party_popularity@authoritarian_socialism }
+	set_variable = { INT_p_max = temp1 }
+
+	# total of the three socialist ideologies
+	set_variable = { INT_p_sum = INT_p_int }
+	add_to_variable = { INT_p_sum = INT_p_rev }
+	add_to_variable = { INT_p_sum = INT_p_max }
+
+	# Central Council: 6000 delegates distributed by % among the three factions
+	if = {
+		limit = { check_variable = { INT_p_sum > 0 } }
+		# Internationalist seats
+		set_variable = { INT_cc_int = INT_p_int }
+		divide_variable = { INT_cc_int = INT_p_sum }
+		multiply_variable = { INT_cc_int = 6000 }
+		round_variable = INT_cc_int
+		# Rev. Communist seats
+		set_variable = { INT_cc_rev = INT_p_rev }
+		divide_variable = { INT_cc_rev = INT_p_sum }
+		multiply_variable = { INT_cc_rev = 6000 }
+		round_variable = INT_cc_rev
+		# Maximalist seats
+		set_variable = { INT_cc_max = INT_p_max }
+		divide_variable = { INT_cc_max = INT_p_sum }
+		multiply_variable = { INT_cc_max = 6000 }
+		round_variable = INT_cc_max
+		# Fix rounding errors (ensure total = 6000)
+		set_variable = { INT_cc_total = INT_cc_int }
+		add_to_variable = { INT_cc_total = INT_cc_rev }
+		add_to_variable = { INT_cc_total = INT_cc_max }
+		if = {
+			limit = { check_variable = { INT_cc_total < 6000 } }
+			subtract_from_variable = { INT_cc_int = INT_cc_total }
+			subtract_from_variable = { INT_cc_int = 6000 }
+			multiply_variable = { INT_cc_int = -1 }
+		}
+		else_if = {
+			limit = { check_variable = { INT_cc_total > 6000 } }
+			subtract_from_variable = { INT_cc_int = INT_cc_total }
+			subtract_from_variable = { INT_cc_int = 6000 }
+		}
+	}
+	else = {
+		set_variable = { INT_cc_int = 0 }
+		set_variable = { INT_cc_rev = 0 }
+		set_variable = { INT_cc_max = 0 }
+	}
+
+	# CentralComm: fixed 32 members (26 Int, 4 Rev, 2 Max)
+	set_variable = { INT_cmc_int = 26 }
+	set_variable = { INT_cmc_rev = 4 }
+	set_variable = { INT_cmc_max = 2 }
+
+	# Percentages for display
+	if = {
+		limit = { check_variable = { INT_p_sum > 0 } }
+		# Internationalist %
+		set_variable = { INT_pp_int = INT_p_int }
+		divide_variable = { INT_pp_int = INT_p_sum }
+		multiply_variable = { INT_pp_int = 100 }
+		round_variable = INT_pp_int
+		# Rev. Communist %
+		set_variable = { INT_pp_rev = INT_p_rev }
+		divide_variable = { INT_pp_rev = INT_p_sum }
+		multiply_variable = { INT_pp_rev = 100 }
+		round_variable = INT_pp_rev
+		# Maximalist %
+		set_variable = { INT_pp_max = INT_p_max }
+		divide_variable = { INT_pp_max = INT_p_sum }
+		multiply_variable = { INT_pp_max = 100 }
+		round_variable = INT_pp_max
+	}
+	else = {
+		set_variable = { INT_pp_int = 0 }
+		set_variable = { INT_pp_rev = 0 }
+		set_variable = { INT_pp_max = 0 }
+	}
+}

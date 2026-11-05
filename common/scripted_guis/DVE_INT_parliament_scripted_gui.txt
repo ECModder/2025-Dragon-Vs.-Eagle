@@ -1,0 +1,41 @@
+# DvE - INT parliament window: shows Central Council (6000 delegates) & CentralComm (32 members).
+scripted_gui = {
+
+	INT_parliament_open = {
+		context_type = decision_category
+		window_name = "INT_parliament_open_window"
+
+		visible = {
+			tag = INT
+			has_country_flag = INT_parliament_unlocked
+		}
+		effects = {
+			INT_Parliament_GUI_click = {
+				if = {
+					limit = { has_country_flag = INT_Parliament_GUI_Open }
+					clr_country_flag = INT_Parliament_GUI_Open
+				}
+				else = { set_country_flag = INT_Parliament_GUI_Open }
+				INT_parliament_recalc_effect = yes
+			}
+		}
+		ai_enabled = {
+			tag = INT
+		}
+	}
+
+	INT_parliament_base = {
+		context_type = player_context
+		window_name = "INT_parliament_window"
+
+		visible = {
+			tag = INT
+			has_country_flag = INT_Parliament_GUI_Open
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = INT_Parliament_GUI_Open
+			}
+		}
+	}
+}

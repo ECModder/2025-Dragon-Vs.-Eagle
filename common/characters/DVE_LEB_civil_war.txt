@@ -1,0 +1,85 @@
+# DvE - Second Lebanese Civil War: leaders of the five factions.
+# Names are loc keys (localisation/english/DVE_LEB_characters_l_english.yml), not
+# plain strings: history/countries/LEB - Lebanon.txt has create_country_leader lines
+# named "Saad El-Hariri", "Taymur Jumblat", "Naiim Qassem", and create_country_leader
+# re-uses any existing character with the same name.
+# Joseph Aoun (LEB_Aoun) is in DVE_LEB.txt, with a second country_leader role.
+
+characters = {
+
+	# LEB: Lebanese Forces vice president, first head of the emergency administration.
+	# No photo exists: no portraits block, the game shows the unknown-leader silhouette.
+	LEB_georges_adwan = {
+		name = LEB_georges_adwan
+		country_leader = {
+			ideology = christian_democracy
+			traits = { }
+			expire = "2100.1.1.1"
+			id = -1
+		}
+	}
+
+	# HSC: Future Movement, Sunni north.
+	HSC_saad_hariri = {
+		name = HSC_saad_hariri
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LEB/portrait_large_saad_elhariri.dds"
+			}
+		}
+		country_leader = {
+			ideology = paternalism
+			traits = { conservative_grandee }
+			expire = "2100.1.1.1"
+			id = -1
+		}
+	}
+
+	# HZB: Hezbollah.
+	HZB_naiim_qassem = {
+		name = HZB_naiim_qassem
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LEB/portrait_large_naiim_qassem.dds"
+			}
+		}
+		country_leader = {
+			ideology = islamic_fundamentalism
+			traits = { veteran_guerrilla_fighter }
+			expire = "2100.1.1.1"
+			id = -1
+		}
+	}
+
+	# DUZ: Progressive Socialist Party, Druze of the Chouf.
+	DUZ_taymour_jumblatt = {
+		name = DUZ_taymour_jumblatt
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LEB/portrait_large_taymur_jumblatt.dds"
+			}
+		}
+		country_leader = {
+			ideology = patriotic_socialism
+			traits = { regional_traditionalist_leader }
+			expire = "2100.1.1.1"
+			id = -1
+		}
+	}
+
+	# BEZ: a collective, like SYR_interim_government or ITA_workers_council.
+	BEZ_thousand_banners = {
+		name = BEZ_thousand_banners
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LEB/portrait_large_beirut_banners.dds"
+			}
+		}
+		country_leader = {
+			ideology = left_anarchist
+			traits = { }
+			expire = "2100.1.1.1"
+			id = -1
+		}
+	}
+}

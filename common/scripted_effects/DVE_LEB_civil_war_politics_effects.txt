@@ -1,0 +1,111 @@
+# ============================================================
+#   DvE - SECOND LEBANESE CIVIL WAR: politics and leaders
+#   Territory, armies and the war itself live in
+#   DVE_LEB_civil_war_effects.txt. Factions: LEB, HSC, HZB, BEZ,
+#   DUZ (the politics of the four new tags sit in
+#   history/countries/<TAG> - *.txt, leaders in
+#   common/characters/DVE_LEB_civil_war.txt).
+# ============================================================
+
+# Scope: LEB. Run once when the war starts (from LEB_civil_war_effect).
+# Geagea (conservatism, created in the LEB history) stays as fallback
+# leader of the conservative party, so LEB is never leaderless.
+LEB_cw_adwan_takes_over_effect = {
+
+	# Lebanese Forces vice president leads the emergency administration.
+	if = {
+		limit = { NOT = { has_character = LEB_georges_adwan } }
+		recruit_character = LEB_georges_adwan
+	}
+
+	# Martial law, but the institutions stay: LF-led coalition, no elections until the war ends.
+	set_politics = {
+		ruling_party = conservative
+		elections_allowed = no
+	}
+	set_popularities = {
+		totalitarian_socialism = 0
+		authoritarian_socialism = 0
+		vanguard_socialism = 1
+		revolutionary_socialism = 1
+		progressive = 8
+		liberal = 7
+		centrist = 20
+		conservative = 41
+		reactionary = 6
+		authoritarianism = 3
+		autocracy = 4
+		absolutism = 2
+		ultranationalism = 5
+		fundamentalism = 2
+	}
+	set_party_name = { ideology = fundamentalism name = "[Banned] Hezbollah" long_name = "[Banned] Hezbollah" }
+
+	# After the ruling party is set: head of the (now ruling) LF party = country leader.
+	promote_character = { character = LEB_georges_adwan ideology = christian_democracy }
+
+	set_country_flag = LEB_emergency_administration
+}
+
+# Same effect under the name of the first draft.
+LEB_cw_government_effect = {
+	LEB_cw_adwan_takes_over_effect = yes
+}
+
+# Scope: LEB. Fire ~30 days after the war starts (hidden event dve_lebcw.3).
+# "Shortly replaced by former president and General Joseph Aoun".
+LEB_cw_aoun_takes_over_effect = {
+	if = {
+		limit = { NOT = { has_character = LEB_Aoun } }
+		recruit_character = LEB_Aoun
+	}
+	# Wartime picture (beret), registered in interface/DVE_LEB_leaders.gfx.
+	LEB_Aoun = {
+		set_portraits = { civilian = { large = GFX_portrait_leb_aoun_general } }
+	}
+	# Second role of LEB_Aoun (conservative group, see common/characters/DVE_LEB.txt).
+	promote_character = { character = LEB_Aoun ideology = constitutionalist }
+	set_country_flag = LEB_aoun_in_charge
+}
+
+# Scope: LEB. Beirut goes to the exclusion zone: the capital moves.
+# Call after BEZ has taken state 553.
+LEB_cw_capital_effect = {
+	if = {
+		limit = {
+			NOT = { owns_state = 553 }
+			owns_state = 1074
+		}
+		set_capital = { state = 1074 } # Mount Lebanon
+	}
+}
+
+# Scope: LEB. The Sunni and Druze factions join the government
+# ("The Emergency Coalition"). LEB already holds Hariri (reactionary)
+# and Jumblat (authoritarianism) as party leaders from its history.
+LEB_cw_emergency_coalition_politics_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = LEB_cw_coalition_politics_done } }
+		set_country_flag = LEB_cw_coalition_politics_done
+		add_popularity = { ideology = reactionary popularity = 0.07 }
+		add_popularity = { ideology = authoritarianism popularity = 0.05 }
+	}
+}
+
+# Scope: any faction tag, right after DVE_cw_new_faction_setup_effect.
+# Belt and braces for the "leaderless at war start" bug: the leader is
+# recruited in the history file, this only repairs a tag that has none.
+# Usage: HSC = { DVE_cw_ensure_leader_effect = { CHAR = HSC_saad_hariri IDEO = paternalism } }
+#   HZB: HZB_naiim_qassem / islamic_fundamentalism
+#   DUZ: DUZ_taymour_jumblatt / patriotic_socialism
+#   BEZ: BEZ_thousand_banners / left_anarchist
+DVE_cw_ensure_leader_effect = {
+	if = {
+		limit = { NOT = { has_character = $CHAR$ } }
+		recruit_character = $CHAR$
+	}
+	if = {
+		limit = { NOT = { has_country_leader = { character = $CHAR$ ruling_only = yes } } }
+		promote_character = { character = $CHAR$ ideology = $IDEO$ }
+	}
+}

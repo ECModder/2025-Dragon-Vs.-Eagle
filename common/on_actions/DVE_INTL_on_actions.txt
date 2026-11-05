@@ -53,6 +53,14 @@ on_actions = {
 				limit = { tag = ITA }
 				ITA_parliament_recalc_effect = yes
 			}
+			# INT: parliament window (Central Council & CentralComm), refreshed weekly.
+			if = {
+				limit = {
+					tag = INT
+					has_country_flag = INT_parliament_unlocked
+				}
+				INT_parliament_recalc_effect = yes
+			}
 		}
 	}
 }

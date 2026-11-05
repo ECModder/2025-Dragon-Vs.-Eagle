@@ -1,0 +1,58 @@
+capital = 1075 # Tripoli-Akkar
+
+# ============================================================
+#   HARIRI SALVATION COUNCIL (HSC) - Second Lebanese Civil War
+#   Future Movement of Saad El-Hariri, Sunni north (Tripoli-
+#   Akkar). Does not exist at startup: born from LEB when the
+#   war starts. Joins the government after "The Emergency
+#   Coalition". Reactionary / paternalism, as in the LEB roster.
+#   Spawned by LEB_cw_spawn_HSC_effect.
+# ============================================================
+
+# === party names (same movements as LEB; the ones tied to the
+#     other camps are banned, Sunni Islamists sit in the
+#     fundamentalism slot) ===
+set_party_name = { ideology = totalitarian_socialism name = "[Banned] CPL" long_name = "[Banned] Communist Party of Lebanon" }
+set_party_name = { ideology = authoritarian_socialism name = "[Banned] Ba'ath" long_name = "[Banned] Arab Socialist Ba'ath Party - Lebanon Region" }
+set_party_name = { ideology = vanguard_socialism name = "[Banned] al'umamia" long_name = "[Banned] al'umamia (internationalism)" }
+set_party_name = { ideology = revolutionary_socialism name = "[Banned] RCP" long_name = "[Banned] Revolutionary Communist Party" }
+set_party_name = { ideology = progressive name = "FPM" long_name = "Free Patriotic Movement" }
+set_party_name = { ideology = liberal name = "National Bloc" long_name = "National Bloc" }
+set_party_name = { ideology = centrist name = "Independents" long_name = "Independent Notables of the North" }
+set_party_name = { ideology = conservative name = "LF" long_name = "Lebanese Forces" }
+set_party_name = { ideology = reactionary name = "HSC" long_name = "Hariri Salvation Council" }
+set_party_name = { ideology = authoritarianism name = "LS" long_name = "Lebanese Socialists" }
+set_party_name = { ideology = autocracy name = "[Banned] AM" long_name = "[Banned] Amal Movement" }
+set_party_name = { ideology = absolutism name = "Kataeb" long_name = "Lebanese Phalanges" }
+set_party_name = { ideology = ultranationalism name = "[Banned] SSNP" long_name = "[Banned] Syrian Social Nationalist Party" }
+set_party_name = { ideology = fundamentalism name = "JI" long_name = "Al-Jama'a al-Islamiyya" }
+
+recruit_character = HSC_saad_hariri
+
+set_politics = {
+	ruling_party = reactionary
+	last_election = "2026.1.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+
+set_popularities = {
+	totalitarian_socialism = 0
+	authoritarian_socialism = 0
+	vanguard_socialism = 0
+	revolutionary_socialism = 1
+	progressive = 3
+	liberal = 5
+	centrist = 10
+	conservative = 15
+	reactionary = 47
+	authoritarianism = 3
+	autocracy = 3
+	absolutism = 0
+	ultranationalism = 1
+	fundamentalism = 12
+}
+
+set_stability = 0.40
+set_war_support = 0.45
+set_research_slots = 1
