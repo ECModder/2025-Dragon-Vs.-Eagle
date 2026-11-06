@@ -149,6 +149,7 @@ news_event = {
 	}
 	option = {
 		name = dve_rom.6.a
+		set_global_flag = ROM_second_revolution_chosen	# only this path may show the super event
 		country_event = {
                 id = dve_rom_send.5
             }
@@ -186,8 +187,19 @@ country_event = {
 	show_major = {
 		tag = ROM
 	}
+	# The date scheduler also fires this sender on 2025.05.18 for every
+	# country, whatever was chosen in the 2025 elections. The super event
+	# may only play when the revolution was actually chosen (dve_rom.6),
+	# and only once.
 	immediate = {
-		DVE_superevent_ROM_revolution_effect = yes
+		if = {
+			limit = {
+				has_global_flag = ROM_second_revolution_chosen
+				NOT = { has_global_flag = ROM_second_revolution_shown }
+			}
+			set_global_flag = ROM_second_revolution_shown
+			DVE_superevent_ROM_revolution_effect = yes
+		}
 	}
 }
 

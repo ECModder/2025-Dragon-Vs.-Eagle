@@ -324,15 +324,33 @@ ROM_defence_planning_category = {
 	}
 }
 
-	ROM_dacia_category = {
-      ROM_form_dacia = {
-        icon = GFX_ROM_form_dacia
-        cost = 0
+ROM_dacia_category = {
 
-        visible = {
-            has_country_flag = ROM_dacia_decision_unlocked
-			NOT = { has_country_flag = ROM_dacia_formed}
-        }
+	# ============================================================
+	#   DACIA (existing decision, kept as it was)
+	#   Target states (unchanged from the original decision):
+	#   78 766 80 1077 89 73 764 154 155 974 71 70 664 77 1066 192 834 43 973 45 1047
+	#   DvE rework changes:
+	#   - visible/available also check that Rome or the Ottoman Empire has
+	#     not been formed (the three formables exclude each other);
+	#   - not at war with a major power, stability above 50%;
+	#   - complete_effect adds the formation spirit, political power,
+	#     stability and the news event ROM_formable.1;
+	#   - cost 50 political power, fire_only_once.
+	#   The unlock flag ROM_dacia_decision_unlocked is unchanged; it is now
+	#   set by the focus ROM_dacia_path_1 (Heirs of Burebista).
+	# ============================================================
+	ROM_form_dacia = {
+		icon = GFX_ROM_form_dacia
+		cost = 50
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ROM_dacia_decision_unlocked
+			NOT = { has_country_flag = ROM_dacia_formed }
+			NOT = { has_country_flag = ROM_roman_empire_formed }
+			NOT = { has_country_flag = ROM_ottoman_empire_formed }
+		}
 
 		highlight_states = {
 			highlight_state_targets = {
@@ -359,12 +377,25 @@ ROM_defence_planning_category = {
 				state = 1047
 			}
 			highlight_color_before_active = 2
-			
+			highlight_color_while_active = 3
 		}
 
-        available = {
-            is_subject = no
-            controls_state = 78
+		available = {
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_not_formed_other_tt
+				NOT = { has_country_flag = ROM_roman_empire_formed }
+				NOT = { has_country_flag = ROM_ottoman_empire_formed }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_no_major_war_tt
+				NOT = { any_enemy_country = { is_major = yes } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_stability_50_tt
+				has_stability > 0.5
+			}
+			controls_state = 78
 			controls_state = 766
 			controls_state = 80
 			controls_state = 1077
@@ -385,10 +416,10 @@ ROM_defence_planning_category = {
 			controls_state = 973
 			controls_state = 45
 			controls_state = 1047
-        }
+		}
 
-        complete_effect = {
-            set_cosmetic_tag = ROM_DACIA
+		complete_effect = {
+			set_cosmetic_tag = ROM_DACIA
 			set_country_flag = ROM_dacia_formed
 			78 = { add_core_of = ROOT }
 			766 = { add_core_of = ROOT }
@@ -411,10 +442,1521 @@ ROM_defence_planning_category = {
 			973 = { add_core_of = ROOT }
 			45 = { add_core_of = ROOT }
 			1047 = { add_core_of = ROOT }
-        }
+			add_ideas = ROM_dacia_formed_idea
+			add_political_power = 100
+			add_stability = 0.05
+			hidden_effect = {
+				news_event = { id = ROM_formable.1 }	# major: shown to every country once
+			}
+		}
 
-        ai_will_do = {
-            factor = 0
-        }
-    }
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ============================================================
+	#   ROMAN EMPIRE - the empire at its greatest extent (Trajan, 117 AD):
+	#   Italia, Hispania, Gallia, the Rhine and Danube frontier, Britannia
+	#   (England and Wales), the Balkans, Pannonia and Dacia, Asia Minor,
+	#   Armenia, the Levant, Mesopotamia, Egypt and the North African coast.
+	#   271 states in 12 regions; every one must be controlled.
+	#   State ids come from the DvE history/states files.
+	# ============================================================
+	ROM_form_roman_empire = {
+		icon = GFX_decision_generic_nationalism
+		cost = 100
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ROM_roman_empire_unlocked
+			NOT = { has_country_flag = ROM_roman_empire_formed }
+			NOT = { has_country_flag = ROM_dacia_formed }
+			NOT = { has_country_flag = ROM_ottoman_empire_formed }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				# Italia
+				state = 39	# South Tyrol
+				state = 1180	# Friuli-Venezia Giulia
+				state = 850	# Trentino
+				state = 1088	# Bergamo
+				state = 160	# Veneto
+				state = 1155	# Triest
+				state = 1175	# Nord Piemonte
+				state = 1173	# Aosta
+				state = 1179	# Padania
+				state = 1177	# Est Lombardia
+				state = 159	# Lombardy
+				state = 158	# Piedmont
+				state = 1174	# Sud Piemonte
+				state = 1178	# Emilia
+				state = 161	# Emilia Romagna
+				state = 1176	# Liguria
+				state = 162	# Tuscany
+				state = 1185	# Marche
+				state = 1181	# Sud Toscana
+				state = 1182	# Umbria
+				state = 1183	# Nord-Lazio
+				state = 157	# Abruzzo
+				state = 2	# Italy
+				state = 1186	# Molise
+				state = 1184	# Latina
+				state = 849	# Puglia
+				state = 117	# Napoli
+				state = 1190	# Nord-Sardegna
+				state = 1187	# Campania-Salerno
+				state = 1189	# Taranto
+				state = 1188	# Basilicata
+				state = 1191	# Centro-Sardegna
+				state = 114	# Sardinia
+				state = 156	# Calabria
+				state = 115	# Sicily
+				state = 1067	# Vatican City
+				state = 1065	# San Marino
+				state = 116	# Malta
+				state = 1059	# Monaco
+				# Hispania
+				state = 790	# Asturies
+				state = 789	# Cantabria
+				state = 792	# Euskadi
+				state = 171	# Galicia Occidental
+				state = 172	# Nafarroa
+				state = 788	# Galicia Oriental
+				state = 176	# La Rioja
+				state = 794	# Uesca
+				state = 165	# Barcelona i Girona
+				state = 1196	# Lleida i Tarragona
+				state = 174	# Leon
+				state = 791	# Castilla
+				state = 166	# Aragon Meridional
+				state = 793	# Castilla la Vieja
+				state = 41	# Madrid
+				state = 177	# Illes Balears
+				state = 167	# Valencia
+				state = 170	# Extremadura
+				state = 175	# La Mancha
+				state = 168	# Murcia
+				state = 169	# Andalucia Occidental
+				state = 173	# Andalucia Oriental
+				state = 180	# Porto
+				state = 181	# Guarda
+				state = 112	# Lisbon
+				state = 795	# Santarem
+				state = 179	# Beja
+				state = 1056	# Andorra
+				state = 118	# Gibralter
+				# Gallia
+				state = 29	# Pas de Calais
+				state = 785	# Picardy
+				state = 15	# Normandy
+				state = 1197	# Paris
+				state = 1212	# Paris Banlieue
+				state = 18	# Champagne
+				state = 28	# Alcase
+				state = 16	# Ile de France
+				state = 14	# Brittany
+				state = 17	# Alcase Lorraine
+				state = 30	# Loire
+				state = 24	# Centre
+				state = 27	# Champagne2
+				state = 33	# Centre sud
+				state = 23	# Poitou
+				state = 26	# Bourgogne
+				state = 20	# Franche-comte
+				state = 25	# Limousin
+				state = 32	# Rhone Alpes
+				state = 735	# Savoy
+				state = 19	# Aquitaine
+				state = 21	# Bouches-du-Rhone
+				state = 22	# Roussillion
+				state = 851	# Var
+				state = 806	# French Basque Country
+				state = 1198	# Marseille
+				state = 31	# Midi Pyrenees
+				state = 1071	# Northern Catalonia
+				state = 1	# France
+				state = 977	# Antwerp
+				state = 6	# Belgium
+				state = 34	# Wallonie
+				state = 1069	# Eupen-Malmedy
+				state = 980	# Ardennes
+				state = 8	# Luxemburg
+				state = 7	# Holland
+				state = 35	# Gelderland
+				# Germania, Raetia and Noricum
+				state = 42	# Rhineland
+				state = 51	# Moselland
+				state = 1157	# Eifel
+				state = 1124	# Saarland
+				state = 1127	# Pfalz
+				state = 1128	# Rheinhessen
+				state = 1201	# Koelner Bucht
+				state = 1162	# Kurpfalz
+				state = 1129	# Suedhessen
+				state = 1123	# Frankfurt
+				state = 55	# Nassau
+				state = 50	# Baden
+				state = 978	# Actual Baden
+				state = 1160	# KSK-Calw
+				state = 1120	# Stuttgart
+				state = 1119	# Schwaben
+				state = 1121	# Muenchen
+				state = 53	# Oberbayern
+				state = 52	# Wuttemberg
+				state = 3	# Swiss Plateau
+				state = 845	# Jura Mountains
+				state = 151	# Eastern Swiss Alps
+				state = 847	# Western Swiss Alps
+				state = 846	# Ticino
+				state = 1058	# Liechtenstein
+				state = 4	# Austria
+				state = 152	# Upper Austria
+				state = 975	# Burgenland
+				state = 848	# Voralberg
+				state = 153	# Tyrol
+				state = 976	# Steiermark Karnten
+				# Britannia
+				state = 131	# Northern England
+				state = 931	# Cumbria
+				state = 130	# Yorkshire
+				state = 132	# North-west England
+				state = 129	# East Midlands
+				state = 128	# West Midlands
+				state = 125	# East Anglia
+				state = 122	# Wales
+				state = 126	# Greater London Area
+				state = 338	# Gloucestershire
+				state = 127	# South-east England
+				state = 123	# Cornwall
+				# Illyricum, Moesia and Achaea
+				state = 102	# North-Eastern Slovenia
+				state = 736	# Litorale
+				state = 853	# Ljubljana
+				state = 109	# Eastern Croatia
+				state = 852	# Istria
+				state = 103	# Croatia
+				state = 163	# Dalmatia
+				state = 104	# Bosnia
+				state = 804	# Herzegovina
+				state = 45	# Yugoslavia
+				state = 764	# West Banat
+				state = 1047	# Srem
+				state = 107	# Kosavo
+				state = 108	# Eastern Serbia
+				state = 803	# Southern Serbia
+				state = 105	# Montenegro
+				state = 802	# Kosovo
+				state = 106	# Macedonia
+				state = 970	# Western Macedonia
+				state = 934	# Shkoder
+				state = 44	# Albania
+				state = 805	# Northern Epirus
+				state = 184	# Thrace
+				state = 731	# Central Macedonia
+				state = 185	# Epirus
+				state = 1199	# Thessaly
+				state = 164	# Ionian Islands
+				state = 47	# Greece
+				state = 187	# Aegean Islands
+				state = 186	# Peloponnese
+				state = 182	# Crete
+				state = 1077	# Silistra
+				state = 77	# Dobrogea
+				state = 801	# Moesia
+				state = 48	# Bulgaria
+				state = 211	# Burgas
+				state = 212	# Plovdiv
+				# Pannonia and Dacia
+				state = 43	# Hungary
+				state = 155	# Western Hungary
+				state = 974	# South Transdanubia
+				state = 76	# Northern Transylvania
+				state = 84	# Transylvania
+				state = 82	# Banat
+				state = 81	# Oltenia
+				state = 46	# Romania
+				state = 971	# Northern Dobruja
+				# Asia Minor, Armenia and Cyprus
+				state = 341	# Edirne
+				state = 797	# Istanbul
+				state = 356	# Sinop
+				state = 347	# Izmit
+				state = 355	# Samsun
+				state = 354	# Trabzon
+				state = 340	# Bursa
+				state = 49	# Turkey
+				state = 349	# Silvas
+				state = 798	# Amasya
+				state = 800	# Van
+				state = 353	# Erzurum
+				state = 343	# Afyon
+				state = 339	# Izmir
+				state = 348	# Kayseri
+				state = 346	# Konya
+				state = 352	# Hakkari
+				state = 344	# Adana
+				state = 350	# Diyarbekir
+				state = 342	# Antalya
+				state = 345	# Mersin
+				state = 799	# Hatay
+				state = 230	# Armenia
+				state = 183	# Cyprus
+				state = 1060	# British Cyprus
+				state = 1061	# North Cyprus
+				# Syria, Judaea and Arabia Petraea
+				state = 1135	# Turkish Syria
+				state = 1149	# Turkish Syria 2
+				state = 1070	# Latakia-Tartus
+				state = 677	# Aleppo
+				state = 554	# Syria
+				state = 1150	# Druze
+				state = 680	# Deir-az-Zur
+				state = 1075	# Tripoli-Akkar
+				state = 1076	# Baalbek-Hermel
+				state = 1074	# Mount Lebanon
+				state = 553	# Lebanon
+				state = 1073	# Bekaa
+				state = 1112	# Chouf-Aley
+				state = 1113	# Al-Janoub
+				state = 1072	# Aqsa Al-Janoub
+				state = 1134	# Golan Heights
+				state = 454	# Israel
+				state = 1063	# West Bank
+				state = 1062	# Gaza
+				state = 1115	# Irbid
+				state = 1114	# Al-Mafraq
+				state = 455	# Jordan
+				state = 1116	# Al-Karak
+				state = 1117	# Ma'an
+				state = 1118	# Al-Aqaba
+				state = 855	# Tabuk
+				# Mesopotamia and Assyria
+				state = 676	# Mosul
+				state = 291	# Iraq
+				state = 1010	# Al Anbar
+				state = 1011	# Al Basrah
+				# Aegyptus
+				state = 447	# Alexandria
+				state = 452	# Marsa Matruh
+				state = 446	# Cairo
+				state = 453	# Sinai
+				state = 907	# Cairo
+				state = 552	# Western Egypt
+				state = 457	# Aswan
+				state = 456	# Luxor
+				# Africa, Numidia and Mauretania
+				state = 448	# Tripoli
+				state = 661	# Tripolitania
+				state = 1192	# Rahibat
+				state = 450	# Benghasi
+				state = 451	# Derna
+				state = 662	# Sirte
+				state = 449	# Libyan Coast
+				state = 458	# Tunisia
+				state = 665	# Gabes
+				state = 460	# Eastern Algeria
+				state = 459	# Western Algeria
+				state = 461	# Northern Morocco
+				state = 290	# Spanish Africa
+			}
+			highlight_color_before_active = 2
+			highlight_color_while_active = 3
+		}
+
+		available = {
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_not_formed_other_tt
+				NOT = { has_country_flag = ROM_dacia_formed }
+				NOT = { has_country_flag = ROM_ottoman_empire_formed }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_no_major_war_tt
+				NOT = { any_enemy_country = { is_major = yes } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_war_support_50_tt
+				has_war_support > 0.5
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_italia_tt	# Italia (39 states)
+				controls_state = 39	# South Tyrol
+				controls_state = 1180	# Friuli-Venezia Giulia
+				controls_state = 850	# Trentino
+				controls_state = 1088	# Bergamo
+				controls_state = 160	# Veneto
+				controls_state = 1155	# Triest
+				controls_state = 1175	# Nord Piemonte
+				controls_state = 1173	# Aosta
+				controls_state = 1179	# Padania
+				controls_state = 1177	# Est Lombardia
+				controls_state = 159	# Lombardy
+				controls_state = 158	# Piedmont
+				controls_state = 1174	# Sud Piemonte
+				controls_state = 1178	# Emilia
+				controls_state = 161	# Emilia Romagna
+				controls_state = 1176	# Liguria
+				controls_state = 162	# Tuscany
+				controls_state = 1185	# Marche
+				controls_state = 1181	# Sud Toscana
+				controls_state = 1182	# Umbria
+				controls_state = 1183	# Nord-Lazio
+				controls_state = 157	# Abruzzo
+				controls_state = 2	# Italy
+				controls_state = 1186	# Molise
+				controls_state = 1184	# Latina
+				controls_state = 849	# Puglia
+				controls_state = 117	# Napoli
+				controls_state = 1190	# Nord-Sardegna
+				controls_state = 1187	# Campania-Salerno
+				controls_state = 1189	# Taranto
+				controls_state = 1188	# Basilicata
+				controls_state = 1191	# Centro-Sardegna
+				controls_state = 114	# Sardinia
+				controls_state = 156	# Calabria
+				controls_state = 115	# Sicily
+				controls_state = 1067	# Vatican City
+				controls_state = 1065	# San Marino
+				controls_state = 116	# Malta
+				controls_state = 1059	# Monaco
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_hispania_tt	# Hispania (29 states)
+				controls_state = 790	# Asturies
+				controls_state = 789	# Cantabria
+				controls_state = 792	# Euskadi
+				controls_state = 171	# Galicia Occidental
+				controls_state = 172	# Nafarroa
+				controls_state = 788	# Galicia Oriental
+				controls_state = 176	# La Rioja
+				controls_state = 794	# Uesca
+				controls_state = 165	# Barcelona i Girona
+				controls_state = 1196	# Lleida i Tarragona
+				controls_state = 174	# Leon
+				controls_state = 791	# Castilla
+				controls_state = 166	# Aragon Meridional
+				controls_state = 793	# Castilla la Vieja
+				controls_state = 41	# Madrid
+				controls_state = 177	# Illes Balears
+				controls_state = 167	# Valencia
+				controls_state = 170	# Extremadura
+				controls_state = 175	# La Mancha
+				controls_state = 168	# Murcia
+				controls_state = 169	# Andalucia Occidental
+				controls_state = 173	# Andalucia Oriental
+				controls_state = 180	# Porto
+				controls_state = 181	# Guarda
+				controls_state = 112	# Lisbon
+				controls_state = 795	# Santarem
+				controls_state = 179	# Beja
+				controls_state = 1056	# Andorra
+				controls_state = 118	# Gibralter
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_gallia_tt	# Gallia (37 states)
+				controls_state = 29	# Pas de Calais
+				controls_state = 785	# Picardy
+				controls_state = 15	# Normandy
+				controls_state = 1197	# Paris
+				controls_state = 1212	# Paris Banlieue
+				controls_state = 18	# Champagne
+				controls_state = 28	# Alcase
+				controls_state = 16	# Ile de France
+				controls_state = 14	# Brittany
+				controls_state = 17	# Alcase Lorraine
+				controls_state = 30	# Loire
+				controls_state = 24	# Centre
+				controls_state = 27	# Champagne2
+				controls_state = 33	# Centre sud
+				controls_state = 23	# Poitou
+				controls_state = 26	# Bourgogne
+				controls_state = 20	# Franche-comte
+				controls_state = 25	# Limousin
+				controls_state = 32	# Rhone Alpes
+				controls_state = 735	# Savoy
+				controls_state = 19	# Aquitaine
+				controls_state = 21	# Bouches-du-Rhone
+				controls_state = 22	# Roussillion
+				controls_state = 851	# Var
+				controls_state = 806	# French Basque Country
+				controls_state = 1198	# Marseille
+				controls_state = 31	# Midi Pyrenees
+				controls_state = 1071	# Northern Catalonia
+				controls_state = 1	# France
+				controls_state = 977	# Antwerp
+				controls_state = 6	# Belgium
+				controls_state = 34	# Wallonie
+				controls_state = 1069	# Eupen-Malmedy
+				controls_state = 980	# Ardennes
+				controls_state = 8	# Luxemburg
+				controls_state = 7	# Holland
+				controls_state = 35	# Gelderland
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_germania_tt	# Germania, Raetia and Noricum (31 states)
+				controls_state = 42	# Rhineland
+				controls_state = 51	# Moselland
+				controls_state = 1157	# Eifel
+				controls_state = 1124	# Saarland
+				controls_state = 1127	# Pfalz
+				controls_state = 1128	# Rheinhessen
+				controls_state = 1201	# Koelner Bucht
+				controls_state = 1162	# Kurpfalz
+				controls_state = 1129	# Suedhessen
+				controls_state = 1123	# Frankfurt
+				controls_state = 55	# Nassau
+				controls_state = 50	# Baden
+				controls_state = 978	# Actual Baden
+				controls_state = 1160	# KSK-Calw
+				controls_state = 1120	# Stuttgart
+				controls_state = 1119	# Schwaben
+				controls_state = 1121	# Muenchen
+				controls_state = 53	# Oberbayern
+				controls_state = 52	# Wuttemberg
+				controls_state = 3	# Swiss Plateau
+				controls_state = 845	# Jura Mountains
+				controls_state = 151	# Eastern Swiss Alps
+				controls_state = 847	# Western Swiss Alps
+				controls_state = 846	# Ticino
+				controls_state = 1058	# Liechtenstein
+				controls_state = 4	# Austria
+				controls_state = 152	# Upper Austria
+				controls_state = 975	# Burgenland
+				controls_state = 848	# Voralberg
+				controls_state = 153	# Tyrol
+				controls_state = 976	# Steiermark Karnten
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_britannia_tt	# Britannia (12 states)
+				controls_state = 131	# Northern England
+				controls_state = 931	# Cumbria
+				controls_state = 130	# Yorkshire
+				controls_state = 132	# North-west England
+				controls_state = 129	# East Midlands
+				controls_state = 128	# West Midlands
+				controls_state = 125	# East Anglia
+				controls_state = 122	# Wales
+				controls_state = 126	# Greater London Area
+				controls_state = 338	# Gloucestershire
+				controls_state = 127	# South-east England
+				controls_state = 123	# Cornwall
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_illyricum_tt	# Illyricum, Moesia and Achaea (37 states)
+				controls_state = 102	# North-Eastern Slovenia
+				controls_state = 736	# Litorale
+				controls_state = 853	# Ljubljana
+				controls_state = 109	# Eastern Croatia
+				controls_state = 852	# Istria
+				controls_state = 103	# Croatia
+				controls_state = 163	# Dalmatia
+				controls_state = 104	# Bosnia
+				controls_state = 804	# Herzegovina
+				controls_state = 45	# Yugoslavia
+				controls_state = 764	# West Banat
+				controls_state = 1047	# Srem
+				controls_state = 107	# Kosavo
+				controls_state = 108	# Eastern Serbia
+				controls_state = 803	# Southern Serbia
+				controls_state = 105	# Montenegro
+				controls_state = 802	# Kosovo
+				controls_state = 106	# Macedonia
+				controls_state = 970	# Western Macedonia
+				controls_state = 934	# Shkoder
+				controls_state = 44	# Albania
+				controls_state = 805	# Northern Epirus
+				controls_state = 184	# Thrace
+				controls_state = 731	# Central Macedonia
+				controls_state = 185	# Epirus
+				controls_state = 1199	# Thessaly
+				controls_state = 164	# Ionian Islands
+				controls_state = 47	# Greece
+				controls_state = 187	# Aegean Islands
+				controls_state = 186	# Peloponnese
+				controls_state = 182	# Crete
+				controls_state = 1077	# Silistra
+				controls_state = 77	# Dobrogea
+				controls_state = 801	# Moesia
+				controls_state = 48	# Bulgaria
+				controls_state = 211	# Burgas
+				controls_state = 212	# Plovdiv
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_dacia_tt	# Pannonia and Dacia (9 states)
+				controls_state = 43	# Hungary
+				controls_state = 155	# Western Hungary
+				controls_state = 974	# South Transdanubia
+				controls_state = 76	# Northern Transylvania
+				controls_state = 84	# Transylvania
+				controls_state = 82	# Banat
+				controls_state = 81	# Oltenia
+				controls_state = 46	# Romania
+				controls_state = 971	# Northern Dobruja
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_anatolia_tt	# Asia Minor, Armenia and Cyprus (26 states)
+				controls_state = 341	# Edirne
+				controls_state = 797	# Istanbul
+				controls_state = 356	# Sinop
+				controls_state = 347	# Izmit
+				controls_state = 355	# Samsun
+				controls_state = 354	# Trabzon
+				controls_state = 340	# Bursa
+				controls_state = 49	# Turkey
+				controls_state = 349	# Silvas
+				controls_state = 798	# Amasya
+				controls_state = 800	# Van
+				controls_state = 353	# Erzurum
+				controls_state = 343	# Afyon
+				controls_state = 339	# Izmir
+				controls_state = 348	# Kayseri
+				controls_state = 346	# Konya
+				controls_state = 352	# Hakkari
+				controls_state = 344	# Adana
+				controls_state = 350	# Diyarbekir
+				controls_state = 342	# Antalya
+				controls_state = 345	# Mersin
+				controls_state = 799	# Hatay
+				controls_state = 230	# Armenia
+				controls_state = 183	# Cyprus
+				controls_state = 1060	# British Cyprus
+				controls_state = 1061	# North Cyprus
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_syria_tt	# Syria, Judaea and Arabia Petraea (26 states)
+				controls_state = 1135	# Turkish Syria
+				controls_state = 1149	# Turkish Syria 2
+				controls_state = 1070	# Latakia-Tartus
+				controls_state = 677	# Aleppo
+				controls_state = 554	# Syria
+				controls_state = 1150	# Druze
+				controls_state = 680	# Deir-az-Zur
+				controls_state = 1075	# Tripoli-Akkar
+				controls_state = 1076	# Baalbek-Hermel
+				controls_state = 1074	# Mount Lebanon
+				controls_state = 553	# Lebanon
+				controls_state = 1073	# Bekaa
+				controls_state = 1112	# Chouf-Aley
+				controls_state = 1113	# Al-Janoub
+				controls_state = 1072	# Aqsa Al-Janoub
+				controls_state = 1134	# Golan Heights
+				controls_state = 454	# Israel
+				controls_state = 1063	# West Bank
+				controls_state = 1062	# Gaza
+				controls_state = 1115	# Irbid
+				controls_state = 1114	# Al-Mafraq
+				controls_state = 455	# Jordan
+				controls_state = 1116	# Al-Karak
+				controls_state = 1117	# Ma'an
+				controls_state = 1118	# Al-Aqaba
+				controls_state = 855	# Tabuk
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_mesopotamia_tt	# Mesopotamia and Assyria (4 states)
+				controls_state = 676	# Mosul
+				controls_state = 291	# Iraq
+				controls_state = 1010	# Al Anbar
+				controls_state = 1011	# Al Basrah
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_aegyptus_tt	# Aegyptus (8 states)
+				controls_state = 447	# Alexandria
+				controls_state = 452	# Marsa Matruh
+				controls_state = 446	# Cairo
+				controls_state = 453	# Sinai
+				controls_state = 907	# Cairo
+				controls_state = 552	# Western Egypt
+				controls_state = 457	# Aswan
+				controls_state = 456	# Luxor
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_roman_req_africa_tt	# Africa, Numidia and Mauretania (13 states)
+				controls_state = 448	# Tripoli
+				controls_state = 661	# Tripolitania
+				controls_state = 1192	# Rahibat
+				controls_state = 450	# Benghasi
+				controls_state = 451	# Derna
+				controls_state = 662	# Sirte
+				controls_state = 449	# Libyan Coast
+				controls_state = 458	# Tunisia
+				controls_state = 665	# Gabes
+				controls_state = 460	# Eastern Algeria
+				controls_state = 459	# Western Algeria
+				controls_state = 461	# Northern Morocco
+				controls_state = 290	# Spanish Africa
+			}
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = ROM_ROMAN_EMPIRE
+			set_country_flag = ROM_roman_empire_formed
+			# Italia
+			39 = { add_core_of = ROOT }	# South Tyrol
+			1180 = { add_core_of = ROOT }	# Friuli-Venezia Giulia
+			850 = { add_core_of = ROOT }	# Trentino
+			1088 = { add_core_of = ROOT }	# Bergamo
+			160 = { add_core_of = ROOT }	# Veneto
+			1155 = { add_core_of = ROOT }	# Triest
+			1175 = { add_core_of = ROOT }	# Nord Piemonte
+			1173 = { add_core_of = ROOT }	# Aosta
+			1179 = { add_core_of = ROOT }	# Padania
+			1177 = { add_core_of = ROOT }	# Est Lombardia
+			159 = { add_core_of = ROOT }	# Lombardy
+			158 = { add_core_of = ROOT }	# Piedmont
+			1174 = { add_core_of = ROOT }	# Sud Piemonte
+			1178 = { add_core_of = ROOT }	# Emilia
+			161 = { add_core_of = ROOT }	# Emilia Romagna
+			1176 = { add_core_of = ROOT }	# Liguria
+			162 = { add_core_of = ROOT }	# Tuscany
+			1185 = { add_core_of = ROOT }	# Marche
+			1181 = { add_core_of = ROOT }	# Sud Toscana
+			1182 = { add_core_of = ROOT }	# Umbria
+			1183 = { add_core_of = ROOT }	# Nord-Lazio
+			157 = { add_core_of = ROOT }	# Abruzzo
+			2 = { add_core_of = ROOT }	# Italy
+			1186 = { add_core_of = ROOT }	# Molise
+			1184 = { add_core_of = ROOT }	# Latina
+			849 = { add_core_of = ROOT }	# Puglia
+			117 = { add_core_of = ROOT }	# Napoli
+			1190 = { add_core_of = ROOT }	# Nord-Sardegna
+			1187 = { add_core_of = ROOT }	# Campania-Salerno
+			1189 = { add_core_of = ROOT }	# Taranto
+			1188 = { add_core_of = ROOT }	# Basilicata
+			1191 = { add_core_of = ROOT }	# Centro-Sardegna
+			114 = { add_core_of = ROOT }	# Sardinia
+			156 = { add_core_of = ROOT }	# Calabria
+			115 = { add_core_of = ROOT }	# Sicily
+			1067 = { add_core_of = ROOT }	# Vatican City
+			1065 = { add_core_of = ROOT }	# San Marino
+			116 = { add_core_of = ROOT }	# Malta
+			1059 = { add_core_of = ROOT }	# Monaco
+			# Hispania
+			790 = { add_core_of = ROOT }	# Asturies
+			789 = { add_core_of = ROOT }	# Cantabria
+			792 = { add_core_of = ROOT }	# Euskadi
+			171 = { add_core_of = ROOT }	# Galicia Occidental
+			172 = { add_core_of = ROOT }	# Nafarroa
+			788 = { add_core_of = ROOT }	# Galicia Oriental
+			176 = { add_core_of = ROOT }	# La Rioja
+			794 = { add_core_of = ROOT }	# Uesca
+			165 = { add_core_of = ROOT }	# Barcelona i Girona
+			1196 = { add_core_of = ROOT }	# Lleida i Tarragona
+			174 = { add_core_of = ROOT }	# Leon
+			791 = { add_core_of = ROOT }	# Castilla
+			166 = { add_core_of = ROOT }	# Aragon Meridional
+			793 = { add_core_of = ROOT }	# Castilla la Vieja
+			41 = { add_core_of = ROOT }	# Madrid
+			177 = { add_core_of = ROOT }	# Illes Balears
+			167 = { add_core_of = ROOT }	# Valencia
+			170 = { add_core_of = ROOT }	# Extremadura
+			175 = { add_core_of = ROOT }	# La Mancha
+			168 = { add_core_of = ROOT }	# Murcia
+			169 = { add_core_of = ROOT }	# Andalucia Occidental
+			173 = { add_core_of = ROOT }	# Andalucia Oriental
+			180 = { add_core_of = ROOT }	# Porto
+			181 = { add_core_of = ROOT }	# Guarda
+			112 = { add_core_of = ROOT }	# Lisbon
+			795 = { add_core_of = ROOT }	# Santarem
+			179 = { add_core_of = ROOT }	# Beja
+			1056 = { add_core_of = ROOT }	# Andorra
+			118 = { add_core_of = ROOT }	# Gibralter
+			# Gallia
+			29 = { add_core_of = ROOT }	# Pas de Calais
+			785 = { add_core_of = ROOT }	# Picardy
+			15 = { add_core_of = ROOT }	# Normandy
+			1197 = { add_core_of = ROOT }	# Paris
+			1212 = { add_core_of = ROOT }	# Paris Banlieue
+			18 = { add_core_of = ROOT }	# Champagne
+			28 = { add_core_of = ROOT }	# Alcase
+			16 = { add_core_of = ROOT }	# Ile de France
+			14 = { add_core_of = ROOT }	# Brittany
+			17 = { add_core_of = ROOT }	# Alcase Lorraine
+			30 = { add_core_of = ROOT }	# Loire
+			24 = { add_core_of = ROOT }	# Centre
+			27 = { add_core_of = ROOT }	# Champagne2
+			33 = { add_core_of = ROOT }	# Centre sud
+			23 = { add_core_of = ROOT }	# Poitou
+			26 = { add_core_of = ROOT }	# Bourgogne
+			20 = { add_core_of = ROOT }	# Franche-comte
+			25 = { add_core_of = ROOT }	# Limousin
+			32 = { add_core_of = ROOT }	# Rhone Alpes
+			735 = { add_core_of = ROOT }	# Savoy
+			19 = { add_core_of = ROOT }	# Aquitaine
+			21 = { add_core_of = ROOT }	# Bouches-du-Rhone
+			22 = { add_core_of = ROOT }	# Roussillion
+			851 = { add_core_of = ROOT }	# Var
+			806 = { add_core_of = ROOT }	# French Basque Country
+			1198 = { add_core_of = ROOT }	# Marseille
+			31 = { add_core_of = ROOT }	# Midi Pyrenees
+			1071 = { add_core_of = ROOT }	# Northern Catalonia
+			1 = { add_core_of = ROOT }	# France
+			977 = { add_core_of = ROOT }	# Antwerp
+			6 = { add_core_of = ROOT }	# Belgium
+			34 = { add_core_of = ROOT }	# Wallonie
+			1069 = { add_core_of = ROOT }	# Eupen-Malmedy
+			980 = { add_core_of = ROOT }	# Ardennes
+			8 = { add_core_of = ROOT }	# Luxemburg
+			7 = { add_core_of = ROOT }	# Holland
+			35 = { add_core_of = ROOT }	# Gelderland
+			# Germania, Raetia and Noricum
+			42 = { add_core_of = ROOT }	# Rhineland
+			51 = { add_core_of = ROOT }	# Moselland
+			1157 = { add_core_of = ROOT }	# Eifel
+			1124 = { add_core_of = ROOT }	# Saarland
+			1127 = { add_core_of = ROOT }	# Pfalz
+			1128 = { add_core_of = ROOT }	# Rheinhessen
+			1201 = { add_core_of = ROOT }	# Koelner Bucht
+			1162 = { add_core_of = ROOT }	# Kurpfalz
+			1129 = { add_core_of = ROOT }	# Suedhessen
+			1123 = { add_core_of = ROOT }	# Frankfurt
+			55 = { add_core_of = ROOT }	# Nassau
+			50 = { add_core_of = ROOT }	# Baden
+			978 = { add_core_of = ROOT }	# Actual Baden
+			1160 = { add_core_of = ROOT }	# KSK-Calw
+			1120 = { add_core_of = ROOT }	# Stuttgart
+			1119 = { add_core_of = ROOT }	# Schwaben
+			1121 = { add_core_of = ROOT }	# Muenchen
+			53 = { add_core_of = ROOT }	# Oberbayern
+			52 = { add_core_of = ROOT }	# Wuttemberg
+			3 = { add_core_of = ROOT }	# Swiss Plateau
+			845 = { add_core_of = ROOT }	# Jura Mountains
+			151 = { add_core_of = ROOT }	# Eastern Swiss Alps
+			847 = { add_core_of = ROOT }	# Western Swiss Alps
+			846 = { add_core_of = ROOT }	# Ticino
+			1058 = { add_core_of = ROOT }	# Liechtenstein
+			4 = { add_core_of = ROOT }	# Austria
+			152 = { add_core_of = ROOT }	# Upper Austria
+			975 = { add_core_of = ROOT }	# Burgenland
+			848 = { add_core_of = ROOT }	# Voralberg
+			153 = { add_core_of = ROOT }	# Tyrol
+			976 = { add_core_of = ROOT }	# Steiermark Karnten
+			# Britannia
+			131 = { add_core_of = ROOT }	# Northern England
+			931 = { add_core_of = ROOT }	# Cumbria
+			130 = { add_core_of = ROOT }	# Yorkshire
+			132 = { add_core_of = ROOT }	# North-west England
+			129 = { add_core_of = ROOT }	# East Midlands
+			128 = { add_core_of = ROOT }	# West Midlands
+			125 = { add_core_of = ROOT }	# East Anglia
+			122 = { add_core_of = ROOT }	# Wales
+			126 = { add_core_of = ROOT }	# Greater London Area
+			338 = { add_core_of = ROOT }	# Gloucestershire
+			127 = { add_core_of = ROOT }	# South-east England
+			123 = { add_core_of = ROOT }	# Cornwall
+			# Illyricum, Moesia and Achaea
+			102 = { add_core_of = ROOT }	# North-Eastern Slovenia
+			736 = { add_core_of = ROOT }	# Litorale
+			853 = { add_core_of = ROOT }	# Ljubljana
+			109 = { add_core_of = ROOT }	# Eastern Croatia
+			852 = { add_core_of = ROOT }	# Istria
+			103 = { add_core_of = ROOT }	# Croatia
+			163 = { add_core_of = ROOT }	# Dalmatia
+			104 = { add_core_of = ROOT }	# Bosnia
+			804 = { add_core_of = ROOT }	# Herzegovina
+			45 = { add_core_of = ROOT }	# Yugoslavia
+			764 = { add_core_of = ROOT }	# West Banat
+			1047 = { add_core_of = ROOT }	# Srem
+			107 = { add_core_of = ROOT }	# Kosavo
+			108 = { add_core_of = ROOT }	# Eastern Serbia
+			803 = { add_core_of = ROOT }	# Southern Serbia
+			105 = { add_core_of = ROOT }	# Montenegro
+			802 = { add_core_of = ROOT }	# Kosovo
+			106 = { add_core_of = ROOT }	# Macedonia
+			970 = { add_core_of = ROOT }	# Western Macedonia
+			934 = { add_core_of = ROOT }	# Shkoder
+			44 = { add_core_of = ROOT }	# Albania
+			805 = { add_core_of = ROOT }	# Northern Epirus
+			184 = { add_core_of = ROOT }	# Thrace
+			731 = { add_core_of = ROOT }	# Central Macedonia
+			185 = { add_core_of = ROOT }	# Epirus
+			1199 = { add_core_of = ROOT }	# Thessaly
+			164 = { add_core_of = ROOT }	# Ionian Islands
+			47 = { add_core_of = ROOT }	# Greece
+			187 = { add_core_of = ROOT }	# Aegean Islands
+			186 = { add_core_of = ROOT }	# Peloponnese
+			182 = { add_core_of = ROOT }	# Crete
+			1077 = { add_core_of = ROOT }	# Silistra
+			77 = { add_core_of = ROOT }	# Dobrogea
+			801 = { add_core_of = ROOT }	# Moesia
+			48 = { add_core_of = ROOT }	# Bulgaria
+			211 = { add_core_of = ROOT }	# Burgas
+			212 = { add_core_of = ROOT }	# Plovdiv
+			# Pannonia and Dacia
+			43 = { add_core_of = ROOT }	# Hungary
+			155 = { add_core_of = ROOT }	# Western Hungary
+			974 = { add_core_of = ROOT }	# South Transdanubia
+			76 = { add_core_of = ROOT }	# Northern Transylvania
+			84 = { add_core_of = ROOT }	# Transylvania
+			82 = { add_core_of = ROOT }	# Banat
+			81 = { add_core_of = ROOT }	# Oltenia
+			46 = { add_core_of = ROOT }	# Romania
+			971 = { add_core_of = ROOT }	# Northern Dobruja
+			# Asia Minor, Armenia and Cyprus
+			341 = { add_core_of = ROOT }	# Edirne
+			797 = { add_core_of = ROOT }	# Istanbul
+			356 = { add_core_of = ROOT }	# Sinop
+			347 = { add_core_of = ROOT }	# Izmit
+			355 = { add_core_of = ROOT }	# Samsun
+			354 = { add_core_of = ROOT }	# Trabzon
+			340 = { add_core_of = ROOT }	# Bursa
+			49 = { add_core_of = ROOT }	# Turkey
+			349 = { add_core_of = ROOT }	# Silvas
+			798 = { add_core_of = ROOT }	# Amasya
+			800 = { add_core_of = ROOT }	# Van
+			353 = { add_core_of = ROOT }	# Erzurum
+			343 = { add_core_of = ROOT }	# Afyon
+			339 = { add_core_of = ROOT }	# Izmir
+			348 = { add_core_of = ROOT }	# Kayseri
+			346 = { add_core_of = ROOT }	# Konya
+			352 = { add_core_of = ROOT }	# Hakkari
+			344 = { add_core_of = ROOT }	# Adana
+			350 = { add_core_of = ROOT }	# Diyarbekir
+			342 = { add_core_of = ROOT }	# Antalya
+			345 = { add_core_of = ROOT }	# Mersin
+			799 = { add_core_of = ROOT }	# Hatay
+			230 = { add_core_of = ROOT }	# Armenia
+			183 = { add_core_of = ROOT }	# Cyprus
+			1060 = { add_core_of = ROOT }	# British Cyprus
+			1061 = { add_core_of = ROOT }	# North Cyprus
+			# Syria, Judaea and Arabia Petraea
+			1135 = { add_core_of = ROOT }	# Turkish Syria
+			1149 = { add_core_of = ROOT }	# Turkish Syria 2
+			1070 = { add_core_of = ROOT }	# Latakia-Tartus
+			677 = { add_core_of = ROOT }	# Aleppo
+			554 = { add_core_of = ROOT }	# Syria
+			1150 = { add_core_of = ROOT }	# Druze
+			680 = { add_core_of = ROOT }	# Deir-az-Zur
+			1075 = { add_core_of = ROOT }	# Tripoli-Akkar
+			1076 = { add_core_of = ROOT }	# Baalbek-Hermel
+			1074 = { add_core_of = ROOT }	# Mount Lebanon
+			553 = { add_core_of = ROOT }	# Lebanon
+			1073 = { add_core_of = ROOT }	# Bekaa
+			1112 = { add_core_of = ROOT }	# Chouf-Aley
+			1113 = { add_core_of = ROOT }	# Al-Janoub
+			1072 = { add_core_of = ROOT }	# Aqsa Al-Janoub
+			1134 = { add_core_of = ROOT }	# Golan Heights
+			454 = { add_core_of = ROOT }	# Israel
+			1063 = { add_core_of = ROOT }	# West Bank
+			1062 = { add_core_of = ROOT }	# Gaza
+			1115 = { add_core_of = ROOT }	# Irbid
+			1114 = { add_core_of = ROOT }	# Al-Mafraq
+			455 = { add_core_of = ROOT }	# Jordan
+			1116 = { add_core_of = ROOT }	# Al-Karak
+			1117 = { add_core_of = ROOT }	# Ma'an
+			1118 = { add_core_of = ROOT }	# Al-Aqaba
+			855 = { add_core_of = ROOT }	# Tabuk
+			# Mesopotamia and Assyria
+			676 = { add_core_of = ROOT }	# Mosul
+			291 = { add_core_of = ROOT }	# Iraq
+			1010 = { add_core_of = ROOT }	# Al Anbar
+			1011 = { add_core_of = ROOT }	# Al Basrah
+			# Aegyptus
+			447 = { add_core_of = ROOT }	# Alexandria
+			452 = { add_core_of = ROOT }	# Marsa Matruh
+			446 = { add_core_of = ROOT }	# Cairo
+			453 = { add_core_of = ROOT }	# Sinai
+			907 = { add_core_of = ROOT }	# Cairo
+			552 = { add_core_of = ROOT }	# Western Egypt
+			457 = { add_core_of = ROOT }	# Aswan
+			456 = { add_core_of = ROOT }	# Luxor
+			# Africa, Numidia and Mauretania
+			448 = { add_core_of = ROOT }	# Tripoli
+			661 = { add_core_of = ROOT }	# Tripolitania
+			1192 = { add_core_of = ROOT }	# Rahibat
+			450 = { add_core_of = ROOT }	# Benghasi
+			451 = { add_core_of = ROOT }	# Derna
+			662 = { add_core_of = ROOT }	# Sirte
+			449 = { add_core_of = ROOT }	# Libyan Coast
+			458 = { add_core_of = ROOT }	# Tunisia
+			665 = { add_core_of = ROOT }	# Gabes
+			460 = { add_core_of = ROOT }	# Eastern Algeria
+			459 = { add_core_of = ROOT }	# Western Algeria
+			461 = { add_core_of = ROOT }	# Northern Morocco
+			290 = { add_core_of = ROOT }	# Spanish Africa
+			add_ideas = ROM_roman_empire_formed_idea
+			add_political_power = 150
+			add_war_support = 0.05
+			add_named_threat = { threat = 5 name = ROM_roman_threat }
+			hidden_effect = {
+				news_event = { id = ROM_formable.2 }	# major: shown to every country once
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	# ============================================================
+	#   OTTOMAN EMPIRE - the empire at its greatest extent (late 16th-17th c.),
+	#   including its tributary states: Anatolia, Rumelia, Ottoman Hungary, the
+	#   Danubian Principalities, the Black Sea coast and Crimea, the Caucasus
+	#   and Tabriz, the Levant, Iraq, Hejaz and Yemen, Egypt and the Maghreb
+	#   (Tripolitania, Tunis and Algiers).
+	#   151 states in 11 regions; every one must be controlled.
+	#   State ids come from the DvE history/states files.
+	# ============================================================
+	ROM_form_ottoman_empire = {
+		icon = GFX_decision_generic_nationalism
+		cost = 100
+		fire_only_once = yes
+
+		visible = {
+			has_country_flag = ROM_ottoman_empire_unlocked
+			NOT = { has_country_flag = ROM_ottoman_empire_formed }
+			NOT = { has_country_flag = ROM_dacia_formed }
+			NOT = { has_country_flag = ROM_roman_empire_formed }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				# Anatolia and Cyprus
+				state = 341	# Edirne
+				state = 797	# Istanbul
+				state = 356	# Sinop
+				state = 347	# Izmit
+				state = 355	# Samsun
+				state = 354	# Trabzon
+				state = 340	# Bursa
+				state = 49	# Turkey
+				state = 349	# Silvas
+				state = 798	# Amasya
+				state = 800	# Van
+				state = 353	# Erzurum
+				state = 343	# Afyon
+				state = 339	# Izmir
+				state = 348	# Kayseri
+				state = 346	# Konya
+				state = 352	# Hakkari
+				state = 344	# Adana
+				state = 350	# Diyarbekir
+				state = 342	# Antalya
+				state = 345	# Mersin
+				state = 799	# Hatay
+				state = 183	# Cyprus
+				state = 1060	# British Cyprus
+				state = 1061	# North Cyprus
+				# Rumelia
+				state = 184	# Thrace
+				state = 731	# Central Macedonia
+				state = 185	# Epirus
+				state = 1199	# Thessaly
+				state = 47	# Greece
+				state = 187	# Aegean Islands
+				state = 186	# Peloponnese
+				state = 182	# Crete
+				state = 1077	# Silistra
+				state = 77	# Dobrogea
+				state = 801	# Moesia
+				state = 48	# Bulgaria
+				state = 211	# Burgas
+				state = 212	# Plovdiv
+				state = 934	# Shkoder
+				state = 44	# Albania
+				state = 805	# Northern Epirus
+				state = 106	# Macedonia
+				state = 970	# Western Macedonia
+				state = 802	# Kosovo
+				state = 105	# Montenegro
+				state = 45	# Yugoslavia
+				state = 764	# West Banat
+				state = 1047	# Srem
+				state = 107	# Kosavo
+				state = 108	# Eastern Serbia
+				state = 803	# Southern Serbia
+				state = 104	# Bosnia
+				state = 804	# Herzegovina
+				state = 109	# Eastern Croatia
+				# Ottoman Hungary
+				state = 43	# Hungary
+				state = 154	# Southern plain
+				state = 973	# Bacs
+				state = 974	# South Transdanubia
+				state = 664	# Southern Slovakia
+				# Danubian Principalities
+				state = 76	# Northern Transylvania
+				state = 79	# moldovia
+				state = 83	# crisana
+				state = 84	# Transylvania
+				state = 82	# Banat
+				state = 971	# Northern Dobruja
+				state = 46	# Romania
+				state = 81	# Oltenia
+				state = 78	# Bessarabia
+				state = 80	# Bocovina
+				state = 766	# Southern Bessarabia
+				state = 1066	# Transnistria
+				# Black Sea Coast and Podolia
+				state = 834	# Balta
+				state = 192	# Odessa
+				state = 197	# Mykolaiv
+				state = 196	# Kherson
+				state = 1168	# Skadovsk
+				state = 137	# Crimea
+				state = 1171	# Sevastopol
+				state = 199	# Khmelnytskyi
+				# Caucasus and Tabriz
+				state = 231	# Georgia
+				state = 826	# Abkhazia
+				state = 1064	# South Ossetia
+				state = 230	# Armenia
+				state = 229	# baku
+				state = 419	# Azerbaijan
+				state = 1000	# East Azerbaijan
+				# Levant
+				state = 1135	# Turkish Syria
+				state = 1149	# Turkish Syria 2
+				state = 1070	# Latakia-Tartus
+				state = 677	# Aleppo
+				state = 554	# Syria
+				state = 1150	# Druze
+				state = 680	# Deir-az-Zur
+				state = 1075	# Tripoli-Akkar
+				state = 1076	# Baalbek-Hermel
+				state = 1074	# Mount Lebanon
+				state = 553	# Lebanon
+				state = 1073	# Bekaa
+				state = 1112	# Chouf-Aley
+				state = 1113	# Al-Janoub
+				state = 1072	# Aqsa Al-Janoub
+				state = 1134	# Golan Heights
+				state = 454	# Israel
+				state = 1063	# West Bank
+				state = 1062	# Gaza
+				state = 1115	# Irbid
+				state = 1114	# Al-Mafraq
+				state = 455	# Jordan
+				state = 1116	# Al-Karak
+				state = 1117	# Ma'an
+				state = 1118	# Al-Aqaba
+				# Iraq and al-Hasa
+				state = 676	# Mosul
+				state = 291	# Iraq
+				state = 1010	# Al Anbar
+				state = 1011	# Al Basrah
+				state = 675	# Al Hajara
+				state = 656	# Kuwait
+				state = 859	# Dammam
+				state = 765	# Qatar
+				# Hejaz, Yemen and Habesh
+				state = 855	# Tabuk
+				state = 679	# Hejaz
+				state = 856	# Asir-Makkah
+				state = 293	# Yemen
+				state = 1172	# West Taiz
+				state = 1140	# Yemeni National Resistance
+				state = 992	# Province of Aden
+				state = 550	# Eritrea
+				# Egypt
+				state = 447	# Alexandria
+				state = 452	# Marsa Matruh
+				state = 446	# Cairo
+				state = 453	# Sinai
+				state = 907	# Cairo
+				state = 552	# Western Egypt
+				state = 457	# Aswan
+				state = 456	# Luxor
+				# Tripolitania, Tunis and Algiers
+				state = 448	# Tripoli
+				state = 661	# Tripolitania
+				state = 1194	# Ubari
+				state = 450	# Benghasi
+				state = 451	# Derna
+				state = 1192	# Rahibat
+				state = 662	# Sirte
+				state = 449	# Libyan Coast
+				state = 1193	# Western Fezzan
+				state = 663	# Cyrenaica
+				state = 1195	# Fezzan
+				state = 458	# Tunisia
+				state = 665	# Gabes
+				state = 460	# Eastern Algeria
+				state = 459	# Western Algeria
+			}
+			highlight_color_before_active = 2
+			highlight_color_while_active = 3
+		}
+
+		available = {
+			is_subject = no
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_not_formed_other_tt
+				NOT = { has_country_flag = ROM_dacia_formed }
+				NOT = { has_country_flag = ROM_roman_empire_formed }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_no_major_war_tt
+				NOT = { any_enemy_country = { is_major = yes } }
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_formable_stability_40_tt
+				has_stability > 0.4
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_anatolia_tt	# Anatolia and Cyprus (25 states)
+				controls_state = 341	# Edirne
+				controls_state = 797	# Istanbul
+				controls_state = 356	# Sinop
+				controls_state = 347	# Izmit
+				controls_state = 355	# Samsun
+				controls_state = 354	# Trabzon
+				controls_state = 340	# Bursa
+				controls_state = 49	# Turkey
+				controls_state = 349	# Silvas
+				controls_state = 798	# Amasya
+				controls_state = 800	# Van
+				controls_state = 353	# Erzurum
+				controls_state = 343	# Afyon
+				controls_state = 339	# Izmir
+				controls_state = 348	# Kayseri
+				controls_state = 346	# Konya
+				controls_state = 352	# Hakkari
+				controls_state = 344	# Adana
+				controls_state = 350	# Diyarbekir
+				controls_state = 342	# Antalya
+				controls_state = 345	# Mersin
+				controls_state = 799	# Hatay
+				controls_state = 183	# Cyprus
+				controls_state = 1060	# British Cyprus
+				controls_state = 1061	# North Cyprus
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_rumelia_tt	# Rumelia (30 states)
+				controls_state = 184	# Thrace
+				controls_state = 731	# Central Macedonia
+				controls_state = 185	# Epirus
+				controls_state = 1199	# Thessaly
+				controls_state = 47	# Greece
+				controls_state = 187	# Aegean Islands
+				controls_state = 186	# Peloponnese
+				controls_state = 182	# Crete
+				controls_state = 1077	# Silistra
+				controls_state = 77	# Dobrogea
+				controls_state = 801	# Moesia
+				controls_state = 48	# Bulgaria
+				controls_state = 211	# Burgas
+				controls_state = 212	# Plovdiv
+				controls_state = 934	# Shkoder
+				controls_state = 44	# Albania
+				controls_state = 805	# Northern Epirus
+				controls_state = 106	# Macedonia
+				controls_state = 970	# Western Macedonia
+				controls_state = 802	# Kosovo
+				controls_state = 105	# Montenegro
+				controls_state = 45	# Yugoslavia
+				controls_state = 764	# West Banat
+				controls_state = 1047	# Srem
+				controls_state = 107	# Kosavo
+				controls_state = 108	# Eastern Serbia
+				controls_state = 803	# Southern Serbia
+				controls_state = 104	# Bosnia
+				controls_state = 804	# Herzegovina
+				controls_state = 109	# Eastern Croatia
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_hungary_tt	# Ottoman Hungary (5 states)
+				controls_state = 43	# Hungary
+				controls_state = 154	# Southern plain
+				controls_state = 973	# Bacs
+				controls_state = 974	# South Transdanubia
+				controls_state = 664	# Southern Slovakia
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_principalities_tt	# Danubian Principalities (12 states)
+				controls_state = 76	# Northern Transylvania
+				controls_state = 79	# moldovia
+				controls_state = 83	# crisana
+				controls_state = 84	# Transylvania
+				controls_state = 82	# Banat
+				controls_state = 971	# Northern Dobruja
+				controls_state = 46	# Romania
+				controls_state = 81	# Oltenia
+				controls_state = 78	# Bessarabia
+				controls_state = 80	# Bocovina
+				controls_state = 766	# Southern Bessarabia
+				controls_state = 1066	# Transnistria
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_pontic_tt	# Black Sea Coast and Podolia (8 states)
+				controls_state = 834	# Balta
+				controls_state = 192	# Odessa
+				controls_state = 197	# Mykolaiv
+				controls_state = 196	# Kherson
+				controls_state = 1168	# Skadovsk
+				controls_state = 137	# Crimea
+				controls_state = 1171	# Sevastopol
+				controls_state = 199	# Khmelnytskyi
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_caucasus_tt	# Caucasus and Tabriz (7 states)
+				controls_state = 231	# Georgia
+				controls_state = 826	# Abkhazia
+				controls_state = 1064	# South Ossetia
+				controls_state = 230	# Armenia
+				controls_state = 229	# baku
+				controls_state = 419	# Azerbaijan
+				controls_state = 1000	# East Azerbaijan
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_levant_tt	# Levant (25 states)
+				controls_state = 1135	# Turkish Syria
+				controls_state = 1149	# Turkish Syria 2
+				controls_state = 1070	# Latakia-Tartus
+				controls_state = 677	# Aleppo
+				controls_state = 554	# Syria
+				controls_state = 1150	# Druze
+				controls_state = 680	# Deir-az-Zur
+				controls_state = 1075	# Tripoli-Akkar
+				controls_state = 1076	# Baalbek-Hermel
+				controls_state = 1074	# Mount Lebanon
+				controls_state = 553	# Lebanon
+				controls_state = 1073	# Bekaa
+				controls_state = 1112	# Chouf-Aley
+				controls_state = 1113	# Al-Janoub
+				controls_state = 1072	# Aqsa Al-Janoub
+				controls_state = 1134	# Golan Heights
+				controls_state = 454	# Israel
+				controls_state = 1063	# West Bank
+				controls_state = 1062	# Gaza
+				controls_state = 1115	# Irbid
+				controls_state = 1114	# Al-Mafraq
+				controls_state = 455	# Jordan
+				controls_state = 1116	# Al-Karak
+				controls_state = 1117	# Ma'an
+				controls_state = 1118	# Al-Aqaba
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_iraq_tt	# Iraq and al-Hasa (8 states)
+				controls_state = 676	# Mosul
+				controls_state = 291	# Iraq
+				controls_state = 1010	# Al Anbar
+				controls_state = 1011	# Al Basrah
+				controls_state = 675	# Al Hajara
+				controls_state = 656	# Kuwait
+				controls_state = 859	# Dammam
+				controls_state = 765	# Qatar
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_arabia_tt	# Hejaz, Yemen and Habesh (8 states)
+				controls_state = 855	# Tabuk
+				controls_state = 679	# Hejaz
+				controls_state = 856	# Asir-Makkah
+				controls_state = 293	# Yemen
+				controls_state = 1172	# West Taiz
+				controls_state = 1140	# Yemeni National Resistance
+				controls_state = 992	# Province of Aden
+				controls_state = 550	# Eritrea
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_egypt_tt	# Egypt (8 states)
+				controls_state = 447	# Alexandria
+				controls_state = 452	# Marsa Matruh
+				controls_state = 446	# Cairo
+				controls_state = 453	# Sinai
+				controls_state = 907	# Cairo
+				controls_state = 552	# Western Egypt
+				controls_state = 457	# Aswan
+				controls_state = 456	# Luxor
+			}
+			custom_trigger_tooltip = {
+				tooltip = ROM_ottoman_req_maghreb_tt	# Tripolitania, Tunis and Algiers (15 states)
+				controls_state = 448	# Tripoli
+				controls_state = 661	# Tripolitania
+				controls_state = 1194	# Ubari
+				controls_state = 450	# Benghasi
+				controls_state = 451	# Derna
+				controls_state = 1192	# Rahibat
+				controls_state = 662	# Sirte
+				controls_state = 449	# Libyan Coast
+				controls_state = 1193	# Western Fezzan
+				controls_state = 663	# Cyrenaica
+				controls_state = 1195	# Fezzan
+				controls_state = 458	# Tunisia
+				controls_state = 665	# Gabes
+				controls_state = 460	# Eastern Algeria
+				controls_state = 459	# Western Algeria
+			}
+		}
+
+		complete_effect = {
+			set_cosmetic_tag = ROM_OTTOMAN_EMPIRE
+			set_country_flag = ROM_ottoman_empire_formed
+			# Anatolia and Cyprus
+			341 = { add_core_of = ROOT }	# Edirne
+			797 = { add_core_of = ROOT }	# Istanbul
+			356 = { add_core_of = ROOT }	# Sinop
+			347 = { add_core_of = ROOT }	# Izmit
+			355 = { add_core_of = ROOT }	# Samsun
+			354 = { add_core_of = ROOT }	# Trabzon
+			340 = { add_core_of = ROOT }	# Bursa
+			49 = { add_core_of = ROOT }	# Turkey
+			349 = { add_core_of = ROOT }	# Silvas
+			798 = { add_core_of = ROOT }	# Amasya
+			800 = { add_core_of = ROOT }	# Van
+			353 = { add_core_of = ROOT }	# Erzurum
+			343 = { add_core_of = ROOT }	# Afyon
+			339 = { add_core_of = ROOT }	# Izmir
+			348 = { add_core_of = ROOT }	# Kayseri
+			346 = { add_core_of = ROOT }	# Konya
+			352 = { add_core_of = ROOT }	# Hakkari
+			344 = { add_core_of = ROOT }	# Adana
+			350 = { add_core_of = ROOT }	# Diyarbekir
+			342 = { add_core_of = ROOT }	# Antalya
+			345 = { add_core_of = ROOT }	# Mersin
+			799 = { add_core_of = ROOT }	# Hatay
+			183 = { add_core_of = ROOT }	# Cyprus
+			1060 = { add_core_of = ROOT }	# British Cyprus
+			1061 = { add_core_of = ROOT }	# North Cyprus
+			# Rumelia
+			184 = { add_core_of = ROOT }	# Thrace
+			731 = { add_core_of = ROOT }	# Central Macedonia
+			185 = { add_core_of = ROOT }	# Epirus
+			1199 = { add_core_of = ROOT }	# Thessaly
+			47 = { add_core_of = ROOT }	# Greece
+			187 = { add_core_of = ROOT }	# Aegean Islands
+			186 = { add_core_of = ROOT }	# Peloponnese
+			182 = { add_core_of = ROOT }	# Crete
+			1077 = { add_core_of = ROOT }	# Silistra
+			77 = { add_core_of = ROOT }	# Dobrogea
+			801 = { add_core_of = ROOT }	# Moesia
+			48 = { add_core_of = ROOT }	# Bulgaria
+			211 = { add_core_of = ROOT }	# Burgas
+			212 = { add_core_of = ROOT }	# Plovdiv
+			934 = { add_core_of = ROOT }	# Shkoder
+			44 = { add_core_of = ROOT }	# Albania
+			805 = { add_core_of = ROOT }	# Northern Epirus
+			106 = { add_core_of = ROOT }	# Macedonia
+			970 = { add_core_of = ROOT }	# Western Macedonia
+			802 = { add_core_of = ROOT }	# Kosovo
+			105 = { add_core_of = ROOT }	# Montenegro
+			45 = { add_core_of = ROOT }	# Yugoslavia
+			764 = { add_core_of = ROOT }	# West Banat
+			1047 = { add_core_of = ROOT }	# Srem
+			107 = { add_core_of = ROOT }	# Kosavo
+			108 = { add_core_of = ROOT }	# Eastern Serbia
+			803 = { add_core_of = ROOT }	# Southern Serbia
+			104 = { add_core_of = ROOT }	# Bosnia
+			804 = { add_core_of = ROOT }	# Herzegovina
+			109 = { add_core_of = ROOT }	# Eastern Croatia
+			# Ottoman Hungary
+			43 = { add_core_of = ROOT }	# Hungary
+			154 = { add_core_of = ROOT }	# Southern plain
+			973 = { add_core_of = ROOT }	# Bacs
+			974 = { add_core_of = ROOT }	# South Transdanubia
+			664 = { add_core_of = ROOT }	# Southern Slovakia
+			# Danubian Principalities
+			76 = { add_core_of = ROOT }	# Northern Transylvania
+			79 = { add_core_of = ROOT }	# moldovia
+			83 = { add_core_of = ROOT }	# crisana
+			84 = { add_core_of = ROOT }	# Transylvania
+			82 = { add_core_of = ROOT }	# Banat
+			971 = { add_core_of = ROOT }	# Northern Dobruja
+			46 = { add_core_of = ROOT }	# Romania
+			81 = { add_core_of = ROOT }	# Oltenia
+			78 = { add_core_of = ROOT }	# Bessarabia
+			80 = { add_core_of = ROOT }	# Bocovina
+			766 = { add_core_of = ROOT }	# Southern Bessarabia
+			1066 = { add_core_of = ROOT }	# Transnistria
+			# Black Sea Coast and Podolia
+			834 = { add_core_of = ROOT }	# Balta
+			192 = { add_core_of = ROOT }	# Odessa
+			197 = { add_core_of = ROOT }	# Mykolaiv
+			196 = { add_core_of = ROOT }	# Kherson
+			1168 = { add_core_of = ROOT }	# Skadovsk
+			137 = { add_core_of = ROOT }	# Crimea
+			1171 = { add_core_of = ROOT }	# Sevastopol
+			199 = { add_core_of = ROOT }	# Khmelnytskyi
+			# Caucasus and Tabriz
+			231 = { add_core_of = ROOT }	# Georgia
+			826 = { add_core_of = ROOT }	# Abkhazia
+			1064 = { add_core_of = ROOT }	# South Ossetia
+			230 = { add_core_of = ROOT }	# Armenia
+			229 = { add_core_of = ROOT }	# baku
+			419 = { add_core_of = ROOT }	# Azerbaijan
+			1000 = { add_core_of = ROOT }	# East Azerbaijan
+			# Levant
+			1135 = { add_core_of = ROOT }	# Turkish Syria
+			1149 = { add_core_of = ROOT }	# Turkish Syria 2
+			1070 = { add_core_of = ROOT }	# Latakia-Tartus
+			677 = { add_core_of = ROOT }	# Aleppo
+			554 = { add_core_of = ROOT }	# Syria
+			1150 = { add_core_of = ROOT }	# Druze
+			680 = { add_core_of = ROOT }	# Deir-az-Zur
+			1075 = { add_core_of = ROOT }	# Tripoli-Akkar
+			1076 = { add_core_of = ROOT }	# Baalbek-Hermel
+			1074 = { add_core_of = ROOT }	# Mount Lebanon
+			553 = { add_core_of = ROOT }	# Lebanon
+			1073 = { add_core_of = ROOT }	# Bekaa
+			1112 = { add_core_of = ROOT }	# Chouf-Aley
+			1113 = { add_core_of = ROOT }	# Al-Janoub
+			1072 = { add_core_of = ROOT }	# Aqsa Al-Janoub
+			1134 = { add_core_of = ROOT }	# Golan Heights
+			454 = { add_core_of = ROOT }	# Israel
+			1063 = { add_core_of = ROOT }	# West Bank
+			1062 = { add_core_of = ROOT }	# Gaza
+			1115 = { add_core_of = ROOT }	# Irbid
+			1114 = { add_core_of = ROOT }	# Al-Mafraq
+			455 = { add_core_of = ROOT }	# Jordan
+			1116 = { add_core_of = ROOT }	# Al-Karak
+			1117 = { add_core_of = ROOT }	# Ma'an
+			1118 = { add_core_of = ROOT }	# Al-Aqaba
+			# Iraq and al-Hasa
+			676 = { add_core_of = ROOT }	# Mosul
+			291 = { add_core_of = ROOT }	# Iraq
+			1010 = { add_core_of = ROOT }	# Al Anbar
+			1011 = { add_core_of = ROOT }	# Al Basrah
+			675 = { add_core_of = ROOT }	# Al Hajara
+			656 = { add_core_of = ROOT }	# Kuwait
+			859 = { add_core_of = ROOT }	# Dammam
+			765 = { add_core_of = ROOT }	# Qatar
+			# Hejaz, Yemen and Habesh
+			855 = { add_core_of = ROOT }	# Tabuk
+			679 = { add_core_of = ROOT }	# Hejaz
+			856 = { add_core_of = ROOT }	# Asir-Makkah
+			293 = { add_core_of = ROOT }	# Yemen
+			1172 = { add_core_of = ROOT }	# West Taiz
+			1140 = { add_core_of = ROOT }	# Yemeni National Resistance
+			992 = { add_core_of = ROOT }	# Province of Aden
+			550 = { add_core_of = ROOT }	# Eritrea
+			# Egypt
+			447 = { add_core_of = ROOT }	# Alexandria
+			452 = { add_core_of = ROOT }	# Marsa Matruh
+			446 = { add_core_of = ROOT }	# Cairo
+			453 = { add_core_of = ROOT }	# Sinai
+			907 = { add_core_of = ROOT }	# Cairo
+			552 = { add_core_of = ROOT }	# Western Egypt
+			457 = { add_core_of = ROOT }	# Aswan
+			456 = { add_core_of = ROOT }	# Luxor
+			# Tripolitania, Tunis and Algiers
+			448 = { add_core_of = ROOT }	# Tripoli
+			661 = { add_core_of = ROOT }	# Tripolitania
+			1194 = { add_core_of = ROOT }	# Ubari
+			450 = { add_core_of = ROOT }	# Benghasi
+			451 = { add_core_of = ROOT }	# Derna
+			1192 = { add_core_of = ROOT }	# Rahibat
+			662 = { add_core_of = ROOT }	# Sirte
+			449 = { add_core_of = ROOT }	# Libyan Coast
+			1193 = { add_core_of = ROOT }	# Western Fezzan
+			663 = { add_core_of = ROOT }	# Cyrenaica
+			1195 = { add_core_of = ROOT }	# Fezzan
+			458 = { add_core_of = ROOT }	# Tunisia
+			665 = { add_core_of = ROOT }	# Gabes
+			460 = { add_core_of = ROOT }	# Eastern Algeria
+			459 = { add_core_of = ROOT }	# Western Algeria
+			add_ideas = ROM_ottoman_empire_formed_idea
+			add_political_power = 150
+			add_stability = 0.03
+			add_named_threat = { threat = 3 name = ROM_ottoman_threat }
+			hidden_effect = {
+				news_event = { id = ROM_formable.3 }	# major: shown to every country once
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
 }

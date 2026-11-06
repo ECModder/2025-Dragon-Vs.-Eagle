@@ -1,0 +1,298 @@
+add_namespace = ROM_iohannis
+
+# ============================================================
+#   DvE: the return of Klaus Iohannis (romania_elections, "no clear
+#   mandate" path).
+#
+#   Flow:
+#     ROM_interim_mandate  -> 20 days -> ROM_iohannis.1 (the letter)
+#     accept               -> ROM_iohannis.3 (he meets the parties)
+#     ROM_rerun_the_ballot -> ROM_iohannis.4 (the rerun election, with
+#                             Iohannis as the 4th option) instead of
+#                             dve_rom.5
+#     choose Iohannis      -> ROM_iohannis.2 (world news, fired ONCE)
+#                             and the ROM_ioh_victory branch unlocks.
+#
+#   ROM_iohannis.2 is a MAJOR news event: firing it once from Romania
+#   already shows it to every country. It must never be fired inside
+#   every_country / every_other_country, or each player sees one copy
+#   per country in the world (the old 100+ popups bug).
+# ============================================================
+
+# 1. The rumour (mysterious, unnamed)
+country_event = {
+	id = ROM_iohannis.1
+	title = ROM_iohannis.1.t
+	desc = ROM_iohannis.1.d
+	picture = GFX_report_event_generic_read_write
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = ROM
+		has_country_flag = ROM_wait
+		NOT = {
+			OR = {
+				has_country_flag = ROM_Nicusor_Dan_wins
+				has_country_flag = ROM_Crin_Antonescu_wins
+				has_country_flag = ROM_George_Simion_wins
+				has_country_flag = ROM_Klaus_Iohannis_wins
+				has_country_flag = ROM_dracula_path
+				has_country_flag = ROM_iohannis_return_accepted
+				has_country_flag = ROM_iohannis_return_rejected
+				has_completed_focus = ROM_rerun_the_ballot
+				has_completed_focus = ROM_the_sealed_crypt
+			}
+		}
+	}
+
+	# Answer the message
+	option = {
+		name = ROM_iohannis.1.a
+		ai_chance = { factor = 20 }
+		set_country_flag = ROM_iohannis_return_accepted
+		custom_effect_tooltip = ROM_ioh_unlock_tt
+		hidden_effect = {
+			country_event = { id = ROM_iohannis.3 days = 10 }
+		}
+	}
+
+	# Leave the past in the past
+	option = {
+		name = ROM_iohannis.1.b
+		ai_chance = { factor = 80 }
+		set_country_flag = ROM_iohannis_return_rejected
+		add_stability = -0.02
+		add_political_power = 25
+		custom_effect_tooltip = ROM_ioh_rejected_tt
+	}
+}
+
+# 2. World news: Iohannis has won the rerun. Fired once (see header).
+news_event = {
+	id = ROM_iohannis.2
+	title = ROM_iohannis.2.t
+	desc = ROM_iohannis.2.d
+	picture = GFX_news_ROM_iohannis_return
+	major = yes
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {
+		name = ROM_iohannis.2.a
+		trigger = { original_tag = ROM }
+	}
+	option = {
+		name = ROM_iohannis.2.b
+		trigger = { NOT = { original_tag = ROM } }
+	}
+}
+
+# 3. The candidate (country event for Romania only)
+country_event = {
+	id = ROM_iohannis.3
+	title = ROM_iohannis.3.t
+	desc = ROM_iohannis.3.d
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = {
+		original_tag = ROM
+		has_country_flag = ROM_iohannis_return_accepted
+		NOT = { has_completed_focus = ROM_rerun_the_ballot }
+	}
+
+	option = {
+		name = ROM_iohannis.3.a
+		add_popularity = { ideology = conservative popularity = 0.03 }
+	}
+}
+
+# 4. The rerun election with Iohannis on the ballot.
+#    Same title and text as dve_rom.5, options a-c copied from it; the 4th option ("no clear
+#    mandate") is replaced by Klaus Iohannis. Fired by ROM_rerun_the_ballot
+#    only when the letter from Sibiu was answered.
+news_event = {
+	id = ROM_iohannis.4
+	title = dve_rom.5.t
+	desc = dve_rom.5.d
+	picture = GFX_news_ROM_2025_elections
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	trigger = { original_tag = ROM }
+
+	# Nicusor Dan
+	option = {
+		name = dve_rom.5.a
+		ai_chance = { factor = 25 }
+		set_country_flag = ROM_Nicusor_Dan_wins
+		set_politics = { ruling_party = conservative }
+		retire_character = ROM_ilie_bolojan
+		recruit_character = ROM_nicusor_dan
+		promote_character = ROM_nicusor_dan
+		mark_focus_tree_layout_dirty = yes
+	}
+	# Crin Antonescu
+	option = {
+		name = dve_rom.5.b
+		ai_chance = { factor = 20 }
+		set_country_flag = ROM_Crin_Antonescu_wins
+		set_politics = { ruling_party = progressive }
+		mark_focus_tree_layout_dirty = yes
+	}
+	# George Simion
+	option = {
+		name = dve_rom.5.c
+		ai_chance = { factor = 25 }
+		set_country_flag = ROM_George_Simion_wins
+		set_politics = { ruling_party = reactionary }
+		mark_focus_tree_layout_dirty = yes
+	}
+	# Klaus Iohannis (replaces "No candidate wins a clear mandate")
+	option = {
+		name = ROM_iohannis.4.d
+		ai_chance = { factor = 30 }
+		set_country_flag = ROM_Klaus_Iohannis_wins
+		mark_focus_tree_layout_dirty = yes
+		custom_effect_tooltip = ROM_ioh_wins_tt
+		hidden_effect = {
+			news_event = { id = ROM_iohannis.2 days = 1 }
+		}
+	}
+}
+
+# 5. A minister in handcuffs (ROM_ioh_unleash_the_dna)
+country_event = {
+	id = ROM_iohannis.5
+	title = ROM_iohannis.5.t
+	desc = ROM_iohannis.5.d
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {	# let justice run its course
+		name = ROM_iohannis.5.a
+		ai_chance = { factor = 60 }
+		add_stability = 0.02
+		custom_effect_tooltip = ROM_corr_m3_tt
+		custom_effect_tooltip = ROM_majority_m5_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+			add_to_variable = { ROM_majority = -5 }
+			ROM_update_majority = yes
+		}
+	}
+	option = {	# a quiet word with the prosecutors
+		name = ROM_iohannis.5.b
+		ai_chance = { factor = 40 }
+		add_political_power = 50
+		add_stability = -0.03
+		custom_effect_tooltip = ROM_corr_p3_tt
+		custom_effect_tooltip = ROM_majority_p3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = 3 }
+			ROM_corruption_apply = yes
+			add_to_variable = { ROM_majority = 3 }
+			ROM_update_majority = yes
+		}
+	}
+}
+
+# 6. The houses of Sibiu (ROM_ioh_houses_of_sibiu)
+country_event = {
+	id = ROM_iohannis.6
+	title = ROM_iohannis.6.t
+	desc = ROM_iohannis.6.d
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {	# give the houses back and apologise
+		name = ROM_iohannis.6.a
+		ai_chance = { factor = 40 }
+		add_political_power = -50
+		add_stability = 0.04
+		set_country_flag = ROM_ioh_houses_returned
+	}
+	option = {	# fight it in court
+		name = ROM_iohannis.6.b
+		ai_chance = { factor = 30 }
+		add_political_power = 25
+		add_stability = -0.03
+	}
+	option = {	# blame the opposition
+		name = ROM_iohannis.6.c
+		ai_chance = { factor = 30 }
+		add_stability = -0.05
+		add_popularity = { ideology = conservative popularity = 0.03 }
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+	}
+}
+
+# 7. Choosing a successor (ROM_ioh_name_a_successor)
+country_event = {
+	id = ROM_iohannis.7
+	title = ROM_iohannis.7.t
+	desc = ROM_iohannis.7.d
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {	# Ilie Bolojan
+		name = ROM_iohannis.7.a
+		ai_chance = { factor = 50 }
+		add_stability = 0.03
+		add_popularity = { ideology = conservative popularity = 0.05 }
+	}
+	option = {	# let the party choose
+		name = ROM_iohannis.7.b
+		ai_chance = { factor = 30 }
+		add_political_power = 75
+		custom_effect_tooltip = ROM_majority_p5_tt
+		hidden_effect = {
+			add_to_variable = { ROM_majority = 5 }
+			ROM_update_majority = yes
+		}
+	}
+	option = {	# a technocrat from outside politics
+		name = ROM_iohannis.7.c
+		ai_chance = { factor = 20 }
+		add_stability = 0.02
+		custom_effect_tooltip = ROM_corr_m3_tt
+		hidden_effect = {
+			set_temp_variable = { rom_corr_delta = -3 }
+			ROM_corruption_apply = yes
+		}
+	}
+}
+
+# 8. Protests in Piata Victoriei (ROM_ioh_guardian_of_the_republic)
+country_event = {
+	id = ROM_iohannis.8
+	title = ROM_iohannis.8.t
+	desc = ROM_iohannis.8.d
+	picture = GFX_report_event_journalist_speech
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	option = {	# promise a referendum
+		name = ROM_iohannis.8.a
+		ai_chance = { factor = 50 }
+		add_stability = 0.04
+		add_political_power = -50
+	}
+	option = {	# clear the square
+		name = ROM_iohannis.8.b
+		ai_chance = { factor = 50 }
+		add_stability = -0.04
+		add_war_support = 0.04
+		add_political_power = 50
+	}
+}

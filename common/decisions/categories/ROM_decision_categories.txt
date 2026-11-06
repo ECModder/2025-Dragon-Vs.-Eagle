@@ -36,6 +36,12 @@ ROM_snagov_category = {
 ROM_dacia_category = {
 	icon = generic_propaganda
 	allowed = { original_tag = ROM }
-	visible = { has_country_flag = ROM_dacia_decision_unlocked }
+	visible = {
+		OR = {
+			has_country_flag = ROM_dacia_decision_unlocked
+			has_country_flag = ROM_roman_empire_unlocked
+			has_country_flag = ROM_ottoman_empire_unlocked
+		}
+	}
 	priority = 10
 }

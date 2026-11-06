@@ -1,0 +1,58 @@
+add_namespace = ROM_formable
+
+# ============================================================
+#   DvE: news events for the three formable nations of Romania.
+#   Fired by the formation decisions in common/decisions/ROM_path_decisions.txt
+#   for every country, Romania included.
+# ============================================================
+
+news_event = {
+	id = ROM_formable.1
+	title = ROM_formable.1.t
+	desc = ROM_formable.1.d
+	picture = GFX_news_ROM_form_dacia
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ROM_formable.1.a
+		trigger = { original_tag = ROM }
+	}
+	option = {
+		name = ROM_formable.1.b
+		trigger = { NOT = { original_tag = ROM } }
+	}
+}
+
+news_event = {
+	id = ROM_formable.2
+	title = ROM_formable.2.t
+	desc = ROM_formable.2.d
+	picture = GFX_news_ROM_form_roman_empire
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ROM_formable.2.a
+		trigger = { original_tag = ROM }
+	}
+	option = {
+		name = ROM_formable.2.b
+		trigger = { NOT = { original_tag = ROM } }
+	}
+}
+
+news_event = {
+	id = ROM_formable.3
+	title = ROM_formable.3.t
+	desc = ROM_formable.3.d
+	picture = GFX_news_ROM_form_ottoman_empire
+	major = yes
+	is_triggered_only = yes
+	option = {
+		name = ROM_formable.3.a
+		trigger = { original_tag = ROM }
+	}
+	option = {
+		name = ROM_formable.3.b
+		trigger = { NOT = { original_tag = ROM } }
+	}
+}

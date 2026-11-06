@@ -1,0 +1,241 @@
+# DvE rework: evolution of the three armed-forces National Spirits.
+# Every version of a spirit replaces the previous one with swap_ideas, so a
+# country never holds two versions of the same spirit. The final versions are
+# one per focus tree (nato = romania_elections, uprise = romania_uprise,
+# dracula = romania_dracula). If the spirit is missing for any reason (for
+# example a console command), the target version is simply added.
+
+# ---- army ----
+ROM_army_spirit_tier_2 = {
+	if = {
+		limit = { has_idea = ROM_army_spirit }
+		swap_ideas = { remove_idea = ROM_army_spirit add_idea = ROM_army_spirit_2 }
+	}
+	else_if = {
+		limit = { NOT = { OR = { has_idea = ROM_army_spirit has_idea = ROM_army_spirit_2 has_idea = ROM_army_spirit_nato has_idea = ROM_army_spirit_uprise has_idea = ROM_army_spirit_dracula } } }
+		add_ideas = ROM_army_spirit_2
+	}
+}
+ROM_army_spirit_final_nato = {
+	if = {
+		limit = { has_idea = ROM_army_spirit }
+		swap_ideas = { remove_idea = ROM_army_spirit add_idea = ROM_army_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_2 }
+		swap_ideas = { remove_idea = ROM_army_spirit_2 add_idea = ROM_army_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_army_spirit_uprise add_idea = ROM_army_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_army_spirit_dracula add_idea = ROM_army_spirit_nato }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_army_spirit_nato } }
+		add_ideas = ROM_army_spirit_nato
+	}
+}
+ROM_army_spirit_final_uprise = {
+	if = {
+		limit = { has_idea = ROM_army_spirit }
+		swap_ideas = { remove_idea = ROM_army_spirit add_idea = ROM_army_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_2 }
+		swap_ideas = { remove_idea = ROM_army_spirit_2 add_idea = ROM_army_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_nato }
+		swap_ideas = { remove_idea = ROM_army_spirit_nato add_idea = ROM_army_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_army_spirit_dracula add_idea = ROM_army_spirit_uprise }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_army_spirit_uprise } }
+		add_ideas = ROM_army_spirit_uprise
+	}
+}
+ROM_army_spirit_final_dracula = {
+	if = {
+		limit = { has_idea = ROM_army_spirit }
+		swap_ideas = { remove_idea = ROM_army_spirit add_idea = ROM_army_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_2 }
+		swap_ideas = { remove_idea = ROM_army_spirit_2 add_idea = ROM_army_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_nato }
+		swap_ideas = { remove_idea = ROM_army_spirit_nato add_idea = ROM_army_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_army_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_army_spirit_uprise add_idea = ROM_army_spirit_dracula }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_army_spirit_dracula } }
+		add_ideas = ROM_army_spirit_dracula
+	}
+}
+
+# ---- air ----
+ROM_air_spirit_tier_2 = {
+	if = {
+		limit = { has_idea = ROM_air_spirit }
+		swap_ideas = { remove_idea = ROM_air_spirit add_idea = ROM_air_spirit_2 }
+	}
+	else_if = {
+		limit = { NOT = { OR = { has_idea = ROM_air_spirit has_idea = ROM_air_spirit_2 has_idea = ROM_air_spirit_nato has_idea = ROM_air_spirit_uprise has_idea = ROM_air_spirit_dracula } } }
+		add_ideas = ROM_air_spirit_2
+	}
+}
+ROM_air_spirit_final_nato = {
+	if = {
+		limit = { has_idea = ROM_air_spirit }
+		swap_ideas = { remove_idea = ROM_air_spirit add_idea = ROM_air_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_2 }
+		swap_ideas = { remove_idea = ROM_air_spirit_2 add_idea = ROM_air_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_air_spirit_uprise add_idea = ROM_air_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_air_spirit_dracula add_idea = ROM_air_spirit_nato }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_air_spirit_nato } }
+		add_ideas = ROM_air_spirit_nato
+	}
+}
+ROM_air_spirit_final_uprise = {
+	if = {
+		limit = { has_idea = ROM_air_spirit }
+		swap_ideas = { remove_idea = ROM_air_spirit add_idea = ROM_air_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_2 }
+		swap_ideas = { remove_idea = ROM_air_spirit_2 add_idea = ROM_air_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_nato }
+		swap_ideas = { remove_idea = ROM_air_spirit_nato add_idea = ROM_air_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_air_spirit_dracula add_idea = ROM_air_spirit_uprise }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_air_spirit_uprise } }
+		add_ideas = ROM_air_spirit_uprise
+	}
+}
+ROM_air_spirit_final_dracula = {
+	if = {
+		limit = { has_idea = ROM_air_spirit }
+		swap_ideas = { remove_idea = ROM_air_spirit add_idea = ROM_air_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_2 }
+		swap_ideas = { remove_idea = ROM_air_spirit_2 add_idea = ROM_air_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_nato }
+		swap_ideas = { remove_idea = ROM_air_spirit_nato add_idea = ROM_air_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_air_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_air_spirit_uprise add_idea = ROM_air_spirit_dracula }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_air_spirit_dracula } }
+		add_ideas = ROM_air_spirit_dracula
+	}
+}
+
+# ---- navy ----
+ROM_navy_spirit_tier_2 = {
+	if = {
+		limit = { has_idea = ROM_navy_spirit }
+		swap_ideas = { remove_idea = ROM_navy_spirit add_idea = ROM_navy_spirit_2 }
+	}
+	else_if = {
+		limit = { NOT = { OR = { has_idea = ROM_navy_spirit has_idea = ROM_navy_spirit_2 has_idea = ROM_navy_spirit_nato has_idea = ROM_navy_spirit_uprise has_idea = ROM_navy_spirit_dracula } } }
+		add_ideas = ROM_navy_spirit_2
+	}
+}
+ROM_navy_spirit_final_nato = {
+	if = {
+		limit = { has_idea = ROM_navy_spirit }
+		swap_ideas = { remove_idea = ROM_navy_spirit add_idea = ROM_navy_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_2 }
+		swap_ideas = { remove_idea = ROM_navy_spirit_2 add_idea = ROM_navy_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_navy_spirit_uprise add_idea = ROM_navy_spirit_nato }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_navy_spirit_dracula add_idea = ROM_navy_spirit_nato }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_navy_spirit_nato } }
+		add_ideas = ROM_navy_spirit_nato
+	}
+}
+ROM_navy_spirit_final_uprise = {
+	if = {
+		limit = { has_idea = ROM_navy_spirit }
+		swap_ideas = { remove_idea = ROM_navy_spirit add_idea = ROM_navy_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_2 }
+		swap_ideas = { remove_idea = ROM_navy_spirit_2 add_idea = ROM_navy_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_nato }
+		swap_ideas = { remove_idea = ROM_navy_spirit_nato add_idea = ROM_navy_spirit_uprise }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_dracula }
+		swap_ideas = { remove_idea = ROM_navy_spirit_dracula add_idea = ROM_navy_spirit_uprise }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_navy_spirit_uprise } }
+		add_ideas = ROM_navy_spirit_uprise
+	}
+}
+ROM_navy_spirit_final_dracula = {
+	if = {
+		limit = { has_idea = ROM_navy_spirit }
+		swap_ideas = { remove_idea = ROM_navy_spirit add_idea = ROM_navy_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_2 }
+		swap_ideas = { remove_idea = ROM_navy_spirit_2 add_idea = ROM_navy_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_nato }
+		swap_ideas = { remove_idea = ROM_navy_spirit_nato add_idea = ROM_navy_spirit_dracula }
+	}
+	else_if = {
+		limit = { has_idea = ROM_navy_spirit_uprise }
+		swap_ideas = { remove_idea = ROM_navy_spirit_uprise add_idea = ROM_navy_spirit_dracula }
+	}
+	else_if = {
+		limit = { NOT = { has_idea = ROM_navy_spirit_dracula } }
+		add_ideas = ROM_navy_spirit_dracula
+	}
+}
+
