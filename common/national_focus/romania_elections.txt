@@ -2504,6 +2504,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
+			mark_focus_tree_layout_dirty = yes	# shows ROM_its_not_done
 			add_ideas = ROM_liberal_romania_idea
 			add_stability = 0.03
 			add_political_power = 100
@@ -3830,9 +3831,9 @@ focus_tree = {
 	focus = {
 		id = ROM_romarm_revival
 		icon = GFX_focus_DvE_ROM_romarm_revival
-		x = -6
-		y = 0
-		relative_position_id = ROM_army_joint_command
+		x = -18
+		y = 1
+		relative_position_id = ROM_increase_our_spending_for_defence	# same spot as 6 left of ROM_army_joint_command, which is defined further down
 		cost = 7
 		prerequisite = { focus = ROM_increase_our_spending_for_defence }
 		search_filters = { FOCUS_FILTER_INDUSTRY }
@@ -5395,7 +5396,7 @@ focus_tree = {
 		x = 48
 		y = 15
 		cost = 5
-		prerequisite = { focus = ROM_dan_european_romania focus = ROM_a_new_national_settlement focus = ROM_sim_movement_endures focus = ROM_ant_the_strong_state focus = ROM_soc_peoples_romania focus = ROM_ioh_second_chance }
+		prerequisite = { focus = ROM_dan_european_romania focus = ROM_a_new_national_settlement focus = ROM_sim_movement_endures focus = ROM_ant_the_strong_state focus = ROM_soc_peoples_romania focus = ROM_ioh_second_chance focus = ROM_liberal_romania focus = ROM_soc_social_romania }
 		allow_branch = {
 			OR = {
 				has_country_flag = ROM_a_new_national_settlement_done
@@ -5404,6 +5405,8 @@ focus_tree = {
 				has_completed_focus = ROM_ant_the_strong_state
 				has_completed_focus = ROM_soc_peoples_romania
 				has_completed_focus = ROM_ioh_second_chance
+				has_completed_focus = ROM_liberal_romania
+				has_completed_focus = ROM_soc_social_romania
 			}
 		}
 		ai_will_do = {
@@ -6033,6 +6036,7 @@ focus_tree = {
 			factor = 1
 		}
 		completion_reward = {
+			mark_focus_tree_layout_dirty = yes	# shows ROM_its_not_done
 			add_ideas = ROM_soc_social_romania_idea
 			add_stability = 0.05
 			custom_effect_tooltip = ROM_consent_p10_tt
@@ -6440,8 +6444,7 @@ focus_tree = {
 			set_politics = { ruling_party = authoritarian_socialism elections_allowed = no }
 			add_ideas = ROM_soc_peoples_republic_idea
 			set_country_flag = ROM_communism_restored
-			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_elect.40 days = 1 } } }
-			news_event = { id = ROM_elect.40 days = 1 }
+			news_event = { id = ROM_elect.40 days = 1 }	# major = yes: one call already reaches every country
 		}
 	}
 

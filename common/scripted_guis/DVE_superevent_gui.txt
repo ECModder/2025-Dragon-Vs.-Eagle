@@ -14,6 +14,11 @@ scripted_gui = {
 			check_variable = { DVE_superevent > 0 }
 		}
 
+		triggers = {
+			dve_se_image_visible = { NOT = { check_variable = { DVE_superevent = 5 } } }
+			dve_se_image_ROM_revolution_visible = { check_variable = { DVE_superevent = 5 } }
+		}
+
 		properties = {
 			dve_se_image = { frame = DVE_superevent }
 		}

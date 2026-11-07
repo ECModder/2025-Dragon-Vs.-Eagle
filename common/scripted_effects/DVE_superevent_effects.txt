@@ -2,12 +2,16 @@
 #   DvE - SUPER EVENTS
 #   A super event is a number: 1 INT, 2 SRB, 3 SOV, 4 RCA win
 #   their civil war, 5 the 2nd Romanian Revolution. Each fires
-#   once, for every human player, each with its own music
-#   (music/dve_superevents).
+#   once, for every human player, each with its own song. The
+#   song is a sound effect (sound/dve_superevents) started by the
+#   window DVE_superevent_sound_<n>_window when the super event
+#   shows up, so it plays even with the music playlist stopped.
 #   To add one: a frame in superevent_images.dds (and noOfFrames
 #   in DVE_superevent.gfx), the five DVE_SE_<n>_* loc keys, a
-#   block in each of the five defined_text and a wrapper like
-#   the ones below.
+#   block in each of the five defined_text, a wrapper like the
+#   ones below, and a sound + window + scripted_gui for its song
+#   (dve_superevents_sounds.asset, DVE_superevent_sounds.gui,
+#   DVE_superevent_sounds_gui.txt).
 # ============================================================
 
 # Shows super event number dve_superevent_id (temp variable).
@@ -25,7 +29,6 @@ DVE_superevent_INT_victory_effect = {
 		set_global_flag = DVE_superevent_INT_victory
 		set_temp_variable = { dve_superevent_id = 1 }
 		DVE_superevent_fire_effect = yes
-		play_song = "dve_se_int_victory"
 	}
 }
 
@@ -36,7 +39,6 @@ DVE_superevent_SRB_victory_effect = {
 		set_global_flag = DVE_superevent_SRB_victory
 		set_temp_variable = { dve_superevent_id = 2 }
 		DVE_superevent_fire_effect = yes
-		play_song = "dve_se_srb_victory"
 	}
 }
 
@@ -47,7 +49,6 @@ DVE_superevent_SOV_victory_effect = {
 		set_global_flag = DVE_superevent_SOV_victory
 		set_temp_variable = { dve_superevent_id = 3 }
 		DVE_superevent_fire_effect = yes
-		play_song = "dve_se_sov_victory"
 	}
 }
 
@@ -58,7 +59,6 @@ DVE_superevent_RCA_victory_effect = {
 		set_global_flag = DVE_superevent_RCA_victory
 		set_temp_variable = { dve_superevent_id = 4 }
 		DVE_superevent_fire_effect = yes
-		play_song = "dve_se_rca_victory"
 	}
 }
 
@@ -68,6 +68,5 @@ DVE_superevent_ROM_revolution_effect = {
 		set_global_flag = DVE_superevent_ROM_revolution
 		set_temp_variable = { dve_superevent_id = 5 }
 		DVE_superevent_fire_effect = yes
-		play_song = "dve_rpd_romanian_revolution_hymn"
 	}
 }
