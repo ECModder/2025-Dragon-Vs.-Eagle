@@ -412,6 +412,39 @@ entity = {
         infantry = "ITA_vehicle_infantry_rifle_entity"
     }
 }
+###ROMANIA
+entity = {
+    clone = "ROM_infantry_entity"
+    name = "ROM_infantry_entity"
+    pdxmesh = "ROM_infantry_mesh"
+}
+
+entity = {
+    clone = "ROM_infantry_entity"
+    name = "ROM_infantry_2_entity"
+}
+
+entity = {
+    clone = "ROM_infantry_entity"
+    name = "ROM_infantry_3_entity"
+}
+
+entity = {
+    clone = "ROM_vehicle_infantry_rifle_entity"
+    name = "ROM_vehicle_infantry_rifle_entity"
+    pdxmesh = "ROM_european_infantry_mesh"
+}
+
+entity = {
+    clone = "ROM_motorized_entity"
+    name = "ROM_motorized_entity"
+    attach = {
+        name = "infantry"
+        infantry = "ROM_vehicle_infantry_rifle_entity"
+    }
+}
+
+
 
 ####Non high priority countries (I can give them a custom model later, if asked)###
 entity = {
@@ -695,33 +728,3 @@ entity = {
 }
 
 
-entity = {
-    clone = "USA_infantry_entity"
-    name = "ROM_infantry_entity"
-    pdxmesh = "eastern_european_infantry_mesh"
-}
-
-entity = {
-    clone = "ROM_infantry_entity"
-    name = "ROM_infantry_2_entity"
-}
-
-entity = {
-    clone = "ROM_infantry_entity"
-    name = "ROM_infantry_3_entity"
-}
-
-entity = {
-    clone = "SOV_vehicle_infantry_rifle_entity"
-    name = "ROM_vehicle_infantry_rifle_entity"
-    pdxmesh = "eastern_european_infantry_mesh"
-}
-
-entity = {
-    clone = "SOV_motorized_entity"
-    name = "ROM_motorized_entity"
-    attach = {
-        name = "infantry"
-        infantry = "ROM_vehicle_infantry_rifle_entity"
-    }
-}
