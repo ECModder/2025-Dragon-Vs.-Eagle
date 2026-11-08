@@ -51,31 +51,14 @@ guiTypes = {
 			frame = 1
 		}
 
-		# ============================================================
-		#   DvE - lista dei partiti CON SCROLLBAR
-		#
-		#   In vanilla questo blocco stava a { 18 116 } con la griglia
-		#   spostata di { 260 184 } al suo interno e clipping = no: le
-		#   4 ideologie del gioco base ci stavano sempre, quindi non
-		#   serviva scorrere. La mod ne ha 13 e le ultime finivano
-		#   fuori dal pannello.
-		#
-		#   Ora il contenitore sta direttamente dove prima finiva la
-		#   griglia (18+260 = 278, 116+184 = 300), la griglia e' a
-		#   offset 0 e il contenitore ha clipping + barra verticale.
-		#   L'altezza si ferma a 300+120 = 420, subito sopra
-		#   "autonomy_progress_view" che parte a y = 430.
-		#
-		#   Lo sfondo serve perche' "GFX_pol_view_bg" e' alto 344px e
-		#   finisce a y = 388: senza, le ultime due righe della lista
-		#   resterebbero appoggiate sul fondo nudo della finestra.
-		# ============================================================
+		# DvE - party list moved off screen (the engine still feeds it, nothing reads it).
+		# Replaced by the top-5 box of scripted gui DVE_party_top5 (interface/DVE_parties_gui.gui),
+		# which sits where the visible part of this list used to be: x 338..548, y 300..420.
 		containerWindowType = {
 			name = "chart_explanation"
-			position = { x = 278 y = 300 }
+			position = { x = -8000 y = 300 }
 			size = { width = 270 height = 120 }
 			clipping = yes
-			verticalScrollbar = "right_vertical_slider"
 			margin = { top = 0 bottom = 0 }
 
 			background = {
