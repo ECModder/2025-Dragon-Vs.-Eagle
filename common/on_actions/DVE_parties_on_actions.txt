@@ -1,0 +1,32 @@
+# DvE - political parties: keep the panel numbers fresh (human daily, every country weekly).
+on_actions = {
+
+	# on_startup has no scope: every_country provides the one the effect needs.
+	on_startup = {
+		effect = {
+			every_country = {
+				DVE_pt_refresh_effect = yes
+			}
+		}
+	}
+
+	# Runs in every country's scope: the human one daily.
+	on_daily = {
+		effect = {
+			if = {
+				limit = { is_ai = no }
+				DVE_pt_refresh_effect = yes
+			}
+		}
+	}
+
+	# AI countries (shown when observing or taking over): once a week.
+	on_weekly = {
+		effect = {
+			if = {
+				limit = { is_ai = yes }
+				DVE_pt_refresh_effect = yes
+			}
+		}
+	}
+}
