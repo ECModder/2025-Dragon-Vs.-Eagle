@@ -15,22 +15,17 @@ ideas = {
 		law = yes
 		use_list_view = yes
 
-		# order: Functioning State -> Improvised Bureaucracy ->
-		# Party-Guided State -> Councils State. The first three keep
-		# the exact bonuses they had before - only the sequence and
-		# the position of default/available changed to match it.
+		# DvE: 8 tiers, one per kind of regime; each is available to the groups listed in its condition.
 
-		functioning_state = {
+		representative_democracy = {
 			available = {
 				OR = {
-					has_government = conservative
-					has_government = centrist
 					has_government = progressive
 					has_government = liberal
+					has_government = centrist
+					has_government = conservative
 				}
 			}
-
-
 			cost = 100
 			removal_cost = -1
 			default = yes
@@ -49,15 +44,12 @@ ideas = {
 			}
 		}
 
-		improvised_bureaucracy = {
+		restricted_democracy = {
 			available = {
 				OR = {
-					has_government = fundamentalism
 					has_government = reactionary
 				}
 			}
-
-
 			cost = 100
 			removal_cost = -1
 
@@ -66,25 +58,113 @@ ideas = {
 				stability_factor = -0.03
 			}
 
-			cancel_if_invalid = no
+			cancel_if_invalid = yes
 
-			ai_will_do = { factor = 1 }
+			ai_will_do = {
+				base = 10
+			}
 		}
 
-		party_guided_state = {
+		religious_state = {
 			available = {
 				OR = {
-					has_government = authoritarian_socialism
-					has_government = totalitarian_socialism
-					has_government = authoritarianism
-					has_government = autocracy
-					has_government = absolutism
+					has_government = fundamentalism
+				}
+			}
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = 0.04
+				drift_defence_factor = 0.10
+				research_speed_factor = -0.05
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		ultranationalist_regime = {
+			available = {
+				OR = {
 					has_government = ultranationalism
 				}
 			}
+			cost = 100
+			removal_cost = -1
 
+			modifier = {
+				political_power_gain = 0.06
+				stability_factor = 0.04
+				drift_defence_factor = 0.15
+				war_support_factor = 0.05
+				research_speed_factor = -0.04
+			}
 
+			cancel_if_invalid = yes
 
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		monarchy = {
+			available = {
+				OR = {
+					has_government = absolutism
+				}
+			}
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.04
+				stability_factor = 0.06
+				drift_defence_factor = 0.15
+				research_speed_factor = -0.03
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		oligarchy_rule = {
+			available = {
+				OR = {
+					has_government = authoritarianism
+					has_government = autocracy
+				}
+			}
+			cost = 100
+			removal_cost = -1
+
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.04
+				drift_defence_factor = 0.10
+				research_speed_factor = -0.02
+			}
+
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+				base = 10
+			}
+		}
+
+		peoples_democratic_dictatorship = {
+			available = {
+				OR = {
+					has_government = totalitarian_socialism
+					has_government = authoritarian_socialism
+				}
+			}
 			cost = 100
 			removal_cost = -1
 
@@ -99,26 +179,16 @@ ideas = {
 
 			ai_will_do = {
 				base = 10
-				modifier = {
-					factor = 30
-					OR = { has_government = fascism  has_government = communism }
-				}
 			}
 		}
 
-		# new fourth tier: the party apparatus itself gives way to
-		# councils - fits the two ideologies that also drive the new
-		# Economic Model ladder below.
-		councils_state = {
+		direct_councils_democracy = {
 			available = {
 				OR = {
 					has_government = revolutionary_socialism
 					has_government = vanguard_socialism
 				}
 			}
-
-
-
 			cost = 100
 			removal_cost = -1
 
@@ -133,13 +203,6 @@ ideas = {
 
 			ai_will_do = {
 				base = 10
-				modifier = {
-					factor = 30
-					OR = {
-						has_government = revolutionary_socialism
-						has_government = vanguard_socialism
-					}
-				}
 			}
 		}
 	}

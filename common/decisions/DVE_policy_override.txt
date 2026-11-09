@@ -313,14 +313,14 @@ DVE_policy_override_category = {
 		ai_will_do = { factor = 0 }
 	}
 
-	DVE_set_functioning_state = {
+	DVE_set_representative_democracy = {
 
 		icon = GFX_decision_generic_political_address
 
 		allowed = { always = yes }
 
 		available = {
-			NOT = { has_idea = functioning_state }
+			NOT = { has_idea = representative_democracy }
 			has_political_power > 349
 		}
 
@@ -328,20 +328,20 @@ DVE_policy_override_category = {
 		fire_only_once = no
 
 		complete_effect = {
-			add_ideas = functioning_state
+			add_ideas = representative_democracy
 		}
 
 		ai_will_do = { factor = 0 }
 	}
 
-	DVE_set_improvised_bureaucracy = {
+	DVE_set_restricted_democracy = {
 
 		icon = GFX_decision_generic_political_address
 
 		allowed = { always = yes }
 
 		available = {
-			NOT = { has_idea = improvised_bureaucracy }
+			NOT = { has_idea = restricted_democracy }
 			has_political_power > 349
 		}
 
@@ -349,20 +349,20 @@ DVE_policy_override_category = {
 		fire_only_once = no
 
 		complete_effect = {
-			add_ideas = improvised_bureaucracy
+			add_ideas = restricted_democracy
 		}
 
 		ai_will_do = { factor = 0 }
 	}
 
-	DVE_set_party_guided_state = {
+	DVE_set_religious_state = {
 
 		icon = GFX_decision_generic_political_address
 
 		allowed = { always = yes }
 
 		available = {
-			NOT = { has_idea = party_guided_state }
+			NOT = { has_idea = religious_state }
 			has_political_power > 349
 		}
 
@@ -370,20 +370,20 @@ DVE_policy_override_category = {
 		fire_only_once = no
 
 		complete_effect = {
-			add_ideas = party_guided_state
+			add_ideas = religious_state
 		}
 
 		ai_will_do = { factor = 0 }
 	}
 
-	DVE_set_councils_state = {
+	DVE_set_ultranationalist_regime = {
 
 		icon = GFX_decision_generic_political_address
 
 		allowed = { always = yes }
 
 		available = {
-			NOT = { has_idea = councils_state }
+			NOT = { has_idea = ultranationalist_regime }
 			has_political_power > 349
 		}
 
@@ -391,7 +391,91 @@ DVE_policy_override_category = {
 		fire_only_once = no
 
 		complete_effect = {
-			add_ideas = councils_state
+			add_ideas = ultranationalist_regime
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_monarchy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = monarchy }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = monarchy
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_oligarchy_rule = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = oligarchy_rule }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = oligarchy_rule
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_peoples_democratic_dictatorship = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = peoples_democratic_dictatorship }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = peoples_democratic_dictatorship
+		}
+
+		ai_will_do = { factor = 0 }
+	}
+
+	DVE_set_direct_councils_democracy = {
+
+		icon = GFX_decision_generic_political_address
+
+		allowed = { always = yes }
+
+		available = {
+			NOT = { has_idea = direct_councils_democracy }
+			has_political_power > 349
+		}
+
+		cost = 350
+		fire_only_once = no
+
+		complete_effect = {
+			add_ideas = direct_councils_democracy
 		}
 
 		ai_will_do = { factor = 0 }
