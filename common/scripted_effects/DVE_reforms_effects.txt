@@ -5425,7 +5425,7 @@ DVE_rf_stances_effect = {
 	set_variable = { DVE_rf_seat_reactionary = party_popularity_100@reactionary }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_reactionary }
 	set_temp_variable = { DVE_rf_wt = DVE_rf_seat_reactionary }
-	multiply_temp_variable = { DVE_rf_wt = 4 }
+	multiply_temp_variable = { DVE_rf_wt = 3 }
 	add_to_temp_variable = { DVE_rf_wmu = DVE_rf_wt }
 	set_variable = { DVE_rf_seat_authoritarianism = party_popularity_100@authoritarianism }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_authoritarianism }
@@ -5435,7 +5435,7 @@ DVE_rf_stances_effect = {
 	set_variable = { DVE_rf_seat_autocracy = party_popularity_100@autocracy }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_autocracy }
 	set_temp_variable = { DVE_rf_wt = DVE_rf_seat_autocracy }
-	multiply_temp_variable = { DVE_rf_wt = 4 }
+	multiply_temp_variable = { DVE_rf_wt = 5 }
 	add_to_temp_variable = { DVE_rf_wmu = DVE_rf_wt }
 	set_variable = { DVE_rf_seat_absolutism = party_popularity_100@absolutism }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_absolutism }
@@ -5445,12 +5445,12 @@ DVE_rf_stances_effect = {
 	set_variable = { DVE_rf_seat_ultranationalism = party_popularity_100@ultranationalism }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_ultranationalism }
 	set_temp_variable = { DVE_rf_wt = DVE_rf_seat_ultranationalism }
-	multiply_temp_variable = { DVE_rf_wt = 7 }
+	multiply_temp_variable = { DVE_rf_wt = 8 }
 	add_to_temp_variable = { DVE_rf_wmu = DVE_rf_wt }
 	set_variable = { DVE_rf_seat_fundamentalism = party_popularity_100@fundamentalism }
 	add_to_temp_variable = { DVE_rf_wtot = DVE_rf_seat_fundamentalism }
 	set_temp_variable = { DVE_rf_wt = DVE_rf_seat_fundamentalism }
-	multiply_temp_variable = { DVE_rf_wt = 6 }
+	multiply_temp_variable = { DVE_rf_wt = 7 }
 	add_to_temp_variable = { DVE_rf_wmu = DVE_rf_wt }
 	if = { limit = { check_variable = { DVE_rf_wtot > 0 } } divide_temp_variable = { DVE_rf_wmu = DVE_rf_wtot } }
 	set_variable = { DVE_rf_mu = DVE_rf_wmu }
@@ -5503,7 +5503,7 @@ DVE_rf_stances_effect = {
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_seat_conservative }
 	add_to_temp_variable = { DVE_rf_wvar = DVE_rf_wd }
-	set_temp_variable = { DVE_rf_wd = -4 }
+	set_temp_variable = { DVE_rf_wd = -3 }
 	multiply_temp_variable = { DVE_rf_wd = -1 }
 	subtract_from_temp_variable = { DVE_rf_wd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
@@ -5515,7 +5515,7 @@ DVE_rf_stances_effect = {
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_seat_authoritarianism }
 	add_to_temp_variable = { DVE_rf_wvar = DVE_rf_wd }
-	set_temp_variable = { DVE_rf_wd = -4 }
+	set_temp_variable = { DVE_rf_wd = -5 }
 	multiply_temp_variable = { DVE_rf_wd = -1 }
 	subtract_from_temp_variable = { DVE_rf_wd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
@@ -5527,13 +5527,13 @@ DVE_rf_stances_effect = {
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_seat_absolutism }
 	add_to_temp_variable = { DVE_rf_wvar = DVE_rf_wd }
-	set_temp_variable = { DVE_rf_wd = -7 }
+	set_temp_variable = { DVE_rf_wd = -8 }
 	multiply_temp_variable = { DVE_rf_wd = -1 }
 	subtract_from_temp_variable = { DVE_rf_wd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_seat_ultranationalism }
 	add_to_temp_variable = { DVE_rf_wvar = DVE_rf_wd }
-	set_temp_variable = { DVE_rf_wd = -6 }
+	set_temp_variable = { DVE_rf_wd = -7 }
 	multiply_temp_variable = { DVE_rf_wd = -1 }
 	subtract_from_temp_variable = { DVE_rf_wd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_wd = DVE_rf_wd }
@@ -5548,9 +5548,9 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 1 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 1 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 1 }
 		set_variable = { DVE_rf_ideal_progressive = 2 }
 		set_variable = { DVE_rf_ideal_liberal = 2 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
@@ -5566,8 +5566,8 @@ DVE_rf_stances_effect = {
 		limit = { check_variable = { DVE_rf_sel_slot = 2 } }
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
-		set_variable = { DVE_rf_ideal_totalitarian_socialism = 3 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
+		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
 		set_variable = { DVE_rf_ideal_progressive = 5 }
@@ -5586,9 +5586,9 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 4 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 1 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 1 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 4 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
@@ -5608,8 +5608,8 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
-		set_variable = { DVE_rf_ideal_progressive = 4 }
-		set_variable = { DVE_rf_ideal_liberal = 4 }
+		set_variable = { DVE_rf_ideal_progressive = 5 }
+		set_variable = { DVE_rf_ideal_liberal = 3 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
 		set_variable = { DVE_rf_ideal_conservative = 3 }
 		set_variable = { DVE_rf_ideal_reactionary = 2 }
@@ -5624,18 +5624,18 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 1 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 1 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
-		set_variable = { DVE_rf_ideal_progressive = 3 }
+		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 3 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
 		set_variable = { DVE_rf_ideal_conservative = 3 }
-		set_variable = { DVE_rf_ideal_reactionary = 1 }
-		set_variable = { DVE_rf_ideal_authoritarianism = 1 }
+		set_variable = { DVE_rf_ideal_reactionary = 2 }
+		set_variable = { DVE_rf_ideal_authoritarianism = 2 }
 		set_variable = { DVE_rf_ideal_autocracy = 1 }
-		set_variable = { DVE_rf_ideal_absolutism = 2 }
-		set_variable = { DVE_rf_ideal_ultranationalism = 2 }
+		set_variable = { DVE_rf_ideal_absolutism = 1 }
+		set_variable = { DVE_rf_ideal_ultranationalism = 1 }
 		set_variable = { DVE_rf_ideal_fundamentalism = 2 }
 	}
 	if = {
@@ -5647,9 +5647,9 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
 		set_variable = { DVE_rf_ideal_progressive = 5 }
-		set_variable = { DVE_rf_ideal_liberal = 5 }
-		set_variable = { DVE_rf_ideal_centrist = 5 }
-		set_variable = { DVE_rf_ideal_conservative = 5 }
+		set_variable = { DVE_rf_ideal_liberal = 4 }
+		set_variable = { DVE_rf_ideal_centrist = 3 }
+		set_variable = { DVE_rf_ideal_conservative = 3 }
 		set_variable = { DVE_rf_ideal_reactionary = 2 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 2 }
 		set_variable = { DVE_rf_ideal_autocracy = 1 }
@@ -5663,13 +5663,13 @@ DVE_rf_stances_effect = {
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 3 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 2 }
 		set_variable = { DVE_rf_ideal_liberal = 1 }
-		set_variable = { DVE_rf_ideal_centrist = 3 }
-		set_variable = { DVE_rf_ideal_conservative = 3 }
-		set_variable = { DVE_rf_ideal_reactionary = 4 }
+		set_variable = { DVE_rf_ideal_centrist = 1 }
+		set_variable = { DVE_rf_ideal_conservative = 2 }
+		set_variable = { DVE_rf_ideal_reactionary = 3 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 3 }
 		set_variable = { DVE_rf_ideal_autocracy = 4 }
 		set_variable = { DVE_rf_ideal_absolutism = 4 }
@@ -5681,8 +5681,8 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 2 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 3 }
@@ -5745,7 +5745,7 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_liberal = 2 }
 		set_variable = { DVE_rf_ideal_centrist = 2 }
 		set_variable = { DVE_rf_ideal_conservative = 3 }
-		set_variable = { DVE_rf_ideal_reactionary = 1 }
+		set_variable = { DVE_rf_ideal_reactionary = 2 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 1 }
 		set_variable = { DVE_rf_ideal_autocracy = 1 }
 		set_variable = { DVE_rf_ideal_absolutism = 1 }
@@ -5758,25 +5758,25 @@ DVE_rf_stances_effect = {
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
-		set_variable = { DVE_rf_ideal_progressive = 1 }
-		set_variable = { DVE_rf_ideal_liberal = 1 }
-		set_variable = { DVE_rf_ideal_centrist = 2 }
-		set_variable = { DVE_rf_ideal_conservative = 3 }
-		set_variable = { DVE_rf_ideal_reactionary = 3 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 3 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
+		set_variable = { DVE_rf_ideal_progressive = 2 }
+		set_variable = { DVE_rf_ideal_liberal = 3 }
+		set_variable = { DVE_rf_ideal_centrist = 3 }
+		set_variable = { DVE_rf_ideal_conservative = 4 }
+		set_variable = { DVE_rf_ideal_reactionary = 4 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 4 }
-		set_variable = { DVE_rf_ideal_autocracy = 5 }
-		set_variable = { DVE_rf_ideal_absolutism = 3 }
+		set_variable = { DVE_rf_ideal_autocracy = 4 }
+		set_variable = { DVE_rf_ideal_absolutism = 4 }
 		set_variable = { DVE_rf_ideal_ultranationalism = 5 }
-		set_variable = { DVE_rf_ideal_fundamentalism = 4 }
+		set_variable = { DVE_rf_ideal_fundamentalism = 3 }
 	}
 	if = {
 		limit = { check_variable = { DVE_rf_sel_slot = 13 } }
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
-		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 5 }
+		set_variable = { DVE_rf_ideal_totalitarian_socialism = 3 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
@@ -5796,12 +5796,12 @@ DVE_rf_stances_effect = {
 		set_temp_variable = { DVE_rf_mxp = 4 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 2 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 2 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 3 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 4 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
-		set_variable = { DVE_rf_ideal_conservative = 3 }
+		set_variable = { DVE_rf_ideal_conservative = 2 }
 		set_variable = { DVE_rf_ideal_reactionary = 2 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 2 }
 		set_variable = { DVE_rf_ideal_autocracy = 2 }
@@ -5813,10 +5813,10 @@ DVE_rf_stances_effect = {
 		limit = { check_variable = { DVE_rf_sel_slot = 15 } }
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
-		set_variable = { DVE_rf_ideal_totalitarian_socialism = 2 }
+		set_variable = { DVE_rf_ideal_totalitarian_socialism = 3 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
 		set_variable = { DVE_rf_ideal_progressive = 5 }
 		set_variable = { DVE_rf_ideal_liberal = 4 }
 		set_variable = { DVE_rf_ideal_centrist = 4 }
@@ -5832,9 +5832,9 @@ DVE_rf_stances_effect = {
 		limit = { check_variable = { DVE_rf_sel_slot = 16 } }
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 2 } }
 		set_temp_variable = { DVE_rf_mxp = 7 }
-		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
+		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 3 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 1 }
 		set_variable = { DVE_rf_ideal_liberal = 2 }
@@ -5873,7 +5873,7 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 1 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
 		set_variable = { DVE_rf_ideal_progressive = 1 }
 		set_variable = { DVE_rf_ideal_liberal = 1 }
 		set_variable = { DVE_rf_ideal_centrist = 1 }
@@ -5892,7 +5892,7 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 3 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 4 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
@@ -5910,10 +5910,10 @@ DVE_rf_stances_effect = {
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 1 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
 		set_variable = { DVE_rf_ideal_progressive = 1 }
-		set_variable = { DVE_rf_ideal_liberal = 2 }
+		set_variable = { DVE_rf_ideal_liberal = 3 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
 		set_variable = { DVE_rf_ideal_conservative = 3 }
 		set_variable = { DVE_rf_ideal_reactionary = 4 }
@@ -5930,7 +5930,7 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 5 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_vanguard_socialism = 5 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 5 }
 		set_variable = { DVE_rf_ideal_progressive = 4 }
 		set_variable = { DVE_rf_ideal_liberal = 3 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
@@ -5939,7 +5939,7 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_authoritarianism = 4 }
 		set_variable = { DVE_rf_ideal_autocracy = 3 }
 		set_variable = { DVE_rf_ideal_absolutism = 2 }
-		set_variable = { DVE_rf_ideal_ultranationalism = 5 }
+		set_variable = { DVE_rf_ideal_ultranationalism = 3 }
 		set_variable = { DVE_rf_ideal_fundamentalism = 1 }
 	}
 	if = {
@@ -5947,9 +5947,9 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_cpos = 0 } } set_temp_variable = { DVE_rf_cpx = 3 } }
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
-		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 1 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
+		set_variable = { DVE_rf_ideal_authoritarian_socialism = 5 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 4 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 4 }
 		set_variable = { DVE_rf_ideal_progressive = 2 }
 		set_variable = { DVE_rf_ideal_liberal = 3 }
 		set_variable = { DVE_rf_ideal_centrist = 3 }
@@ -5967,8 +5967,8 @@ DVE_rf_stances_effect = {
 		set_temp_variable = { DVE_rf_mxp = 5 }
 		set_variable = { DVE_rf_ideal_totalitarian_socialism = 4 }
 		set_variable = { DVE_rf_ideal_authoritarian_socialism = 3 }
-		set_variable = { DVE_rf_ideal_vanguard_socialism = 2 }
-		set_variable = { DVE_rf_ideal_revolutionary_socialism = 2 }
+		set_variable = { DVE_rf_ideal_vanguard_socialism = 3 }
+		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 1 }
 		set_variable = { DVE_rf_ideal_liberal = 1 }
 		set_variable = { DVE_rf_ideal_centrist = 1 }
@@ -5990,14 +5990,23 @@ DVE_rf_stances_effect = {
 		set_variable = { DVE_rf_ideal_revolutionary_socialism = 3 }
 		set_variable = { DVE_rf_ideal_progressive = 3 }
 		set_variable = { DVE_rf_ideal_liberal = 2 }
-		set_variable = { DVE_rf_ideal_centrist = 2 }
-		set_variable = { DVE_rf_ideal_conservative = 2 }
+		set_variable = { DVE_rf_ideal_centrist = 1 }
+		set_variable = { DVE_rf_ideal_conservative = 1 }
 		set_variable = { DVE_rf_ideal_reactionary = 1 }
 		set_variable = { DVE_rf_ideal_authoritarianism = 2 }
 		set_variable = { DVE_rf_ideal_autocracy = 1 }
 		set_variable = { DVE_rf_ideal_absolutism = 1 }
 		set_variable = { DVE_rf_ideal_ultranationalism = 3 }
 		set_variable = { DVE_rf_ideal_fundamentalism = 1 }
+	}
+	set_variable = { DVE_rf_warc = 0 }
+	if = {
+		limit = {
+			has_war = yes
+			check_variable = { DVE_rf_sel_slot = 12 }
+			check_variable = { DVE_rf_sel_pos > DVE_rf_cpx }
+		}
+		set_variable = { DVE_rf_warc = 1 }
 	}
 	# totalitarian_socialism  position -6
 	set_temp_variable = { DVE_rf_do = DVE_rf_ideal_totalitarian_socialism }
@@ -6027,6 +6036,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_totalitarian_socialism = DVE_rf_pers_totalitarian_socialism }
 		if = { limit = { check_variable = { DVE_rf_st_totalitarian_socialism > 1 } } set_variable = { DVE_rf_st_totalitarian_socialism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_totalitarian_socialism < -1 } } set_variable = { DVE_rf_st_totalitarian_socialism = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_totalitarian_socialism = 1 }
+		set_variable = { DVE_rf_lk_totalitarian_socialism = 0 }
+		set_variable = { DVE_rf_ex_totalitarian_socialism = 0 }
 	}
 	set_variable = { DVE_rf_sf_totalitarian_socialism = DVE_rf_st_totalitarian_socialism }
 	add_to_variable = { DVE_rf_sf_totalitarian_socialism = 2 }
@@ -6062,6 +6077,12 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_authoritarian_socialism > 1 } } set_variable = { DVE_rf_st_authoritarian_socialism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_authoritarian_socialism < -1 } } set_variable = { DVE_rf_st_authoritarian_socialism = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_authoritarian_socialism = 1 }
+		set_variable = { DVE_rf_lk_authoritarian_socialism = 0 }
+		set_variable = { DVE_rf_ex_authoritarian_socialism = 0 }
+	}
 	set_variable = { DVE_rf_sf_authoritarian_socialism = DVE_rf_st_authoritarian_socialism }
 	add_to_variable = { DVE_rf_sf_authoritarian_socialism = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_authoritarian_socialism = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_authoritarian_socialism } }
@@ -6095,6 +6116,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_vanguard_socialism = DVE_rf_pers_vanguard_socialism }
 		if = { limit = { check_variable = { DVE_rf_st_vanguard_socialism > 1 } } set_variable = { DVE_rf_st_vanguard_socialism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_vanguard_socialism < -1 } } set_variable = { DVE_rf_st_vanguard_socialism = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_vanguard_socialism = 1 }
+		set_variable = { DVE_rf_lk_vanguard_socialism = 0 }
+		set_variable = { DVE_rf_ex_vanguard_socialism = 0 }
 	}
 	set_variable = { DVE_rf_sf_vanguard_socialism = DVE_rf_st_vanguard_socialism }
 	add_to_variable = { DVE_rf_sf_vanguard_socialism = 2 }
@@ -6130,6 +6157,12 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_revolutionary_socialism > 1 } } set_variable = { DVE_rf_st_revolutionary_socialism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_revolutionary_socialism < -1 } } set_variable = { DVE_rf_st_revolutionary_socialism = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_revolutionary_socialism = 1 }
+		set_variable = { DVE_rf_lk_revolutionary_socialism = 0 }
+		set_variable = { DVE_rf_ex_revolutionary_socialism = 0 }
+	}
 	set_variable = { DVE_rf_sf_revolutionary_socialism = DVE_rf_st_revolutionary_socialism }
 	add_to_variable = { DVE_rf_sf_revolutionary_socialism = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_revolutionary_socialism = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_revolutionary_socialism } }
@@ -6163,6 +6196,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_progressive = DVE_rf_pers_progressive }
 		if = { limit = { check_variable = { DVE_rf_st_progressive > 1 } } set_variable = { DVE_rf_st_progressive = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_progressive < -1 } } set_variable = { DVE_rf_st_progressive = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_progressive = 1 }
+		set_variable = { DVE_rf_lk_progressive = 0 }
+		set_variable = { DVE_rf_ex_progressive = 0 }
 	}
 	set_variable = { DVE_rf_sf_progressive = DVE_rf_st_progressive }
 	add_to_variable = { DVE_rf_sf_progressive = 2 }
@@ -6198,6 +6237,12 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_liberal > 1 } } set_variable = { DVE_rf_st_liberal = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_liberal < -1 } } set_variable = { DVE_rf_st_liberal = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_liberal = 1 }
+		set_variable = { DVE_rf_lk_liberal = 0 }
+		set_variable = { DVE_rf_ex_liberal = 0 }
+	}
 	set_variable = { DVE_rf_sf_liberal = DVE_rf_st_liberal }
 	add_to_variable = { DVE_rf_sf_liberal = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_liberal = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_liberal } }
@@ -6231,6 +6276,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_centrist = DVE_rf_pers_centrist }
 		if = { limit = { check_variable = { DVE_rf_st_centrist > 1 } } set_variable = { DVE_rf_st_centrist = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_centrist < -1 } } set_variable = { DVE_rf_st_centrist = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_centrist = 1 }
+		set_variable = { DVE_rf_lk_centrist = 0 }
+		set_variable = { DVE_rf_ex_centrist = 0 }
 	}
 	set_variable = { DVE_rf_sf_centrist = DVE_rf_st_centrist }
 	add_to_variable = { DVE_rf_sf_centrist = 2 }
@@ -6266,12 +6317,18 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_conservative > 1 } } set_variable = { DVE_rf_st_conservative = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_conservative < -1 } } set_variable = { DVE_rf_st_conservative = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_conservative = 1 }
+		set_variable = { DVE_rf_lk_conservative = 0 }
+		set_variable = { DVE_rf_ex_conservative = 0 }
+	}
 	set_variable = { DVE_rf_sf_conservative = DVE_rf_st_conservative }
 	add_to_variable = { DVE_rf_sf_conservative = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_conservative = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_conservative } }
 	if = { limit = { check_variable = { DVE_rf_st_conservative = -1 } } add_to_variable = { DVE_rf_n = DVE_rf_seat_conservative } }
 	if = { limit = { check_variable = { DVE_rf_st_conservative = 0 } } add_to_variable = { DVE_rf_a = DVE_rf_seat_conservative } }
-	# reactionary  position +4
+	# reactionary  position +3
 	set_temp_variable = { DVE_rf_do = DVE_rf_ideal_reactionary }
 	subtract_from_temp_variable = { DVE_rf_do = DVE_rf_cpx }
 	if = { limit = { check_variable = { DVE_rf_do < 0 } } multiply_temp_variable = { DVE_rf_do = -1 } }
@@ -6284,7 +6341,7 @@ DVE_rf_stances_effect = {
 	if = { limit = { check_variable = { DVE_rf_dot_reactionary > 0 } } set_variable = { DVE_rf_st_reactionary = 1 } }
 	if = { limit = { check_variable = { DVE_rf_dot_reactionary < 0 } } set_variable = { DVE_rf_st_reactionary = -1 } }
 	set_variable = { DVE_rf_ex_reactionary = 0 }
-	set_temp_variable = { DVE_rf_xd = -4 }
+	set_temp_variable = { DVE_rf_xd = -3 }
 	multiply_temp_variable = { DVE_rf_xd = -1 }
 	subtract_from_temp_variable = { DVE_rf_xd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_xd = DVE_rf_xd }
@@ -6299,6 +6356,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_reactionary = DVE_rf_pers_reactionary }
 		if = { limit = { check_variable = { DVE_rf_st_reactionary > 1 } } set_variable = { DVE_rf_st_reactionary = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_reactionary < -1 } } set_variable = { DVE_rf_st_reactionary = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_reactionary = 1 }
+		set_variable = { DVE_rf_lk_reactionary = 0 }
+		set_variable = { DVE_rf_ex_reactionary = 0 }
 	}
 	set_variable = { DVE_rf_sf_reactionary = DVE_rf_st_reactionary }
 	add_to_variable = { DVE_rf_sf_reactionary = 2 }
@@ -6334,12 +6397,18 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_authoritarianism > 1 } } set_variable = { DVE_rf_st_authoritarianism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_authoritarianism < -1 } } set_variable = { DVE_rf_st_authoritarianism = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_authoritarianism = 1 }
+		set_variable = { DVE_rf_lk_authoritarianism = 0 }
+		set_variable = { DVE_rf_ex_authoritarianism = 0 }
+	}
 	set_variable = { DVE_rf_sf_authoritarianism = DVE_rf_st_authoritarianism }
 	add_to_variable = { DVE_rf_sf_authoritarianism = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_authoritarianism = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_authoritarianism } }
 	if = { limit = { check_variable = { DVE_rf_st_authoritarianism = -1 } } add_to_variable = { DVE_rf_n = DVE_rf_seat_authoritarianism } }
 	if = { limit = { check_variable = { DVE_rf_st_authoritarianism = 0 } } add_to_variable = { DVE_rf_a = DVE_rf_seat_authoritarianism } }
-	# autocracy  position +4
+	# autocracy  position +5
 	set_temp_variable = { DVE_rf_do = DVE_rf_ideal_autocracy }
 	subtract_from_temp_variable = { DVE_rf_do = DVE_rf_cpx }
 	if = { limit = { check_variable = { DVE_rf_do < 0 } } multiply_temp_variable = { DVE_rf_do = -1 } }
@@ -6352,7 +6421,7 @@ DVE_rf_stances_effect = {
 	if = { limit = { check_variable = { DVE_rf_dot_autocracy > 0 } } set_variable = { DVE_rf_st_autocracy = 1 } }
 	if = { limit = { check_variable = { DVE_rf_dot_autocracy < 0 } } set_variable = { DVE_rf_st_autocracy = -1 } }
 	set_variable = { DVE_rf_ex_autocracy = 0 }
-	set_temp_variable = { DVE_rf_xd = -4 }
+	set_temp_variable = { DVE_rf_xd = -5 }
 	multiply_temp_variable = { DVE_rf_xd = -1 }
 	subtract_from_temp_variable = { DVE_rf_xd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_xd = DVE_rf_xd }
@@ -6367,6 +6436,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_autocracy = DVE_rf_pers_autocracy }
 		if = { limit = { check_variable = { DVE_rf_st_autocracy > 1 } } set_variable = { DVE_rf_st_autocracy = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_autocracy < -1 } } set_variable = { DVE_rf_st_autocracy = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_autocracy = 1 }
+		set_variable = { DVE_rf_lk_autocracy = 0 }
+		set_variable = { DVE_rf_ex_autocracy = 0 }
 	}
 	set_variable = { DVE_rf_sf_autocracy = DVE_rf_st_autocracy }
 	add_to_variable = { DVE_rf_sf_autocracy = 2 }
@@ -6402,12 +6477,18 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_absolutism > 1 } } set_variable = { DVE_rf_st_absolutism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_absolutism < -1 } } set_variable = { DVE_rf_st_absolutism = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_absolutism = 1 }
+		set_variable = { DVE_rf_lk_absolutism = 0 }
+		set_variable = { DVE_rf_ex_absolutism = 0 }
+	}
 	set_variable = { DVE_rf_sf_absolutism = DVE_rf_st_absolutism }
 	add_to_variable = { DVE_rf_sf_absolutism = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_absolutism = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_absolutism } }
 	if = { limit = { check_variable = { DVE_rf_st_absolutism = -1 } } add_to_variable = { DVE_rf_n = DVE_rf_seat_absolutism } }
 	if = { limit = { check_variable = { DVE_rf_st_absolutism = 0 } } add_to_variable = { DVE_rf_a = DVE_rf_seat_absolutism } }
-	# ultranationalism  position +7
+	# ultranationalism  position +8
 	set_temp_variable = { DVE_rf_do = DVE_rf_ideal_ultranationalism }
 	subtract_from_temp_variable = { DVE_rf_do = DVE_rf_cpx }
 	if = { limit = { check_variable = { DVE_rf_do < 0 } } multiply_temp_variable = { DVE_rf_do = -1 } }
@@ -6420,7 +6501,7 @@ DVE_rf_stances_effect = {
 	if = { limit = { check_variable = { DVE_rf_dot_ultranationalism > 0 } } set_variable = { DVE_rf_st_ultranationalism = 1 } }
 	if = { limit = { check_variable = { DVE_rf_dot_ultranationalism < 0 } } set_variable = { DVE_rf_st_ultranationalism = -1 } }
 	set_variable = { DVE_rf_ex_ultranationalism = 0 }
-	set_temp_variable = { DVE_rf_xd = -7 }
+	set_temp_variable = { DVE_rf_xd = -8 }
 	multiply_temp_variable = { DVE_rf_xd = -1 }
 	subtract_from_temp_variable = { DVE_rf_xd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_xd = DVE_rf_xd }
@@ -6436,12 +6517,18 @@ DVE_rf_stances_effect = {
 		if = { limit = { check_variable = { DVE_rf_st_ultranationalism > 1 } } set_variable = { DVE_rf_st_ultranationalism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_ultranationalism < -1 } } set_variable = { DVE_rf_st_ultranationalism = -1 } }
 	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_ultranationalism = 1 }
+		set_variable = { DVE_rf_lk_ultranationalism = 0 }
+		set_variable = { DVE_rf_ex_ultranationalism = 0 }
+	}
 	set_variable = { DVE_rf_sf_ultranationalism = DVE_rf_st_ultranationalism }
 	add_to_variable = { DVE_rf_sf_ultranationalism = 2 }
 	if = { limit = { check_variable = { DVE_rf_st_ultranationalism = 1 } } add_to_variable = { DVE_rf_y = DVE_rf_seat_ultranationalism } }
 	if = { limit = { check_variable = { DVE_rf_st_ultranationalism = -1 } } add_to_variable = { DVE_rf_n = DVE_rf_seat_ultranationalism } }
 	if = { limit = { check_variable = { DVE_rf_st_ultranationalism = 0 } } add_to_variable = { DVE_rf_a = DVE_rf_seat_ultranationalism } }
-	# fundamentalism  position +6
+	# fundamentalism  position +7
 	set_temp_variable = { DVE_rf_do = DVE_rf_ideal_fundamentalism }
 	subtract_from_temp_variable = { DVE_rf_do = DVE_rf_cpx }
 	if = { limit = { check_variable = { DVE_rf_do < 0 } } multiply_temp_variable = { DVE_rf_do = -1 } }
@@ -6454,7 +6541,7 @@ DVE_rf_stances_effect = {
 	if = { limit = { check_variable = { DVE_rf_dot_fundamentalism > 0 } } set_variable = { DVE_rf_st_fundamentalism = 1 } }
 	if = { limit = { check_variable = { DVE_rf_dot_fundamentalism < 0 } } set_variable = { DVE_rf_st_fundamentalism = -1 } }
 	set_variable = { DVE_rf_ex_fundamentalism = 0 }
-	set_temp_variable = { DVE_rf_xd = -6 }
+	set_temp_variable = { DVE_rf_xd = -7 }
 	multiply_temp_variable = { DVE_rf_xd = -1 }
 	subtract_from_temp_variable = { DVE_rf_xd = DVE_rf_wmu }
 	multiply_temp_variable = { DVE_rf_xd = DVE_rf_xd }
@@ -6469,6 +6556,12 @@ DVE_rf_stances_effect = {
 		add_to_variable = { DVE_rf_st_fundamentalism = DVE_rf_pers_fundamentalism }
 		if = { limit = { check_variable = { DVE_rf_st_fundamentalism > 1 } } set_variable = { DVE_rf_st_fundamentalism = 1 } }
 		if = { limit = { check_variable = { DVE_rf_st_fundamentalism < -1 } } set_variable = { DVE_rf_st_fundamentalism = -1 } }
+	}
+	if = {
+		limit = { check_variable = { DVE_rf_warc = 1 } }
+		set_variable = { DVE_rf_st_fundamentalism = 1 }
+		set_variable = { DVE_rf_lk_fundamentalism = 0 }
+		set_variable = { DVE_rf_ex_fundamentalism = 0 }
 	}
 	set_variable = { DVE_rf_sf_fundamentalism = DVE_rf_st_fundamentalism }
 	add_to_variable = { DVE_rf_sf_fundamentalism = 2 }
