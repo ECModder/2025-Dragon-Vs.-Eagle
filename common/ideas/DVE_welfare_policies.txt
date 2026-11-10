@@ -311,19 +311,12 @@ ideas = {
 	#   name over.
 	# ============================================================
 	workers_conditions = {
+		# DvE reforms (workers_conditions): ideas here change only through the reform system (add_ideas); available = no, cancel_if_invalid = no.
 		law = yes
 		use_list_view = yes
 
 		twelve_hour_workday = {
-			available = {
-				OR = {
-					has_government = authoritarianism
-					has_government = autocracy
-					has_government = absolutism
-					has_government = ultranationalism
-					has_government = fundamentalism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -337,12 +330,7 @@ ideas = {
 		}
 
 		ten_hour_workday = {
-			available = {
-				OR = {
-					has_government = totalitarian_socialism
-					has_government = reactionary
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -356,15 +344,7 @@ ideas = {
 		}
 
 		eight_hour_workday = {
-			available = {
-				OR = {
-					has_government = conservative
-					has_government = centrist
-					has_government = progressive
-					has_government = liberal
-					has_government = authoritarian_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -380,12 +360,7 @@ ideas = {
 		}
 
 		six_hour_workday = {
-			available = {
-				OR = {
-					has_government = revolutionary_socialism
-					has_government = vanguard_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -405,17 +380,12 @@ ideas = {
 	}
 
 	labour_union = {
+		# DvE reforms (labour_union): ideas here change only through the reform system (add_ideas); available = no, cancel_if_invalid = no.
 		law = yes
 		use_list_view = yes
 
 		unions_banned = {
-			available = {
-				OR = {
-					has_government = absolutism
-					has_government = ultranationalism
-					has_government = fundamentalism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -432,13 +402,7 @@ ideas = {
 		}
 
 		unions_tolerated = {
-			available = {
-				OR = {
-					has_government = autocracy
-					has_government = authoritarianism
-					has_government = reactionary
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -450,14 +414,7 @@ ideas = {
 		}
 
 		unions_allowed = {
-			available = {
-				OR = {
-					has_government = conservative
-					has_government = centrist
-					has_government = progressive
-					has_government = liberal
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -466,7 +423,7 @@ ideas = {
 				stability_factor = 0.03
 				production_factory_efficiency_gain_factor = 0.05
 			}
-			cancel_if_invalid = yes
+			cancel_if_invalid = no
 			ai_will_do = {
 				base = 15
 				modifier = { factor = 10  has_government = democratic }
@@ -474,12 +431,7 @@ ideas = {
 		}
 
 		state_labour_unions = {
-			available = {
-				OR = {
-					has_government = totalitarian_socialism
-					has_government = authoritarian_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -489,7 +441,7 @@ ideas = {
 				political_power_gain = 0.04
 				drift_defence_factor = 0.08
 			}
-			cancel_if_invalid = yes
+			cancel_if_invalid = no
 			ai_will_do = {
 				base = 8
 				modifier = { factor = 15  OR = { has_government = authoritarianism  has_government = authoritarian_socialism  has_government = totalitarian_socialism } }
@@ -497,12 +449,7 @@ ideas = {
 		}
 
 		workers_labour_union = {
-			available = {
-				OR = {
-					has_government = vanguard_socialism
-					has_government = revolutionary_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -514,7 +461,7 @@ ideas = {
 				political_power_gain = 0.06
 				drift_defence_factor = 0.12
 			}
-			cancel_if_invalid = yes
+			cancel_if_invalid = no
 			ai_will_do = {
 				base = 15
 				modifier = { factor = 10  has_government = revolutionary_socialism }
@@ -523,17 +470,12 @@ ideas = {
 	}
 
 	civic_jurisdiction = {
+		# DvE reforms (civic_jurisdiction): ideas here change only through the reform system (add_ideas); available = no, cancel_if_invalid = no.
 		law = yes
 		use_list_view = yes
 
 		formal_justice = {
-			available = {
-				OR = {
-					has_government = absolutism
-					has_government = ultranationalism
-					has_government = fundamentalism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -546,14 +488,7 @@ ideas = {
 		}
 
 		ordinary_justice = {
-			available = {
-				OR = {
-					has_government = conservative
-					has_government = centrist
-					has_government = progressive
-					has_government = liberal
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -566,15 +501,7 @@ ideas = {
 		}
 
 		strict_justice = {
-			available = {
-				OR = {
-					has_government = autocracy
-					has_government = authoritarianism
-					has_government = reactionary
-					has_government = totalitarian_socialism
-					has_government = authoritarian_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1
@@ -592,12 +519,7 @@ ideas = {
 		}
 
 		equal_justice = {
-			available = {
-				OR = {
-					has_government = vanguard_socialism
-					has_government = revolutionary_socialism
-				}
-			}
+			available = { always = no }
 
 			cost = 100
 			removal_cost = -1

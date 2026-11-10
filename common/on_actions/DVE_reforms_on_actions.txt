@@ -1,0 +1,28 @@
+# DvE Reforms: weekly maintenance and puppet hooks (SPEC.md 5.5).
+# on_startup / on_ruling_party_change are called from DVE_on_actions.txt.
+on_actions = {
+	on_weekly = {
+		effect = {
+			DVE_rf_weekly_effect = yes
+		}
+	}
+
+	# ROOT = the country that became (or was released as) a puppet. Only countries that
+	# voted a reform lose it; the weekly watcher catches every other way to become a subject.
+	on_puppet = {
+		effect = {
+			if = {
+				limit = { has_country_flag = DVE_rf_any_voted }
+				DVE_rf_puppet_reset_effect = yes
+			}
+		}
+	}
+	on_release_as_puppet = {
+		effect = {
+			if = {
+				limit = { has_country_flag = DVE_rf_any_voted }
+				DVE_rf_puppet_reset_effect = yes
+			}
+		}
+	}
+}

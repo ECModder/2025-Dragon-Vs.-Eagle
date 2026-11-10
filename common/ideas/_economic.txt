@@ -1,6 +1,7 @@
 ideas = {
 
 	economy = {
+		# DvE reforms (economy): vanilla conditions kept for the AI (is_ai = yes added); the human player changes this law through the reform menu; cancel_if_invalid = no.
 		law = yes
 		use_list_view = yes
 
@@ -99,6 +100,7 @@ ideas = {
 		}
 
 		civilian_economy = {
+			available = { is_ai = yes }
 
 
 			cost = 150
@@ -179,6 +181,7 @@ ideas = {
 		low_economic_mobilisation = {
 
 			available = {
+				is_ai = yes
 				has_war_support > 0.15
 				
 				IF = {
@@ -373,6 +376,7 @@ ideas = {
 		partial_economic_mobilisation = {
 
 			available = {
+				is_ai = yes
 				has_war_support > 0.25
 
 				IF = {
@@ -581,6 +585,7 @@ ideas = {
 
 
 			available = {
+				is_ai = yes
 				has_war_support > 0.5
 				OR = {
 					has_government = fascism
@@ -860,6 +865,7 @@ ideas = {
 			}
 
 			available = {
+				is_ai = yes
 				has_war = yes
 				has_war_support > 0.8
 				any_enemy_country = {
@@ -1263,6 +1269,7 @@ ideas = {
 	}
 
 	trade_laws = {
+		# DvE reforms (trade_laws): vanilla conditions kept for the AI (is_ai = yes added); the human player changes this law through the reform menu; cancel_if_invalid = no.
 		law = yes
 		use_list_view = yes
 
@@ -1336,6 +1343,7 @@ ideas = {
 		free_trade = {
 
 			available = {
+				is_ai = yes
 				if = {
 					limit = {
 						original_tag = SPR
@@ -1437,6 +1445,7 @@ ideas = {
 		managed_trade = {
 
 			available = {
+				is_ai = yes
 			}
 
 			cost = 150
@@ -1463,6 +1472,7 @@ ideas = {
 		export_focus = {
 
 			available = {
+				is_ai = yes
 
 				if = {
 					limit = {
@@ -1566,6 +1576,7 @@ ideas = {
 		restricted_trade = {
 
 			available = {
+				is_ai = yes
 			}
 
 			cost = 150
@@ -1592,6 +1603,7 @@ ideas = {
 
 		limited_exports = {
 			available = {
+				is_ai = yes
 				OR = {
 					AND = {
 						has_government = democratic
