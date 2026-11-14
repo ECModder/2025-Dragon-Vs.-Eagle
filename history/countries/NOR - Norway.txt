@@ -76,15 +76,16 @@ if = {
 	limit = {
 		has_aat = yes 
 	}
-	add_ideas = {
-		NOR_complacent_cabinet_ns
-		NOR_obsolete_armed_forces_ns_1
-		NOR_the_hard_thirties_ns
-		NOR_anti_communist_sentiment_ns
-		NOR_crumbling_fortifications_ns
-		NOR_birger_ljungberg
-		NOR_kristian_laake
-	} 
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# 	add_ideas = {
+#DvE-1936# 		NOR_complacent_cabinet_ns
+#DvE-1936# 		NOR_obsolete_armed_forces_ns_1
+#DvE-1936# 		NOR_the_hard_thirties_ns
+#DvE-1936# 		NOR_anti_communist_sentiment_ns
+#DvE-1936# 		NOR_crumbling_fortifications_ns
+#DvE-1936# 		NOR_birger_ljungberg
+#DvE-1936# 		NOR_kristian_laake
+#DvE-1936# 	} 
 	store_core_states_on_game_start = yes
 	# Setting Independent Norway Dmod variables 
 	set_variable = { NOR.NOR_independent_norway_dmod_consumer_goods_factor = 0 } 
@@ -113,10 +114,10 @@ set_grand_doctrine = new_strategic_destruction
 		project = sp:sp_air_radar
 	}
 
-set_popularities = {
-	centrist = 96
-	reactionary = 4
-}
+#DvE-1939# set_popularities = {
+#DvE-1939# 	centrist = 96
+#DvE-1939# 	reactionary = 4
+#DvE-1939# }
 add_ai_strategy = {
 	type = alliance
 	id = USA

@@ -1,0 +1,95 @@
+# DvE - PORTUGAL (POR) - decision categories.
+# Minigame categories show their values in the category description
+# (same approach as ROM_movement_category / ROM_corruption_category).
+
+POR_parliament_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = POR }
+	visible = { has_country_flag = POR_parliament_open }
+	priority = 60
+}
+
+POR_blackout_category = {
+	icon = generic_crisis
+	allowed = { original_tag = POR }
+	visible = { has_country_flag = POR_blackout_active }
+	priority = 100
+}
+
+POR_campaign_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = POR }
+	visible = { has_country_flag = POR_campaign_active }
+	priority = 90
+}
+
+# The Presidency. The hidden phone call of 2030 lives in this ordinary,
+# long-standing category on purpose: nothing new appears on the left
+# of the screen when it becomes available.
+POR_belem_category = {
+	icon = generic_decision
+	allowed = { original_tag = POR }
+	visible = { has_country_flag = POR_inaugurated }
+	priority = 40
+}
+
+POR_programme_category = {
+	icon = generic_decision
+	allowed = { original_tag = POR }
+	visible = {
+		OR = {
+			has_country_flag = POR_route_montenegro
+			has_country_flag = POR_route_santos
+			has_country_flag = POR_route_ventura
+		}
+	}
+	priority = 45
+}
+
+POR_grid_category = {
+	icon = generic_industry
+	allowed = { original_tag = POR }
+	visible = {
+		OR = {
+			has_completed_focus = POR_energy_resilience_programme
+			has_country_flag = POR_resilience_committed
+		}
+	}
+	priority = 35
+}
+
+POR_projects_category = {
+	icon = generic_construction
+	allowed = { original_tag = POR }
+	visible = { has_completed_focus = POR_the_state_of_the_economy }
+	priority = 30
+}
+
+POR_defence_category = {
+	icon = generic_tank
+	allowed = { original_tag = POR }
+	visible = { has_country_flag = POR_defence_planning }
+	priority = 50
+}
+
+POR_renewal_category = {
+	icon = generic_propaganda
+	allowed = { original_tag = POR }
+	visible = {
+		has_country_flag = POR_ronaldo_movement_founded
+		NOT = { has_country_flag = POR_route_ronaldo }
+	}
+	priority = 70
+}
+
+POR_vision_category = {
+	icon = generic_decision
+	allowed = { original_tag = POR }
+	visible = {
+		OR = {
+			has_country_flag = POR_lusophone_vision
+			has_country_flag = POR_iberian_vision
+		}
+	}
+	priority = 65
+}

@@ -1,0 +1,891 @@
+# ============================================================
+#   DvE - PORTUGAL (POR) - decisions and minigames
+#   Categories: common/decisions/categories/POR_decision_categories.txt
+#   Values and tier spirits: common/scripted_effects/POR_effects.txt
+#   The POR_xxx_p5 / _m5 one-liners: POR_value_effects.txt
+# ============================================================
+
+# ------------------------------------------------------------
+#   MINIGAME 1 - PARLIAMENTARY STABILITY
+#   Goal: keep Parliamentary Support out of the fragile band (<40)
+#   and never let it fall under 25, where a government crisis fires.
+#   70+ gives the Stable Majority spirit. Support erodes every month.
+# ------------------------------------------------------------
+POR_parliament_category = {
+
+	POR_negotiate_with_the_opposition = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 40
+		days_re_enable = 60
+		visible = { has_country_flag = POR_parliament_open }
+		complete_effect = {
+			POR_parl_p10 = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 5 check_variable = { POR_parl_support < 40 } }
+		}
+	}
+
+	POR_budget_concessions = {
+		icon = GFX_decision_generic_welfare
+		cost = 20
+		days_re_enable = 120
+		visible = { has_country_flag = POR_parliament_open }
+		complete_effect = {
+			POR_parl_p15 = yes
+			POR_conf_m5 = yes
+			add_stability = -0.01
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { add = 5 check_variable = { POR_parl_support < 30 } }
+		}
+	}
+
+	POR_address_the_nation = {
+		icon = GFX_decision_generic_speech
+		cost = 30
+		days_re_enable = 90
+		visible = { has_country_flag = POR_parliament_open }
+		complete_effect = {
+			POR_conf_p10 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_cabinet_reshuffle = {
+		icon = GFX_decision_generic_political_reform
+		cost = 60
+		days_re_enable = 240
+		visible = { has_country_flag = POR_parliament_open }
+		available = { NOT = { has_idea = POR_caretaker_government } }
+		complete_effect = {
+			POR_parl_p5 = yes
+			POR_conf_p5 = yes
+			add_stability = 0.01
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	# Public confidence is a resource: a popular government can cash it in.
+	POR_spend_political_capital = {
+		icon = GFX_decision_generic_political_address
+		cost = 0
+		days_re_enable = 150
+		visible = { has_country_flag = POR_parliament_open }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_conf_65_tt check_variable = { POR_confidence > 64 } }
+		}
+		complete_effect = {
+			POR_conf_m10 = yes
+			add_political_power = 60
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   MINIGAME 2 - BLACKOUT RECOVERY (28 April 2025, ten days)
+#   Five allocations, three needs. Two points each in Essential
+#   Infrastructure and Public Services give a clean recovery; two
+#   points in the Grid give the 'lessons learned' bonus for the
+#   Energy Resilience Programme. Five points cannot buy all three.
+#   The result is read by event por.13 when the mission runs out.
+# ------------------------------------------------------------
+POR_blackout_category = {
+
+	POR_restore_the_grid_mission = {
+		icon = GFX_decision_generic_construction
+		allowed = { original_tag = POR }
+		visible = { has_country_flag = POR_blackout_active }
+		activation = {
+			has_country_flag = POR_blackout_active
+		}
+		# never completes by hand: only the clock ends it
+		available = { has_country_flag = POR_blackout_never }
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 10
+		timeout_effect = {
+			custom_effect_tooltip = POR_restore_the_grid_mission_tt
+			hidden_effect = { country_event = { id = por.13 } }
+		}
+		complete_effect = { }
+	}
+
+	POR_bo_essential_infrastructure = {
+		icon = GFX_decision_generic_civil_support
+		cost = 0
+		visible = { has_country_flag = POR_blackout_active }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_relief_point_tt check_variable = { POR_relief_points > 0 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_bo_essential_tt
+			hidden_effect = {
+				add_to_variable = { POR_relief_points = -1 }
+				add_to_variable = { POR_bo_essential = 1 }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = { factor = 0 check_variable = { POR_bo_essential > 1 } }
+		}
+	}
+
+	POR_bo_public_services = {
+		icon = GFX_decision_generic_trucks
+		cost = 0
+		visible = { has_country_flag = POR_blackout_active }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_relief_point_tt check_variable = { POR_relief_points > 0 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_bo_services_tt
+			hidden_effect = {
+				add_to_variable = { POR_relief_points = -1 }
+				add_to_variable = { POR_bo_services = 1 }
+			}
+		}
+		ai_will_do = {
+			factor = 10
+			modifier = { factor = 0 check_variable = { POR_bo_services > 1 } }
+		}
+	}
+
+	POR_bo_grid_resilience = {
+		icon = GFX_decision_generic_industry
+		cost = 0
+		visible = { has_country_flag = POR_blackout_active }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_relief_point_tt check_variable = { POR_relief_points > 0 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_bo_grid_tt
+			hidden_effect = {
+				add_to_variable = { POR_relief_points = -1 }
+				add_to_variable = { POR_bo_grid = 1 }
+			}
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   MINIGAME 3 - PRESIDENTIAL CAMPAIGN (15 Oct 2025 - 18 Jan 2026)
+#   Score = average of the three regions + momentum.
+#   55+  first-round victory (Strong Mandate, one year)
+#   40-54 victory in the runoff of 8 February
+#   <40  narrow runoff victory (Contested Mandate, one year)
+#   The backed candidate always wins: the campaign decides HOW.
+# ------------------------------------------------------------
+POR_campaign_category = {
+
+	POR_camp_rally_north = {
+		icon = GFX_decision_generic_political_rally
+		cost = 30
+		days_re_enable = 25
+		visible = { has_country_flag = POR_campaign_active }
+		available = { POR_has_backed_candidate = yes }
+		complete_effect = { POR_camp_north_p12 = yes }
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_camp_rally_lisbon = {
+		icon = GFX_decision_generic_political_rally
+		cost = 30
+		days_re_enable = 25
+		visible = { has_country_flag = POR_campaign_active }
+		available = { POR_has_backed_candidate = yes }
+		complete_effect = { POR_camp_lisbon_p12 = yes }
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_camp_tour_south_and_islands = {
+		icon = GFX_decision_generic_political_rally
+		cost = 30
+		days_re_enable = 25
+		visible = { has_country_flag = POR_campaign_active }
+		available = { POR_has_backed_candidate = yes }
+		complete_effect = { POR_camp_south_p12 = yes }
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_camp_media_blitz = {
+		icon = GFX_decision_generic_speech
+		cost = 40
+		days_re_enable = 40
+		visible = { has_country_flag = POR_campaign_active }
+		available = { POR_has_backed_candidate = yes }
+		complete_effect = { POR_mom_p5 = yes }
+		ai_will_do = { factor = 1 }
+	}
+
+	# A trusted government lends its credit to its candidate.
+	POR_camp_lean_on_public_confidence = {
+		icon = GFX_decision_generic_political_address
+		cost = 0
+		fire_only_once = yes
+		visible = { has_country_flag = POR_campaign_active }
+		available = {
+			POR_has_backed_candidate = yes
+			custom_trigger_tooltip = { tooltip = POR_needs_conf_60_tt check_variable = { POR_confidence > 59 } }
+		}
+		complete_effect = {
+			POR_conf_m10 = yes
+			POR_mom_p10 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   THE PRESIDENCY (Palacio de Belem)
+#   Portugal is semi-presidential: the President mediates, vetoes,
+#   addresses the country and convenes the Council of State. He does
+#   not run the government.
+# ------------------------------------------------------------
+POR_belem_category = {
+
+	POR_presidential_address = {
+		icon = GFX_decision_generic_speech
+		cost = 25
+		days_re_enable = 120
+		visible = { has_country_flag = POR_inaugurated }
+		complete_effect = { POR_conf_p5 = yes }
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_council_of_state_mediation = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 50
+		days_re_enable = 180
+		visible = { has_country_flag = POR_inaugurated }
+		complete_effect = { POR_parl_p10 = yes }
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 4 check_variable = { POR_parl_support < 40 } }
+		}
+	}
+
+	POR_presidential_veto = {
+		icon = GFX_decision_generic_political_reform
+		cost = 30
+		days_re_enable = 150
+		visible = { has_country_flag = POR_inaugurated }
+		complete_effect = {
+			POR_parl_m5 = yes
+			POR_conf_p5 = yes
+			add_stability = 0.01
+		}
+		ai_will_do = { factor = 0.3 }
+	}
+
+	POR_state_visit_to_the_lusophone_world = {
+		icon = GFX_decision_generic_political_address
+		cost = 40
+		days_re_enable = 240
+		visible = { has_country_flag = POR_inaugurated }
+		complete_effect = {
+			if = { limit = { country_exists = BRA } BRA = { add_opinion_modifier = { target = ROOT modifier = POR_state_visit } } }
+			if = { limit = { country_exists = ANG } ANG = { add_opinion_modifier = { target = ROOT modifier = POR_state_visit } } }
+			if = { limit = { country_exists = MZB } MZB = { add_opinion_modifier = { target = ROOT modifier = POR_state_visit } } }
+			if = { limit = { country_exists = CBV } CBV = { add_opinion_modifier = { target = ROOT modifier = POR_state_visit } } }
+			add_political_power = 15
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	# ========================================================
+	#   THE HIDDEN PHONE CALL (2030)                DEVELOPER NOTES
+	#
+	#   Two decisions, same visibility: answer or let it ring.
+	#   Both are INVISIBLE (visible = no) until ALL of this holds:
+	#     1. POR_ronaldo_legitimacy       focus 'Audience with the
+	#                                     Council of State' is done
+	#     2. POR_ronaldo_movement_founded the movement exists
+	#     3. 5 February 2030 <= date <= 16 March 2030
+	#        (date > 2030.2.4 and date < 2030.3.17: 40 days,
+	#        opening on Ronaldo's 45th birthday)
+	#     4. POR_renewal_support >= 55    the movement is a national force
+	#     5. no Caretaker Government spirit and no war: a President
+	#        does not open a succession in the middle of a crisis
+	#     6. the call was not already answered or declined, and
+	#        Ronaldo is not already President
+	#   Nothing announces it: no event, no new category (it sits in the
+	#   ordinary Presidency category). The only hint is event por.68
+	#   (20 November 2029), which names neither the decision nor the date.
+	#   If the window closes unanswered, POR_daily_schedule sets
+	#   POR_call_missed on 17 March 2030 and the opportunity is gone.
+	#   fire_only_once + the POR_call_answered flag make a second call,
+	#   a second character or a second inauguration impossible.
+	#   If you change a condition, change it in BOTH decisions.
+	# ========================================================
+	POR_answer_the_private_line = {
+		icon = GFX_decision_generic_political_address
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			has_country_flag = POR_ronaldo_legitimacy
+			has_country_flag = POR_ronaldo_movement_founded
+			date > 2030.2.4
+			date < 2030.3.17
+			check_variable = { POR_renewal_support > 54 }
+			NOT = { has_idea = POR_caretaker_government }
+			has_war = no
+			NOT = { has_country_flag = POR_call_answered }
+			NOT = { has_country_flag = POR_route_ronaldo }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_answer_the_private_line_tt
+			hidden_effect = {
+				set_country_flag = POR_call_answered
+				set_country_flag = POR_call_accepted
+				country_event = { id = por.69 }
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 is_historical_focus_on = yes }
+		}
+	}
+
+	POR_let_it_ring = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 0
+		fire_only_once = yes
+		visible = {
+			has_country_flag = POR_ronaldo_legitimacy
+			has_country_flag = POR_ronaldo_movement_founded
+			date > 2030.2.4
+			date < 2030.3.17
+			check_variable = { POR_renewal_support > 54 }
+			NOT = { has_idea = POR_caretaker_government }
+			has_war = no
+			NOT = { has_country_flag = POR_call_answered }
+			NOT = { has_country_flag = POR_route_ronaldo }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_let_it_ring_tt
+			hidden_effect = {
+				set_country_flag = POR_call_answered
+				set_country_flag = POR_call_declined
+				country_event = { id = por.73 }
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { add = 1 is_historical_focus_on = yes }
+		}
+	}
+}
+
+# ------------------------------------------------------------
+#   THE GOVERNMENT PROGRAMME - two decisions per candidate route
+# ------------------------------------------------------------
+POR_programme_category = {
+
+	POR_dec_cut_licensing_times = {
+		icon = GFX_decision_generic_political_reform
+		cost = 40
+		days_re_enable = 300
+		visible = { has_country_flag = POR_route_montenegro }
+		complete_effect = {
+			add_political_power = 10
+			112 = { add_extra_state_shared_building_slots = 1 }
+			POR_conf_p5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_investment_roadshow = {
+		icon = GFX_decision_generic_industry
+		cost = 75
+		days_re_enable = 365
+		visible = { has_country_flag = POR_route_montenegro }
+		available = { has_completed_focus = POR_a_competitive_portuguese_economy }
+		complete_effect = {
+			180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			POR_parl_m5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_family_doctor_drive = {
+		icon = GFX_decision_generic_welfare
+		cost = 50
+		days_re_enable = 240
+		visible = { has_country_flag = POR_route_santos }
+		complete_effect = {
+			add_stability = 0.02
+			POR_conf_p5 = yes
+			add_political_power = -10
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_affordable_rent_scheme = {
+		icon = GFX_decision_generic_construction
+		cost = 60
+		days_re_enable = 300
+		visible = { has_country_flag = POR_route_santos }
+		available = { has_completed_focus = POR_homes_for_the_portuguese_people }
+		complete_effect = {
+			POR_conf_p10 = yes
+			POR_parl_m5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_audit_the_ministries = {
+		icon = GFX_decision_generic_arrest
+		cost = 40
+		days_re_enable = 240
+		visible = { has_country_flag = POR_route_ventura }
+		complete_effect = {
+			POR_conf_p5 = yes
+			POR_parl_m5 = yes
+			add_political_power = 15
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_border_operation = {
+		icon = GFX_decision_generic_army_support
+		cost = 40
+		days_re_enable = 240
+		visible = { has_country_flag = POR_route_ventura }
+		available = { has_completed_focus = POR_a_different_immigration_policy }
+		complete_effect = {
+			add_war_support = 0.02
+			add_popularity = { ideology = reactionary popularity = 0.02 }
+			if = { limit = { country_exists = SPR } SPR = { add_opinion_modifier = { target = ROOT modifier = POR_border_dispute } } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   ENERGY RESILIENCE - the long answer to 28 April 2025
+# ------------------------------------------------------------
+POR_grid_category = {
+
+	POR_dec_battery_storage_parks = {
+		icon = GFX_decision_generic_industry
+		cost = 50
+		days_remove = 120
+		fire_only_once = yes
+		visible = { always = yes }
+		complete_effect = { custom_effect_tooltip = POR_project_started_tt }
+		remove_effect = {
+			179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			POR_conf_p5 = yes
+			add_stability = 0.01
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_interconnector_talks = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 40
+		fire_only_once = yes
+		visible = { always = yes }
+		available = { country_exists = SPR NOT = { has_war_with = SPR } }
+		complete_effect = {
+			SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } }
+			if = { limit = { country_exists = FRA } FRA = { add_opinion_modifier = { target = ROOT modifier = POR_european_partner } } }
+			add_political_power = 20
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_emergency_planning_drills = {
+		icon = GFX_decision_generic_civil_support
+		cost = 25
+		days_re_enable = 365
+		visible = { always = yes }
+		complete_effect = {
+			add_stability = 0.01
+			POR_conf_p5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   NATIONAL PROJECTS - economy and infrastructure
+# ------------------------------------------------------------
+POR_projects_category = {
+
+	POR_dec_lisbon_airport = {
+		icon = GFX_decision_generic_construction
+		cost = 75
+		days_remove = 180
+		fire_only_once = yes
+		visible = { always = yes }
+		available = { has_completed_focus = POR_infrastructure_renewal }
+		complete_effect = { custom_effect_tooltip = POR_project_started_tt }
+		remove_effect = {
+			112 = { add_building_construction = { type = air_base level = 2 instant_build = yes } }
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_sines_deepwater_port = {
+		icon = GFX_decision_generic_naval
+		cost = 60
+		days_remove = 150
+		fire_only_once = yes
+		visible = { always = yes }
+		available = { has_completed_focus = POR_ports_of_the_atlantic }
+		complete_effect = { custom_effect_tooltip = POR_project_started_tt }
+		remove_effect = {
+			179 = { add_building_construction = { type = naval_base level = 2 province = 3790 instant_build = yes } }
+			179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_northern_rail_corridor = {
+		icon = GFX_decision_generic_trucks
+		cost = 60
+		days_remove = 180
+		fire_only_once = yes
+		visible = { always = yes }
+		available = { has_completed_focus = POR_the_infrastructure_backlog }
+		complete_effect = { custom_effect_tooltip = POR_project_started_tt }
+		remove_effect = {
+			180 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_azores_space_port = {
+		icon = GFX_decision_generic_industry
+		cost = 50
+		days_remove = 200
+		fire_only_once = yes
+		visible = { always = yes }
+		available = {
+			has_completed_focus = POR_the_digital_atlantic_hub
+			698 = { is_owned_and_controlled_by = ROOT }
+		}
+		complete_effect = { custom_effect_tooltip = POR_project_started_tt }
+		remove_effect = {
+			add_tech_bonus = { name = POR_dec_azores_space_port bonus = 0.5 uses = 2 category = electronics }
+			698 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}
+
+# ------------------------------------------------------------
+#   MINIGAME 5 - DEFENCE MODERNISATION
+#   Three capabilities (Recruitment, Training, Equipment) and one
+#   cost (Budget Strain). Everything that raises a capability raises
+#   strain; strain falls by 3 a month. At 60+ strain the Defence
+#   Budget Strain spirit appears, and stays until strain is under 45.
+#   Goal: all three capabilities at 50+ for the focus Modern Land
+#   Forces, without living under the strain spirit.
+# ------------------------------------------------------------
+POR_defence_category = {
+
+	POR_dec_recruitment_campaign = {
+		icon = GFX_decision_generic_army_support
+		cost = 30
+		days_re_enable = 90
+		visible = { has_country_flag = POR_defence_planning }
+		complete_effect = {
+			POR_def_recruit_p10 = yes
+			POR_def_strain_p5 = yes
+			add_manpower = 2000
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { POR_def_strain > 55 } }
+		}
+	}
+
+	POR_dec_training_exercises = {
+		icon = GFX_decision_generic_military
+		cost = 30
+		days_re_enable = 90
+		visible = { has_country_flag = POR_defence_planning }
+		complete_effect = {
+			POR_def_training_p10 = yes
+			POR_def_strain_p5 = yes
+			army_experience = 5
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { POR_def_strain > 55 } }
+		}
+	}
+
+	POR_dec_equipment_orders = {
+		icon = GFX_decision_generic_tank
+		cost = 40
+		days_re_enable = 120
+		visible = { has_country_flag = POR_defence_planning }
+		complete_effect = {
+			POR_def_equipment_p10 = yes
+			POR_def_strain_p10 = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0 check_variable = { POR_def_strain > 50 } }
+		}
+	}
+
+	POR_dec_multiyear_defence_law = {
+		icon = GFX_decision_generic_political_reform
+		cost = 75
+		fire_only_once = yes
+		visible = { has_country_flag = POR_defence_planning }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_parl_50_tt check_variable = { POR_parl_support > 49 } }
+		}
+		complete_effect = {
+			POR_def_strain_m10 = yes
+			POR_def_equipment_p5 = yes
+			POR_parl_m5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_allied_exercise = {
+		icon = GFX_decision_generic_air
+		cost = 25
+		days_re_enable = 180
+		visible = { has_country_flag = POR_defence_planning }
+		available = { NOT = { has_idea = POR_brussels_friction } }
+		complete_effect = {
+			POR_def_training_p5 = yes
+			air_experience = 5
+			navy_experience = 5
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_dec_defence_savings_round = {
+		icon = GFX_decision_generic_confiscation
+		cost = 20
+		days_re_enable = 150
+		visible = { has_country_flag = POR_defence_planning }
+		available = { check_variable = { POR_def_strain > 29 } }
+		complete_effect = {
+			POR_def_strain_m10 = yes
+			custom_effect_tooltip = POR_def_equipment_m5_tt
+			hidden_effect = { add_to_variable = { POR_def_equipment = -5 } POR_update_defence = yes }
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = { add = 3 check_variable = { POR_def_strain > 59 } }
+		}
+	}
+}
+
+# ------------------------------------------------------------
+#   MINIGAME 4 - RONALDO'S NATIONAL RENEWAL (2028 - 2030)
+#   Public Support, Budget, Institutional Cooperation, Ambition.
+#   Budget drains by 2 a month; an empty budget bleeds support.
+#   Ambition more than 30 points ahead of Cooperation triggers an
+#   institutional backlash (event por.67).
+#   Goal: Cooperation 50+ for the Council of State audience, and
+#   Support kept at 55+ going into 2030.
+# ------------------------------------------------------------
+POR_renewal_category = {
+
+	POR_ren_stadium_rally = {
+		icon = GFX_decision_generic_political_rally
+		cost = 30
+		days_re_enable = 60
+		visible = { always = yes }
+		available = { check_variable = { POR_renewal_budget > 9 } }
+		complete_effect = {
+			POR_ren_support_p10 = yes
+			POR_ren_budget_m5 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_ren_sponsors_gala = {
+		icon = GFX_decision_generic_industry
+		cost = 20
+		days_re_enable = 90
+		visible = { always = yes }
+		complete_effect = {
+			POR_ren_budget_p10 = yes
+			POR_ren_coop_m5 = yes
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 4 check_variable = { POR_renewal_budget < 25 } }
+		}
+	}
+
+	POR_ren_meet_mayors_and_unions = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 30
+		days_re_enable = 75
+		visible = { always = yes }
+		complete_effect = {
+			POR_ren_coop_p10 = yes
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_ren_publish_a_chapter = {
+		icon = GFX_decision_generic_political_address
+		cost = 25
+		days_re_enable = 90
+		visible = { always = yes }
+		complete_effect = {
+			POR_ren_ambition_p10 = yes
+			POR_ren_support_p5 = yes
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+
+	POR_ren_foundation_works = {
+		icon = GFX_decision_generic_welfare
+		cost = 40
+		days_re_enable = 120
+		visible = { always = yes }
+		available = { check_variable = { POR_renewal_budget > 14 } }
+		complete_effect = {
+			POR_ren_support_p5 = yes
+			POR_ren_coop_p5 = yes
+			POR_ren_budget_m10 = yes
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_ren_temper_the_message = {
+		icon = GFX_decision_generic_speech
+		cost = 15
+		days_re_enable = 60
+		visible = { always = yes }
+		complete_effect = {
+			POR_ren_ambition_m10 = yes
+			POR_ren_coop_p5 = yes
+		}
+		ai_will_do = { factor = 0.5 }
+	}
+}
+
+# ------------------------------------------------------------
+#   THE TWO VISIONS (Ronaldo presidency)
+#   Lusophone: treaties by consent. Each needs the partner's good
+#   opinion and the partner's own yes (event por.77). No wargoals.
+#   Iberian: negotiations with Spain, which can always say no.
+# ------------------------------------------------------------
+POR_vision_category = {
+
+	POR_luso_cultural_mission = {
+		icon = GFX_decision_generic_speech
+		cost = 25
+		days_re_enable = 90
+		targets = { BRA ANG MZB GNB CBV STP }
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = { has_country_flag = POR_luso_partner }
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		visible = { has_country_flag = POR_lusophone_vision }
+		complete_effect = {
+			FROM = { add_opinion_modifier = { target = ROOT modifier = POR_cultural_mission } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	POR_luso_partnership_treaty = {
+		icon = GFX_decision_generic_political_address
+		cost = 50
+		days_re_enable = 180
+		targets = { BRA ANG MZB GNB CBV STP }
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = { has_country_flag = POR_luso_partner }
+				NOT = { has_war_with = ROOT }
+			}
+		}
+		visible = { has_country_flag = POR_lusophone_vision }
+		available = {
+			has_completed_focus = POR_a_community_of_destiny
+			FROM = { has_opinion = { target = ROOT value > 19 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_luso_partnership_treaty_tt
+			hidden_effect = { FROM = { country_event = { id = por.77 days = 3 } } }
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_ib_technical_commissions = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 30
+		days_re_enable = 90
+		visible = { has_country_flag = POR_iberian_vision NOT = { has_country_flag = POR_iberian_closed } }
+		available = { country_exists = SPR NOT = { has_war_with = SPR } }
+		complete_effect = {
+			custom_effect_tooltip = POR_talks_p10_tt
+			hidden_effect = { add_to_variable = { POR_iberian_talks = 10 } }
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_ib_sovereignty_guarantees = {
+		icon = GFX_decision_generic_political_reform
+		cost = 50
+		fire_only_once = yes
+		visible = { has_country_flag = POR_iberian_vision NOT = { has_country_flag = POR_iberian_closed } }
+		available = { country_exists = SPR }
+		complete_effect = {
+			custom_effect_tooltip = POR_talks_p15_tt
+			hidden_effect = { add_to_variable = { POR_iberian_talks = 15 } }
+			POR_conf_p5 = yes
+		}
+		ai_will_do = { factor = 2 }
+	}
+
+	POR_ib_joint_cabinet_session = {
+		icon = GFX_decision_generic_political_address
+		cost = 40
+		days_re_enable = 150
+		visible = { has_country_flag = POR_iberian_vision NOT = { has_country_flag = POR_iberian_closed } }
+		available = { country_exists = SPR NOT = { has_war_with = SPR } }
+		complete_effect = {
+			custom_effect_tooltip = POR_talks_p10_tt
+			hidden_effect = { add_to_variable = { POR_iberian_talks = 10 } }
+			SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+
+	# Second stage, only once the Union treaty is in force.
+	POR_ib_propose_a_federal_union = {
+		icon = GFX_decision_generic_form_nation
+		cost = 100
+		fire_only_once = yes
+		visible = { has_country_flag = POR_iberian_union_formed NOT = { has_country_flag = POR_iberian_closed } }
+		available = {
+			country_exists = SPR
+			NOT = { has_war_with = SPR }
+			custom_trigger_tooltip = { tooltip = POR_needs_talks_90_tt check_variable = { POR_iberian_talks > 89 } }
+		}
+		complete_effect = {
+			custom_effect_tooltip = POR_ib_propose_a_federal_union_tt
+			hidden_effect = { SPR = { country_event = { id = por.83 days = 5 } } }
+		}
+		ai_will_do = { factor = 1 }
+	}
+}

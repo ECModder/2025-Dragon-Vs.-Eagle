@@ -74,12 +74,13 @@ if = {
 	}
 }
 
-IF = {
-	limit = {
-		has_dlc = "La Resistance"
-	}
-	CZE_create_paul_thummel_operative = yes
-}
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# IF = {
+#DvE-1936# 	limit = {
+#DvE-1936# 		has_dlc = "La Resistance"
+#DvE-1936# 	}
+#DvE-1936# 	CZE_create_paul_thummel_operative = yes
+#DvE-1936# }
 
 set_research_slots = 3
 
@@ -105,7 +106,7 @@ create_country_leader = { name = "Kateřina Konečná" desc = "POLITICS_LEADER_D
 
 set_politics = {
 	ruling_party = conservative
-	last_election = "2025.10.10"
+	last_election = "2021.10.9" # DvE bugfix: era una data futura (elezioni ottobre 2025)
 	election_frequency = 48
 	elections_allowed = yes
 }
@@ -128,12 +129,12 @@ if = {
 	limit = {
 		has_dlc = "Death or Dishonor"
 	}
-	add_ideas = {
-		CZE_skoda_works
-		CZE_divided_nation
-}
-	give_guarantee = YUG
-	give_guarantee = ROM
+#DvE-1936# 	add_ideas = {
+#DvE-1936# 		CZE_skoda_works
+#DvE-1936# 		CZE_divided_nation
+#DvE-1936# }
+#DvE-1936# 	give_guarantee = YUG
+#DvE-1936# 	give_guarantee = ROM
 }
 
 if = {
@@ -232,8 +233,8 @@ if = {
 	limit = {
 		NOT = { has_dlc = "Death or Dishonor" }
 	}
-	add_ideas = {
-		CZE_fortification_focus
-	}
+#DvE-1936# 	add_ideas = {
+#DvE-1936# 		CZE_fortification_focus
+#DvE-1936# 	}
 }
 

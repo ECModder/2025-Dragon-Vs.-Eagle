@@ -1,0 +1,161 @@
+﻿# Portuguese Army (Exercito), Navy marines and island garrisons, 1 January 2025.
+# Portugal has no standing divisions: the Army is organised in three brigades plus
+# general-support forces and the two island military zones. Each HOI4 "division" below
+# is one real formation, and each HOI4 battalion stands for one real battalion or group.
+# HOI4 battalions are larger than Portuguese ones, so the manpower shown in game is
+# higher than the Army's real strength (about 11,400 military personnel in 2025).
+# Diacritics are left out of unit names, as in the other 2025 OOB files of this mod.
+# This version: No Step Back (the tank group uses the Leopard 2A6 variant created in the country history).
+
+division_template = {
+	name = "Brigada de Reacao Rapida"
+	# 1st Para Bn (RI15, Tomar), 2nd Para Bn (RI10, Sao Jacinto), Commando Bn (Regimento de Comandos);
+	# Field Artillery Group (RA4, L118 105 mm); ISTAR group (RC3), engineer company (RE1), signals.
+	regiments = {
+		paratrooper = { x = 0 y = 0 }
+		paratrooper = { x = 0 y = 1 }
+		paratrooper = { x = 0 y = 2 }
+		artillery_brigade = { x = 1 y = 0 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		signal_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Brigada de Intervencao"
+	# 1st and 2nd Wheeled Mech Infantry Bns (RI13 Vila Real, RI14 Viseu, Pandur II 8x8 - shown as motorized);
+	# Field Artillery Group (RA5); recon group (RC6, Braga); engineers; service support.
+	regiments = {
+		motorized = { x = 0 y = 0 }
+		motorized = { x = 0 y = 1 }
+		artillery_brigade = { x = 1 y = 0 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Forcas de Apoio Geral"
+	# General Support and Military Emergency Support Forces: air defence (RAAA1, Queluz),
+	# general-support artillery, engineers (RE1, RE3), signals, the emergency support regiment (Abrantes).
+	regiments = {
+		anti_air_brigade = { x = 0 y = 0 }
+		artillery_brigade = { x = 0 y = 1 }
+	}
+	support = {
+		engineer = { x = 0 y = 0 }
+		signal_company = { x = 0 y = 1 }
+		logistics_company = { x = 0 y = 2 }
+	}
+}
+
+division_template = {
+	name = "Zona Militar dos Acores"
+	# RG1 (Angra do Heroismo, Terceira) and RG2 (Ponta Delgada, Sao Miguel): one infantry battalion each.
+	regiments = {
+		infantry = { x = 0 y = 0 }
+		infantry = { x = 0 y = 1 }
+	}
+}
+
+division_template = {
+	name = "Zona Militar da Madeira"
+	# RG3 (Funchal): one infantry battalion.
+	regiments = {
+		infantry = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Corpo de Fuzileiros"
+	# Navy marines, Vale de Zebro (Barreiro): 1st and 2nd Marine Battalions; recon from the Special Actions Detachment.
+	regiments = {
+		marine = { x = 0 y = 0 }
+		marine = { x = 0 y = 1 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }
+	}
+}
+
+division_template = {
+	name = "Brigada Mecanizada"
+	# Santa Margarida: tank group (Leopard 2A6), mechanized infantry battalion (M113),
+	# Field Artillery Group (M109A5); recon squadron; engineers; maintenance.
+	regiments = {
+		medium_armor = { x = 0 y = 0 }
+		mechanized = { x = 1 y = 0 }
+		artillery_brigade = { x = 2 y = 0 }
+	}
+	support = {
+		recon = { x = 0 y = 0 }
+		engineer = { x = 0 y = 1 }
+		maintenance_company = { x = 0 y = 2 }
+	}
+}
+
+units = {
+	# Tancos (Santarem state)
+	division = {
+		name = "Brigada de Reacao Rapida"
+		location = 3846
+		division_template = "Brigada de Reacao Rapida"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.8
+	}
+	# Coimbra
+	division = {
+		name = "Brigada de Intervencao"
+		location = 3798
+		division_template = "Brigada de Intervencao"
+		start_experience_factor = 0.5
+		start_equipment_factor = 0.75
+	}
+	# Lisbon area (Queluz, Lisbon garrison)
+	division = {
+		name = "Forcas de Apoio Geral"
+		location = 11805
+		division_template = "Forcas de Apoio Geral"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.7
+	}
+	# Azores
+	division = {
+		name = "Zona Militar dos Acores"
+		location = 1751
+		division_template = "Zona Militar dos Acores"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.7
+	}
+	# Madeira
+	division = {
+		name = "Zona Militar da Madeira"
+		location = 3118
+		division_template = "Zona Militar da Madeira"
+		start_experience_factor = 0.4
+		start_equipment_factor = 0.7
+	}
+	# Setubal peninsula (Vale de Zebro)
+	division = {
+		name = "Corpo de Fuzileiros"
+		location = 970
+		division_template = "Corpo de Fuzileiros"
+		start_experience_factor = 0.7
+		start_equipment_factor = 0.85
+	}
+
+	# Santa Margarida (Santarem state)
+	division = {
+		name = "Brigada Mecanizada"
+		location = 924
+		division_template = "Brigada Mecanizada"
+		start_experience_factor = 0.55
+		start_equipment_factor = 0.8
+	}
+}

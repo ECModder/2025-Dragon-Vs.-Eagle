@@ -706,6 +706,27 @@ focus_tree = {
 		}
 	}
 
+	# DvE bugfix: la definizione di questo focus mancava, ma era gia' referenziato
+	# (mutually_exclusive di SOV_continue_five_year_plans, prerequisito di tre focus)
+	# e ne esistevano gia' icona, spirito e localizzazione. Ricostruito speculare
+	# a SOV_continue_five_year_plans.
+	focus = {
+		id = SOV_a_digital_trotsky
+		icon = GFX_goal_SOV_a_digital_trotsky
+		x = 16
+		y = 6
+		cost = 8
+		available_if_capitulated = no
+		prerequisite = { focus = SOV_collective_economic_outlook }
+		mutually_exclusive = { focus = SOV_continue_five_year_plans }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = idea_SOV_a_digital_trotsky
+			add_political_power = 100
+			set_country_flag = SOV_a_digital_trotsky_done
+		}
+	}
+
 	focus = {
 		id = SOV_centralize_economic_planning
 		icon = GFX_goal_SOV_centralize_economic_planning

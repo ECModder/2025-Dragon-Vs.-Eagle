@@ -16,7 +16,8 @@ set_party_name = { ideology = absolutism long_name = "Uhorska koruna" name = "Ha
 set_party_name = { ideology = ultranationalism long_name = "Slovenska narodna strana" name = "SNS" }
 set_party_name = { ideology = fundamentalism long_name = "Republika" name = "Republika" }
 
-create_country_leader = { name = "Robert Fico" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
+# DvE bugfix: Fico (Smer) e' gia' leader di authoritarian_socialism; come classical_populism finiva nel gruppo conservative (KDH) - disattivato
+#DvE-1936# create_country_leader = { name = "Robert Fico" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
 # DvE: leader del partito di governo, prima mancava
 create_country_leader = { name = "Robert Fico" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = market_socialism }
 create_country_leader = { name = "Michal Simecka" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
@@ -126,9 +127,10 @@ if = {
 
 
 1939.1.1 = {
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
 	
-	add_political_power = 1198
-	add_command_power = 100
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 
 	#generic focuses
 	#complete_national_focus = army_effort

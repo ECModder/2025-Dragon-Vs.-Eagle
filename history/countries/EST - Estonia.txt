@@ -22,13 +22,14 @@ set_research_slots = 3
 add_ideas = {
 	limited_conscription
 }
-IF = {
-	limit = { has_dlc = "No Step Back" }
-	add_ideas = {
-		democratic_opposition
-		EST_vaps_idea_1
-	}
-}
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# IF = {
+#DvE-1936# 	limit = { has_dlc = "No Step Back" }
+#DvE-1936# 	add_ideas = {
+#DvE-1936# 		democratic_opposition
+#DvE-1936# 		EST_vaps_idea_1
+#DvE-1936# 	}
+#DvE-1936# }
 
 
 set_variable = {
@@ -71,16 +72,17 @@ if = {
 set_convoys = 5
 
 1939.1.1 = {
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
 
-	set_country_flag = fought_vaps_flag #Estonia shouldn't have to fight the Vaps in 39
+#DvE-1939# 	set_country_flag = fought_vaps_flag #Estonia shouldn't have to fight the Vaps in 39
 
-	remove_ideas = {
-		democratic_opposition
-		EST_vaps_idea_1
-	}
+#DvE-1936# 	remove_ideas = {
+#DvE-1936# 		democratic_opposition
+#DvE-1936# 		EST_vaps_idea_1
+#DvE-1936# 	}
 
-	add_political_power = 1198
-	add_command_power = 100
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 	
 	if = {
 		limit = {
@@ -106,22 +108,22 @@ set_convoys = 5
 		unlock_national_focus = BALTIC_natural_resources
 	}
 	
-	oob = "EST_1939"
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-			set_naval_oob = "EST_1939_naval_mtg"
-		else = {
-			set_naval_oob = "EST_1939_naval_legacy"
-		}
-	}
+#DvE-1939# 	oob = "EST_1939"
+#DvE-1939# 	if = {
+#DvE-1939# 		limit = { has_dlc = "Man the Guns" }
+#DvE-1939# 			set_naval_oob = "EST_1939_naval_mtg"
+#DvE-1939# 		else = {
+#DvE-1939# 			set_naval_oob = "EST_1939_naval_legacy"
+#DvE-1939# 		}
+#DvE-1939# 	}
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "EST_1936_air_bba" #deliberately using 1936 OOB since no change in aircraft strength or models
+#DvE-1939# 			set_air_oob = "EST_1936_air_bba" #deliberately using 1936 OOB since no change in aircraft strength or models
 			set_technology = {
 				bba_early_transport_plane = 1
 			}
 		else = {
-			set_air_oob = "EST_1936_air_legacy"
+#DvE-1939# 			set_air_oob = "EST_1936_air_legacy"
 			set_technology = {
 				fighter1 = 1
 				early_bomber = 1

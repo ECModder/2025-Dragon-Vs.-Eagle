@@ -1,13 +1,14 @@
 ﻿capital = 1197 # Paris
 
-if = {
-	limit = {
-		NOT = {
-			has_dlc = "No Step Back"
-		}
-	}
-	set_oob = "FRA_2025"
-}
+# DvE bugfix: OOB caricato due volte (condizionale + incondizionato) - tenuto solo quello incondizionato
+#DvE-1939# if = {
+#DvE-1939# 	limit = {
+#DvE-1939# 		NOT = {
+#DvE-1939# 			has_dlc = "No Step Back"
+#DvE-1939# 		}
+#DvE-1939# 	}
+#DvE-1939# 	set_oob = "FRA_2025"
+#DvE-1939# }
 
 set_oob = "FRA_2025"
 
@@ -180,7 +181,8 @@ if = {
 		basic_dp_light_battery = 1
 		#cruiser_submarines = 1
 	}
-	add_ideas = MTG_naval_treaty_adherent
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# 	add_ideas = MTG_naval_treaty_adherent
 }
 
 
@@ -192,12 +194,12 @@ if = {
 		armored_car1 = 1
 	}
 }
-if = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	give_guarantee = BEL
-}
+#DvE-1936# if = {
+#DvE-1936# 	limit = {
+#DvE-1936# 		has_dlc = "Gotterdammerung"
+#DvE-1936# 	}
+#DvE-1936# 	give_guarantee = BEL
+#DvE-1936# }
 
 
 
@@ -222,7 +224,8 @@ create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC"
 create_country_leader = { name = "Fabien Roussel" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Fabien_Roussel.dds" expire = "2035.1.1" ideology = Workerism }
 create_country_leader = { name = "Jean-Luc Mélenchon" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jean_Luc_Mélenchon.dds" expire = "2035.1.1" ideology = liberal_socialdemocrat }
 create_country_leader = { name = "Olivier Faure" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Olivier_Faure.dds" expire = "2035.1.1" ideology = reformist_socialism }
-create_country_leader = { name = "Emmanuel Macron" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_macron.dds" expire = "2027.5.14" ideology = centrist_populism }
+# DvE bugfix: leader duplicato, lo stesso personaggio e' gia' reclutato con recruit_character
+#create_country_leader = { name = "Emmanuel Macron" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_macron.dds" expire = "2027.5.14" ideology = centrist_populism }
 create_country_leader = { name = "Laurent Wauquiez" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Laurent_Wauquiez.dds" expire = "2035.1.1" ideology = conservatism }
 create_country_leader = { name = "Jordan Bardella" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Jordan_Bardella.dds" expire = "2035.1.1" ideology = corporatism }
 create_country_leader = { name = "Thierry Burkhard" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Thierry_Burkhard.dds" expire = "2035.1.1" ideology = putinism }
@@ -267,8 +270,8 @@ add_ai_strategy = {
 	value = 200
 }
 
-give_guarantee = CZE
-give_guarantee = YUG
-give_guarantee = ROM
+#DvE-1936# give_guarantee = CZE
+#DvE-1936# give_guarantee = YUG
+#DvE-1936# give_guarantee = ROM
 
 recruit_character = FRA_emmanuel_macron

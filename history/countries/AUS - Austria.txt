@@ -1,19 +1,20 @@
 ﻿capital = 4 # Vienna
 
-IF = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	set_oob = "AUS_ww_1936"
-	ELSE_IF = {
-		limit = {
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-		set_oob = "AUS_2025"
-	}
-}
+# DvE bugfix: OOB caricato due volte (condizionale + incondizionato) - tenuto solo quello incondizionato
+#DvE-1939# IF = {
+#DvE-1939# 	limit = {
+#DvE-1939# 		has_dlc = "Gotterdammerung"
+#DvE-1939# 	}
+#DvE-1939# 	set_oob = "AUS_ww_1936"
+#DvE-1939# 	ELSE_IF = {
+#DvE-1939# 		limit = {
+#DvE-1939# 			NOT = {
+#DvE-1939# 				has_dlc = "Gotterdammerung"
+#DvE-1939# 			}
+#DvE-1939# 		}
+#DvE-1939# 		set_oob = "AUS_2025"
+#DvE-1939# 	}
+#DvE-1939# }
 
 set_oob = "AUS_2025"
 
@@ -70,32 +71,33 @@ IF = {
 
 	#National spirits are set here
 
-	add_ideas = {
-		AUS_widespread_unemployment
-		AUS_phonix_insurance
-		AUS_recovering_from_the_depression
-	}
-
-	add_timed_idea = {
-		idea = AUS_treaty_of_saint_germain_en_laye
-		days = 1657
-	}
-
-	add_dynamic_modifier= {
-		modifier = AUS_austrofascism 
-	}	
-
-	add_opinion_modifier = {
-		target = GER
-		modifier = AUS_austrofascism_opm
-	}	
-
-	# rules are set here
-
-	country_lock_all_division_template = {
-		is_locked = yes
-		desc = AUS_cannot_train_due_to_treaty_of_saint_germain_en_laye
-	}
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# 	add_ideas = {
+#DvE-1936# 		AUS_widespread_unemployment
+#DvE-1936# 		AUS_phonix_insurance
+#DvE-1936# 		AUS_recovering_from_the_depression
+#DvE-1936# 	}
+#DvE-1936# 
+#DvE-1936# 	add_timed_idea = {
+#DvE-1936# 		idea = AUS_treaty_of_saint_germain_en_laye
+#DvE-1936# 		days = 1657
+#DvE-1936# 	}
+#DvE-1936# 
+#DvE-1936# 	add_dynamic_modifier= {
+#DvE-1936# 		modifier = AUS_austrofascism 
+#DvE-1936# 	}	
+#DvE-1936# 
+#DvE-1936# 	add_opinion_modifier = {
+#DvE-1936# 		target = GER
+#DvE-1936# 		modifier = AUS_austrofascism_opm
+#DvE-1936# 	}	
+#DvE-1936# 
+#DvE-1936# 	# rules are set here
+#DvE-1936# 
+#DvE-1936# 	country_lock_all_division_template = {
+#DvE-1936# 		is_locked = yes
+#DvE-1936# 		desc = AUS_cannot_train_due_to_treaty_of_saint_germain_en_laye
+#DvE-1936# 	}
 
 
 	
@@ -108,23 +110,23 @@ IF = {
 
 	#Operatives
 
-	create_operative_leader = {
-		name = AUS_erwin_von_lahousen
-		bypass_recruitment = no 
-		available_to_spy_master = yes 
-		gfx = GFX_portrait_AUS_erwin_von_lahousen 
-		traits = { operative_double_agent operative_commando }
-		nationalities = { AUS GER }
-	}
-
-	create_operative_leader = {
-		name = AUS_wilhelm_ergert
-		bypass_recruitment = no 
-		available_to_spy_master = yes 
-		gfx = GFX_portrait_AUS_wilhelm_ergert 
-		traits = { operative_double_agent operative_linguist operative_safe_cracker }
-		nationalities = { AUS GER YUG }
-	}
+#DvE-1936# 	create_operative_leader = {
+#DvE-1936# 		name = AUS_erwin_von_lahousen
+#DvE-1936# 		bypass_recruitment = no 
+#DvE-1936# 		available_to_spy_master = yes 
+#DvE-1936# 		gfx = GFX_portrait_AUS_erwin_von_lahousen 
+#DvE-1936# 		traits = { operative_double_agent operative_commando }
+#DvE-1936# 		nationalities = { AUS GER }
+#DvE-1936# 	}
+#DvE-1936# 
+#DvE-1936# 	create_operative_leader = {
+#DvE-1936# 		name = AUS_wilhelm_ergert
+#DvE-1936# 		bypass_recruitment = no 
+#DvE-1936# 		available_to_spy_master = yes 
+#DvE-1936# 		gfx = GFX_portrait_AUS_wilhelm_ergert 
+#DvE-1936# 		traits = { operative_double_agent operative_linguist operative_safe_cracker }
+#DvE-1936# 		nationalities = { AUS GER YUG }
+#DvE-1936# 	}
 
 	ELSE_IF = {
 		limit = {

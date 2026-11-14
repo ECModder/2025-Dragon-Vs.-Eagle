@@ -1,0 +1,46 @@
+# DvE - PORTUGAL (POR) - scripted triggers
+
+POR_has_backed_candidate = {
+	custom_trigger_tooltip = {
+		tooltip = POR_has_backed_candidate_tt
+		OR = {
+			has_country_flag = POR_backed_montenegro
+			has_country_flag = POR_backed_santos
+			has_country_flag = POR_backed_ventura
+		}
+	}
+}
+
+# One year after the inauguration: has the President started to deliver?
+POR_first_year_delivered = {
+	OR = {
+		AND = {
+			has_country_flag = POR_route_montenegro
+			has_completed_focus = POR_rebuilding_political_confidence
+			has_completed_focus = POR_a_government_that_can_last
+		}
+		AND = {
+			has_country_flag = POR_route_santos
+			has_completed_focus = POR_restoring_trust_in_the_socialists
+			OR = {
+				has_completed_focus = POR_rebuilding_the_national_health_service
+				has_completed_focus = POR_homes_for_the_portuguese_people
+			}
+		}
+		AND = {
+			has_country_flag = POR_route_ventura
+			has_completed_focus = POR_a_new_political_mandate
+			has_completed_focus = POR_accountability_in_public_office
+		}
+	}
+}
+
+# Housing and healthcare, July 2027.
+POR_social_progress = {
+	OR = {
+		has_idea = POR_sns_rebuilt
+		has_idea = POR_housing_relief
+		has_country_flag = POR_public_housing_programme
+		has_completed_focus = POR_the_housing_emergency
+	}
+}

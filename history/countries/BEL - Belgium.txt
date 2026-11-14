@@ -75,13 +75,14 @@ if = {
 	}
 }
 
-if = {
-	limit = {
-		has_dlc = "Gotterdammerung"
-	}
-	give_guarantee = FRA
-	give_guarantee = ENG
-}
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# if = {
+#DvE-1936# 	limit = {
+#DvE-1936# 		has_dlc = "Gotterdammerung"
+#DvE-1936# 	}
+#DvE-1936# 	give_guarantee = FRA
+#DvE-1936# 	give_guarantee = ENG
+#DvE-1936# }
 
 set_research_slots = 3
 set_stability = 0.7
@@ -139,7 +140,7 @@ if = {
 
 if = {
 	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "BEL_1936_air_bba"
+#DvE-1936# 		set_air_oob = "BEL_1936_air_bba"
 		set_technology = {
 			aa_lmg = 1
 			engines_1 = 1
@@ -151,7 +152,7 @@ if = {
 			bba_early_transport_plane = 1
 		}
 	else = {
-		set_air_oob = "BEL_1936_air_legacy"
+#DvE-1936# 		set_air_oob = "BEL_1936_air_legacy"
 		set_technology = {
 			early_fighter = 1
 			cv_early_fighter = 1
@@ -170,36 +171,36 @@ if = {
 
 # Scars of WW1
 
-IF = {
-	limit = { has_dlc = "Gotterdammerung" }
-
-	add_dynamic_modifier = {
-		modifier = BEL_scars_of_ww1_dynamic_modifier
-	}
-	set_variable = { BEL_scars_of_ww1_war_support_factor = -0.3 }
-	set_variable = { BEL_scars_of_ww1_production_speed_arms_factory_factor = -0.2 }
-	set_variable = { BEL_scars_of_ww1_army_org_factor = -0.15 }
-	set_variable = { BEL_scars_of_ww1_conscription_factor = -0.15 }
-
-	# Corruption
-	add_dynamic_modifier = {
-		modifier = BEL_corruption_dynamic_modifier
-	}
-	set_variable = { BEL_corruption_political_power_gain = -0.25 }
-	set_variable = { BEL_corruption_stability_factor = -0.20 }
-	set_variable = { BEL_corruption_production_speed_buildings_factor = -0.20 }
-	set_variable = { BEL_corruption_fascism_drift = 0.10 }
-
-	# Economic Downturn
-	add_dynamic_modifier = {
-		modifier = BEL_economic_downturn_dynamic_modifier
-	}
-	set_variable = { BEL_economic_downturn_consumer_goods_factor = 0.25 }
-	set_variable = { BEL_economic_downturn_industrial_capacity_factory = -0.20 }
-
-	# King Leopold
-	set_country_flag = BEL_leopold_flag
-}
+#DvE-1936# IF = {
+#DvE-1936# 	limit = { has_dlc = "Gotterdammerung" }
+#DvE-1936# 
+#DvE-1936# 	add_dynamic_modifier = {
+#DvE-1936# 		modifier = BEL_scars_of_ww1_dynamic_modifier
+#DvE-1936# 	}
+#DvE-1936# 	set_variable = { BEL_scars_of_ww1_war_support_factor = -0.3 }
+#DvE-1936# 	set_variable = { BEL_scars_of_ww1_production_speed_arms_factory_factor = -0.2 }
+#DvE-1936# 	set_variable = { BEL_scars_of_ww1_army_org_factor = -0.15 }
+#DvE-1936# 	set_variable = { BEL_scars_of_ww1_conscription_factor = -0.15 }
+#DvE-1936# 
+#DvE-1936# 	# Corruption
+#DvE-1936# 	add_dynamic_modifier = {
+#DvE-1936# 		modifier = BEL_corruption_dynamic_modifier
+#DvE-1936# 	}
+#DvE-1936# 	set_variable = { BEL_corruption_political_power_gain = -0.25 }
+#DvE-1936# 	set_variable = { BEL_corruption_stability_factor = -0.20 }
+#DvE-1936# 	set_variable = { BEL_corruption_production_speed_buildings_factor = -0.20 }
+#DvE-1936# 	set_variable = { BEL_corruption_fascism_drift = 0.10 }
+#DvE-1936# 
+#DvE-1936# 	# Economic Downturn
+#DvE-1936# 	add_dynamic_modifier = {
+#DvE-1936# 		modifier = BEL_economic_downturn_dynamic_modifier
+#DvE-1936# 	}
+#DvE-1936# 	set_variable = { BEL_economic_downturn_consumer_goods_factor = 0.25 }
+#DvE-1936# 	set_variable = { BEL_economic_downturn_industrial_capacity_factory = -0.20 }
+#DvE-1936# 
+#DvE-1936# 	# King Leopold
+#DvE-1936# 	set_country_flag = BEL_leopold_flag
+#DvE-1936# }
 
 
 ## Earned NS's
@@ -356,12 +357,13 @@ IF = {
 
 
 1939.1.1 = {
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
 	add_ideas = {
 		limited_conscription
 	}
 
-	add_political_power = 1198
-	add_command_power = 100
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 
 	#generic focuses
 
@@ -410,47 +412,47 @@ IF = {
 		}
 	}
 
-	IF = { #Adding Pierlot as per Adriaan Martens Crisis!
-		limit = {
-			has_dlc = "Gotterdammerung"
-		}
-		add_country_leader_role = {
-		    character = BEL_hubert_pierlot
-		    promote_leader = yes
-		    country_leader = {
-		        ideology = conservatism
-		        expire = "1965.1.1.1"
-		        traits = { BEL_determined_prime_minister }
-		    }
-		}
+#DvE-1939# 	IF = { #Adding Pierlot as per Adriaan Martens Crisis!
+#DvE-1939# 		limit = {
+#DvE-1939# 			has_dlc = "Gotterdammerung"
+#DvE-1939# 		}
+#DvE-1939# 		add_country_leader_role = {
+#DvE-1939# 		    character = BEL_hubert_pierlot
+#DvE-1939# 		    promote_leader = yes
+#DvE-1939# 		    country_leader = {
+#DvE-1939# 		        ideology = conservatism
+#DvE-1939# 		        expire = "1965.1.1.1"
+#DvE-1939# 		        traits = { BEL_determined_prime_minister }
+#DvE-1939# 		    }
+#DvE-1939# 		}
+#DvE-1939# 
+#DvE-1939# 		set_party_name = {
+#DvE-1939# 			ideology = democratic
+#DvE-1939# 			long_name = BEL_democratic_party_long
+#DvE-1939# 			name = BEL_democratic_party
+#DvE-1939# 		}
+#DvE-1939# 	}
 
-		set_party_name = {
-			ideology = democratic
-			long_name = BEL_democratic_party_long
-			name = BEL_democratic_party
-		}
-	}
-
-	IF = {
-		limit = { 
-			has_dlc = "Gotterdammerung"
-		}
-		set_oob = "BEL_WW_1939"
-	}
-	IF = {
-		limit = {
-			NOT = {
-				has_dlc = "Gotterdammerung"
-			}
-		}
-		set_oob = "BEL_1939"
-	}
+#DvE-1939# 	IF = {
+#DvE-1939# 		limit = { 
+#DvE-1939# 			has_dlc = "Gotterdammerung"
+#DvE-1939# 		}
+#DvE-1939# 		set_oob = "BEL_WW_1939"
+#DvE-1939# 	}
+#DvE-1939# 	IF = {
+#DvE-1939# 		limit = {
+#DvE-1939# 			NOT = {
+#DvE-1939# 				has_dlc = "Gotterdammerung"
+#DvE-1939# 			}
+#DvE-1939# 		}
+#DvE-1939# 		set_oob = "BEL_1939"
+#DvE-1939# 	}
 
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "BEL_1939_air_bba"
+#DvE-1939# 			set_air_oob = "BEL_1939_air_bba"
 		else = {
-			set_air_oob = "BEL_1939_air_legacy"
+#DvE-1939# 			set_air_oob = "BEL_1939_air_legacy"
 			set_technology = {
 				fighter1 = 1
 			}

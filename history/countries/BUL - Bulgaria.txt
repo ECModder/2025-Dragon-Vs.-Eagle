@@ -11,17 +11,18 @@ if = {
 }
 set_convoys = 5 #VANILLA & DLC
 
-#You don't want Bulgarian party names? Just remove these lines
-set_party_name = { # DLC
-	ideology = communism
-	name = BUL_communism_party_bulgarian
-	long_name = BUL_communism_party_bulgarian_long
-}
-set_party_name = { # DLC
-	ideology = fascism
-	name = BUL_fascism_party_bulgarian
-	long_name = BUL_fascism_party_bulgarian_long
-}
+# DvE bugfix: ideologie vanilla inesistenti in DvE (communism, fascism) - disattivato
+#DvE-1939# #You don't want Bulgarian party names? Just remove these lines
+#DvE-1939# set_party_name = { # DLC
+#DvE-1939# 	ideology = communism
+#DvE-1939# 	name = BUL_communism_party_bulgarian
+#DvE-1939# 	long_name = BUL_communism_party_bulgarian_long
+#DvE-1939# }
+#DvE-1939# set_party_name = { # DLC
+#DvE-1939# 	ideology = fascism
+#DvE-1939# 	name = BUL_fascism_party_bulgarian
+#DvE-1939# 	long_name = BUL_fascism_party_bulgarian_long
+#DvE-1939# }
 
 
 set_technology = { #VANILLA & DLC
@@ -67,7 +68,7 @@ create_country_leader = { name = "Kiril Petkov" desc = "POLITICS_LEADER_DESC" pi
 create_country_leader = { name = "Kostadin Kostadinov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = classical_populism }
 create_country_leader = { name = "Korneliya Ninova" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
 create_country_leader = { name = "Krasimir Karakachanov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = ultranationalism_party }
-create_country_leader = { name = "Delyan Peevski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = personalist_dictatorship }
+create_country_leader = { name = "Delyan Peevski" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = oligarchy }
 create_country_leader = { name = "Rumen Petkov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = progressivism }
 create_country_leader = { name = "Aleksandar Paunov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Vladimir Spasov" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = stalinism }
@@ -96,76 +97,77 @@ set_popularities = {
 	progressive = 11
 	ultranationalism = 5
 }
-	add_political_power = 1198
-	add_command_power = 100
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# 	add_political_power = 1198
+#DvE-1936# 	add_command_power = 100
 
 	#FOCUS AND IDEAS
-	if = { #DLC
-		limit = {
-			has_dlc = "Battle for the Bosporus"
-		}
-		#complete_national_focus = BUL_power_to_the_tsar
-		#complete_national_focus = BUL_dissolve_the_military_union
-		#complete_national_focus = BUL_acquire_modern_tools
-		unlock_national_focus = BUL_negotiate_bulgarian_rearmament
-		#complete_national_focus = BUL_the_tsars_regime
-		#complete_national_focus = BUL_improve_the_road_system
-		#complete_national_focus = BUL_restore_the_tarnovo_constitution
-		#complete_national_focus = BUL_freedom_of_press
-		#complete_national_focus = BUL_invigorate_national_industry
-		#complete_national_focus = BUL_promote_bulgarian_nationalism
-		#complete_national_focus = BUL_limited_womens_suffrage
-		#complete_national_focus = BUL_expand_sofia_university
-		#complete_national_focus = BUL_bulgarian_irredentism
-		#complete_national_focus = BUL_approach_germany
-		#complete_national_focus = BUL_reorganize_the_military_industry
-		#complete_national_focus = BUL_illusions_of_a_non_partisan_system
-
-		#Remove Army Restrictions NS and all limitations 								Negotiate Bulgarian Rearmament
-		if = {
-			limit = {
-				has_dlc = "Arms Against Tyranny"
-			}
-			remove_ideas = BUL_army_restrictions_aat
-		}
-		if = {
-			limit = {
-				NOT = {	has_dlc = "Arms Against Tyranny" }
-			}
-			remove_ideas = BUL_army_restrictions
-		}
-		remove_ideas = BUL_zveno_ns
-		#Destroy Zveno 																 	Dissolve the Military Union
-		set_country_flag = BUL_disposed_of_zveno_generals_flag
-		set_country_flag = BUL_zveno_leaders_imprisoned_flag
-		set_country_flag = BUL_raided_zveno_supporters_flag
-		every_unit_leader = {
-			limit = {
-				has_trait = trait_BUL_zveno_member
-			}
-			retire = yes
-		}
-		set_country_flag = BUL_zveno_destroyed_flag
-		#Freedom of Press was taken more than a year ago, so clr flag 					Freedom of Press
-		clr_country_flag = BUL_freedom_of_press_flag
-		#Simulate German influence events and good relations with Bulgaria 				Approach Germany + Events
-		set_country_flag = BUL_german_aircraft_donation_flag
-		add_opinion_modifier = { 
-			target = GER
-			modifier = BUL_donated_aircraft
-		}
-
-		else = { #VANILLA
-			#generic focuses
-			#complete_national_focus = army_effort
-			#complete_national_focus = equipment_effort
-			#complete_national_focus = motorization_effort
-			#complete_national_focus = aviation_effort
-			#complete_national_focus = industrial_effort
-			#complete_national_focus = construction_effort
-			#complete_national_focus = production_effort
-		}
-	}
+#DvE-1936# 	if = { #DLC
+#DvE-1936# 		limit = {
+#DvE-1936# 			has_dlc = "Battle for the Bosporus"
+#DvE-1936# 		}
+#DvE-1936# 		#complete_national_focus = BUL_power_to_the_tsar
+#DvE-1936# 		#complete_national_focus = BUL_dissolve_the_military_union
+#DvE-1936# 		#complete_national_focus = BUL_acquire_modern_tools
+#DvE-1936# 		unlock_national_focus = BUL_negotiate_bulgarian_rearmament
+#DvE-1936# 		#complete_national_focus = BUL_the_tsars_regime
+#DvE-1936# 		#complete_national_focus = BUL_improve_the_road_system
+#DvE-1936# 		#complete_national_focus = BUL_restore_the_tarnovo_constitution
+#DvE-1936# 		#complete_national_focus = BUL_freedom_of_press
+#DvE-1936# 		#complete_national_focus = BUL_invigorate_national_industry
+#DvE-1936# 		#complete_national_focus = BUL_promote_bulgarian_nationalism
+#DvE-1936# 		#complete_national_focus = BUL_limited_womens_suffrage
+#DvE-1936# 		#complete_national_focus = BUL_expand_sofia_university
+#DvE-1936# 		#complete_national_focus = BUL_bulgarian_irredentism
+#DvE-1936# 		#complete_national_focus = BUL_approach_germany
+#DvE-1936# 		#complete_national_focus = BUL_reorganize_the_military_industry
+#DvE-1936# 		#complete_national_focus = BUL_illusions_of_a_non_partisan_system
+#DvE-1936# 
+#DvE-1936# 		#Remove Army Restrictions NS and all limitations 								Negotiate Bulgarian Rearmament
+#DvE-1936# 		if = {
+#DvE-1936# 			limit = {
+#DvE-1936# 				has_dlc = "Arms Against Tyranny"
+#DvE-1936# 			}
+#DvE-1936# 			remove_ideas = BUL_army_restrictions_aat
+#DvE-1936# 		}
+#DvE-1936# 		if = {
+#DvE-1936# 			limit = {
+#DvE-1936# 				NOT = {	has_dlc = "Arms Against Tyranny" }
+#DvE-1936# 			}
+#DvE-1936# 			remove_ideas = BUL_army_restrictions
+#DvE-1936# 		}
+#DvE-1936# 		remove_ideas = BUL_zveno_ns
+#DvE-1936# 		#Destroy Zveno 																 	Dissolve the Military Union
+#DvE-1936# 		set_country_flag = BUL_disposed_of_zveno_generals_flag
+#DvE-1936# 		set_country_flag = BUL_zveno_leaders_imprisoned_flag
+#DvE-1936# 		set_country_flag = BUL_raided_zveno_supporters_flag
+#DvE-1936# 		every_unit_leader = {
+#DvE-1936# 			limit = {
+#DvE-1936# 				has_trait = trait_BUL_zveno_member
+#DvE-1936# 			}
+#DvE-1936# 			retire = yes
+#DvE-1936# 		}
+#DvE-1936# 		set_country_flag = BUL_zveno_destroyed_flag
+#DvE-1936# 		#Freedom of Press was taken more than a year ago, so clr flag 					Freedom of Press
+#DvE-1936# 		clr_country_flag = BUL_freedom_of_press_flag
+#DvE-1936# 		#Simulate German influence events and good relations with Bulgaria 				Approach Germany + Events
+#DvE-1936# 		set_country_flag = BUL_german_aircraft_donation_flag
+#DvE-1936# 		add_opinion_modifier = { 
+#DvE-1936# 			target = GER
+#DvE-1936# 			modifier = BUL_donated_aircraft
+#DvE-1936# 		}
+#DvE-1936# 
+#DvE-1936# 		else = { #VANILLA
+#DvE-1936# 			#generic focuses
+#DvE-1936# 			#complete_national_focus = army_effort
+#DvE-1936# 			#complete_national_focus = equipment_effort
+#DvE-1936# 			#complete_national_focus = motorization_effort
+#DvE-1936# 			#complete_national_focus = aviation_effort
+#DvE-1936# 			#complete_national_focus = industrial_effort
+#DvE-1936# 			#complete_national_focus = construction_effort
+#DvE-1936# 			#complete_national_focus = production_effort
+#DvE-1936# 		}
+#DvE-1936# 	}
 	
 	#TROOPS
 	
@@ -218,7 +220,7 @@ set_grand_doctrine = new_operational_integrity
 			gwtank = 1
 			basic_light_tank = 1
 		}
-		set_oob = "BUL_1939"
+#DvE-1936# 		set_oob = "BUL_1939"
 	}
 	if = {
 		limit = {
@@ -230,16 +232,16 @@ set_grand_doctrine = new_operational_integrity
 			gwtank_chassis = 1
 			basic_light_tank_chassis = 1
 		}
-		set_oob = "BUL_1939_nsb"
+#DvE-1936# 		set_oob = "BUL_1939_nsb"
 	}
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "BUL_1939_air_bba"
+#DvE-1936# 			set_air_oob = "BUL_1939_air_bba"
 			set_technology = {
 				bba_early_transport_plane = 1
 			}
 		else = {
-			set_air_oob = "BUL_1939_air_legacy"
+#DvE-1936# 			set_air_oob = "BUL_1939_air_legacy"
 			set_technology = {
 				fighter1 = 1
 				early_bomber = 1

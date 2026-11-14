@@ -69,10 +69,11 @@ if = {
 	}
 	add_ideas = {
 		limited_conscription
-		LIT_iron_wolf_idea_bad_1
-		LIT_agrarian_society
-		LIT_military_idea_1
-		LIT_seimas_idea_1
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# 		LIT_iron_wolf_idea_bad_1
+#DvE-1936# 		LIT_agrarian_society
+#DvE-1936# 		LIT_military_idea_1
+#DvE-1936# 		LIT_seimas_idea_1
 	}
 }
 
@@ -95,12 +96,13 @@ set_technology = {
 set_convoys = 10
 
 1939.1.1 = {
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
 	
-	remove_ideas = LIT_iron_wolf_idea_bad_1
-	remove_ideas = LIT_agrarian_society
+#DvE-1936# 	remove_ideas = LIT_iron_wolf_idea_bad_1
+#DvE-1936# 	remove_ideas = LIT_agrarian_society
 
-	add_political_power = 1198
-	add_command_power = 100
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 	
 	if = {
 		limit = {
@@ -126,10 +128,10 @@ set_convoys = 10
 		#complete_national_focus = BALTIC_natural_resources
 	}
 	
-	oob = "LIT_1939"
+#DvE-1939# 	oob = "LIT_1939"
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "LIT_1939_air_bba"
+#DvE-1939# 			set_air_oob = "LIT_1939_air_bba"
 			set_technology = {
 				iw_small_airframe = 1
 				engines_1 = 1
@@ -138,7 +140,7 @@ set_convoys = 10
 				early_bombs = 1
 			}
 		else = {
-			set_air_oob = "LIT_1939_air_legacy"
+#DvE-1939# 			set_air_oob = "LIT_1939_air_legacy"
 			set_technology = {
 				early_bomber = 1
 			}
@@ -203,10 +205,10 @@ set_grand_doctrine = new_strategic_destruction
 #	election_frequency = 120
 #	elections_allowed = no
 #}
-set_popularities = {
-	centrist = 85
-	reactionary = 15
-}
+#DvE-1939# set_popularities = {
+#DvE-1939# 	centrist = 85
+#DvE-1939# 	reactionary = 15
+#DvE-1939# }
 add_ai_strategy = {
 	type = alliance
 	id = USA

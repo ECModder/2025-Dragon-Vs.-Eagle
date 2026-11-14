@@ -1,0 +1,3397 @@
+# ============================================================
+#   DvE - PORTUGAL (POR) - national focus tree, start 1 January 2025
+#   Same file name as the base game's portugal.txt on purpose: it
+#   replaces the 1936 tree (as romania.txt / poland.txt do).
+#
+#   LAYOUT (x columns)
+#      0 - 12   ECONOMY
+#     14 - 44   OPENING and the three presidential routes
+#               (Montenegro 14-24, Santos 26-34, Ventura 36-44)
+#     48 - 65   CRISTIANO RONALDO (hidden until 5 November 2026)
+#     68 - 92   STRATEGIC DEFENCE REVIEW: Army 68-74, Air 77-83, Navy 86-92
+#
+#   ROUTES
+#   The player backs a candidate with one of three mutually exclusive
+#   focuses before the election of 18 January 2026. The route flag
+#   (POR_route_*) is set at the inauguration of 9 March 2026 by
+#   POR_inaugurate_winner. Every candidate focus checks its route flag,
+#   so nothing of an old route can be taken after Ronaldo takes office.
+#
+#   Dates are scheduled in common/scripted_effects/POR_effects.txt.
+# ============================================================
+focus_tree = {
+	id = portugal_focus
+	country = {
+		factor = 0
+		modifier = { add = 100 tag = POR }
+	}
+	default = no
+	reset_on_civilwar = no
+	continuous_focus_position = { x = 2000 y = 1500 }
+	initial_show_position = { focus = POR_a_republic_at_a_crossroads }
+
+	# ==========================================================
+	#   OPENING
+	# ==========================================================
+	focus = {
+		id = POR_a_republic_at_a_crossroads
+		icon = GFX_goal_generic_national_unity
+		x = 34
+		y = 0
+		cost = 1
+		# The whole opening and election branch (three candidate routes) disappears once
+		# Ronaldo is President. POR_ronaldo_takes_office refreshes the tree layout.
+		allow_branch = { NOT = { has_country_flag = POR_route_ronaldo } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 25
+			custom_effect_tooltip = POR_unlock_parliament_tt
+			hidden_effect = { POR_init = yes set_country_flag = POR_parliament_open }
+		}
+	}
+
+	focus = {
+		id = POR_the_madeira_question
+		icon = GFX_goal_generic_political_pressure
+		x = 30
+		y = 1
+		cost = 3
+		prerequisite = { focus = POR_a_republic_at_a_crossroads }
+		available = { has_country_flag = POR_madeira_dissolved }
+		bypass = { has_country_flag = POR_madeira_voted }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 20
+			POR_parl_p5 = yes
+			697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_state_of_the_nation_debate
+		icon = GFX_goal_support_democracy
+		x = 34
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_a_republic_at_a_crossroads }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.02
+			POR_conf_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_review_public_services
+		icon = GFX_goal_generic_consumer_goods
+		x = 38
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_a_republic_at_a_crossroads }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = { name = POR_review_public_services bonus = 0.5 uses = 1 category = industry }
+			POR_conf_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_respond_to_the_blackout
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 38
+		y = 2
+		cost = 3
+		prerequisite = { focus = POR_review_public_services }
+		available = { has_country_flag = POR_blackout_happened }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_stability = 0.03
+			POR_conf_p5 = yes
+			custom_effect_tooltip = POR_respond_to_the_blackout_tt
+			hidden_effect = { set_country_flag = POR_blackout_responded }
+		}
+	}
+
+	focus = {
+		id = POR_commission_of_inquiry
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 38
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_respond_to_the_blackout }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 30
+			custom_effect_tooltip = POR_commission_of_inquiry_tt
+			hidden_effect = {
+				set_country_flag = POR_inquiry_backed
+				country_event = { id = por.16 days = 20 }
+			}
+		}
+	}
+
+	focus = {
+		id = POR_open_the_presidential_race
+		icon = GFX_focus_generic_election
+		x = 34
+		y = 3
+		cost = 3
+		prerequisite = { focus = POR_state_of_the_nation_debate }
+		available = { date > 2025.8.31 NOT = { has_country_flag = POR_election_held } }
+		bypass = { has_country_flag = POR_election_held }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 40
+			custom_effect_tooltip = POR_open_the_presidential_race_tt
+			hidden_effect = { POR_campaign_start = yes }
+		}
+	}
+
+	focus = {
+		id = POR_back_montenegro
+		icon = GFX_goal_generic_neutrality_focus
+		x = 24
+		y = 4
+		cost = 2
+		prerequisite = { focus = POR_open_the_presidential_race }
+		mutually_exclusive = { focus = POR_back_santos focus = POR_back_ventura }
+		available = { NOT = { has_country_flag = POR_election_held } }
+		# After the election the focus completes by itself for the winner (also when nobody was backed: default Montenegro).
+		bypass = { has_country_flag = POR_election_held has_country_flag = POR_backed_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			set_country_flag = POR_backed_montenegro
+			add_popularity = { ideology = conservative popularity = 0.04 }
+			custom_effect_tooltip = POR_back_candidate_tt
+		}
+	}
+
+	focus = {
+		id = POR_back_santos
+		icon = GFX_goal_support_democracy
+		x = 34
+		y = 4
+		cost = 2
+		prerequisite = { focus = POR_open_the_presidential_race }
+		mutually_exclusive = { focus = POR_back_montenegro focus = POR_back_ventura }
+		available = { NOT = { has_country_flag = POR_election_held } }
+		# After the election the focus completes by itself for the winner (also when nobody was backed: default Montenegro).
+		bypass = { has_country_flag = POR_election_held has_country_flag = POR_backed_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 3
+			modifier = { factor = 0 is_historical_focus_on = yes }
+		}
+		completion_reward = {
+			set_country_flag = POR_backed_santos
+			add_popularity = { ideology = progressive popularity = 0.04 }
+			custom_effect_tooltip = POR_back_candidate_tt
+		}
+	}
+
+	focus = {
+		id = POR_back_ventura
+		icon = GFX_goal_generic_propaganda
+		x = 44
+		y = 4
+		cost = 2
+		prerequisite = { focus = POR_open_the_presidential_race }
+		mutually_exclusive = { focus = POR_back_montenegro focus = POR_back_santos }
+		available = { NOT = { has_country_flag = POR_election_held } }
+		# After the election the focus completes by itself for the winner (also when nobody was backed: default Montenegro).
+		bypass = { has_country_flag = POR_election_held has_country_flag = POR_backed_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 3
+			modifier = { factor = 0 is_historical_focus_on = yes }
+		}
+		completion_reward = {
+			set_country_flag = POR_backed_ventura
+			add_popularity = { ideology = reactionary popularity = 0.04 }
+			custom_effect_tooltip = POR_back_candidate_tt
+		}
+	}
+
+	# ==========================================================
+	#   A. LUIS MONTENEGRO - Democratic Alliance
+	# ==========================================================
+	focus = {
+		id = POR_a_mandate_for_stability
+		icon = GFX_goal_generic_national_unity
+		x = 24
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_back_montenegro }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.03
+			POR_parl_p5 = yes
+			hidden_effect = { country_event = { id = por.30 days = 5 } }
+		}
+	}
+
+	focus = {
+		id = POR_rebuilding_political_confidence
+		icon = GFX_goal_support_democracy
+		x = 21
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_a_mandate_for_stability }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_conf_p10 = yes
+			add_political_power = 30
+		}
+	}
+
+	focus = {
+		id = POR_a_government_that_can_last
+		icon = GFX_goal_generic_political_pressure
+		x = 27
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_a_mandate_for_stability }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_parl_p10 = yes
+		}
+	}
+
+	focus = {
+		id = POR_cutting_administrative_barriers
+		icon = GFX_goal_generic_production
+		x = 19
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_rebuilding_political_confidence }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_lean_administration
+		}
+	}
+
+	focus = {
+		id = POR_a_competitive_portuguese_economy
+		icon = GFX_goal_generic_trade
+		x = 22
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_rebuilding_political_confidence }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_competitive_economy
+			POR_parl_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_a_pact_on_regime_matters
+		icon = GFX_goal_generic_improve_relations
+		x = 26
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_a_government_that_can_last }
+		mutually_exclusive = { focus = POR_hold_the_centre_right_line }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			POR_parl_p15 = yes
+			add_political_power = -40
+			add_popularity = { ideology = reactionary popularity = 0.02 }
+		}
+	}
+
+	focus = {
+		id = POR_hold_the_centre_right_line
+		icon = GFX_goal_generic_forceful_treaty
+		x = 28
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_a_government_that_can_last }
+		mutually_exclusive = { focus = POR_a_pact_on_regime_matters }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 60
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			POR_parl_m5 = yes
+			hidden_effect = { country_event = { id = por.35 days = 40 } }
+		}
+	}
+
+	focus = {
+		id = POR_a_new_investment_programme
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 20
+		y = 8
+		cost = 7
+		prerequisite = { focus = POR_cutting_administrative_barriers focus = POR_a_competitive_portuguese_economy }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_portugal_in_europe
+		icon = GFX_focus_generic_monetary_union
+		x = 24
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_a_competitive_portuguese_economy focus = POR_a_pact_on_regime_matters focus = POR_hold_the_centre_right_line }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			add_political_power = 30
+			every_other_country = {
+				limit = { OR = { tag = FRA tag = GER tag = SPR tag = ITA } }
+				add_opinion_modifier = { target = ROOT modifier = POR_european_partner }
+			}
+			add_tech_bonus = { name = POR_portugal_in_europe bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+
+	focus = {
+		id = POR_strengthening_the_atlantic_partnership
+		icon = GFX_goal_generic_major_alliance
+		x = 27
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_a_pact_on_regime_matters focus = POR_hold_the_centre_right_line }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_atlantic_partnership
+			USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+			ENG = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+		}
+	}
+
+	focus = {
+		id = POR_stability_delivered
+		icon = GFX_goal_generic_national_unity
+		x = 24
+		y = 9
+		cost = 7
+		prerequisite = { focus = POR_portugal_in_europe }
+		prerequisite = { focus = POR_a_new_investment_programme focus = POR_strengthening_the_atlantic_partnership }
+		available = {
+			has_country_flag = POR_route_montenegro
+			custom_trigger_tooltip = { tooltip = POR_needs_parl_50_tt check_variable = { POR_parl_support > 49 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = POR_government_seeking_stability }
+				swap_ideas = { remove_idea = POR_government_seeking_stability add_idea = POR_stable_institutions }
+			}
+			else = { add_ideas = POR_stable_institutions }
+		}
+	}
+
+	# ==========================================================
+	#   B. PEDRO NUNO SANTOS - Socialist Party
+	# ==========================================================
+	focus = {
+		id = POR_a_new_social_contract
+		icon = GFX_goal_support_democracy
+		x = 34
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_back_santos }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.03
+			POR_conf_p5 = yes
+			hidden_effect = { country_event = { id = por.31 days = 5 } }
+		}
+	}
+
+	focus = {
+		id = POR_restoring_trust_in_the_socialists
+		icon = GFX_goal_generic_propaganda
+		x = 31
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_a_new_social_contract }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = progressive popularity = 0.05 }
+			POR_parl_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_rebuilding_the_national_health_service
+		icon = GFX_goal_generic_consumer_goods
+		x = 34
+		y = 6
+		cost = 7
+		prerequisite = { focus = POR_a_new_social_contract }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_ideas = POR_sns_rebuilt
+			add_political_power = -30
+		}
+	}
+
+	focus = {
+		id = POR_homes_for_the_portuguese_people
+		icon = GFX_goal_generic_construction
+		x = 37
+		y = 6
+		cost = 7
+		prerequisite = { focus = POR_a_new_social_contract }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			custom_effect_tooltip = POR_homes_for_the_portuguese_people_tt
+			set_country_flag = POR_public_housing_programme
+			add_stability = 0.02
+			POR_conf_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_a_fairer_labour_market
+		icon = GFX_focus_eng_concessions_to_the_trade_unions
+		x = 31
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_restoring_trust_in_the_socialists }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_fair_labour_market
+		}
+	}
+
+	focus = {
+		id = POR_investing_in_education
+		icon = GFX_focus_SWE_education_reform
+		x = 34
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_rebuilding_the_national_health_service focus = POR_restoring_trust_in_the_socialists }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = { name = POR_investing_in_education bonus = 0.5 uses = 2 category = electronics }
+			add_tech_bonus = { name = POR_investing_in_education_industry bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+
+	focus = {
+		id = POR_modernising_public_transport
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 37
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_homes_for_the_portuguese_people }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			112 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			180 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			795 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_tax_the_windfalls
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 32
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_a_fairer_labour_market focus = POR_investing_in_education focus = POR_modernising_public_transport }
+		mutually_exclusive = { focus = POR_borrow_to_build }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_political_power = 40
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			POR_parl_m5 = yes
+			set_country_flag = POR_santos_funded_by_tax
+		}
+	}
+
+	focus = {
+		id = POR_borrow_to_build
+		icon = GFX_goal_generic_dangerous_deal
+		x = 36
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_a_fairer_labour_market focus = POR_investing_in_education focus = POR_modernising_public_transport }
+		mutually_exclusive = { focus = POR_tax_the_windfalls }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_budget_pressure
+			179 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			181 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			hidden_effect = { country_event = { id = por.34 days = 120 } }
+		}
+	}
+
+	focus = {
+		id = POR_the_social_republic
+		icon = GFX_goal_generic_national_unity
+		x = 34
+		y = 9
+		cost = 7
+		prerequisite = { focus = POR_tax_the_windfalls focus = POR_borrow_to_build }
+		available = {
+			has_country_flag = POR_route_santos
+			has_completed_focus = POR_rebuilding_the_national_health_service
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = POR_social_renewal_programme }
+				swap_ideas = { remove_idea = POR_social_renewal_programme add_idea = POR_social_republic }
+			}
+			else = { add_ideas = POR_social_republic }
+		}
+	}
+
+	# ==========================================================
+	#   C. ANDRE VENTURA - Chega
+	# ==========================================================
+	focus = {
+		id = POR_breaking_the_political_establishment
+		icon = GFX_goal_generic_propaganda
+		x = 44
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_back_ventura }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 60
+			POR_parl_m10 = yes
+			hidden_effect = { country_event = { id = por.32 days = 5 } }
+		}
+	}
+
+	focus = {
+		id = POR_a_new_political_mandate
+		icon = GFX_focus_generic_election
+		x = 41
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_breaking_the_political_establishment }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = reactionary popularity = 0.06 }
+			POR_conf_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_accountability_in_public_office
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 44
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_breaking_the_political_establishment }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_accountability_drive
+			POR_conf_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_a_different_immigration_policy
+		icon = GFX_goal_generic_defence
+		x = 47
+		y = 6
+		cost = 5
+		prerequisite = { focus = POR_breaking_the_political_establishment }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_border_control_regime
+			POR_parl_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_reforming_the_state
+		icon = GFX_goal_generic_production
+		x = 42
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_a_new_political_mandate focus = POR_accountability_in_public_office }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_political_power = 40
+			add_stability = -0.02
+			add_tech_bonus = { name = POR_reforming_the_state bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+
+	focus = {
+		id = POR_defending_national_sovereignty
+		icon = GFX_goal_generic_neutrality_focus
+		x = 46
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_accountability_in_public_office focus = POR_a_different_immigration_policy }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_brussels_friction
+			add_war_support = 0.03
+		}
+	}
+
+	focus = {
+		id = POR_the_portuguese_question
+		icon = GFX_goal_generic_political_pressure
+		x = 44
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_reforming_the_state }
+		prerequisite = { focus = POR_defending_national_sovereignty }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_the_portuguese_question_tt
+			hidden_effect = { country_event = { id = por.33 days = 3 } }
+		}
+	}
+
+	focus = {
+		id = POR_force_the_constitutional_revision
+		icon = GFX_goal_generic_forceful_treaty
+		x = 42
+		y = 9
+		cost = 7
+		prerequisite = { focus = POR_the_portuguese_question }
+		mutually_exclusive = { focus = POR_work_within_the_constitution }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 80
+			add_stability = -0.05
+			POR_parl_m10 = yes
+		}
+	}
+
+	focus = {
+		id = POR_work_within_the_constitution
+		icon = GFX_goal_generic_improve_relations
+		x = 46
+		y = 9
+		cost = 7
+		prerequisite = { focus = POR_the_portuguese_question }
+		mutually_exclusive = { focus = POR_force_the_constitutional_revision }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			POR_parl_p10 = yes
+			add_stability = 0.03
+			add_popularity = { ideology = reactionary popularity = -0.02 }
+		}
+	}
+
+	focus = {
+		id = POR_a_new_political_order
+		icon = GFX_goal_generic_national_unity
+		x = 44
+		y = 10
+		cost = 7
+		prerequisite = { focus = POR_force_the_constitutional_revision focus = POR_work_within_the_constitution }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# Forcing the revision without the votes ends in deadlock, not in a new order.
+			custom_effect_tooltip = POR_a_new_political_order_tt
+			if = {
+				limit = {
+					has_completed_focus = POR_force_the_constitutional_revision
+					check_variable = { POR_parl_support < 50 }
+				}
+				if = { limit = { has_idea = POR_national_transformation } remove_ideas = POR_national_transformation }
+				add_ideas = POR_institutional_deadlock
+			}
+			else = {
+				if = { limit = { has_idea = POR_national_transformation } remove_ideas = POR_national_transformation }
+				add_ideas = POR_new_political_order
+			}
+		}
+	}
+
+	# ==========================================================
+	#   SHARED: THE REPUBLIC AFTER THE ELECTION (2027 - 2029)
+	#   No prerequisite: any route, including Ronaldo's, can take them.
+	# ==========================================================
+	focus = {
+		id = POR_the_autonomous_regions_compact
+		icon = GFX_goal_generic_improve_relations
+		x = 159
+		y = 1
+		cost = 5
+		available = { has_country_flag = POR_inaugurated date > 2027.12.31 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			697 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			698 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = POR_an_atlantic_diplomacy
+		icon = GFX_goal_generic_alliance
+		x = 161
+		y = 1
+		cost = 5
+		available = { has_country_flag = POR_inaugurated date > 2027.12.31 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 40
+			if = { limit = { country_exists = BRA } BRA = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+			if = { limit = { country_exists = ANG } ANG = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+			if = { limit = { country_exists = CBV } CBV = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+			navy_experience = 15
+		}
+	}
+
+	focus = {
+		id = POR_the_state_of_the_republic
+		icon = GFX_goal_support_democracy
+		x = 163
+		y = 1
+		cost = 5
+		available = { has_country_flag = POR_inaugurated date > 2028.12.31 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			POR_conf_p10 = yes
+			POR_parl_p5 = yes
+			add_stability = 0.02
+		}
+	}
+
+	# ==========================================================
+	#   CRISTIANO RONALDO - a fictional alternate-history route.
+	#   The whole branch is invisible until the announcement of
+	#   5 November 2026 (event por.60 sets POR_ronaldo_announced).
+	#   The presidential half (y 9 and below) needs POR_route_ronaldo,
+	#   which only the hidden phone-call decision can lead to:
+	#   common/decisions/POR_decisions.txt, POR_answer_the_private_line.
+	# ==========================================================
+	focus = {
+		id = POR_obrigado_capitao
+		icon = GFX_goal_generic_national_unity
+		x = 60
+		y = 0
+		cost = 2
+		allow_branch = { has_country_flag = POR_ronaldo_announced }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.02
+			add_war_support = 0.02
+		}
+	}
+
+	# ---- The Footballing Legacy ----
+	focus = {
+		id = POR_the_footballing_legacy
+		icon = GFX_goal_generic_propaganda
+		x = 58
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_obrigado_capitao }
+		available = { has_country_flag = POR_ronaldo_retired }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_footballing_nation } swap_ideas = { remove_idea = POR_footballing_nation add_idea = POR_footballing_legacy } }
+			else_if = { limit = { NOT = { has_idea = POR_footballing_legacy } } add_ideas = POR_footballing_legacy }
+		}
+	}
+
+	focus = {
+		id = POR_academies_of_the_future
+		icon = GFX_focus_generic_military_academy
+		x = 56
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_the_footballing_legacy }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_manpower = 5000
+			add_stability = 0.02
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_the_world_watches_lisbon
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 60
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_the_footballing_legacy }
+		search_filters = { FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			add_political_power = 30
+			if = { limit = { country_exists = SPR } SPR = { add_opinion_modifier = { target = ROOT modifier = POR_world_cup_partners } } }
+			if = { limit = { country_exists = MOR } MOR = { add_opinion_modifier = { target = ROOT modifier = POR_world_cup_partners } } }
+			112 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_from_pitch_to_public_life
+		icon = GFX_goal_generic_political_pressure
+		x = 58
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_academies_of_the_future focus = POR_the_world_watches_lisbon }
+		available = { date > 2027.8.31 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			set_country_flag = POR_ronaldo_public_life
+			add_political_power = 25
+			hidden_effect = { country_event = { id = por.64 days = 3 } }
+		}
+	}
+
+	# ---- The National Renewal Movement ----
+	focus = {
+		id = POR_found_the_renewal_movement
+		icon = GFX_focus_generic_support_the_left_right
+		x = 60
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_from_pitch_to_public_life }
+		available = { date > 2027.12.31 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_found_the_renewal_movement_tt
+			POR_renewal_start = yes
+			hidden_effect = { country_event = { id = por.65 days = 4 } }
+		}
+	}
+
+	focus = {
+		id = POR_caravan_of_the_regions
+		icon = GFX_goal_generic_propaganda
+		x = 58
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_found_the_renewal_movement }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_ren_support_p10 = yes
+			POR_ren_budget_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_talks_with_the_institutions
+		icon = GFX_goal_generic_improve_relations
+		x = 62
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_found_the_renewal_movement }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_ren_coop_p10 = yes
+			POR_parl_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_national_renewal_programme
+		icon = GFX_goal_generic_national_unity
+		x = 60
+		y = 6
+		cost = 7
+		prerequisite = { focus = POR_caravan_of_the_regions }
+		prerequisite = { focus = POR_talks_with_the_institutions }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_ren_ambition_p10 = yes
+			POR_ren_support_p5 = yes
+			add_popularity = { ideology = centrist popularity = 0.05 }
+		}
+	}
+
+	focus = {
+		id = POR_the_armed_forces_proposal
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 56
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_the_national_renewal_programme }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			POR_ren_ambition_p10 = yes
+			add_war_support = 0.03
+			POR_ren_coop_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_renaissance_prospectus
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 60
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_the_national_renewal_programme }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_ren_ambition_p5 = yes
+			POR_ren_budget_p10 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_question_of_destiny
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 64
+		y = 7
+		cost = 5
+		prerequisite = { focus = POR_the_national_renewal_programme }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_ren_ambition_p10 = yes
+			POR_ren_support_p5 = yes
+			POR_ren_coop_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_audience_with_the_council_of_state
+		icon = GFX_goal_support_democracy
+		x = 60
+		y = 8
+		cost = 5
+		prerequisite = { focus = POR_the_armed_forces_proposal focus = POR_the_renaissance_prospectus focus = POR_the_question_of_destiny }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_coop_50_tt check_variable = { POR_renewal_coop > 49 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_audience_with_the_council_of_state_tt
+			set_country_flag = POR_ronaldo_legitimacy
+			POR_parl_p5 = yes
+		}
+	}
+
+	# ---- The Presidential Invitation: only after the hidden phone call ----
+	focus = {
+		id = POR_the_tenth_of_june
+		icon = GFX_focus_generic_election
+		x = 60
+		y = 9
+		cost = 1
+		prerequisite = { focus = POR_audience_with_the_council_of_state }
+		available = { has_country_flag = POR_route_ronaldo }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.03
+		}
+	}
+
+	# ---- The Defence Transformation ----
+	focus = {
+		id = POR_a_nation_in_uniform
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 54
+		y = 10
+		cost = 5
+		prerequisite = { focus = POR_the_tenth_of_june }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_timed_idea = { idea = POR_nation_in_uniform_debate days = 240 }
+			hidden_effect = { country_event = { id = por.75 days = 30 } }
+		}
+	}
+
+	focus = {
+		id = POR_servico_nacional
+		icon = GFX_goal_generic_army_doctrines
+		x = 52
+		y = 11
+		cost = 10
+		prerequisite = { focus = POR_a_nation_in_uniform }
+		mutually_exclusive = { focus = POR_a_voluntary_national_corps }
+		available = { has_country_flag = POR_service_vote_held }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			# National service supersedes the reserve system of the Army branch.
+			if = { limit = { has_idea = POR_expanded_reserve_system } remove_ideas = POR_expanded_reserve_system }
+			if = { limit = { has_idea = POR_nation_in_uniform_debate } remove_ideas = POR_nation_in_uniform_debate }
+			add_ideas = POR_servico_nacional_idea
+			# Without the Assembly's vote of principle (event por.75) the law is imposed, and it costs.
+			if = {
+				limit = { NOT = { has_country_flag = POR_service_mandate } }
+				custom_effect_tooltip = POR_service_imposed_tt
+				add_stability = -0.04
+				POR_parl_m10 = yes
+			}
+			POR_def_recruit_p15 = yes
+			POR_def_strain_p15 = yes
+		}
+	}
+
+	focus = {
+		id = POR_a_voluntary_national_corps
+		icon = GFX_goal_generic_special_forces
+		x = 56
+		y = 11
+		cost = 7
+		prerequisite = { focus = POR_a_nation_in_uniform }
+		mutually_exclusive = { focus = POR_servico_nacional }
+		available = { has_country_flag = POR_service_vote_held }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			if = { limit = { has_idea = POR_nation_in_uniform_debate } remove_ideas = POR_nation_in_uniform_debate }
+			add_ideas = POR_voluntary_national_corps
+			POR_def_recruit_p10 = yes
+			POR_def_strain_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_million_ambition
+		icon = GFX_goal_generic_military_sphere
+		x = 52
+		y = 12
+		cost = 10
+		prerequisite = { focus = POR_servico_nacional }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			custom_effect_tooltip = POR_the_million_ambition_tt
+			add_ideas = POR_million_ambition
+			POR_def_strain_p15 = yes
+			POR_conf_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_international_volunteer_statute
+		icon = GFX_focus_generic_military_mission
+		x = 56
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_servico_nacional focus = POR_a_voluntary_national_corps }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = POR_international_volunteers
+			POR_def_training_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_arsenal_of_the_atlantic
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 54
+		y = 13
+		cost = 10
+		prerequisite = { focus = POR_the_million_ambition focus = POR_the_international_volunteer_statute }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_arsenal_of_the_atlantic_idea
+			180 = { add_extra_state_shared_building_slots = 2 add_building_construction = { type = arms_factory level = 2 instant_build = yes } }
+			POR_def_equipment_p15 = yes
+			POR_def_strain_p10 = yes
+		}
+	}
+
+	# ---- The Economic Renaissance ----
+	focus = {
+		id = POR_the_renaissance_budget
+		icon = GFX_goal_generic_production2
+		x = 60
+		y = 10
+		cost = 5
+		prerequisite = { focus = POR_the_tenth_of_june }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = POR_renaissance_works days = 720 }
+			POR_parl_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_high_speed_portugal
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 58
+		y = 11
+		cost = 7
+		prerequisite = { focus = POR_the_renaissance_budget }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			112 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			180 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_from_stadiums_to_startups
+		icon = GFX_goal_generic_scientific_exchange
+		x = 60
+		y = 11
+		cost = 7
+		prerequisite = { focus = POR_the_renaissance_budget }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_selecao_economy
+			add_tech_bonus = { name = POR_from_stadiums_to_startups bonus = 0.5 uses = 2 category = electronics }
+		}
+	}
+
+	focus = {
+		id = POR_brand_portugal
+		icon = GFX_goal_generic_trade
+		x = 62
+		y = 11
+		cost = 5
+		prerequisite = { focus = POR_the_renaissance_budget }
+		search_filters = { FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			add_political_power = 50
+			697 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			179 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_the_bill_comes_due
+		icon = GFX_goal_generic_dangerous_deal
+		x = 60
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_high_speed_portugal focus = POR_from_stadiums_to_startups focus = POR_brand_portugal }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_the_bill_comes_due_tt
+			hidden_effect = { country_event = { id = por.76 days = 2 } }
+		}
+	}
+
+	# ---- The Imperial Question: two incompatible visions ----
+	focus = {
+		id = POR_the_imperial_question
+		icon = GFX_goal_generic_more_territorial_claims
+		x = 66
+		y = 10
+		cost = 5
+		prerequisite = { focus = POR_the_tenth_of_june }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 50
+			POR_conf_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_lusophone_vision
+		icon = GFX_goal_generic_major_alliance
+		x = 64
+		y = 11
+		cost = 7
+		prerequisite = { focus = POR_the_imperial_question }
+		mutually_exclusive = { focus = POR_the_iberian_vision }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_the_lusophone_vision_tt
+			set_country_flag = POR_lusophone_vision
+			set_variable = { POR_luso_partners = 0 }
+		}
+	}
+
+	focus = {
+		id = POR_the_iberian_vision
+		icon = GFX_focus_por_workers_of_iberia
+		x = 68
+		y = 11
+		cost = 7
+		prerequisite = { focus = POR_the_imperial_question }
+		mutually_exclusive = { focus = POR_the_lusophone_vision }
+		available = { country_exists = SPR }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_the_iberian_vision_tt
+			set_country_flag = POR_iberian_vision
+			set_variable = { POR_iberian_talks = 10 }
+			add_ideas = POR_iberian_dialogue
+		}
+	}
+
+	focus = {
+		id = POR_a_community_of_destiny
+		icon = GFX_goal_generic_improve_relations
+		x = 63
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_the_lusophone_vision }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = {
+				limit = { OR = { tag = BRA tag = ANG tag = MZB tag = GNB tag = CBV tag = STP } }
+				add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties }
+			}
+			add_political_power = 30
+		}
+	}
+
+	focus = {
+		id = POR_lisbon_the_lusophone_capital
+		icon = GFX_goal_generic_trade
+		x = 65
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_the_lusophone_vision }
+		search_filters = { FOCUS_FILTER_INTERNATIONAL_TRADE FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			custom_effect_tooltip = POR_lisbon_the_lusophone_capital_tt
+			set_country_flag = POR_luso_economic_links
+		}
+	}
+
+	focus = {
+		id = POR_the_fifth_empire
+		icon = GFX_goal_generic_national_unity
+		x = 64
+		y = 13
+		cost = 10
+		prerequisite = { focus = POR_a_community_of_destiny }
+		prerequisite = { focus = POR_lisbon_the_lusophone_capital }
+		available = {
+			custom_trigger_tooltip = { tooltip = POR_needs_three_partners_tt check_variable = { POR_luso_partners > 2 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_fifth_empire
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = POR_the_peninsular_summit
+		icon = GFX_goal_generic_improve_relations
+		x = 67
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_the_iberian_vision }
+		available = { country_exists = SPR }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_talks_p15_tt
+			hidden_effect = { add_to_variable = { POR_iberian_talks = 15 } }
+			SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } }
+		}
+	}
+
+	focus = {
+		id = POR_shared_institutions
+		icon = GFX_focus_generic_monetary_union
+		x = 69
+		y = 12
+		cost = 5
+		prerequisite = { focus = POR_the_iberian_vision }
+		available = { country_exists = SPR }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			custom_effect_tooltip = POR_talks_p15_tt
+			hidden_effect = { add_to_variable = { POR_iberian_talks = 15 } }
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			POR_conf_m5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_propose_the_iberian_union
+		icon = GFX_focus_por_workers_of_iberia
+		x = 68
+		y = 13
+		cost = 10
+		prerequisite = { focus = POR_the_peninsular_summit }
+		prerequisite = { focus = POR_shared_institutions }
+		available = {
+			country_exists = SPR
+			NOT = { has_war_with = SPR }
+			custom_trigger_tooltip = { tooltip = POR_needs_talks_60_tt check_variable = { POR_iberian_talks > 59 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			custom_effect_tooltip = POR_propose_the_iberian_union_tt
+			hidden_effect = { SPR = { country_event = { id = por.80 days = 5 } } }
+		}
+	}
+
+	focus = {
+		id = POR_portugal_reborn
+		icon = GFX_goal_generic_national_unity
+		x = 60
+		y = 14
+		cost = 10
+		prerequisite = { focus = POR_arsenal_of_the_atlantic focus = POR_the_fifth_empire focus = POR_propose_the_iberian_union }
+		prerequisite = { focus = POR_the_bill_comes_due }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = POR_renewal_presidency }
+				swap_ideas = { remove_idea = POR_renewal_presidency add_idea = POR_portugal_reborn_idea }
+			}
+			else = { add_ideas = POR_portugal_reborn_idea }
+		}
+	}
+
+	# ==========================================================
+	#   STRATEGIC DEFENCE REVIEW - shared root of the three services
+	# ==========================================================
+	focus = {
+		id = POR_strategic_defence_review
+		icon = GFX_goal_generic_defence
+		x = 88
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_AIR_XP FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			army_experience = 10
+			air_experience = 10
+			navy_experience = 10
+			custom_effect_tooltip = POR_strategic_defence_review_tt
+			hidden_effect = { POR_defence_start = yes }
+		}
+	}
+
+	# ---------------- ARMY ----------------
+	focus = {
+		id = POR_army_readiness_audit
+		icon = GFX_goal_generic_army_doctrines
+		x = 77
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_strategic_defence_review }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			POR_army_reform_step = yes
+			army_experience = 15
+			POR_def_training_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_recruitment_and_retention
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 75
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_army_readiness_audit }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_manpower = 8000
+			POR_def_recruit_p10 = yes
+			POR_def_strain_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_equipment_recapitalisation
+		icon = GFX_goal_generic_small_arms
+		x = 79
+		y = 2
+		cost = 7
+		prerequisite = { focus = POR_army_readiness_audit }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_timed_idea = { idea = POR_army_procurement_drive days = 540 }
+			POR_def_equipment_p10 = yes
+			POR_def_strain_p10 = yes
+			add_tech_bonus = { name = POR_equipment_recapitalisation bonus = 0.5 uses = 1 category = infantry_weapons }
+		}
+	}
+
+	focus = {
+		id = POR_a_professional_force
+		icon = GFX_goal_generic_special_forces
+		x = 74
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_recruitment_and_retention }
+		mutually_exclusive = { focus = POR_an_expanded_reserve }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = POR_professional_army_reforms
+			POR_def_training_p10 = yes
+		}
+	}
+
+	focus = {
+		id = POR_an_expanded_reserve
+		icon = GFX_goal_generic_army_motorized
+		x = 76
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_recruitment_and_retention }
+		mutually_exclusive = { focus = POR_a_professional_force }
+		# Ronaldo's Servico Nacional replaces a reserve system: no point building one after it.
+		available = { NOT = { has_idea = POR_servico_nacional_idea } }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = POR_expanded_reserve_system
+			POR_def_recruit_p10 = yes
+		}
+	}
+
+	focus = {
+		id = POR_the_national_service_debate
+		icon = GFX_goal_generic_political_pressure
+		x = 78
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_recruitment_and_retention focus = POR_equipment_recapitalisation }
+		# The Ronaldo presidency holds its own, larger debate (POR_a_nation_in_uniform).
+		available = { NOT = { has_country_flag = POR_route_ronaldo } }
+		bypass = { has_country_flag = POR_route_ronaldo }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_timed_idea = { idea = POR_national_service_debate days = 180 }
+			add_manpower = 4000
+			add_war_support = 0.02
+		}
+	}
+
+	focus = {
+		id = POR_training_centres
+		icon = GFX_focus_generic_military_academy
+		x = 75
+		y = 4
+		cost = 5
+		prerequisite = { focus = POR_a_professional_force focus = POR_an_expanded_reserve }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			POR_army_reform_step = yes
+			army_experience = 25
+			POR_def_training_p15 = yes
+			POR_def_strain_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_strategic_logistics_command
+		icon = GFX_goal_generic_army_motorized
+		x = 80
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_equipment_recapitalisation }
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			POR_army_reform_step = yes
+			add_tech_bonus = { name = POR_strategic_logistics_command bonus = 0.5 uses = 1 category = motorized_equipment }
+			add_tech_bonus = { name = POR_strategic_logistics_command_support bonus = 0.5 uses = 1 category = support_tech }
+			POR_def_equipment_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_land_systems_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 81
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_strategic_logistics_command }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			795 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } }
+			# One industrial idea, chosen by who governs.
+			if = {
+				limit = { has_country_flag = POR_route_montenegro }
+				add_ideas = POR_nato_interoperable_army
+			}
+			else_if = {
+				limit = { has_country_flag = POR_route_santos }
+				add_ideas = POR_public_arsenal
+			}
+			else_if = {
+				limit = { has_country_flag = POR_route_ventura }
+				add_ideas = POR_sovereign_procurement
+			}
+			else = { add_ideas = POR_land_systems_industry_idea }
+			POR_def_equipment_p10 = yes
+			POR_def_strain_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_modern_land_forces
+		icon = GFX_goal_generic_army_tanks
+		x = 77
+		y = 5
+		cost = 10
+		prerequisite = { focus = POR_training_centres }
+		prerequisite = { focus = POR_strategic_logistics_command }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_defence_balance_tt
+				check_variable = { POR_def_recruit > 49 }
+				check_variable = { POR_def_training > 49 }
+				check_variable = { POR_def_equipment > 49 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			# Replaces whichever army stage is active (readiness problems or reform stage 1-3).
+			POR_army_reform_final = yes
+			add_tech_bonus = { name = POR_modern_land_forces bonus = 0.5 uses = 1 category = armor }
+		}
+	}
+
+	# ---------------- AIR FORCE ----------------
+	focus = {
+		id = POR_air_force_modernisation_plan
+		icon = GFX_goal_generic_air_doctrine
+		x = 88
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_strategic_defence_review }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			POR_air_reform_step = yes
+			air_experience = 15
+			add_timed_idea = { idea = POR_aircraft_modernisation_programme days = 730 }
+		}
+	}
+
+	focus = {
+		id = POR_pilot_training_programme
+		icon = GFX_goal_generic_air_fighter
+		x = 86
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_air_force_modernisation_plan }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			add_ideas = POR_pilot_training_programme_idea
+			air_experience = 10
+		}
+	}
+
+	focus = {
+		id = POR_maintenance_and_sustainment
+		icon = GFX_goal_generic_production
+		x = 88
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_air_force_modernisation_plan }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_air_reform_step = yes
+			add_tech_bonus = { name = POR_maintenance_and_sustainment bonus = 0.5 uses = 1 category = air_equipment }
+			795 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_airbase_infrastructure
+		icon = GFX_goal_generic_build_airforce
+		x = 91
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_air_force_modernisation_plan }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			179 = { add_building_construction = { type = air_base level = 2 instant_build = yes } }
+			698 = { add_building_construction = { type = air_base level = 2 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_buy_allied_fighters
+		icon = GFX_goal_generic_military_deal
+		x = 86
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_pilot_training_programme focus = POR_maintenance_and_sustainment }
+		mutually_exclusive = { focus = POR_a_european_fighter_consortium }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = POR_allied_fighter_fleet
+			add_tech_bonus = { name = POR_buy_allied_fighters bonus = 1.0 uses = 1 category = air_equipment }
+			if = {
+				limit = { has_country_flag = POR_route_ventura }
+				custom_effect_tooltip = POR_ventura_import_cost_tt
+				add_political_power = -30
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_european_fighter_consortium
+		icon = GFX_goal_generic_scientific_exchange
+		x = 88
+		y = 3
+		cost = 10
+		prerequisite = { focus = POR_pilot_training_programme focus = POR_maintenance_and_sustainment }
+		mutually_exclusive = { focus = POR_buy_allied_fighters }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = POR_european_fighter_partner
+			add_tech_bonus = { name = POR_a_european_fighter_consortium bonus = 0.5 uses = 2 category = air_equipment }
+			if = {
+				limit = { has_idea = POR_brussels_friction }
+				custom_effect_tooltip = POR_brussels_friction_cost_tt
+				add_political_power = -40
+			}
+		}
+	}
+
+	focus = {
+		id = POR_radar_and_air_defence_integration
+		icon = GFX_goal_generic_radar
+		x = 91
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_airbase_infrastructure }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			POR_air_reform_step = yes
+			112 = { add_building_construction = { type = radar_station level = 1 instant_build = yes } }
+			698 = { add_building_construction = { type = radar_station level = 1 instant_build = yes } }
+			add_tech_bonus = { name = POR_radar_and_air_defence_integration bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+
+	focus = {
+		id = POR_domestic_aerospace_development
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 88
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_buy_allied_fighters focus = POR_a_european_fighter_consortium }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_domestic_aerospace_development_idea
+			795 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } }
+			if = {
+				limit = { has_country_flag = POR_route_santos }
+				custom_effect_tooltip = POR_santos_public_stake_tt
+				add_stability = 0.02
+			}
+		}
+	}
+
+	focus = {
+		id = POR_nato_air_interoperability
+		icon = GFX_goal_generic_alliance
+		x = 86
+		y = 4
+		cost = 5
+		prerequisite = { focus = POR_buy_allied_fighters focus = POR_a_european_fighter_consortium }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 25
+			USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+			if = {
+				limit = { has_country_flag = POR_route_montenegro }
+				custom_effect_tooltip = POR_montenegro_nato_bonus_tt
+				air_experience = 15
+			}
+		}
+	}
+
+	focus = {
+		id = POR_integrated_air_defence
+		icon = GFX_goal_generic_fortify_city
+		x = 91
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_radar_and_air_defence_integration }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			add_ideas = POR_integrated_air_defence_idea
+			112 = { add_building_construction = { type = anti_air_building level = 2 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_a_modern_air_force
+		icon = GFX_goal_generic_air_fighter
+		x = 88
+		y = 5
+		cost = 10
+		prerequisite = { focus = POR_domestic_aerospace_development focus = POR_nato_air_interoperability }
+		prerequisite = { focus = POR_integrated_air_defence }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			if = { limit = { has_idea = POR_aircraft_modernisation_programme } remove_ideas = POR_aircraft_modernisation_programme }
+			POR_air_reform_final = yes
+		}
+	}
+
+	# ---------------- NAVY ----------------
+	focus = {
+		id = POR_atlantic_maritime_strategy
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 99
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_strategic_defence_review }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			POR_navy_reform_step = yes
+			navy_experience = 20
+		}
+	}
+
+	focus = {
+		id = POR_naval_bases_and_maintenance
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 97
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_atlantic_maritime_strategy }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_navy_reform_step = yes
+			add_ideas = POR_improved_naval_maintenance
+			112 = { add_building_construction = { type = naval_base level = 1 province = 11805 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_maritime_surveillance
+		icon = GFX_goal_generic_radar
+		x = 100
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_atlantic_maritime_strategy }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			POR_navy_reform_step = yes
+			add_tech_bonus = { name = POR_maritime_surveillance bonus = 0.5 uses = 1 category = electronics }
+			697 = { add_building_construction = { type = radar_station level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_shipbuilding_revival
+		icon = GFX_goal_generic_build_navy
+		x = 103
+		y = 2
+		cost = 7
+		prerequisite = { focus = POR_atlantic_maritime_strategy }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } }
+			add_tech_bonus = { name = POR_shipbuilding_revival bonus = 0.5 uses = 1 category = naval_equipment }
+		}
+	}
+
+	focus = {
+		id = POR_ocean_patrol_priority
+		icon = GFX_goal_generic_navy_cruiser
+		x = 96
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_naval_bases_and_maintenance }
+		mutually_exclusive = { focus = POR_escort_and_frigate_priority }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			add_ideas = POR_ocean_patrol_fleet
+			navy_experience = 15
+		}
+	}
+
+	focus = {
+		id = POR_escort_and_frigate_priority
+		icon = GFX_goal_generic_navy_anti_submarine
+		x = 98
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_naval_bases_and_maintenance }
+		mutually_exclusive = { focus = POR_ocean_patrol_priority }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			add_ideas = POR_escort_fleet
+			navy_experience = 15
+		}
+	}
+
+	focus = {
+		id = POR_the_atlantic_surveillance_network
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 100
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_maritime_surveillance }
+		available = {
+			697 = { is_owned_and_controlled_by = ROOT }
+			698 = { is_owned_and_controlled_by = ROOT }
+		}
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			add_ideas = POR_atlantic_surveillance_network
+			698 = { add_building_construction = { type = naval_base level = 1 province = 1751 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_the_portuguese_shipbuilding_initiative
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 103
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_shipbuilding_revival }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_portuguese_shipbuilding_initiative
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } }
+			if = {
+				limit = { has_country_flag = POR_route_santos }
+				custom_effect_tooltip = POR_santos_public_stake_tt
+				add_stability = 0.02
+			}
+			if = {
+				limit = { has_country_flag = POR_route_ventura }
+				custom_effect_tooltip = POR_ventura_national_yards_tt
+				add_war_support = 0.02
+			}
+		}
+	}
+
+	focus = {
+		id = POR_fleet_modernisation_programme
+		icon = GFX_goal_generic_build_navy
+		x = 97
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_ocean_patrol_priority focus = POR_escort_and_frigate_priority }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = POR_fleet_modernisation_programme_idea days = 730 }
+			add_tech_bonus = { name = POR_fleet_modernisation_programme bonus = 0.5 uses = 2 category = naval_equipment }
+		}
+	}
+
+	focus = {
+		id = POR_nato_maritime_cooperation
+		icon = GFX_goal_generic_major_alliance
+		x = 101
+		y = 4
+		cost = 5
+		prerequisite = { focus = POR_the_atlantic_surveillance_network focus = POR_the_portuguese_shipbuilding_initiative }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 25
+			ENG = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+			if = {
+				limit = { has_country_flag = POR_route_montenegro }
+				custom_effect_tooltip = POR_montenegro_nato_bonus_tt
+				navy_experience = 15
+			}
+		}
+	}
+
+	focus = {
+		id = POR_guardian_of_the_atlantic
+		icon = GFX_goal_generic_navy_carrier
+		x = 99
+		y = 5
+		cost = 10
+		prerequisite = { focus = POR_fleet_modernisation_programme }
+		prerequisite = { focus = POR_nato_maritime_cooperation }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			POR_navy_reform_final = yes
+		}
+	}
+
+	# ==========================================================
+	#   ECONOMY
+	# ==========================================================
+	focus = {
+		id = POR_the_state_of_the_economy
+		icon = GFX_goal_generic_production
+		x = 8
+		y = 0
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_political_power = 20
+			add_tech_bonus = { name = POR_the_state_of_the_economy bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+
+	focus = {
+		id = POR_public_finances_review
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_the_state_of_the_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_economy_reform_step = yes
+			add_political_power = 30
+		}
+	}
+
+	focus = {
+		id = POR_the_infrastructure_backlog
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 8
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_the_state_of_the_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			795 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_workforce_and_skills
+		icon = GFX_focus_SWE_education_reform
+		x = 15
+		y = 1
+		cost = 5
+		prerequisite = { focus = POR_the_state_of_the_economy }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_tech_bonus = { name = POR_workforce_and_skills bonus = 0.5 uses = 1 category = electronics }
+			add_stability = 0.01
+		}
+	}
+
+	focus = {
+		id = POR_balanced_books
+		icon = GFX_goal_generic_neutrality_focus
+		x = 1
+		y = 2
+		cost = 7
+		prerequisite = { focus = POR_public_finances_review }
+		mutually_exclusive = { focus = POR_investment_led_growth }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 has_country_flag = POR_route_montenegro }
+		}
+		completion_reward = {
+			add_ideas = POR_balanced_books_idea
+			if = {
+				limit = { has_idea = POR_budget_pressure }
+				custom_effect_tooltip = POR_balanced_books_clears_pressure_tt
+				remove_ideas = POR_budget_pressure
+			}
+		}
+	}
+
+	focus = {
+		id = POR_investment_led_growth
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 3
+		y = 2
+		cost = 7
+		prerequisite = { focus = POR_public_finances_review }
+		mutually_exclusive = { focus = POR_balanced_books }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 3 has_country_flag = POR_route_santos }
+		}
+		completion_reward = {
+			add_ideas = POR_investment_led_growth_idea
+		}
+	}
+
+	focus = {
+		id = POR_tax_reform
+		icon = GFX_goal_generic_trade
+		x = 5
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_balanced_books focus = POR_investment_led_growth }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			# The same reform means different things to different governments.
+			if = {
+				limit = { has_country_flag = POR_route_montenegro }
+				custom_effect_tooltip = POR_tax_reform_montenegro_tt
+				add_political_power = 40
+				180 = { add_extra_state_shared_building_slots = 1 }
+			}
+			else_if = {
+				limit = { has_country_flag = POR_route_santos }
+				custom_effect_tooltip = POR_tax_reform_santos_tt
+				add_stability = 0.03
+				POR_conf_p5 = yes
+			}
+			else_if = {
+				limit = { has_country_flag = POR_route_ventura }
+				custom_effect_tooltip = POR_tax_reform_ventura_tt
+				add_popularity = { ideology = reactionary popularity = 0.03 }
+				add_political_power = 30
+			}
+			else = {
+				add_political_power = 30
+				add_stability = 0.01
+			}
+		}
+	}
+
+	focus = {
+		id = POR_private_investment_incentives
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 1
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_balanced_books focus = POR_investment_led_growth }
+		mutually_exclusive = { focus = POR_a_public_investment_plan }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0.3 has_country_flag = POR_route_santos }
+		}
+		completion_reward = {
+			add_ideas = POR_investment_incentives
+		}
+	}
+
+	focus = {
+		id = POR_a_public_investment_plan
+		icon = GFX_goal_generic_production2
+		x = 3
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_balanced_books focus = POR_investment_led_growth }
+		mutually_exclusive = { focus = POR_private_investment_incentives }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = {
+			factor = 1
+			modifier = { factor = 0.3 has_country_flag = POR_route_montenegro }
+		}
+		completion_reward = {
+			add_ideas = POR_public_investment_plan
+		}
+	}
+
+	focus = {
+		id = POR_infrastructure_renewal
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 8
+		y = 2
+		cost = 7
+		prerequisite = { focus = POR_the_infrastructure_backlog }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_economy_reform_step = yes
+			add_timed_idea = { idea = POR_infrastructure_renewal_idea days = 540 }
+			180 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_ports_of_the_atlantic
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 7
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_infrastructure_renewal }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			179 = { add_building_construction = { type = naval_base level = 2 province = 3790 instant_build = yes } }
+			add_political_power = 20
+		}
+	}
+
+	focus = {
+		id = POR_the_housing_emergency
+		icon = GFX_goal_generic_political_pressure
+		x = 13
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_the_infrastructure_backlog focus = POR_workforce_and_skills }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			POR_conf_p5 = yes
+			add_political_power = 20
+		}
+	}
+
+	focus = {
+		id = POR_build_the_homes
+		icon = GFX_goal_generic_construction
+		x = 13
+		y = 3
+		cost = 10
+		prerequisite = { focus = POR_the_housing_emergency }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = POR_housing_pressure }
+				swap_ideas = { remove_idea = POR_housing_pressure add_idea = POR_housing_relief }
+			}
+			else_if = { limit = { NOT = { has_idea = POR_housing_relief } } add_ideas = POR_housing_relief }
+			if = {
+				limit = { has_country_flag = POR_public_housing_programme }
+				custom_effect_tooltip = POR_public_housing_bonus_tt
+				add_stability = 0.03
+			}
+			if = {
+				limit = { has_idea = POR_investment_incentives }
+				custom_effect_tooltip = POR_private_builders_bonus_tt
+				add_political_power = 40
+			}
+		}
+	}
+
+	focus = {
+		id = POR_technology_and_startups
+		icon = GFX_goal_generic_scientific_exchange
+		x = 16
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_workforce_and_skills }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = { name = POR_technology_and_startups bonus = 0.5 uses = 2 category = electronics }
+		}
+	}
+
+	focus = {
+		id = POR_the_digital_atlantic_hub
+		icon = GFX_goal_generic_secret_weapon
+		x = 16
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_technology_and_startups }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = POR_digital_atlantic_hub
+		}
+	}
+
+	focus = {
+		id = POR_tourism_and_services
+		icon = GFX_goal_generic_consumer_goods
+		x = 1
+		y = 4
+		cost = 5
+		prerequisite = { focus = POR_private_investment_incentives focus = POR_a_public_investment_plan }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_tourism_services_economy
+			697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_industrial_diversification
+		icon = GFX_goal_generic_construct_civ_factory
+		x = 3
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_private_investment_incentives focus = POR_a_public_investment_plan }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_economy_reform_step = yes
+			add_ideas = POR_industrial_diversification_idea
+			181 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_agriculture_and_the_interior
+		icon = GFX_focus_generic_farmland
+		x = 9
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_infrastructure_renewal }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = POR_energy_resilience_programme
+		icon = GFX_goal_generic_oil_refinery
+		x = 11
+		y = 3
+		cost = 7
+		prerequisite = { focus = POR_infrastructure_renewal }
+		available = { has_country_flag = POR_blackout_happened }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			# The programme closes the aftermath of 28 April 2025, whichever form it took.
+			if = { limit = { has_idea = POR_blackout_aftermath } remove_ideas = POR_blackout_aftermath }
+			if = { limit = { has_idea = POR_blackout_aftermath_severe } remove_ideas = POR_blackout_aftermath_severe }
+			add_ideas = POR_energy_resilience_programme_idea
+			if = {
+				limit = { has_country_flag = POR_grid_lessons }
+				custom_effect_tooltip = POR_grid_lessons_bonus_tt
+				add_political_power = 50
+			}
+			custom_effect_tooltip = POR_unlock_grid_decisions_tt
+		}
+	}
+
+	focus = {
+		id = POR_storage_and_interconnectors
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 11
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_energy_resilience_programme }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = { has_idea = POR_energy_resilience_programme_idea }
+				swap_ideas = { remove_idea = POR_energy_resilience_programme_idea add_idea = POR_resilient_grid }
+			}
+			else = { add_ideas = POR_resilient_grid }
+			if = { limit = { country_exists = SPR } SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } } }
+		}
+	}
+
+	focus = {
+		id = POR_a_modern_portuguese_economy
+		icon = GFX_goal_generic_production2
+		x = 9
+		y = 6
+		cost = 10
+		prerequisite = { focus = POR_tourism_and_services focus = POR_industrial_diversification }
+		prerequisite = { focus = POR_storage_and_interconnectors focus = POR_the_digital_atlantic_hub focus = POR_build_the_homes }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			POR_economy_reform_final = yes
+		}
+	}
+
+	# ==========================================================
+	#   ADDITIONS: short-term objectives, cross-branch links and
+	#   later programmes. Cross-branch requirements use 'available'
+	#   (not 'prerequisite') so no line is drawn across the tree.
+	# ==========================================================
+
+	# ---- Short-term objectives of 2025 ----
+	focus = {
+		id = POR_wildfire_season_plan
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 32
+		y = 2
+		cost = 3
+		prerequisite = { focus = POR_state_of_the_nation_debate }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			# Short-term objective: worth more if done before the fire season.
+			if = {
+				limit = { date < 2025.7.1 }
+				custom_effect_tooltip = POR_wildfire_in_time_tt
+				add_timed_idea = { idea = POR_wildfire_readiness days = 365 }
+				POR_conf_p5 = yes
+			}
+			else = {
+				custom_effect_tooltip = POR_wildfire_late_tt
+				add_stability = 0.01
+			}
+		}
+	}
+
+	focus = {
+		id = POR_a_budget_for_2026
+		icon = GFX_goal_generic_positive_trade_relations
+		x = 36
+		y = 2
+		cost = 5
+		prerequisite = { focus = POR_state_of_the_nation_debate }
+		# Short-term objective: the State Budget must be voted before December 2025.
+		available = { date < 2025.12.1 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = {
+				limit = { check_variable = { POR_parl_support > 49 } }
+				custom_effect_tooltip = POR_budget_passed_tt
+				add_timed_idea = { idea = POR_2026_budget days = 365 }
+			}
+			else = {
+				custom_effect_tooltip = POR_budget_twelfths_tt
+				add_political_power = 20
+				POR_conf_m5 = yes
+			}
+		}
+	}
+
+	# ---- Army ----
+	focus = {
+		id = POR_army_light_aviation
+		icon = GFX_goal_generic_air_doctrine
+		x = 73
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_training_centres }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 20
+			795 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+			POR_def_training_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_unmanned_systems_battalion
+		icon = GFX_goal_generic_secret_weapon
+		x = 79
+		y = 5
+		cost = 5
+		prerequisite = { focus = POR_strategic_logistics_command }
+		# Economy -> Army: needs a domestic technology base.
+		available = {
+			OR = {
+				has_completed_focus = POR_technology_and_startups
+				has_completed_focus = POR_dual_use_technology
+			}
+		}
+		search_filters = { FOCUS_FILTER_ARMY_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_tech_bonus = { name = POR_unmanned_systems_battalion bonus = 1.0 uses = 1 category = support_tech }
+			add_tech_bonus = { name = POR_unmanned_systems_battalion_elec bonus = 0.5 uses = 1 category = electronics }
+			POR_def_equipment_p5 = yes
+		}
+	}
+
+	focus = {
+		id = POR_national_armoured_vehicle_programme
+		icon = GFX_goal_generic_army_tanks
+		x = 81
+		y = 5
+		cost = 7
+		prerequisite = { focus = POR_land_systems_industry }
+		# Economy -> Army
+		available = { has_completed_focus = POR_defence_industrial_strategy }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			add_tech_bonus = { name = POR_national_armoured_vehicle_programme bonus = 1.0 uses = 2 category = armor }
+			add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 200 producer = POR }
+			POR_def_equipment_p10 = yes
+			POR_def_strain_p5 = yes
+		}
+	}
+
+	# ---- Air Force ----
+	focus = {
+		id = POR_super_tucano_trainers
+		icon = GFX_goal_generic_air_fighter
+		x = 84
+		y = 3
+		cost = 5
+		prerequisite = { focus = POR_pilot_training_programme }
+		# The A-29N order of 2024 delivers from the end of 2025.
+		available = { date > 2025.11.30 }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			air_experience = 20
+			add_tech_bonus = { name = POR_super_tucano_trainers bonus = 0.5 uses = 1 category = air_equipment }
+		}
+	}
+
+	focus = {
+		id = POR_kc390_industrial_partnership
+		icon = GFX_goal_generic_military_deal
+		x = 86
+		y = 5
+		cost = 7
+		prerequisite = { focus = POR_domestic_aerospace_development }
+		# Economy -> Air Force
+		available = {
+			OR = {
+				has_completed_focus = POR_industrial_diversification
+				has_completed_focus = POR_defence_industrial_strategy
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			add_equipment_to_stockpile = { type = transport_plane_equipment_1 amount = 4 producer = POR }
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } }
+			add_tech_bonus = { name = POR_kc390_industrial_partnership bonus = 0.5 uses = 1 category = air_equipment }
+		}
+	}
+
+	# ---- Navy ----
+	focus = {
+		id = POR_npo3s_patrol_vessels
+		icon = GFX_goal_generic_navy_cruiser
+		x = 95
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_ocean_patrol_priority }
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			navy_experience = 15
+			add_tech_bonus = { name = POR_npo3s_patrol_vessels bonus = 1.0 uses = 1 category = naval_equipment }
+			698 = { add_building_construction = { type = naval_base level = 1 province = 1751 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_viana_order_book
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = 104
+		y = 4
+		cost = 7
+		prerequisite = { focus = POR_the_portuguese_shipbuilding_initiative }
+		# Economy -> Navy
+		available = { has_completed_focus = POR_ports_of_the_atlantic }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } }
+			add_tech_bonus = { name = POR_viana_order_book bonus = 0.5 uses = 1 category = naval_equipment }
+		}
+	}
+
+	focus = {
+		id = POR_multipurpose_ship
+		icon = GFX_goal_generic_navy_carrier
+		x = 102
+		y = 5
+		cost = 7
+		prerequisite = { focus = POR_nato_maritime_cooperation }
+		available = { date > 2026.6.30 }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			navy_experience = 20
+			army_experience = 10
+			add_tech_bonus = { name = POR_multipurpose_ship bonus = 0.5 uses = 1 category = electronics }
+		}
+	}
+
+	focus = {
+		id = POR_next_generation_frigates
+		icon = GFX_goal_generic_build_navy
+		x = 99
+		y = 6
+		cost = 10
+		prerequisite = { focus = POR_guardian_of_the_atlantic }
+		# Economic condition: the state must have settled its fiscal course or built a defence industry.
+		available = {
+			date > 2026.12.31
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_fiscal_course_tt
+				OR = {
+					has_idea = POR_balanced_books_idea
+					has_idea = POR_investment_led_growth_idea
+					has_idea = POR_modern_economy
+					has_idea = POR_defence_industrial_base
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_NAVY_XP FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_tech_bonus = { name = POR_next_generation_frigates bonus = 1.0 uses = 2 category = naval_equipment }
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } }
+			POR_parl_m5 = yes
+		}
+	}
+
+	# ---- Economy <-> military ----
+	focus = {
+		id = POR_defence_industrial_strategy
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 3
+		y = 5
+		cost = 7
+		prerequisite = { focus = POR_industrial_diversification }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = POR_defence_industrial_base
+			795 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } }
+			custom_effect_tooltip = POR_defence_industrial_strategy_tt
+		}
+	}
+
+	focus = {
+		id = POR_defence_dividend
+		icon = GFX_goal_generic_production
+		x = 3
+		y = 6
+		cost = 7
+		prerequisite = { focus = POR_defence_industrial_strategy }
+		# Military -> Economy: needs two of the four defence-industry focuses.
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_two_defence_industries_tt
+				count_triggers = {
+					amount = 2
+					has_completed_focus = POR_land_systems_industry
+					has_completed_focus = POR_domestic_aerospace_development
+					has_completed_focus = POR_the_portuguese_shipbuilding_initiative
+					has_completed_focus = POR_kc390_industrial_partnership
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = POR_defence_dividend_idea
+			180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+	}
+
+	focus = {
+		id = POR_dual_use_technology
+		icon = GFX_goal_generic_scientific_exchange
+		x = 16
+		y = 4
+		cost = 5
+		prerequisite = { focus = POR_the_digital_atlantic_hub }
+		# Military -> Economy: sensor work from the services feeds civilian technology.
+		available = {
+			OR = {
+				has_completed_focus = POR_radar_and_air_defence_integration
+				has_completed_focus = POR_maritime_surveillance
+			}
+		}
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = POR_dual_use_technology_idea
+		}
+	}
+
+	# ==========================================================
+	#   THIRD PASS - SECOND ACTS OF THE THREE PRESIDENTIAL ROUTES
+	#   Under each route's capstone, so they disappear with the rest
+	#   of the election branch if Ronaldo becomes President.
+	# ==========================================================
+
+	# ---------------- Montenegro: the second wave ----------------
+	focus = { id = POR_m_second_wave_of_reforms icon = GFX_goal_generic_production x = 24 y = 10 cost = 5
+		prerequisite = { focus = POR_stability_delivered }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 50 POR_conf_p5 = yes }
+	}
+	focus = { id = POR_m_justice_reform icon = GFX_goal_generic_intelligence_exchange x = 21 y = 11 cost = 7
+		prerequisite = { focus = POR_m_second_wave_of_reforms }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = { add_ideas = POR_justice_reform_idea POR_parl_m5 = yes }
+	}
+	focus = { id = POR_m_digital_state icon = GFX_goal_generic_scientific_exchange x = 24 y = 11 cost = 7
+		prerequisite = { focus = POR_m_second_wave_of_reforms }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_ideas = POR_digital_state_idea }
+	}
+	focus = { id = POR_m_a_fiscal_rule icon = GFX_goal_generic_neutrality_focus x = 27 y = 11 cost = 5
+		prerequisite = { focus = POR_m_second_wave_of_reforms }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_stability = 0.02
+			if = { limit = { has_idea = POR_budget_pressure } remove_ideas = POR_budget_pressure }
+			add_tech_bonus = { name = POR_m_a_fiscal_rule bonus = 0.5 uses = 1 category = industry }
+		}
+	}
+	focus = { id = POR_m_pension_sustainability icon = GFX_goal_generic_consumer_goods x = 20 y = 12 cost = 5
+		prerequisite = { focus = POR_m_justice_reform }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 40 POR_conf_m5 = yes POR_parl_p5 = yes }
+	}
+	focus = { id = POR_m_european_funds_machine icon = GFX_focus_generic_monetary_union x = 23 y = 12 cost = 7
+		prerequisite = { focus = POR_m_digital_state }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			181 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			795 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_m_capital_markets_union icon = GFX_goal_generic_trade x = 26 y = 12 cost = 5
+		prerequisite = { focus = POR_m_a_fiscal_rule }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			112 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			every_other_country = { limit = { OR = { tag = FRA tag = GER } } add_opinion_modifier = { target = ROOT modifier = POR_european_partner } }
+		}
+	}
+	focus = { id = POR_m_a_grand_coalition icon = GFX_goal_generic_improve_relations x = 22 y = 13 cost = 5
+		prerequisite = { focus = POR_m_pension_sustainability focus = POR_m_european_funds_machine focus = POR_m_capital_markets_union }
+		mutually_exclusive = { focus = POR_m_a_reformist_majority }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = { POR_parl_p15 = yes add_popularity = { ideology = progressive popularity = 0.02 } add_political_power = -50 }
+	}
+	focus = { id = POR_m_a_reformist_majority icon = GFX_focus_generic_election x = 26 y = 13 cost = 5
+		prerequisite = { focus = POR_m_pension_sustainability focus = POR_m_european_funds_machine focus = POR_m_capital_markets_union }
+		mutually_exclusive = { focus = POR_m_a_grand_coalition }
+		available = {
+			has_country_flag = POR_route_montenegro
+			custom_trigger_tooltip = { tooltip = POR_needs_conf_60_tt check_variable = { POR_confidence > 59 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_popularity = { ideology = conservative popularity = 0.06 } add_political_power = 60 POR_parl_m5 = yes }
+	}
+	focus = { id = POR_m_the_portuguese_model icon = GFX_goal_generic_national_unity x = 24 y = 14 cost = 10
+		prerequisite = { focus = POR_m_a_grand_coalition focus = POR_m_a_reformist_majority }
+		available = { has_country_flag = POR_route_montenegro }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_stable_institutions } swap_ideas = { remove_idea = POR_stable_institutions add_idea = POR_portuguese_model_idea } }
+			else = { add_ideas = POR_portuguese_model_idea }
+		}
+	}
+
+	# ---------------- Santos: the social-democratic second act ----------------
+	focus = { id = POR_s_green_transition_fund icon = GFX_goal_generic_construct_infrastructure x = 34 y = 10 cost = 7
+		prerequisite = { focus = POR_the_social_republic }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { add_ideas = POR_green_transition_fund_idea POR_parl_m5 = yes }
+	}
+	focus = { id = POR_s_public_investment_bank icon = GFX_goal_generic_positive_trade_relations x = 31 y = 11 cost = 5
+		prerequisite = { focus = POR_s_green_transition_fund }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			181 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			add_political_power = -20
+		}
+	}
+	focus = { id = POR_s_rail_renaissance icon = GFX_goal_generic_construct_infrastructure x = 34 y = 11 cost = 7
+		prerequisite = { focus = POR_s_green_transition_fund }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			180 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_s_a_shorter_working_week icon = GFX_focus_eng_concessions_to_the_trade_unions x = 37 y = 11 cost = 5
+		prerequisite = { focus = POR_s_green_transition_fund }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_stability = 0.04 POR_conf_p5 = yes add_political_power = -30 }
+	}
+	focus = { id = POR_s_rent_regulation icon = GFX_goal_generic_construction x = 31 y = 12 cost = 5
+		prerequisite = { focus = POR_s_public_investment_bank }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			POR_conf_p10 = yes
+			# Rent rules frighten private builders: incentive-led growth slows.
+			if = { limit = { has_idea = POR_investment_incentives } custom_effect_tooltip = POR_rent_rules_investors_tt add_political_power = -30 }
+		}
+	}
+	focus = { id = POR_s_energy_communities icon = GFX_goal_generic_oil_refinery x = 34 y = 12 cost = 5
+		prerequisite = { focus = POR_s_rail_renaissance }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_energy_step = yes add_stability = 0.01 }
+	}
+	focus = { id = POR_s_union_partnership icon = GFX_goal_support_democracy x = 37 y = 12 cost = 5
+		prerequisite = { focus = POR_s_a_shorter_working_week }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { POR_parl_p10 = yes add_popularity = { ideology = progressive popularity = 0.03 } }
+	}
+	focus = { id = POR_s_a_wealth_contribution icon = GFX_goal_generic_dangerous_deal x = 32 y = 13 cost = 5
+		prerequisite = { focus = POR_s_rent_regulation focus = POR_s_energy_communities focus = POR_s_union_partnership }
+		mutually_exclusive = { focus = POR_s_a_growth_compact }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 80 add_popularity = { ideology = conservative popularity = 0.04 } POR_parl_m10 = yes }
+	}
+	focus = { id = POR_s_a_growth_compact icon = GFX_goal_generic_trade x = 36 y = 13 cost = 5
+		prerequisite = { focus = POR_s_rent_regulation focus = POR_s_energy_communities focus = POR_s_union_partnership }
+		mutually_exclusive = { focus = POR_s_a_wealth_contribution }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 2 }
+		completion_reward = { add_tech_bonus = { name = POR_s_a_growth_compact bonus = 0.5 uses = 2 category = industry } POR_parl_p5 = yes }
+	}
+	focus = { id = POR_s_a_fairer_portugal icon = GFX_goal_generic_national_unity x = 34 y = 14 cost = 10
+		prerequisite = { focus = POR_s_a_wealth_contribution focus = POR_s_a_growth_compact }
+		available = { has_country_flag = POR_route_santos }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_social_republic } swap_ideas = { remove_idea = POR_social_republic add_idea = POR_fair_portugal_idea } }
+			else = { add_ideas = POR_fair_portugal_idea }
+		}
+	}
+
+	# ---------------- Ventura: the second mandate ----------------
+	focus = { id = POR_v_the_second_mandate icon = GFX_focus_generic_election x = 44 y = 11 cost = 5
+		prerequisite = { focus = POR_a_new_political_order }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 50 add_popularity = { ideology = reactionary popularity = 0.03 } }
+	}
+	focus = { id = POR_v_national_security_council icon = GFX_goal_generic_defence x = 41 y = 12 cost = 5
+		prerequisite = { focus = POR_v_the_second_mandate }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = { add_war_support = 0.04 POR_def_recruit_p5 = yes }
+	}
+	focus = { id = POR_v_judicial_overhaul icon = GFX_goal_generic_intelligence_exchange x = 44 y = 12 cost = 7
+		prerequisite = { focus = POR_v_the_second_mandate }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_ideas = POR_judicial_overhaul_idea POR_parl_m5 = yes }
+	}
+	focus = { id = POR_v_family_and_birth_policy icon = GFX_goal_generic_consumer_goods x = 47 y = 12 cost = 5
+		prerequisite = { focus = POR_v_the_second_mandate }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_manpower = 5000 add_stability = 0.02 add_political_power = -20 }
+	}
+	focus = { id = POR_v_police_modernisation icon = GFX_goal_generic_special_forces x = 41 y = 13 cost = 5
+		prerequisite = { focus = POR_v_national_security_council }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_stability = 0.03 add_tech_bonus = { name = POR_v_police_modernisation bonus = 0.5 uses = 1 category = infantry_weapons } }
+	}
+	focus = { id = POR_v_referendum_democracy icon = GFX_goal_generic_propaganda x = 44 y = 13 cost = 5
+		prerequisite = { focus = POR_v_judicial_overhaul }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			POR_conf_p10 = yes
+			# Referendums are popular with voters and corrosive to the Assembly.
+			POR_parl_m10 = yes
+			# The way out of Institutional Deadlock: go over the Assembly's head.
+			if = {
+				limit = { has_idea = POR_institutional_deadlock }
+				custom_effect_tooltip = POR_referendum_breaks_deadlock_tt
+				remove_ideas = POR_institutional_deadlock
+				add_ideas = POR_new_political_order
+				add_stability = -0.03
+			}
+		}
+	}
+	focus = { id = POR_v_bring_the_emigrants_home icon = GFX_goal_generic_allies_build_infantry x = 47 y = 13 cost = 5
+		prerequisite = { focus = POR_v_family_and_birth_policy }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_manpower = 8000 add_political_power = -25 }
+	}
+	focus = { id = POR_v_a_eurorealist_alliance icon = GFX_goal_generic_neutrality_focus x = 42 y = 14 cost = 5
+		prerequisite = { focus = POR_v_police_modernisation focus = POR_v_referendum_democracy focus = POR_v_bring_the_emigrants_home }
+		mutually_exclusive = { focus = POR_v_atlantic_first }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 60
+			if = { limit = { NOT = { has_idea = POR_brussels_friction } } add_ideas = POR_brussels_friction }
+			every_other_country = { limit = { OR = { tag = HUN tag = ITA } } add_opinion_modifier = { target = ROOT modifier = POR_european_partner } }
+		}
+	}
+	focus = { id = POR_v_atlantic_first icon = GFX_goal_generic_major_alliance x = 46 y = 14 cost = 5
+		prerequisite = { focus = POR_v_police_modernisation focus = POR_v_referendum_democracy focus = POR_v_bring_the_emigrants_home }
+		mutually_exclusive = { focus = POR_v_a_eurorealist_alliance }
+		available = { has_country_flag = POR_route_ventura }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			if = { limit = { has_idea = POR_brussels_friction } remove_ideas = POR_brussels_friction }
+			USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+			add_war_support = 0.03
+		}
+	}
+	focus = { id = POR_v_the_fourth_republic icon = GFX_goal_generic_national_unity x = 44 y = 15 cost = 10
+		prerequisite = { focus = POR_v_a_eurorealist_alliance focus = POR_v_atlantic_first }
+		available = {
+			has_country_flag = POR_route_ventura
+			# Cannot be proclaimed from institutional deadlock.
+			NOT = { has_idea = POR_institutional_deadlock }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = { limit = { has_idea = POR_new_political_order } swap_ideas = { remove_idea = POR_new_political_order add_idea = POR_fourth_republic_idea } }
+			else = { add_ideas = POR_fourth_republic_idea }
+		}
+	}
+
+	# ==========================================================
+	#   FOREIGN POLICY (x 96 - 110)
+	# ==========================================================
+	focus = { id = POR_a_foreign_policy_for_2025 icon = GFX_goal_generic_improve_relations x = 115 y = 0 cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 30 }
+	}
+	focus = { id = POR_fp_the_european_core icon = GFX_focus_generic_monetary_union x = 110 y = 1 cost = 5
+		prerequisite = { focus = POR_a_foreign_policy_for_2025 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = { limit = { OR = { tag = FRA tag = GER tag = ITA tag = SPR } } add_opinion_modifier = { target = ROOT modifier = POR_european_partner } }
+			# A government in open friction with Brussels pays for the same courtesy.
+			if = { limit = { has_idea = POR_brussels_friction } custom_effect_tooltip = POR_brussels_friction_cost_tt add_political_power = -40 }
+		}
+	}
+	focus = { id = POR_fp_the_atlantic_bridge icon = GFX_goal_generic_major_alliance x = 115 y = 1 cost = 5
+		prerequisite = { focus = POR_a_foreign_policy_for_2025 }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+			ENG = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+		}
+	}
+	focus = { id = POR_fp_the_lusophone_community icon = GFX_goal_generic_trade x = 120 y = 1 cost = 5
+		prerequisite = { focus = POR_a_foreign_policy_for_2025 }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			every_other_country = { limit = { OR = { tag = BRA tag = ANG tag = MZB tag = CBV } } add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } }
+		}
+	}
+	focus = { id = POR_fp_a_voice_in_the_council icon = GFX_goal_support_democracy x = 109 y = 2 cost = 5
+		prerequisite = { focus = POR_fp_the_european_core }
+		available = { NOT = { has_idea = POR_brussels_friction } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_ideas = POR_eu_council_voice_idea }
+	}
+	focus = { id = POR_fp_iberian_summitry icon = GFX_focus_por_workers_of_iberia x = 111 y = 2 cost = 5
+		prerequisite = { focus = POR_fp_the_european_core }
+		available = { country_exists = SPR NOT = { has_war_with = SPR } }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } }
+			# Feeds the Ronaldo route's Iberian talks if they are open.
+			if = { limit = { has_country_flag = POR_iberian_vision } custom_effect_tooltip = POR_talks_p10_tt hidden_effect = { add_to_variable = { POR_iberian_talks = 10 } } }
+		}
+	}
+	focus = { id = POR_fp_the_lajes_agreement icon = GFX_goal_generic_build_airforce x = 114 y = 2 cost = 7
+		prerequisite = { focus = POR_fp_the_atlantic_bridge }
+		available = { 698 = { is_owned_and_controlled_by = ROOT } }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			add_ideas = POR_lajes_agreement_idea
+			698 = { add_building_construction = { type = air_base level = 2 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_fp_united_nations_engagement icon = GFX_goal_generic_improve_relations x = 116 y = 2 cost = 5
+		prerequisite = { focus = POR_fp_the_atlantic_bridge }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 40 add_stability = 0.01 }
+	}
+	focus = { id = POR_fp_a_cplp_summit_in_lisbon icon = GFX_goal_generic_positive_trade_relations x = 119 y = 2 cost = 5
+		prerequisite = { focus = POR_fp_the_lusophone_community }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_ideas = POR_cplp_leadership_idea }
+	}
+	focus = { id = POR_fp_african_partnerships icon = GFX_goal_generic_military_deal x = 121 y = 2 cost = 5
+		prerequisite = { focus = POR_fp_the_lusophone_community }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = { limit = { OR = { tag = ANG tag = MZB tag = GNB tag = STP } } add_opinion_modifier = { target = ROOT modifier = POR_state_visit } }
+			army_experience = 10
+		}
+	}
+	focus = { id = POR_fp_european_defence_pillar icon = GFX_goal_generic_defence x = 110 y = 3 cost = 7
+		prerequisite = { focus = POR_fp_a_voice_in_the_council focus = POR_fp_iberian_summitry }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = { name = POR_fp_european_defence_pillar bonus = 0.5 uses = 2 category = electronics }
+			# Defence industry links: bigger reward with the Economy branch's defence base.
+			if = { limit = { has_idea = POR_defence_industrial_base } custom_effect_tooltip = POR_defence_base_bonus_tt 180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = arms_factory level = 1 instant_build = yes } } }
+		}
+	}
+	focus = { id = POR_fp_meeting_nato_commitments icon = GFX_goal_generic_alliance x = 115 y = 3 cost = 7
+		prerequisite = { focus = POR_fp_the_lajes_agreement focus = POR_fp_united_nations_engagement }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			army_experience = 15 air_experience = 15 navy_experience = 15
+			POR_def_equipment_p5 = yes POR_def_strain_p10 = yes
+		}
+	}
+	focus = { id = POR_fp_support_for_ukraine icon = GFX_goal_generic_military_deal x = 117 y = 3 cost = 5
+		prerequisite = { focus = POR_fp_the_atlantic_bridge }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			if = { limit = { country_exists = UKR } UKR = { add_opinion_modifier = { target = ROOT modifier = POR_state_visit } } }
+			add_war_support = 0.02
+			add_political_power = -20
+		}
+	}
+	focus = { id = POR_fp_a_strategic_partnership_with_brazil icon = GFX_goal_generic_major_alliance x = 120 y = 3 cost = 7
+		prerequisite = { focus = POR_fp_a_cplp_summit_in_lisbon focus = POR_fp_african_partnerships }
+		available = { country_exists = BRA }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			BRA = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } }
+			add_tech_bonus = { name = POR_fp_a_strategic_partnership_with_brazil bonus = 0.5 uses = 1 category = air_equipment }
+		}
+	}
+	focus = { id = POR_fp_the_mediterranean_and_sahel icon = GFX_goal_generic_special_forces x = 111 y = 4 cost = 5
+		prerequisite = { focus = POR_fp_european_defence_pillar }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = { army_experience = 20 navy_experience = 10 }
+	}
+	focus = { id = POR_fp_a_peacekeeping_tradition icon = GFX_focus_generic_military_mission x = 115 y = 4 cost = 5
+		prerequisite = { focus = POR_fp_meeting_nato_commitments }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = { add_ideas = POR_peacekeeping_tradition_idea }
+	}
+	focus = { id = POR_fp_lusophone_mobility icon = GFX_goal_generic_allies_build_infantry x = 120 y = 4 cost = 5
+		prerequisite = { focus = POR_fp_a_strategic_partnership_with_brazil }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_manpower = 6000
+			# Free movement is the opposite of a border regime.
+			if = { limit = { has_idea = POR_border_control_regime } custom_effect_tooltip = POR_mobility_vs_borders_tt add_stability = -0.03 }
+		}
+	}
+	focus = { id = POR_fp_a_bridge_between_worlds icon = GFX_goal_generic_national_unity x = 115 y = 5 cost = 10
+		prerequisite = { focus = POR_fp_the_mediterranean_and_sahel focus = POR_fp_a_peacekeeping_tradition }
+		prerequisite = { focus = POR_fp_lusophone_mobility focus = POR_fp_support_for_ukraine }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = POR_bridge_between_worlds_idea
+			if = { limit = { has_idea = POR_cplp_leadership_idea } remove_ideas = POR_cplp_leadership_idea }
+		}
+	}
+
+	# ==========================================================
+	#   SOCIETY AND REGIONS (x 112 - 124)
+	# ==========================================================
+	focus = { id = POR_a_country_of_ten_million icon = GFX_goal_generic_national_unity x = 130 y = 0 cost = 5
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_stability = 0.02 }
+	}
+	focus = { id = POR_sr_the_emptying_interior icon = GFX_focus_generic_farmland x = 126 y = 1 cost = 5
+		prerequisite = { focus = POR_a_country_of_ten_million }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_ideas = POR_interior_revival_idea }
+	}
+	focus = { id = POR_sr_the_demographic_question icon = GFX_goal_generic_consumer_goods x = 130 y = 1 cost = 5
+		prerequisite = { focus = POR_a_country_of_ten_million }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_political_power = 30 add_manpower = 2000 }
+	}
+	focus = { id = POR_sr_the_autonomous_regions icon = GFX_goal_generic_improve_relations x = 134 y = 1 cost = 5
+		prerequisite = { focus = POR_a_country_of_ten_million }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			698 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_sr_rural_broadband icon = GFX_goal_generic_scientific_exchange x = 125 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_emptying_interior }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_sr_rural_broadband bonus = 0.5 uses = 1 category = electronics } 181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_sr_a_fire_resilient_landscape icon = GFX_goal_generic_construct_infrastructure x = 127 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_emptying_interior }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.02
+			# Builds on the 2025 wildfire plan if it was done in time.
+			if = { limit = { has_completed_focus = POR_wildfire_season_plan } custom_effect_tooltip = POR_wildfire_followup_tt add_political_power = 30 }
+		}
+	}
+	focus = { id = POR_sr_family_support icon = GFX_goal_generic_consumer_goods x = 129 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_demographic_question }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_stability = 0.02 add_manpower = 3000 add_political_power = -20 }
+	}
+	focus = { id = POR_sr_programa_regressar icon = GFX_goal_generic_allies_build_infantry x = 131 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_demographic_question }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_ideas = POR_diaspora_return_idea }
+	}
+	focus = { id = POR_sr_madeira_financing_law icon = GFX_goal_generic_positive_trade_relations x = 133 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_autonomous_regions }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			697 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+			# Closes the political wound of 2025.
+			if = { limit = { has_idea = POR_madeira_political_crisis } remove_ideas = POR_madeira_political_crisis }
+		}
+	}
+	focus = { id = POR_sr_the_azores_sea_economy icon = GFX_goal_generic_construct_naval_dockyard x = 135 y = 2 cost = 5
+		prerequisite = { focus = POR_sr_the_autonomous_regions }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_XP }
+		completion_reward = { 698 = { add_building_construction = { type = naval_base level = 1 province = 1751 instant_build = yes } } navy_experience = 10 }
+	}
+	focus = { id = POR_sr_a_regionalisation_referendum icon = GFX_focus_generic_election x = 126 y = 3 cost = 7
+		prerequisite = { focus = POR_sr_rural_broadband focus = POR_sr_a_fire_resilient_landscape }
+		mutually_exclusive = { focus = POR_sr_strong_municipalities }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_ideas = POR_regionalisation_idea POR_parl_m5 = yes }
+	}
+	focus = { id = POR_sr_strong_municipalities icon = GFX_goal_support_democracy x = 128 y = 3 cost = 7
+		prerequisite = { focus = POR_sr_rural_broadband focus = POR_sr_a_fire_resilient_landscape }
+		mutually_exclusive = { focus = POR_sr_a_regionalisation_referendum }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = { add_ideas = POR_strong_municipalities_idea }
+	}
+	focus = { id = POR_sr_an_integration_policy icon = GFX_goal_generic_improve_relations x = 130 y = 3 cost = 5
+		prerequisite = { focus = POR_sr_family_support focus = POR_sr_programa_regressar }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			# Ventura's border regime and an open integration policy cannot both stand.
+			if = {
+				limit = { has_idea = POR_border_control_regime }
+				custom_effect_tooltip = POR_integration_ventura_tt
+				add_stability = 0.02
+				add_war_support = 0.02
+			}
+			else = { add_ideas = POR_integration_policy_idea }
+		}
+	}
+	focus = { id = POR_sr_an_islands_compact icon = GFX_goal_generic_alliance x = 134 y = 3 cost = 5
+		prerequisite = { focus = POR_sr_madeira_financing_law focus = POR_sr_the_azores_sea_economy }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = { add_stability = 0.02 POR_parl_p5 = yes }
+	}
+	focus = { id = POR_sr_a_national_health_workforce icon = GFX_goal_generic_consumer_goods x = 130 y = 4 cost = 7
+		prerequisite = { focus = POR_sr_an_integration_policy }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_stability = 0.03
+			if = { limit = { has_idea = POR_sns_rebuilt } custom_effect_tooltip = POR_sns_followup_tt POR_conf_p5 = yes }
+		}
+	}
+	focus = { id = POR_sr_outermost_region_status icon = GFX_focus_generic_monetary_union x = 134 y = 4 cost = 5
+		prerequisite = { focus = POR_sr_an_islands_compact }
+		available = { NOT = { has_idea = POR_brussels_friction } }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+			698 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_sr_a_cohesive_country icon = GFX_goal_generic_national_unity x = 130 y = 5 cost = 10
+		prerequisite = { focus = POR_sr_a_regionalisation_referendum focus = POR_sr_strong_municipalities }
+		prerequisite = { focus = POR_sr_a_national_health_workforce }
+		prerequisite = { focus = POR_sr_outermost_region_status }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_interior_revival_idea } swap_ideas = { remove_idea = POR_interior_revival_idea add_idea = POR_cohesive_country_idea } }
+			else = { add_ideas = POR_cohesive_country_idea }
+		}
+	}
+
+	# ==========================================================
+	#   ENERGY AND SCIENCE (x 126 - 136)
+	#   One staged spirit: Clean Energy I > II > III > Energy Exporter.
+	# ==========================================================
+	focus = { id = POR_energy_and_science_strategy icon = GFX_goal_generic_oil_refinery x = 143 y = 0 cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_energy_and_science_strategy bonus = 0.5 uses = 1 category = industry } }
+	}
+	focus = { id = POR_es_renewables_first icon = GFX_goal_generic_construct_infrastructure x = 139 y = 1 cost = 5
+		prerequisite = { focus = POR_energy_and_science_strategy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_energy_step = yes }
+	}
+	focus = { id = POR_es_the_resource_question icon = GFX_goal_generic_dangerous_deal x = 143 y = 1 cost = 5
+		prerequisite = { focus = POR_energy_and_science_strategy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { add_political_power = 25 }
+	}
+	focus = { id = POR_es_science_and_universities icon = GFX_focus_SWE_education_reform x = 147 y = 1 cost = 5
+		prerequisite = { focus = POR_energy_and_science_strategy }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_es_science_and_universities bonus = 0.5 uses = 2 category = electronics } }
+	}
+	focus = { id = POR_es_offshore_wind icon = GFX_goal_generic_construct_naval_dockyard x = 138 y = 2 cost = 7
+		prerequisite = { focus = POR_es_renewables_first }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_energy_step = yes 180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_es_solar_alentejo icon = GFX_goal_generic_production x = 140 y = 2 cost = 7
+		prerequisite = { focus = POR_es_renewables_first }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_energy_step = yes 179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_es_open_the_lithium_mines icon = GFX_goal_generic_construct_mil_factory x = 142 y = 2 cost = 7
+		prerequisite = { focus = POR_es_the_resource_question }
+		mutually_exclusive = { focus = POR_es_protect_the_barroso }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { add_ideas = POR_lithium_mining_idea POR_conf_m5 = yes }
+	}
+	focus = { id = POR_es_protect_the_barroso icon = GFX_focus_generic_farmland x = 144 y = 2 cost = 5
+		prerequisite = { focus = POR_es_the_resource_question }
+		mutually_exclusive = { focus = POR_es_open_the_lithium_mines }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_ideas = POR_protected_barroso_idea }
+	}
+	focus = { id = POR_es_research_funding icon = GFX_goal_generic_scientific_exchange x = 146 y = 2 cost = 7
+		prerequisite = { focus = POR_es_science_and_universities }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_ideas = POR_science_investment_idea add_political_power = -30 }
+	}
+	focus = { id = POR_es_a_portuguese_space_agency icon = GFX_goal_generic_radar x = 148 y = 2 cost = 5
+		prerequisite = { focus = POR_es_science_and_universities }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_es_a_portuguese_space_agency bonus = 0.5 uses = 1 category = electronics } }
+	}
+	focus = { id = POR_es_green_hydrogen_at_sines icon = GFX_goal_generic_oil_refinery x = 139 y = 3 cost = 10
+		prerequisite = { focus = POR_es_offshore_wind focus = POR_es_solar_alentejo }
+		# Economy link: needs the Atlantic ports.
+		available = { has_completed_focus = POR_ports_of_the_atlantic }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_energy_step = yes 179 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_es_a_battery_value_chain icon = GFX_goal_generic_production2 x = 143 y = 3 cost = 7
+		prerequisite = { focus = POR_es_open_the_lithium_mines }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { 180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } } add_tech_bonus = { name = POR_es_a_battery_value_chain bonus = 0.5 uses = 1 category = industry } }
+	}
+	focus = { id = POR_es_quantum_and_ai icon = GFX_goal_generic_secret_weapon x = 147 y = 3 cost = 7
+		prerequisite = { focus = POR_es_research_funding focus = POR_es_a_portuguese_space_agency }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_es_quantum_and_ai bonus = 1.0 uses = 2 category = electronics } }
+	}
+	focus = { id = POR_es_an_energy_exporter icon = GFX_goal_generic_trade x = 141 y = 4 cost = 10
+		prerequisite = { focus = POR_es_green_hydrogen_at_sines }
+		# The grid must be able to carry it: the blackout lessons apply here.
+		available = {
+			OR = {
+				has_idea = POR_resilient_grid
+				has_idea = POR_energy_resilience_programme_idea
+			}
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = {
+			POR_energy_final = yes
+			if = { limit = { country_exists = SPR } SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } } }
+		}
+	}
+	focus = { id = POR_es_an_atlantic_spaceport icon = GFX_goal_generic_build_airforce x = 148 y = 4 cost = 7
+		prerequisite = { focus = POR_es_a_portuguese_space_agency }
+		available = { 698 = { is_owned_and_controlled_by = ROOT } }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { 698 = { add_building_construction = { type = radar_station level = 1 instant_build = yes } } add_tech_bonus = { name = POR_es_an_atlantic_spaceport bonus = 0.5 uses = 1 category = electronics } }
+	}
+	focus = { id = POR_es_a_knowledge_economy icon = GFX_goal_generic_national_unity x = 144 y = 5 cost = 10
+		prerequisite = { focus = POR_es_an_energy_exporter focus = POR_es_a_battery_value_chain focus = POR_es_protect_the_barroso }
+		prerequisite = { focus = POR_es_quantum_and_ai }
+		search_filters = { FOCUS_FILTER_RESEARCH FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_science_investment_idea } swap_ideas = { remove_idea = POR_science_investment_idea add_idea = POR_knowledge_economy_idea } }
+			else = { add_ideas = POR_knowledge_economy_idea }
+		}
+	}
+
+	# ==========================================================
+	#   ARMED FORCES 2035 (below the three service branches)
+	# ==========================================================
+	focus = { id = POR_special_operations_command icon = GFX_goal_generic_special_forces x = 73 y = 6 cost = 7
+		prerequisite = { focus = POR_army_light_aviation }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = { army_experience = 25 add_tech_bonus = { name = POR_special_operations_command bonus = 0.5 uses = 1 category = infantry_weapons } }
+	}
+	focus = { id = POR_a_cyber_defence_command icon = GFX_goal_generic_intelligence_exchange x = 76 y = 6 cost = 7
+		prerequisite = { focus = POR_modern_land_forces }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_ideas = POR_cyber_command_idea }
+	}
+	focus = { id = POR_a_territorial_defence_reserve icon = GFX_goal_generic_allies_build_infantry x = 78 y = 6 cost = 7
+		prerequisite = { focus = POR_modern_land_forces }
+		# Not needed, and not affordable, on top of Servico Nacional.
+		available = { NOT = { has_idea = POR_servico_nacional_idea } }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_manpower = 10000 POR_def_recruit_p10 = yes POR_def_strain_p10 = yes }
+	}
+	focus = { id = POR_the_army_of_2035 icon = GFX_goal_generic_army_tanks x = 77 y = 7 cost = 10
+		prerequisite = { focus = POR_a_cyber_defence_command }
+		prerequisite = { focus = POR_a_territorial_defence_reserve focus = POR_special_operations_command }
+		available = { date > 2028.12.31 }
+		search_filters = { FOCUS_FILTER_ARMY_XP }
+		completion_reward = {
+			if = { limit = { has_idea = POR_modern_land_forces_idea } swap_ideas = { remove_idea = POR_modern_land_forces_idea add_idea = POR_army_2035_idea } }
+			else = { add_ideas = POR_army_2035_idea }
+		}
+	}
+	focus = { id = POR_an_air_drone_squadron icon = GFX_goal_generic_secret_weapon x = 86 y = 6 cost = 5
+		prerequisite = { focus = POR_a_modern_air_force }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = { add_tech_bonus = { name = POR_an_air_drone_squadron bonus = 0.5 uses = 1 category = air_equipment } air_experience = 15 }
+	}
+	focus = { id = POR_the_f16_successor icon = GFX_goal_generic_air_fighter x = 88 y = 6 cost = 10
+		prerequisite = { focus = POR_a_modern_air_force }
+		# Economic condition: a fighter programme needs a settled fiscal course.
+		available = {
+			date > 2027.12.31
+			custom_trigger_tooltip = {
+				tooltip = POR_needs_fiscal_course_tt
+				OR = { has_idea = POR_balanced_books_idea has_idea = POR_investment_led_growth_idea has_idea = POR_modern_economy has_idea = POR_defence_industrial_base }
+			}
+		}
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			add_tech_bonus = { name = POR_the_f16_successor bonus = 1.0 uses = 2 category = air_equipment }
+			POR_parl_m5 = yes
+		}
+	}
+	focus = { id = POR_space_and_air_surveillance icon = GFX_goal_generic_radar x = 90 y = 6 cost = 5
+		prerequisite = { focus = POR_a_modern_air_force }
+		search_filters = { FOCUS_FILTER_AIR_XP FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			179 = { add_building_construction = { type = radar_station level = 1 instant_build = yes } }
+			if = { limit = { has_completed_focus = POR_es_a_portuguese_space_agency } custom_effect_tooltip = POR_space_agency_link_tt add_tech_bonus = { name = POR_space_and_air_surveillance bonus = 0.5 uses = 1 category = electronics } }
+		}
+	}
+	focus = { id = POR_the_air_force_of_2035 icon = GFX_goal_generic_air_doctrine x = 88 y = 7 cost = 10
+		prerequisite = { focus = POR_the_f16_successor }
+		prerequisite = { focus = POR_an_air_drone_squadron focus = POR_space_and_air_surveillance }
+		search_filters = { FOCUS_FILTER_AIR_XP }
+		completion_reward = {
+			if = { limit = { has_idea = POR_modern_air_force } swap_ideas = { remove_idea = POR_modern_air_force add_idea = POR_air_force_2035_idea } }
+			else = { add_ideas = POR_air_force_2035_idea }
+		}
+	}
+	focus = { id = POR_replacing_the_submarines icon = GFX_goal_generic_navy_anti_submarine x = 97 y = 6 cost = 7
+		prerequisite = { focus = POR_guardian_of_the_atlantic }
+		available = { date > 2027.12.31 }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = { add_tech_bonus = { name = POR_replacing_the_submarines bonus = 1.0 uses = 1 category = naval_equipment } POR_def_strain_p5 = yes }
+	}
+	focus = { id = POR_seabed_infrastructure_protection icon = GFX_goal_generic_intelligence_exchange x = 102 y = 6 cost = 5
+		prerequisite = { focus = POR_multipurpose_ship }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = { navy_experience = 20 add_tech_bonus = { name = POR_seabed_infrastructure_protection bonus = 0.5 uses = 1 category = electronics } }
+	}
+	focus = { id = POR_the_navy_of_2035 icon = GFX_goal_generic_navy_carrier x = 99 y = 7 cost = 10
+		prerequisite = { focus = POR_next_generation_frigates }
+		prerequisite = { focus = POR_replacing_the_submarines focus = POR_seabed_infrastructure_protection }
+		search_filters = { FOCUS_FILTER_NAVY_XP }
+		completion_reward = {
+			if = { limit = { has_idea = POR_atlantic_guardian } swap_ideas = { remove_idea = POR_atlantic_guardian add_idea = POR_navy_2035_idea } }
+			else = { add_ideas = POR_navy_2035_idea }
+		}
+	}
+
+	# ==========================================================
+	#   RONALDO PRESIDENCY: FURTHER CHAPTERS
+	# ==========================================================
+	focus = { id = POR_r_the_2030_world_cup icon = GFX_goal_generic_propaganda x = 63 y = 10 cost = 1
+		prerequisite = { focus = POR_the_tenth_of_june }
+		# Short-term objective: only while the tournament is on (June-July 2030).
+		available = { date < 2030.7.22 }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { add_timed_idea = { idea = POR_world_cup_2030_idea days = 180 } }
+	}
+	focus = { id = POR_r_the_captains_diplomacy icon = GFX_goal_generic_improve_relations x = 69 y = 10 cost = 5
+		prerequisite = { focus = POR_the_tenth_of_june }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			every_other_country = { limit = { OR = { tag = SPR tag = MOR tag = BRA tag = SAU tag = ENG } } add_opinion_modifier = { target = ROOT modifier = POR_state_visit } }
+			add_political_power = 40
+		}
+	}
+	focus = { id = POR_r_sport_for_all icon = GFX_focus_generic_military_academy x = 56 y = 15 cost = 5
+		prerequisite = { focus = POR_portugal_reborn }
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_MANPOWER }
+		completion_reward = { add_stability = 0.03 add_manpower = 4000 }
+	}
+	focus = { id = POR_r_a_stronger_presidency icon = GFX_goal_generic_forceful_treaty x = 59 y = 15 cost = 7
+		prerequisite = { focus = POR_portugal_reborn }
+		mutually_exclusive = { focus = POR_r_the_constitution_stands }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_ideas = POR_stronger_presidency_idea POR_parl_m10 = yes }
+	}
+	focus = { id = POR_r_the_constitution_stands icon = GFX_goal_support_democracy x = 62 y = 15 cost = 7
+		prerequisite = { focus = POR_portugal_reborn }
+		mutually_exclusive = { focus = POR_r_a_stronger_presidency }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = { add_ideas = POR_constitution_stands_idea POR_parl_p10 = yes }
+	}
+	focus = { id = POR_r_a_second_term icon = GFX_focus_generic_election x = 60 y = 16 cost = 7
+		prerequisite = { focus = POR_r_a_stronger_presidency focus = POR_r_the_constitution_stands }
+		available = {
+			date > 2034.12.31
+			custom_trigger_tooltip = { tooltip = POR_needs_conf_60_tt check_variable = { POR_confidence > 59 } }
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 100 add_popularity = { ideology = centrist popularity = 0.05 } }
+	}
+	focus = { id = POR_r_the_portuguese_century icon = GFX_goal_generic_national_unity x = 60 y = 17 cost = 10
+		prerequisite = { focus = POR_r_a_second_term }
+		prerequisite = { focus = POR_r_sport_for_all }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			if = { limit = { has_idea = POR_portugal_reborn_idea } swap_ideas = { remove_idea = POR_portugal_reborn_idea add_idea = POR_portuguese_century_idea } }
+			else = { add_ideas = POR_portuguese_century_idea }
+		}
+	}
+
+	# ==========================================================
+	#   THE REPUBLIC (shared, any route) - row 17
+	# ==========================================================
+	focus = { id = POR_a_territorial_cohesion_fund icon = GFX_goal_generic_construct_infrastructure x = 159 y = 2 cost = 5
+		prerequisite = { focus = POR_the_autonomous_regions_compact }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { 181 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } } 795 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_a_diplomatic_network_reform icon = GFX_goal_generic_alliance x = 161 y = 2 cost = 5
+		prerequisite = { focus = POR_an_atlantic_diplomacy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = { add_political_power = 40 }
+	}
+	focus = { id = POR_a_public_trust_agenda icon = GFX_goal_support_democracy x = 163 y = 2 cost = 5
+		prerequisite = { focus = POR_the_state_of_the_republic }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = { POR_conf_p10 = yes add_stability = 0.02 }
+	}
+
+	# ==========================================================
+	#   ECONOMY: FURTHER FOCUSES
+	# ==========================================================
+	focus = { id = POR_capital_markets_reform icon = GFX_goal_generic_trade x = 5 y = 4 cost = 5
+		prerequisite = { focus = POR_tax_reform }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = { POR_economy_reform_step = yes add_political_power = 20 }
+	}
+	focus = { id = POR_quality_tourism icon = GFX_goal_generic_consumer_goods x = 1 y = 5 cost = 5
+		prerequisite = { focus = POR_tourism_and_services }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			# Quality over volume also eases the housing pressure in the cities.
+			if = { limit = { has_idea = POR_housing_pressure } custom_effect_tooltip = POR_tourism_housing_tt add_stability = 0.02 }
+			697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		}
+	}
+	focus = { id = POR_agri_food_exports icon = GFX_focus_generic_farmland x = 9 y = 4 cost = 5
+		prerequisite = { focus = POR_agriculture_and_the_interior }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_INTERNATIONAL_TRADE }
+		completion_reward = { 795 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } } }
+	}
+	focus = { id = POR_the_blue_economy icon = GFX_goal_generic_construct_naval_dockyard x = 7 y = 4 cost = 5
+		prerequisite = { focus = POR_ports_of_the_atlantic }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_NAVY_XP }
+		completion_reward = { 179 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = dockyard level = 1 instant_build = yes } } navy_experience = 10 }
+	}
+}

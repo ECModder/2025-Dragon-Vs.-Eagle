@@ -1,0 +1,26 @@
+# DvE - PORTUGAL (POR)
+# on_startup: minigame values. on_daily_POR: the dated events of 2025-2030
+# (tools/EVENTS_GUIDE.txt, 6.3). on_monthly_POR: minigame drift.
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = { country_exists = POR }
+				POR = { POR_init = yes }
+			}
+		}
+	}
+	on_daily_POR = {
+		effect = {
+			if = {
+				limit = { date < 2030.8.1 }
+				POR_daily_schedule = yes
+			}
+		}
+	}
+	on_monthly_POR = {
+		effect = {
+			POR_monthly = yes
+		}
+	}
+}

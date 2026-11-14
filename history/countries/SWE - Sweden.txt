@@ -33,18 +33,19 @@ if = {
 
 set_research_slots = 3
 
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
 if = {
 	limit = { has_dlc = "Arms Against Tyranny" }
-	add_ideas = {
-#		SWE_historical_trade_with_Germany CUT
-		SWE_hungershield
-		SWE_severe_lack_of_ammunition
-		#SWE_standardized_equipment
-		SWE_gustaf_v_idea
-	}
+#DvE-1936# 	add_ideas = {
+#DvE-1936# #		SWE_historical_trade_with_Germany CUT
+#DvE-1936# 		SWE_hungershield
+#DvE-1936# 		SWE_severe_lack_of_ammunition
+#DvE-1936# 		#SWE_standardized_equipment
+#DvE-1936# 		SWE_gustaf_v_idea
+#DvE-1936# 	}
 
 
-	add_dynamic_modifier = { modifier = SWE_folkhemmet }
+#DvE-1936# 	add_dynamic_modifier = { modifier = SWE_folkhemmet }
 	set_stability = 0.47
 	set_war_support = 0.05
 }
@@ -52,10 +53,10 @@ if = {
 	limit = {
 		NOT = { has_dlc = "Arms Against Tyranny" }
 	}
-	add_ideas = { 
-		en_svensk_tiger 
-		neutrality_idea
-	}
+#DvE-1936# 	add_ideas = { 
+#DvE-1936# 		en_svensk_tiger 
+#DvE-1936# 		neutrality_idea
+#DvE-1936# 	}
 	set_stability = 0.9
 	set_war_support = 0.1
 }
@@ -133,9 +134,10 @@ if = {
 }
 
 1939.1.1 = {
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
 
-	add_political_power = 1198
-	add_command_power = 100
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 	
 	#generic focuses
 	if = {
@@ -161,10 +163,10 @@ if = {
 		#complete_national_focus = SWE_defense_act #35
 		#complete_national_focus = SWE_urbanization #70
 		#complete_national_focus = SWE_hygenic_housing #70
-		every_core_state = { #Apply effect from focus above
-			limit =  { is_fully_controlled_by = SWE }
-			add_dynamic_modifier = { modifier = SWE_hygenic_housing_output_bonus }
-		}
+#DvE-1936# 		every_core_state = { #Apply effect from focus above
+#DvE-1936# 			limit =  { is_fully_controlled_by = SWE }
+#DvE-1936# 			add_dynamic_modifier = { modifier = SWE_hygenic_housing_output_bonus }
+#DvE-1936# 		}
 
 		#complete_national_focus = SWE_radiojanst #70
 		#complete_national_focus = SWE_individual_liberty_and_prosperity_for_all #35
@@ -184,19 +186,19 @@ if = {
 		#complete_national_focus = SWE_domestic_designs #70
 	}
 	
-	oob = "SWE_1939"
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-			set_naval_oob = "SWE_1939_naval_mtg"
-		else = {
-			set_naval_oob = "SWE_1939_naval_legacy"
-		}
-	}
+#DvE-1939# 	oob = "SWE_1939"
+#DvE-1939# 	if = {
+#DvE-1939# 		limit = { has_dlc = "Man the Guns" }
+#DvE-1939# 			set_naval_oob = "SWE_1939_naval_mtg"
+#DvE-1939# 		else = {
+#DvE-1939# 			set_naval_oob = "SWE_1939_naval_legacy"
+#DvE-1939# 		}
+#DvE-1939# 	}
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "SWE_1939_air_bba"
+#DvE-1939# 			set_air_oob = "SWE_1939_air_bba"
 		else = {
-			set_air_oob = "SWE_1939_air_legacy"
+#DvE-1939# 			set_air_oob = "SWE_1939_air_legacy"
 			set_technology = {
 				early_bomber = 1
 				tactical_bomber1 = 1
@@ -418,7 +420,7 @@ if = {
 		has_dlc = "Arms Against Tyranny"
 	}
 
-	add_ideas = neutrality_idea
+#DvE-1936# 	add_ideas = neutrality_idea
 	set_variable = { hungershield_stability_threshold_1 = 0.68 } 
 	set_variable = { hungershield_stability_risk_1 = 0.12 }  #monthly risk if under _1 stability threshold 0.12
 	set_variable = { hungershield_stability_threshold_2 = 0.3 } 
@@ -496,33 +498,34 @@ if = {
 	#set_variable = { SWE_4_years = 1460 }
 	#activate_mission = SWE_BoP_election_countdown
 
-	set_party_name = {
-		ideology = communism
-		name = SWE_aat_communism_party
-		long_name = SWE_aat_communism_party_long
-	}
-
-	set_party_name = {
-		ideology = neutrality
-		name = SWE_aat_hogern
-		long_name = SWE_aat_hogern_long
-	}
+	# DvE bugfix: ideologie vanilla (communism/neutrality) non esistono in questa mod - disattivato.
+#DvE-ideo# 	set_party_name = {
+#DvE-ideo# 		ideology = communism
+#DvE-ideo# 		name = SWE_aat_communism_party
+#DvE-ideo# 		long_name = SWE_aat_communism_party_long
+#DvE-ideo# 	}
+#DvE-ideo# 
+#DvE-ideo# 	set_party_name = {
+#DvE-ideo# 		ideology = neutrality
+#DvE-ideo# 		name = SWE_aat_hogern
+#DvE-ideo# 		long_name = SWE_aat_hogern_long
+#DvE-ideo# 	}
 
 	
 }
 
-if = {
-	limit = {
-		has_dlc = "La Resistance"
-		has_dlc = "Arms Against Tyranny"
-	}
-
-	create_operative_leader = {
-		name = "Raoul Wallenberg"
-		GFX = GFX_portrait_SWE_raoul_wallenberg
-		traits = { operative_seducer operative_infiltrator operative_tough }
-		bypass_recruitment = no
-		available_to_spy_master = yes
-		nationalities = { SWE HUN }
-	}
-}
+#DvE-1936# if = {
+#DvE-1936# 	limit = {
+#DvE-1936# 		has_dlc = "La Resistance"
+#DvE-1936# 		has_dlc = "Arms Against Tyranny"
+#DvE-1936# 	}
+#DvE-1936# 
+#DvE-1936# 	create_operative_leader = {
+#DvE-1936# 		name = "Raoul Wallenberg"
+#DvE-1936# 		GFX = GFX_portrait_SWE_raoul_wallenberg
+#DvE-1936# 		traits = { operative_seducer operative_infiltrator operative_tough }
+#DvE-1936# 		bypass_recruitment = no
+#DvE-1936# 		available_to_spy_master = yes
+#DvE-1936# 		nationalities = { SWE HUN }
+#DvE-1936# 	}
+#DvE-1936# }

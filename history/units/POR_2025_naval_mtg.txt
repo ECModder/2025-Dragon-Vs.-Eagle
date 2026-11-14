@@ -1,0 +1,41 @@
+﻿# POR_2025 naval order of battle (Man the Guns), 1 January 2025.
+# Active frigates, submarines and ocean patrol vessels of the Marinha Portuguesa.
+# NRP Vasco da Gama (F330) is left out: docked at the Lisbon naval base without sailing since 2017.
+# The ship designs are created in history/countries/POR - Portugal.txt before this file is loaded.
+# Frigates use the 'destroyer' definition, as the other 2025 navies of this mod do.
+units = {
+	fleet = {
+		name = "Esquadra"
+		naval_base = 11805 # Lisbon (Base Naval de Lisboa, Alfeite)
+		task_force = {
+			name = "Fragatas"
+			location = 11805
+			ship = { name = "NRP Bartolomeu Dias" definition = destroyer equipment = { ship_hull_light_3 = { amount = 1 owner = POR version_name = "Bartolomeu Dias class" } } }
+			ship = { name = "NRP D. Francisco de Almeida" definition = destroyer equipment = { ship_hull_light_3 = { amount = 1 owner = POR version_name = "Bartolomeu Dias class" } } }
+			ship = { name = "NRP Alvares Cabral" definition = destroyer equipment = { ship_hull_light_3 = { amount = 1 owner = POR version_name = "Vasco da Gama class" } } }
+			ship = { name = "NRP Corte-Real" definition = destroyer equipment = { ship_hull_light_3 = { amount = 1 owner = POR version_name = "Vasco da Gama class" } } }
+		}
+		task_force = {
+			name = "Esquadrilha de Submarinos"
+			location = 11805
+			ship = { name = "NRP Tridente" definition = submarine equipment = { ship_hull_submarine_3 = { amount = 1 owner = POR version_name = "Tridente class" } } }
+			ship = { name = "NRP Arpao" definition = submarine equipment = { ship_hull_submarine_3 = { amount = 1 owner = POR version_name = "Tridente class" } } }
+		}
+		task_force = {
+			name = "Patrulhas Oceanicos - Continente"
+			location = 11805
+			ship = { name = "NRP Viana do Castelo" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = POR version_name = "Viana do Castelo class" } } }
+			ship = { name = "NRP Figueira da Foz" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = POR version_name = "Viana do Castelo class" } } }
+		}
+	}
+	fleet = {
+		name = "Zona Maritima dos Acores"
+		naval_base = 1751 # Ponta Delgada
+		task_force = {
+			name = "Patrulhas Oceanicos - Ilhas"
+			location = 1751
+			ship = { name = "NRP Sines" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = POR version_name = "Viana do Castelo class" } } }
+			ship = { name = "NRP Setubal" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = POR version_name = "Viana do Castelo class" } } }
+		}
+	}
+}

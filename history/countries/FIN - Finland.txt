@@ -173,12 +173,13 @@ set_research_slots = 3
 
 ### COUNTRY LEADERS ###
 store_core_states_on_game_start = yes
-#Set Kokoomus as Non-Aligned party
-set_party_name = {
-	ideology = neutrality
-	name = FIN_neutrality_party_kokoomus
-	long_name = FIN_neutrality_party_kokoomus_long
-}
+# DvE bugfix: l'ideologia vanilla neutrality non esiste in questa mod - disattivato.
+#DvE-ideo# #Set Kokoomus as Non-Aligned party
+#DvE-ideo# set_party_name = {
+#DvE-ideo# 	ideology = neutrality
+#DvE-ideo# 	name = FIN_neutrality_party_kokoomus
+#DvE-ideo# 	long_name = FIN_neutrality_party_kokoomus_long
+#DvE-ideo# }
 
 recruit_character = FIN_Stubb
 
@@ -328,8 +329,9 @@ if = {
 set_convoys = 5
 
 1939.1.1 = {
-	add_political_power = 1198
-	add_command_power = 100
+	# DvE bugfix: residui vanilla 1939 disattivati (#DvE-1939#): il blocco si esegue anche a partita 2025.
+#DvE-1939# 	add_political_power = 1198
+#DvE-1939# 	add_command_power = 100
 
 	### TECH ###
 	set_technology = {
@@ -399,8 +401,8 @@ set_grand_doctrine = new_operational_integrity
 	}
 
 	# These templates would otherwise not be unlocked
-	load_oob = "unlock_motorized"
-	load_oob = "unlock_tanks_mot"
+#DvE-1939# 	load_oob = "unlock_motorized"
+#DvE-1939# 	load_oob = "unlock_tanks_mot"
 	
 	### FOCUS TREE ###
 	#1936
@@ -456,18 +458,18 @@ set_grand_doctrine = new_operational_integrity
 	}
 	add_ideas = FIN_sisu_3
 
-	retire_country_leader = yes
+#DvE-1939# 	retire_country_leader = yes
 	#Set Maalaisliitto (Agrarian League) as Non-Aligned party
 
-	oob = "FIN_1939"
+#DvE-1939# 	oob = "FIN_1939"
 	if = {
 		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "FIN_1939_air_bba"
+#DvE-1939# 			set_air_oob = "FIN_1939_air_bba"
 			set_technology = { 
 				bba_early_transport_plane = 1 
 			}
 		else = {
-			set_air_oob = "FIN_1939_air_legacy"
+#DvE-1939# 			set_air_oob = "FIN_1939_air_legacy"
 			set_technology = {
 				early_fighter = 1
 				early_bomber = 1
@@ -529,7 +531,7 @@ set_popularities = {
 add_ideas = {
 	limited_conscription
 	Equal_rights
-	Sisu
+	DVE_FIN_sisu # DvE bugfix: l'id "Sisu" non esiste, lo spirito DvE e' DVE_FIN_sisu (name = Sisu)
 	Stagnating_Economy
 	Orpon_hallitus
 	Prepared_for_war
@@ -541,5 +543,6 @@ add_ai_strategy = {
 	value = 200
 }
 
-#Event for Svinhufvud's Term Ending
-country_event = { id = AAT_finland_political.02 days = 426 }
+# DvE bugfix: contenuto vanilla anni '30 disattivato (#DvE-1936#) - attivo anche a partita 2025.
+#DvE-1936# #Event for Svinhufvud's Term Ending
+#DvE-1936# country_event = { id = AAT_finland_political.02 days = 426 }

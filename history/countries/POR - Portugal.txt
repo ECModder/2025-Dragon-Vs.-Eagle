@@ -1,67 +1,261 @@
 ﻿capital = 112
 
-oob = "POR_1936"
-if = {
-	limit = { has_dlc = "Man the Guns" }
-		set_naval_oob = "POR_1936_naval_mtg"
-	else = {
-		set_naval_oob = "POR_1936_naval_legacy"
-	}
-}
-if = {
-	limit = { has_dlc = "By Blood Alone" }
-		set_air_oob = "POR_1936_air_bba"
-	else = {
-		set_air_oob = "POR_1936_air_legacy"
-		set_technology = {
-			early_fighter = 1
-			early_bomber = 1
-			CAS1 = 1
-		}
-	}
-}
-
+# ============================================================
+#   DvE: Portugal at the 1 January 2025 start.
+#   Replaces the 1936 order of battle and 1936 technology.
+#   Orders of battle: history/units/POR_2025*.txt (one file per DLC case,
+#   as Romania does). Every technology, module and equipment name below is
+#   also used by history/countries/ROM - Romania.txt or ITA - Italy.txt.
+# ============================================================
 set_research_slots = 3
 
 set_technology = {
+	# land
+	tech_support = 1
+	tech_engineers = 1
+	tech_recon = 1
+	tech_logistics_company = 1
+	tech_maintenance_company = 1
+	tech_signal_company = 1
+	tech_trucks = 1
+	motorised_infantry = 1
+	mechanised_infantry = 1
+	paratroopers = 1
+	marines = 1
 	infantry_weapons = 1
 	infantry_weapons1 = 1
-	tech_trucks = 1
+	infantry_weapons2 = 1
+	improved_infantry_weapons = 1
+	support_weapons = 1
+	support_weapons2 = 1
 	gw_artillery = 1
+	interwar_artillery = 1
 	interwar_antiair = 1
-	tech_support = 1		
-	tech_engineers = 1
+	interwar_antitank = 1
+	antitank1 = 1
 	basic_train = 1
+	# industry and electronics
+	basic_machine_tools = 1
+	improved_machine_tools = 1
+	construction1 = 1
+	construction2 = 1
+	dispersed_industry = 1
+	dispersed_industry2 = 1
+	fuel_silos = 1
+	fuel_refining = 1
+	electronic_mechanical_engineering = 1
+	radio = 1
+	radio_detection = 1
+	mechanical_computing = 1
+	computing_machine = 1
 }
+
+# ------------------------------------------------------------
+#   Army. Mechanized Brigade tank group: Leopard 2A6 (37 in service).
+# ------------------------------------------------------------
+if = {
+	limit = { has_dlc = "No Step Back" }
+	set_technology = {
+		gwtank_chassis = 1
+		basic_light_tank_chassis = 1
+		basic_medium_tank_chassis = 1
+	}
+	create_equipment_variant = {
+		name = "Leopard 2A6"
+		type = medium_tank_chassis_1
+		parent_version = 0
+		modules = {
+			main_armament_slot = tank_medium_cannon
+			turret_type_slot = tank_medium_three_man_tank_turret
+			suspension_type_slot = tank_torsion_bar_suspension
+			armor_type_slot = tank_welded_armor
+			engine_type_slot = tank_diesel_engine
+			special_type_slot_1 = sloped_armor
+		}
+		upgrades = {
+			tank_nsb_engine_upgrade = 10
+			tank_nsb_armor_upgrade = 10
+		}
+	}
+	set_oob = "POR_2025_nsb"
+}
+if = {
+	limit = { NOT = { has_dlc = "No Step Back" } }
+	set_oob = "POR_2025"
+}
+
+# ------------------------------------------------------------
+#   Navy: 4 active frigates, 2 submarines, 4 ocean patrol vessels.
+#   NRP Vasco da Gama (F330), laid up since 2017, is not included.
+# ------------------------------------------------------------
 if = {
 	limit = { not = { has_dlc = "Man the Guns" } }
 	set_technology = {
+		early_destroyer = 1
+		basic_destroyer = 1
+		improved_destroyer = 1
 		early_submarine = 1
 		basic_submarine = 1
-		early_destroyer = 1
+		improved_submarine = 1
 		transport = 1
 	}
+	set_naval_oob = "POR_2025_naval_legacy"
 }
 if = {
 	limit = { has_dlc = "Man the Guns" }
 	set_technology = {
 		basic_naval_mines = 1
 		submarine_mine_laying = 1
+		basic_depth_charges = 1
+		improved_depth_charges = 1
+		basic_torpedo = 1
+		improved_ship_torpedo_launcher = 1
+		basic_battery = 1
+		basic_light_battery = 1
+		improved_light_battery = 1
 		early_ship_hull_light = 1
 		basic_ship_hull_light = 1
+		improved_ship_hull_light = 1
 		early_ship_hull_submarine = 1
 		basic_ship_hull_submarine = 1
-		basic_battery = 1
-		basic_torpedo = 1
-		basic_depth_charges = 1
+		improved_ship_hull_submarine = 1
 		mtg_transport = 1
 	}
+	# Bartolomeu Dias class (ex-Dutch Karel Doorman, Portuguese service 2009-2010, mid-life upgrade)
+	create_equipment_variant = {
+		name = "Bartolomeu Dias class"
+		type = ship_hull_light_3
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_2
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = light_ship_engine_3
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			mid_1_custom_slot = ship_anti_air_2
+			rear_1_custom_slot = ship_depth_charge_2
+		}
+	}
+	# Vasco da Gama class (MEKO 200PN, 1991): no combat-system upgrade
+	create_equipment_variant = {
+		name = "Vasco da Gama class"
+		type = ship_hull_light_3
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_2
+			fixed_ship_anti_air_slot = ship_anti_air_1
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = ship_radar_1
+			fixed_ship_engine_slot = light_ship_engine_3
+			fixed_ship_torpedo_slot = ship_torpedo_2
+			mid_1_custom_slot = ship_anti_air_1
+			rear_1_custom_slot = ship_depth_charge_2
+		}
+	}
+	# Tridente class (Type 214, air-independent propulsion, 2010)
+	create_equipment_variant = {
+		name = "Tridente class"
+		type = ship_hull_submarine_3
+		parent_version = 0
+		modules = {
+			fixed_ship_torpedo_slot = ship_torpedo_sub_2
+			fixed_ship_engine_slot = sub_ship_engine_3
+			rear_1_custom_slot = ship_torpedo_sub_2
+		}
+	}
+	# Viana do Castelo class ocean patrol vessels (2010-2019): one 30 mm gun, no missiles
+	create_equipment_variant = {
+		name = "Viana do Castelo class"
+		type = ship_hull_light_2
+		parent_version = 0
+		modules = {
+			fixed_ship_battery_slot = ship_light_battery_1
+			fixed_ship_anti_air_slot = empty
+			fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+			fixed_ship_radar_slot = empty
+			fixed_ship_engine_slot = light_ship_engine_2
+			fixed_ship_torpedo_slot = empty
+			mid_1_custom_slot = empty
+			rear_1_custom_slot = empty
+		}
+	}
+	set_naval_oob = "POR_2025_naval_mtg"
 }
+
+# ------------------------------------------------------------
+#   Air Force: 28 F-16AM/BM (Monte Real), 13 transports.
+# ------------------------------------------------------------
+if = {
+	limit = { has_dlc = "By Blood Alone" }
+	set_technology = {
+		aa_lmg = 1
+		aa_hmg = 1
+		early_bombs = 1
+		aircraft_construction = 1
+		engines_1 = 1
+		engines_2 = 1
+		engines_3 = 1
+		jet_engines = 1
+		iw_small_airframe = 1
+		basic_small_airframe = 1
+		improved_small_airframe = 1
+		modern_small_airframe = 1 # F-16
+		bba_early_transport_plane = 1
+	}
+	create_equipment_variant = {
+		name = "F-16AM/BM Fighting Falcon"
+		type = small_plane_airframe_4
+		parent_version = 0
+		modules = {
+			fixed_main_weapon_slot = aircraft_cannon_2_1x
+			fixed_auxiliary_weapon_slot_1 = heavy_mg_2x
+			engine_type_slot = jet_engine_2x
+			special_type_slot_1 = drop_tanks
+		}
+	}
+	set_air_oob = "POR_2025_air_bba"
+}
+if = {
+	limit = { not = { has_dlc = "By Blood Alone" } }
+	set_technology = {
+		early_fighter = 1
+		fighter1 = 1
+		fighter2 = 1
+		fighter3 = 1
+		jet_fighter1 = 1
+		jet_fighter2 = 1
+		early_transport_plane = 1
+	}
+	set_air_oob = "POR_2025_air_legacy"
+}
+
+# ------------------------------------------------------------
+#   Depot stocks and running production (Lisbon state: 2 military factories)
+# ------------------------------------------------------------
+add_equipment_to_stockpile = { type = infantry_equipment_2 amount = 2500 producer = POR }
+add_equipment_to_stockpile = { type = support_equipment_1 amount = 250 producer = POR }
+add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 120 producer = POR }
+add_equipment_to_stockpile = { type = anti_tank_equipment_1 amount = 120 producer = POR }
+add_equipment_to_stockpile = { type = anti_air_equipment_1 amount = 80 producer = POR }
+add_equipment_to_stockpile = { type = motorized_equipment_1 amount = 300 producer = POR }
+add_equipment_to_stockpile = { type = mechanized_equipment_1 amount = 150 producer = POR }
+add_equipment_production = {
+	equipment = { type = infantry_equipment_2 creator = "POR" }
+	requested_factories = 1
+	progress = 0.3
+	efficiency = 50
+}
+
+set_grand_doctrine = grand_battleplan
+set_grand_doctrine = new_fleet_in_being
+set_grand_doctrine = new_operational_integrity
 
 if = {
 	limit = { has_dlc = "La Resistance" }	
-	add_ideas = POR_unreliable_army
-	add_ideas = POR_unstable_republic
+	# DvE: 1936 spirit, replaced by the 2025 spirits at the end of this file
+	#add_ideas = POR_unreliable_army
+	#add_ideas = POR_unstable_republic
 	set_stability = 0.60
 	set_war_support = 0.15	
 	set_research_slots = 2
@@ -80,127 +274,119 @@ if = {
 		}
 	}
 
-	GER = {
-		add_opinion_modifier = {
-			target = POR
-			modifier = fascism_leanings_good
-		}
-	}
 
-	ITA = {
-		add_opinion_modifier = {
-			target = POR
-			modifier = fascism_leanings_good
-		}
-	}
 	
 }
 
 
-1939.1.1 = {
+# DvE Portugal 2025: the vanilla 1939.1.1 block below is disabled. History blocks dated before
+# the 2025.1.1 start date still run, so it was loading the 1939 army, fleet and air force
+# (history/units/POR_1939*) on top of the 2025 forces, plus 1939 technologies and 1198 political power.
+#1939.1.1 = {
 
-	add_political_power = 1198
-	add_command_power = 100
+#	add_political_power = 1198
+#	add_command_power = 100
 	
-	if = {
-		limit = {
-			has_dlc = "La Resistance"
-		}
+#	if = {
+#		limit = {
+#			has_dlc = "La Resistance"
+#		}
 
-		#complete_national_focus = POR_estado_novo
-		unlock_national_focus = POR_support_the_spanish_nationalists
-		#complete_national_focus = POR_portuguese_legion
-		#complete_national_focus = POR_observation_mission
-		unlock_national_focus = POR_send_assistance
-		#complete_national_focus = POR_army_reorganization
-		#complete_national_focus = POR_metropolitan_army
-		#complete_national_focus = POR_corpo_do_estado_maior
-		#complete_national_focus = POR_second_navy_reequipment
-		#complete_national_focus = POR_a_powerful_merchant_marine
-		#complete_national_focus = POR_merchant_marine_protection
-		#complete_national_focus = POR_arsenal_do_alfeite
-		#complete_national_focus = POR_continue_the_public_works
-		#complete_national_focus = POR_instituto_superior_tecnico
-		#complete_national_focus = POR_roads_bridges_and_dams
-		#complete_national_focus = POR_ogme
-		#complete_national_focus = POR_food_industries
-		#complete_national_focus = POR_textile_industry
-		#complete_national_focus = POR_colonial_assimilation_policy
-		#complete_national_focus = POR_portuguese_artillery
+#		#complete_national_focus = POR_estado_novo
+#		# DvE: 1936 focuses, not in the 2025 tree
+#		#unlock_national_focus = POR_support_the_spanish_nationalists
+#		#complete_national_focus = POR_portuguese_legion
+#		#complete_national_focus = POR_observation_mission
+#		#unlock_national_focus = POR_send_assistance
+#		#complete_national_focus = POR_army_reorganization
+#		#complete_national_focus = POR_metropolitan_army
+#		#complete_national_focus = POR_corpo_do_estado_maior
+#		#complete_national_focus = POR_second_navy_reequipment
+#		#complete_national_focus = POR_a_powerful_merchant_marine
+#		#complete_national_focus = POR_merchant_marine_protection
+#		#complete_national_focus = POR_arsenal_do_alfeite
+#		#complete_national_focus = POR_continue_the_public_works
+#		#complete_national_focus = POR_instituto_superior_tecnico
+#		#complete_national_focus = POR_roads_bridges_and_dams
+#		#complete_national_focus = POR_ogme
+#		#complete_national_focus = POR_food_industries
+#		#complete_national_focus = POR_textile_industry
+#		#complete_national_focus = POR_colonial_assimilation_policy
+#		#complete_national_focus = POR_portuguese_artillery
 
-		SPA = {
-			add_opinion_modifier = {
-				target = POR
-				modifier = POR_helped_in_civil_war
-			}
-		}
-		add_ideas = POR_volunteers_in_the_war_nationalist
+#		SPA = {
+#			add_opinion_modifier = {
+#				target = POR
+#				modifier = POR_helped_in_civil_war
+#			}
+#		}
+#		#add_ideas = POR_volunteers_in_the_war_nationalist
 
-		else = {
-			#generic focuses
-			#complete_national_focus = army_effort
-			#complete_national_focus = equipment_effort
-			#complete_national_focus = motorization_effort
-			#complete_national_focus = aviation_effort
-			#complete_national_focus = naval_effort
-			#complete_national_focus = large_navy
-			#complete_national_focus = industrial_effort
-			#complete_national_focus = construction_effort
-			#complete_national_focus = production_effort
-		}
-	}
+#		else = {
+#			#generic focuses
+#			#complete_national_focus = army_effort
+#			#complete_national_focus = equipment_effort
+#			#complete_national_focus = motorization_effort
+#			#complete_national_focus = aviation_effort
+#			#complete_national_focus = naval_effort
+#			#complete_national_focus = large_navy
+#			#complete_national_focus = industrial_effort
+#			#complete_national_focus = construction_effort
+#			#complete_national_focus = production_effort
+#		}
+#	}
 		
-	oob = "POR_1939"
-	if = {
-		limit = { has_dlc = "Man the Guns" }
-			set_naval_oob = "POR_1939_naval_mtg"
-		else = {
-			set_naval_oob = "POR_1939_naval_legacy"
-		}
-	}
-	if = {
-		limit = { has_dlc = "By Blood Alone" }
-			set_air_oob = "POR_1939_air_bba"
-		else = {
-			set_air_oob = "POR_1939_air_legacy"
-		}
-	}
-	set_technology = {
-		interwar_artillery = 1
-		infantry_weapons2 = 1
-		support_weapons = 1
+#	oob = "POR_1939"
+#	if = {
+#		limit = { has_dlc = "Man the Guns" }
+#			set_naval_oob = "POR_1939_naval_mtg"
+#		else = {
+#			set_naval_oob = "POR_1939_naval_legacy"
+#		}
+#	}
+#	if = {
+#		limit = { has_dlc = "By Blood Alone" }
+#			set_air_oob = "POR_1939_air_bba"
+#		else = {
+#			set_air_oob = "POR_1939_air_legacy"
+#		}
+#	}
+#	set_technology = {
+#		interwar_artillery = 1
+#		infantry_weapons2 = 1
+#		support_weapons = 1
 
-		#doctrines
-		#air_superiority = 1
+#		#doctrines
+#		#air_superiority = 1
 
-		#electronics
-		electronic_mechanical_engineering = 1
-		radio = 1
-		mechanical_computing = 1
-		computing_machine = 1
+#		#electronics
+#		electronic_mechanical_engineering = 1
+#		radio = 1
+#		mechanical_computing = 1
+#		computing_machine = 1
 
-		#industry
-		basic_machine_tools = 1
-		improved_machine_tools = 1
-		advanced_machine_tools = 1
-		synth_oil_experiments = 1
-		fuel_silos = 1
-		oil_processing = 1
-		improved_oil_processing = 1
-		construction1 = 1
-		construction2 = 1
-		dispersed_industry = 1
-		dispersed_industry2 = 1
-	}
+#		#industry
+#		basic_machine_tools = 1
+#		improved_machine_tools = 1
+#		advanced_machine_tools = 1
+#		synth_oil_experiments = 1
+#		fuel_silos = 1
+#		oil_processing = 1
+#		improved_oil_processing = 1
+#		construction1 = 1
+#		construction2 = 1
+#		dispersed_industry = 1
+#		dispersed_industry2 = 1
+#	}
 
-set_grand_doctrine = grand_battleplan
-set_grand_doctrine = new_fleet_in_being
-set_grand_doctrine = new_strategic_destruction
+#set_grand_doctrine = grand_battleplan
+#set_grand_doctrine = new_fleet_in_being
+#set_grand_doctrine = new_strategic_destruction
 
-	complete_special_project = {
-		project = sp:sp_air_radar
-	}
-}
+#	complete_special_project = {
+#		project = sp:sp_air_radar
+#	}
+#}
 
 set_convoys = 50
 # DvE: parties, leaders and politics at the 2025.1.1 start
@@ -257,3 +443,13 @@ add_ai_strategy = {
 
 set_convoys = 100
 set_stability = 0.75
+# DvE Portugal 2025: opening national spirits (common/ideas/portugal.txt)
+add_ideas = {
+	POR_political_uncertainty
+	POR_footballing_nation
+	POR_structural_economic_challenges
+	POR_housing_pressure
+	POR_army_readiness_problems
+	POR_ageing_aircraft_fleet
+	POR_atlantic_naval_responsibilities
+}

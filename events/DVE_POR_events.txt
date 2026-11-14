@@ -1,0 +1,1524 @@
+# ============================================================
+#   DvE - PORTUGAL (POR) - events, 2025 - 2030
+#   Namespace: por
+#
+#   por.1  - por.6    Madeira, national tensions, Parliament
+#   por.10 - por.17   the Iberian blackout of 28 April 2025
+#   por.20 - por.26   the 2026 presidential election
+#   por.30 - por.35   first initiatives of the three Presidents
+#   por.40 - por.52   the republic, 2027 - 2030
+#   por.60 - por.76   Cristiano Ronaldo (FICTIONAL, alternate history)
+#   por.77 - por.85   the Lusophone and Iberian visions
+#
+#   Public moments are news_event (tools/EVENTS_GUIDE.txt: only the
+#   news window can carry a picture panel). Each uses its own panel,
+#   gfx/event_pictures/DVE_news/news_event_DVE_por_*.png (interface/DVE_event_panels.gfx).
+#   Cabinet-room moments are country_event (text only).
+#   All dates are scheduled in common/scripted_effects/POR_effects.txt.
+#
+#   FICTION NOTE: the blackout inquiry's findings (por.17), the 2026
+#   three-candidate contest, the 1,000th goal, the retirement, the
+#   movement, the 2030 invitation, national service and both visions
+#   are this mod's alternate history. Nothing here quotes a real person.
+# ============================================================
+add_namespace = por
+
+# ------------------------------------------------------------
+#   MADEIRA AND THE NATIONAL MOOD
+# ------------------------------------------------------------
+# 17 January 2025 - the Regional Parliament of Madeira is dissolved
+news_event = {
+	id = por.1
+	title = por.1.t
+	desc = por.1.d
+	picture = GFX_news_event_DVE_por_madeira_dissolved
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_madeira_dissolved } }
+	option = {
+		name = por.1.a
+		add_ideas = POR_madeira_political_crisis
+		POR_parl_m5 = yes
+	}
+}
+
+# 23 March 2025 - the snap election: the Democratic Alliance wins
+news_event = {
+	id = por.2
+	title = por.2.t
+	desc = por.2.d
+	picture = GFX_news_event_DVE_por_madeira_ad_wins
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_madeira_voted } }
+	option = {
+		name = por.2.a
+		if = { limit = { has_idea = POR_madeira_political_crisis } remove_ideas = POR_madeira_political_crisis }
+		add_popularity = { ideology = conservative popularity = 0.02 }
+		POR_parl_p5 = yes
+	}
+}
+
+# 20 February 2025 - a budget row in the Assembly
+country_event = {
+	id = por.3
+	title = por.3.t
+	desc = por.3.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.3.a
+		ai_chance = { base = 60 }
+		add_political_power = -25
+		POR_parl_p10 = yes
+	}
+	option = {
+		name = por.3.b
+		ai_chance = { base = 40 }
+		add_political_power = 25
+		POR_parl_m10 = yes
+	}
+}
+
+# 28 June 2025 - housing marches
+news_event = {
+	id = por.4
+	title = por.4.t
+	desc = por.4.d
+	picture = GFX_news_event_DVE_por_housing_marches
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.4.a
+		ai_chance = { base = 60 }
+		POR_conf_p5 = yes
+		add_political_power = -20
+	}
+	option = {
+		name = por.4.b
+		ai_chance = { base = 40 }
+		POR_conf_m5 = yes
+		add_political_power = 20
+	}
+}
+
+# Parliamentary Stability minigame: support fell under 25
+country_event = {
+	id = por.5
+	title = por.5.t
+	desc = por.5.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.5.a
+		ai_chance = { base = 50 }
+		add_timed_idea = { idea = POR_caretaker_government days = 120 }
+		add_stability = -0.05
+		custom_effect_tooltip = POR_parl_reset_40_tt
+		hidden_effect = { set_variable = { POR_parl_support = 40 } POR_update_parliament = yes }
+	}
+	option = {
+		name = por.5.b
+		trigger = { has_political_power > 99 }
+		ai_chance = { base = 50 }
+		add_political_power = -100
+		custom_effect_tooltip = POR_parl_reset_35_tt
+		hidden_effect = { set_variable = { POR_parl_support = 35 } POR_update_parliament = yes }
+	}
+}
+
+# Parliamentary Stability minigame: 70 reached for the first time
+country_event = {
+	id = por.6
+	title = por.6.t
+	desc = por.6.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.6.a
+		add_political_power = 50
+	}
+}
+
+# ------------------------------------------------------------
+#   THE IBERIAN BLACKOUT - 28 April 2025
+# ------------------------------------------------------------
+# Stage 1: first reports
+news_event = {
+	id = por.10
+	title = por.10.t
+	desc = por.10.d
+	picture = GFX_news_event_DVE_por_iberian_blackout
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = {
+		hidden_effect = {
+			set_country_flag = POR_blackout_happened
+			set_country_flag = POR_blackout_active
+			set_variable = { POR_relief_points = 5 }
+			set_variable = { POR_bo_essential = 0 }
+			set_variable = { POR_bo_services = 0 }
+			set_variable = { POR_bo_grid = 0 }
+		}
+	}
+	option = {
+		name = por.10.a
+		add_ideas = POR_blackout_disruption
+		custom_effect_tooltip = POR_blackout_minigame_tt
+		hidden_effect = {
+			country_event = { id = por.11 hours = 8 }
+			country_event = { id = por.12 days = 1 }
+		}
+	}
+}
+
+# Stage 2: transport, communications, businesses, public services
+country_event = {
+	id = por.11
+	title = por.11.t
+	desc = por.11.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.11.a
+		ai_chance = { base = 50 }
+		add_stability = 0.02
+	}
+	option = {
+		name = por.11.b
+		ai_chance = { base = 50 }
+		POR_conf_p5 = yes
+	}
+}
+
+# Stage 3: coordination with the Iberian partners
+country_event = {
+	id = por.12
+	title = por.12.t
+	desc = por.12.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.12.a
+		ai_chance = { base = 70 }
+		set_country_flag = POR_iberian_coordination
+		if = { limit = { country_exists = SPR } SPR = { add_opinion_modifier = { target = ROOT modifier = POR_iberian_partner } } }
+	}
+	option = {
+		name = por.12.b
+		ai_chance = { base = 30 }
+		add_war_support = 0.01
+		POR_conf_p5 = yes
+	}
+}
+
+# Recovery assessment, when the ten-day mission ends
+country_event = {
+	id = por.13
+	title = por.13.t
+	desc = { text = por.13.d.good trigger = { has_country_flag = POR_bo_good } }
+	desc = { text = por.13.d.mixed trigger = { has_country_flag = POR_bo_mixed } }
+	desc = { text = por.13.d.poor trigger = { has_country_flag = POR_bo_poor } }
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	trigger = { has_country_flag = POR_blackout_active }
+	immediate = {
+		hidden_effect = {
+			clr_country_flag = POR_blackout_active
+			if = { limit = { has_idea = POR_blackout_disruption } remove_ideas = POR_blackout_disruption }
+			if = {
+				limit = { check_variable = { POR_bo_essential > 1 } check_variable = { POR_bo_services > 1 } }
+				set_country_flag = POR_bo_good
+			}
+			else_if = {
+				limit = { OR = { check_variable = { POR_bo_essential > 1 } check_variable = { POR_bo_services > 1 } } }
+				set_country_flag = POR_bo_mixed
+			}
+			else = { set_country_flag = POR_bo_poor }
+			if = { limit = { check_variable = { POR_bo_grid > 1 } } set_country_flag = POR_grid_lessons }
+		}
+	}
+	option = {
+		name = por.13.a
+		trigger = { has_country_flag = POR_bo_good }
+		add_ideas = POR_blackout_aftermath
+		POR_conf_p10 = yes
+		if = { limit = { has_country_flag = POR_grid_lessons } custom_effect_tooltip = POR_grid_lessons_tt }
+	}
+	option = {
+		name = por.13.b
+		trigger = { has_country_flag = POR_bo_mixed }
+		add_ideas = POR_blackout_aftermath
+		add_stability = -0.03
+		POR_conf_m5 = yes
+		if = { limit = { has_country_flag = POR_grid_lessons } custom_effect_tooltip = POR_grid_lessons_tt }
+	}
+	option = {
+		name = por.13.c
+		trigger = { has_country_flag = POR_bo_poor }
+		add_ideas = POR_blackout_aftermath_severe
+		POR_conf_m10 = yes
+		if = { limit = { has_country_flag = POR_grid_lessons } custom_effect_tooltip = POR_grid_lessons_tt }
+	}
+}
+
+# Stage 4: the public debate on resilience (20 May 2025)
+country_event = {
+	id = por.14
+	title = por.14.t
+	desc = por.14.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.14.a
+		ai_chance = { base = 60 }
+		set_country_flag = POR_resilience_pledged
+		POR_conf_p5 = yes
+		add_political_power = -20
+	}
+	option = {
+		name = por.14.b
+		ai_chance = { base = 40 }
+		POR_conf_m5 = yes
+	}
+}
+
+# Stage 5: the parliamentary inquiry opens (10 June 2025)
+country_event = {
+	id = por.15
+	title = por.15.t
+	desc = por.15.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.15.a
+		ai_chance = { base = 60 }
+		POR_parl_p5 = yes
+	}
+	option = {
+		name = por.15.b
+		ai_chance = { base = 40 }
+		POR_parl_m5 = yes
+		add_political_power = 15
+	}
+}
+
+# The interim report (focus Commission of Inquiry)
+country_event = {
+	id = por.16
+	title = por.16.t
+	desc = por.16.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.16.a
+		ai_chance = { base = 60 }
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.16.b
+		ai_chance = { base = 40 }
+		add_political_power = 20
+		POR_conf_m5 = yes
+	}
+}
+
+# Stage 6: final conclusions, 28 April 2027 (the scenario's FICTIONAL findings)
+news_event = {
+	id = por.17
+	title = por.17.t
+	desc = por.17.d
+	picture = GFX_news_event_DVE_por_blackout_inquiry
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.17.a
+		ai_chance = { base = 60 }
+		set_country_flag = POR_resilience_committed
+		custom_effect_tooltip = POR_unlock_grid_decisions_tt
+		add_political_power = -30
+		POR_conf_p10 = yes
+	}
+	option = {
+		name = por.17.b
+		ai_chance = { base = 25 }
+		POR_conf_p5 = yes
+		POR_parl_m10 = yes
+		add_stability = -0.01
+	}
+	option = {
+		name = por.17.c
+		ai_chance = { base = 15 }
+		add_political_power = 30
+		POR_conf_m10 = yes
+		if = {
+			limit = { has_country_flag = POR_resilience_pledged }
+			custom_effect_tooltip = POR_broken_pledge_tt
+			add_stability = -0.03
+		}
+	}
+}
+
+# ------------------------------------------------------------
+#   THE 2026 PRESIDENTIAL ELECTION
+# ------------------------------------------------------------
+# 15 October 2025 - three candidates
+news_event = {
+	id = por.20
+	title = por.20.t
+	desc = por.20.d
+	picture = GFX_news_event_DVE_por_three_candidates
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { POR_campaign_start = yes } }
+	option = {
+		name = por.20.a
+		custom_effect_tooltip = POR_campaign_minigame_tt
+	}
+}
+
+# 9 December 2025 - the televised debate
+country_event = {
+	id = por.21
+	title = por.21.t
+	desc = por.21.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.21.a
+		trigger = { POR_has_backed_candidate = yes }
+		ai_chance = { base = 60 }
+		POR_mom_p5 = yes
+	}
+	option = {
+		name = por.21.b
+		trigger = { POR_has_backed_candidate = yes }
+		ai_chance = { base = 40 }
+		custom_effect_tooltip = POR_debate_gamble_tt
+		hidden_effect = {
+			random_list = {
+				50 = { add_to_variable = { POR_campaign = 10 } }
+				50 = { add_to_variable = { POR_campaign = -5 } }
+			}
+			POR_update_campaign = yes
+		}
+	}
+	option = {
+		name = por.21.c
+		trigger = { POR_has_backed_candidate = no }
+		add_political_power = 10
+	}
+}
+
+# 18 January 2026 - election night
+news_event = {
+	id = por.22
+	title = por.22.t
+	desc = { text = por.22.d.first trigger = { has_country_flag = POR_mandate_strong } }
+	desc = { text = por.22.d.runoff trigger = { NOT = { has_country_flag = POR_mandate_strong } } }
+	picture = GFX_news_event_DVE_por_election_night
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { POR_election_resolve = yes POR_send_winner_event = yes } }
+	option = {
+		name = por.22.a
+	}
+}
+
+# The winner: Luis Montenegro
+news_event = {
+	id = por.23
+	title = por.23.t
+	desc = por.23.d
+	picture = GFX_news_event_DVE_por_montenegro_wins
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_winner_declared } }
+	option = {
+		name = por.23.a
+		add_popularity = { ideology = conservative popularity = 0.05 }
+		custom_effect_tooltip = POR_inauguration_tt
+	}
+}
+
+# The winner: Pedro Nuno Santos
+news_event = {
+	id = por.24
+	title = por.24.t
+	desc = por.24.d
+	picture = GFX_news_event_DVE_por_santos_wins
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_winner_declared } }
+	option = {
+		name = por.24.a
+		add_popularity = { ideology = progressive popularity = 0.05 }
+		custom_effect_tooltip = POR_inauguration_tt
+	}
+}
+
+# The winner: Andre Ventura
+news_event = {
+	id = por.25
+	title = por.25.t
+	desc = por.25.d
+	picture = GFX_news_event_DVE_por_ventura_wins
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_winner_declared } }
+	option = {
+		name = por.25.a
+		add_popularity = { ideology = reactionary popularity = 0.05 }
+		custom_effect_tooltip = POR_inauguration_tt
+	}
+}
+
+# 9 March 2026 - the inauguration
+news_event = {
+	id = por.26
+	title = por.26.t
+	desc = { text = por.26.d.m trigger = { has_country_flag = POR_backed_montenegro } }
+	desc = { text = por.26.d.s trigger = { has_country_flag = POR_backed_santos } }
+	desc = { text = por.26.d.v trigger = { has_country_flag = POR_backed_ventura } }
+	picture = GFX_news_event_DVE_por_inauguration
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.26.a
+		POR_inaugurate_winner = yes
+	}
+}
+
+# ------------------------------------------------------------
+#   FIRST INITIATIVES
+# ------------------------------------------------------------
+country_event = {
+	id = por.30
+	title = por.30.t
+	desc = por.30.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.30.a
+		ai_chance = { base = 60 }
+		POR_parl_p10 = yes
+		add_political_power = -20
+	}
+	option = {
+		name = por.30.b
+		ai_chance = { base = 40 }
+		add_political_power = 30
+		POR_conf_p5 = yes
+		POR_parl_m5 = yes
+	}
+}
+
+country_event = {
+	id = por.31
+	title = por.31.t
+	desc = por.31.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.31.a
+		ai_chance = { base = 50 }
+		add_stability = 0.02
+		add_political_power = -30
+	}
+	option = {
+		name = por.31.b
+		ai_chance = { base = 50 }
+		POR_conf_p10 = yes
+		add_political_power = -30
+	}
+}
+
+country_event = {
+	id = por.32
+	title = por.32.t
+	desc = por.32.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.32.a
+		ai_chance = { base = 50 }
+		add_political_power = 40
+		add_stability = -0.02
+		POR_parl_m10 = yes
+	}
+	option = {
+		name = por.32.b
+		ai_chance = { base = 50 }
+		POR_parl_p5 = yes
+		POR_conf_p5 = yes
+	}
+}
+
+# Ventura: the constitutional revision reaches the Assembly
+country_event = {
+	id = por.33
+	title = por.33.t
+	desc = por.33.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.33.a
+		ai_chance = { base = 40 }
+		add_popularity = { ideology = reactionary popularity = 0.03 }
+		POR_parl_m5 = yes
+	}
+	option = {
+		name = por.33.b
+		ai_chance = { base = 60 }
+		add_popularity = { ideology = conservative popularity = 0.02 }
+		POR_parl_p5 = yes
+	}
+}
+
+# Santos: the Public Finance Council and Brussels warn about the deficit
+country_event = {
+	id = por.34
+	title = por.34.t
+	desc = por.34.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	trigger = { has_country_flag = POR_route_santos }
+	option = {
+		name = por.34.a
+		ai_chance = { base = 50 }
+		if = { limit = { has_idea = POR_budget_pressure } remove_ideas = POR_budget_pressure }
+		add_stability = -0.02
+		POR_conf_m5 = yes
+	}
+	option = {
+		name = por.34.b
+		ai_chance = { base = 50 }
+		POR_conf_p5 = yes
+		POR_parl_m5 = yes
+		custom_effect_tooltip = POR_budget_pressure_stays_tt
+	}
+}
+
+# Montenegro: the opposition tables a motion
+country_event = {
+	id = por.35
+	title = por.35.t
+	desc = por.35.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	trigger = { has_country_flag = POR_route_montenegro }
+	option = {
+		name = por.35.a
+		ai_chance = { base = 60 }
+		add_political_power = -40
+		POR_parl_p5 = yes
+	}
+	option = {
+		name = por.35.b
+		ai_chance = { base = 40 }
+		custom_effect_tooltip = POR_motion_gamble_tt
+		hidden_effect = {
+			random_list = {
+				70 = { add_political_power = 30 }
+				30 = { add_to_variable = { POR_parl_support = -15 } POR_update_parliament = yes }
+			}
+		}
+	}
+}
+
+# ------------------------------------------------------------
+#   THE REPUBLIC, 2027 - 2030
+#   Texts and options follow the route flag, so a route never
+#   reads another route's story.
+# ------------------------------------------------------------
+# 9 March 2027 - one year on
+country_event = {
+	id = por.40
+	title = por.40.t
+	desc = { text = por.40.d.m trigger = { has_country_flag = POR_route_montenegro } }
+	desc = { text = por.40.d.s trigger = { has_country_flag = POR_route_santos } }
+	desc = { text = por.40.d.v trigger = { has_country_flag = POR_route_ventura } }
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.40.a
+		trigger = { POR_first_year_delivered = yes }
+		POR_conf_p10 = yes
+		add_political_power = 30
+	}
+	option = {
+		name = por.40.b
+		trigger = { POR_first_year_delivered = no }
+		POR_conf_m10 = yes
+		POR_parl_m5 = yes
+	}
+}
+
+# 12 October 2027 - the budget debate
+country_event = {
+	id = por.41
+	title = por.41.t
+	desc = por.41.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.41.a
+		ai_chance = { base = 30 modifier = { factor = 3 has_country_flag = POR_route_montenegro } }
+		add_timed_idea = { idea = POR_budget_restraint days = 365 }
+		if = { limit = { has_country_flag = POR_route_santos } POR_parl_m5 = yes POR_conf_m5 = yes }
+		else = { POR_parl_p5 = yes }
+	}
+	option = {
+		name = por.41.b
+		ai_chance = { base = 30 modifier = { factor = 3 has_country_flag = POR_route_santos } }
+		add_timed_idea = { idea = POR_budget_expansion days = 365 }
+		if = { limit = { has_country_flag = POR_route_montenegro } POR_parl_m5 = yes }
+		else = { POR_conf_p5 = yes }
+	}
+	option = {
+		name = por.41.c
+		ai_chance = { base = 40 }
+		add_political_power = -30
+		POR_parl_p5 = yes
+	}
+}
+
+# 20 July 2027 - housing and healthcare, one government in
+country_event = {
+	id = por.42
+	title = por.42.t
+	desc = { text = por.42.d.good trigger = { POR_social_progress = yes } }
+	desc = { text = por.42.d.bad trigger = { POR_social_progress = no } }
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.42.a
+		trigger = { POR_social_progress = yes }
+		POR_conf_p5 = yes
+		add_stability = 0.01
+	}
+	option = {
+		name = por.42.b
+		trigger = { POR_social_progress = no }
+		ai_chance = { base = 60 }
+		add_political_power = -40
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.42.c
+		trigger = { POR_social_progress = no }
+		ai_chance = { base = 40 }
+		POR_conf_m5 = yes
+		add_stability = -0.02
+	}
+}
+
+# 5 September 2027 - the multi-year defence review begins
+country_event = {
+	id = por.43
+	title = por.43.t
+	desc = por.43.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { POR_defence_start = yes } }
+	option = {
+		name = por.43.a
+		ai_chance = { base = 30 modifier = { factor = 2 has_country_flag = POR_route_montenegro } }
+		POR_def_equipment_p10 = yes
+		POR_def_strain_p10 = yes
+		USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+	}
+	option = {
+		name = por.43.b
+		ai_chance = { base = 50 }
+		POR_def_training_p5 = yes
+		POR_def_recruit_p5 = yes
+	}
+	option = {
+		name = por.43.c
+		ai_chance = { base = 20 }
+		add_political_power = 30
+		USA = { add_opinion_modifier = { target = ROOT modifier = POR_cold_shoulder } }
+	}
+}
+
+# 9 March 2028 - midterm pressure
+country_event = {
+	id = por.44
+	title = por.44.t
+	desc = por.44.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.44.a
+		trigger = { check_variable = { POR_parl_support > 49 } }
+		add_political_power = 40
+	}
+	option = {
+		name = por.44.b
+		trigger = { check_variable = { POR_parl_support < 50 } }
+		ai_chance = { base = 60 }
+		add_political_power = -40
+		POR_parl_p10 = yes
+	}
+	option = {
+		name = por.44.c
+		trigger = { check_variable = { POR_parl_support < 50 } }
+		ai_chance = { base = 40 }
+		add_stability = -0.03
+	}
+}
+
+# 15 May 2028 - Madeira and the Azores
+country_event = {
+	id = por.45
+	title = por.45.t
+	desc = por.45.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.45.a
+		ai_chance = { base = 35 }
+		add_political_power = -20
+		697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	}
+	option = {
+		name = por.45.b
+		ai_chance = { base = 35 }
+		add_political_power = -20
+		698 = { add_building_construction = { type = air_base level = 1 instant_build = yes } }
+		698 = { add_building_construction = { type = naval_base level = 1 province = 1751 instant_build = yes } }
+	}
+	option = {
+		name = por.45.c
+		ai_chance = { base = 30 }
+		add_political_power = -40
+		add_stability = 0.02
+	}
+}
+
+# 1 July 2028 - the consequences of the chosen route
+country_event = {
+	id = por.48
+	title = { text = por.48.t.m trigger = { has_country_flag = POR_route_montenegro } }
+	title = { text = por.48.t.s trigger = { has_country_flag = POR_route_santos } }
+	title = { text = por.48.t.v trigger = { has_country_flag = POR_route_ventura } }
+	desc = { text = por.48.d.m trigger = { has_country_flag = POR_route_montenegro } }
+	desc = { text = por.48.d.s trigger = { has_country_flag = POR_route_santos } }
+	desc = { text = por.48.d.v trigger = { has_country_flag = POR_route_ventura } }
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	# Montenegro: the mid-term review of European funds
+	option = {
+		name = por.48.a
+		trigger = { has_country_flag = POR_route_montenegro }
+		ai_chance = { base = 60 }
+		add_political_power = -30
+		180 = { add_extra_state_shared_building_slots = 1 add_building_construction = { type = industrial_complex level = 1 instant_build = yes } }
+	}
+	option = {
+		name = por.48.b
+		trigger = { has_country_flag = POR_route_montenegro }
+		ai_chance = { base = 40 }
+		POR_parl_p5 = yes
+	}
+	# Santos: the unions threaten a general strike
+	option = {
+		name = por.48.c
+		trigger = { has_country_flag = POR_route_santos }
+		ai_chance = { base = 60 }
+		add_stability = 0.03
+		add_political_power = -30
+	}
+	option = {
+		name = por.48.e
+		trigger = { has_country_flag = POR_route_santos }
+		ai_chance = { base = 40 }
+		add_stability = -0.03
+		POR_conf_m5 = yes
+		add_political_power = 20
+	}
+	# Ventura: the Constitutional Court rules on the border regime
+	option = {
+		name = por.48.f
+		trigger = { has_country_flag = POR_route_ventura }
+		ai_chance = { base = 50 }
+		POR_parl_p5 = yes
+		add_popularity = { ideology = reactionary popularity = -0.02 }
+	}
+	option = {
+		name = por.48.g
+		trigger = { has_country_flag = POR_route_ventura }
+		ai_chance = { base = 50 }
+		add_stability = -0.03
+		add_war_support = 0.02
+		if = { limit = { NOT = { has_idea = POR_brussels_friction } } add_ideas = POR_brussels_friction }
+	}
+}
+
+# 20 September 2028 - competitiveness
+country_event = {
+	id = por.46
+	title = por.46.t
+	desc = por.46.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.46.a
+		ai_chance = { base = 25 }
+		697 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+		179 = { add_building_construction = { type = infrastructure level = 1 instant_build = yes } }
+	}
+	option = {
+		name = por.46.b
+		ai_chance = { base = 25 }
+		add_tech_bonus = { name = por_46_industry bonus = 0.5 uses = 2 category = industry }
+	}
+	option = {
+		name = por.46.c
+		ai_chance = { base = 25 }
+		add_tech_bonus = { name = por_46_technology bonus = 0.5 uses = 2 category = electronics }
+	}
+	option = {
+		name = por.46.e
+		ai_chance = { base = 25 }
+		add_stability = 0.02
+		POR_conf_p5 = yes
+	}
+}
+
+# 10 November 2028 - Atlantic security
+country_event = {
+	id = por.47
+	title = por.47.t
+	desc = por.47.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.47.a
+		ai_chance = { base = 40 }
+		navy_experience = 20
+		USA = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+		ENG = { add_opinion_modifier = { target = ROOT modifier = POR_atlantic_ally } }
+	}
+	option = {
+		name = por.47.b
+		ai_chance = { base = 30 }
+		navy_experience = 10
+		if = { limit = { country_exists = BRA } BRA = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+		if = { limit = { country_exists = ANG } ANG = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+		if = { limit = { country_exists = CBV } CBV = { add_opinion_modifier = { target = ROOT modifier = POR_lusophone_ties } } }
+	}
+	option = {
+		name = por.47.c
+		ai_chance = { base = 30 }
+		add_political_power = 30
+	}
+}
+
+# 9 March 2029 - the state of the republic
+country_event = {
+	id = por.49
+	title = por.49.t
+	desc = por.49.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.49.a
+		ai_chance = { base = 50 }
+		if = {
+			limit = { check_variable = { POR_confidence > 54 } }
+			add_political_power = 50
+		}
+		else = { POR_conf_m5 = yes }
+	}
+	option = {
+		name = por.49.b
+		ai_chance = { base = 50 }
+		add_political_power = -30
+		POR_conf_p10 = yes
+	}
+}
+
+# 15 June 2029 - the programme reviews: what five years built
+country_event = {
+	id = por.50
+	title = por.50.t
+	desc = por.50.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.50.a
+		trigger = { OR = { has_idea = POR_modern_land_forces_idea has_idea = POR_modern_air_force has_idea = POR_atlantic_guardian } }
+		add_war_support = 0.03
+		army_experience = 15
+		air_experience = 15
+		navy_experience = 15
+	}
+	option = {
+		name = por.50.b
+		trigger = { OR = { has_idea = POR_modern_economy has_idea = POR_resilient_grid has_idea = POR_housing_relief } }
+		add_stability = 0.03
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.50.c
+		add_political_power = 25
+	}
+}
+
+# 5 October 2029 - opposition and public confidence
+country_event = {
+	id = por.51
+	title = por.51.t
+	desc = por.51.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.51.a
+		trigger = { check_variable = { POR_confidence > 59 } }
+		add_stability = 0.03
+	}
+	option = {
+		name = por.51.b
+		trigger = { check_variable = { POR_confidence > 39 } check_variable = { POR_confidence < 60 } }
+		add_political_power = 20
+	}
+	option = {
+		name = por.51.c
+		trigger = { check_variable = { POR_confidence < 40 } }
+		add_stability = -0.05
+		POR_parl_m10 = yes
+	}
+}
+
+# 25 April 2030 - the existing route continues (no Ronaldo presidency)
+country_event = {
+	id = por.52
+	title = por.52.t
+	desc = por.52.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.52.a
+		add_political_power = 50
+		add_stability = 0.02
+	}
+}
+
+# ------------------------------------------------------------
+#   CRISTIANO RONALDO - FICTIONAL ALTERNATE HISTORY
+# ------------------------------------------------------------
+# 5 November 2026 - he announces he will leave the national team
+news_event = {
+	id = por.60
+	title = por.60.t
+	desc = por.60.d
+	picture = GFX_news_event_DVE_por_ronaldo_leaves_team
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_ronaldo_announced mark_focus_tree_layout_dirty = yes } }
+	option = {
+		name = por.60.a
+		add_stability = 0.01
+		hidden_effect = { country_event = { id = por.61 days = 3 } }
+	}
+	option = {
+		name = por.60.b
+		add_political_power = 10
+		hidden_effect = { country_event = { id = por.61 days = 3 } }
+	}
+}
+
+# The legacy debate
+country_event = {
+	id = por.61
+	title = por.61.t
+	desc = por.61.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.61.a
+		ai_chance = { base = 60 }
+		add_political_power = -20
+		add_war_support = 0.02
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.61.b
+		ai_chance = { base = 40 }
+		add_political_power = 10
+	}
+}
+
+# 23 May 2027 - the 1,000th career goal (fictional)
+news_event = {
+	id = por.62
+	title = por.62.t
+	desc = por.62.d
+	picture = GFX_news_event_DVE_por_one_thousand
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.62.a
+		add_stability = 0.02
+	}
+}
+
+# 10 June 2027 - retirement from football (fictional)
+news_event = {
+	id = por.63
+	title = por.63.t
+	desc = por.63.d
+	picture = GFX_news_event_DVE_por_last_whistle
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_ronaldo_retired } }
+	option = {
+		name = por.63.a
+		add_war_support = 0.02
+		custom_effect_tooltip = POR_legacy_focus_tt
+	}
+}
+
+# From football to public life (focus)
+country_event = {
+	id = por.64
+	title = por.64.t
+	desc = por.64.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.64.a
+		ai_chance = { base = 50 }
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.64.b
+		ai_chance = { base = 50 }
+		POR_parl_p5 = yes
+	}
+}
+
+# The movement is founded: how does the Presidency react?
+country_event = {
+	id = por.65
+	title = por.65.t
+	desc = por.65.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.65.a
+		ai_chance = { base = 50 }
+		POR_ren_coop_p5 = yes
+		POR_parl_m5 = yes
+	}
+	option = {
+		name = por.65.b
+		ai_chance = { base = 50 }
+		POR_ren_support_p5 = yes
+		POR_ren_coop_m5 = yes
+	}
+}
+
+# 5 February 2029 - the movement grows
+country_event = {
+	id = por.66
+	title = por.66.t
+	desc = por.66.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.66.a
+		ai_chance = { base = 40 }
+		POR_ren_support_p10 = yes
+		POR_ren_budget_m10 = yes
+	}
+	option = {
+		name = por.66.b
+		ai_chance = { base = 40 }
+		POR_ren_coop_p10 = yes
+		POR_ren_ambition_p5 = yes
+	}
+	option = {
+		name = por.66.c
+		ai_chance = { base = 20 }
+		POR_ren_ambition_m10 = yes
+		POR_ren_coop_p5 = yes
+	}
+}
+
+# National Renewal minigame: ambition has outrun cooperation
+country_event = {
+	id = por.67
+	title = por.67.t
+	desc = por.67.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.67.a
+		ai_chance = { base = 60 }
+		POR_ren_ambition_m10 = yes
+		POR_ren_coop_p5 = yes
+	}
+	option = {
+		name = por.67.b
+		ai_chance = { base = 40 }
+		POR_ren_support_p5 = yes
+		POR_ren_coop_m10 = yes
+		POR_parl_m5 = yes
+	}
+}
+
+# 20 November 2029 - a dinner at Belem. THE ONLY HINT for the hidden call.
+country_event = {
+	id = por.68
+	title = por.68.t
+	desc = por.68.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.68.a
+		POR_ren_coop_p5 = yes
+	}
+}
+
+# The call is answered (hidden decision POR_answer_the_private_line)
+country_event = {
+	id = por.69
+	title = por.69.t
+	desc = por.69.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.69.a
+		add_political_power = 50
+		hidden_effect = { news_event = { id = por.70 days = 7 } }
+	}
+}
+
+# The President announces an early presidential election
+news_event = {
+	id = por.70
+	title = por.70.t
+	desc = por.70.d
+	picture = GFX_news_event_DVE_por_president_stands_down
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.70.a
+		add_stability = -0.03
+		POR_parl_m5 = yes
+		add_popularity = { ideology = centrist popularity = 0.10 }
+	}
+}
+
+# 19 May 2030 - the early election
+news_event = {
+	id = por.71
+	title = por.71.t
+	desc = por.71.d
+	picture = GFX_news_event_DVE_por_ronaldo_elected
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.71.a
+		add_popularity = { ideology = centrist popularity = 0.10 }
+		custom_effect_tooltip = POR_tenth_of_june_tt
+	}
+}
+
+# 10 June 2030 - President Cristiano Ronaldo dos Santos Aveiro
+news_event = {
+	id = por.72
+	title = por.72.t
+	desc = por.72.d
+	picture = GFX_news_event_DVE_por_president_ronaldo
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.72.a
+		POR_ronaldo_takes_office = yes
+	}
+}
+
+# The call is declined (hidden decision POR_let_it_ring)
+country_event = {
+	id = por.73
+	title = por.73.t
+	desc = por.73.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.73.a
+		add_political_power = 30
+		POR_ren_support_m10 = yes
+	}
+}
+
+# 2 April 2030 - the window closed unanswered
+country_event = {
+	id = por.74
+	title = por.74.t
+	desc = por.74.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.74.a
+		add_political_power = 10
+	}
+}
+
+# A Nation in Uniform: the Assembly votes on the principle
+country_event = {
+	id = por.75
+	title = por.75.t
+	desc = por.75.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_service_vote_held } }
+	option = {
+		name = por.75.a
+		ai_chance = { base = 40 }
+		set_country_flag = POR_service_mandate
+		custom_effect_tooltip = POR_service_mandate_tt
+		POR_parl_m10 = yes
+		add_war_support = 0.03
+	}
+	option = {
+		name = por.75.b
+		ai_chance = { base = 60 }
+		custom_effect_tooltip = POR_service_no_mandate_tt
+		POR_parl_p5 = yes
+	}
+}
+
+# The Bill Comes Due
+country_event = {
+	id = por.76
+	title = por.76.t
+	desc = por.76.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { if = { limit = { has_idea = POR_renaissance_works } remove_ideas = POR_renaissance_works } } }
+	option = {
+		name = por.76.a
+		ai_chance = { base = 40 }
+		add_ideas = POR_renaissance_dividend
+		add_ideas = POR_renaissance_debt
+	}
+	option = {
+		name = por.76.b
+		ai_chance = { base = 30 }
+		add_stability = -0.03
+		add_political_power = -30
+		POR_conf_p5 = yes
+	}
+	option = {
+		name = por.76.c
+		ai_chance = { base = 30 }
+		add_ideas = POR_renaissance_dividend
+		add_war_support = -0.03
+		POR_conf_m5 = yes
+	}
+}
+
+# ------------------------------------------------------------
+#   THE LUSOPHONE VISION - treaties by consent
+#   por.77 is read by the invited country (ROOT); FROM is Portugal.
+# ------------------------------------------------------------
+country_event = {
+	id = por.77
+	title = por.77.t
+	desc = por.77.d
+	is_triggered_only = yes
+	show_major = { always = yes }
+	option = {
+		name = por.77.a
+		ai_chance = {
+			base = 50
+			modifier = { factor = 2 has_opinion = { target = FROM value > 39 } }
+			modifier = { factor = 1.5 FROM = { has_country_flag = POR_luso_economic_links } }
+			modifier = { factor = 0 has_war_with = FROM }
+		}
+		set_country_flag = POR_luso_partner
+		add_opinion_modifier = { target = FROM modifier = POR_luso_treaty }
+		FROM = { add_opinion_modifier = { target = ROOT modifier = POR_luso_treaty } }
+		hidden_effect = { FROM = { country_event = { id = por.78 days = 2 } } }
+	}
+	option = {
+		name = por.77.b
+		ai_chance = { base = 50 }
+		hidden_effect = { FROM = { country_event = { id = por.79 days = 2 } } }
+	}
+}
+
+country_event = {
+	id = por.78
+	title = por.78.t
+	desc = por.78.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.78.a
+		custom_effect_tooltip = POR_luso_partner_gained_tt
+		hidden_effect = {
+			add_to_variable = { POR_luso_partners = 1 }
+			POR_update_luso = yes
+		}
+		add_political_power = 25
+	}
+}
+
+country_event = {
+	id = por.79
+	title = por.79.t
+	desc = por.79.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.79.a
+		POR_conf_m5 = yes
+	}
+}
+
+# ------------------------------------------------------------
+#   THE IBERIAN VISION - Spain can always say no
+#   por.80 and por.83 are read by Spain (ROOT); FROM is Portugal.
+# ------------------------------------------------------------
+country_event = {
+	id = por.80
+	title = por.80.t
+	desc = por.80.d
+	is_triggered_only = yes
+	show_major = { always = yes }
+	option = {
+		name = por.80.a
+		ai_chance = {
+			base = 35
+			modifier = { factor = 2 FROM = { check_variable = { POR_iberian_talks > 79 } } }
+			modifier = { factor = 1.5 has_opinion = { target = FROM value > 39 } }
+			modifier = { factor = 1.3 FROM = { has_country_flag = POR_iberian_coordination } }
+			modifier = { factor = 0 has_war_with = FROM }
+		}
+		add_opinion_modifier = { target = FROM modifier = POR_iberian_union_treaty }
+		hidden_effect = { FROM = { news_event = { id = por.81 days = 3 } } }
+	}
+	option = {
+		name = por.80.b
+		ai_chance = { base = 65 }
+		hidden_effect = { FROM = { country_event = { id = por.82 days = 3 } } }
+	}
+}
+
+# Spain accepts: the Union treaty (FROM is Spain)
+news_event = {
+	id = por.81
+	title = por.81.t
+	desc = por.81.d
+	picture = GFX_news_event_DVE_por_iberian_union_treaty
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	option = {
+		name = por.81.a
+		set_country_flag = POR_iberian_union_formed
+		if = {
+			limit = { has_idea = POR_iberian_dialogue }
+			swap_ideas = { remove_idea = POR_iberian_dialogue add_idea = POR_iberian_union_institutions }
+		}
+		else = { add_ideas = POR_iberian_union_institutions }
+		FROM = {
+			add_ideas = POR_iberian_union_institutions
+			give_military_access = ROOT
+		}
+		give_military_access = FROM
+		add_opinion_modifier = { target = FROM modifier = POR_iberian_union_treaty }
+	}
+}
+
+# Spain declines
+country_event = {
+	id = por.82
+	title = por.82.t
+	desc = por.82.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_iberian_closed } }
+	option = {
+		name = por.82.a
+		ai_chance = { base = 50 }
+		if = { limit = { has_idea = POR_iberian_dialogue } remove_ideas = POR_iberian_dialogue }
+		add_timed_idea = { idea = POR_iberian_rejection days = 365 }
+	}
+	option = {
+		name = por.82.b
+		ai_chance = { base = 50 }
+		add_political_power = -30
+		custom_effect_tooltip = POR_iberian_partnership_tt
+		add_stability = -0.02
+	}
+}
+
+# The federal proposal, read by Spain
+country_event = {
+	id = por.83
+	title = por.83.t
+	desc = por.83.d
+	is_triggered_only = yes
+	show_major = { always = yes }
+	option = {
+		name = por.83.a
+		ai_chance = {
+			base = 20
+			modifier = { factor = 2 has_opinion = { target = FROM value > 59 } }
+			modifier = { factor = 1.5 FROM = { has_idea = POR_portugal_reborn_idea } }
+			modifier = { factor = 0 has_war_with = FROM }
+		}
+		hidden_effect = { FROM = { news_event = { id = por.84 days = 5 } } }
+	}
+	option = {
+		name = por.83.b
+		ai_chance = { base = 80 }
+		hidden_effect = { FROM = { country_event = { id = por.85 days = 5 } } }
+	}
+}
+
+# Spain accepts the federation (FROM is Spain)
+news_event = {
+	id = por.84
+	title = por.84.t
+	desc = por.84.d
+	picture = GFX_news_event_DVE_por_federal_iberian_union
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_iberian_closed } }
+	option = {
+		name = por.84.a
+		custom_effect_tooltip = POR_federal_union_tt
+		hidden_effect = {
+			every_state = {
+				limit = { is_core_of = FROM }
+				add_core_of = ROOT
+			}
+			annex_country = { target = FROM transfer_troops = yes }
+			set_cosmetic_tag = POR_IBERIAN_UNION
+		}
+		add_stability = -0.05
+		add_political_power = 100
+	}
+}
+
+# Spain declines the federation: the Union of 2030 stays as it is
+country_event = {
+	id = por.85
+	title = por.85.t
+	desc = por.85.d
+	is_triggered_only = yes
+	show_major = { tag = POR }
+	immediate = { hidden_effect = { set_country_flag = POR_iberian_closed } }
+	option = {
+		name = por.85.a
+		add_political_power = 20
+		POR_conf_m5 = yes
+	}
+}

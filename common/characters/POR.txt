@@ -1,0 +1,17 @@
+# Overrides the base game's 1936 Portuguese characters, whose ideologies do not
+# exist in this mod (same approach as common/characters/ROM.txt).
+# Portugal's characters for this mod are in common/characters/DVE_POR.txt; the
+# 2025 party leaders are still created in history/countries/POR - Portugal.txt.
+characters = {
+	# Kept only because the base game's common/national_focus/sweden.txt
+	# (lines 4050-4051) names them. Without these entries the game logs
+	# "Unknown effect-type: POR_maria_lamas / POR_bento_de_jesus_caraca".
+	# No roles: they are never leaders or advisors. Names come from the
+	# base game's localisation.
+	POR_maria_lamas = {
+		name = POR_maria_lamas
+	}
+	POR_bento_de_jesus_caraca = {
+		name = POR_bento_de_jesus_caraca
+	}
+}

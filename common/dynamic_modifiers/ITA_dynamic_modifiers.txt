@@ -1,0 +1,32 @@
+# ============================================================
+#   DvE bugfix: questi tre modificatori erano aggiunti in
+#   history/countries/ITA - Italy.txt (add_dynamic_modifier) ma non
+#   erano definiti da nessuna parte (replace_path rimuove i vanilla).
+#   I valori vengono dalle variabili gia' impostate nella history.
+#   Manca un'icona dedicata: aggiungere icon = ... quando disponibile.
+# ============================================================
+
+ITA_esercito_italiano_dynamic_modifier = {
+	enable = { always = yes }
+	max_dig_in_factor = ITA_esercito_italiano_max_dig_in_factor
+	land_doctrine_cost_factor = ITA_esercito_italiano_land_doctrine_cost_factor
+	army_speed_factor = ITA_esercito_italiano_army_speed_factor
+	special_forces_cap = ITA_esercito_italiano_special_forces_cap
+	army_core_defence_factor = ITA_esercito_italiano_army_core_defence_factor
+}
+
+ITA_aeronautica_militare_dynamic_modifier = {
+	enable = { always = yes }
+	air_superiority_bonus_in_combat = ITA_aeronautica_militare_air_superiority_bonus_in_combat
+	air_doctrine_cost_factor = ITA_aeronautica_militare_air_doctrine_cost_factor
+	air_night_penalty = ITA_aeronautica_militare_air_night_penalty
+	air_accidents_factor = ITA_aeronautica_militare_air_accidents_factor
+}
+
+ITA_marina_militare_dynamic_modifier = {
+	enable = { always = yes }
+	screening_efficiency = ITA_marina_militare_screening_efficiency
+	naval_doctrine_cost_factor = ITA_marina_militare_naval_doctrine_cost_factor
+	naval_coordination = ITA_marina_militare_naval_coordination
+	spotting_chance = ITA_marina_militare_spotting_chance
+}

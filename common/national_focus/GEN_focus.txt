@@ -24,9 +24,9 @@
 #                          propaganda chain -> influence abroad,
 #                          ideology end, ideological bloc -> capstone
 #
-#   ACTIVE ONLY FOR: AUS (Austria), for testing. add = 100 beats
-#   vanilla austria.txt (add = 50). To roll it out, change the
-#   country = {} block below.
+#   ACTIVE FOR: every country without its own DvE tree (see the
+#   country = {} block below; add = 1000 beats the vanilla trees).
+#
 #
 #   Spirits: common/ideas/DVE_GEN_spirits.txt
 #   Opinion: common/opinion_modifiers/DVE_GEN_opinion_modifiers.txt
@@ -37,11 +37,45 @@
 focus_tree = {
 	id = generic_2025_focus
 
+	# Assegnato a TUTTI i paesi che non hanno un albero DvE proprio.
+	# add = 1000 batte gli alberi vanilla (add 10-50) ancora caricati,
+	# che per il 2025 non hanno senso. Se aggiungi un nuovo albero DvE
+	# per un paese, aggiungi qui il suo tag nel blocco NOT.
 	country = {
 		factor = 0
 		modifier = {
-			add = 100
-			tag = AUS
+			add = 1000
+			NOT = {
+				tag = CSR
+				tag = EGY
+				tag = FIN
+				tag = FSR
+				tag = GDR
+				tag = GSR
+				tag = INT
+				tag = ITA
+				tag = JOR
+				tag = LOM
+				tag = NRE
+				tag = POL
+				tag = PPR
+				tag = PRC
+				tag = PRS
+				tag = RCA
+				tag = ROM
+				tag = RSI
+				tag = RUR
+				tag = RUS
+				tag = SMI
+				tag = SOV
+				tag = SPA
+				tag = SRB
+				tag = SRI
+				tag = SSR
+				tag = USA
+				tag = YUG
+				original_tag = POL	# polish_focus vale anche per original_tag = POL
+			}
 		}
 	}
 

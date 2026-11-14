@@ -1,0 +1,638 @@
+# ============================================================
+#   DvE - PORTUGAL (POR) - scripted effects
+#
+#   Variables (all on POR, all 0-100 unless noted):
+#     POR_parl_support    Parliamentary Stability minigame
+#     POR_confidence      public confidence (shared by several minigames)
+#     POR_camp_north / POR_camp_lisbon / POR_camp_south   Presidential Campaign
+#     POR_campaign        campaign momentum, -25..25
+#     POR_relief_points   Blackout Recovery: allocations left (starts at 6)
+#     POR_bo_essential / POR_bo_services / POR_bo_grid   Blackout allocations
+#     POR_renewal_support / _budget / _coop / _ambition   Ronaldo's National Renewal
+#     POR_def_recruit / _training / _equipment / _strain  Defence Modernisation
+#     POR_luso_partners   Lusophone partnership treaties signed (count)
+#     POR_iberian_talks   progress of the Iberian negotiations
+#
+#   Route flags (exactly one at a time after 9 March 2026):
+#     POR_route_montenegro, POR_route_santos, POR_route_ventura, POR_route_ronaldo
+#
+#   Change a variable, then call its POR_update_* effect: the update
+#   clamps the value and keeps exactly one tier spirit, so it is safe
+#   to call any number of times.
+# ============================================================
+
+POR_init = {
+	if = {
+		limit = { NOT = { has_variable = POR_parl_support } }
+		set_variable = { POR_parl_support = 45 }
+		set_variable = { POR_confidence = 50 }
+		POR_update_parliament = yes
+	}
+}
+
+# ---- Parliamentary Stability -------------------------------------------
+POR_clear_parliament_tiers = {
+	if = { limit = { has_idea = POR_parl_fragile } remove_ideas = POR_parl_fragile }
+	if = { limit = { has_idea = POR_parl_working } remove_ideas = POR_parl_working }
+	if = { limit = { has_idea = POR_parl_stable } remove_ideas = POR_parl_stable }
+}
+
+POR_update_parliament = {
+	clamp_variable = { var = POR_parl_support min = 0 max = 100 }
+	clamp_variable = { var = POR_confidence min = 0 max = 100 }
+	if = {
+		limit = { check_variable = { POR_parl_support < 40 } }
+		if = { limit = { NOT = { has_idea = POR_parl_fragile } } POR_clear_parliament_tiers = yes add_ideas = POR_parl_fragile }
+	}
+	else_if = {
+		limit = { check_variable = { POR_parl_support < 70 } }
+		if = { limit = { NOT = { has_idea = POR_parl_working } } POR_clear_parliament_tiers = yes add_ideas = POR_parl_working }
+	}
+	else = {
+		if = { limit = { NOT = { has_idea = POR_parl_stable } } POR_clear_parliament_tiers = yes add_ideas = POR_parl_stable }
+		if = {
+			limit = { NOT = { has_country_flag = POR_stable_majority_seen } }
+			set_country_flag = POR_stable_majority_seen
+			country_event = { id = por.6 days = 1 }
+		}
+	}
+	# A government crisis: below 25, at most once every 300 days.
+	if = {
+		limit = {
+			check_variable = { POR_parl_support < 25 }
+			NOT = { has_country_flag = POR_crisis_cooldown }
+		}
+		set_country_flag = { flag = POR_crisis_cooldown days = 300 value = 1 }
+		country_event = { id = por.5 days = 2 }
+	}
+}
+
+# ---- Presidential Campaign ---------------------------------------------
+POR_campaign_start = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_campaign_active } NOT = { has_country_flag = POR_election_held } }
+		set_country_flag = POR_campaign_active
+		set_variable = { POR_camp_north = 30 }
+		set_variable = { POR_camp_lisbon = 30 }
+		set_variable = { POR_camp_south = 30 }
+		set_variable = { POR_campaign = 0 }
+		POR_update_campaign = yes
+	}
+}
+
+POR_update_campaign = {
+	clamp_variable = { var = POR_camp_north min = 0 max = 100 }
+	clamp_variable = { var = POR_camp_lisbon min = 0 max = 100 }
+	clamp_variable = { var = POR_camp_south min = 0 max = 100 }
+	clamp_variable = { var = POR_campaign min = -25 max = 25 }
+	set_variable = { POR_camp_score = POR_camp_north }
+	add_to_variable = { POR_camp_score = POR_camp_lisbon }
+	add_to_variable = { POR_camp_score = POR_camp_south }
+	divide_variable = { POR_camp_score = 3 }
+	add_to_variable = { POR_camp_score = POR_campaign }
+}
+
+# Election night, 18 January 2026. A player who backed nobody gets the
+# default (historical) outcome: Montenegro.
+POR_election_resolve = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_election_held } }
+		set_country_flag = POR_election_held
+		clr_country_flag = POR_campaign_active
+		if = { limit = { NOT = { has_variable = POR_camp_score } } set_variable = { POR_camp_score = 45 } }
+		POR_update_campaign = yes
+		if = {
+			limit = {
+				NOT = { has_country_flag = POR_backed_montenegro }
+				NOT = { has_country_flag = POR_backed_santos }
+				NOT = { has_country_flag = POR_backed_ventura }
+			}
+			set_country_flag = POR_backed_montenegro
+			set_variable = { POR_camp_score = 45 }
+		}
+		if = {
+			limit = { check_variable = { POR_camp_score > 54 } }
+			set_country_flag = POR_mandate_strong
+		}
+		else_if = {
+			limit = { check_variable = { POR_camp_score < 40 } }
+			set_country_flag = POR_mandate_contested
+		}
+	}
+}
+
+# Sends the winner's news event: next day after a first-round win,
+# on 8 February 2026 (21 days later) after a runoff.
+POR_send_winner_event = {
+	if = {
+		limit = { has_country_flag = POR_mandate_strong }
+		set_temp_variable = { por_delay = 1 }
+	}
+	else = {
+		set_temp_variable = { por_delay = 21 }
+	}
+	if = {
+		limit = { has_country_flag = POR_backed_santos }
+		if = { limit = { check_variable = { por_delay < 2 } } news_event = { id = por.24 days = 1 } }
+		else = { news_event = { id = por.24 days = 21 } }
+	}
+	else_if = {
+		limit = { has_country_flag = POR_backed_ventura }
+		if = { limit = { check_variable = { por_delay < 2 } } news_event = { id = por.25 days = 1 } }
+		else = { news_event = { id = por.25 days = 21 } }
+	}
+	else = {
+		if = { limit = { check_variable = { por_delay < 2 } } news_event = { id = por.23 days = 1 } }
+		else = { news_event = { id = por.23 days = 21 } }
+	}
+}
+
+# Mandate spirit shared by the three winners.
+POR_apply_mandate = {
+	if = {
+		limit = { has_country_flag = POR_mandate_strong }
+		add_timed_idea = { idea = POR_strong_mandate days = 365 }
+		add_to_variable = { POR_parl_support = 8 }
+	}
+	else_if = {
+		limit = { has_country_flag = POR_mandate_contested }
+		add_timed_idea = { idea = POR_contested_mandate days = 365 }
+		add_to_variable = { POR_parl_support = -8 }
+	}
+	POR_update_parliament = yes
+}
+
+# Inauguration, 9 March 2026: the route starts here.
+POR_inaugurate_winner = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_inaugurated } }
+		set_country_flag = POR_inaugurated
+		if = { limit = { has_idea = POR_political_uncertainty } remove_ideas = POR_political_uncertainty }
+		if = {
+			limit = { has_country_flag = POR_backed_santos }
+			set_country_flag = POR_route_santos
+			set_politics = { ruling_party = progressive last_election = "2026.1.18" election_frequency = 60 elections_allowed = yes }
+			add_ideas = POR_social_renewal_programme
+		}
+		else_if = {
+			limit = { has_country_flag = POR_backed_ventura }
+			set_country_flag = POR_route_ventura
+			set_politics = { ruling_party = reactionary last_election = "2026.1.18" election_frequency = 60 elections_allowed = yes }
+			add_ideas = POR_national_transformation
+		}
+		else = {
+			set_country_flag = POR_route_montenegro
+			set_politics = { ruling_party = conservative last_election = "2026.1.18" election_frequency = 60 elections_allowed = yes }
+			add_ideas = POR_government_seeking_stability
+		}
+		POR_apply_mandate = yes
+	}
+}
+
+# ---- Ronaldo takes office: no candidate-route spirit may survive -------
+# Lasting reforms (health service, housing, labour law...) stay: they
+# are laws already passed. Only the spirits that describe WHO governs go.
+POR_clear_candidate_route = {
+	clr_country_flag = POR_route_montenegro
+	clr_country_flag = POR_route_santos
+	clr_country_flag = POR_route_ventura
+	if = { limit = { has_idea = POR_government_seeking_stability } remove_ideas = POR_government_seeking_stability }
+	if = { limit = { has_idea = POR_stable_institutions } remove_ideas = POR_stable_institutions }
+	if = { limit = { has_idea = POR_social_renewal_programme } remove_ideas = POR_social_renewal_programme }
+	if = { limit = { has_idea = POR_social_republic } remove_ideas = POR_social_republic }
+	if = { limit = { has_idea = POR_national_transformation } remove_ideas = POR_national_transformation }
+	if = { limit = { has_idea = POR_new_political_order } remove_ideas = POR_new_political_order }
+	if = { limit = { has_idea = POR_institutional_deadlock } remove_ideas = POR_institutional_deadlock }
+	if = { limit = { has_idea = POR_brussels_friction } remove_ideas = POR_brussels_friction }
+	if = { limit = { has_idea = POR_strong_mandate } remove_ideas = POR_strong_mandate }
+	if = { limit = { has_idea = POR_contested_mandate } remove_ideas = POR_contested_mandate }
+}
+
+POR_ronaldo_takes_office = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_route_ronaldo } }
+		POR_clear_candidate_route = yes
+		set_country_flag = POR_route_ronaldo
+		if = {
+			limit = { NOT = { has_character = POR_cristiano_ronaldo } }
+			recruit_character = POR_cristiano_ronaldo
+		}
+		set_politics = { ruling_party = centrist last_election = "2030.5.19" election_frequency = 60 elections_allowed = yes }
+		promote_character = POR_cristiano_ronaldo
+		if = {
+			limit = { has_idea = POR_national_renewal_movement }
+			swap_ideas = { remove_idea = POR_national_renewal_movement add_idea = POR_renewal_presidency }
+		}
+		else = { add_ideas = POR_renewal_presidency }
+		add_popularity = { ideology = centrist popularity = 0.20 }
+		# hides the election branch (allow_branch on POR_a_republic_at_a_crossroads)
+		mark_focus_tree_layout_dirty = yes
+	}
+}
+
+# ---- Ronaldo's National Renewal ----------------------------------------
+POR_renewal_start = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_ronaldo_movement_founded } }
+		set_country_flag = POR_ronaldo_movement_founded
+		set_variable = { POR_renewal_support = 35 }
+		set_variable = { POR_renewal_budget = 40 }
+		set_variable = { POR_renewal_coop = 25 }
+		set_variable = { POR_renewal_ambition = 20 }
+		set_party_name = { ideology = centrist long_name = "Movimento Renovacao Nacional" name = "MRN" }
+		if = {
+			limit = { NOT = { has_character = POR_cristiano_ronaldo } }
+			recruit_character = POR_cristiano_ronaldo
+		}
+		add_ideas = POR_national_renewal_movement
+		add_popularity = { ideology = centrist popularity = 0.08 }
+	}
+}
+
+POR_update_renewal = {
+	clamp_variable = { var = POR_renewal_support min = 0 max = 100 }
+	clamp_variable = { var = POR_renewal_budget min = 0 max = 100 }
+	clamp_variable = { var = POR_renewal_coop min = 0 max = 100 }
+	clamp_variable = { var = POR_renewal_ambition min = 0 max = 100 }
+	# Ambition running 30 points ahead of cooperation frightens the institutions.
+	set_temp_variable = { por_gap = POR_renewal_ambition }
+	subtract_from_temp_variable = { por_gap = POR_renewal_coop }
+	if = {
+		limit = {
+			check_variable = { por_gap > 30 }
+			NOT = { has_country_flag = POR_renewal_backlash_cooldown }
+			NOT = { has_country_flag = POR_route_ronaldo }
+		}
+		set_country_flag = { flag = POR_renewal_backlash_cooldown days = 180 value = 1 }
+		country_event = { id = por.67 days = 3 }
+	}
+}
+
+# ---- Defence Modernisation ---------------------------------------------
+POR_defence_start = {
+	if = {
+		limit = { NOT = { has_country_flag = POR_defence_planning } }
+		set_country_flag = POR_defence_planning
+		set_variable = { POR_def_recruit = 30 }
+		set_variable = { POR_def_training = 35 }
+		set_variable = { POR_def_equipment = 25 }
+		set_variable = { POR_def_strain = 20 }
+	}
+}
+
+POR_update_defence = {
+	clamp_variable = { var = POR_def_recruit min = 0 max = 100 }
+	clamp_variable = { var = POR_def_training min = 0 max = 100 }
+	clamp_variable = { var = POR_def_equipment min = 0 max = 100 }
+	clamp_variable = { var = POR_def_strain min = 0 max = 100 }
+	if = {
+		limit = { check_variable = { POR_def_strain > 59 } NOT = { has_idea = POR_defence_budget_strain } }
+		add_ideas = POR_defence_budget_strain
+	}
+	else_if = {
+		limit = { check_variable = { POR_def_strain < 45 } has_idea = POR_defence_budget_strain }
+		remove_ideas = POR_defence_budget_strain
+	}
+}
+
+# ---- Lusophone sphere --------------------------------------------------
+POR_update_luso = {
+	if = { limit = { has_idea = POR_lusophone_sphere_1 } remove_ideas = POR_lusophone_sphere_1 }
+	if = { limit = { has_idea = POR_lusophone_sphere_2 } remove_ideas = POR_lusophone_sphere_2 }
+	if = { limit = { has_idea = POR_lusophone_sphere_3 } remove_ideas = POR_lusophone_sphere_3 }
+	if = {
+		limit = { check_variable = { POR_luso_partners > 4 } }
+		add_ideas = POR_lusophone_sphere_3
+	}
+	else_if = {
+		limit = { check_variable = { POR_luso_partners > 2 } }
+		add_ideas = POR_lusophone_sphere_2
+	}
+	else_if = {
+		limit = { check_variable = { POR_luso_partners > 0 } }
+		add_ideas = POR_lusophone_sphere_1
+	}
+}
+
+# ---- Monthly tick (common/on_actions/POR_on_actions.txt) ---------------
+POR_monthly = {
+	POR_init = yes
+	# Parliament: support erodes unless it is maintained.
+	if = {
+		limit = { NOT = { has_idea = POR_stable_institutions } }
+		add_to_variable = { POR_parl_support = -1 }
+	}
+	if = { limit = { has_idea = POR_contested_mandate } add_to_variable = { POR_parl_support = -1 } }
+	if = { limit = { has_idea = POR_institutional_deadlock } add_to_variable = { POR_parl_support = -1 } }
+	# Public confidence drifts back towards 50.
+	if = { limit = { check_variable = { POR_confidence > 50 } } add_to_variable = { POR_confidence = -1 } }
+	else_if = { limit = { check_variable = { POR_confidence < 50 } } add_to_variable = { POR_confidence = 1 } }
+	POR_update_parliament = yes
+
+	if = {
+		limit = { has_country_flag = POR_ronaldo_movement_founded }
+		add_to_variable = { POR_renewal_budget = -2 }
+		if = { limit = { check_variable = { POR_renewal_support > 50 } } add_to_variable = { POR_renewal_support = -1 } }
+		if = { limit = { check_variable = { POR_renewal_budget < 10 } } add_to_variable = { POR_renewal_support = -3 } }
+		POR_update_renewal = yes
+	}
+	if = {
+		limit = { has_country_flag = POR_defence_planning }
+		add_to_variable = { POR_def_strain = -3 }
+		POR_update_defence = yes
+	}
+}
+
+# ---- Dated events, checked daily (tools/EVENTS_GUIDE.txt, 6.3) ---------
+# "date > X" becomes true the day AFTER X. Each event has its own flag
+# and a closing date, so nothing fires twice or piles up in an old save.
+# THE DATES OF THE SCENARIO LIVE HERE AND ONLY HERE:
+#   2025.1.17  Madeira parliament dissolved      2025.3.23  Madeira snap election (AD wins)
+#   2025.4.28  Iberian blackout                  2026.1.18  presidential election (runoff 2026.2.8)
+#   2026.3.9   inauguration                      2026.11.5  Ronaldo leaves the national team
+#   2027.4.28  blackout inquiry: final report    2027.5.23  the 1,000th goal (fictional)
+#   2027.6.10  Ronaldo retires from football     2030.2.5 - 2030.3.16  the hidden phone call
+#   2030.5.19  early presidential election       2030.6.10  Ronaldo sworn in
+POR_daily_schedule = {
+	if = {
+		limit = { date < 2025.7.1 }
+		if = {
+			limit = { date > 2025.1.16 date < 2025.2.10 NOT = { has_country_flag = por_1_fired } }
+			set_country_flag = por_1_fired
+			news_event = { id = por.1 hours = 6 }
+		}
+		if = {
+			limit = { date > 2025.2.19 date < 2025.3.20 NOT = { has_country_flag = por_3_fired } }
+			set_country_flag = por_3_fired
+			country_event = { id = por.3 hours = 6 }
+		}
+		if = {
+			limit = { date > 2025.3.22 date < 2025.4.20 NOT = { has_country_flag = por_2_fired } }
+			set_country_flag = por_2_fired
+			news_event = { id = por.2 hours = 18 }
+		}
+		if = {
+			limit = { date > 2025.4.27 date < 2025.5.20 NOT = { has_country_flag = por_10_fired } }
+			set_country_flag = por_10_fired
+			news_event = { id = por.10 hours = 1 }
+		}
+		# Safety net: the ten-day mission normally fires the assessment around 8 May.
+		if = {
+			limit = { date > 2025.5.10 has_country_flag = POR_blackout_active }
+			country_event = { id = por.13 }
+		}
+		if = {
+			limit = { date > 2025.5.19 date < 2025.6.9 has_country_flag = POR_blackout_happened NOT = { has_country_flag = por_14_fired } }
+			set_country_flag = por_14_fired
+			country_event = { id = por.14 hours = 6 }
+		}
+		if = {
+			limit = { date > 2025.6.9 date < 2025.6.30 has_country_flag = POR_blackout_happened NOT = { has_country_flag = por_15_fired } }
+			set_country_flag = por_15_fired
+			country_event = { id = por.15 hours = 6 }
+		}
+		if = {
+			limit = { date > 2025.6.27 NOT = { has_country_flag = por_4_fired } }
+			set_country_flag = por_4_fired
+			news_event = { id = por.4 hours = 10 }
+		}
+	}
+	else_if = {
+		limit = { date < 2026.4.15 }
+		if = {
+			limit = { date > 2025.10.14 date < 2025.11.15 NOT = { has_country_flag = por_20_fired } }
+			set_country_flag = por_20_fired
+			news_event = { id = por.20 hours = 6 }
+		}
+		if = {
+			limit = { date > 2025.12.8 date < 2026.1.5 NOT = { has_country_flag = por_21_fired } }
+			set_country_flag = por_21_fired
+			country_event = { id = por.21 hours = 14 }
+		}
+		if = {
+			limit = { date > 2026.1.17 date < 2026.2.5 NOT = { has_country_flag = por_22_fired } }
+			set_country_flag = por_22_fired
+			news_event = { id = por.22 hours = 14 }
+		}
+		if = {
+			limit = { date > 2026.3.8 has_country_flag = POR_winner_declared NOT = { has_country_flag = por_26_fired } }
+			set_country_flag = por_26_fired
+			news_event = { id = por.26 hours = 6 }
+		}
+	}
+	else_if = {
+		limit = { date < 2028.1.1 }
+		if = {
+			limit = { date > 2026.11.4 date < 2026.12.1 NOT = { has_country_flag = por_60_fired } }
+			set_country_flag = por_60_fired
+			news_event = { id = por.60 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.3.8 date < 2027.4.10 NOT = { has_country_flag = por_40_fired } }
+			set_country_flag = por_40_fired
+			country_event = { id = por.40 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.4.27 date < 2027.5.20 has_country_flag = POR_blackout_happened NOT = { has_country_flag = por_17_fired } }
+			set_country_flag = por_17_fired
+			news_event = { id = por.17 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.5.22 date < 2027.6.5 has_country_flag = POR_ronaldo_announced NOT = { has_country_flag = por_62_fired } }
+			set_country_flag = por_62_fired
+			news_event = { id = por.62 hours = 10 }
+		}
+		if = {
+			limit = { date > 2027.6.9 date < 2027.7.10 has_country_flag = por_62_fired NOT = { has_country_flag = por_63_fired } }
+			set_country_flag = por_63_fired
+			news_event = { id = por.63 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.7.19 date < 2027.8.20 NOT = { has_country_flag = por_42_fired } }
+			set_country_flag = por_42_fired
+			country_event = { id = por.42 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.9.4 date < 2027.10.1 NOT = { has_country_flag = por_43_fired } }
+			set_country_flag = por_43_fired
+			country_event = { id = por.43 hours = 6 }
+		}
+		if = {
+			limit = { date > 2027.10.11 date < 2027.11.15 NOT = { has_country_flag = por_41_fired } }
+			set_country_flag = por_41_fired
+			country_event = { id = por.41 hours = 6 }
+		}
+	}
+	else_if = {
+		limit = { date < 2030.1.1 }
+		if = {
+			limit = { date > 2028.3.8 date < 2028.4.10 NOT = { has_country_flag = por_44_fired } }
+			set_country_flag = por_44_fired
+			country_event = { id = por.44 hours = 6 }
+		}
+		if = {
+			limit = { date > 2028.5.14 date < 2028.6.15 NOT = { has_country_flag = por_45_fired } }
+			set_country_flag = por_45_fired
+			country_event = { id = por.45 hours = 6 }
+		}
+		if = {
+			limit = { date > 2028.6.30 date < 2028.8.1 NOT = { has_country_flag = por_48_fired } }
+			set_country_flag = por_48_fired
+			country_event = { id = por.48 hours = 6 }
+		}
+		if = {
+			limit = { date > 2028.9.19 date < 2028.10.20 NOT = { has_country_flag = por_46_fired } }
+			set_country_flag = por_46_fired
+			country_event = { id = por.46 hours = 6 }
+		}
+		if = {
+			limit = { date > 2028.11.9 date < 2028.12.10 NOT = { has_country_flag = por_47_fired } }
+			set_country_flag = por_47_fired
+			country_event = { id = por.47 hours = 6 }
+		}
+		if = {
+			limit = { date > 2029.2.4 date < 2029.3.5 has_country_flag = POR_ronaldo_movement_founded NOT = { has_country_flag = por_66_fired } }
+			set_country_flag = por_66_fired
+			country_event = { id = por.66 hours = 6 }
+		}
+		if = {
+			limit = { date > 2029.3.8 date < 2029.4.10 NOT = { has_country_flag = por_49_fired } }
+			set_country_flag = por_49_fired
+			country_event = { id = por.49 hours = 6 }
+		}
+		if = {
+			limit = { date > 2029.6.14 date < 2029.7.15 NOT = { has_country_flag = por_50_fired } }
+			set_country_flag = por_50_fired
+			country_event = { id = por.50 hours = 6 }
+		}
+		if = {
+			limit = { date > 2029.10.4 date < 2029.11.5 NOT = { has_country_flag = por_51_fired } }
+			set_country_flag = por_51_fired
+			country_event = { id = por.51 hours = 6 }
+		}
+		# The hint for the hidden phone call. It needs the same narrative
+		# prerequisite as the call itself (the Council of State audience).
+		if = {
+			limit = { date > 2029.11.19 date < 2029.12.20 has_country_flag = POR_ronaldo_legitimacy NOT = { has_country_flag = por_68_fired } }
+			set_country_flag = por_68_fired
+			country_event = { id = por.68 hours = 20 }
+		}
+	}
+	else_if = {
+		limit = { date < 2030.8.1 }
+		if = {
+			limit = { date < 2030.2.1 has_country_flag = POR_ronaldo_legitimacy NOT = { has_country_flag = por_68_fired } }
+			set_country_flag = por_68_fired
+			country_event = { id = por.68 hours = 20 }
+		}
+		# The call window closed unanswered: the opportunity is gone, quietly.
+		if = {
+			limit = {
+				date > 2030.3.16
+				has_country_flag = POR_ronaldo_legitimacy
+				NOT = { has_country_flag = POR_call_answered }
+				NOT = { has_country_flag = POR_call_missed }
+			}
+			set_country_flag = POR_call_missed
+			country_event = { id = por.74 days = 17 }
+		}
+		if = {
+			limit = { date > 2030.4.24 date < 2030.5.15 NOT = { has_country_flag = POR_call_accepted } NOT = { has_country_flag = por_52_fired } }
+			set_country_flag = por_52_fired
+			country_event = { id = por.52 hours = 6 }
+		}
+		if = {
+			limit = { date > 2030.5.18 date < 2030.6.5 has_country_flag = POR_call_accepted NOT = { has_country_flag = por_71_fired } }
+			set_country_flag = por_71_fired
+			news_event = { id = por.71 hours = 20 }
+		}
+		if = {
+			limit = { date > 2030.6.9 has_country_flag = por_71_fired NOT = { has_country_flag = por_72_fired } }
+			set_country_flag = por_72_fired
+			news_event = { id = por.72 hours = 6 }
+		}
+	}
+}
+
+# ---- Staged spirits (common/ideas/portugal.txt) ------------------------
+# One step forward per call, from whichever stage is present. Calls after
+# stage 3, or after the capstone, do nothing. Each step shows a tooltip.
+POR_army_reform_step = {
+	custom_effect_tooltip = POR_army_reform_step_tt
+	hidden_effect = {
+		if = { limit = { has_idea = POR_army_readiness_problems } swap_ideas = { remove_idea = POR_army_readiness_problems add_idea = POR_army_reform_1 } }
+		else_if = { limit = { has_idea = POR_army_reform_1 } swap_ideas = { remove_idea = POR_army_reform_1 add_idea = POR_army_reform_2 } }
+		else_if = { limit = { has_idea = POR_army_reform_2 } swap_ideas = { remove_idea = POR_army_reform_2 add_idea = POR_army_reform_3 } }
+	}
+}
+POR_army_reform_final = {
+	if = { limit = { has_idea = POR_army_readiness_problems } remove_ideas = POR_army_readiness_problems }
+	if = { limit = { has_idea = POR_army_reform_1 } remove_ideas = POR_army_reform_1 }
+	if = { limit = { has_idea = POR_army_reform_2 } remove_ideas = POR_army_reform_2 }
+	if = { limit = { has_idea = POR_army_reform_3 } remove_ideas = POR_army_reform_3 }
+	if = { limit = { NOT = { has_idea = POR_modern_land_forces_idea } } add_ideas = POR_modern_land_forces_idea }
+}
+
+POR_air_reform_step = {
+	custom_effect_tooltip = POR_air_reform_step_tt
+	hidden_effect = {
+		if = { limit = { has_idea = POR_ageing_aircraft_fleet } swap_ideas = { remove_idea = POR_ageing_aircraft_fleet add_idea = POR_air_reform_1 } }
+		else_if = { limit = { has_idea = POR_air_reform_1 } swap_ideas = { remove_idea = POR_air_reform_1 add_idea = POR_air_reform_2 } }
+		else_if = { limit = { has_idea = POR_air_reform_2 } swap_ideas = { remove_idea = POR_air_reform_2 add_idea = POR_air_reform_3 } }
+	}
+}
+POR_air_reform_final = {
+	if = { limit = { has_idea = POR_ageing_aircraft_fleet } remove_ideas = POR_ageing_aircraft_fleet }
+	if = { limit = { has_idea = POR_air_reform_1 } remove_ideas = POR_air_reform_1 }
+	if = { limit = { has_idea = POR_air_reform_2 } remove_ideas = POR_air_reform_2 }
+	if = { limit = { has_idea = POR_air_reform_3 } remove_ideas = POR_air_reform_3 }
+	if = { limit = { NOT = { has_idea = POR_modern_air_force } } add_ideas = POR_modern_air_force }
+}
+
+POR_navy_reform_step = {
+	custom_effect_tooltip = POR_navy_reform_step_tt
+	hidden_effect = {
+		if = { limit = { has_idea = POR_atlantic_naval_responsibilities } swap_ideas = { remove_idea = POR_atlantic_naval_responsibilities add_idea = POR_navy_reform_1 } }
+		else_if = { limit = { has_idea = POR_navy_reform_1 } swap_ideas = { remove_idea = POR_navy_reform_1 add_idea = POR_navy_reform_2 } }
+		else_if = { limit = { has_idea = POR_navy_reform_2 } swap_ideas = { remove_idea = POR_navy_reform_2 add_idea = POR_navy_reform_3 } }
+	}
+}
+POR_navy_reform_final = {
+	if = { limit = { has_idea = POR_atlantic_naval_responsibilities } remove_ideas = POR_atlantic_naval_responsibilities }
+	if = { limit = { has_idea = POR_navy_reform_1 } remove_ideas = POR_navy_reform_1 }
+	if = { limit = { has_idea = POR_navy_reform_2 } remove_ideas = POR_navy_reform_2 }
+	if = { limit = { has_idea = POR_navy_reform_3 } remove_ideas = POR_navy_reform_3 }
+	if = { limit = { NOT = { has_idea = POR_atlantic_guardian } } add_ideas = POR_atlantic_guardian }
+}
+
+POR_economy_reform_step = {
+	custom_effect_tooltip = POR_economy_reform_step_tt
+	hidden_effect = {
+		if = { limit = { has_idea = POR_structural_economic_challenges } swap_ideas = { remove_idea = POR_structural_economic_challenges add_idea = POR_economy_reform_1 } }
+		else_if = { limit = { has_idea = POR_economy_reform_1 } swap_ideas = { remove_idea = POR_economy_reform_1 add_idea = POR_economy_reform_2 } }
+		else_if = { limit = { has_idea = POR_economy_reform_2 } swap_ideas = { remove_idea = POR_economy_reform_2 add_idea = POR_economy_reform_3 } }
+	}
+}
+POR_economy_reform_final = {
+	if = { limit = { has_idea = POR_structural_economic_challenges } remove_ideas = POR_structural_economic_challenges }
+	if = { limit = { has_idea = POR_economy_reform_1 } remove_ideas = POR_economy_reform_1 }
+	if = { limit = { has_idea = POR_economy_reform_2 } remove_ideas = POR_economy_reform_2 }
+	if = { limit = { has_idea = POR_economy_reform_3 } remove_ideas = POR_economy_reform_3 }
+	if = { limit = { NOT = { has_idea = POR_modern_economy } } add_ideas = POR_modern_economy }
+}
+
+# ---- Clean energy staged spirit (Energy & Science branch) --------------
+POR_energy_step = {
+	custom_effect_tooltip = POR_energy_step_tt
+	hidden_effect = {
+		if = { limit = { NOT = { has_idea = POR_clean_energy_1 } NOT = { has_idea = POR_clean_energy_2 } NOT = { has_idea = POR_clean_energy_3 } NOT = { has_idea = POR_energy_exporter_idea } } add_ideas = POR_clean_energy_1 }
+		else_if = { limit = { has_idea = POR_clean_energy_1 } swap_ideas = { remove_idea = POR_clean_energy_1 add_idea = POR_clean_energy_2 } }
+		else_if = { limit = { has_idea = POR_clean_energy_2 } swap_ideas = { remove_idea = POR_clean_energy_2 add_idea = POR_clean_energy_3 } }
+	}
+}
+POR_energy_final = {
+	if = { limit = { has_idea = POR_clean_energy_1 } remove_ideas = POR_clean_energy_1 }
+	if = { limit = { has_idea = POR_clean_energy_2 } remove_ideas = POR_clean_energy_2 }
+	if = { limit = { has_idea = POR_clean_energy_3 } remove_ideas = POR_clean_energy_3 }
+	if = { limit = { NOT = { has_idea = POR_energy_exporter_idea } } add_ideas = POR_energy_exporter_idea }
+}
