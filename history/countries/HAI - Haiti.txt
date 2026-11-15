@@ -61,14 +61,16 @@ set_grand_doctrine = new_strategic_destruction
 		project = sp:sp_air_radar
 	}
 }
+# DvE: parties, leaders and politics at the 2025.1.1 start
+set_party_name = { ideology = centrist long_name = "Transitional Presidential Council" name = "TPC" }
 
+create_country_leader = { name = "Transitional Presidential Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_TPC.dds" expire = "2065.1.1" ideology = centrist_populism }
 set_politics = {
 	ruling_party = centrist
-	last_election = "1936.1.1"
+	last_election = "2016.11.20"
 	election_frequency = 48
-	elections_allowed = yes
+	elections_allowed = no
 }
 set_popularities = {
-	centrist = 50
-	reactionary = 50
+	centrist = 100
 }

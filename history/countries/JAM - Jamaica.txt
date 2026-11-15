@@ -46,24 +46,24 @@ set_grand_doctrine = grand_battleplan
 		project = sp:sp_air_radar
 	}
 }
+# ==================== CUSTOM DVE MOD INJECTION ====================
+set_party_name = { ideology = conservative long_name = "Jamaica Labour Party" name = "JLP" }
+set_party_name = { ideology = progressive = "People's National Party" name = "PNP" }
+set_party_name = { ideology = centrist long_name = "United Independents' Congress" name = "UIC" }
+
+create_country_leader = { name = "Andrew Holness" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_andrew.dds" expire = "1965.1.1" ideology = conservatism }
+create_country_leader = { name = "Mark Golding" desc = "POLITICS_LEADER_DESC" picture = "" expire = "1965.1.1" ideology = social_democracy }
+
+
 set_politics = {
-	ruling_party = centrist
-	last_election = "1936.1.1"
+	ruling_party = conservative
+	last_election = "2022.6.19"
 	election_frequency = 48
 	elections_allowed = yes
 }
-set_popularities = {
-	centrist = 98
-	reactionary = 2
-}
 
-#create_country_leader = {
-#	
-#	name = "Jonas Lote"
-#	picture = "gfx//leaders//Africa//Portrait_Africa_Generic_2.dds"
-#	expire = "1965.1.1"
-#	ideology = social_liberal
-#	traits = {
-#		#
-#	}
-#}
+set_popularities = {
+	progressive = 47
+	conservative = 51
+	centrist = 2	
+}
