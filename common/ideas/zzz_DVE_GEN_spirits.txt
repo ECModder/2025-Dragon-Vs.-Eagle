@@ -1,0 +1,1492 @@
+# DvE - national spirits of the generic focus tree (GEN_focus.txt).
+
+ideas = {
+	country = {
+
+		# ---------------- Political Effort - Totalitarian Socialism
+
+		# Totalitarian Socialist Movement
+		GEN_ts_movement = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				totalitarian_socialism_drift = 0.10
+			}
+		}
+
+		# The Single Plan
+		GEN_ts_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_industrial_complex_factor = 0.10
+				consumer_goods_factor = -0.05
+			}
+		}
+
+		# Hardline Majority
+		GEN_ts_current_a_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.20
+				stability_factor = 0.05
+			}
+		}
+
+		# Bureaucracy at the Helm
+		GEN_ts_current_b_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		# The Cheka
+		GEN_ts_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# The NKVD
+		GEN_ts_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.30
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# Agit-Prop
+		GEN_ts_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# Ideological Department
+		GEN_ts_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# ---------------- Political Effort - Authoritarian Socialism
+
+		# Authoritarian Socialist Movement
+		GEN_as_movement = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				authoritarian_socialism_drift = 0.10
+			}
+		}
+
+		# Market Socialism
+		GEN_as_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.10
+				research_speed_factor = 0.05
+			}
+		}
+
+		# Reformist Majority
+		GEN_as_current_a_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# Centralist Majority
+		GEN_as_current_b_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# State Security Committee
+		GEN_as_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# People's Democratic Dictatorship
+		GEN_as_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# Socialist Cultural Hegemony
+		GEN_as_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# People's Support
+		GEN_as_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_gain = 0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Vanguard Socialism
+
+		# Vanguard Socialist Movement
+		GEN_vs_movement = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				vanguard_socialism_drift = 0.10
+			}
+		}
+
+		# Professional Revolutionaries
+		GEN_vs_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				drift_defence_factor = 0.20
+			}
+		}
+
+		# Leninist Majority
+		GEN_vs_current_a_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Internationalist Majority
+		GEN_vs_current_b_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+			}
+		}
+
+		# Revolutionary Tribunals
+		GEN_vs_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Political Commissariats
+		GEN_vs_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.20
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.05
+			}
+		}
+
+		# New Agit-Prop
+		GEN_vs_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		# Democratic Centralism
+		GEN_vs_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Revolutionary Socialism
+
+		# Revolutionary Socialist Movement
+		GEN_rs_movement = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				revolutionary_socialism_drift = 0.10
+			}
+		}
+
+		# Workplace Democracy
+		GEN_rs_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# Council Majority
+		GEN_rs_current_a_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# Permanent Revolution Majority
+		GEN_rs_current_b_spirit = {
+			picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				experience_gain_army_factor = 0.05
+			}
+		}
+
+		# Revolutionary Committees
+		GEN_rs_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				war_support_factor = 0.05
+			}
+		}
+
+		# Absolute Loyalty
+		GEN_rs_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				stability_factor = 0.05
+			}
+		}
+
+		# A Movement Full of Factions
+		GEN_rs_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+
+		# New Communism
+		GEN_rs_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_gain = 0.10
+			}
+		}
+
+		# ---------------- Political Effort - Reformist Socialism
+
+		# Reformist Socialist Movement
+		GEN_pr_movement = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				progressive_drift = 0.10
+			}
+		}
+
+		# Expanded Welfare State
+		GEN_pr_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				monthly_population = 0.10
+				consumer_goods_factor = 0.05
+			}
+		}
+
+		# Social-Democratic Wing
+		GEN_pr_current_a_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				production_speed_buildings_factor = 0.05
+			}
+		}
+
+		# Reformist-Socialist Wing
+		GEN_pr_current_b_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# Accountable Intelligence
+		GEN_pr_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Democratic Security
+		GEN_pr_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Independent Public Broadcasting
+		GEN_pr_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# The Social Pact
+		GEN_pr_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Liberalism
+
+		# Liberal Movement
+		GEN_li_movement = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				liberal_drift = 0.10
+			}
+		}
+
+		# Rights and Freedoms
+		GEN_li_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+
+		# Social-Liberal Wing
+		GEN_li_current_a_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+
+		# Green Wing
+		GEN_li_current_b_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_infrastructure_factor = 0.10
+				local_resources_factor = 0.05
+			}
+		}
+
+		# Independent Judiciary
+		GEN_li_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Open Intelligence Service
+		GEN_li_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Free Press
+		GEN_li_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.05
+			}
+		}
+
+		# Digital Rights
+		GEN_li_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Centrism
+
+		# Centrist Movement
+		GEN_ce_movement = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				centrist_drift = 0.10
+			}
+		}
+
+		# Technocratic Governance
+		GEN_ce_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				research_speed_factor = 0.05
+			}
+		}
+
+		# Technocratic Wing
+		GEN_ce_current_a_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				political_power_factor = 0.05
+			}
+		}
+
+		# Populist Centre
+		GEN_ce_current_b_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.05
+			}
+		}
+
+		# Professional Security Services
+		GEN_ce_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# Strategic Intelligence
+		GEN_ce_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				political_power_factor = 0.05
+			}
+		}
+
+		# Government Communications
+		GEN_ce_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# Politics of Consensus
+		GEN_ce_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+			}
+		}
+
+		# ---------------- Political Effort - Conservatism
+
+		# Conservative Movement
+		GEN_co_movement = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conservative_drift = 0.10
+			}
+		}
+
+		# Family and Enterprise
+		GEN_co_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.10
+				stability_factor = 0.05
+				monthly_population = 0.05
+			}
+		}
+
+		# Christian-Democratic Wing
+		GEN_co_current_a_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.05
+			}
+		}
+
+		# Liberal-Conservative Wing
+		GEN_co_current_b_spirit = {
+			picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_buildings_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# Law and Order
+		GEN_co_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# National Security Council
+		GEN_co_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				war_support_factor = 0.05
+			}
+		}
+
+		# Patriotic Education
+		GEN_co_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# Traditional Values
+		GEN_co_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# ---------------- Political Effort - Reactionary
+
+		# Reactionary Movement
+		GEN_re_movement = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				reactionary_drift = 0.10
+			}
+		}
+
+		# Sovereignty First
+		GEN_re_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				stability_factor = 0.05
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Sovereigntist Wing
+		GEN_re_current_a_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Traditionalist Wing
+		GEN_re_current_b_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.05
+			}
+		}
+
+		# Security Decrees
+		GEN_re_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Loyal Police
+		GEN_re_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.20
+				stability_factor = 0.05
+			}
+		}
+
+		# Direct Communication
+		GEN_re_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		# The Culture War
+		GEN_re_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				political_power_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Authoritarianism
+
+		# Authoritarian Movement
+		GEN_au_movement = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				authoritarianism_drift = 0.10
+			}
+		}
+
+		# Controlled Media
+		GEN_au_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				political_power_factor = 0.10
+			}
+		}
+
+		# Technocratic Faction
+		GEN_au_current_a_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+		}
+
+		# The Siloviki
+		GEN_au_current_b_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# State Security Service
+		GEN_au_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Surveillance State
+		GEN_au_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.30
+				stability_factor = 0.05
+			}
+		}
+
+		# State Television
+		GEN_au_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# Cult of the President
+		GEN_au_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Autocracy
+
+		# Autocratic Movement
+		GEN_ac_movement = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				autocracy_drift = 0.10
+			}
+		}
+
+		# Rule by Decree
+		GEN_ac_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# Military Junta
+		GEN_ac_current_a_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				command_power_gain_mult = 0.10
+			}
+		}
+
+		# Personal Rule
+		GEN_ac_current_b_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Military Police
+		GEN_ac_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Secret Police
+		GEN_ac_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.30
+				stability_factor = 0.05
+			}
+		}
+
+		# Martial Law Broadcasts
+		GEN_ac_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				political_power_gain = 0.05
+			}
+		}
+
+		# Saviour of the Nation
+		GEN_ac_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+				war_support_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Absolutism
+
+		# Monarchist Movement
+		GEN_ab_movement = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				absolutism_drift = 0.10
+			}
+		}
+
+		# The Royal Court
+		GEN_ab_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				political_power_factor = 0.05
+			}
+		}
+
+		# Absolute Monarchy
+		GEN_ab_current_a_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_factor = 0.10
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Royal Council
+		GEN_ab_current_b_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				research_speed_factor = 0.05
+			}
+		}
+
+		# Royal Gendarmerie
+		GEN_ab_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# The King's Intelligence
+		GEN_ab_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.20
+				stability_factor = 0.05
+			}
+		}
+
+		# Royal Pageantry
+		GEN_ab_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				political_power_gain = 0.05
+			}
+		}
+
+		# Divine Right
+		GEN_ab_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# ---------------- Political Effort - Ultranationalism
+
+		# Ultranationalist Movement
+		GEN_un_movement = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				ultranationalism_drift = 0.10
+			}
+		}
+
+		# The Militarised Nation
+		GEN_un_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				conscription_factor = 0.10
+			}
+		}
+
+		# National-Revolutionary Wing
+		GEN_un_current_a_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+			}
+		}
+
+		# Corporatist Wing
+		GEN_un_current_b_spirit = {
+			picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# Movement Militia
+		GEN_un_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				war_support_factor = 0.05
+			}
+		}
+
+		# Political Police
+		GEN_un_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.30
+				stability_factor = 0.05
+			}
+		}
+
+		# Ministry of Popular Culture
+		GEN_un_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		# Cult of the Leader
+		GEN_un_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				war_support_factor = 0.05
+				stability_factor = 0.05
+			}
+		}
+
+		# ---------------- Political Effort - Fundamentalism
+
+		# Fundamentalist Movement
+		GEN_fu_movement = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				fundamentalism_drift = 0.10
+			}
+		}
+
+		# Religious Law
+		GEN_fu_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.10
+				drift_defence_factor = 0.25
+			}
+		}
+
+		# Clerical Faction
+		GEN_fu_current_a_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.15
+			}
+		}
+
+		# Militant Faction
+		GEN_fu_current_b_spirit = {
+			picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.05
+				conscription_factor = 0.05
+			}
+		}
+
+		# Religious Police
+		GEN_fu_security_spirit_1 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Guardians of the Faith
+		GEN_fu_security_spirit_2 = {
+			picture = generic_intel_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				drift_defence_factor = 0.25
+				army_org_factor = 0.05
+			}
+		}
+
+		# Religious Broadcasting
+		GEN_fu_propaganda_spirit_1 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# Religious Education
+		GEN_fu_propaganda_spirit_2 = {
+			picture = generic_pp_unity_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+				war_support_factor = 0.05
+			}
+		}
+
+		# ---------------- Industrial Effort
+
+		# National Infrastructure Programme
+		GEN_infrastructure_programme = {
+			picture = generic_build_infrastructure
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_infrastructure_factor = 0.25
+				production_speed_rail_way_factor = 0.10
+			}
+		}
+
+		# Modern Industry
+		GEN_modern_industry = {
+			picture = generic_production_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_speed_buildings_factor = 0.10
+			}
+		}
+
+		# Resource Exploitation
+		GEN_resource_exploitation_spirit = {
+			picture = generic_economic_increase
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				local_resources_factor = 0.10
+			}
+		}
+
+		# ---------------- Army Effort
+
+		# National Service
+		GEN_national_service_spirit = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription = 0.01
+			}
+		}
+
+		# A Reserve Army
+		GEN_reserve_army_spirit = {
+			picture = generic_manpower_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				conscription = 0.02
+				experience_gain_army_factor = 0.05
+			}
+		}
+
+		# Why We Fight
+		GEN_why_we_fight_spirit = {
+			picture = generic_morale_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				war_support_factor = 0.10
+				stability_factor = 0.05
+			}
+		}
+
+		# A Professional Army
+		GEN_professional_army_spirit = {
+			picture = generic_infantry_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				army_org_factor = 0.05
+				experience_gain_army_factor = 0.10
+			}
+		}
+
+		# ---------------- Naval Effort
+
+		# Naval Construction Programme
+		GEN_naval_construction = {
+			picture = generic_navy_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_dockyard_factor = 0.15
+			}
+		}
+
+		# ---------------- Air Effort
+
+		# Air Base Programme
+		GEN_air_base_programme_spirit = {
+			picture = generic_air_bonus
+			allowed = { always = no }
+			allowed_civil_war = { always = yes }
+			removal_cost = -1
+			modifier = {
+				production_speed_air_base_factor = 0.25
+			}
+		}
+	}
+}
