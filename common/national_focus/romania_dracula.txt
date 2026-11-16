@@ -2263,6 +2263,18 @@ focus_tree = {
 		}
 		completion_reward = {
 			country_event = { id = ROM_drac.15  }
+			every_other_country = {
+        limit = {
+            NOT = { is_in_faction_with = ROOT }
+            NOT = { is_subject_of = ROOT }
+        }
+        ROOT = {
+            create_wargoal = {
+                type = annex_everything
+                target = PREV
+            }
+        }
+    }
 		}
 	}
 

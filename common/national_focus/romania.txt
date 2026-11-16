@@ -49,7 +49,9 @@ focus_tree = {
         y = 4
         cost = 4.2
         prerequisite = { focus = ROM_remove_the_strikes }
-        prerequisite = { focus = ROM_stagnate_the_economy }
+        available = {
+            has_completed_focus = ROM_stagnate_the_economy
+        }
         ai_will_do = {
             factor = 1
         }
