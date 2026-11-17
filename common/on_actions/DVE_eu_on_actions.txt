@@ -1,0 +1,56 @@
+# DvE - European Union: keeps EU state fresh (human daily, AI weekly, global weekly).
+on_actions = {
+
+	# on_startup has no scope: every_country provides the scope.
+	on_startup = {
+		effect = {
+			every_country = {
+				DVE_eu_refresh_effect = yes
+			}
+			DVE_eu_global_refresh_effect = yes
+		}
+	}
+
+	# Human player: daily refresh.
+	on_daily = {
+		effect = {
+			if = {
+				limit = { is_ai = no }
+				DVE_eu_refresh_effect = yes
+			}
+		}
+	}
+
+	# AI countries: weekly refresh.
+	on_weekly = {
+		effect = {
+			if = {
+				limit = { is_ai = yes }
+				DVE_eu_refresh_effect = yes
+			}
+			# Global EU state: weekly
+			DVE_eu_global_refresh_effect = yes
+			# Eurozone EDP check: monthly (every 4 weeks)
+			if = { limit = { check_variable = { global.DVE_eu_week_counter = 4 } } DVE_eu_edp_check_effect = yes set_variable = { global.DVE_eu_week_counter = 0 } }
+			add_to_variable = { global.DVE_eu_week_counter = 1 }
+			# Council presidency rotation: every 26 weeks (6 months)
+			if = { limit = { check_variable = { global.DVE_eu_presidency_counter = 26 } } DVE_eu_rotate_presidency_effect = yes set_variable = { global.DVE_eu_presidency_counter = 0 } }
+			add_to_variable = { global.DVE_eu_presidency_counter = 1 }
+			# Subsidiarity review timeout
+			if = { limit = { has_global_flag = DVE_eu_subsidiarity_review NOT = { has_global_flag = DVE_eu_subsidiarity_review } } clr_global_flag = DVE_eu_subsidiarity_review }
+		}
+	}
+
+	# Custom on_action for legislative procedure resolution (triggered by events).
+	on_actions = {
+		dve_eu_legislative_resolve = {
+			DVE_eu_resolve_legislative_effect = yes
+		}
+		dve_eu_budget_resolve = {
+			DVE_eu_resolve_budget_effect = yes
+		}
+		dve_eu_enlargement_resolve = {
+			DVE_eu_resolve_enlargement_effect = yes
+		}
+	}
+}

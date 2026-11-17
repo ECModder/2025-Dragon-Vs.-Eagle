@@ -1,0 +1,81 @@
+# DvE - European Union scripted guis (human player only, EU members and candidates).
+scripted_gui = {
+
+	DVE_eu_main = {
+		context_type = player_context
+		window_name = "DVE_eu_main_window"
+		parent_window_token = politics_tab
+
+		visible = {
+			is_ai = no
+			has_country_flag = DVE_eu_panel_open
+		}
+
+		effects = {
+			close_button_click = {
+				clr_country_flag = DVE_eu_panel_open
+			}
+			DVE_eu_tab_parliament_click = {
+				set_variable = { DVE_eu_new_tab = 1 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_council_click = {
+				set_variable = { DVE_eu_new_tab = 2 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_commission_click = {
+				set_variable = { DVE_eu_new_tab = 3 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_budget_click = {
+				set_variable = { DVE_eu_new_tab = 4 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_enlargement_click = {
+				set_variable = { DVE_eu_new_tab = 5 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_court_click = {
+				set_variable = { DVE_eu_new_tab = 6 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+			DVE_eu_tab_bce_click = {
+				set_variable = { DVE_eu_new_tab = 7 }
+				DVE_eu_toggle_tab_effect = yes
+			}
+		}
+
+		triggers = {
+			DVE_eu_main_visible = {
+				is_ai = no
+				has_country_flag = DVE_eu_panel_open
+			}
+			DVE_eu_tab_parliament_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 1 }
+			}
+			DVE_eu_tab_council_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 2 }
+			}
+			DVE_eu_tab_commission_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 3 }
+			}
+			DVE_eu_tab_budget_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 4 }
+			}
+			DVE_eu_tab_enlargement_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 5 }
+			}
+			DVE_eu_tab_court_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 6 }
+			}
+			DVE_eu_tab_bce_container_visible = {
+				check_variable = { DVE_eu_selected_tab = 7 }
+			}
+		}
+
+		ai_enabled = {
+			always = no
+		}
+	}
+}
+

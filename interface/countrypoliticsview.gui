@@ -75,6 +75,29 @@ guiTypes = {
 			}
 		}
 
+		# DvE - European Union button (opens EU main panel)
+		containerWindowType = {
+			name = "DVE_eu_button_container"
+			position = { x = 338 y = 430 }
+			size = { width = 210 height = 40 }
+			clipping = yes
+			margin = { top = 0 bottom = 0 }
+
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+
+			buttonType = {
+				name = "DVE_eu_open_button"
+				position = { x = 0 y = 0 }
+				quadTextureSprite = "GFX_DVE_eu_open_button"
+				Orientation = "UPPER_LEFT"
+				clicksound = decisions_ui_button
+				pdx_tooltip = "DVE_EU_OPEN_TT"
+			}
+		}
+
 		
 		containerWindowType = {
 			name = "political_pie_chart"

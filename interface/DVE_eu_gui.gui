@@ -1,0 +1,1223 @@
+# DvE - European Union main window with 7 tabs.
+guiTypes = {
+
+	containerWindowType = {
+		name = "DVE_eu_main_window"
+		size = { width = 1100 height = 760 }
+		position = { x = 130 y = 20 }
+		moveable = yes
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_bg"
+		}
+		buttonType = {
+			name = "close_button"
+			position = { x = -45 y = 14 }
+			quadTextureSprite = "GFX_closebutton"
+			buttonFont = "hoi_24header"
+			shortcut = "ESCAPE"
+			Orientation = "UPPER_RIGHT"
+			clicksound = click_close
+			pdx_tooltip = "CLOSE"
+		}
+		iconType = {
+			name = "DVE_eu_flag_icon"
+			spriteType = "GFX_DVE_eu_flag"
+			position = { x = 20 y = 10 }
+			scale = 0.8
+		}
+		instantTextBoxType = {
+			name = "DVE_eu_title_text"
+			position = { x = 90 y = 10 }
+			font = "hoi_24header"
+			text = "DVE_eu_title"
+			format = left
+			fixedsize = yes
+			maxWidth = 400
+			maxHeight = 30
+		}
+		instantTextBoxType = {
+			name = "DVE_eu_integration_text"
+			position = { x = 90 y = 40 }
+			font = "hoi_16mbs"
+			text = "DVE_eu_integration_label"
+			format = left
+			fixedsize = yes
+			maxWidth = 300
+			maxHeight = 20
+		}
+		iconType = {
+			name = "DVE_eu_tab_bar_bg"
+			spriteType = "GFX_DVE_eu_tab_bar"
+			position = { x = 10 y = 55 }
+		}
+		buttonType = {
+			name = "DVE_eu_tab_parliament"
+			position = { x = 20 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_parliament"
+			buttonText = "Parliament"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_PARLIAMENT"
+			click_enabled = "DVE_eu_tab_parliament_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_council"
+			position = { x = 170 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_council"
+			buttonText = "Council"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_COUNCIL"
+			click_enabled = "DVE_eu_tab_council_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_commission"
+			position = { x = 320 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_commission"
+			buttonText = "Commission"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_COMMISSION"
+			click_enabled = "DVE_eu_tab_commission_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_budget"
+			position = { x = 470 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_budget"
+			buttonText = "Budget"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_BUDGET"
+			click_enabled = "DVE_eu_tab_budget_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_enlargement"
+			position = { x = 620 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_enlargement"
+			buttonText = "Enlargement"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_ENLARGEMENT"
+			click_enabled = "DVE_eu_tab_enlargement_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_court"
+			position = { x = 770 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_court"
+			buttonText = "Court"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_COURT"
+			click_enabled = "DVE_eu_tab_court_visible"
+		}
+		buttonType = {
+			name = "DVE_eu_tab_bce"
+			position = { x = 920 y = 60 }
+			quadTextureSprite = "GFX_DVE_eu_tab_bce"
+			buttonText = "BCE"
+			buttonFont = "hoi_16mbs"
+			clicksound = decisions_ui_button
+			pdx_tooltip = "DVE_EU_TAB_BCE"
+			click_enabled = "DVE_eu_tab_bce_visible"
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_parliament_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			iconType = {
+				name = "DVE_eu_hemicycle_bg"
+				spriteType = "GFX_DVE_eu_hemicycle"
+				position = { x = 30 y = 126 }
+				frame = 1
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_PARL_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_total"
+				position = { x = 330 y = 96 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_PARL_HEMICYCLE"
+				format = right
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_delegation"
+				position = { x = 30 y = 436 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_PARL_DELEGATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_epp"
+				spriteType = "GFX_DVE_eu_ep_group_epp"
+				position = { x = 30 y = 466 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_EPP_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_epp_text"
+				position = { x = 46 y = 468 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_EPP"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_sd"
+				spriteType = "GFX_DVE_eu_ep_group_sd"
+				position = { x = 150 y = 466 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_SD_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_sd_text"
+				position = { x = 166 y = 468 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_SD"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_re"
+				spriteType = "GFX_DVE_eu_ep_group_re"
+				position = { x = 270 y = 466 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_RE_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_re_text"
+				position = { x = 286 y = 468 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_RE"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_greens"
+				spriteType = "GFX_DVE_eu_ep_group_greens"
+				position = { x = 390 y = 466 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_GREENS_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_greens_text"
+				position = { x = 406 y = 468 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_GREENS"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_id"
+				spriteType = "GFX_DVE_eu_ep_group_id"
+				position = { x = 30 y = 496 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_ID_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_id_text"
+				position = { x = 46 y = 498 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_ID"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_ecr"
+				spriteType = "GFX_DVE_eu_ep_group_ecr"
+				position = { x = 150 y = 496 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_ECR_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_ecr_text"
+				position = { x = 166 y = 498 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_ECR"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_left"
+				spriteType = "GFX_DVE_eu_ep_group_left"
+				position = { x = 270 y = 496 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_LEFT_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_left_text"
+				position = { x = 286 y = 498 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_LEFT"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+			iconType = {
+				name = "DVE_eu_parl_group_ni"
+				spriteType = "GFX_DVE_eu_ep_group_ni"
+				position = { x = 390 y = 496 }
+				frame = 1
+				pdx_tooltip = "DVE_EU_PARL_GROUP_NI_TT"
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_parl_group_ni_text"
+				position = { x = 406 y = 498 }
+				font = "hoi_14"
+				text = "DVE_EU_EP_NI"
+				format = left
+				fixedsize = yes
+				maxWidth = 100
+				maxHeight = 16
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_council_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_council_title"
+				position = { x = 560 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COUNCIL_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			iconType = {
+				name = "DVE_eu_council_calc_bg"
+				spriteType = "GFX_DVE_eu_council_calc"
+				position = { x = 560 y = 126 }
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_states_for"
+				position = { x = 580 y = 146 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COUNCIL_STATES_FOR"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_states_against"
+				position = { x = 580 y = 176 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COUNCIL_STATES_AGAINST"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_pop_for"
+				position = { x = 580 y = 216 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COUNCIL_POP_FOR"
+				format = left
+				fixedsize = yes
+				maxWidth = 400
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_pop_against"
+				position = { x = 580 y = 246 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COUNCIL_POP_AGAINST"
+				format = left
+				fixedsize = yes
+				maxWidth = 400
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_qmv_result"
+				position = { x = 580 y = 286 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COUNCIL_QMV_PASS"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_council_blocking"
+				position = { x = 580 y = 316 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COUNCIL_BLOCKING"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			buttonType = {
+				name = "DVE_eu_council_vote_for"
+				position = { x = 580 y = 356 }
+				quadTextureSprite = "GFX_DVE_eu_vote_for"
+				clicksound = decisions_ui_button
+				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_FOR_TT"
+			}
+			buttonType = {
+				name = "DVE_eu_council_vote_against"
+				position = { x = 660 y = 356 }
+				quadTextureSprite = "GFX_DVE_eu_vote_against"
+				clicksound = decisions_ui_button
+				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_AGAINST_TT"
+			}
+			buttonType = {
+				name = "DVE_eu_council_vote_abstain"
+				position = { x = 760 y = 356 }
+				quadTextureSprite = "GFX_DVE_eu_vote_abstain"
+				clicksound = decisions_ui_button
+				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_ABSTAIN_TT"
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_commission_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_comm_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COMM_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_comm_president"
+				position = { x = 30 y = 136 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COMM_PRESIDENT"
+				format = left
+				fixedsize = yes
+				maxWidth = 400
+				maxHeight = 20
+			}
+			iconType = {
+				name = "DVE_eu_comm_college_bg"
+				spriteType = "GFX_DVE_eu_commission_college"
+				position = { x = 30 y = 166 }
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_comm_work_title"
+				position = { x = 30 y = 376 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COMM_WORK_PROGRAMME"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_comm_work_desc"
+				position = { x = 30 y = 406 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COMM_WORK_PROGRAMME_DESC"
+				format = left
+				fixedsize = yes
+				maxWidth = 800
+				maxHeight = 60
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_comm_spitzen_title"
+				position = { x = 30 y = 476 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COMM_SPITZEN"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_budget_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_budget_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_BUDGET_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			iconType = {
+				name = "DVE_eu_budget_mff_chart"
+				spriteType = "GFX_DVE_eu_budget_chart"
+				position = { x = 30 y = 136 }
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_budget_mff_label"
+				position = { x = 40 y = 346 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BUDGET_MFF"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_budget_annual_label"
+				position = { x = 580 y = 136 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_BUDGET_ANNUAL"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_budget_net"
+				position = { x = 580 y = 386 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BUDGET_NET_POS"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_budget_own_res_label"
+				position = { x = 580 y = 416 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_BUDGET_OWN_RES"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_enlargement_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_enl_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_ENL_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_name"
+				position = { x = 40 y = 136 }
+				font = "hoi_18mbs"
+				text = "Albania"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_int"
+				position = { x = 250 y = 136 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_dem"
+				position = { x = 410 y = 136 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_rol"
+				position = { x = 570 y = 136 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_mkt"
+				position = { x = 730 y = 136 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_ALB_acq"
+				position = { x = 890 y = 136 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_name"
+				position = { x = 40 y = 206 }
+				font = "hoi_18mbs"
+				text = "Bosnia and Herzegovina"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_int"
+				position = { x = 250 y = 206 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_dem"
+				position = { x = 410 y = 206 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_rol"
+				position = { x = 570 y = 206 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_mkt"
+				position = { x = 730 y = 206 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_BIH_acq"
+				position = { x = 890 y = 206 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_name"
+				position = { x = 40 y = 276 }
+				font = "hoi_18mbs"
+				text = "Georgia"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_int"
+				position = { x = 250 y = 276 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_dem"
+				position = { x = 410 y = 276 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_rol"
+				position = { x = 570 y = 276 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_mkt"
+				position = { x = 730 y = 276 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_GEO_acq"
+				position = { x = 890 y = 276 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_name"
+				position = { x = 40 y = 346 }
+				font = "hoi_18mbs"
+				text = "Moldova"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_int"
+				position = { x = 250 y = 346 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_dem"
+				position = { x = 410 y = 346 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_rol"
+				position = { x = 570 y = 346 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_mkt"
+				position = { x = 730 y = 346 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MOL_acq"
+				position = { x = 890 y = 346 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_name"
+				position = { x = 40 y = 416 }
+				font = "hoi_18mbs"
+				text = "Montenegro"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_int"
+				position = { x = 250 y = 416 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_dem"
+				position = { x = 410 y = 416 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_rol"
+				position = { x = 570 y = 416 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_mkt"
+				position = { x = 730 y = 416 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MNE_acq"
+				position = { x = 890 y = 416 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_name"
+				position = { x = 40 y = 486 }
+				font = "hoi_18mbs"
+				text = "North Macedonia"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_int"
+				position = { x = 250 y = 486 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_dem"
+				position = { x = 410 y = 486 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_rol"
+				position = { x = 570 y = 486 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_mkt"
+				position = { x = 730 y = 486 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_MKD_acq"
+				position = { x = 890 y = 486 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_name"
+				position = { x = 40 y = 556 }
+				font = "hoi_18mbs"
+				text = "Serbia"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_int"
+				position = { x = 250 y = 556 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_dem"
+				position = { x = 410 y = 556 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_rol"
+				position = { x = 570 y = 556 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_mkt"
+				position = { x = 730 y = 556 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_SER_acq"
+				position = { x = 890 y = 556 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_name"
+				position = { x = 40 y = 626 }
+				font = "hoi_18mbs"
+				text = "Turkey"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_int"
+				position = { x = 250 y = 626 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_dem"
+				position = { x = 410 y = 626 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_rol"
+				position = { x = 570 y = 626 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_mkt"
+				position = { x = 730 y = 626 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_TUR_acq"
+				position = { x = 890 y = 626 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_name"
+				position = { x = 40 y = 696 }
+				font = "hoi_18mbs"
+				text = "Ukraine"
+				format = left
+				fixedsize = yes
+				maxWidth = 200
+				maxHeight = 24
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_int"
+				position = { x = 250 y = 696 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_ENL_INTEGRATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_dem"
+				position = { x = 410 y = 696 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_DEMOCRACY"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_rol"
+				position = { x = 570 y = 696 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_mkt"
+				position = { x = 730 y = 696 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_MARKET"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_enl_cand_UKR_acq"
+				position = { x = 890 y = 696 }
+				font = "hoi_14"
+				text = "DVE_EU_ENL_ACQUIS"
+				format = left
+				fixedsize = yes
+				maxWidth = 150
+				maxHeight = 16
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_court_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_court_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_COURT_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			iconType = {
+				name = "DVE_eu_court_gavel"
+				spriteType = "GFX_DVE_eu_court_gavel"
+				position = { x = 30 y = 146 }
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_court_infringement"
+				position = { x = 180 y = 146 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COURT_INFRINGEMENT"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_court_preliminary"
+				position = { x = 180 y = 176 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COURT_PRELIMINARY"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_court_rule_of_law"
+				position = { x = 180 y = 206 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_COURT_RULE_OF_LAW"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+		}
+		containerWindowType = {
+			name = "DVE_eu_tab_bce_container"
+			position = { x = 10 y = 106 }
+			size = { width = 1080 height = 634 }
+			background = {
+				name = "Background"
+				spriteType = "GFX_tiled_window_transparent"
+			}
+			# Visible when this tab is selected
+			instantTextBoxType = {
+				name = "DVE_eu_bce_title"
+				position = { x = 30 y = 96 }
+				font = "hoi_18mbs"
+				text = "DVE_EU_BCE_TITLE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 24
+			}
+			iconType = {
+				name = "DVE_eu_bce_euro"
+				spriteType = "GFX_DVE_eu_bce_euro"
+				position = { x = 30 y = 146 }
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_bce_rate"
+				position = { x = 180 y = 146 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BCE_RATE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_bce_inflation"
+				position = { x = 180 y = 176 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BCE_INFLATION"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_bce_eurozone"
+				position = { x = 180 y = 206 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BCE_EUROZONE"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+			instantTextBoxType = {
+				name = "DVE_eu_bce_edp"
+				position = { x = 180 y = 236 }
+				font = "hoi_16mbs"
+				text = "DVE_EU_BCE_EDP"
+				format = left
+				fixedsize = yes
+				maxWidth = 300
+				maxHeight = 20
+			}
+		}
+	}
+}

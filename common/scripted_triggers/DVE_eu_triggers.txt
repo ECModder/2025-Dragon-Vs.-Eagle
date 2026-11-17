@@ -1,0 +1,61 @@
+# DvE - European Union: triggers (button states, membership checks, voting rules).
+
+# Candidate with 100 integration, no pending application, no cooldown.
+DVE_eu_can_apply = {
+	has_country_flag = DVE_eu_candidate
+	check_variable = { DVE_eu_integration = 100 }
+	NOT = { has_country_flag = DVE_eu_application_pending }
+	NOT = { has_country_flag = DVE_eu_application_cooldown }
+	has_political_power > 49.999
+}
+
+# Application accepted globally - this trigger just checks the flag is set by global resolution.
+DVE_eu_can_join = {
+	has_country_flag = DVE_eu_application_pending
+	has_global_flag = DVE_eu_application_accepted
+}
+
+DVE_eu_is_member = { has_country_flag = DVE_eu_member }
+DVE_eu_is_candidate = { has_country_flag = DVE_eu_candidate }
+
+DVE_eu_ep_group_epp = { check_variable = { DVE_eu_ep_delegation_epp > 0 } }
+DVE_eu_ep_group_sd = { check_variable = { DVE_eu_ep_delegation_sd > 0 } }
+DVE_eu_ep_group_re = { check_variable = { DVE_eu_ep_delegation_re > 0 } }
+DVE_eu_ep_group_greens = { check_variable = { DVE_eu_ep_delegation_greens > 0 } }
+DVE_eu_ep_group_id = { check_variable = { DVE_eu_ep_delegation_id > 0 } }
+DVE_eu_ep_group_ecr = { check_variable = { DVE_eu_ep_delegation_ecr > 0 } }
+DVE_eu_ep_group_left = { check_variable = { DVE_eu_ep_delegation_left > 0 } }
+DVE_eu_ep_group_ni = { check_variable = { DVE_eu_ep_delegation_ni > 0 } }
+
+# QMV passes if 55% states (15) AND 65% population.
+DVE_eu_council_qmv_possible = {
+	check_variable = { global.DVE_eu_council_qmv_pass = 1 }
+}
+
+DVE_eu_council_blocking_minority = { check_variable = { global.DVE_eu_council_blocking_minority = 1 } }
+
+DVE_eu_ep_pass = { check_variable = { global.DVE_eu_ep_pass = 1 } }
+
+DVE_eu_budget_negotiation_active = { has_global_flag = DVE_eu_budget_negotiation }
+
+DVE_eu_enlargement_active = { check_variable = { global.DVE_eu_enlargement_stage > 0 } }
+
+DVE_eu_subsidiarity_yellow_card = { check_variable = { global.DVE_eu_yellow_card_triggered = 1 } }
+DVE_eu_subsidiarity_orange_card = { check_variable = { global.DVE_eu_orange_card_triggered = 1 } }
+
+DVE_eu_eurozone_compliant = {
+	NOT = { has_country_flag = DVE_eu_edp_active }
+}
+
+DVE_eu_edp_active = { has_country_flag = DVE_eu_edp_active }
+
+DVE_eu_panel_visible = { is_ai = no has_country_flag = DVE_eu_panel_open }
+
+DVE_eu_tab_parliament_visible = { check_variable = { DVE_eu_selected_tab = 1 } }
+DVE_eu_tab_council_visible = { check_variable = { DVE_eu_selected_tab = 2 } }
+DVE_eu_tab_commission_visible = { check_variable = { DVE_eu_selected_tab = 3 } }
+DVE_eu_tab_budget_visible = { check_variable = { DVE_eu_selected_tab = 4 } }
+DVE_eu_tab_enlargement_visible = { check_variable = { DVE_eu_selected_tab = 5 } }
+DVE_eu_tab_court_visible = { check_variable = { DVE_eu_selected_tab = 6 } }
+DVE_eu_tab_bce_visible = { check_variable = { DVE_eu_selected_tab = 7 } }
+

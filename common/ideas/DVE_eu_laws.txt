@@ -1,0 +1,960 @@
+
+# EU Laws. Added through add_ideas by the EU legislative procedure; available = no keeps them out of the vanilla laws panel.
+
+ideas = {
+
+	# eu_single_market
+	eu_single_market = {
+		law = yes
+		use_list_view = yes
+
+		eu_sm_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				trade_opinion_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_sm_extended = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_industrial_complex_factor = 0.05
+				trade_opinion_factor = 0.15
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_sm_digital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.05
+				production_speed_industrial_complex_factor = 0.08
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_sm_complete = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				industrial_capacity_factory = 0.1
+				research_speed_factor = 0.1
+				trade_opinion_factor = 0.25
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_competition
+	eu_competition = {
+		law = yes
+		use_list_view = yes
+
+		eu_comp_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				production_speed_industrial_complex_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_comp_state_aid = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				consumer_goods_factor = -0.02
+				production_speed_industrial_complex_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_comp_digital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.08
+				production_speed_industrial_complex_factor = 0.07
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_consumer
+	eu_consumer = {
+		law = yes
+		use_list_view = yes
+
+		eu_cons_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_cons_enhanced = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.04
+				war_support_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_cons_digital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.05
+				research_speed_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_environment
+	eu_environment = {
+		law = yes
+		use_list_view = yes
+
+		eu_env_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.01
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_env_ets = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				fuel_gain_factor = -0.05
+				production_speed_arms_factory_factor = -0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_env_green_deal = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.07
+				production_speed_industrial_complex_factor = 0.05
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_env_net_zero = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.1
+				industrial_capacity_factory = 0.05
+				trade_opinion_factor = 0.15
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_energy
+	eu_energy = {
+		law = yes
+		use_list_view = yes
+
+		eu_energy_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				fuel_gain_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_energy_security = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				fuel_gain_factor = 0.08
+				stability_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_energy_union = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.08
+				production_speed_dockyard_factor = 0.1
+				fuel_gain_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_transport
+	eu_transport = {
+		law = yes
+		use_list_view = yes
+
+		eu_trans_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				production_speed_rail_way_factor = 0.1
+				production_speed_infrastructure_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_trans_single = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_dockyard_factor = 0.05
+				production_speed_air_factory_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_trans_green = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				fuel_gain_factor = 0.05
+				production_speed_rail_way_factor = 0.15
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_digital
+	eu_digital = {
+		law = yes
+		use_list_view = yes
+
+		eu_dig_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				trade_opinion_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_dig_platforms = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.03
+				research_speed_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_dig_data = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.1
+				production_speed_industrial_complex_factor = 0.08
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_dig_ai = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.15
+				drift_defence_factor = 0.1
+				production_speed_industrial_complex_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_social
+	eu_social = {
+		law = yes
+		use_list_view = yes
+
+		eu_soc_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.02
+				war_support_factor = 0.01
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_soc_pillar = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.04
+				monthly_population = 0.01
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_soc_fair = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.05
+				consumer_goods_factor = 0.02
+				monthly_population = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_employment
+	eu_employment = {
+		law = yes
+		use_list_view = yes
+
+		eu_emp_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				monthly_population = 0.02
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_emp_skills = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.05
+				monthly_population = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_emp_just = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.05
+				monthly_population = 0.03
+				production_speed_industrial_complex_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_regional
+	eu_regional = {
+		law = yes
+		use_list_view = yes
+
+		eu_reg_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				production_speed_infrastructure_factor = 0.1
+				production_speed_buildings_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_reg_post2020 = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_infrastructure_factor = 0.15
+				research_speed_factor = 0.03
+				monthly_population = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_reg_reform = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_infrastructure_factor = 0.2
+				industrial_capacity_factory = 0.05
+				stability_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_agriculture
+	eu_agriculture = {
+		law = yes
+		use_list_view = yes
+
+		eu_cap_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.02
+				monthly_population = 0.01
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_cap_green = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.03
+				monthly_population = 0.02
+				fuel_gain_factor = -0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_cap_future = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				monthly_population = 0.03
+				research_speed_factor = 0.03
+				production_speed_industrial_complex_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_fisheries
+	eu_fisheries = {
+		law = yes
+		use_list_view = yes
+
+		eu_fish_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.01
+				local_resources_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_fish_sustainable = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				local_resources_factor = 0.1
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_fish_ocean = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				local_resources_factor = 0.15
+				research_speed_factor = 0.05
+				trade_opinion_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_budget
+	eu_budget = {
+		law = yes
+		use_list_view = yes
+
+		eu_bud_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				political_power_gain = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_bud_reform = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.05
+				production_speed_industrial_complex_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_bud_future = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.1
+				industrial_capacity_factory = 0.05
+				war_support_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_taxation
+	eu_taxation = {
+		law = yes
+		use_list_view = yes
+
+		eu_tax_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				consumer_goods_factor = 0.01
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_tax_beps = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.03
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_tax_digital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.05
+				fuel_gain_factor = -0.03
+				research_speed_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_justice
+	eu_justice = {
+		law = yes
+		use_list_view = yes
+
+		eu_just_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.02
+				drift_defence_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_just_asylum = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.03
+				monthly_population = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_just_migration = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				stability_factor = 0.04
+				war_support_factor = 0.02
+				drift_defence_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_just_fundamental = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				drift_defence_factor = 0.1
+				stability_factor = 0.05
+				political_power_gain = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_foreign
+	eu_foreign = {
+		law = yes
+		use_list_view = yes
+
+		eu_cfsp_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				trade_opinion_factor = 0.1
+				drift_defence_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_csdp_missions = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				war_support_factor = 0.03
+				production_speed_arms_factory_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_csdp_strategic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				production_speed_arms_factory_factor = 0.1
+				industrial_capacity_factory = 0.05
+				war_support_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_enlargement
+	eu_enlargement = {
+		law = yes
+		use_list_view = yes
+
+		eu_enl_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				political_power_gain = 0.02
+				trade_opinion_factor = 0.1
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_enl_clusters = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.05
+				research_speed_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_enl_accession = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.1
+				stability_factor = 0.05
+				trade_opinion_factor = 0.2
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_rule_of_law
+	eu_rule_of_law = {
+		law = yes
+		use_list_view = yes
+
+		eu_rol_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				drift_defence_factor = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_rol_conditionality = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				drift_defence_factor = 0.1
+				political_power_gain = -0.02
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_rol_article7 = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				drift_defence_factor = 0.2
+				stability_factor = -0.05
+				war_support_factor = -0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_eurozone
+	eu_eurozone = {
+		law = yes
+		use_list_view = yes
+
+		eu_ez_sgp = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				political_power_gain = -0.02
+				stability_factor = 0.02
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_ez_banking = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.02
+				stability_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_ez_fiscal = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.03
+				stability_factor = 0.04
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_ez_capital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.05
+				research_speed_factor = 0.05
+				industrial_capacity_factory = 0.05
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+	# eu_bce
+	eu_bce = {
+		law = yes
+		use_list_view = yes
+
+		eu_bce_basic = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			default = yes
+			modifier = {
+				stability_factor = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_bce_unconventional = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				political_power_gain = 0.05
+				stability_factor = 0.02
+				industrial_capacity_factory = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+		eu_bce_digital = {
+			available = { always = no }
+			cost = 0
+			removal_cost = -1
+			cancel_if_invalid = no
+			modifier = {
+				research_speed_factor = 0.08
+				production_speed_industrial_complex_factor = 0.05
+				political_power_gain = 0.03
+			}
+			ai_will_do = { factor = 0 }
+		}
+
+	}
+
+}
