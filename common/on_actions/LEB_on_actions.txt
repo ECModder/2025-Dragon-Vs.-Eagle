@@ -1,0 +1,35 @@
+
+on_actions = {
+
+
+	on_startup = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = LEB_events_scheduled }
+					LEB = { exists = yes }
+				}
+				set_global_flag = LEB_events_scheduled
+				LEB = {
+					news_event = { id = leb.1 hours = 144 }        # Aoun elected   - 2025.01.07
+					news_event = { id = leb.2 hours = 3624 }       # Douma award    - 2025.06.01
+					country_event = { id = leb.10 hours = 9456 }   # elections      - 2026.01.30
+				}
+			}
+		}
+	}
+
+
+	on_monthly = {
+		effect = {
+			if = {
+				limit = { has_country_flag = LEB_paralysis_drain }
+				add_stability = -0.005
+			}
+			if = {
+				limit = { has_country_flag = LEB_polarization_drain }
+				add_stability = -0.005
+			}
+		}
+	}
+}
