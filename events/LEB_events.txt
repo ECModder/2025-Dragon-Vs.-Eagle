@@ -1,0 +1,72 @@
+add_namespace = leb
+
+
+
+
+news_event = {
+	id = leb.1
+	title = leb.1.t
+	desc = leb.1.d
+	picture = GFX_news_event_LEB_aoun_elected
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.1.a
+		if = {
+			limit = {
+				NOT = { has_completed_focus = LEB_the_state_of_lebanese_politics }
+			}
+			complete_national_focus = LEB_the_state_of_lebanese_politics
+		}
+	}
+}
+
+
+news_event = {
+	id = leb.2
+	title = leb.2.t
+	desc = leb.2.d
+	picture = GFX_news_event_LEB_douma_award
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.2.a
+		add_political_power = 200
+		add_timed_idea = { idea = LEB_douma_award days = 365 }
+	}
+}
+
+
+country_event = {
+	id = leb.3
+	title = leb.3.t
+	desc = leb.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.3.a
+	}
+}
+
+
+country_event = {
+	id = leb.10
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = LEB_the_parliamentary_elections_of_2026 }
+			}
+			complete_national_focus = LEB_the_parliamentary_elections_of_2026
+		}
+	}
+
+	option = {
+		name = leb.10.a
+	}
+}
