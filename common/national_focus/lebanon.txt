@@ -1,0 +1,143 @@
+
+
+focus_tree = {
+	id = lebanon_focus_tree
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = LEB
+		}
+	}
+
+	default = no
+
+	
+	focus = {
+		id = LEB_the_state_of_lebanese_politics
+		icon = GFX_goal_generic_political_pressure
+		x = 2
+		y = 0
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			custom_effect_tooltip = LEB_paralysis_drain_tt
+			custom_effect_tooltip = LEB_crisis_management_unlocked_tt
+			hidden_effect = {
+				set_country_flag = LEB_paralysis_drain
+				set_country_flag = LEB_crisis_management_unlocked
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_call_for_national_unity
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_the_state_of_lebanese_politics }
+		x = 2
+		y = 1
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.10
+			add_stability = 0.05
+			add_timed_idea = { idea = LEB_national_unity_campaign days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_take_political_action
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_call_for_national_unity }
+		x = 0
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 120
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = LEB_break_the_political_polarization
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_call_for_national_unity }
+		x = 4
+		y = 1
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			custom_effect_tooltip = LEB_polarization_drain_tt
+			custom_effect_tooltip = LEB_militia_raids_unlocked_tt
+			hidden_effect = {
+				set_country_flag = LEB_polarization_drain
+				set_country_flag = LEB_militia_raids_unlocked
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_meet_with_parliament_members
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_take_political_action }
+		x = 0
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = LEB_parliamentary_majority
+		}
+	}
+
+	focus = {
+		id = LEB_meet_with_prominent_politicians
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = LEB_break_the_political_polarization }
+		x = 4
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_regional_bosses
+		}
+	}
+
+	# Needs all three arrows in the design: national unity and both meetings.
+	focus = {
+		id = LEB_stabilize_the_country
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_call_for_national_unity }
+		prerequisite = { focus = LEB_meet_with_parliament_members }
+		prerequisite = { focus = LEB_meet_with_prominent_politicians }
+		x = 2
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			custom_effect_tooltip = LEB_drains_cleared_tt
+			hidden_effect = {
+				clr_country_flag = LEB_paralysis_drain
+				clr_country_flag = LEB_polarization_drain
+			}
+			add_ideas = LEB_stabilized_country
+		}
+	}
+
+	# Completed automatically on 2026.01.30 if not done by then (leb.10).
+	focus = {
+		id = LEB_the_parliamentary_elections_of_2026
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = LEB_stabilize_the_country }
+		x = 2
+		y = 3
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 250
+			add_timed_idea = { idea = LEB_election_costs days = 30 }
+			country_event = { id = leb.3 days = 1 }
+		}
+	}
+}
