@@ -1,0 +1,50 @@
+# ============================================================
+#   DvE - Lebanon: Crisis Management decisions.
+#   The coercive state decisions are unlocked by the focus
+#   "Break the political polarization": raid and dismantle
+#   hostile regional militias, one decision per Lebanese state.
+# ============================================================
+
+LEB_crisis_management = {
+
+	# State-targeted. FROM is the state. Once per state.
+	LEB_raid_hostile_militias = {
+		icon = GFX_decision_oppression
+
+		allowed = {
+			original_tag = LEB
+		}
+
+		state_target = any_owned_state
+		on_map_mode = map_and_decisions_view
+
+		target_root_trigger = {
+			has_country_flag = LEB_militia_raids_unlocked
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = { has_state_flag = LEB_militias_dismantled }
+			}
+		}
+		visible = {
+			has_country_flag = LEB_militia_raids_unlocked
+		}
+		available = {
+			FROM = { is_controlled_by = ROOT }
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_remove = 30
+
+		remove_effect = {
+			FROM = { set_state_flag = LEB_militias_dismantled }
+			add_stability = 0.02
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+}
