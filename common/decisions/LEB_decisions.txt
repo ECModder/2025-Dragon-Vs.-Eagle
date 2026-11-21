@@ -1,5 +1,3 @@
-
-
 LEB_crisis_management = {
 
 	LEB_raid_hostile_militias = {
@@ -13,7 +11,7 @@ LEB_crisis_management = {
 		on_map_mode = map_and_decisions_view
 
 		target_root_trigger = {
-			has_country_flag = LEB_militia_raids_unlocked
+			has_country_flag = LEB_crisis_management_unlocked
 		}
 		target_trigger = {
 			FROM = {
@@ -22,9 +20,13 @@ LEB_crisis_management = {
 			}
 		}
 		visible = {
-			has_country_flag = LEB_militia_raids_unlocked
+			has_country_flag = LEB_crisis_management_unlocked
 		}
 		available = {
+			custom_trigger_tooltip = {
+				tooltip = LEB_militia_raids_locked_tt
+				has_country_flag = LEB_militia_raids_unlocked
+			}
 			FROM = { is_controlled_by = ROOT }
 		}
 
