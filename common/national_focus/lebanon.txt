@@ -1,5 +1,3 @@
-
-
 focus_tree = {
 	id = lebanon_focus_tree
 
@@ -13,11 +11,13 @@ focus_tree = {
 
 	default = no
 
-	
+	initial_show_position = { focus = LEB_the_state_of_lebanese_politics }
+	continuous_focus_position = { x = 50 y = 1500 }
+
 	focus = {
 		id = LEB_the_state_of_lebanese_politics
 		icon = GFX_goal_generic_political_pressure
-		x = 2
+		x = 16
 		y = 0
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -35,7 +35,7 @@ focus_tree = {
 		id = LEB_call_for_national_unity
 		icon = GFX_goal_generic_national_unity
 		prerequisite = { focus = LEB_the_state_of_lebanese_politics }
-		x = 2
+		x = 16
 		y = 1
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
@@ -50,7 +50,7 @@ focus_tree = {
 		id = LEB_take_political_action
 		icon = GFX_goal_generic_propaganda
 		prerequisite = { focus = LEB_call_for_national_unity }
-		x = 0
+		x = 14
 		y = 1
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -64,7 +64,7 @@ focus_tree = {
 		id = LEB_break_the_political_polarization
 		icon = GFX_goal_generic_forceful_treaty
 		prerequisite = { focus = LEB_call_for_national_unity }
-		x = 4
+		x = 18
 		y = 1
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -82,7 +82,7 @@ focus_tree = {
 		id = LEB_meet_with_parliament_members
 		icon = GFX_goal_generic_alliance
 		prerequisite = { focus = LEB_take_political_action }
-		x = 0
+		x = 14
 		y = 2
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
@@ -95,7 +95,7 @@ focus_tree = {
 		id = LEB_meet_with_prominent_politicians
 		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = LEB_break_the_political_polarization }
-		x = 4
+		x = 18
 		y = 2
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
@@ -104,14 +104,13 @@ focus_tree = {
 		}
 	}
 
-	# Needs all three arrows in the design: national unity and both meetings.
 	focus = {
 		id = LEB_stabilize_the_country
 		icon = GFX_goal_generic_major_alliance
 		prerequisite = { focus = LEB_call_for_national_unity }
 		prerequisite = { focus = LEB_meet_with_parliament_members }
 		prerequisite = { focus = LEB_meet_with_prominent_politicians }
-		x = 2
+		x = 16
 		y = 2
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
@@ -125,12 +124,11 @@ focus_tree = {
 		}
 	}
 
-	# Completed automatically on 2026.01.30 if not done by then (leb.10).
 	focus = {
 		id = LEB_the_parliamentary_elections_of_2026
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = LEB_stabilize_the_country }
-		x = 2
+		x = 16
 		y = 3
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
@@ -140,4 +138,637 @@ focus_tree = {
 			country_event = { id = leb.3 days = 1 }
 		}
 	}
+
+	focus = {
+		id = LEB_state_of_army
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = LEB_the_parliamentary_elections_of_2026 }
+		x = 4
+		y = 0
+		cost = 2
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = LEB_army_decay
+		}
+	}
+
+	focus = {
+		id = LEB_soldiers_safety_net
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_state_of_army }
+		x = 4
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_war_support = 0.10
+			add_political_power = -50
+			add_ideas = LEB_soldiers_safety_net_idea
+		}
+	}
+
+	focus = {
+		id = LEB_equipment_concern
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = LEB_state_of_army }
+		x = 6
+		y = 1
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_political_power = -40
+			add_tech_bonus = {
+				name = LEB_equipment_concern
+				bonus = 1.0
+				uses = 1
+				category = infantry_weapons
+				category = support_tech
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_resolve_the_manpower_issue
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = LEB_soldiers_safety_net }
+		x = 2
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = LEB_manpower_training
+			add_timed_idea = { idea = LEB_manpower_processing days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_western_training_cadres
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = LEB_resolve_the_manpower_issue }
+		x = 0
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = LEB_western_training_cadres_idea
+		}
+	}
+
+	focus = {
+		id = LEB_revive_the_conscription_bill
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_resolve_the_manpower_issue }
+		x = 2
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			add_ideas = LEB_conscription_bill
+		}
+	}
+
+	focus = {
+		id = LEB_the_salary_emergency
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_revive_the_conscription_bill }
+		x = 2
+		y = 3
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_army_salaries
+			add_timed_idea = { idea = LEB_salary_bailout days = 180 }
+		}
+	}
+
+	focus = {
+		id = LEB_the_absolute_moonlighting_ban
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_western_training_cadres }
+		prerequisite = { focus = LEB_the_salary_emergency }
+		x = 0
+		y = 3
+		cost = 5
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		completion_reward = {
+			add_ideas = LEB_moonlighting_ban
+			add_timed_idea = { idea = LEB_moonlighting_anger days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_reanimate_the_arms_industry
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = LEB_equipment_concern }
+		x = 6
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_local_assembly_lines
+			add_timed_idea = { idea = LEB_raw_material_diversion days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_the_drone_eye
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = LEB_reanimate_the_arms_industry }
+		x = 8
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = LEB_drone_eye
+		}
+	}
+
+	focus = {
+		id = LEB_securing_the_crossings
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = LEB_the_drone_eye }
+		x = 8
+		y = 3
+		cost = 10
+		search_filters = { FOCUS_FILTER_STABILITY }
+		completion_reward = {
+			add_ideas = LEB_secured_crossings
+			custom_effect_tooltip = LEB_border_forts_tt
+			hidden_effect = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = ROOT
+						any_neighbor_state = { NOT = { is_owned_by = ROOT } }
+					}
+					add_building_construction = {
+						type = bunker
+						level = 2
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_military_industrialization
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_soldiers_safety_net }
+		x = 4
+		y = 3
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_military_industrialization_idea
+		}
+	}
+
+	focus = {
+		id = LEB_the_guard_of_the_judiciary
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_the_absolute_moonlighting_ban }
+		prerequisite = { focus = LEB_military_industrialization }
+		prerequisite = { focus = LEB_securing_the_crossings }
+		x = 4
+		y = 4
+		cost = 5
+		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			remove_ideas = LEB_army_decay
+			remove_ideas = LEB_fractured_armed_forces
+			add_ideas = LEB_guard_of_the_judiciary_idea
+		}
+	}
+
+	focus = {
+		id = LEB_state_of_industry
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_the_parliamentary_elections_of_2026 }
+		x = 28
+		y = 0
+		cost = 2
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_weak_industry
+		}
+	}
+
+	focus = {
+		id = LEB_civilian_concern
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = LEB_state_of_industry }
+		x = 26
+		y = 1
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_political_power = 100
+			add_timed_idea = { idea = LEB_shifting_resources days = 180 }
+		}
+	}
+
+	focus = {
+		id = LEB_the_naval_concern
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = LEB_state_of_industry }
+		x = 28
+		y = 1
+		cost = 5
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		completion_reward = {
+			add_ideas = LEB_steel_for_the_coast
+			add_tech_bonus = {
+				name = LEB_the_naval_concern
+				bonus = 1.0
+				uses = 1
+				category = transport
+				category = naval_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_military_industry_concern
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = LEB_state_of_industry }
+		x = 31
+		y = 1
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = LEB_rearmament
+		}
+	}
+
+	focus = {
+		id = LEB_civilian_industrial_projects
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = LEB_civilian_concern }
+		x = 26
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = LEB_new_production_lines days = 90 }
+			553 = {
+				if = {
+					limit = { is_owned_and_controlled_by = ROOT }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_infrastructure_projects
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = LEB_civilian_industrial_projects }
+		x = 24
+		y = 2
+		cost = 5
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_political_power = -50
+			add_ideas = LEB_infrastructure_works
+			every_owned_state = {
+				limit = {
+					OR = { state = 553 state = 1074 state = 1112 }
+					is_controlled_by = ROOT
+				}
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_infrastructure_projects_north
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = LEB_infrastructure_projects }
+		x = 24
+		y = 3
+		cost = 20
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = LEB_northern_logistics days = 90 }
+			1075 = {
+				if = {
+					limit = { is_owned_and_controlled_by = ROOT }
+					add_extra_state_shared_building_slots = 1
+					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_tyre_industrial_compound
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = LEB_civilian_industrial_projects }
+		x = 26
+		y = 3
+		cost = 12.86
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			1113 = {
+				if = {
+					limit = { is_owned_and_controlled_by = ROOT }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = { type = industrial_complex level = 1 }
+					add_building_construction = { type = synthetic_refinery level = 1 }
+					add_dynamic_modifier = { modifier = LEB_tyre_volatile_border days = 180 }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_naval_projects_in_the_south
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = LEB_the_naval_concern }
+		x = 28
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_naval_projects
+		}
+	}
+
+	focus = {
+		id = LEB_bekaa_military_compound
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = LEB_military_industry_concern }
+		x = 31
+		y = 2
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_timed_idea = { idea = LEB_armory_funding days = 90 }
+			1073 = {
+				if = {
+					limit = { is_owned_and_controlled_by = ROOT }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_arms_manufacturing_program
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = LEB_bekaa_military_compound }
+		x = 31
+		y = 3
+		cost = 10
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			add_ideas = LEB_arms_program
+		}
+	}
+
+	focus = {
+		id = LEB_successful_industry
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_infrastructure_projects_north }
+		prerequisite = { focus = LEB_tyre_industrial_compound }
+		prerequisite = { focus = LEB_naval_projects_in_the_south }
+		prerequisite = { focus = LEB_arms_manufacturing_program }
+		x = 28
+		y = 4
+		cost = 2
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		completion_reward = {
+			remove_ideas = LEB_weak_industry
+			swap_ideas = {
+				remove_idea = LEB_the_bankrupt_concrete_gridlock
+				add_idea = LEB_industrial_growth
+			}
+			add_ideas = LEB_successful_industry_idea
+		}
+	}
+
+	focus = {
+		id = LEB_call_of_the_yellow_warriors
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_the_parliamentary_elections_of_2026 }
+		mutually_exclusive = { focus = LEB_the_elections_are_cancelled focus = LEB_defenders_of_the_holy_cedar }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LEB_decided_by_election_tt
+				always = no
+			}
+		}
+		x = 11
+		y = 5
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			add_manpower = 5000
+			set_politics = { ruling_party = fundamentalism }
+		}
+	}
+
+	focus = {
+		id = LEB_reanimate_the_resistance
+		icon = GFX_goal_generic_allies_build_infantry
+		prerequisite = { focus = LEB_call_of_the_yellow_warriors }
+		x = 11
+		y = 6
+		cost = 2
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_underground_security
+		}
+	}
+
+	focus = {
+		id = LEB_the_elections_are_cancelled
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_the_parliamentary_elections_of_2026 }
+		mutually_exclusive = { focus = LEB_call_of_the_yellow_warriors focus = LEB_defenders_of_the_holy_cedar }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LEB_decided_by_election_tt
+				always = no
+			}
+		}
+		x = 16
+		y = 5
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 150
+			add_war_support = 0.10
+			add_stability = -0.15
+			set_politics = { ruling_party = centrist elections_allowed = no }
+		}
+	}
+
+	focus = {
+		id = LEB_return_to_normalcy
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_the_elections_are_cancelled }
+		x = 16
+		y = 6
+		cost = 2
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_false_peace
+		}
+	}
+
+	focus = {
+		id = LEB_decentralize_economic_policies
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_return_to_normalcy }
+		x = 16
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_regional_cantons
+		}
+	}
+
+	focus = {
+		id = LEB_take_a_foreign_initiative
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_decentralize_economic_policies }
+		x = 14
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 100
+			add_ideas = LEB_foreign_initiative
+			add_timed_idea = { idea = LEB_diplomatic_costs days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_foreign_relations
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_take_a_foreign_initiative }
+		x = 14
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = -0.05
+			add_ideas = LEB_foreign_pacts
+		}
+	}
+
+	focus = {
+		id = LEB_industrial_appropriation
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = LEB_decentralize_economic_policies }
+		x = 18
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_appropriated_industry
+			add_timed_idea = { idea = LEB_market_panic days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_port_in_tripoli
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { focus = LEB_industrial_appropriation }
+		x = 18
+		y = 8
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_timed_idea = { idea = LEB_tripoli_financing days = 90 }
+			1075 = {
+				if = {
+					limit = { is_owned_and_controlled_by = ROOT }
+					add_extra_state_shared_building_slots = 2
+					add_building_construction = { type = dockyard level = 2 instant_build = yes }
+					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_begin_the_reforms
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = LEB_decentralize_economic_policies }
+		prerequisite = { focus = LEB_port_in_tripoli }
+		x = 16
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_sweeping_reforms
+			add_timed_idea = { idea = LEB_reform_slowdown days = 120 }
+		}
+	}
+
+	focus = {
+		id = LEB_the_question_of_disarmament
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = LEB_begin_the_reforms }
+		prerequisite = { focus = LEB_foreign_relations }
+		x = 16
+		y = 9
+		cost = 2
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_stability = 0.20
+			add_war_support = -0.10
+			add_ideas = LEB_disarmed_factions
+		}
+	}
+
+	focus = {
+		id = LEB_defenders_of_the_holy_cedar
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_the_parliamentary_elections_of_2026 }
+		mutually_exclusive = { focus = LEB_call_of_the_yellow_warriors focus = LEB_the_elections_are_cancelled }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LEB_decided_by_election_tt
+				always = no
+			}
+		}
+		x = 21
+		y = 5
+		cost = 10
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 150
+			add_ideas = LEB_lebanese_forces_government
+			set_politics = { ruling_party = conservative }
+		}
+	}
+
+	focus = {
+		id = LEB_start_with_the_reforms
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = LEB_defenders_of_the_holy_cedar }
+		x = 21
+		y = 6
+		cost = 2
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_first_reforms
+			add_timed_idea = { idea = LEB_first_reforms_slowdown days = 90 }
+		}
+	}
+
 }
