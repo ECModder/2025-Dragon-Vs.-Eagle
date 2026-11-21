@@ -771,4 +771,773 @@ focus_tree = {
 		}
 	}
 
+	focus = {
+		id = LEB_moderate_reforms
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_start_with_the_reforms }
+		mutually_exclusive = { focus = LEB_extreme_reforms }
+		x = 21
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			add_popularity = { ideology = fundamentalism popularity = -0.02 }
+			add_stability = 0.05
+			add_political_power = 50
+			add_timed_idea = { idea = LEB_moderate_reforms_temp days = 60 }
+		}
+	}
+
+	focus = {
+		id = LEB_administrative_decentralization
+		icon = GFX_goal_generic_construction
+		prerequisite = { focus = LEB_moderate_reforms }
+		x = 21
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_administrative_decentralization_idea
+		}
+	}
+
+	focus = {
+		id = LEB_judicial_independance
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_administrative_decentralization }
+		x = 21
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			remove_ideas = LEB_parallel_institutions
+			add_ideas = LEB_judicial_independance_idea
+			add_timed_idea = { idea = LEB_judicial_friction days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_public_sector_audit
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_administrative_decentralization }
+		x = 23
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = progressive popularity = 0.02 }
+			add_popularity = { ideology = autocracy popularity = -0.02 }
+			add_political_power = 100
+			add_ideas = LEB_public_sector_audit_idea
+			add_timed_idea = { idea = LEB_bureaucratic_disruption days = 120 }
+		}
+	}
+
+	focus = {
+		id = LEB_privatization_of_state_monopolies
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = LEB_public_sector_audit }
+		prerequisite = { focus = LEB_judicial_independance }
+		x = 23
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_stability = -0.05
+			add_ideas = LEB_privatization_idea
+		}
+	}
+
+	focus = {
+		id = LEB_financial_decentralization
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_privatization_of_state_monopolies }
+		x = 23
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_financial_decentralization_idea
+		}
+	}
+
+	focus = {
+		id = LEB_renewable_energy
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_financial_decentralization }
+		prerequisite = { focus = LEB_lifting_of_immunities }
+		x = 23
+		y = 12
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_renewable_energy_idea
+			add_timed_idea = { idea = LEB_renewable_transition days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_neutrality_of_lebanon
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_renewable_energy }
+		x = 23
+		y = 13
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			add_ideas = LEB_neutrality_idea
+		}
+	}
+
+	focus = {
+		id = LEB_extreme_reforms
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_start_with_the_reforms }
+		mutually_exclusive = { focus = LEB_moderate_reforms }
+		x = 26
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.05 }
+			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			add_stability = -0.10
+			add_ideas = LEB_extreme_reforms_idea
+		}
+	}
+
+	focus = {
+		id = LEB_imf_stabilization_program
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_extreme_reforms }
+		x = 26
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_imf_program_idea
+			add_timed_idea = { idea = LEB_imf_conditions days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_capital_controls
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_imf_stabilization_program }
+		x = 26
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_capital_controls_idea
+			add_timed_idea = { idea = LEB_frozen_assets days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_diaspora_voting_rights
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = LEB_capital_controls }
+		x = 28
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = progressive popularity = 0.02 }
+			add_political_power = -40
+			add_ideas = LEB_diaspora_voting_idea
+		}
+	}
+
+	focus = {
+		id = LEB_unified_civil_status
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_diaspora_voting_rights }
+		x = 28
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			add_popularity = { ideology = autocracy popularity = -0.02 }
+			add_stability = -0.05
+			add_ideas = LEB_unified_civil_status_idea
+		}
+	}
+
+	focus = {
+		id = LEB_lifting_of_immunities
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = LEB_financial_decentralization focus = LEB_unified_civil_status }
+		x = 26
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = autocracy popularity = -0.03 }
+			add_ideas = LEB_lifting_immunities_idea
+		}
+	}
+
+	focus = {
+		id = LEB_digitalization_of_government
+		icon = GFX_goal_generic_radar
+		prerequisite = { focus = LEB_unified_civil_status }
+		prerequisite = { focus = LEB_lifting_of_immunities }
+		x = 28
+		y = 13
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_tech_bonus = {
+				name = LEB_digitalization_of_government
+				bonus = 0.5
+				uses = 1
+				category = electronics
+			}
+			add_ideas = LEB_digitalization_idea
+		}
+	}
+
+	focus = {
+		id = LEB_syrian_refugee_repatriation
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = LEB_neutrality_of_lebanon focus = LEB_digitalization_of_government }
+		x = 25
+		y = 14
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_refugee_repatriation_idea
+			custom_effect_tooltip = LEB_west_minus_10_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
+					add_opinion_modifier = { target = ROOT modifier = LEB_refugee_blowback }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_national_security
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = LEB_extreme_reforms }
+		x = 32
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			army_experience = 15
+			add_stability = -0.05
+			add_ideas = LEB_national_security_idea
+		}
+	}
+
+	focus = {
+		id = LEB_border_controls
+		icon = GFX_goal_generic_fortify_city
+		prerequisite = { focus = LEB_national_security }
+		x = 30
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = -0.02 }
+			add_manpower = -1000
+			add_ideas = LEB_border_controls_idea
+			custom_effect_tooltip = LEB_border_forts_tt
+			hidden_effect = {
+				every_owned_state = {
+					limit = {
+						is_controlled_by = ROOT
+						any_neighbor_state = { NOT = { is_owned_by = ROOT } }
+					}
+					add_building_construction = {
+						type = bunker
+						level = 2
+						instant_build = yes
+						province = {
+							all_provinces = yes
+							limit_to_border = yes
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_sovereign_decision_making
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_national_security }
+		x = 32
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_command_power = 25
+			add_political_power = 120
+			add_ideas = LEB_sovereign_decisions_idea
+		}
+	}
+
+	focus = {
+		id = LEB_open_up_relations_with_nato
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_sovereign_decision_making }
+		x = 34
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_nato_alignment
+			army_experience = 10
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 producer = USA }
+			USA = { add_opinion_modifier = { target = ROOT modifier = LEB_nato_partner } }
+			add_tech_bonus = {
+				name = LEB_open_up_relations_with_nato
+				bonus = 1.0
+				uses = 1
+				category = land_doctrine
+				category = infantry_weapons
+			}
+			custom_effect_tooltip = LEB_anti_west_hostile_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { OR = { tag = SYR tag = PER has_government = fundamentalism } }
+					add_opinion_modifier = { target = ROOT modifier = LEB_aligned_with_nato }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_begin_talks_with_syria
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_open_up_relations_with_nato }
+		x = 34
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			SYR = { add_opinion_modifier = { target = ROOT modifier = LEB_syria_ties } }
+			add_opinion_modifier = { target = SYR modifier = LEB_syria_ties }
+			add_ideas = LEB_syria_talks_idea
+			custom_effect_tooltip = LEB_north_infra_tt
+			hidden_effect = {
+				1075 = {
+					if = {
+						limit = { is_owned_and_controlled_by = ROOT }
+						add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_the_paris_conference
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_sovereign_decision_making }
+		x = 30
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_political_power = 150
+			add_ideas = LEB_paris_conference_idea
+			custom_effect_tooltip = LEB_paris_relations_tt
+			hidden_effect = {
+				FRA = { add_opinion_modifier = { target = ROOT modifier = LEB_paris_relations } }
+				GER = { add_opinion_modifier = { target = ROOT modifier = LEB_paris_relations } }
+				add_opinion_modifier = { target = FRA modifier = LEB_paris_relations }
+				add_opinion_modifier = { target = GER modifier = LEB_paris_relations }
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_iran_lebanon_energy_corridor
+		icon = GFX_goal_generic_construct_infrastructure
+		prerequisite = { focus = LEB_reanimate_the_resistance }
+		x = 5
+		y = 6
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			PER = { add_opinion_modifier = { target = ROOT modifier = LEB_iran_ties } }
+			add_opinion_modifier = { target = PER modifier = LEB_iran_ties }
+			add_ideas = LEB_energy_corridor_idea
+			add_timed_idea = { idea = LEB_grid_integration days = 90 }
+			custom_effect_tooltip = LEB_saida_factories_tt
+			hidden_effect = {
+				1113 = {
+					if = {
+						limit = { is_owned_and_controlled_by = ROOT }
+						add_extra_state_shared_building_slots = 2
+						add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_single_national_constituency
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_iran_lebanon_energy_corridor }
+		x = 5
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_popularity = { ideology = conservative popularity = -0.02 }
+			add_ideas = LEB_single_constituency_idea
+			add_timed_idea = { idea = LEB_regional_gridlock days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_lower_the_voting_age
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = LEB_single_national_constituency }
+		x = 2
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_young_voters
+			add_political_power = 100
+			add_war_support = 0.05
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+		}
+	}
+
+	focus = {
+		id = LEB_agricultural_and_industrial_subsidies
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_reanimate_the_resistance }
+		x = 11
+		y = 7
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_political_power = -100
+			add_ideas = LEB_subsidies_idea
+		}
+	}
+
+	focus = {
+		id = LEB_institutional_integration
+		icon = GFX_goal_generic_national_unity
+		prerequisite = { focus = LEB_agricultural_and_industrial_subsidies }
+		prerequisite = { focus = LEB_lower_the_voting_age }
+		x = 11
+		y = 8
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_ideas = LEB_institutional_integration_idea
+		}
+	}
+
+	focus = {
+		id = LEB_nationalization_of_industrial_companies
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = LEB_institutional_integration }
+		x = 11
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_nationalized_industry
+			add_popularity = { ideology = conservative popularity = -0.02 }
+		}
+	}
+
+	focus = {
+		id = LEB_target_the_banking_elite
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_nationalization_of_industrial_companies }
+		x = 11
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = reactionary popularity = -0.02 }
+			add_political_power = 250
+			add_timed_idea = { idea = LEB_economic_gridlock days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_aggressive_wealth_taxes
+		icon = GFX_goal_generic_consumer_goods
+		prerequisite = { focus = LEB_target_the_banking_elite }
+		x = 11
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_wealth_taxes_idea
+		}
+	}
+
+	focus = {
+		id = LEB_sanction_monopolies
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = LEB_aggressive_wealth_taxes }
+		x = 11
+		y = 12
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_sanction_monopolies_idea
+		}
+	}
+
+	focus = {
+		id = LEB_the_resistance_economy
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = LEB_sanction_monopolies }
+		x = 11
+		y = 13
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			remove_ideas = LEB_parallel_institutions
+			add_stability = -0.05
+			add_ideas = LEB_resistance_economy_idea
+			custom_effect_tooltip = LEB_retention_penalties_tt
+			hidden_effect = {
+				if = {
+					limit = { has_idea = LEB_naval_projects }
+					swap_ideas = { remove_idea = LEB_naval_projects add_idea = LEB_naval_projects_clean }
+				}
+				if = {
+					limit = { has_idea = LEB_arms_program }
+					swap_ideas = { remove_idea = LEB_arms_program add_idea = LEB_arms_program_clean }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_silence_the_sectarians
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_lower_the_voting_age }
+		x = 5
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = conservative popularity = -0.03 }
+			add_popularity = { ideology = absolutism popularity = -0.02 }
+			add_stability = -0.10
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_ideas = LEB_silence_sectarians_idea
+		}
+	}
+
+	focus = {
+		id = LEB_strategic_depth_treaty
+		icon = GFX_goal_generic_major_alliance
+		prerequisite = { focus = LEB_silence_the_sectarians }
+		x = 2
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_iran_alliance
+			army_experience = 20
+			custom_effect_tooltip = LEB_iran_lend_lease_tt
+			custom_effect_tooltip = LEB_west_minus_40_tt
+			hidden_effect = {
+				PER = { send_equipment = { target = ROOT type = infantry_equipment amount = 1000 } }
+			}
+			hidden_effect = {
+				every_other_country = {
+					limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
+					add_opinion_modifier = { target = ROOT modifier = LEB_iran_treaty }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_full_normalization_with_damascus
+		icon = GFX_goal_generic_alliance
+		prerequisite = { focus = LEB_strategic_depth_treaty }
+		x = 0
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_damascus_trade
+			SYR = { add_opinion_modifier = { target = ROOT modifier = LEB_syria_ties } }
+			add_opinion_modifier = { target = SYR modifier = LEB_syria_ties }
+			custom_effect_tooltip = LEB_north_infra_tt
+			hidden_effect = {
+				1075 = {
+					if = {
+						limit = { is_owned_and_controlled_by = ROOT }
+						add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_ban_western_accords
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_strategic_depth_treaty }
+		x = 2
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_political_power = 100
+			add_ideas = LEB_ban_western_idea
+		}
+	}
+
+	focus = {
+		id = LEB_denounce_the_americans
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_ban_western_accords }
+		prerequisite = { focus = LEB_full_normalization_with_damascus }
+		x = 2
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			USA = { add_opinion_modifier = { target = ROOT modifier = LEB_denounced } }
+			add_ideas = LEB_denounce_americans_idea
+		}
+	}
+
+	focus = {
+		id = LEB_denounce_the_israelis
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_denounce_the_americans }
+		x = 2
+		y = 12
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			army_experience = 15
+			ISR = { add_opinion_modifier = { target = ROOT modifier = LEB_denounced } }
+			add_stability = -0.05
+			add_ideas = LEB_denounce_israelis_idea
+		}
+	}
+
+	focus = {
+		id = LEB_establishment_of_our_theocracy
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = { focus = LEB_silence_the_sectarians }
+		prerequisite = { focus = LEB_sanction_monopolies }
+		x = 8
+		y = 9
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.1 }
+			add_ideas = LEB_theocracy_idea
+			add_timed_idea = { idea = LEB_bureaucratic_transition days = 120 }
+		}
+	}
+
+	focus = {
+		id = LEB_legalization_of_the_arsenal
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = LEB_establishment_of_our_theocracy }
+		x = 8
+		y = 10
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_ideas = LEB_legal_arsenal
+			army_experience = 10
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 100 producer = ROOT }
+			add_tech_bonus = {
+				name = LEB_legalization_of_the_arsenal
+				bonus = 1.0
+				uses = 1
+				technology = rocket_artillery
+				technology = rocket_artillery2
+				technology = rocket_artillery3
+				technology = rocket_artillery4
+			}
+		}
+	}
+
+	focus = {
+		id = LEB_censor_western_normalization
+		icon = GFX_goal_generic_propaganda
+		prerequisite = { focus = LEB_legalization_of_the_arsenal }
+		x = 8
+		y = 11
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_ideas = LEB_censor_idea
+			add_timed_idea = { idea = LEB_monitoring_costs days = 90 }
+		}
+	}
+
+	focus = {
+		id = LEB_legislative_defiance_of_un
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = LEB_censor_western_normalization }
+		prerequisite = { focus = LEB_denounce_the_israelis }
+		x = 8
+		y = 12
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			remove_ideas = LEB_shadow_of_litani
+			add_ideas = LEB_un_defiance_idea
+		}
+	}
+
+	focus = {
+		id = LEB_to_jerusalem_we_march
+		icon = GFX_goal_generic_demand_territory
+		prerequisite = { focus = LEB_legislative_defiance_of_un }
+		prerequisite = { focus = LEB_denounce_the_israelis }
+		prerequisite = { focus = LEB_the_resistance_economy }
+		x = 8
+		y = 14
+		cost = 5
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			army_experience = 25
+			add_command_power = 50
+			add_manpower = 5000
+			add_ideas = LEB_to_jerusalem_idea
+			if = {
+				limit = { country_exists = ISR }
+				create_wargoal = {
+					type = annex_everything
+					target = ISR
+					expire = 0
+				}
+			}
+		}
+	}
+
 }
