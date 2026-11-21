@@ -78,3 +78,48 @@ country_event = {
 		name = leb.10.a
 	}
 }
+
+news_event = {
+	id = leb.20
+	title = leb.20.t
+	desc = leb.20.d
+	picture = GFX_news_event_LEB_aoun_elected
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.20.a
+		hidden_effect = {
+			country_event = { id = leb.21 days = 14 random_days = 30 }
+		}
+	}
+}
+
+country_event = {
+	id = leb.21
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_completed_focus = LEB_re_ratify_agreement_1701
+				has_completed_focus = LEB_mobilize_army_and_gendarmerie
+			}
+			random_list = {
+				25 = { LEB_civil_war_start_effect = yes }
+				75 = { }
+			}
+		}
+		else = {
+			random_list = {
+				40 = { LEB_civil_war_start_effect = yes }
+				60 = { }
+			}
+		}
+	}
+
+	option = {
+		name = leb.21.a
+	}
+}
