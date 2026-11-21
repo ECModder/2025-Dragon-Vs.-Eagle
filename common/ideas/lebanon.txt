@@ -9,9 +9,9 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-				political_power_gain = -0.4
-                stability_factor = -0.2
-                command_power_gain = -0.15
+				political_power_factor = -0.4
+				stability_factor = -0.2
+				command_power_gain_mult = -0.15
 			}
 		}
         LEB_fractured_armed_forces = {
@@ -23,8 +23,8 @@ ideas = {
 
 			modifier = {
 				army_org_factor = -0.15
-                army_morale = -0.10
-                training_time_army = 0.20
+				army_morale_factor = -0.1
+				training_time_army_factor = 0.2
 			}
 		}
          LEB_parallel_institutions = {
@@ -36,8 +36,8 @@ ideas = {
 
 			modifier = {
 				consumer_goods_factor = 0.1
-                industrial_capacity_factory = -0.15
-                compliance_gain = -0.10
+				industrial_capacity_factory = -0.15
+				compliance_growth = -0.1
 			}
 		}
         LEB_shadow_of_litani = {
@@ -61,15 +61,13 @@ ideas = {
 			removal_cost = -1
 
 			modifier = {
-                production_speed_buildings_factor = -0.35
-                production_speed_infrastructure_factor = -0.20
-                industry_free_repair_factor = -0.25
+				production_speed_buildings_factor = -0.35
+				production_speed_infrastructure_factor = -0.2
+				industry_repair_factor = -0.25
 			}
 		}
-    }
-}
 
-LEB_national_unity_campaign = {
+		LEB_national_unity_campaign = {
 			picture = generic_pp_unity_bonus
 			allowed = { always = no }
 			allowed_civil_war = { always = yes }
@@ -139,7 +137,7 @@ LEB_national_unity_campaign = {
 
 			modifier = {
 				army_org_factor = -0.15
-				training_time_factor = 0.20
+				training_time_army_factor = 0.20
 			}
 		}
 
@@ -150,7 +148,7 @@ LEB_national_unity_campaign = {
 			removal_cost = -1
 
 			modifier = {
-				army_org_regain = 0.05
+				army_morale_factor = 0.05
 			}
 		}
 
@@ -161,7 +159,7 @@ LEB_national_unity_campaign = {
 			removal_cost = -1
 
 			modifier = {
-				training_time_factor = -0.05
+				training_time_army_factor = -0.05
 			}
 		}
 
@@ -229,7 +227,7 @@ LEB_national_unity_campaign = {
 			removal_cost = -1
 
 			modifier = {
-				army_org_regain = 0.10
+				army_morale_factor = 0.10
 			}
 		}
 
@@ -402,7 +400,7 @@ LEB_national_unity_campaign = {
 			modifier = {
 				production_speed_buildings_factor = 0.05
 				stability_factor = 0.005
-				repair_speed_factor = 0.05
+				industry_repair_factor = 0.05
 			}
 		}
 
@@ -477,7 +475,7 @@ LEB_national_unity_campaign = {
 			removal_cost = -1
 
 			modifier = {
-				army_org_regain = 0.10
+				army_morale_factor = 0.10
 				political_power_factor = -0.10
 			}
 		}
