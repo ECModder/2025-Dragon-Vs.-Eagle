@@ -8,12 +8,18 @@
 characters = {
 
 	# LEB: Lebanese Forces vice president, first head of the emergency administration.
-	# No photo exists: no portraits block, the game shows the unknown-leader silhouette.
 	LEB_georges_adwan = {
 		name = LEB_georges_adwan
+		portraits = {
+			civilian = {
+				large = "gfx/leaders/LEB/portrait_large_georges_adwan.dds"
+				small = "gfx/leaders/LEB/small_georges_adwan.dds"
+			}
+		}
 		country_leader = {
-			ideology = christian_democracy
-			traits = { }
+			desc = LEB_georges_adwan_desc
+			ideology = conservatism
+			traits = { LEB_trait_adwan }
 			expire = "2100.1.1.1"
 			id = -1
 		}
