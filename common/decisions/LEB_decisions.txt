@@ -43,4 +43,57 @@ LEB_crisis_management = {
 			base = 1
 		}
 	}
+
+	LEB_internal_security_sweep = {
+		icon = GFX_decision_generic_police_action
+
+		allowed = {
+			original_tag = LEB
+		}
+		visible = {
+			has_country_flag = LEB_internal_security_unlocked
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = 0.02
+			add_popularity = { ideology = fundamentalism popularity = -0.02 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	LEB_seek_foreign_support = {
+		icon = GFX_decision_generic_political_address
+
+		allowed = {
+			original_tag = LEB
+		}
+		visible = {
+			has_country_flag = LEB_diplomatic_branch_unlocked
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			custom_effect_tooltip = LEB_foreign_support_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
+					add_opinion_modifier = { target = ROOT modifier = LEB_security_cooperation }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
 }
