@@ -21,6 +21,12 @@ LEB_cw_adwan_takes_over_effect = {
 	LEB_Aoun = {
 		set_portraits = { civilian = { large = GFX_portrait_leb_aoun_general } }
 	}
+	if = {
+		limit = { has_character = LEB_rodolph_haykal }
+		LEB_rodolph_haykal = {
+			set_portraits = { army = { large = GFX_portrait_leb_haykal_war } civilian = { large = GFX_portrait_leb_haykal_war } }
+		}
+	}
 	set_politics = {
 		ruling_party = reactionary
 		elections_allowed = no
@@ -77,4 +83,13 @@ LEB_cw_emergency_coalition_politics_effect = {
 		add_popularity = { ideology = reactionary popularity = 0.07 }
 		add_popularity = { ideology = authoritarianism popularity = 0.05 }
 	}
+}
+
+# Scope: HZB. Hezbollah's advisors and commanders, called when the faction is born.
+HZB_recruit_staff_effect = {
+	if = { limit = { NOT = { has_character = HZB_mohammad_raad } } recruit_character = HZB_mohammad_raad }
+	if = { limit = { NOT = { has_character = HZB_mohammad_fneish } } recruit_character = HZB_mohammad_fneish }
+	if = { limit = { NOT = { has_character = HZB_mohammed_haidar } } recruit_character = HZB_mohammed_haidar }
+	if = { limit = { NOT = { has_character = HZB_qassem_soleimani } } recruit_character = HZB_qassem_soleimani }
+	if = { limit = { NOT = { has_character = HZB_abu_ali_rida } } recruit_character = HZB_abu_ali_rida }
 }
