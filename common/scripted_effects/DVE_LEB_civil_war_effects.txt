@@ -133,6 +133,11 @@ LEB_cw_spawn_DUZ_effect = {
 # Runs in LEB's scope from dve_lebcw.1 (ROOT = LEB).
 LEB_civil_war_effect = {
 	set_global_flag = LEB_civil_war
+	mark_focus_tree_layout_dirty = yes
+	if = {
+		limit = { NOT = { has_completed_focus = LEB_the_lebanese_civil_war } }
+		complete_national_focus = LEB_the_lebanese_civil_war
+	}
 	# wartime name and flag of the government (cosmetic tag LEB_GNU)
 	set_cosmetic_tag = LEB_GNU
 	add_stability = -0.20
@@ -623,6 +628,8 @@ LEB_civil_war_reset_effect = {
 	}
 
 	clr_global_flag = LEB_civil_war
+
+	mark_focus_tree_layout_dirty = yes
 	clr_global_flag = LEB_emergency_coalition
 	drop_cosmetic_tag = yes
 	clr_country_flag = LEB_emergency_administration
