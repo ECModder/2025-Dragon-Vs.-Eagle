@@ -1,0 +1,13 @@
+# The Government Crisis: the coalition falls on 5 May 2026 (event ROM_elect.50).
+# Both bookmarks start on 2025.1.1, so 489 days later is 2026.5.5. The event's
+# own trigger decides, on that day, whether the crisis happens in this game.
+on_actions = {
+	on_startup = {
+		effect = {
+			if = {
+				limit = { country_exists = ROM }
+				ROM = { country_event = { id = ROM_elect.50 days = 489 } }
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+# The Government Crisis (May 2026): putting a new cabinet to a vote.
+# See events ROM_elect.50-52 in events/DVE_ROM_2025.txt.
+ROM_parliament_category = {
+	ROM_nominate_prime_minister = {
+		icon = GFX_decision_generic_political_discourse
+		cost = 50
+		days_re_enable = 30
+		visible = {
+			has_idea = ROM_government_crisis_spirit
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_gov_crisis_consultations_tt
+				NOT = { has_country_flag = ROM_gov_crisis_consultations }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = ROM_nominate_prime_minister_tt
+			hidden_effect = {
+				random_list = {
+					30 = {
+						modifier = { factor = 2 check_variable = { ROM_gov_crisis_attempts > 0 } }
+						modifier = { factor = 1.5 check_variable = { ROM_majority > 59 } }
+						country_event = { id = ROM_elect.52 }
+					}
+					70 = {
+						modifier = { factor = 0 check_variable = { ROM_gov_crisis_attempts > 1 } }
+						modifier = { factor = 0.6 check_variable = { ROM_majority > 59 } }
+						add_to_variable = { ROM_gov_crisis_attempts = 1 }
+						country_event = { id = ROM_elect.51 }
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}

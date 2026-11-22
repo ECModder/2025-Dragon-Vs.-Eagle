@@ -3091,4 +3091,101 @@ focus_tree = {
 			navy_experience = 50
 		}
 	}
+
+	# ------------------------------------------------------------
+	# Expansion under the Ultimatums: Ukraine (Bukovina and the Budjak),
+	# Transnistria, and Serbia (Timok and the Banat).
+	# Crown of the Dragon later cores everything Romania holds.
+	# Effects: common/scripted_effects/ROM_expansion_effects.txt
+	# ------------------------------------------------------------
+	focus = {
+		id = ROM_drac_night_over_hotin
+		icon = GFX_focus_DvE_ROM_drac_night_over_hotin
+		x = 34
+		y = 23
+		cost = 7
+		prerequisite = { focus = ROM_drac_ultimatums }
+		available = {
+			country_exists = UKR
+			NOT = { has_war_with = UKR }
+			OR = { 80 = { is_owned_by = UKR } 766 = { is_owned_by = UKR } }
+		}
+		bypass = {
+			NOT = { country_exists = UKR }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_claim_bukovina = yes
+			ROM_exp_wargoal_bukovina = yes
+			army_experience = 15
+			custom_effect_tooltip = ROM_dread_p5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 5 }
+				ROM_update_dread = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_drac_beyond_the_dniester
+		icon = GFX_focus_DvE_ROM_drac_beyond_the_dniester
+		x = 30
+		y = 24
+		cost = 7
+		prerequisite = { focus = ROM_drac_bessarabia_first }
+		available = {
+			country_exists = TNS
+			NOT = { has_war_with = TNS }
+		}
+		bypass = {
+			NOT = { country_exists = TNS }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			create_wargoal = { type = annex_everything target = TNS }
+			army_experience = 10
+			custom_effect_tooltip = ROM_dread_p5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 5 }
+				ROM_update_dread = yes
+			}
+		}
+	}
+
+	focus = {
+		id = ROM_drac_iron_gates_opened
+		icon = GFX_focus_DvE_ROM_drac_iron_gates_opened
+		x = 32
+		y = 24
+		cost = 7
+		prerequisite = { focus = ROM_drac_across_the_danube }
+		available = {
+			country_exists = SER
+			NOT = { has_war_with = SER }
+			OR = { 108 = { is_owned_by = SER } 764 = { is_owned_by = SER } }
+		}
+		bypass = {
+			NOT = { country_exists = SER }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_claim_timok = yes
+			ROM_exp_wargoal_timok = yes
+			army_experience = 10
+			custom_effect_tooltip = ROM_dread_p5_tt
+			hidden_effect = {
+				add_to_variable = { ROM_dread = 5 }
+				ROM_update_dread = yes
+			}
+		}
+	}
 }

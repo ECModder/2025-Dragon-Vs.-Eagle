@@ -1,0 +1,163 @@
+# Territorial expansion for Romania, shared by the romania_uprise, romania_elections
+# and romania_dracula focus trees. All effects run in Romania's scope.
+#
+# Three fronts, each with two states:
+#   Bukovina  - UKR: 80 (Bucovina), 766 (Southern Bessarabia)
+#   Dobruja   - BUL: 77 (Dobrudja), 1077 (Silistra)
+#   Timok     - SER: 108 (Morava / Timok valley), 764 (West Banat)
+#
+# Demands go to the owner as events ROM_exp.1 / .4 / .7. If the owner cedes,
+# Romania gets ROM_exp.2 / .5 / .8; if it refuses, ROM_exp.3 / .6 / .9, where
+# Romania may take the war goal below.
+
+# ---- claims ----
+ROM_exp_claim_bukovina = {
+	80 = { add_claim_by = ROOT }
+	766 = { add_claim_by = ROOT }
+}
+
+ROM_exp_claim_dobruja = {
+	77 = { add_claim_by = ROOT }
+	1077 = { add_claim_by = ROOT }
+}
+
+ROM_exp_claim_timok = {
+	108 = { add_claim_by = ROOT }
+	764 = { add_claim_by = ROOT }
+}
+
+# ---- demands (peaceful request; the owner may refuse) ----
+ROM_exp_demand_bukovina = {
+	if = {
+		limit = { country_exists = UKR }
+		UKR = { country_event = { id = ROM_exp.1 days = 2 } }
+	}
+}
+
+ROM_exp_demand_dobruja = {
+	if = {
+		limit = { country_exists = BUL }
+		BUL = { country_event = { id = ROM_exp.4 days = 2 } }
+	}
+}
+
+ROM_exp_demand_timok = {
+	if = {
+		limit = { country_exists = SER }
+		SER = { country_event = { id = ROM_exp.7 days = 2 } }
+	}
+}
+
+# ---- war goals ----
+# Attacking Ukraine or Bulgaria (both backed by the West) also brands Romania a pariah.
+ROM_exp_wargoal_bukovina = {
+	if = {
+		limit = {
+			country_exists = UKR
+			OR = {
+				80 = { is_owned_by = UKR }
+				766 = { is_owned_by = UKR }
+			}
+		}
+		create_wargoal = { type = take_state_focus target = UKR generator = { 80 766 } }
+		UKR = { add_opinion_modifier = { target = ROOT modifier = ROM_bukovina_demand } }
+		add_ideas = ROM_alliance_pariah_idea
+	}
+}
+
+ROM_exp_wargoal_dobruja = {
+	if = {
+		limit = {
+			country_exists = BUL
+			OR = {
+				77 = { is_owned_by = BUL }
+				1077 = { is_owned_by = BUL }
+			}
+		}
+		create_wargoal = { type = take_state_focus target = BUL generator = { 77 1077 } }
+		BUL = { add_opinion_modifier = { target = ROOT modifier = ROM_territorial_demand } }
+		add_ideas = ROM_alliance_pariah_idea
+	}
+}
+
+ROM_exp_wargoal_timok = {
+	if = {
+		limit = {
+			country_exists = SER
+			OR = {
+				108 = { is_owned_by = SER }
+				764 = { is_owned_by = SER }
+			}
+		}
+		create_wargoal = { type = take_state_focus target = SER generator = { 108 764 } }
+		SER = { add_opinion_modifier = { target = ROOT modifier = ROM_territorial_demand } }
+	}
+}
+
+# ---- peaceful cession (Romania receives whatever the old owner still holds) ----
+ROM_exp_cede_bukovina = {
+	if = { limit = { 80 = { is_owned_by = UKR } } transfer_state = 80 }
+	if = { limit = { 766 = { is_owned_by = UKR } } transfer_state = 766 }
+}
+
+ROM_exp_cede_dobruja = {
+	if = { limit = { 77 = { is_owned_by = BUL } } transfer_state = 77 }
+	if = { limit = { 1077 = { is_owned_by = BUL } } transfer_state = 1077 }
+}
+
+ROM_exp_cede_timok = {
+	if = { limit = { 108 = { is_owned_by = SER } } transfer_state = 108 }
+	if = { limit = { 764 = { is_owned_by = SER } } transfer_state = 764 }
+}
+
+# ---- integration of states Romania already owns ----
+ROM_exp_integrate_bukovina = {
+	every_state = {
+		limit = {
+			OR = { state = 80 state = 766 }
+			is_owned_by = ROOT
+		}
+		add_core_of = ROOT
+		add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+	}
+}
+
+ROM_exp_integrate_dobruja = {
+	every_state = {
+		limit = {
+			OR = { state = 77 state = 1077 }
+			is_owned_by = ROOT
+		}
+		add_core_of = ROOT
+		add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+	}
+}
+
+ROM_exp_integrate_timok = {
+	every_state = {
+		limit = {
+			OR = { state = 108 state = 764 }
+			is_owned_by = ROOT
+		}
+		add_core_of = ROOT
+		add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+	}
+}
+
+ROM_exp_integrate_bessarabia = {
+	every_state = {
+		limit = {
+			OR = { state = 78 state = 1066 }
+			is_owned_by = ROOT
+		}
+		add_core_of = ROOT
+		add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+	}
+	if = {
+		limit = { 78 = { is_owned_by = ROOT } }
+		78 = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+		}
+	}
+}
