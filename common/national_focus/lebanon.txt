@@ -25,12 +25,20 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_state_of_lebanese_politics
 			custom_effect_tooltip = LEB_paralysis_drain_tt
 			custom_effect_tooltip = LEB_crisis_management_unlocked_tt
 			hidden_effect = {
 				set_country_flag = LEB_paralysis_drain
 				set_country_flag = LEB_crisis_management_unlocked
 			}
+			add_political_power = 80
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_stability = 0.02
+			add_war_support = 0.01
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -46,8 +54,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_call_for_national_unity
 			add_war_support = 0.10
 			add_stability = 0.05
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_command_power = 20
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -63,8 +77,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_take_political_action
 			add_political_power = 120
 			add_stability = -0.05
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = reactionary popularity = -0.02 }
+			add_manpower = 3000
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -80,12 +100,20 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_break_the_political_polarization
 			custom_effect_tooltip = LEB_polarization_drain_tt
 			custom_effect_tooltip = LEB_militia_raids_unlocked_tt
 			hidden_effect = {
 				set_country_flag = LEB_polarization_drain
 				set_country_flag = LEB_militia_raids_unlocked
 			}
+			add_political_power = 60
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_stability = 0.02
+			add_war_support = -0.02
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -101,6 +129,15 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_meet_with_parliament_members
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_political_power = 60
+			add_stability = 0.02
+			add_stability = 0.01
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -116,6 +153,15 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_meet_with_prominent_politicians
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = reactionary popularity = -0.02 }
+			add_political_power = 80
+			add_war_support = -0.02
+			add_war_support = 0.01
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -133,11 +179,19 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_stabilize_the_country
 			custom_effect_tooltip = LEB_drains_cleared_tt
 			hidden_effect = {
 				clr_country_flag = LEB_paralysis_drain
 				clr_country_flag = LEB_polarization_drain
 			}
+			add_political_power = 100
+			add_stability = 0.03
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_command_power = 20
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -153,8 +207,15 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_parliamentary_elections_of_2026
 			add_political_power = 250
 			country_event = { id = leb.3 days = 1 }
+			add_popularity = { ideology = liberal popularity = 0.03 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_stability = 0.02
+			add_war_support = 0.03
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -170,6 +231,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_state_of_army
+			add_manpower = 5000
+			army_experience = 5
+			add_popularity = { ideology = conservative popularity = 0.01 }
+			add_stability = 0.01
+			add_command_power = 25
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -185,8 +254,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_soldiers_safety_net
 			add_war_support = 0.10
 			add_political_power = -50
+			add_manpower = 8000
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -202,6 +277,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_equipment_concern
 			add_political_power = -40
 			add_tech_bonus = {
 				name = LEB_equipment_concern
@@ -210,6 +286,8 @@ focus_tree = {
 				category = infantry_weapons
 				category = support_tech
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -225,6 +303,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_resolve_the_manpower_issue
+			add_manpower = 20000
+			add_stability = 0.02
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_political_power = -25
+			add_war_support = 0.02
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -240,7 +327,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_western_training_cadres
 			add_stability = -0.05
+			army_experience = 15
+			add_command_power = 25
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -256,6 +350,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_MANPOWER }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_revive_the_conscription_bill
+			add_manpower = 15000
+			add_popularity = { ideology = liberal popularity = -0.02 }
+			add_war_support = -0.03
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			army_experience = 5
+			add_stability = 0.01
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -271,6 +374,15 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_salary_emergency
+			add_political_power = -80
+			add_stability = -0.03
+			add_manpower = 5000
+			add_popularity = { ideology = centrist popularity = -0.02 }
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -287,6 +399,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_absolute_moonlighting_ban
+			add_stability = 0.05
+			add_political_power = 60
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_war_support = 0.02
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -302,6 +423,17 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_reanimate_the_arms_industry
+			random_owned_controlled_state = {
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_political_power = -30
+			add_tech_bonus = { name = LEB_tech_infantry_weapons bonus = 1.0 uses = 1 category = infantry_weapons }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -317,6 +449,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_drone_eye
+			add_tech_bonus = { name = LEB_tech_electronics bonus = 1.0 uses = 1 category = electronics }
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_political_power = -20
+			add_war_support = 0.02
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -332,6 +472,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_STABILITY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_securing_the_crossings
 			custom_effect_tooltip = LEB_border_forts_tt
 			hidden_effect = {
 				every_owned_state = {
@@ -350,6 +491,12 @@ focus_tree = {
 					}
 				}
 			}
+			add_stability = 0.02
+			army_experience = 10
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_manpower = 3000
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -365,6 +512,15 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_military_industrialization
+			random_owned_controlled_state = {
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_stability = -0.02
+			add_popularity = { ideology = conservative popularity = -0.01 }
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -382,8 +538,13 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_STABILITY FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_guard_of_the_judiciary
 			remove_ideas = LEB_army_decay
 			remove_ideas = LEB_fractured_armed_forces
+			add_stability = 0.03
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_political_power = 60
+
 		}
 	}
 
@@ -399,6 +560,15 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_state_of_industry
+			add_political_power = 40
+			add_stability = 0.02
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			add_command_power = 20
+			add_popularity = { ideology = conservative popularity = 0.01 }
+			add_stability = 0.01
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -414,7 +584,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_civilian_concern
 			add_political_power = 100
+			add_stability = 0.02
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_resource = { type = steel amount = 20 }
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -430,6 +607,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_RESEARCH }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_naval_concern
 			add_tech_bonus = {
 				name = LEB_the_naval_concern
 				bonus = 1.0
@@ -437,6 +615,13 @@ focus_tree = {
 				category = ship_modules_tech
 				category = naval_equipment
 			}
+			add_political_power = 60
+			add_stability = 0.01
+			army_experience = 5
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			add_resource = { type = oil amount = 10 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -452,7 +637,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_military_industry_concern
 			add_stability = -0.05
+			add_war_support = 0.03
+			army_experience = 10
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 500 producer = ROOT }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -468,6 +660,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_civilian_industrial_projects
 			553 = {
 				if = {
 					limit = { is_owned_and_controlled_by = ROOT }
@@ -475,6 +668,8 @@ focus_tree = {
 					add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -490,6 +685,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_infrastructure_projects
 			add_political_power = -50
 			every_owned_state = {
 				limit = {
@@ -498,6 +694,8 @@ focus_tree = {
 				}
 				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -513,6 +711,7 @@ focus_tree = {
 		cost = 20
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_infrastructure_projects_north
 			1075 = {
 				if = {
 					limit = { is_owned_and_controlled_by = ROOT }
@@ -520,6 +719,8 @@ focus_tree = {
 					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -535,6 +736,7 @@ focus_tree = {
 		cost = 12.86
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_tyre_industrial_compound
 			1113 = {
 				if = {
 					limit = { is_owned_and_controlled_by = ROOT }
@@ -544,6 +746,8 @@ focus_tree = {
 					add_dynamic_modifier = { modifier = LEB_tyre_volatile_border days = 180 }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -559,6 +763,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_naval_projects_in_the_south
+			add_tech_bonus = { name = LEB_tech_naval_equipment bonus = 1.0 uses = 1 category = naval_equipment }
+			add_political_power = -40
+			add_popularity = { ideology = ultranationalism popularity = 0.01 }
+			add_stability = 0.01
+			add_resource = { type = oil amount = 15 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -574,6 +786,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_bekaa_military_compound
 			1073 = {
 				if = {
 					limit = { is_owned_and_controlled_by = ROOT }
@@ -581,6 +794,8 @@ focus_tree = {
 					add_building_construction = { type = arms_factory level = 2 instant_build = yes }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -596,6 +811,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_arms_manufacturing_program
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 3000 producer = ROOT }
+			add_political_power = -60
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			army_experience = 10
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -614,7 +837,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_INDUSTRY }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_successful_industry
 			remove_ideas = LEB_weak_industry
+			add_political_power = 150
+			add_stability = 0.03
+			add_popularity = { ideology = centrist popularity = 0.03 }
+			army_experience = 10
+			add_war_support = 0.03
+
 		}
 	}
 
@@ -641,6 +871,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_call_of_the_yellow_warriors
 			hidden_effect = {
 				set_country_flag = LEB_path_chosen
 				set_country_flag = LEB_path_yellow
@@ -650,6 +881,8 @@ focus_tree = {
 			add_stability = 0.05
 			add_manpower = 5000
 			set_politics = { ruling_party = fundamentalism }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -666,6 +899,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_reanimate_the_resistance
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_manpower = 5000
+			add_political_power = 50
+			add_war_support = 0.03
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -692,6 +933,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_elections_are_cancelled
 			hidden_effect = {
 				set_country_flag = LEB_path_chosen
 				set_country_flag = LEB_path_cancelled
@@ -704,6 +946,8 @@ focus_tree = {
 			add_war_support = 0.10
 			add_stability = -0.15
 			set_politics = { ruling_party = centrist elections_allowed = no }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -720,6 +964,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_return_to_normalcy
+			add_stability = 0.08
+			add_popularity = { ideology = centrist popularity = 0.03 }
+			add_war_support = -0.05
+			add_political_power = 40
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -736,6 +988,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_decentralize_economic_policies
+			random_owned_controlled_state = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_political_power = 50
+			add_stability = -0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -752,7 +1013,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_take_a_foreign_initiative
 			add_political_power = 100
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_stability = 0.01
+			add_command_power = 20
+			add_war_support = 0.01
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -769,8 +1038,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_foreign_relations
 			add_popularity = { ideology = fundamentalism popularity = -0.02 }
 			add_stability = -0.05
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_political_power = 60
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -787,7 +1062,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_industrial_appropriation
 			add_popularity = { ideology = conservative popularity = -0.02 }
+			add_political_power = 60
+			add_stability = -0.02
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_war_support = 0.01
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -804,6 +1086,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_port_in_tripoli
 			1075 = {
 				if = {
 					limit = { is_owned_and_controlled_by = ROOT }
@@ -812,6 +1095,8 @@ focus_tree = {
 					add_building_construction = { type = infrastructure level = 1 instant_build = yes }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -829,7 +1114,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_begin_the_reforms
 			add_popularity = { ideology = centrist popularity = 0.03 }
+			add_political_power = 80
+			add_stability = 0.02
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = conservative popularity = -0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -847,11 +1139,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_question_of_disarmament
 			army_experience = 10
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
 			add_popularity = { ideology = autocracy popularity = -0.02 }
 			add_stability = 0.20
 			add_war_support = -0.10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -878,6 +1173,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_defenders_of_the_holy_cedar
 			hidden_effect = {
 				set_country_flag = LEB_path_chosen
 				set_country_flag = LEB_path_cedar
@@ -885,6 +1181,8 @@ focus_tree = {
 			}
 			add_political_power = 150
 			set_politics = { ruling_party = conservative }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -901,6 +1199,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_start_with_the_reforms
+			add_political_power = 80
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			add_stability = 0.03
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -918,10 +1224,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_moderate_reforms
 			add_popularity = { ideology = conservative popularity = 0.03 }
 			add_popularity = { ideology = fundamentalism popularity = -0.02 }
 			add_stability = 0.05
 			add_political_power = 50
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -938,6 +1248,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_administrative_decentralization
+			random_owned_controlled_state = {
+				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
+			}
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_stability = 0.02
+			add_political_power = 40
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -954,9 +1273,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_judicial_independance
 			add_popularity = { ideology = conservative popularity = 0.02 }
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
 			remove_ideas = LEB_parallel_institutions
+			add_political_power = 40
+			add_stability = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -973,9 +1297,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_public_sector_audit
 			add_popularity = { ideology = liberal popularity = 0.02 }
 			add_popularity = { ideology = autocracy popularity = -0.02 }
 			add_political_power = 100
+			add_stability = 0.01
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -993,8 +1322,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_privatization_of_state_monopolies
 			add_popularity = { ideology = conservative popularity = 0.02 }
 			add_stability = -0.05
+			add_political_power = 120
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1011,6 +1346,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_financial_decentralization
+			add_political_power = 90
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_stability = -0.02
+			add_popularity = { ideology = fundamentalism popularity = -0.01 }
+			add_resource = { type = steel amount = 10 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1028,6 +1372,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_renewable_energy
+			random_owned_controlled_state = {
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_political_power = 40
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1044,7 +1396,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_neutrality_of_lebanon
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			add_popularity = { ideology = liberal popularity = 0.03 }
+			add_political_power = 70
+			add_stability = 0.03
+			add_war_support = -0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1062,9 +1421,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_extreme_reforms
 			add_popularity = { ideology = conservative popularity = 0.05 }
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
 			add_stability = -0.10
+			add_political_power = 90
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1081,6 +1445,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_imf_stabilization_program
+			add_political_power = 150
+			add_stability = -0.05
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_popularity = { ideology = fundamentalism popularity = -0.02 }
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1097,6 +1469,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_capital_controls
+			add_political_power = 60
+			add_stability = 0.03
+			add_popularity = { ideology = liberal popularity = -0.02 }
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_political_power = 40
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1113,9 +1493,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_diaspora_voting_rights
 			add_popularity = { ideology = conservative popularity = 0.02 }
 			add_popularity = { ideology = liberal popularity = 0.02 }
 			add_political_power = -40
+			add_stability = 0.02
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1132,9 +1517,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_unified_civil_status
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
 			add_popularity = { ideology = autocracy popularity = -0.02 }
 			add_stability = -0.05
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_political_power = 60
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1151,7 +1541,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_lifting_of_immunities
 			add_popularity = { ideology = autocracy popularity = -0.03 }
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_stability = -0.02
+			add_political_power = 50
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1169,12 +1566,20 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_digitalization_of_government
 			add_tech_bonus = {
 				name = LEB_digitalization_of_government
 				bonus = 0.5
 				uses = 1
 				category = electronics
 			}
+			add_political_power = 80
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_command_power = 20
+			add_stability = 0.01
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1191,6 +1596,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_syrian_refugee_repatriation
 			custom_effect_tooltip = LEB_west_minus_10_tt
 			hidden_effect = {
 				every_other_country = {
@@ -1198,6 +1604,12 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_refugee_blowback }
 				}
 			}
+			add_political_power = 90
+			add_stability = 0.02
+			add_popularity = { ideology = conservative popularity = 0.01 }
+			army_experience = 5
+			add_manpower = 2000
+
 		}
 	}
 
@@ -1214,8 +1626,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_national_security
 			army_experience = 15
 			add_stability = -0.05
+			add_war_support = 0.02
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_political_power = 40
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1232,6 +1650,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_border_controls
 			add_popularity = { ideology = fundamentalism popularity = -0.02 }
 			add_manpower = -1000
 			custom_effect_tooltip = LEB_border_forts_tt
@@ -1252,6 +1671,7 @@ focus_tree = {
 					}
 				}
 			}
+
 		}
 	}
 
@@ -1268,8 +1688,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_sovereign_decision_making
 			add_command_power = 25
 			add_political_power = 120
+			add_stability = 0.02
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1286,6 +1712,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_open_up_relations_with_nato
 			army_experience = 10
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 producer = USA }
 			USA = { add_opinion_modifier = { target = ROOT modifier = LEB_nato_partner } }
@@ -1303,6 +1730,8 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_aligned_with_nato }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1319,6 +1748,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_begin_talks_with_syria
 			SYR = { add_opinion_modifier = { target = ROOT modifier = LEB_syria_ties } }
 			add_opinion_modifier = { target = SYR modifier = LEB_syria_ties }
 			custom_effect_tooltip = LEB_north_infra_tt
@@ -1330,6 +1760,7 @@ focus_tree = {
 					}
 				}
 			}
+
 		}
 	}
 
@@ -1346,6 +1777,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_paris_conference
 			add_political_power = 150
 			custom_effect_tooltip = LEB_paris_relations_tt
 			hidden_effect = {
@@ -1354,6 +1786,7 @@ focus_tree = {
 				add_opinion_modifier = { target = FRA modifier = LEB_paris_relations }
 				add_opinion_modifier = { target = GER modifier = LEB_paris_relations }
 			}
+
 		}
 	}
 
@@ -1370,6 +1803,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_iran_lebanon_energy_corridor
 			PER = { add_opinion_modifier = { target = ROOT modifier = LEB_iran_ties } }
 			add_opinion_modifier = { target = PER modifier = LEB_iran_ties }
 			custom_effect_tooltip = LEB_saida_factories_tt
@@ -1382,6 +1816,8 @@ focus_tree = {
 					}
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1398,8 +1834,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_single_national_constituency
 			add_popularity = { ideology = fundamentalism popularity = 0.03 }
 			add_popularity = { ideology = conservative popularity = -0.02 }
+			add_political_power = 70
+			add_stability = 0.01
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1416,9 +1858,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_lower_the_voting_age
 			add_political_power = 100
 			add_war_support = 0.05
 			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_stability = 0.01
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1435,8 +1882,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_agricultural_and_industrial_subsidies
 			add_popularity = { ideology = fundamentalism popularity = 0.02 }
 			add_political_power = -100
+			add_resource = { type = steel amount = 15 }
+			add_stability = 0.02
+			add_popularity = { ideology = centrist popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1454,7 +1907,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_institutional_integration
 			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_political_power = 60
+			add_stability = 0.02
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			add_command_power = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1471,7 +1931,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_nationalization_of_industrial_companies
 			add_popularity = { ideology = conservative popularity = -0.02 }
+			add_resource = { type = oil amount = 20 }
+			add_stability = -0.03
+			add_political_power = 90
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1488,8 +1955,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_target_the_banking_elite
 			add_popularity = { ideology = reactionary popularity = -0.02 }
 			add_political_power = 250
+			add_stability = 0.02
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_war_support = 0.01
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1506,6 +1979,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_aggressive_wealth_taxes
+			add_political_power = 120
+			add_stability = -0.04
+			add_popularity = { ideology = reactionary popularity = -0.02 }
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_popularity = { ideology = liberal popularity = -0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1522,6 +2003,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_sanction_monopolies
+			add_political_power = 80
+			add_stability = 0.02
+			add_popularity = { ideology = conservative popularity = -0.02 }
+			add_war_support = 0.03
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1538,6 +2027,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_resistance_economy
 			remove_ideas = LEB_parallel_institutions
 			add_stability = -0.05
 			custom_effect_tooltip = LEB_retention_penalties_tt
@@ -1549,6 +2039,8 @@ focus_tree = {
 					limit = { has_idea = LEB_arms_program }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1565,10 +2057,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_silence_the_sectarians
 			add_popularity = { ideology = conservative popularity = -0.03 }
 			add_popularity = { ideology = absolutism popularity = -0.02 }
 			add_stability = -0.10
 			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_political_power = 60
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1585,6 +2081,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_strategic_depth_treaty
 			army_experience = 20
 			custom_effect_tooltip = LEB_iran_lend_lease_tt
 			custom_effect_tooltip = LEB_west_minus_40_tt
@@ -1597,6 +2094,8 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_iran_treaty }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1613,6 +2112,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_full_normalization_with_damascus
 			SYR = { add_opinion_modifier = { target = ROOT modifier = LEB_syria_ties } }
 			add_opinion_modifier = { target = SYR modifier = LEB_syria_ties }
 			custom_effect_tooltip = LEB_north_infra_tt
@@ -1624,6 +2124,8 @@ focus_tree = {
 					}
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1640,8 +2142,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_ban_western_accords
 			add_popularity = { ideology = fundamentalism popularity = 0.02 }
 			add_political_power = 100
+			add_war_support = 0.02
+			add_stability = 0.01
+			add_popularity = { ideology = conservative popularity = -0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1659,7 +2167,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_denounce_the_americans
 			USA = { add_opinion_modifier = { target = ROOT modifier = LEB_denounced } }
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_political_power = 70
+			add_war_support = 0.03
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1676,9 +2191,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_denounce_the_israelis
 			army_experience = 15
 			ISR = { add_opinion_modifier = { target = ROOT modifier = LEB_denounced } }
 			add_stability = -0.05
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1696,7 +2216,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_establishment_of_our_theocracy
 			add_popularity = { ideology = fundamentalism popularity = 0.1 }
+			add_political_power = 100
+			add_stability = -0.03
+			add_war_support = 0.02
+			add_popularity = { ideology = liberal popularity = -0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1713,6 +2240,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_legalization_of_the_arsenal
 			army_experience = 10
 			add_equipment_to_stockpile = { type = artillery_equipment amount = 100 producer = ROOT }
 			add_tech_bonus = {
@@ -1724,6 +2252,8 @@ focus_tree = {
 				technology = rocket_artillery3
 				technology = rocket_artillery4
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1740,7 +2270,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_censor_western_normalization
 			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_popularity = { ideology = liberal popularity = -0.02 }
+			add_political_power = 60
+			add_stability = 0.01
+			add_popularity = { ideology = centrist popularity = -0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1758,7 +2295,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_legislative_defiance_of_un
 			remove_ideas = LEB_shadow_of_litani
+			add_war_support = 0.03
+			add_political_power = 80
+			army_experience = 5
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1777,6 +2321,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_to_jerusalem_we_march
 			army_experience = 25
 			add_command_power = 50
 			add_manpower = 5000
@@ -1788,6 +2333,8 @@ focus_tree = {
 					expire = 0
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1805,6 +2352,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_disarm_the_unlawful_group
 			add_war_support = 0.10
 			add_stability = -0.03
 			custom_effect_tooltip = LEB_disarm_relations_tt
@@ -1817,6 +2365,8 @@ focus_tree = {
 				add_opinion_modifier = { target = USA modifier = LEB_disarm_relations }
 			}
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1833,9 +2383,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_a_call_for_help
 			add_political_power = 100
 			custom_effect_tooltip = LEB_diplomatic_decisions_tt
 			hidden_effect = { set_country_flag = LEB_diplomatic_branch_unlocked }
+			add_war_support = 0.02
+			add_popularity = { ideology = centrist popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1852,8 +2407,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_contact_israel
 			add_stability = -0.15
 			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_political_power = 50
+			add_war_support = 0.02
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1870,9 +2431,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_contact_the_us
 			army_experience = 10
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 1000 producer = USA }
 			USA = { add_opinion_modifier = { target = ROOT modifier = LEB_nato_partner } }
+			add_stability = 0.01
+			add_popularity = { ideology = conservative popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1890,8 +2456,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_mobilize_army_and_gendarmerie
 			add_manpower = 10000
 			army_experience = 15
+			add_war_support = 0.03
+			add_stability = -0.02
+			add_command_power = 20
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1908,7 +2480,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_begin_with_diplomatic_tensions
 			add_popularity = { ideology = centrist popularity = 0.02 }
+			add_political_power = 60
+			add_war_support = 0.02
+			add_stability = -0.01
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1925,8 +2504,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_economic_sanctions_on_the_group
 			add_popularity = { ideology = fundamentalism popularity = -0.05 }
 			add_popularity = { ideology = autocracy popularity = -0.01 }
+			add_war_support = 0.02
+			add_political_power = 60
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1943,7 +2528,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_establish_checkpoints
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
+			add_stability = 0.03
+			add_war_support = 0.02
+			army_experience = 5
+			add_popularity = { ideology = liberal popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1960,6 +2552,7 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_re_ratify_agreement_1701
 			add_popularity = { ideology = centrist popularity = 0.03 }
 			add_popularity = { ideology = fundamentalism popularity = -0.03 }
 			custom_effect_tooltip = LEB_1701_opinion_tt
@@ -1969,6 +2562,8 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_agreement_1701_opinion }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -1985,12 +2580,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_finalize_the_disarmament
 			remove_ideas = LEB_parallel_institutions
 			army_experience = 20
 			add_popularity = { ideology = fundamentalism popularity = -0.1 }
 			add_popularity = { ideology = centrist popularity = 0.05 }
 			custom_effect_tooltip = LEB_civil_war_risk_tt
 			hidden_effect = { country_event = { id = leb.21 days = 1 } }
+
 		}
 	}
 
@@ -2008,8 +2605,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_leave_them_be
 			add_stability = 0.10
 			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_political_power = 40
+			army_experience = 5
+			add_popularity = { ideology = centrist popularity = 0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2026,6 +2629,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_trade_deal_with_brics
 			custom_effect_tooltip = LEB_democracy_trade_tt
 			hidden_effect = {
 				every_other_country = {
@@ -2033,6 +2637,13 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_brics_trade_penalty }
 				}
 			}
+			add_political_power = 80
+			add_popularity = { ideology = liberal popularity = 0.02 }
+			add_popularity = { ideology = centrist popularity = 0.01 }
+			add_stability = 0.01
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2049,7 +2660,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_economic_deal_with_iran
 			add_stability = -0.05
+			add_political_power = 60
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_stability = 0.01
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2066,6 +2684,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_open_relations_with_iran
 			add_political_power = 100
 			add_war_support = 0.05
 			add_stability = -0.05
@@ -2079,6 +2698,8 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_tehran_outrage }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2095,6 +2716,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_weapons_deal_with_iran
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = PER }
 			add_tech_bonus = {
 				name = LEB_weapons_deal_with_iran
@@ -2106,6 +2728,8 @@ focus_tree = {
 				technology = rocket_artillery4
 			}
 			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2122,8 +2746,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_quarrels_with_israel
 			add_war_support = 0.15
 			ISR = { add_opinion_modifier = { target = ROOT modifier = LEB_denounced } }
+			add_political_power = 40
+			army_experience = 10
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2140,7 +2770,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_support_hamas
 			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_war_support = 0.02
+			add_political_power = 50
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2158,7 +2795,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_demand_our_nautical_regions
 			add_stability = -0.025
+			add_political_power = 90
+			add_war_support = 0.02
+			add_resource = { type = oil amount = 10 }
+			add_popularity = { ideology = centrist popularity = -0.01 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2175,6 +2819,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_denounce_israel_and_its_crimes
 			add_war_support = 0.10
 			add_political_power = 80
 			add_popularity = { ideology = fundamentalism popularity = 0.02 }
@@ -2185,6 +2830,8 @@ focus_tree = {
 					add_opinion_modifier = { target = ROOT modifier = LEB_trade_frozen }
 				}
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2202,7 +2849,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_stop_diplomatic_relations_with_israel
 			ISR = { add_opinion_modifier = { target = ROOT modifier = LEB_relations_severed } }
+			add_political_power = 40
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_war_support = 0.02
+			add_stability = -0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2221,9 +2875,13 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_war_with_israel
 			add_war_support = 1
 			army_experience = 25
 			add_manpower = 5000
+			add_stability = -0.05
+			add_command_power = 30
+
 		}
 	}
 
@@ -2238,6 +2896,14 @@ focus_tree = {
 		cost = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_lebanese_civil_war
+			add_war_support = 0.05
+			add_manpower = 20000
+			add_stability = -0.02
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_political_power = 100
+			army_experience = 10
+
 		}
 	}
 
@@ -2257,6 +2923,14 @@ focus_tree = {
 		cost = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_samir_geagea_elected
+			add_popularity = { ideology = conservative popularity = 0.03 }
+			add_popularity = { ideology = centrist popularity = -0.02 }
+			add_command_power = 25
+			add_stability = -0.02
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2273,9 +2947,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_deport_syrians_and_palestinians
 			every_other_country = {
 				add_opinion_modifier = { target = ROOT modifier = LEB_deportation_outrage }
 			}
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_manpower = -2000
+			add_stability = -0.03
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2292,6 +2972,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_demand_lifting_of_economic_embargoes
+			add_political_power = 80
+			add_stability = 0.05
+			add_popularity = { ideology = liberal popularity = 0.03 }
+			add_war_support = 0.02
+			add_resource = { type = steel amount = 15 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2309,11 +2997,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_direct_israeli_negotiations
 			add_stability = -0.25
 			remove_ideas = LEB_shadow_of_litani
 			hidden_effect = {
 				news_event = { id = leb.31 days = 14 }
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2333,6 +3024,14 @@ focus_tree = {
 		cost = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_assassination_of_samir_geagea
+			add_manpower = -10000
+			add_political_power = -50
+			add_popularity = { ideology = conservative popularity = -0.05 }
+			add_stability = -0.05
+			add_war_support = 0.03
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+
 		}
 	}
 
@@ -2349,9 +3048,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_begin_operation_true_promise
 			add_war_support = 0.15
 			add_manpower = 10000
 			add_stability = -0.10
+			add_political_power = 60
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2368,6 +3072,14 @@ focus_tree = {
 		cost = 3
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_vanguard_of_the_south
+			add_manpower = 5000
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_war_support = 0.05
+			add_stability = -0.01
+			army_experience = 10
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2384,6 +3096,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_galilean_breakthrough
+			add_war_support = 0.03
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_political_power = 20
+			army_experience = 10
+			add_command_power = 15
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2400,6 +3120,14 @@ focus_tree = {
 		cost = 3
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_human_shields_or_martyrs
+			add_stability = -0.03
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			add_war_support = 0.05
+			add_manpower = 3000
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2416,6 +3144,13 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_rocket_rain
+			add_tech_bonus = { name = LEB_tech_rocket bonus = 1.0 uses = 1 technology = rocket_artillery }
+			add_political_power = -40
+			add_popularity = { ideology = reactionary popularity = -0.01 }
+			army_experience = 10
+			add_war_support = 0.02
+
 		}
 	}
 
@@ -2432,9 +3167,14 @@ focus_tree = {
 		cost = 3
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_scream_to_tehran
 			add_political_power = 100
 			set_country_flag = LEB_lend_lease_unlocked
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = PER }
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			army_experience = 5
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2451,6 +3191,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_divert_the_litani_liters
 			random_owned_controlled_state = {
 				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
 			}
@@ -2460,6 +3201,7 @@ focus_tree = {
 			random_owned_controlled_state = {
 				add_building_construction = { type = infrastructure level = 1 instant_build = yes }
 			}
+
 		}
 	}
 
@@ -2476,7 +3218,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_red_sea_throttle
 			add_war_support = 0.10
+			add_political_power = 50
+			add_stability = -0.02
+			add_popularity = { ideology = liberal popularity = -0.01 }
+			add_resource = { type = oil amount = 15 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2493,7 +3242,14 @@ focus_tree = {
 		cost = 3
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_unleash_the_syrian_flank
 			add_manpower = 15000
+			add_war_support = 0.02
+			army_experience = 10
+			add_popularity = { ideology = fundamentalism popularity = 0.02 }
+			add_stability = -0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2511,11 +3267,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_fall_of_the_iron_wall
 			add_war_support = 0.30
 			add_political_power = 200
 			hidden_effect = {
 				news_event = { id = leb.40 hours = 1 }
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2532,6 +3291,7 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_secure_the_galilee_corridors
 			add_manpower = -5000
 			random_owned_controlled_state = {
 				add_building_construction = { type = fort level = 1 instant_build = yes }
@@ -2542,6 +3302,8 @@ focus_tree = {
 			random_owned_controlled_state = {
 				add_building_construction = { type = fort level = 1 instant_build = yes }
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2561,6 +3323,14 @@ focus_tree = {
 		cost = 1
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_march_into_al_quds
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_manpower = 5000
+			add_stability = -0.05
+			add_war_support = 0.05
+			add_political_power = 100
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2577,7 +3347,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_dismantle_the_zionist_state
 			add_stability = -0.10
+			add_political_power = 120
+			add_war_support = 0.03
+			army_experience = 10
+			add_popularity = { ideology = centrist popularity = -0.02 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2594,6 +3371,14 @@ focus_tree = {
 		cost = 3
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_direct_clerical_mandate
+			add_political_power = 80
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_stability = -0.03
+			army_experience = 5
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2611,11 +3396,14 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_new_levantine_order
 			every_owned_state = {
 				limit = { NOT = { is_core_of = ROOT } }
 				add_core_of = ROOT
 			}
 			set_cosmetic_tag = LEB_MUQ
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2632,7 +3420,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_integrate_the_captive_arsenal
 			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = ISR }
+			army_experience = 10
+			add_war_support = 0.02
+			add_political_power = 50
+			add_resource = { type = steel amount = 20 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2649,7 +3444,14 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_consolidate_the_holy_sites
 			add_stability = 0.20
+			add_popularity = { ideology = fundamentalism popularity = 0.05 }
+			add_political_power = 70
+			add_command_power = 15
+			add_war_support = 0.02
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2666,6 +3468,7 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_redesign_the_regional_pipelines
 			add_political_power = -100
 			add_resource = { type = oil amount = 40 }
 			random_owned_controlled_state = {
@@ -2677,6 +3480,8 @@ focus_tree = {
 			random_owned_controlled_state = {
 				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
 			}
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2693,10 +3498,14 @@ focus_tree = {
 		cost = 10
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_break_the_western_sanctions
 			every_other_country = {
 				limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
 				add_opinion_modifier = { target = ROOT modifier = LEB_sanctions_broken_west }
 			}
+			add_resource = { type = oil amount = 10 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2714,7 +3523,15 @@ focus_tree = {
 		cost = 5
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_al_muqawama_regional_hegemony
 			set_country_flag = LEB_annex_unlocked
+			add_political_power = 100
+			add_war_support = 0.03
+			add_stability = 0.02
+			army_experience = 10
+			add_popularity = { ideology = fundamentalism popularity = 0.03 }
+			custom_effect_tooltip = LEB_unlocks_focuses_tt
+
 		}
 	}
 
@@ -2731,7 +3548,13 @@ focus_tree = {
 		cost = 2
 		search_filters = { FOCUS_FILTER_POLITICAL }
 		completion_reward = {
+			custom_effect_tooltip = LEB_fx_the_ultimate_pan_islamic_axis
 			puppet = PER
+			add_political_power = 150
+			add_stability = 0.03
+			army_experience = 10
+			add_war_support = 0.05
+
 		}
 	}
 
