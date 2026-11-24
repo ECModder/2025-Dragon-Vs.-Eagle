@@ -1,15 +1,156 @@
-# DvE - European Union main window with 7 tabs.
 guiTypes = {
 
+	# ==========================================================
+	#   European Union decision banner: Member States (UN model, 480x224 panel)
+	# ==========================================================
 	containerWindowType = {
-		name = "DVE_eu_main_window"
-		size = { width = 1100 height = 760 }
-		position = { x = 130 y = 20 }
+		name = "DVE_eu_member_banner_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 224 }
+
+		iconType = {
+			name = "dve_eu_banner_bg"
+			spriteType = "GFX_DVE_eu_panel_member"
+			position = { x = 0 y = 0 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_banner_title"
+			position = { x = 20 y = 13 }
+			font = "hoi_20b"
+			text = "DVE_EU_BANNER_TITLE_MEMBER"
+			format = center
+			maxWidth = 440
+			maxHeight = 24
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_banner_presidency"
+			position = { x = 20 y = 47 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_BANNER_PRESIDENCY"
+			format = center
+			maxWidth = 440
+			maxHeight = 20
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_banner_qmv_info"
+			position = { x = 20 y = 69 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_BANNER_QMV_INFO"
+			format = center
+			maxWidth = 440
+			maxHeight = 20
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_banner_qmv_status"
+			position = { x = 20 y = 91 }
+			font = "hoi_18mbs"
+			text = "DVE_EU_BANNER_QMV_STATUS"
+			format = center
+			maxWidth = 440
+			maxHeight = 22
+		}
+
+		buttonType = {
+			name = "dve_eu_open_parliament_button"
+			quadTextureSprite = "GFX_DVE_eu_parliament_button"
+			position = { x = 130 y = 122 }
+			buttonFont = "hoi_16mbs"
+			buttonText = "DVE_EU_OPEN_PARLIAMENT_BTN"
+			pdx_tooltip = "DVE_EU_OPEN_PARLIAMENT_TT"
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_banner_bottom_tip"
+			position = { x = 20 y = 183 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_BANNER_BOTTOM_MEMBER"
+			format = center
+			maxWidth = 440
+			maxHeight = 20
+		}
+	}
+
+	# ==========================================================
+	#   European Union decision banner: Candidate countries (UN model, 480x244 panel)
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_eu_candidate_banner_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 244 }
+
+		iconType = {
+			name = "dve_eu_candidate_bg"
+			spriteType = "GFX_DVE_eu_panel_candidate"
+			position = { x = 0 y = 0 }
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_cand_title"
+			position = { x = 20 y = 13 }
+			font = "hoi_20b"
+			text = "DVE_EU_CANDIDATE_BANNER_TITLE"
+			format = center
+			maxWidth = 440
+			maxHeight = 24
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_cand_integration_val"
+			position = { x = 140 y = 42 }
+			font = "hoi_36header"
+			text = "DVE_EU_CANDIDATE_INTEGRATION_NUM"
+			format = center
+			maxWidth = 200
+			maxHeight = 40
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_cand_copenhagen_info"
+			position = { x = 20 y = 88 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_CANDIDATE_COPENHAGEN_INFO"
+			format = center
+			maxWidth = 440
+			maxHeight = 54
+		}
+
+		buttonType = {
+			name = "dve_eu_cand_open_parliament_button"
+			quadTextureSprite = "GFX_DVE_eu_parliament_button"
+			position = { x = 130 y = 150 }
+			buttonFont = "hoi_16mbs"
+			buttonText = "DVE_EU_OPEN_PARLIAMENT_BTN"
+			pdx_tooltip = "DVE_EU_OPEN_PARLIAMENT_TT"
+		}
+
+		instantTextBoxType = {
+			name = "dve_eu_cand_bottom_tip"
+			position = { x = 20 y = 207 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_CANDIDATE_BOTTOM_TIP"
+			format = center
+			maxWidth = 440
+			maxHeight = 20
+		}
+	}
+
+	# ==========================================================
+	#   European Parliament Full Window (Italian Parliament Model)
+	# ==========================================================
+	containerWindowType = {
+		name = "DVE_eu_parliament_window"
+		size = { width = 1100 height = 720 }
+		position = { x = 130 y = 24 }
 		moveable = yes
 		background = {
 			name = "Background"
 			spriteType = "GFX_tiled_bg"
 		}
+
 		buttonType = {
 			name = "close_button"
 			position = { x = -45 y = 14 }
@@ -20,1204 +161,964 @@ guiTypes = {
 			clicksound = click_close
 			pdx_tooltip = "CLOSE"
 		}
+
+		# EU Flag in window header
 		iconType = {
 			name = "DVE_eu_flag_icon"
 			spriteType = "GFX_DVE_eu_flag"
-			position = { x = 20 y = 10 }
-			scale = 0.8
+			position = { x = 24 y = 16 }
+			scale = 0.5
 		}
+
+		# Title Left
 		instantTextBoxType = {
-			name = "DVE_eu_title_text"
-			position = { x = 90 y = 10 }
+			name = "DVE_eu_parl_title"
+			position = { x = 165 y = 14 }
 			font = "hoi_24header"
-			text = "DVE_eu_title"
+			text = "DVE_EU_PARLIAMENT_TITLE"
 			format = left
-			fixedsize = yes
-			maxWidth = 400
+			maxWidth = 460
 			maxHeight = 30
 		}
+
 		instantTextBoxType = {
-			name = "DVE_eu_integration_text"
-			position = { x = 90 y = 40 }
+			name = "DVE_eu_parl_subtitle"
+			position = { x = 165 y = 44 }
 			font = "hoi_16mbs"
-			text = "DVE_eu_integration_label"
+			text = "DVE_EU_PARLIAMENT_SUBTITLE"
 			format = left
-			fixedsize = yes
-			maxWidth = 300
+			maxWidth = 460
+			maxHeight = 24
+		}
+
+		instantTextBoxType = {
+			name = "DVE_eu_parl_majority_info"
+			position = { x = 24 y = 100 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_PARLIAMENT_MAJORITY_INFO"
+			format = left
+			maxWidth = 600
+			maxHeight = 24
+		}
+
+		# --- 705 hemicycle seat dots: static positions, colour frame set by the scripted gui ---
+		iconType = { name = "DVE_eu_seat_dot_0" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 184 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_1" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 171 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_2" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 158 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_3" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 144 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_4" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 131 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_5" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 118 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_6" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 105 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_7" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 92 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_8" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 78 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_9" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 65 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_10" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 52 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_11" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 39 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_12" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 26 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_13" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 12 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_14" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 13 y = 593 } }
+		iconType = { name = "DVE_eu_seat_dot_15" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 26 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_16" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 39 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_17" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 52 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_18" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 66 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_19" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 79 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_20" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 92 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_21" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 105 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_22" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 118 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_23" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 132 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_24" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 145 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_25" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 14 y = 580 } }
+		iconType = { name = "DVE_eu_seat_dot_26" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 158 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_27" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 27 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_28" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 171 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_29" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 40 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_30" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 53 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_31" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 185 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_32" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 67 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_33" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 80 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_34" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 93 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_35" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 107 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_36" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 15 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_37" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 120 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_38" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 29 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_39" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 133 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_40" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 42 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_41" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 55 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_42" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 147 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_43" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 69 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_44" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 82 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_45" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 17 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_46" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 160 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_47" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 95 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_48" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 31 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_49" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 174 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_50" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 109 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_51" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 44 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_52" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 122 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_53" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 58 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_54" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 187 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_55" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 71 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_56" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 20 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_57" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 136 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_58" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 85 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_59" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 34 y = 538 } }
+		iconType = { name = "DVE_eu_seat_dot_60" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 98 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_61" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 150 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_62" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 47 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_63" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 112 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_64" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 61 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_65" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 23 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_66" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 163 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_67" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 75 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_68" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 126 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_69" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 37 y = 525 } }
+		iconType = { name = "DVE_eu_seat_dot_70" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 88 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_71" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 177 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_72" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 139 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_73" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 51 y = 525 } }
+		iconType = { name = "DVE_eu_seat_dot_74" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 102 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_75" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 27 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_76" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 65 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_77" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 191 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_78" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 116 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_79" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 153 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_80" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 79 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_81" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 41 y = 512 } }
+		iconType = { name = "DVE_eu_seat_dot_82" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 130 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_83" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 92 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_84" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 55 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_85" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 31 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_86" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 167 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_87" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 69 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_88" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 106 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_89" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 144 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_90" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 46 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_91" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 83 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_92" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 182 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_93" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 121 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_94" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 36 y = 490 } }
+		iconType = { name = "DVE_eu_seat_dot_95" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 60 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_96" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 98 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_97" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 159 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_98" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 135 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_99" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 74 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_100" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 51 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_101" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 112 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_102" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 196 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_103" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 89 y = 501 } }
+		iconType = { name = "DVE_eu_seat_dot_104" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 41 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_105" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 173 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_106" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 149 y = 528 } }
+		iconType = { name = "DVE_eu_seat_dot_107" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 66 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_108" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 126 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_109" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 103 y = 501 } }
+		iconType = { name = "DVE_eu_seat_dot_110" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 80 y = 488 } }
+		iconType = { name = "DVE_eu_seat_dot_111" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 57 y = 475 } }
+		iconType = { name = "DVE_eu_seat_dot_112" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 47 y = 466 } }
+		iconType = { name = "DVE_eu_seat_dot_113" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 141 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_114" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 187 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_115" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 118 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_116" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 165 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_117" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 95 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_118" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 72 y = 475 } }
+		iconType = { name = "DVE_eu_seat_dot_119" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 155 y = 516 } }
+		iconType = { name = "DVE_eu_seat_dot_120" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 133 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_121" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 110 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_122" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 87 y = 476 } }
+		iconType = { name = "DVE_eu_seat_dot_123" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 64 y = 463 } }
+		iconType = { name = "DVE_eu_seat_dot_124" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 54 y = 454 } }
+		iconType = { name = "DVE_eu_seat_dot_125" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 179 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_126" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 202 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_127" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 79 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_128" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 102 y = 477 } }
+		iconType = { name = "DVE_eu_seat_dot_129" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 125 y = 490 } }
+		iconType = { name = "DVE_eu_seat_dot_130" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 147 y = 503 } }
+		iconType = { name = "DVE_eu_seat_dot_131" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 71 y = 451 } }
+		iconType = { name = "DVE_eu_seat_dot_132" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 61 y = 443 } }
+		iconType = { name = "DVE_eu_seat_dot_133" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 94 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_134" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 172 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_135" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 117 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_136" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 195 y = 528 } }
+		iconType = { name = "DVE_eu_seat_dot_137" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 140 y = 491 } }
+		iconType = { name = "DVE_eu_seat_dot_138" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 163 y = 504 } }
+		iconType = { name = "DVE_eu_seat_dot_139" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 86 y = 452 } }
+		iconType = { name = "DVE_eu_seat_dot_140" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 109 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_141" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 132 y = 479 } }
+		iconType = { name = "DVE_eu_seat_dot_142" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 79 y = 440 } }
+		iconType = { name = "DVE_eu_seat_dot_143" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 68 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_144" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 187 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_145" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 155 y = 492 } }
+		iconType = { name = "DVE_eu_seat_dot_146" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 102 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_147" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 125 y = 467 } }
+		iconType = { name = "DVE_eu_seat_dot_148" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 94 y = 441 } }
+		iconType = { name = "DVE_eu_seat_dot_149" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 210 y = 529 } }
+		iconType = { name = "DVE_eu_seat_dot_150" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 148 y = 480 } }
+		iconType = { name = "DVE_eu_seat_dot_151" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 180 y = 503 } }
+		iconType = { name = "DVE_eu_seat_dot_152" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 117 y = 454 } }
+		iconType = { name = "DVE_eu_seat_dot_153" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 76 y = 421 } }
+		iconType = { name = "DVE_eu_seat_dot_154" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 87 y = 429 } }
+		iconType = { name = "DVE_eu_seat_dot_155" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 171 y = 493 } }
+		iconType = { name = "DVE_eu_seat_dot_156" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 140 y = 468 } }
+		iconType = { name = "DVE_eu_seat_dot_157" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 110 y = 442 } }
+		iconType = { name = "DVE_eu_seat_dot_158" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 203 y = 516 } }
+		iconType = { name = "DVE_eu_seat_dot_159" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 163 y = 481 } }
+		iconType = { name = "DVE_eu_seat_dot_160" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 133 y = 456 } }
+		iconType = { name = "DVE_eu_seat_dot_161" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 103 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_162" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 84 y = 411 } }
+		iconType = { name = "DVE_eu_seat_dot_163" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 96 y = 418 } }
+		iconType = { name = "DVE_eu_seat_dot_164" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 126 y = 444 } }
+		iconType = { name = "DVE_eu_seat_dot_165" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 196 y = 504 } }
+		iconType = { name = "DVE_eu_seat_dot_166" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 156 y = 469 } }
+		iconType = { name = "DVE_eu_seat_dot_167" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 119 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_168" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 149 y = 458 } }
+		iconType = { name = "DVE_eu_seat_dot_169" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 189 y = 492 } }
+		iconType = { name = "DVE_eu_seat_dot_170" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 179 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_171" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 112 y = 420 } }
+		iconType = { name = "DVE_eu_seat_dot_172" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 93 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_173" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 142 y = 446 } }
+		iconType = { name = "DVE_eu_seat_dot_174" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 219 y = 518 } }
+		iconType = { name = "DVE_eu_seat_dot_175" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 105 y = 408 } }
+		iconType = { name = "DVE_eu_seat_dot_176" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 172 y = 471 } }
+		iconType = { name = "DVE_eu_seat_dot_177" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 135 y = 434 } }
+		iconType = { name = "DVE_eu_seat_dot_178" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 212 y = 506 } }
+		iconType = { name = "DVE_eu_seat_dot_179" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 165 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_180" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 128 y = 422 } }
+		iconType = { name = "DVE_eu_seat_dot_181" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 103 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_182" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 121 y = 410 } }
+		iconType = { name = "DVE_eu_seat_dot_183" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 159 y = 448 } }
+		iconType = { name = "DVE_eu_seat_dot_184" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 205 y = 494 } }
+		iconType = { name = "DVE_eu_seat_dot_185" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 114 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_186" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 152 y = 436 } }
+		iconType = { name = "DVE_eu_seat_dot_187" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 189 y = 473 } }
+		iconType = { name = "DVE_eu_seat_dot_188" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 198 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_189" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 145 y = 424 } }
+		iconType = { name = "DVE_eu_seat_dot_190" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 182 y = 462 } }
+		iconType = { name = "DVE_eu_seat_dot_191" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 138 y = 413 } }
+		iconType = { name = "DVE_eu_seat_dot_192" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 112 y = 383 } }
+		iconType = { name = "DVE_eu_seat_dot_193" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 131 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_194" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 175 y = 450 } }
+		iconType = { name = "DVE_eu_seat_dot_195" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 124 y = 390 } }
+		iconType = { name = "DVE_eu_seat_dot_196" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 169 y = 439 } }
+		iconType = { name = "DVE_eu_seat_dot_197" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 229 y = 508 } }
+		iconType = { name = "DVE_eu_seat_dot_198" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 162 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_199" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 155 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_200" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 222 y = 497 } }
+		iconType = { name = "DVE_eu_seat_dot_201" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 122 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_202" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 148 y = 404 } }
+		iconType = { name = "DVE_eu_seat_dot_203" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 216 y = 485 } }
+		iconType = { name = "DVE_eu_seat_dot_204" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 199 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_205" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 142 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_206" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 135 y = 381 } }
+		iconType = { name = "DVE_eu_seat_dot_207" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 193 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_208" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 209 y = 474 } }
+		iconType = { name = "DVE_eu_seat_dot_209" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 186 y = 442 } }
+		iconType = { name = "DVE_eu_seat_dot_210" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 179 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_211" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 133 y = 366 } }
+		iconType = { name = "DVE_eu_seat_dot_212" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 173 y = 419 } }
+		iconType = { name = "DVE_eu_seat_dot_213" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 166 y = 407 } }
+		iconType = { name = "DVE_eu_seat_dot_214" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 159 y = 396 } }
+		iconType = { name = "DVE_eu_seat_dot_215" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 153 y = 384 } }
+		iconType = { name = "DVE_eu_seat_dot_216" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 146 y = 373 } }
+		iconType = { name = "DVE_eu_seat_dot_217" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 210 y = 457 } }
+		iconType = { name = "DVE_eu_seat_dot_218" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 143 y = 358 } }
+		iconType = { name = "DVE_eu_seat_dot_219" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 240 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_220" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 204 y = 445 } }
+		iconType = { name = "DVE_eu_seat_dot_221" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 234 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_222" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 197 y = 434 } }
+		iconType = { name = "DVE_eu_seat_dot_223" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 190 y = 422 } }
+		iconType = { name = "DVE_eu_seat_dot_224" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 227 y = 477 } }
+		iconType = { name = "DVE_eu_seat_dot_225" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 184 y = 411 } }
+		iconType = { name = "DVE_eu_seat_dot_226" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 220 y = 466 } }
+		iconType = { name = "DVE_eu_seat_dot_227" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 177 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_228" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 170 y = 388 } }
+		iconType = { name = "DVE_eu_seat_dot_229" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 164 y = 377 } }
+		iconType = { name = "DVE_eu_seat_dot_230" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 157 y = 365 } }
+		iconType = { name = "DVE_eu_seat_dot_231" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 155 y = 351 } }
+		iconType = { name = "DVE_eu_seat_dot_232" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 222 y = 449 } }
+		iconType = { name = "DVE_eu_seat_dot_233" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 215 y = 438 } }
+		iconType = { name = "DVE_eu_seat_dot_234" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 208 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_235" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 202 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_236" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 195 y = 404 } }
+		iconType = { name = "DVE_eu_seat_dot_237" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 189 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_238" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 182 y = 381 } }
+		iconType = { name = "DVE_eu_seat_dot_239" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 175 y = 369 } }
+		iconType = { name = "DVE_eu_seat_dot_240" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 169 y = 358 } }
+		iconType = { name = "DVE_eu_seat_dot_241" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 166 y = 344 } }
+		iconType = { name = "DVE_eu_seat_dot_242" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 232 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_243" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 239 y = 470 } }
+		iconType = { name = "DVE_eu_seat_dot_244" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 245 y = 481 } }
+		iconType = { name = "DVE_eu_seat_dot_245" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 252 y = 493 } }
+		iconType = { name = "DVE_eu_seat_dot_246" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 181 y = 351 } }
+		iconType = { name = "DVE_eu_seat_dot_247" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 187 y = 363 } }
+		iconType = { name = "DVE_eu_seat_dot_248" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 194 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_249" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 201 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_250" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 207 y = 397 } }
+		iconType = { name = "DVE_eu_seat_dot_251" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 178 y = 338 } }
+		iconType = { name = "DVE_eu_seat_dot_252" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 214 y = 409 } }
+		iconType = { name = "DVE_eu_seat_dot_253" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 220 y = 420 } }
+		iconType = { name = "DVE_eu_seat_dot_254" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 227 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_255" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 234 y = 443 } }
+		iconType = { name = "DVE_eu_seat_dot_256" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 193 y = 345 } }
+		iconType = { name = "DVE_eu_seat_dot_257" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 200 y = 357 } }
+		iconType = { name = "DVE_eu_seat_dot_258" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 190 y = 332 } }
+		iconType = { name = "DVE_eu_seat_dot_259" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 206 y = 368 } }
+		iconType = { name = "DVE_eu_seat_dot_260" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 245 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_261" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 213 y = 380 } }
+		iconType = { name = "DVE_eu_seat_dot_262" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 219 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_263" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 251 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_264" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 226 y = 403 } }
+		iconType = { name = "DVE_eu_seat_dot_265" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 476 } }
+		iconType = { name = "DVE_eu_seat_dot_266" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 233 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_267" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 239 y = 426 } }
+		iconType = { name = "DVE_eu_seat_dot_268" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 206 y = 340 } }
+		iconType = { name = "DVE_eu_seat_dot_269" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 265 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_270" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 202 y = 327 } }
+		iconType = { name = "DVE_eu_seat_dot_271" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 246 y = 438 } }
+		iconType = { name = "DVE_eu_seat_dot_272" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 212 y = 352 } }
+		iconType = { name = "DVE_eu_seat_dot_273" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 219 y = 363 } }
+		iconType = { name = "DVE_eu_seat_dot_274" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 225 y = 375 } }
+		iconType = { name = "DVE_eu_seat_dot_275" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 232 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_276" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 239 y = 398 } }
+		iconType = { name = "DVE_eu_seat_dot_277" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 218 y = 335 } }
+		iconType = { name = "DVE_eu_seat_dot_278" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 214 y = 323 } }
+		iconType = { name = "DVE_eu_seat_dot_279" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 447 } }
+		iconType = { name = "DVE_eu_seat_dot_280" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 245 y = 410 } }
+		iconType = { name = "DVE_eu_seat_dot_281" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 225 y = 347 } }
+		iconType = { name = "DVE_eu_seat_dot_282" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 264 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_283" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 252 y = 421 } }
+		iconType = { name = "DVE_eu_seat_dot_284" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 232 y = 359 } }
+		iconType = { name = "DVE_eu_seat_dot_285" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 238 y = 370 } }
+		iconType = { name = "DVE_eu_seat_dot_286" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 259 y = 433 } }
+		iconType = { name = "DVE_eu_seat_dot_287" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 271 y = 471 } }
+		iconType = { name = "DVE_eu_seat_dot_288" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 245 y = 382 } }
+		iconType = { name = "DVE_eu_seat_dot_289" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 227 y = 319 } }
+		iconType = { name = "DVE_eu_seat_dot_290" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 231 y = 331 } }
+		iconType = { name = "DVE_eu_seat_dot_291" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 252 y = 394 } }
+		iconType = { name = "DVE_eu_seat_dot_292" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 238 y = 343 } }
+		iconType = { name = "DVE_eu_seat_dot_293" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_294" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 406 } }
+		iconType = { name = "DVE_eu_seat_dot_295" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 245 y = 355 } }
+		iconType = { name = "DVE_eu_seat_dot_296" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 271 y = 444 } }
+		iconType = { name = "DVE_eu_seat_dot_297" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 251 y = 367 } }
+		iconType = { name = "DVE_eu_seat_dot_298" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 265 y = 418 } }
+		iconType = { name = "DVE_eu_seat_dot_299" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 240 y = 315 } }
+		iconType = { name = "DVE_eu_seat_dot_300" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 244 y = 328 } }
+		iconType = { name = "DVE_eu_seat_dot_301" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 379 } }
+		iconType = { name = "DVE_eu_seat_dot_302" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 455 } }
+		iconType = { name = "DVE_eu_seat_dot_303" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 272 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_304" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 251 y = 340 } }
+		iconType = { name = "DVE_eu_seat_dot_305" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 265 y = 391 } }
+		iconType = { name = "DVE_eu_seat_dot_306" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 352 } }
+		iconType = { name = "DVE_eu_seat_dot_307" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 253 y = 312 } }
+		iconType = { name = "DVE_eu_seat_dot_308" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 284 y = 468 } }
+		iconType = { name = "DVE_eu_seat_dot_309" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 272 y = 403 } }
+		iconType = { name = "DVE_eu_seat_dot_310" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 265 y = 364 } }
+		iconType = { name = "DVE_eu_seat_dot_311" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 258 y = 325 } }
+		iconType = { name = "DVE_eu_seat_dot_312" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_313" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 271 y = 376 } }
+		iconType = { name = "DVE_eu_seat_dot_314" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 265 y = 337 } }
+		iconType = { name = "DVE_eu_seat_dot_315" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 284 y = 441 } }
+		iconType = { name = "DVE_eu_seat_dot_316" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 291 y = 480 } }
+		iconType = { name = "DVE_eu_seat_dot_317" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 271 y = 349 } }
+		iconType = { name = "DVE_eu_seat_dot_318" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 266 y = 310 } }
+		iconType = { name = "DVE_eu_seat_dot_319" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 388 } }
+		iconType = { name = "DVE_eu_seat_dot_320" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 285 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_321" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 271 y = 323 } }
+		iconType = { name = "DVE_eu_seat_dot_322" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 362 } }
+		iconType = { name = "DVE_eu_seat_dot_323" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 291 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_324" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 285 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_325" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 278 y = 335 } }
+		iconType = { name = "DVE_eu_seat_dot_326" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 285 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_327" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 279 y = 308 } }
+		iconType = { name = "DVE_eu_seat_dot_328" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 292 y = 413 } }
+		iconType = { name = "DVE_eu_seat_dot_329" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 285 y = 347 } }
+		iconType = { name = "DVE_eu_seat_dot_330" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_331" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 285 y = 321 } }
+		iconType = { name = "DVE_eu_seat_dot_332" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 292 y = 387 } }
+		iconType = { name = "DVE_eu_seat_dot_333" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 439 } }
+		iconType = { name = "DVE_eu_seat_dot_334" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 292 y = 360 } }
+		iconType = { name = "DVE_eu_seat_dot_335" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 426 } }
+		iconType = { name = "DVE_eu_seat_dot_336" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 292 y = 334 } }
+		iconType = { name = "DVE_eu_seat_dot_337" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 292 y = 307 } }
+		iconType = { name = "DVE_eu_seat_dot_338" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_339" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 373 } }
+		iconType = { name = "DVE_eu_seat_dot_340" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_341" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 346 } }
+		iconType = { name = "DVE_eu_seat_dot_342" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 298 y = 320 } }
+		iconType = { name = "DVE_eu_seat_dot_343" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 452 } }
+		iconType = { name = "DVE_eu_seat_dot_344" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 412 } }
+		iconType = { name = "DVE_eu_seat_dot_345" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_346" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 359 } }
+		iconType = { name = "DVE_eu_seat_dot_347" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 333 } }
+		iconType = { name = "DVE_eu_seat_dot_348" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 305 y = 306 } }
+		iconType = { name = "DVE_eu_seat_dot_349" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_350" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 438 } }
+		iconType = { name = "DVE_eu_seat_dot_351" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 425 } }
+		iconType = { name = "DVE_eu_seat_dot_352" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_353" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 372 } }
+		iconType = { name = "DVE_eu_seat_dot_354" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 346 } }
+		iconType = { name = "DVE_eu_seat_dot_355" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 312 y = 320 } }
+		iconType = { name = "DVE_eu_seat_dot_356" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 306 } }
+		iconType = { name = "DVE_eu_seat_dot_357" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 333 } }
+		iconType = { name = "DVE_eu_seat_dot_358" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 359 } }
+		iconType = { name = "DVE_eu_seat_dot_359" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_360" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 412 } }
+		iconType = { name = "DVE_eu_seat_dot_361" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 452 } }
+		iconType = { name = "DVE_eu_seat_dot_362" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 320 } }
+		iconType = { name = "DVE_eu_seat_dot_363" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 346 } }
+		iconType = { name = "DVE_eu_seat_dot_364" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 319 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_365" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 373 } }
+		iconType = { name = "DVE_eu_seat_dot_366" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_367" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 332 y = 307 } }
+		iconType = { name = "DVE_eu_seat_dot_368" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 426 } }
+		iconType = { name = "DVE_eu_seat_dot_369" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 332 y = 334 } }
+		iconType = { name = "DVE_eu_seat_dot_370" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 439 } }
+		iconType = { name = "DVE_eu_seat_dot_371" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 332 y = 360 } }
+		iconType = { name = "DVE_eu_seat_dot_372" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 332 y = 387 } }
+		iconType = { name = "DVE_eu_seat_dot_373" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 339 y = 321 } }
+		iconType = { name = "DVE_eu_seat_dot_374" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 326 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_375" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 332 y = 413 } }
+		iconType = { name = "DVE_eu_seat_dot_376" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 339 y = 347 } }
+		iconType = { name = "DVE_eu_seat_dot_377" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 345 y = 308 } }
+		iconType = { name = "DVE_eu_seat_dot_378" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 339 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_379" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 335 } }
+		iconType = { name = "DVE_eu_seat_dot_380" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 339 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_381" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 333 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_382" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 362 } }
+		iconType = { name = "DVE_eu_seat_dot_383" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 353 y = 323 } }
+		iconType = { name = "DVE_eu_seat_dot_384" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 339 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_385" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 388 } }
+		iconType = { name = "DVE_eu_seat_dot_386" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 358 y = 310 } }
+		iconType = { name = "DVE_eu_seat_dot_387" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 353 y = 349 } }
+		iconType = { name = "DVE_eu_seat_dot_388" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 333 y = 480 } }
+		iconType = { name = "DVE_eu_seat_dot_389" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 340 y = 441 } }
+		iconType = { name = "DVE_eu_seat_dot_390" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_391" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 353 y = 376 } }
+		iconType = { name = "DVE_eu_seat_dot_392" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 359 y = 337 } }
+		iconType = { name = "DVE_eu_seat_dot_393" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 325 } }
+		iconType = { name = "DVE_eu_seat_dot_394" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 359 y = 364 } }
+		iconType = { name = "DVE_eu_seat_dot_395" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 340 y = 468 } }
+		iconType = { name = "DVE_eu_seat_dot_396" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 352 y = 403 } }
+		iconType = { name = "DVE_eu_seat_dot_397" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 371 y = 312 } }
+		iconType = { name = "DVE_eu_seat_dot_398" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 352 } }
+		iconType = { name = "DVE_eu_seat_dot_399" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 359 y = 391 } }
+		iconType = { name = "DVE_eu_seat_dot_400" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 455 } }
+		iconType = { name = "DVE_eu_seat_dot_401" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 352 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_402" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 373 y = 340 } }
+		iconType = { name = "DVE_eu_seat_dot_403" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 379 } }
+		iconType = { name = "DVE_eu_seat_dot_404" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 380 y = 328 } }
+		iconType = { name = "DVE_eu_seat_dot_405" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 384 y = 315 } }
+		iconType = { name = "DVE_eu_seat_dot_406" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 359 y = 418 } }
+		iconType = { name = "DVE_eu_seat_dot_407" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 353 y = 444 } }
+		iconType = { name = "DVE_eu_seat_dot_408" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 373 y = 367 } }
+		iconType = { name = "DVE_eu_seat_dot_409" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 406 } }
+		iconType = { name = "DVE_eu_seat_dot_410" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 379 y = 355 } }
+		iconType = { name = "DVE_eu_seat_dot_411" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 346 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_412" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 386 y = 343 } }
+		iconType = { name = "DVE_eu_seat_dot_413" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 372 y = 394 } }
+		iconType = { name = "DVE_eu_seat_dot_414" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 393 y = 331 } }
+		iconType = { name = "DVE_eu_seat_dot_415" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 397 y = 319 } }
+		iconType = { name = "DVE_eu_seat_dot_416" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 379 y = 382 } }
+		iconType = { name = "DVE_eu_seat_dot_417" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 353 y = 471 } }
+		iconType = { name = "DVE_eu_seat_dot_418" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 365 y = 433 } }
+		iconType = { name = "DVE_eu_seat_dot_419" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 386 y = 370 } }
+		iconType = { name = "DVE_eu_seat_dot_420" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 360 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_421" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 372 y = 421 } }
+		iconType = { name = "DVE_eu_seat_dot_422" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 392 y = 359 } }
+		iconType = { name = "DVE_eu_seat_dot_423" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 399 y = 347 } }
+		iconType = { name = "DVE_eu_seat_dot_424" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 379 y = 410 } }
+		iconType = { name = "DVE_eu_seat_dot_425" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 447 } }
+		iconType = { name = "DVE_eu_seat_dot_426" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 410 y = 323 } }
+		iconType = { name = "DVE_eu_seat_dot_427" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 406 y = 335 } }
+		iconType = { name = "DVE_eu_seat_dot_428" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 385 y = 398 } }
+		iconType = { name = "DVE_eu_seat_dot_429" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 392 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_430" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 399 y = 375 } }
+		iconType = { name = "DVE_eu_seat_dot_431" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 405 y = 363 } }
+		iconType = { name = "DVE_eu_seat_dot_432" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 378 y = 438 } }
+		iconType = { name = "DVE_eu_seat_dot_433" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 412 y = 352 } }
+		iconType = { name = "DVE_eu_seat_dot_434" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 422 y = 327 } }
+		iconType = { name = "DVE_eu_seat_dot_435" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 359 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_436" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 418 y = 340 } }
+		iconType = { name = "DVE_eu_seat_dot_437" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 385 y = 426 } }
+		iconType = { name = "DVE_eu_seat_dot_438" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 366 y = 476 } }
+		iconType = { name = "DVE_eu_seat_dot_439" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 391 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_440" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 398 y = 403 } }
+		iconType = { name = "DVE_eu_seat_dot_441" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 373 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_442" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 405 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_443" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 379 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_444" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 411 y = 380 } }
+		iconType = { name = "DVE_eu_seat_dot_445" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 418 y = 368 } }
+		iconType = { name = "DVE_eu_seat_dot_446" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 434 y = 332 } }
+		iconType = { name = "DVE_eu_seat_dot_447" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 424 y = 357 } }
+		iconType = { name = "DVE_eu_seat_dot_448" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 431 y = 345 } }
+		iconType = { name = "DVE_eu_seat_dot_449" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 390 y = 443 } }
+		iconType = { name = "DVE_eu_seat_dot_450" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 397 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_451" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 404 y = 420 } }
+		iconType = { name = "DVE_eu_seat_dot_452" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 410 y = 409 } }
+		iconType = { name = "DVE_eu_seat_dot_453" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 446 y = 338 } }
+		iconType = { name = "DVE_eu_seat_dot_454" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 417 y = 397 } }
+		iconType = { name = "DVE_eu_seat_dot_455" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 423 y = 386 } }
+		iconType = { name = "DVE_eu_seat_dot_456" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 430 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_457" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 437 y = 363 } }
+		iconType = { name = "DVE_eu_seat_dot_458" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 443 y = 351 } }
+		iconType = { name = "DVE_eu_seat_dot_459" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 372 y = 493 } }
+		iconType = { name = "DVE_eu_seat_dot_460" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 379 y = 481 } }
+		iconType = { name = "DVE_eu_seat_dot_461" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 385 y = 470 } }
+		iconType = { name = "DVE_eu_seat_dot_462" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 392 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_463" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 458 y = 344 } }
+		iconType = { name = "DVE_eu_seat_dot_464" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 402 y = 449 } }
+		iconType = { name = "DVE_eu_seat_dot_465" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 409 y = 438 } }
+		iconType = { name = "DVE_eu_seat_dot_466" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 416 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_467" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 422 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_468" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 429 y = 404 } }
+		iconType = { name = "DVE_eu_seat_dot_469" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 435 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_470" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 442 y = 381 } }
+		iconType = { name = "DVE_eu_seat_dot_471" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 449 y = 369 } }
+		iconType = { name = "DVE_eu_seat_dot_472" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 455 y = 358 } }
+		iconType = { name = "DVE_eu_seat_dot_473" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 469 y = 351 } }
+		iconType = { name = "DVE_eu_seat_dot_474" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 467 y = 365 } }
+		iconType = { name = "DVE_eu_seat_dot_475" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 460 y = 377 } }
+		iconType = { name = "DVE_eu_seat_dot_476" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 454 y = 388 } }
+		iconType = { name = "DVE_eu_seat_dot_477" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 404 y = 466 } }
+		iconType = { name = "DVE_eu_seat_dot_478" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 447 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_479" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 440 y = 411 } }
+		iconType = { name = "DVE_eu_seat_dot_480" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 397 y = 477 } }
+		iconType = { name = "DVE_eu_seat_dot_481" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 434 y = 422 } }
+		iconType = { name = "DVE_eu_seat_dot_482" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 390 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_483" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 427 y = 434 } }
+		iconType = { name = "DVE_eu_seat_dot_484" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 420 y = 445 } }
+		iconType = { name = "DVE_eu_seat_dot_485" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 384 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_486" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 481 y = 358 } }
+		iconType = { name = "DVE_eu_seat_dot_487" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 414 y = 457 } }
+		iconType = { name = "DVE_eu_seat_dot_488" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 478 y = 373 } }
+		iconType = { name = "DVE_eu_seat_dot_489" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 471 y = 384 } }
+		iconType = { name = "DVE_eu_seat_dot_490" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 465 y = 396 } }
+		iconType = { name = "DVE_eu_seat_dot_491" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 458 y = 407 } }
+		iconType = { name = "DVE_eu_seat_dot_492" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 451 y = 419 } }
+		iconType = { name = "DVE_eu_seat_dot_493" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 491 y = 366 } }
+		iconType = { name = "DVE_eu_seat_dot_494" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 445 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_495" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 438 y = 442 } }
+		iconType = { name = "DVE_eu_seat_dot_496" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 415 y = 474 } }
+		iconType = { name = "DVE_eu_seat_dot_497" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 431 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_498" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 489 y = 381 } }
+		iconType = { name = "DVE_eu_seat_dot_499" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 408 y = 485 } }
+		iconType = { name = "DVE_eu_seat_dot_500" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 425 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_501" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 482 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_502" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 476 y = 404 } }
+		iconType = { name = "DVE_eu_seat_dot_503" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 502 y = 374 } }
+		iconType = { name = "DVE_eu_seat_dot_504" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 402 y = 497 } }
+		iconType = { name = "DVE_eu_seat_dot_505" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 469 y = 415 } }
+		iconType = { name = "DVE_eu_seat_dot_506" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 462 y = 427 } }
+		iconType = { name = "DVE_eu_seat_dot_507" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 395 y = 508 } }
+		iconType = { name = "DVE_eu_seat_dot_508" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 455 y = 439 } }
+		iconType = { name = "DVE_eu_seat_dot_509" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 500 y = 390 } }
+		iconType = { name = "DVE_eu_seat_dot_510" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 449 y = 450 } }
+		iconType = { name = "DVE_eu_seat_dot_511" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 493 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_512" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 512 y = 383 } }
+		iconType = { name = "DVE_eu_seat_dot_513" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 442 y = 462 } }
+		iconType = { name = "DVE_eu_seat_dot_514" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 486 y = 413 } }
+		iconType = { name = "DVE_eu_seat_dot_515" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 426 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_516" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 479 y = 424 } }
+		iconType = { name = "DVE_eu_seat_dot_517" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 435 y = 473 } }
+		iconType = { name = "DVE_eu_seat_dot_518" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 472 y = 436 } }
+		iconType = { name = "DVE_eu_seat_dot_519" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 510 y = 399 } }
+		iconType = { name = "DVE_eu_seat_dot_520" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 419 y = 494 } }
+		iconType = { name = "DVE_eu_seat_dot_521" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 465 y = 448 } }
+		iconType = { name = "DVE_eu_seat_dot_522" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 503 y = 410 } }
+		iconType = { name = "DVE_eu_seat_dot_523" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 521 y = 392 } }
+		iconType = { name = "DVE_eu_seat_dot_524" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 412 y = 506 } }
+		iconType = { name = "DVE_eu_seat_dot_525" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 459 y = 459 } }
+		iconType = { name = "DVE_eu_seat_dot_526" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 496 y = 422 } }
+		iconType = { name = "DVE_eu_seat_dot_527" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 489 y = 434 } }
+		iconType = { name = "DVE_eu_seat_dot_528" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 452 y = 471 } }
+		iconType = { name = "DVE_eu_seat_dot_529" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 519 y = 408 } }
+		iconType = { name = "DVE_eu_seat_dot_530" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 405 y = 518 } }
+		iconType = { name = "DVE_eu_seat_dot_531" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 482 y = 446 } }
+		iconType = { name = "DVE_eu_seat_dot_532" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 531 y = 401 } }
+		iconType = { name = "DVE_eu_seat_dot_533" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 445 y = 483 } }
+		iconType = { name = "DVE_eu_seat_dot_534" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 512 y = 420 } }
+		iconType = { name = "DVE_eu_seat_dot_535" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 435 y = 492 } }
+		iconType = { name = "DVE_eu_seat_dot_536" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 475 y = 458 } }
+		iconType = { name = "DVE_eu_seat_dot_537" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 505 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_538" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 468 y = 469 } }
+		iconType = { name = "DVE_eu_seat_dot_539" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 428 y = 504 } }
+		iconType = { name = "DVE_eu_seat_dot_540" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 498 y = 444 } }
+		iconType = { name = "DVE_eu_seat_dot_541" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 528 y = 418 } }
+		iconType = { name = "DVE_eu_seat_dot_542" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 540 y = 411 } }
+		iconType = { name = "DVE_eu_seat_dot_543" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 461 y = 481 } }
+		iconType = { name = "DVE_eu_seat_dot_544" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 491 y = 456 } }
+		iconType = { name = "DVE_eu_seat_dot_545" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 521 y = 430 } }
+		iconType = { name = "DVE_eu_seat_dot_546" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 421 y = 516 } }
+		iconType = { name = "DVE_eu_seat_dot_547" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 514 y = 442 } }
+		iconType = { name = "DVE_eu_seat_dot_548" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 484 y = 468 } }
+		iconType = { name = "DVE_eu_seat_dot_549" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 453 y = 493 } }
+		iconType = { name = "DVE_eu_seat_dot_550" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 537 y = 429 } }
+		iconType = { name = "DVE_eu_seat_dot_551" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 548 y = 421 } }
+		iconType = { name = "DVE_eu_seat_dot_552" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 444 y = 503 } }
+		iconType = { name = "DVE_eu_seat_dot_553" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 507 y = 454 } }
+		iconType = { name = "DVE_eu_seat_dot_554" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 476 y = 480 } }
+		iconType = { name = "DVE_eu_seat_dot_555" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 414 y = 529 } }
+		iconType = { name = "DVE_eu_seat_dot_556" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 530 y = 441 } }
+		iconType = { name = "DVE_eu_seat_dot_557" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 499 y = 467 } }
+		iconType = { name = "DVE_eu_seat_dot_558" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 437 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_559" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 469 y = 492 } }
+		iconType = { name = "DVE_eu_seat_dot_560" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 522 y = 453 } }
+		iconType = { name = "DVE_eu_seat_dot_561" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 556 y = 432 } }
+		iconType = { name = "DVE_eu_seat_dot_562" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 545 y = 440 } }
+		iconType = { name = "DVE_eu_seat_dot_563" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 492 y = 479 } }
+		iconType = { name = "DVE_eu_seat_dot_564" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 515 y = 465 } }
+		iconType = { name = "DVE_eu_seat_dot_565" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 461 y = 504 } }
+		iconType = { name = "DVE_eu_seat_dot_566" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 538 y = 452 } }
+		iconType = { name = "DVE_eu_seat_dot_567" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 429 y = 528 } }
+		iconType = { name = "DVE_eu_seat_dot_568" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 484 y = 491 } }
+		iconType = { name = "DVE_eu_seat_dot_569" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 507 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_570" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 452 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_571" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 530 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_572" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 563 y = 443 } }
+		iconType = { name = "DVE_eu_seat_dot_573" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 553 y = 451 } }
+		iconType = { name = "DVE_eu_seat_dot_574" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 477 y = 503 } }
+		iconType = { name = "DVE_eu_seat_dot_575" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 499 y = 490 } }
+		iconType = { name = "DVE_eu_seat_dot_576" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 522 y = 477 } }
+		iconType = { name = "DVE_eu_seat_dot_577" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 545 y = 464 } }
+		iconType = { name = "DVE_eu_seat_dot_578" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 422 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_579" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 445 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_580" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 570 y = 454 } }
+		iconType = { name = "DVE_eu_seat_dot_581" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 469 y = 516 } }
+		iconType = { name = "DVE_eu_seat_dot_582" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 491 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_583" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 514 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_584" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 537 y = 476 } }
+		iconType = { name = "DVE_eu_seat_dot_585" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 560 y = 463 } }
+		iconType = { name = "DVE_eu_seat_dot_586" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 552 y = 475 } }
+		iconType = { name = "DVE_eu_seat_dot_587" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 459 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_588" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 529 y = 489 } }
+		iconType = { name = "DVE_eu_seat_dot_589" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 506 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_590" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 437 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_591" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 483 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_592" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 577 y = 466 } }
+		iconType = { name = "DVE_eu_seat_dot_593" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 567 y = 475 } }
+		iconType = { name = "DVE_eu_seat_dot_594" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 544 y = 488 } }
+		iconType = { name = "DVE_eu_seat_dot_595" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 521 y = 501 } }
+		iconType = { name = "DVE_eu_seat_dot_596" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 498 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_597" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 451 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_598" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 475 y = 528 } }
+		iconType = { name = "DVE_eu_seat_dot_599" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 558 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_600" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 583 y = 478 } }
+		iconType = { name = "DVE_eu_seat_dot_601" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 535 y = 501 } }
+		iconType = { name = "DVE_eu_seat_dot_602" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 428 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_603" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 512 y = 514 } }
+		iconType = { name = "DVE_eu_seat_dot_604" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 573 y = 487 } }
+		iconType = { name = "DVE_eu_seat_dot_605" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 489 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_606" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 550 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_607" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 465 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_608" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 526 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_609" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 564 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_610" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 588 y = 490 } }
+		iconType = { name = "DVE_eu_seat_dot_611" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 442 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_612" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 503 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_613" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 541 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_614" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 578 y = 500 } }
+		iconType = { name = "DVE_eu_seat_dot_615" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 480 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_616" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 518 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_617" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 555 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_618" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 457 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_619" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 593 y = 502 } }
+		iconType = { name = "DVE_eu_seat_dot_620" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 494 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_621" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 532 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_622" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 569 y = 513 } }
+		iconType = { name = "DVE_eu_seat_dot_623" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 583 y = 512 } }
+		iconType = { name = "DVE_eu_seat_dot_624" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 471 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_625" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 545 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_626" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 508 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_627" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 433 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_628" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 559 y = 526 } }
+		iconType = { name = "DVE_eu_seat_dot_629" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 597 y = 515 } }
+		iconType = { name = "DVE_eu_seat_dot_630" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 522 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_631" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 485 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_632" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 573 y = 525 } }
+		iconType = { name = "DVE_eu_seat_dot_633" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 447 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_634" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 536 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_635" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 587 y = 525 } }
+		iconType = { name = "DVE_eu_seat_dot_636" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 498 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_637" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 549 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_638" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 461 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_639" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 601 y = 527 } }
+		iconType = { name = "DVE_eu_seat_dot_640" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 512 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_641" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 563 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_642" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 577 y = 539 } }
+		iconType = { name = "DVE_eu_seat_dot_643" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 474 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_644" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 526 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_645" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 590 y = 538 } }
+		iconType = { name = "DVE_eu_seat_dot_646" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 539 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_647" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 488 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_648" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 604 y = 540 } }
+		iconType = { name = "DVE_eu_seat_dot_649" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 553 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_650" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 437 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_651" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 502 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_652" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 566 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_653" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 580 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_654" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 450 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_655" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 515 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_656" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 593 y = 552 } }
+		iconType = { name = "DVE_eu_seat_dot_657" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 529 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_658" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 464 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_659" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 607 y = 553 } }
+		iconType = { name = "DVE_eu_seat_dot_660" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 542 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_661" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 477 y = 578 } }
+		iconType = { name = "DVE_eu_seat_dot_662" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 555 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_663" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 569 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_664" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 491 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_665" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 582 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_666" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 595 y = 565 } }
+		iconType = { name = "DVE_eu_seat_dot_667" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 504 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_668" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 609 y = 566 } }
+		iconType = { name = "DVE_eu_seat_dot_669" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 517 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_670" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 531 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_671" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 544 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_672" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 557 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_673" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 439 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_674" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 571 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_675" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 584 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_676" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 453 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_677" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 597 y = 579 } }
+		iconType = { name = "DVE_eu_seat_dot_678" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 466 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_679" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 610 y = 580 } }
+		iconType = { name = "DVE_eu_seat_dot_680" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 479 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_681" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 492 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_682" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 506 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_683" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 519 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_684" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 532 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_685" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 545 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_686" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 558 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_687" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 572 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_688" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 585 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_689" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 598 y = 592 } }
+		iconType = { name = "DVE_eu_seat_dot_690" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 611 y = 593 } }
+		iconType = { name = "DVE_eu_seat_dot_691" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 440 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_692" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 453 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_693" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 466 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_694" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 480 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_695" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 493 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_696" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 506 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_697" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 519 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_698" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 532 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_699" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 546 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_700" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 559 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_701" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 572 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_702" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 585 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_703" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 598 y = 606 } }
+		iconType = { name = "DVE_eu_seat_dot_704" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 612 y = 606 } }
+
+		# --- Council of the EU: one dot per Member State (order: GER FRA ITA SPA POL ROM HOL BEL CZE GRE HUN POR SWE AUS BUL DEN FIN SLO IRE CRO LIT LAT SLV EST CYP LUX MLT) ---
+		iconType = { name = "DVE_eu_council_dot_0" spriteType = "GFX_DVE_eu_council_seat" position = { x = 242 y = 250 } }
+		iconType = { name = "DVE_eu_council_dot_1" spriteType = "GFX_DVE_eu_council_seat" position = { x = 218 y = 250 } }
+		iconType = { name = "DVE_eu_council_dot_2" spriteType = "GFX_DVE_eu_council_seat" position = { x = 220 y = 230 } }
+		iconType = { name = "DVE_eu_council_dot_3" spriteType = "GFX_DVE_eu_council_seat" position = { x = 245 y = 231 } }
+		iconType = { name = "DVE_eu_council_dot_4" spriteType = "GFX_DVE_eu_council_seat" position = { x = 227 y = 210 } }
+		iconType = { name = "DVE_eu_council_dot_5" spriteType = "GFX_DVE_eu_council_seat" position = { x = 253 y = 213 } }
+		iconType = { name = "DVE_eu_council_dot_6" spriteType = "GFX_DVE_eu_council_seat" position = { x = 238 y = 193 } }
+		iconType = { name = "DVE_eu_council_dot_7" spriteType = "GFX_DVE_eu_council_seat" position = { x = 265 y = 199 } }
+		iconType = { name = "DVE_eu_council_dot_8" spriteType = "GFX_DVE_eu_council_seat" position = { x = 253 y = 178 } }
+		iconType = { name = "DVE_eu_council_dot_9" spriteType = "GFX_DVE_eu_council_seat" position = { x = 270 y = 167 } }
+		iconType = { name = "DVE_eu_council_dot_10" spriteType = "GFX_DVE_eu_council_seat" position = { x = 282 y = 188 } }
+		iconType = { name = "DVE_eu_council_dot_11" spriteType = "GFX_DVE_eu_council_seat" position = { x = 290 y = 160 } }
+		iconType = { name = "DVE_eu_council_dot_12" spriteType = "GFX_DVE_eu_council_seat" position = { x = 300 y = 183 } }
+		iconType = { name = "DVE_eu_council_dot_13" spriteType = "GFX_DVE_eu_council_seat" position = { x = 310 y = 158 } }
+		iconType = { name = "DVE_eu_council_dot_14" spriteType = "GFX_DVE_eu_council_seat" position = { x = 320 y = 183 } }
+		iconType = { name = "DVE_eu_council_dot_15" spriteType = "GFX_DVE_eu_council_seat" position = { x = 330 y = 160 } }
+		iconType = { name = "DVE_eu_council_dot_16" spriteType = "GFX_DVE_eu_council_seat" position = { x = 338 y = 188 } }
+		iconType = { name = "DVE_eu_council_dot_17" spriteType = "GFX_DVE_eu_council_seat" position = { x = 350 y = 167 } }
+		iconType = { name = "DVE_eu_council_dot_18" spriteType = "GFX_DVE_eu_council_seat" position = { x = 367 y = 178 } }
+		iconType = { name = "DVE_eu_council_dot_19" spriteType = "GFX_DVE_eu_council_seat" position = { x = 355 y = 199 } }
+		iconType = { name = "DVE_eu_council_dot_20" spriteType = "GFX_DVE_eu_council_seat" position = { x = 382 y = 193 } }
+		iconType = { name = "DVE_eu_council_dot_21" spriteType = "GFX_DVE_eu_council_seat" position = { x = 367 y = 213 } }
+		iconType = { name = "DVE_eu_council_dot_22" spriteType = "GFX_DVE_eu_council_seat" position = { x = 393 y = 210 } }
+		iconType = { name = "DVE_eu_council_dot_23" spriteType = "GFX_DVE_eu_council_seat" position = { x = 375 y = 231 } }
+		iconType = { name = "DVE_eu_council_dot_24" spriteType = "GFX_DVE_eu_council_seat" position = { x = 400 y = 230 } }
+		iconType = { name = "DVE_eu_council_dot_25" spriteType = "GFX_DVE_eu_council_seat" position = { x = 378 y = 250 } }
+		iconType = { name = "DVE_eu_council_dot_26" spriteType = "GFX_DVE_eu_council_seat" position = { x = 402 y = 250 } }
+
+		instantTextBoxType = {
+			name = "DVE_eu_council_label"
+			position = { x = 10 y = 128 }
+			font = "hoi_18mbs"
+			text = "DVE_EU_COUNCIL_LABEL"
+			format = center
+			maxWidth = 616
+			maxHeight = 22
+		}
+
+		instantTextBoxType = {
+			name = "DVE_eu_council_votes"
+			position = { x = 10 y = 272 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COUNCIL_VOTES"
+			format = center
+			maxWidth = 616
 			maxHeight = 20
 		}
-		iconType = {
-			name = "DVE_eu_tab_bar_bg"
-			spriteType = "GFX_DVE_eu_tab_bar"
-			position = { x = 10 y = 55 }
+
+		instantTextBoxType = {
+			name = "DVE_eu_hemi_number"
+			position = { x = 218 y = 520 }
+			font = "hoi_36header"
+			text = "DVE_EU_HEMI_NUMBER"
+			format = center
+			maxWidth = 200
+			maxHeight = 40
 		}
-		buttonType = {
-			name = "DVE_eu_tab_parliament"
-			position = { x = 20 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_parliament"
-			buttonText = "Parliament"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_PARLIAMENT"
-			click_enabled = "DVE_eu_tab_parliament_visible"
+
+		instantTextBoxType = {
+			name = "DVE_eu_hemi_caption"
+			position = { x = 188 y = 566 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_HEMI_CAPTION"
+			format = center
+			maxWidth = 260
+			maxHeight = 40
 		}
-		buttonType = {
-			name = "DVE_eu_tab_council"
-			position = { x = 170 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_council"
-			buttonText = "Council"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_COUNCIL"
-			click_enabled = "DVE_eu_tab_council_visible"
+
+		instantTextBoxType = {
+			name = "DVE_eu_parl_note"
+			position = { x = 24 y = 642 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_PARLIAMENT_NOTE"
+			format = left
+			maxWidth = 590
+			maxHeight = 60
 		}
-		buttonType = {
-			name = "DVE_eu_tab_commission"
-			position = { x = 320 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_commission"
-			buttonText = "Commission"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_COMMISSION"
-			click_enabled = "DVE_eu_tab_commission_visible"
+
+		# --- Table Header Right ---
+		instantTextBoxType = {
+			name = "DVE_eu_parl_table_title"
+			position = { x = 645 y = 14 }
+			font = "hoi_20b"
+			text = "DVE_EU_GROUPS_TABLE_TITLE"
+			format = left
+			maxWidth = 420
+			maxHeight = 24
 		}
-		buttonType = {
-			name = "DVE_eu_tab_budget"
-			position = { x = 470 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_budget"
-			buttonText = "Budget"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_BUDGET"
-			click_enabled = "DVE_eu_tab_budget_visible"
+
+		instantTextBoxType = {
+			name = "header_group"
+			position = { x = 665 y = 50 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COL_GROUP"
+			format = left
+			maxWidth = 175
+			maxHeight = 20
 		}
-		buttonType = {
-			name = "DVE_eu_tab_enlargement"
-			position = { x = 620 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_enlargement"
-			buttonText = "Enlargement"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_ENLARGEMENT"
-			click_enabled = "DVE_eu_tab_enlargement_visible"
+
+		instantTextBoxType = {
+			name = "header_total"
+			position = { x = 845 y = 50 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COL_TOTAL"
+			format = center
+			maxWidth = 60
+			maxHeight = 20
 		}
-		buttonType = {
-			name = "DVE_eu_tab_court"
-			position = { x = 770 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_court"
-			buttonText = "Court"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_COURT"
-			click_enabled = "DVE_eu_tab_court_visible"
+
+		instantTextBoxType = {
+			name = "header_share"
+			position = { x = 910 y = 50 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COL_SHARE"
+			format = center
+			maxWidth = 60
+			maxHeight = 20
 		}
-		buttonType = {
-			name = "DVE_eu_tab_bce"
-			position = { x = 920 y = 60 }
-			quadTextureSprite = "GFX_DVE_eu_tab_bce"
-			buttonText = "BCE"
-			buttonFont = "hoi_16mbs"
-			clicksound = decisions_ui_button
-			pdx_tooltip = "DVE_EU_TAB_BCE"
-			click_enabled = "DVE_eu_tab_bce_visible"
+
+		instantTextBoxType = {
+			name = "header_national"
+			position = { x = 975 y = 50 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COL_NATIONAL"
+			format = center
+			maxWidth = 100
+			maxHeight = 20
 		}
-		containerWindowType = {
-			name = "DVE_eu_tab_parliament_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			iconType = {
-				name = "DVE_eu_hemicycle_bg"
-				spriteType = "GFX_DVE_eu_hemicycle"
-				position = { x = 30 y = 126 }
-				frame = 1
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_PARL_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_total"
-				position = { x = 330 y = 96 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_PARL_HEMICYCLE"
-				format = right
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_delegation"
-				position = { x = 30 y = 436 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_PARL_DELEGATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_epp"
-				spriteType = "GFX_DVE_eu_ep_group_epp"
-				position = { x = 30 y = 466 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_EPP_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_epp_text"
-				position = { x = 46 y = 468 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_EPP"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_sd"
-				spriteType = "GFX_DVE_eu_ep_group_sd"
-				position = { x = 150 y = 466 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_SD_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_sd_text"
-				position = { x = 166 y = 468 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_SD"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_re"
-				spriteType = "GFX_DVE_eu_ep_group_re"
-				position = { x = 270 y = 466 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_RE_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_re_text"
-				position = { x = 286 y = 468 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_RE"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_greens"
-				spriteType = "GFX_DVE_eu_ep_group_greens"
-				position = { x = 390 y = 466 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_GREENS_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_greens_text"
-				position = { x = 406 y = 468 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_GREENS"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_id"
-				spriteType = "GFX_DVE_eu_ep_group_id"
-				position = { x = 30 y = 496 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_ID_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_id_text"
-				position = { x = 46 y = 498 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_ID"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_ecr"
-				spriteType = "GFX_DVE_eu_ep_group_ecr"
-				position = { x = 150 y = 496 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_ECR_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_ecr_text"
-				position = { x = 166 y = 498 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_ECR"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_left"
-				spriteType = "GFX_DVE_eu_ep_group_left"
-				position = { x = 270 y = 496 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_LEFT_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_left_text"
-				position = { x = 286 y = 498 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_LEFT"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
-			iconType = {
-				name = "DVE_eu_parl_group_ni"
-				spriteType = "GFX_DVE_eu_ep_group_ni"
-				position = { x = 390 y = 496 }
-				frame = 1
-				pdx_tooltip = "DVE_EU_PARL_GROUP_NI_TT"
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_parl_group_ni_text"
-				position = { x = 406 y = 498 }
-				font = "hoi_14"
-				text = "DVE_EU_EP_NI"
-				format = left
-				fixedsize = yes
-				maxWidth = 100
-				maxHeight = 16
-			}
+
+		# --- 8 Group Rows ---
+		iconType = { name = "DVE_eu_legend_dot_0" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 111 } frame = 2 }
+		instantTextBoxType = { name = "row_1_name" position = { x = 665 y = 108 } font = "hoi_16mbs" text = "DVE_eu_group_name_1" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_1_total" position = { x = 845 y = 108 } font = "hoi_16mbs" text = "DVE_eu_group_total_1" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_1_share" position = { x = 910 y = 108 } font = "hoi_16mbs" text = "DVE_eu_group_share_1" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_1_nat" position = { x = 975 y = 108 } font = "hoi_16mbs" text = "DVE_eu_group_nat_1" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_1" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 145 } frame = 3 }
+		instantTextBoxType = { name = "row_2_name" position = { x = 665 y = 142 } font = "hoi_16mbs" text = "DVE_eu_group_name_2" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_2_total" position = { x = 845 y = 142 } font = "hoi_16mbs" text = "DVE_eu_group_total_2" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_2_share" position = { x = 910 y = 142 } font = "hoi_16mbs" text = "DVE_eu_group_share_2" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_2_nat" position = { x = 975 y = 142 } font = "hoi_16mbs" text = "DVE_eu_group_nat_2" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_2" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 179 } frame = 4 }
+		instantTextBoxType = { name = "row_3_name" position = { x = 665 y = 176 } font = "hoi_16mbs" text = "DVE_eu_group_name_3" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_3_total" position = { x = 845 y = 176 } font = "hoi_16mbs" text = "DVE_eu_group_total_3" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_3_share" position = { x = 910 y = 176 } font = "hoi_16mbs" text = "DVE_eu_group_share_3" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_3_nat" position = { x = 975 y = 176 } font = "hoi_16mbs" text = "DVE_eu_group_nat_3" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_3" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 213 } frame = 5 }
+		instantTextBoxType = { name = "row_4_name" position = { x = 665 y = 210 } font = "hoi_16mbs" text = "DVE_eu_group_name_4" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_4_total" position = { x = 845 y = 210 } font = "hoi_16mbs" text = "DVE_eu_group_total_4" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_4_share" position = { x = 910 y = 210 } font = "hoi_16mbs" text = "DVE_eu_group_share_4" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_4_nat" position = { x = 975 y = 210 } font = "hoi_16mbs" text = "DVE_eu_group_nat_4" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_4" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 247 } frame = 6 }
+		instantTextBoxType = { name = "row_5_name" position = { x = 665 y = 244 } font = "hoi_16mbs" text = "DVE_eu_group_name_5" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_5_total" position = { x = 845 y = 244 } font = "hoi_16mbs" text = "DVE_eu_group_total_5" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_5_share" position = { x = 910 y = 244 } font = "hoi_16mbs" text = "DVE_eu_group_share_5" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_5_nat" position = { x = 975 y = 244 } font = "hoi_16mbs" text = "DVE_eu_group_nat_5" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_5" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 281 } frame = 7 }
+		instantTextBoxType = { name = "row_6_name" position = { x = 665 y = 278 } font = "hoi_16mbs" text = "DVE_eu_group_name_6" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_6_total" position = { x = 845 y = 278 } font = "hoi_16mbs" text = "DVE_eu_group_total_6" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_6_share" position = { x = 910 y = 278 } font = "hoi_16mbs" text = "DVE_eu_group_share_6" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_6_nat" position = { x = 975 y = 278 } font = "hoi_16mbs" text = "DVE_eu_group_nat_6" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_6" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 315 } frame = 8 }
+		instantTextBoxType = { name = "row_7_name" position = { x = 665 y = 312 } font = "hoi_16mbs" text = "DVE_eu_group_name_7" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_7_total" position = { x = 845 y = 312 } font = "hoi_16mbs" text = "DVE_eu_group_total_7" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_7_share" position = { x = 910 y = 312 } font = "hoi_16mbs" text = "DVE_eu_group_share_7" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_7_nat" position = { x = 975 y = 312 } font = "hoi_16mbs" text = "DVE_eu_group_nat_7" format = center maxWidth = 100 maxHeight = 26 }
+		iconType = { name = "DVE_eu_legend_dot_7" spriteType = "GFX_DVE_eu_parliament_seat" position = { x = 643 y = 349 } frame = 9 }
+		instantTextBoxType = { name = "row_8_name" position = { x = 665 y = 346 } font = "hoi_16mbs" text = "DVE_eu_group_name_8" format = left maxWidth = 175 maxHeight = 26 }
+		instantTextBoxType = { name = "row_8_total" position = { x = 845 y = 346 } font = "hoi_16mbs" text = "DVE_eu_group_total_8" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_8_share" position = { x = 910 y = 346 } font = "hoi_16mbs" text = "DVE_eu_group_share_8" format = center maxWidth = 60 maxHeight = 26 }
+		instantTextBoxType = { name = "row_8_nat" position = { x = 975 y = 346 } font = "hoi_16mbs" text = "DVE_eu_group_nat_8" format = center maxWidth = 100 maxHeight = 26 }
+
+		# --- Bottom Information Panels Right ---
+		instantTextBoxType = {
+			name = "DVE_eu_coalition_title"
+			position = { x = 645 y = 390 }
+			font = "hoi_18mbs"
+			text = "DVE_EU_COALITION_TITLE"
+			format = left
+			maxWidth = 425
+			maxHeight = 24
 		}
-		containerWindowType = {
-			name = "DVE_eu_tab_council_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_council_title"
-				position = { x = 560 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COUNCIL_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			iconType = {
-				name = "DVE_eu_council_calc_bg"
-				spriteType = "GFX_DVE_eu_council_calc"
-				position = { x = 560 y = 126 }
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_states_for"
-				position = { x = 580 y = 146 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COUNCIL_STATES_FOR"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_states_against"
-				position = { x = 580 y = 176 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COUNCIL_STATES_AGAINST"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_pop_for"
-				position = { x = 580 y = 216 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COUNCIL_POP_FOR"
-				format = left
-				fixedsize = yes
-				maxWidth = 400
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_pop_against"
-				position = { x = 580 y = 246 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COUNCIL_POP_AGAINST"
-				format = left
-				fixedsize = yes
-				maxWidth = 400
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_qmv_result"
-				position = { x = 580 y = 286 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COUNCIL_QMV_PASS"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_council_blocking"
-				position = { x = 580 y = 316 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COUNCIL_BLOCKING"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			buttonType = {
-				name = "DVE_eu_council_vote_for"
-				position = { x = 580 y = 356 }
-				quadTextureSprite = "GFX_DVE_eu_vote_for"
-				clicksound = decisions_ui_button
-				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_FOR_TT"
-			}
-			buttonType = {
-				name = "DVE_eu_council_vote_against"
-				position = { x = 660 y = 356 }
-				quadTextureSprite = "GFX_DVE_eu_vote_against"
-				clicksound = decisions_ui_button
-				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_AGAINST_TT"
-			}
-			buttonType = {
-				name = "DVE_eu_council_vote_abstain"
-				position = { x = 760 y = 356 }
-				quadTextureSprite = "GFX_DVE_eu_vote_abstain"
-				clicksound = decisions_ui_button
-				pdx_tooltip = "DVE_EU_COUNCIL_VOTE_ABSTAIN_TT"
-			}
+
+		instantTextBoxType = {
+			name = "DVE_eu_coalition_desc"
+			position = { x = 645 y = 418 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_COALITION_DESC"
+			format = left
+			maxWidth = 425
+			maxHeight = 85
 		}
-		containerWindowType = {
-			name = "DVE_eu_tab_commission_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_comm_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COMM_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_comm_president"
-				position = { x = 30 y = 136 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COMM_PRESIDENT"
-				format = left
-				fixedsize = yes
-				maxWidth = 400
-				maxHeight = 20
-			}
-			iconType = {
-				name = "DVE_eu_comm_college_bg"
-				spriteType = "GFX_DVE_eu_commission_college"
-				position = { x = 30 y = 166 }
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_comm_work_title"
-				position = { x = 30 y = 376 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COMM_WORK_PROGRAMME"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_comm_work_desc"
-				position = { x = 30 y = 406 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COMM_WORK_PROGRAMME_DESC"
-				format = left
-				fixedsize = yes
-				maxWidth = 800
-				maxHeight = 60
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_comm_spitzen_title"
-				position = { x = 30 y = 476 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COMM_SPITZEN"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
+
+		instantTextBoxType = {
+			name = "DVE_eu_powers_title"
+			position = { x = 645 y = 515 }
+			font = "hoi_18mbs"
+			text = "DVE_EU_POWERS_TITLE"
+			format = left
+			maxWidth = 425
+			maxHeight = 24
 		}
-		containerWindowType = {
-			name = "DVE_eu_tab_budget_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_budget_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_BUDGET_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			iconType = {
-				name = "DVE_eu_budget_mff_chart"
-				spriteType = "GFX_DVE_eu_budget_chart"
-				position = { x = 30 y = 136 }
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_budget_mff_label"
-				position = { x = 40 y = 346 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BUDGET_MFF"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_budget_annual_label"
-				position = { x = 580 y = 136 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_BUDGET_ANNUAL"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_budget_net"
-				position = { x = 580 y = 386 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BUDGET_NET_POS"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_budget_own_res_label"
-				position = { x = 580 y = 416 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_BUDGET_OWN_RES"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-		}
-		containerWindowType = {
-			name = "DVE_eu_tab_enlargement_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_enl_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_ENL_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_name"
-				position = { x = 40 y = 136 }
-				font = "hoi_18mbs"
-				text = "Albania"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_int"
-				position = { x = 250 y = 136 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_dem"
-				position = { x = 410 y = 136 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_rol"
-				position = { x = 570 y = 136 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_mkt"
-				position = { x = 730 y = 136 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_ALB_acq"
-				position = { x = 890 y = 136 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_name"
-				position = { x = 40 y = 206 }
-				font = "hoi_18mbs"
-				text = "Bosnia and Herzegovina"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_int"
-				position = { x = 250 y = 206 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_dem"
-				position = { x = 410 y = 206 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_rol"
-				position = { x = 570 y = 206 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_mkt"
-				position = { x = 730 y = 206 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_BIH_acq"
-				position = { x = 890 y = 206 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_name"
-				position = { x = 40 y = 276 }
-				font = "hoi_18mbs"
-				text = "Georgia"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_int"
-				position = { x = 250 y = 276 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_dem"
-				position = { x = 410 y = 276 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_rol"
-				position = { x = 570 y = 276 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_mkt"
-				position = { x = 730 y = 276 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_GEO_acq"
-				position = { x = 890 y = 276 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_name"
-				position = { x = 40 y = 346 }
-				font = "hoi_18mbs"
-				text = "Moldova"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_int"
-				position = { x = 250 y = 346 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_dem"
-				position = { x = 410 y = 346 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_rol"
-				position = { x = 570 y = 346 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_mkt"
-				position = { x = 730 y = 346 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MOL_acq"
-				position = { x = 890 y = 346 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_name"
-				position = { x = 40 y = 416 }
-				font = "hoi_18mbs"
-				text = "Montenegro"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_int"
-				position = { x = 250 y = 416 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_dem"
-				position = { x = 410 y = 416 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_rol"
-				position = { x = 570 y = 416 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_mkt"
-				position = { x = 730 y = 416 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MNE_acq"
-				position = { x = 890 y = 416 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_name"
-				position = { x = 40 y = 486 }
-				font = "hoi_18mbs"
-				text = "North Macedonia"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_int"
-				position = { x = 250 y = 486 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_dem"
-				position = { x = 410 y = 486 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_rol"
-				position = { x = 570 y = 486 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_mkt"
-				position = { x = 730 y = 486 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_MKD_acq"
-				position = { x = 890 y = 486 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_name"
-				position = { x = 40 y = 556 }
-				font = "hoi_18mbs"
-				text = "Serbia"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_int"
-				position = { x = 250 y = 556 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_dem"
-				position = { x = 410 y = 556 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_rol"
-				position = { x = 570 y = 556 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_mkt"
-				position = { x = 730 y = 556 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_SER_acq"
-				position = { x = 890 y = 556 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_name"
-				position = { x = 40 y = 626 }
-				font = "hoi_18mbs"
-				text = "Turkey"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_int"
-				position = { x = 250 y = 626 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_dem"
-				position = { x = 410 y = 626 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_rol"
-				position = { x = 570 y = 626 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_mkt"
-				position = { x = 730 y = 626 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_TUR_acq"
-				position = { x = 890 y = 626 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_name"
-				position = { x = 40 y = 696 }
-				font = "hoi_18mbs"
-				text = "Ukraine"
-				format = left
-				fixedsize = yes
-				maxWidth = 200
-				maxHeight = 24
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_int"
-				position = { x = 250 y = 696 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_ENL_INTEGRATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_dem"
-				position = { x = 410 y = 696 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_DEMOCRACY"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_rol"
-				position = { x = 570 y = 696 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_mkt"
-				position = { x = 730 y = 696 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_MARKET"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_enl_cand_UKR_acq"
-				position = { x = 890 y = 696 }
-				font = "hoi_14"
-				text = "DVE_EU_ENL_ACQUIS"
-				format = left
-				fixedsize = yes
-				maxWidth = 150
-				maxHeight = 16
-			}
-		}
-		containerWindowType = {
-			name = "DVE_eu_tab_court_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_court_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_COURT_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			iconType = {
-				name = "DVE_eu_court_gavel"
-				spriteType = "GFX_DVE_eu_court_gavel"
-				position = { x = 30 y = 146 }
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_court_infringement"
-				position = { x = 180 y = 146 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COURT_INFRINGEMENT"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_court_preliminary"
-				position = { x = 180 y = 176 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COURT_PRELIMINARY"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_court_rule_of_law"
-				position = { x = 180 y = 206 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_COURT_RULE_OF_LAW"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-		}
-		containerWindowType = {
-			name = "DVE_eu_tab_bce_container"
-			position = { x = 10 y = 106 }
-			size = { width = 1080 height = 634 }
-			background = {
-				name = "Background"
-				spriteType = "GFX_tiled_window_transparent"
-			}
-			# Visible when this tab is selected
-			instantTextBoxType = {
-				name = "DVE_eu_bce_title"
-				position = { x = 30 y = 96 }
-				font = "hoi_18mbs"
-				text = "DVE_EU_BCE_TITLE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 24
-			}
-			iconType = {
-				name = "DVE_eu_bce_euro"
-				spriteType = "GFX_DVE_eu_bce_euro"
-				position = { x = 30 y = 146 }
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_bce_rate"
-				position = { x = 180 y = 146 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BCE_RATE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_bce_inflation"
-				position = { x = 180 y = 176 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BCE_INFLATION"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_bce_eurozone"
-				position = { x = 180 y = 206 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BCE_EUROZONE"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
-			instantTextBoxType = {
-				name = "DVE_eu_bce_edp"
-				position = { x = 180 y = 236 }
-				font = "hoi_16mbs"
-				text = "DVE_EU_BCE_EDP"
-				format = left
-				fixedsize = yes
-				maxWidth = 300
-				maxHeight = 20
-			}
+
+		instantTextBoxType = {
+			name = "DVE_eu_powers_desc"
+			position = { x = 645 y = 542 }
+			font = "hoi_16mbs"
+			text = "DVE_EU_POWERS_DESC"
+			format = left
+			maxWidth = 425
+			maxHeight = 150
 		}
 	}
 }

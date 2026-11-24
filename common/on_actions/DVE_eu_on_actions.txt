@@ -1,17 +1,17 @@
-# DvE - European Union: keeps EU state fresh (human daily, AI weekly, global weekly).
+# DvE - European Union On-Actions
 on_actions = {
 
-	# on_startup has no scope: every_country provides the scope.
+	# Game Start: initialize all 27 EU member states, candidates, seats, and QMV weights
 	on_startup = {
 		effect = {
-			every_country = {
-				DVE_eu_refresh_effect = yes
+			if = {
+				limit = { country_exists = GER }
+				GER = { DVE_eu_init_effect = yes }
 			}
-			DVE_eu_global_refresh_effect = yes
 		}
 	}
 
-	# Human player: daily refresh.
+	# Daily: refresh for human player
 	on_daily = {
 		effect = {
 			if = {
@@ -21,36 +21,36 @@ on_actions = {
 		}
 	}
 
-	# AI countries: weekly refresh.
+	# Weekly: recalculate EU state and presidency rotation
 	on_weekly = {
 		effect = {
 			if = {
-				limit = { is_ai = yes }
+				limit = {
+					OR = {
+						has_country_flag = DVE_eu_member
+						has_country_flag = DVE_eu_candidate
+					}
+				}
 				DVE_eu_refresh_effect = yes
 			}
-			# Global EU state: weekly
-			DVE_eu_global_refresh_effect = yes
-			# Eurozone EDP check: monthly (every 4 weeks)
-			if = { limit = { check_variable = { global.DVE_eu_week_counter = 4 } } DVE_eu_edp_check_effect = yes set_variable = { global.DVE_eu_week_counter = 0 } }
-			add_to_variable = { global.DVE_eu_week_counter = 1 }
-			# Council presidency rotation: every 26 weeks (6 months)
-			if = { limit = { check_variable = { global.DVE_eu_presidency_counter = 26 } } DVE_eu_rotate_presidency_effect = yes set_variable = { global.DVE_eu_presidency_counter = 0 } }
-			add_to_variable = { global.DVE_eu_presidency_counter = 1 }
-			# Subsidiarity review timeout
-			if = { limit = { has_global_flag = DVE_eu_subsidiarity_review NOT = { has_global_flag = DVE_eu_subsidiarity_review } } clr_global_flag = DVE_eu_subsidiarity_review }
-		}
-	}
 
-	# Custom on_action for legislative procedure resolution (triggered by events).
-	on_actions = {
-		dve_eu_legislative_resolve = {
-			DVE_eu_resolve_legislative_effect = yes
-		}
-		dve_eu_budget_resolve = {
-			DVE_eu_resolve_budget_effect = yes
-		}
-		dve_eu_enlargement_resolve = {
-			DVE_eu_resolve_enlargement_effect = yes
+			# Keep the European Parliament window up to date while it is open
+			if = {
+				limit = { has_country_flag = DVE_eu_parliament_open }
+				DVE_eu_parliament_recalc_effect = yes
+			}
+
+			# Rotate Council presidency every 26 weeks (6 months)
+			add_to_variable = { global.DVE_eu_presidency_counter = 1 }
+			if = {
+				limit = { check_variable = { global.DVE_eu_presidency_counter > 25 } }
+				set_variable = { global.DVE_eu_presidency_counter = 0 }
+				add_to_variable = { global.DVE_eu_council_presidency = 1 }
+				if = {
+					limit = { check_variable = { global.DVE_eu_council_presidency > 7 } }
+					set_variable = { global.DVE_eu_council_presidency = 1 }
+				}
+			}
 		}
 	}
 }

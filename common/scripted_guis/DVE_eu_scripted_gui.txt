@@ -1,81 +1,816 @@
-# DvE - European Union scripted guis (human player only, EU members and candidates).
+# DvE - European Union scripted GUIs: decision banners & parliament window.
 scripted_gui = {
 
-	DVE_eu_main = {
+	# Banner shown inside member decisions category
+	DVE_eu_member_banner_ui = {
+		context_type = decision_category
+		window_name = "DVE_eu_member_banner_window"
+		visible = { has_country_flag = DVE_eu_member }
+		effects = {
+			dve_eu_open_parliament_button_click = {
+				if = {
+					limit = { has_country_flag = DVE_eu_parliament_open }
+					clr_country_flag = DVE_eu_parliament_open
+				}
+				else = {
+					set_country_flag = DVE_eu_parliament_open
+				}
+				DVE_eu_parliament_recalc_effect = yes
+			}
+		}
+	}
+
+	# Banner shown inside candidate decisions category
+	DVE_eu_candidate_banner_ui = {
+		context_type = decision_category
+		window_name = "DVE_eu_candidate_banner_window"
+		visible = { has_country_flag = DVE_eu_candidate }
+		effects = {
+			dve_eu_cand_open_parliament_button_click = {
+				if = {
+					limit = { has_country_flag = DVE_eu_parliament_open }
+					clr_country_flag = DVE_eu_parliament_open
+				}
+				else = {
+					set_country_flag = DVE_eu_parliament_open
+				}
+				DVE_eu_parliament_recalc_effect = yes
+			}
+		}
+	}
+
+	# Button in Politics view
+	DVE_eu_politics_button = {
 		context_type = player_context
-		window_name = "DVE_eu_main_window"
+		window_name = "DVE_eu_button_container"
 		parent_window_token = politics_tab
 
 		visible = {
-			is_ai = no
-			has_country_flag = DVE_eu_panel_open
+			OR = {
+				has_country_flag = DVE_eu_member
+				has_country_flag = DVE_eu_candidate
+			}
 		}
 
 		effects = {
+			DVE_eu_open_button_click = {
+				if = {
+					limit = { has_country_flag = DVE_eu_parliament_open }
+					clr_country_flag = DVE_eu_parliament_open
+				}
+				else = {
+					set_country_flag = DVE_eu_parliament_open
+				}
+				DVE_eu_parliament_recalc_effect = yes
+			}
+		}
+	}
+
+	# Full European Parliament window (moveable popup)
+	# Dot positions are static in the .gui; the player scope only supplies the colour frames
+	# (DVE_eu_seat_fr / DVE_eu_cnl_fr, filled by DVE_eu_parliament_recalc_effect).
+	DVE_eu_parliament_ui = {
+		context_type = player_context
+		window_name = "DVE_eu_parliament_window"
+		visible = { has_country_flag = DVE_eu_parliament_open }
+		effects = {
 			close_button_click = {
-				clr_country_flag = DVE_eu_panel_open
-			}
-			DVE_eu_tab_parliament_click = {
-				set_variable = { DVE_eu_new_tab = 1 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_council_click = {
-				set_variable = { DVE_eu_new_tab = 2 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_commission_click = {
-				set_variable = { DVE_eu_new_tab = 3 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_budget_click = {
-				set_variable = { DVE_eu_new_tab = 4 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_enlargement_click = {
-				set_variable = { DVE_eu_new_tab = 5 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_court_click = {
-				set_variable = { DVE_eu_new_tab = 6 }
-				DVE_eu_toggle_tab_effect = yes
-			}
-			DVE_eu_tab_bce_click = {
-				set_variable = { DVE_eu_new_tab = 7 }
-				DVE_eu_toggle_tab_effect = yes
+				clr_country_flag = DVE_eu_parliament_open
 			}
 		}
-
-		triggers = {
-			DVE_eu_main_visible = {
-				is_ai = no
-				has_country_flag = DVE_eu_panel_open
-			}
-			DVE_eu_tab_parliament_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 1 }
-			}
-			DVE_eu_tab_council_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 2 }
-			}
-			DVE_eu_tab_commission_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 3 }
-			}
-			DVE_eu_tab_budget_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 4 }
-			}
-			DVE_eu_tab_enlargement_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 5 }
-			}
-			DVE_eu_tab_court_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 6 }
-			}
-			DVE_eu_tab_bce_container_visible = {
-				check_variable = { DVE_eu_selected_tab = 7 }
-			}
-		}
-
-		ai_enabled = {
-			always = no
+		properties = {
+			DVE_eu_seat_dot_0 = { frame = DVE_eu_seat_fr^0 }
+			DVE_eu_seat_dot_1 = { frame = DVE_eu_seat_fr^1 }
+			DVE_eu_seat_dot_2 = { frame = DVE_eu_seat_fr^2 }
+			DVE_eu_seat_dot_3 = { frame = DVE_eu_seat_fr^3 }
+			DVE_eu_seat_dot_4 = { frame = DVE_eu_seat_fr^4 }
+			DVE_eu_seat_dot_5 = { frame = DVE_eu_seat_fr^5 }
+			DVE_eu_seat_dot_6 = { frame = DVE_eu_seat_fr^6 }
+			DVE_eu_seat_dot_7 = { frame = DVE_eu_seat_fr^7 }
+			DVE_eu_seat_dot_8 = { frame = DVE_eu_seat_fr^8 }
+			DVE_eu_seat_dot_9 = { frame = DVE_eu_seat_fr^9 }
+			DVE_eu_seat_dot_10 = { frame = DVE_eu_seat_fr^10 }
+			DVE_eu_seat_dot_11 = { frame = DVE_eu_seat_fr^11 }
+			DVE_eu_seat_dot_12 = { frame = DVE_eu_seat_fr^12 }
+			DVE_eu_seat_dot_13 = { frame = DVE_eu_seat_fr^13 }
+			DVE_eu_seat_dot_14 = { frame = DVE_eu_seat_fr^14 }
+			DVE_eu_seat_dot_15 = { frame = DVE_eu_seat_fr^15 }
+			DVE_eu_seat_dot_16 = { frame = DVE_eu_seat_fr^16 }
+			DVE_eu_seat_dot_17 = { frame = DVE_eu_seat_fr^17 }
+			DVE_eu_seat_dot_18 = { frame = DVE_eu_seat_fr^18 }
+			DVE_eu_seat_dot_19 = { frame = DVE_eu_seat_fr^19 }
+			DVE_eu_seat_dot_20 = { frame = DVE_eu_seat_fr^20 }
+			DVE_eu_seat_dot_21 = { frame = DVE_eu_seat_fr^21 }
+			DVE_eu_seat_dot_22 = { frame = DVE_eu_seat_fr^22 }
+			DVE_eu_seat_dot_23 = { frame = DVE_eu_seat_fr^23 }
+			DVE_eu_seat_dot_24 = { frame = DVE_eu_seat_fr^24 }
+			DVE_eu_seat_dot_25 = { frame = DVE_eu_seat_fr^25 }
+			DVE_eu_seat_dot_26 = { frame = DVE_eu_seat_fr^26 }
+			DVE_eu_seat_dot_27 = { frame = DVE_eu_seat_fr^27 }
+			DVE_eu_seat_dot_28 = { frame = DVE_eu_seat_fr^28 }
+			DVE_eu_seat_dot_29 = { frame = DVE_eu_seat_fr^29 }
+			DVE_eu_seat_dot_30 = { frame = DVE_eu_seat_fr^30 }
+			DVE_eu_seat_dot_31 = { frame = DVE_eu_seat_fr^31 }
+			DVE_eu_seat_dot_32 = { frame = DVE_eu_seat_fr^32 }
+			DVE_eu_seat_dot_33 = { frame = DVE_eu_seat_fr^33 }
+			DVE_eu_seat_dot_34 = { frame = DVE_eu_seat_fr^34 }
+			DVE_eu_seat_dot_35 = { frame = DVE_eu_seat_fr^35 }
+			DVE_eu_seat_dot_36 = { frame = DVE_eu_seat_fr^36 }
+			DVE_eu_seat_dot_37 = { frame = DVE_eu_seat_fr^37 }
+			DVE_eu_seat_dot_38 = { frame = DVE_eu_seat_fr^38 }
+			DVE_eu_seat_dot_39 = { frame = DVE_eu_seat_fr^39 }
+			DVE_eu_seat_dot_40 = { frame = DVE_eu_seat_fr^40 }
+			DVE_eu_seat_dot_41 = { frame = DVE_eu_seat_fr^41 }
+			DVE_eu_seat_dot_42 = { frame = DVE_eu_seat_fr^42 }
+			DVE_eu_seat_dot_43 = { frame = DVE_eu_seat_fr^43 }
+			DVE_eu_seat_dot_44 = { frame = DVE_eu_seat_fr^44 }
+			DVE_eu_seat_dot_45 = { frame = DVE_eu_seat_fr^45 }
+			DVE_eu_seat_dot_46 = { frame = DVE_eu_seat_fr^46 }
+			DVE_eu_seat_dot_47 = { frame = DVE_eu_seat_fr^47 }
+			DVE_eu_seat_dot_48 = { frame = DVE_eu_seat_fr^48 }
+			DVE_eu_seat_dot_49 = { frame = DVE_eu_seat_fr^49 }
+			DVE_eu_seat_dot_50 = { frame = DVE_eu_seat_fr^50 }
+			DVE_eu_seat_dot_51 = { frame = DVE_eu_seat_fr^51 }
+			DVE_eu_seat_dot_52 = { frame = DVE_eu_seat_fr^52 }
+			DVE_eu_seat_dot_53 = { frame = DVE_eu_seat_fr^53 }
+			DVE_eu_seat_dot_54 = { frame = DVE_eu_seat_fr^54 }
+			DVE_eu_seat_dot_55 = { frame = DVE_eu_seat_fr^55 }
+			DVE_eu_seat_dot_56 = { frame = DVE_eu_seat_fr^56 }
+			DVE_eu_seat_dot_57 = { frame = DVE_eu_seat_fr^57 }
+			DVE_eu_seat_dot_58 = { frame = DVE_eu_seat_fr^58 }
+			DVE_eu_seat_dot_59 = { frame = DVE_eu_seat_fr^59 }
+			DVE_eu_seat_dot_60 = { frame = DVE_eu_seat_fr^60 }
+			DVE_eu_seat_dot_61 = { frame = DVE_eu_seat_fr^61 }
+			DVE_eu_seat_dot_62 = { frame = DVE_eu_seat_fr^62 }
+			DVE_eu_seat_dot_63 = { frame = DVE_eu_seat_fr^63 }
+			DVE_eu_seat_dot_64 = { frame = DVE_eu_seat_fr^64 }
+			DVE_eu_seat_dot_65 = { frame = DVE_eu_seat_fr^65 }
+			DVE_eu_seat_dot_66 = { frame = DVE_eu_seat_fr^66 }
+			DVE_eu_seat_dot_67 = { frame = DVE_eu_seat_fr^67 }
+			DVE_eu_seat_dot_68 = { frame = DVE_eu_seat_fr^68 }
+			DVE_eu_seat_dot_69 = { frame = DVE_eu_seat_fr^69 }
+			DVE_eu_seat_dot_70 = { frame = DVE_eu_seat_fr^70 }
+			DVE_eu_seat_dot_71 = { frame = DVE_eu_seat_fr^71 }
+			DVE_eu_seat_dot_72 = { frame = DVE_eu_seat_fr^72 }
+			DVE_eu_seat_dot_73 = { frame = DVE_eu_seat_fr^73 }
+			DVE_eu_seat_dot_74 = { frame = DVE_eu_seat_fr^74 }
+			DVE_eu_seat_dot_75 = { frame = DVE_eu_seat_fr^75 }
+			DVE_eu_seat_dot_76 = { frame = DVE_eu_seat_fr^76 }
+			DVE_eu_seat_dot_77 = { frame = DVE_eu_seat_fr^77 }
+			DVE_eu_seat_dot_78 = { frame = DVE_eu_seat_fr^78 }
+			DVE_eu_seat_dot_79 = { frame = DVE_eu_seat_fr^79 }
+			DVE_eu_seat_dot_80 = { frame = DVE_eu_seat_fr^80 }
+			DVE_eu_seat_dot_81 = { frame = DVE_eu_seat_fr^81 }
+			DVE_eu_seat_dot_82 = { frame = DVE_eu_seat_fr^82 }
+			DVE_eu_seat_dot_83 = { frame = DVE_eu_seat_fr^83 }
+			DVE_eu_seat_dot_84 = { frame = DVE_eu_seat_fr^84 }
+			DVE_eu_seat_dot_85 = { frame = DVE_eu_seat_fr^85 }
+			DVE_eu_seat_dot_86 = { frame = DVE_eu_seat_fr^86 }
+			DVE_eu_seat_dot_87 = { frame = DVE_eu_seat_fr^87 }
+			DVE_eu_seat_dot_88 = { frame = DVE_eu_seat_fr^88 }
+			DVE_eu_seat_dot_89 = { frame = DVE_eu_seat_fr^89 }
+			DVE_eu_seat_dot_90 = { frame = DVE_eu_seat_fr^90 }
+			DVE_eu_seat_dot_91 = { frame = DVE_eu_seat_fr^91 }
+			DVE_eu_seat_dot_92 = { frame = DVE_eu_seat_fr^92 }
+			DVE_eu_seat_dot_93 = { frame = DVE_eu_seat_fr^93 }
+			DVE_eu_seat_dot_94 = { frame = DVE_eu_seat_fr^94 }
+			DVE_eu_seat_dot_95 = { frame = DVE_eu_seat_fr^95 }
+			DVE_eu_seat_dot_96 = { frame = DVE_eu_seat_fr^96 }
+			DVE_eu_seat_dot_97 = { frame = DVE_eu_seat_fr^97 }
+			DVE_eu_seat_dot_98 = { frame = DVE_eu_seat_fr^98 }
+			DVE_eu_seat_dot_99 = { frame = DVE_eu_seat_fr^99 }
+			DVE_eu_seat_dot_100 = { frame = DVE_eu_seat_fr^100 }
+			DVE_eu_seat_dot_101 = { frame = DVE_eu_seat_fr^101 }
+			DVE_eu_seat_dot_102 = { frame = DVE_eu_seat_fr^102 }
+			DVE_eu_seat_dot_103 = { frame = DVE_eu_seat_fr^103 }
+			DVE_eu_seat_dot_104 = { frame = DVE_eu_seat_fr^104 }
+			DVE_eu_seat_dot_105 = { frame = DVE_eu_seat_fr^105 }
+			DVE_eu_seat_dot_106 = { frame = DVE_eu_seat_fr^106 }
+			DVE_eu_seat_dot_107 = { frame = DVE_eu_seat_fr^107 }
+			DVE_eu_seat_dot_108 = { frame = DVE_eu_seat_fr^108 }
+			DVE_eu_seat_dot_109 = { frame = DVE_eu_seat_fr^109 }
+			DVE_eu_seat_dot_110 = { frame = DVE_eu_seat_fr^110 }
+			DVE_eu_seat_dot_111 = { frame = DVE_eu_seat_fr^111 }
+			DVE_eu_seat_dot_112 = { frame = DVE_eu_seat_fr^112 }
+			DVE_eu_seat_dot_113 = { frame = DVE_eu_seat_fr^113 }
+			DVE_eu_seat_dot_114 = { frame = DVE_eu_seat_fr^114 }
+			DVE_eu_seat_dot_115 = { frame = DVE_eu_seat_fr^115 }
+			DVE_eu_seat_dot_116 = { frame = DVE_eu_seat_fr^116 }
+			DVE_eu_seat_dot_117 = { frame = DVE_eu_seat_fr^117 }
+			DVE_eu_seat_dot_118 = { frame = DVE_eu_seat_fr^118 }
+			DVE_eu_seat_dot_119 = { frame = DVE_eu_seat_fr^119 }
+			DVE_eu_seat_dot_120 = { frame = DVE_eu_seat_fr^120 }
+			DVE_eu_seat_dot_121 = { frame = DVE_eu_seat_fr^121 }
+			DVE_eu_seat_dot_122 = { frame = DVE_eu_seat_fr^122 }
+			DVE_eu_seat_dot_123 = { frame = DVE_eu_seat_fr^123 }
+			DVE_eu_seat_dot_124 = { frame = DVE_eu_seat_fr^124 }
+			DVE_eu_seat_dot_125 = { frame = DVE_eu_seat_fr^125 }
+			DVE_eu_seat_dot_126 = { frame = DVE_eu_seat_fr^126 }
+			DVE_eu_seat_dot_127 = { frame = DVE_eu_seat_fr^127 }
+			DVE_eu_seat_dot_128 = { frame = DVE_eu_seat_fr^128 }
+			DVE_eu_seat_dot_129 = { frame = DVE_eu_seat_fr^129 }
+			DVE_eu_seat_dot_130 = { frame = DVE_eu_seat_fr^130 }
+			DVE_eu_seat_dot_131 = { frame = DVE_eu_seat_fr^131 }
+			DVE_eu_seat_dot_132 = { frame = DVE_eu_seat_fr^132 }
+			DVE_eu_seat_dot_133 = { frame = DVE_eu_seat_fr^133 }
+			DVE_eu_seat_dot_134 = { frame = DVE_eu_seat_fr^134 }
+			DVE_eu_seat_dot_135 = { frame = DVE_eu_seat_fr^135 }
+			DVE_eu_seat_dot_136 = { frame = DVE_eu_seat_fr^136 }
+			DVE_eu_seat_dot_137 = { frame = DVE_eu_seat_fr^137 }
+			DVE_eu_seat_dot_138 = { frame = DVE_eu_seat_fr^138 }
+			DVE_eu_seat_dot_139 = { frame = DVE_eu_seat_fr^139 }
+			DVE_eu_seat_dot_140 = { frame = DVE_eu_seat_fr^140 }
+			DVE_eu_seat_dot_141 = { frame = DVE_eu_seat_fr^141 }
+			DVE_eu_seat_dot_142 = { frame = DVE_eu_seat_fr^142 }
+			DVE_eu_seat_dot_143 = { frame = DVE_eu_seat_fr^143 }
+			DVE_eu_seat_dot_144 = { frame = DVE_eu_seat_fr^144 }
+			DVE_eu_seat_dot_145 = { frame = DVE_eu_seat_fr^145 }
+			DVE_eu_seat_dot_146 = { frame = DVE_eu_seat_fr^146 }
+			DVE_eu_seat_dot_147 = { frame = DVE_eu_seat_fr^147 }
+			DVE_eu_seat_dot_148 = { frame = DVE_eu_seat_fr^148 }
+			DVE_eu_seat_dot_149 = { frame = DVE_eu_seat_fr^149 }
+			DVE_eu_seat_dot_150 = { frame = DVE_eu_seat_fr^150 }
+			DVE_eu_seat_dot_151 = { frame = DVE_eu_seat_fr^151 }
+			DVE_eu_seat_dot_152 = { frame = DVE_eu_seat_fr^152 }
+			DVE_eu_seat_dot_153 = { frame = DVE_eu_seat_fr^153 }
+			DVE_eu_seat_dot_154 = { frame = DVE_eu_seat_fr^154 }
+			DVE_eu_seat_dot_155 = { frame = DVE_eu_seat_fr^155 }
+			DVE_eu_seat_dot_156 = { frame = DVE_eu_seat_fr^156 }
+			DVE_eu_seat_dot_157 = { frame = DVE_eu_seat_fr^157 }
+			DVE_eu_seat_dot_158 = { frame = DVE_eu_seat_fr^158 }
+			DVE_eu_seat_dot_159 = { frame = DVE_eu_seat_fr^159 }
+			DVE_eu_seat_dot_160 = { frame = DVE_eu_seat_fr^160 }
+			DVE_eu_seat_dot_161 = { frame = DVE_eu_seat_fr^161 }
+			DVE_eu_seat_dot_162 = { frame = DVE_eu_seat_fr^162 }
+			DVE_eu_seat_dot_163 = { frame = DVE_eu_seat_fr^163 }
+			DVE_eu_seat_dot_164 = { frame = DVE_eu_seat_fr^164 }
+			DVE_eu_seat_dot_165 = { frame = DVE_eu_seat_fr^165 }
+			DVE_eu_seat_dot_166 = { frame = DVE_eu_seat_fr^166 }
+			DVE_eu_seat_dot_167 = { frame = DVE_eu_seat_fr^167 }
+			DVE_eu_seat_dot_168 = { frame = DVE_eu_seat_fr^168 }
+			DVE_eu_seat_dot_169 = { frame = DVE_eu_seat_fr^169 }
+			DVE_eu_seat_dot_170 = { frame = DVE_eu_seat_fr^170 }
+			DVE_eu_seat_dot_171 = { frame = DVE_eu_seat_fr^171 }
+			DVE_eu_seat_dot_172 = { frame = DVE_eu_seat_fr^172 }
+			DVE_eu_seat_dot_173 = { frame = DVE_eu_seat_fr^173 }
+			DVE_eu_seat_dot_174 = { frame = DVE_eu_seat_fr^174 }
+			DVE_eu_seat_dot_175 = { frame = DVE_eu_seat_fr^175 }
+			DVE_eu_seat_dot_176 = { frame = DVE_eu_seat_fr^176 }
+			DVE_eu_seat_dot_177 = { frame = DVE_eu_seat_fr^177 }
+			DVE_eu_seat_dot_178 = { frame = DVE_eu_seat_fr^178 }
+			DVE_eu_seat_dot_179 = { frame = DVE_eu_seat_fr^179 }
+			DVE_eu_seat_dot_180 = { frame = DVE_eu_seat_fr^180 }
+			DVE_eu_seat_dot_181 = { frame = DVE_eu_seat_fr^181 }
+			DVE_eu_seat_dot_182 = { frame = DVE_eu_seat_fr^182 }
+			DVE_eu_seat_dot_183 = { frame = DVE_eu_seat_fr^183 }
+			DVE_eu_seat_dot_184 = { frame = DVE_eu_seat_fr^184 }
+			DVE_eu_seat_dot_185 = { frame = DVE_eu_seat_fr^185 }
+			DVE_eu_seat_dot_186 = { frame = DVE_eu_seat_fr^186 }
+			DVE_eu_seat_dot_187 = { frame = DVE_eu_seat_fr^187 }
+			DVE_eu_seat_dot_188 = { frame = DVE_eu_seat_fr^188 }
+			DVE_eu_seat_dot_189 = { frame = DVE_eu_seat_fr^189 }
+			DVE_eu_seat_dot_190 = { frame = DVE_eu_seat_fr^190 }
+			DVE_eu_seat_dot_191 = { frame = DVE_eu_seat_fr^191 }
+			DVE_eu_seat_dot_192 = { frame = DVE_eu_seat_fr^192 }
+			DVE_eu_seat_dot_193 = { frame = DVE_eu_seat_fr^193 }
+			DVE_eu_seat_dot_194 = { frame = DVE_eu_seat_fr^194 }
+			DVE_eu_seat_dot_195 = { frame = DVE_eu_seat_fr^195 }
+			DVE_eu_seat_dot_196 = { frame = DVE_eu_seat_fr^196 }
+			DVE_eu_seat_dot_197 = { frame = DVE_eu_seat_fr^197 }
+			DVE_eu_seat_dot_198 = { frame = DVE_eu_seat_fr^198 }
+			DVE_eu_seat_dot_199 = { frame = DVE_eu_seat_fr^199 }
+			DVE_eu_seat_dot_200 = { frame = DVE_eu_seat_fr^200 }
+			DVE_eu_seat_dot_201 = { frame = DVE_eu_seat_fr^201 }
+			DVE_eu_seat_dot_202 = { frame = DVE_eu_seat_fr^202 }
+			DVE_eu_seat_dot_203 = { frame = DVE_eu_seat_fr^203 }
+			DVE_eu_seat_dot_204 = { frame = DVE_eu_seat_fr^204 }
+			DVE_eu_seat_dot_205 = { frame = DVE_eu_seat_fr^205 }
+			DVE_eu_seat_dot_206 = { frame = DVE_eu_seat_fr^206 }
+			DVE_eu_seat_dot_207 = { frame = DVE_eu_seat_fr^207 }
+			DVE_eu_seat_dot_208 = { frame = DVE_eu_seat_fr^208 }
+			DVE_eu_seat_dot_209 = { frame = DVE_eu_seat_fr^209 }
+			DVE_eu_seat_dot_210 = { frame = DVE_eu_seat_fr^210 }
+			DVE_eu_seat_dot_211 = { frame = DVE_eu_seat_fr^211 }
+			DVE_eu_seat_dot_212 = { frame = DVE_eu_seat_fr^212 }
+			DVE_eu_seat_dot_213 = { frame = DVE_eu_seat_fr^213 }
+			DVE_eu_seat_dot_214 = { frame = DVE_eu_seat_fr^214 }
+			DVE_eu_seat_dot_215 = { frame = DVE_eu_seat_fr^215 }
+			DVE_eu_seat_dot_216 = { frame = DVE_eu_seat_fr^216 }
+			DVE_eu_seat_dot_217 = { frame = DVE_eu_seat_fr^217 }
+			DVE_eu_seat_dot_218 = { frame = DVE_eu_seat_fr^218 }
+			DVE_eu_seat_dot_219 = { frame = DVE_eu_seat_fr^219 }
+			DVE_eu_seat_dot_220 = { frame = DVE_eu_seat_fr^220 }
+			DVE_eu_seat_dot_221 = { frame = DVE_eu_seat_fr^221 }
+			DVE_eu_seat_dot_222 = { frame = DVE_eu_seat_fr^222 }
+			DVE_eu_seat_dot_223 = { frame = DVE_eu_seat_fr^223 }
+			DVE_eu_seat_dot_224 = { frame = DVE_eu_seat_fr^224 }
+			DVE_eu_seat_dot_225 = { frame = DVE_eu_seat_fr^225 }
+			DVE_eu_seat_dot_226 = { frame = DVE_eu_seat_fr^226 }
+			DVE_eu_seat_dot_227 = { frame = DVE_eu_seat_fr^227 }
+			DVE_eu_seat_dot_228 = { frame = DVE_eu_seat_fr^228 }
+			DVE_eu_seat_dot_229 = { frame = DVE_eu_seat_fr^229 }
+			DVE_eu_seat_dot_230 = { frame = DVE_eu_seat_fr^230 }
+			DVE_eu_seat_dot_231 = { frame = DVE_eu_seat_fr^231 }
+			DVE_eu_seat_dot_232 = { frame = DVE_eu_seat_fr^232 }
+			DVE_eu_seat_dot_233 = { frame = DVE_eu_seat_fr^233 }
+			DVE_eu_seat_dot_234 = { frame = DVE_eu_seat_fr^234 }
+			DVE_eu_seat_dot_235 = { frame = DVE_eu_seat_fr^235 }
+			DVE_eu_seat_dot_236 = { frame = DVE_eu_seat_fr^236 }
+			DVE_eu_seat_dot_237 = { frame = DVE_eu_seat_fr^237 }
+			DVE_eu_seat_dot_238 = { frame = DVE_eu_seat_fr^238 }
+			DVE_eu_seat_dot_239 = { frame = DVE_eu_seat_fr^239 }
+			DVE_eu_seat_dot_240 = { frame = DVE_eu_seat_fr^240 }
+			DVE_eu_seat_dot_241 = { frame = DVE_eu_seat_fr^241 }
+			DVE_eu_seat_dot_242 = { frame = DVE_eu_seat_fr^242 }
+			DVE_eu_seat_dot_243 = { frame = DVE_eu_seat_fr^243 }
+			DVE_eu_seat_dot_244 = { frame = DVE_eu_seat_fr^244 }
+			DVE_eu_seat_dot_245 = { frame = DVE_eu_seat_fr^245 }
+			DVE_eu_seat_dot_246 = { frame = DVE_eu_seat_fr^246 }
+			DVE_eu_seat_dot_247 = { frame = DVE_eu_seat_fr^247 }
+			DVE_eu_seat_dot_248 = { frame = DVE_eu_seat_fr^248 }
+			DVE_eu_seat_dot_249 = { frame = DVE_eu_seat_fr^249 }
+			DVE_eu_seat_dot_250 = { frame = DVE_eu_seat_fr^250 }
+			DVE_eu_seat_dot_251 = { frame = DVE_eu_seat_fr^251 }
+			DVE_eu_seat_dot_252 = { frame = DVE_eu_seat_fr^252 }
+			DVE_eu_seat_dot_253 = { frame = DVE_eu_seat_fr^253 }
+			DVE_eu_seat_dot_254 = { frame = DVE_eu_seat_fr^254 }
+			DVE_eu_seat_dot_255 = { frame = DVE_eu_seat_fr^255 }
+			DVE_eu_seat_dot_256 = { frame = DVE_eu_seat_fr^256 }
+			DVE_eu_seat_dot_257 = { frame = DVE_eu_seat_fr^257 }
+			DVE_eu_seat_dot_258 = { frame = DVE_eu_seat_fr^258 }
+			DVE_eu_seat_dot_259 = { frame = DVE_eu_seat_fr^259 }
+			DVE_eu_seat_dot_260 = { frame = DVE_eu_seat_fr^260 }
+			DVE_eu_seat_dot_261 = { frame = DVE_eu_seat_fr^261 }
+			DVE_eu_seat_dot_262 = { frame = DVE_eu_seat_fr^262 }
+			DVE_eu_seat_dot_263 = { frame = DVE_eu_seat_fr^263 }
+			DVE_eu_seat_dot_264 = { frame = DVE_eu_seat_fr^264 }
+			DVE_eu_seat_dot_265 = { frame = DVE_eu_seat_fr^265 }
+			DVE_eu_seat_dot_266 = { frame = DVE_eu_seat_fr^266 }
+			DVE_eu_seat_dot_267 = { frame = DVE_eu_seat_fr^267 }
+			DVE_eu_seat_dot_268 = { frame = DVE_eu_seat_fr^268 }
+			DVE_eu_seat_dot_269 = { frame = DVE_eu_seat_fr^269 }
+			DVE_eu_seat_dot_270 = { frame = DVE_eu_seat_fr^270 }
+			DVE_eu_seat_dot_271 = { frame = DVE_eu_seat_fr^271 }
+			DVE_eu_seat_dot_272 = { frame = DVE_eu_seat_fr^272 }
+			DVE_eu_seat_dot_273 = { frame = DVE_eu_seat_fr^273 }
+			DVE_eu_seat_dot_274 = { frame = DVE_eu_seat_fr^274 }
+			DVE_eu_seat_dot_275 = { frame = DVE_eu_seat_fr^275 }
+			DVE_eu_seat_dot_276 = { frame = DVE_eu_seat_fr^276 }
+			DVE_eu_seat_dot_277 = { frame = DVE_eu_seat_fr^277 }
+			DVE_eu_seat_dot_278 = { frame = DVE_eu_seat_fr^278 }
+			DVE_eu_seat_dot_279 = { frame = DVE_eu_seat_fr^279 }
+			DVE_eu_seat_dot_280 = { frame = DVE_eu_seat_fr^280 }
+			DVE_eu_seat_dot_281 = { frame = DVE_eu_seat_fr^281 }
+			DVE_eu_seat_dot_282 = { frame = DVE_eu_seat_fr^282 }
+			DVE_eu_seat_dot_283 = { frame = DVE_eu_seat_fr^283 }
+			DVE_eu_seat_dot_284 = { frame = DVE_eu_seat_fr^284 }
+			DVE_eu_seat_dot_285 = { frame = DVE_eu_seat_fr^285 }
+			DVE_eu_seat_dot_286 = { frame = DVE_eu_seat_fr^286 }
+			DVE_eu_seat_dot_287 = { frame = DVE_eu_seat_fr^287 }
+			DVE_eu_seat_dot_288 = { frame = DVE_eu_seat_fr^288 }
+			DVE_eu_seat_dot_289 = { frame = DVE_eu_seat_fr^289 }
+			DVE_eu_seat_dot_290 = { frame = DVE_eu_seat_fr^290 }
+			DVE_eu_seat_dot_291 = { frame = DVE_eu_seat_fr^291 }
+			DVE_eu_seat_dot_292 = { frame = DVE_eu_seat_fr^292 }
+			DVE_eu_seat_dot_293 = { frame = DVE_eu_seat_fr^293 }
+			DVE_eu_seat_dot_294 = { frame = DVE_eu_seat_fr^294 }
+			DVE_eu_seat_dot_295 = { frame = DVE_eu_seat_fr^295 }
+			DVE_eu_seat_dot_296 = { frame = DVE_eu_seat_fr^296 }
+			DVE_eu_seat_dot_297 = { frame = DVE_eu_seat_fr^297 }
+			DVE_eu_seat_dot_298 = { frame = DVE_eu_seat_fr^298 }
+			DVE_eu_seat_dot_299 = { frame = DVE_eu_seat_fr^299 }
+			DVE_eu_seat_dot_300 = { frame = DVE_eu_seat_fr^300 }
+			DVE_eu_seat_dot_301 = { frame = DVE_eu_seat_fr^301 }
+			DVE_eu_seat_dot_302 = { frame = DVE_eu_seat_fr^302 }
+			DVE_eu_seat_dot_303 = { frame = DVE_eu_seat_fr^303 }
+			DVE_eu_seat_dot_304 = { frame = DVE_eu_seat_fr^304 }
+			DVE_eu_seat_dot_305 = { frame = DVE_eu_seat_fr^305 }
+			DVE_eu_seat_dot_306 = { frame = DVE_eu_seat_fr^306 }
+			DVE_eu_seat_dot_307 = { frame = DVE_eu_seat_fr^307 }
+			DVE_eu_seat_dot_308 = { frame = DVE_eu_seat_fr^308 }
+			DVE_eu_seat_dot_309 = { frame = DVE_eu_seat_fr^309 }
+			DVE_eu_seat_dot_310 = { frame = DVE_eu_seat_fr^310 }
+			DVE_eu_seat_dot_311 = { frame = DVE_eu_seat_fr^311 }
+			DVE_eu_seat_dot_312 = { frame = DVE_eu_seat_fr^312 }
+			DVE_eu_seat_dot_313 = { frame = DVE_eu_seat_fr^313 }
+			DVE_eu_seat_dot_314 = { frame = DVE_eu_seat_fr^314 }
+			DVE_eu_seat_dot_315 = { frame = DVE_eu_seat_fr^315 }
+			DVE_eu_seat_dot_316 = { frame = DVE_eu_seat_fr^316 }
+			DVE_eu_seat_dot_317 = { frame = DVE_eu_seat_fr^317 }
+			DVE_eu_seat_dot_318 = { frame = DVE_eu_seat_fr^318 }
+			DVE_eu_seat_dot_319 = { frame = DVE_eu_seat_fr^319 }
+			DVE_eu_seat_dot_320 = { frame = DVE_eu_seat_fr^320 }
+			DVE_eu_seat_dot_321 = { frame = DVE_eu_seat_fr^321 }
+			DVE_eu_seat_dot_322 = { frame = DVE_eu_seat_fr^322 }
+			DVE_eu_seat_dot_323 = { frame = DVE_eu_seat_fr^323 }
+			DVE_eu_seat_dot_324 = { frame = DVE_eu_seat_fr^324 }
+			DVE_eu_seat_dot_325 = { frame = DVE_eu_seat_fr^325 }
+			DVE_eu_seat_dot_326 = { frame = DVE_eu_seat_fr^326 }
+			DVE_eu_seat_dot_327 = { frame = DVE_eu_seat_fr^327 }
+			DVE_eu_seat_dot_328 = { frame = DVE_eu_seat_fr^328 }
+			DVE_eu_seat_dot_329 = { frame = DVE_eu_seat_fr^329 }
+			DVE_eu_seat_dot_330 = { frame = DVE_eu_seat_fr^330 }
+			DVE_eu_seat_dot_331 = { frame = DVE_eu_seat_fr^331 }
+			DVE_eu_seat_dot_332 = { frame = DVE_eu_seat_fr^332 }
+			DVE_eu_seat_dot_333 = { frame = DVE_eu_seat_fr^333 }
+			DVE_eu_seat_dot_334 = { frame = DVE_eu_seat_fr^334 }
+			DVE_eu_seat_dot_335 = { frame = DVE_eu_seat_fr^335 }
+			DVE_eu_seat_dot_336 = { frame = DVE_eu_seat_fr^336 }
+			DVE_eu_seat_dot_337 = { frame = DVE_eu_seat_fr^337 }
+			DVE_eu_seat_dot_338 = { frame = DVE_eu_seat_fr^338 }
+			DVE_eu_seat_dot_339 = { frame = DVE_eu_seat_fr^339 }
+			DVE_eu_seat_dot_340 = { frame = DVE_eu_seat_fr^340 }
+			DVE_eu_seat_dot_341 = { frame = DVE_eu_seat_fr^341 }
+			DVE_eu_seat_dot_342 = { frame = DVE_eu_seat_fr^342 }
+			DVE_eu_seat_dot_343 = { frame = DVE_eu_seat_fr^343 }
+			DVE_eu_seat_dot_344 = { frame = DVE_eu_seat_fr^344 }
+			DVE_eu_seat_dot_345 = { frame = DVE_eu_seat_fr^345 }
+			DVE_eu_seat_dot_346 = { frame = DVE_eu_seat_fr^346 }
+			DVE_eu_seat_dot_347 = { frame = DVE_eu_seat_fr^347 }
+			DVE_eu_seat_dot_348 = { frame = DVE_eu_seat_fr^348 }
+			DVE_eu_seat_dot_349 = { frame = DVE_eu_seat_fr^349 }
+			DVE_eu_seat_dot_350 = { frame = DVE_eu_seat_fr^350 }
+			DVE_eu_seat_dot_351 = { frame = DVE_eu_seat_fr^351 }
+			DVE_eu_seat_dot_352 = { frame = DVE_eu_seat_fr^352 }
+			DVE_eu_seat_dot_353 = { frame = DVE_eu_seat_fr^353 }
+			DVE_eu_seat_dot_354 = { frame = DVE_eu_seat_fr^354 }
+			DVE_eu_seat_dot_355 = { frame = DVE_eu_seat_fr^355 }
+			DVE_eu_seat_dot_356 = { frame = DVE_eu_seat_fr^356 }
+			DVE_eu_seat_dot_357 = { frame = DVE_eu_seat_fr^357 }
+			DVE_eu_seat_dot_358 = { frame = DVE_eu_seat_fr^358 }
+			DVE_eu_seat_dot_359 = { frame = DVE_eu_seat_fr^359 }
+			DVE_eu_seat_dot_360 = { frame = DVE_eu_seat_fr^360 }
+			DVE_eu_seat_dot_361 = { frame = DVE_eu_seat_fr^361 }
+			DVE_eu_seat_dot_362 = { frame = DVE_eu_seat_fr^362 }
+			DVE_eu_seat_dot_363 = { frame = DVE_eu_seat_fr^363 }
+			DVE_eu_seat_dot_364 = { frame = DVE_eu_seat_fr^364 }
+			DVE_eu_seat_dot_365 = { frame = DVE_eu_seat_fr^365 }
+			DVE_eu_seat_dot_366 = { frame = DVE_eu_seat_fr^366 }
+			DVE_eu_seat_dot_367 = { frame = DVE_eu_seat_fr^367 }
+			DVE_eu_seat_dot_368 = { frame = DVE_eu_seat_fr^368 }
+			DVE_eu_seat_dot_369 = { frame = DVE_eu_seat_fr^369 }
+			DVE_eu_seat_dot_370 = { frame = DVE_eu_seat_fr^370 }
+			DVE_eu_seat_dot_371 = { frame = DVE_eu_seat_fr^371 }
+			DVE_eu_seat_dot_372 = { frame = DVE_eu_seat_fr^372 }
+			DVE_eu_seat_dot_373 = { frame = DVE_eu_seat_fr^373 }
+			DVE_eu_seat_dot_374 = { frame = DVE_eu_seat_fr^374 }
+			DVE_eu_seat_dot_375 = { frame = DVE_eu_seat_fr^375 }
+			DVE_eu_seat_dot_376 = { frame = DVE_eu_seat_fr^376 }
+			DVE_eu_seat_dot_377 = { frame = DVE_eu_seat_fr^377 }
+			DVE_eu_seat_dot_378 = { frame = DVE_eu_seat_fr^378 }
+			DVE_eu_seat_dot_379 = { frame = DVE_eu_seat_fr^379 }
+			DVE_eu_seat_dot_380 = { frame = DVE_eu_seat_fr^380 }
+			DVE_eu_seat_dot_381 = { frame = DVE_eu_seat_fr^381 }
+			DVE_eu_seat_dot_382 = { frame = DVE_eu_seat_fr^382 }
+			DVE_eu_seat_dot_383 = { frame = DVE_eu_seat_fr^383 }
+			DVE_eu_seat_dot_384 = { frame = DVE_eu_seat_fr^384 }
+			DVE_eu_seat_dot_385 = { frame = DVE_eu_seat_fr^385 }
+			DVE_eu_seat_dot_386 = { frame = DVE_eu_seat_fr^386 }
+			DVE_eu_seat_dot_387 = { frame = DVE_eu_seat_fr^387 }
+			DVE_eu_seat_dot_388 = { frame = DVE_eu_seat_fr^388 }
+			DVE_eu_seat_dot_389 = { frame = DVE_eu_seat_fr^389 }
+			DVE_eu_seat_dot_390 = { frame = DVE_eu_seat_fr^390 }
+			DVE_eu_seat_dot_391 = { frame = DVE_eu_seat_fr^391 }
+			DVE_eu_seat_dot_392 = { frame = DVE_eu_seat_fr^392 }
+			DVE_eu_seat_dot_393 = { frame = DVE_eu_seat_fr^393 }
+			DVE_eu_seat_dot_394 = { frame = DVE_eu_seat_fr^394 }
+			DVE_eu_seat_dot_395 = { frame = DVE_eu_seat_fr^395 }
+			DVE_eu_seat_dot_396 = { frame = DVE_eu_seat_fr^396 }
+			DVE_eu_seat_dot_397 = { frame = DVE_eu_seat_fr^397 }
+			DVE_eu_seat_dot_398 = { frame = DVE_eu_seat_fr^398 }
+			DVE_eu_seat_dot_399 = { frame = DVE_eu_seat_fr^399 }
+			DVE_eu_seat_dot_400 = { frame = DVE_eu_seat_fr^400 }
+			DVE_eu_seat_dot_401 = { frame = DVE_eu_seat_fr^401 }
+			DVE_eu_seat_dot_402 = { frame = DVE_eu_seat_fr^402 }
+			DVE_eu_seat_dot_403 = { frame = DVE_eu_seat_fr^403 }
+			DVE_eu_seat_dot_404 = { frame = DVE_eu_seat_fr^404 }
+			DVE_eu_seat_dot_405 = { frame = DVE_eu_seat_fr^405 }
+			DVE_eu_seat_dot_406 = { frame = DVE_eu_seat_fr^406 }
+			DVE_eu_seat_dot_407 = { frame = DVE_eu_seat_fr^407 }
+			DVE_eu_seat_dot_408 = { frame = DVE_eu_seat_fr^408 }
+			DVE_eu_seat_dot_409 = { frame = DVE_eu_seat_fr^409 }
+			DVE_eu_seat_dot_410 = { frame = DVE_eu_seat_fr^410 }
+			DVE_eu_seat_dot_411 = { frame = DVE_eu_seat_fr^411 }
+			DVE_eu_seat_dot_412 = { frame = DVE_eu_seat_fr^412 }
+			DVE_eu_seat_dot_413 = { frame = DVE_eu_seat_fr^413 }
+			DVE_eu_seat_dot_414 = { frame = DVE_eu_seat_fr^414 }
+			DVE_eu_seat_dot_415 = { frame = DVE_eu_seat_fr^415 }
+			DVE_eu_seat_dot_416 = { frame = DVE_eu_seat_fr^416 }
+			DVE_eu_seat_dot_417 = { frame = DVE_eu_seat_fr^417 }
+			DVE_eu_seat_dot_418 = { frame = DVE_eu_seat_fr^418 }
+			DVE_eu_seat_dot_419 = { frame = DVE_eu_seat_fr^419 }
+			DVE_eu_seat_dot_420 = { frame = DVE_eu_seat_fr^420 }
+			DVE_eu_seat_dot_421 = { frame = DVE_eu_seat_fr^421 }
+			DVE_eu_seat_dot_422 = { frame = DVE_eu_seat_fr^422 }
+			DVE_eu_seat_dot_423 = { frame = DVE_eu_seat_fr^423 }
+			DVE_eu_seat_dot_424 = { frame = DVE_eu_seat_fr^424 }
+			DVE_eu_seat_dot_425 = { frame = DVE_eu_seat_fr^425 }
+			DVE_eu_seat_dot_426 = { frame = DVE_eu_seat_fr^426 }
+			DVE_eu_seat_dot_427 = { frame = DVE_eu_seat_fr^427 }
+			DVE_eu_seat_dot_428 = { frame = DVE_eu_seat_fr^428 }
+			DVE_eu_seat_dot_429 = { frame = DVE_eu_seat_fr^429 }
+			DVE_eu_seat_dot_430 = { frame = DVE_eu_seat_fr^430 }
+			DVE_eu_seat_dot_431 = { frame = DVE_eu_seat_fr^431 }
+			DVE_eu_seat_dot_432 = { frame = DVE_eu_seat_fr^432 }
+			DVE_eu_seat_dot_433 = { frame = DVE_eu_seat_fr^433 }
+			DVE_eu_seat_dot_434 = { frame = DVE_eu_seat_fr^434 }
+			DVE_eu_seat_dot_435 = { frame = DVE_eu_seat_fr^435 }
+			DVE_eu_seat_dot_436 = { frame = DVE_eu_seat_fr^436 }
+			DVE_eu_seat_dot_437 = { frame = DVE_eu_seat_fr^437 }
+			DVE_eu_seat_dot_438 = { frame = DVE_eu_seat_fr^438 }
+			DVE_eu_seat_dot_439 = { frame = DVE_eu_seat_fr^439 }
+			DVE_eu_seat_dot_440 = { frame = DVE_eu_seat_fr^440 }
+			DVE_eu_seat_dot_441 = { frame = DVE_eu_seat_fr^441 }
+			DVE_eu_seat_dot_442 = { frame = DVE_eu_seat_fr^442 }
+			DVE_eu_seat_dot_443 = { frame = DVE_eu_seat_fr^443 }
+			DVE_eu_seat_dot_444 = { frame = DVE_eu_seat_fr^444 }
+			DVE_eu_seat_dot_445 = { frame = DVE_eu_seat_fr^445 }
+			DVE_eu_seat_dot_446 = { frame = DVE_eu_seat_fr^446 }
+			DVE_eu_seat_dot_447 = { frame = DVE_eu_seat_fr^447 }
+			DVE_eu_seat_dot_448 = { frame = DVE_eu_seat_fr^448 }
+			DVE_eu_seat_dot_449 = { frame = DVE_eu_seat_fr^449 }
+			DVE_eu_seat_dot_450 = { frame = DVE_eu_seat_fr^450 }
+			DVE_eu_seat_dot_451 = { frame = DVE_eu_seat_fr^451 }
+			DVE_eu_seat_dot_452 = { frame = DVE_eu_seat_fr^452 }
+			DVE_eu_seat_dot_453 = { frame = DVE_eu_seat_fr^453 }
+			DVE_eu_seat_dot_454 = { frame = DVE_eu_seat_fr^454 }
+			DVE_eu_seat_dot_455 = { frame = DVE_eu_seat_fr^455 }
+			DVE_eu_seat_dot_456 = { frame = DVE_eu_seat_fr^456 }
+			DVE_eu_seat_dot_457 = { frame = DVE_eu_seat_fr^457 }
+			DVE_eu_seat_dot_458 = { frame = DVE_eu_seat_fr^458 }
+			DVE_eu_seat_dot_459 = { frame = DVE_eu_seat_fr^459 }
+			DVE_eu_seat_dot_460 = { frame = DVE_eu_seat_fr^460 }
+			DVE_eu_seat_dot_461 = { frame = DVE_eu_seat_fr^461 }
+			DVE_eu_seat_dot_462 = { frame = DVE_eu_seat_fr^462 }
+			DVE_eu_seat_dot_463 = { frame = DVE_eu_seat_fr^463 }
+			DVE_eu_seat_dot_464 = { frame = DVE_eu_seat_fr^464 }
+			DVE_eu_seat_dot_465 = { frame = DVE_eu_seat_fr^465 }
+			DVE_eu_seat_dot_466 = { frame = DVE_eu_seat_fr^466 }
+			DVE_eu_seat_dot_467 = { frame = DVE_eu_seat_fr^467 }
+			DVE_eu_seat_dot_468 = { frame = DVE_eu_seat_fr^468 }
+			DVE_eu_seat_dot_469 = { frame = DVE_eu_seat_fr^469 }
+			DVE_eu_seat_dot_470 = { frame = DVE_eu_seat_fr^470 }
+			DVE_eu_seat_dot_471 = { frame = DVE_eu_seat_fr^471 }
+			DVE_eu_seat_dot_472 = { frame = DVE_eu_seat_fr^472 }
+			DVE_eu_seat_dot_473 = { frame = DVE_eu_seat_fr^473 }
+			DVE_eu_seat_dot_474 = { frame = DVE_eu_seat_fr^474 }
+			DVE_eu_seat_dot_475 = { frame = DVE_eu_seat_fr^475 }
+			DVE_eu_seat_dot_476 = { frame = DVE_eu_seat_fr^476 }
+			DVE_eu_seat_dot_477 = { frame = DVE_eu_seat_fr^477 }
+			DVE_eu_seat_dot_478 = { frame = DVE_eu_seat_fr^478 }
+			DVE_eu_seat_dot_479 = { frame = DVE_eu_seat_fr^479 }
+			DVE_eu_seat_dot_480 = { frame = DVE_eu_seat_fr^480 }
+			DVE_eu_seat_dot_481 = { frame = DVE_eu_seat_fr^481 }
+			DVE_eu_seat_dot_482 = { frame = DVE_eu_seat_fr^482 }
+			DVE_eu_seat_dot_483 = { frame = DVE_eu_seat_fr^483 }
+			DVE_eu_seat_dot_484 = { frame = DVE_eu_seat_fr^484 }
+			DVE_eu_seat_dot_485 = { frame = DVE_eu_seat_fr^485 }
+			DVE_eu_seat_dot_486 = { frame = DVE_eu_seat_fr^486 }
+			DVE_eu_seat_dot_487 = { frame = DVE_eu_seat_fr^487 }
+			DVE_eu_seat_dot_488 = { frame = DVE_eu_seat_fr^488 }
+			DVE_eu_seat_dot_489 = { frame = DVE_eu_seat_fr^489 }
+			DVE_eu_seat_dot_490 = { frame = DVE_eu_seat_fr^490 }
+			DVE_eu_seat_dot_491 = { frame = DVE_eu_seat_fr^491 }
+			DVE_eu_seat_dot_492 = { frame = DVE_eu_seat_fr^492 }
+			DVE_eu_seat_dot_493 = { frame = DVE_eu_seat_fr^493 }
+			DVE_eu_seat_dot_494 = { frame = DVE_eu_seat_fr^494 }
+			DVE_eu_seat_dot_495 = { frame = DVE_eu_seat_fr^495 }
+			DVE_eu_seat_dot_496 = { frame = DVE_eu_seat_fr^496 }
+			DVE_eu_seat_dot_497 = { frame = DVE_eu_seat_fr^497 }
+			DVE_eu_seat_dot_498 = { frame = DVE_eu_seat_fr^498 }
+			DVE_eu_seat_dot_499 = { frame = DVE_eu_seat_fr^499 }
+			DVE_eu_seat_dot_500 = { frame = DVE_eu_seat_fr^500 }
+			DVE_eu_seat_dot_501 = { frame = DVE_eu_seat_fr^501 }
+			DVE_eu_seat_dot_502 = { frame = DVE_eu_seat_fr^502 }
+			DVE_eu_seat_dot_503 = { frame = DVE_eu_seat_fr^503 }
+			DVE_eu_seat_dot_504 = { frame = DVE_eu_seat_fr^504 }
+			DVE_eu_seat_dot_505 = { frame = DVE_eu_seat_fr^505 }
+			DVE_eu_seat_dot_506 = { frame = DVE_eu_seat_fr^506 }
+			DVE_eu_seat_dot_507 = { frame = DVE_eu_seat_fr^507 }
+			DVE_eu_seat_dot_508 = { frame = DVE_eu_seat_fr^508 }
+			DVE_eu_seat_dot_509 = { frame = DVE_eu_seat_fr^509 }
+			DVE_eu_seat_dot_510 = { frame = DVE_eu_seat_fr^510 }
+			DVE_eu_seat_dot_511 = { frame = DVE_eu_seat_fr^511 }
+			DVE_eu_seat_dot_512 = { frame = DVE_eu_seat_fr^512 }
+			DVE_eu_seat_dot_513 = { frame = DVE_eu_seat_fr^513 }
+			DVE_eu_seat_dot_514 = { frame = DVE_eu_seat_fr^514 }
+			DVE_eu_seat_dot_515 = { frame = DVE_eu_seat_fr^515 }
+			DVE_eu_seat_dot_516 = { frame = DVE_eu_seat_fr^516 }
+			DVE_eu_seat_dot_517 = { frame = DVE_eu_seat_fr^517 }
+			DVE_eu_seat_dot_518 = { frame = DVE_eu_seat_fr^518 }
+			DVE_eu_seat_dot_519 = { frame = DVE_eu_seat_fr^519 }
+			DVE_eu_seat_dot_520 = { frame = DVE_eu_seat_fr^520 }
+			DVE_eu_seat_dot_521 = { frame = DVE_eu_seat_fr^521 }
+			DVE_eu_seat_dot_522 = { frame = DVE_eu_seat_fr^522 }
+			DVE_eu_seat_dot_523 = { frame = DVE_eu_seat_fr^523 }
+			DVE_eu_seat_dot_524 = { frame = DVE_eu_seat_fr^524 }
+			DVE_eu_seat_dot_525 = { frame = DVE_eu_seat_fr^525 }
+			DVE_eu_seat_dot_526 = { frame = DVE_eu_seat_fr^526 }
+			DVE_eu_seat_dot_527 = { frame = DVE_eu_seat_fr^527 }
+			DVE_eu_seat_dot_528 = { frame = DVE_eu_seat_fr^528 }
+			DVE_eu_seat_dot_529 = { frame = DVE_eu_seat_fr^529 }
+			DVE_eu_seat_dot_530 = { frame = DVE_eu_seat_fr^530 }
+			DVE_eu_seat_dot_531 = { frame = DVE_eu_seat_fr^531 }
+			DVE_eu_seat_dot_532 = { frame = DVE_eu_seat_fr^532 }
+			DVE_eu_seat_dot_533 = { frame = DVE_eu_seat_fr^533 }
+			DVE_eu_seat_dot_534 = { frame = DVE_eu_seat_fr^534 }
+			DVE_eu_seat_dot_535 = { frame = DVE_eu_seat_fr^535 }
+			DVE_eu_seat_dot_536 = { frame = DVE_eu_seat_fr^536 }
+			DVE_eu_seat_dot_537 = { frame = DVE_eu_seat_fr^537 }
+			DVE_eu_seat_dot_538 = { frame = DVE_eu_seat_fr^538 }
+			DVE_eu_seat_dot_539 = { frame = DVE_eu_seat_fr^539 }
+			DVE_eu_seat_dot_540 = { frame = DVE_eu_seat_fr^540 }
+			DVE_eu_seat_dot_541 = { frame = DVE_eu_seat_fr^541 }
+			DVE_eu_seat_dot_542 = { frame = DVE_eu_seat_fr^542 }
+			DVE_eu_seat_dot_543 = { frame = DVE_eu_seat_fr^543 }
+			DVE_eu_seat_dot_544 = { frame = DVE_eu_seat_fr^544 }
+			DVE_eu_seat_dot_545 = { frame = DVE_eu_seat_fr^545 }
+			DVE_eu_seat_dot_546 = { frame = DVE_eu_seat_fr^546 }
+			DVE_eu_seat_dot_547 = { frame = DVE_eu_seat_fr^547 }
+			DVE_eu_seat_dot_548 = { frame = DVE_eu_seat_fr^548 }
+			DVE_eu_seat_dot_549 = { frame = DVE_eu_seat_fr^549 }
+			DVE_eu_seat_dot_550 = { frame = DVE_eu_seat_fr^550 }
+			DVE_eu_seat_dot_551 = { frame = DVE_eu_seat_fr^551 }
+			DVE_eu_seat_dot_552 = { frame = DVE_eu_seat_fr^552 }
+			DVE_eu_seat_dot_553 = { frame = DVE_eu_seat_fr^553 }
+			DVE_eu_seat_dot_554 = { frame = DVE_eu_seat_fr^554 }
+			DVE_eu_seat_dot_555 = { frame = DVE_eu_seat_fr^555 }
+			DVE_eu_seat_dot_556 = { frame = DVE_eu_seat_fr^556 }
+			DVE_eu_seat_dot_557 = { frame = DVE_eu_seat_fr^557 }
+			DVE_eu_seat_dot_558 = { frame = DVE_eu_seat_fr^558 }
+			DVE_eu_seat_dot_559 = { frame = DVE_eu_seat_fr^559 }
+			DVE_eu_seat_dot_560 = { frame = DVE_eu_seat_fr^560 }
+			DVE_eu_seat_dot_561 = { frame = DVE_eu_seat_fr^561 }
+			DVE_eu_seat_dot_562 = { frame = DVE_eu_seat_fr^562 }
+			DVE_eu_seat_dot_563 = { frame = DVE_eu_seat_fr^563 }
+			DVE_eu_seat_dot_564 = { frame = DVE_eu_seat_fr^564 }
+			DVE_eu_seat_dot_565 = { frame = DVE_eu_seat_fr^565 }
+			DVE_eu_seat_dot_566 = { frame = DVE_eu_seat_fr^566 }
+			DVE_eu_seat_dot_567 = { frame = DVE_eu_seat_fr^567 }
+			DVE_eu_seat_dot_568 = { frame = DVE_eu_seat_fr^568 }
+			DVE_eu_seat_dot_569 = { frame = DVE_eu_seat_fr^569 }
+			DVE_eu_seat_dot_570 = { frame = DVE_eu_seat_fr^570 }
+			DVE_eu_seat_dot_571 = { frame = DVE_eu_seat_fr^571 }
+			DVE_eu_seat_dot_572 = { frame = DVE_eu_seat_fr^572 }
+			DVE_eu_seat_dot_573 = { frame = DVE_eu_seat_fr^573 }
+			DVE_eu_seat_dot_574 = { frame = DVE_eu_seat_fr^574 }
+			DVE_eu_seat_dot_575 = { frame = DVE_eu_seat_fr^575 }
+			DVE_eu_seat_dot_576 = { frame = DVE_eu_seat_fr^576 }
+			DVE_eu_seat_dot_577 = { frame = DVE_eu_seat_fr^577 }
+			DVE_eu_seat_dot_578 = { frame = DVE_eu_seat_fr^578 }
+			DVE_eu_seat_dot_579 = { frame = DVE_eu_seat_fr^579 }
+			DVE_eu_seat_dot_580 = { frame = DVE_eu_seat_fr^580 }
+			DVE_eu_seat_dot_581 = { frame = DVE_eu_seat_fr^581 }
+			DVE_eu_seat_dot_582 = { frame = DVE_eu_seat_fr^582 }
+			DVE_eu_seat_dot_583 = { frame = DVE_eu_seat_fr^583 }
+			DVE_eu_seat_dot_584 = { frame = DVE_eu_seat_fr^584 }
+			DVE_eu_seat_dot_585 = { frame = DVE_eu_seat_fr^585 }
+			DVE_eu_seat_dot_586 = { frame = DVE_eu_seat_fr^586 }
+			DVE_eu_seat_dot_587 = { frame = DVE_eu_seat_fr^587 }
+			DVE_eu_seat_dot_588 = { frame = DVE_eu_seat_fr^588 }
+			DVE_eu_seat_dot_589 = { frame = DVE_eu_seat_fr^589 }
+			DVE_eu_seat_dot_590 = { frame = DVE_eu_seat_fr^590 }
+			DVE_eu_seat_dot_591 = { frame = DVE_eu_seat_fr^591 }
+			DVE_eu_seat_dot_592 = { frame = DVE_eu_seat_fr^592 }
+			DVE_eu_seat_dot_593 = { frame = DVE_eu_seat_fr^593 }
+			DVE_eu_seat_dot_594 = { frame = DVE_eu_seat_fr^594 }
+			DVE_eu_seat_dot_595 = { frame = DVE_eu_seat_fr^595 }
+			DVE_eu_seat_dot_596 = { frame = DVE_eu_seat_fr^596 }
+			DVE_eu_seat_dot_597 = { frame = DVE_eu_seat_fr^597 }
+			DVE_eu_seat_dot_598 = { frame = DVE_eu_seat_fr^598 }
+			DVE_eu_seat_dot_599 = { frame = DVE_eu_seat_fr^599 }
+			DVE_eu_seat_dot_600 = { frame = DVE_eu_seat_fr^600 }
+			DVE_eu_seat_dot_601 = { frame = DVE_eu_seat_fr^601 }
+			DVE_eu_seat_dot_602 = { frame = DVE_eu_seat_fr^602 }
+			DVE_eu_seat_dot_603 = { frame = DVE_eu_seat_fr^603 }
+			DVE_eu_seat_dot_604 = { frame = DVE_eu_seat_fr^604 }
+			DVE_eu_seat_dot_605 = { frame = DVE_eu_seat_fr^605 }
+			DVE_eu_seat_dot_606 = { frame = DVE_eu_seat_fr^606 }
+			DVE_eu_seat_dot_607 = { frame = DVE_eu_seat_fr^607 }
+			DVE_eu_seat_dot_608 = { frame = DVE_eu_seat_fr^608 }
+			DVE_eu_seat_dot_609 = { frame = DVE_eu_seat_fr^609 }
+			DVE_eu_seat_dot_610 = { frame = DVE_eu_seat_fr^610 }
+			DVE_eu_seat_dot_611 = { frame = DVE_eu_seat_fr^611 }
+			DVE_eu_seat_dot_612 = { frame = DVE_eu_seat_fr^612 }
+			DVE_eu_seat_dot_613 = { frame = DVE_eu_seat_fr^613 }
+			DVE_eu_seat_dot_614 = { frame = DVE_eu_seat_fr^614 }
+			DVE_eu_seat_dot_615 = { frame = DVE_eu_seat_fr^615 }
+			DVE_eu_seat_dot_616 = { frame = DVE_eu_seat_fr^616 }
+			DVE_eu_seat_dot_617 = { frame = DVE_eu_seat_fr^617 }
+			DVE_eu_seat_dot_618 = { frame = DVE_eu_seat_fr^618 }
+			DVE_eu_seat_dot_619 = { frame = DVE_eu_seat_fr^619 }
+			DVE_eu_seat_dot_620 = { frame = DVE_eu_seat_fr^620 }
+			DVE_eu_seat_dot_621 = { frame = DVE_eu_seat_fr^621 }
+			DVE_eu_seat_dot_622 = { frame = DVE_eu_seat_fr^622 }
+			DVE_eu_seat_dot_623 = { frame = DVE_eu_seat_fr^623 }
+			DVE_eu_seat_dot_624 = { frame = DVE_eu_seat_fr^624 }
+			DVE_eu_seat_dot_625 = { frame = DVE_eu_seat_fr^625 }
+			DVE_eu_seat_dot_626 = { frame = DVE_eu_seat_fr^626 }
+			DVE_eu_seat_dot_627 = { frame = DVE_eu_seat_fr^627 }
+			DVE_eu_seat_dot_628 = { frame = DVE_eu_seat_fr^628 }
+			DVE_eu_seat_dot_629 = { frame = DVE_eu_seat_fr^629 }
+			DVE_eu_seat_dot_630 = { frame = DVE_eu_seat_fr^630 }
+			DVE_eu_seat_dot_631 = { frame = DVE_eu_seat_fr^631 }
+			DVE_eu_seat_dot_632 = { frame = DVE_eu_seat_fr^632 }
+			DVE_eu_seat_dot_633 = { frame = DVE_eu_seat_fr^633 }
+			DVE_eu_seat_dot_634 = { frame = DVE_eu_seat_fr^634 }
+			DVE_eu_seat_dot_635 = { frame = DVE_eu_seat_fr^635 }
+			DVE_eu_seat_dot_636 = { frame = DVE_eu_seat_fr^636 }
+			DVE_eu_seat_dot_637 = { frame = DVE_eu_seat_fr^637 }
+			DVE_eu_seat_dot_638 = { frame = DVE_eu_seat_fr^638 }
+			DVE_eu_seat_dot_639 = { frame = DVE_eu_seat_fr^639 }
+			DVE_eu_seat_dot_640 = { frame = DVE_eu_seat_fr^640 }
+			DVE_eu_seat_dot_641 = { frame = DVE_eu_seat_fr^641 }
+			DVE_eu_seat_dot_642 = { frame = DVE_eu_seat_fr^642 }
+			DVE_eu_seat_dot_643 = { frame = DVE_eu_seat_fr^643 }
+			DVE_eu_seat_dot_644 = { frame = DVE_eu_seat_fr^644 }
+			DVE_eu_seat_dot_645 = { frame = DVE_eu_seat_fr^645 }
+			DVE_eu_seat_dot_646 = { frame = DVE_eu_seat_fr^646 }
+			DVE_eu_seat_dot_647 = { frame = DVE_eu_seat_fr^647 }
+			DVE_eu_seat_dot_648 = { frame = DVE_eu_seat_fr^648 }
+			DVE_eu_seat_dot_649 = { frame = DVE_eu_seat_fr^649 }
+			DVE_eu_seat_dot_650 = { frame = DVE_eu_seat_fr^650 }
+			DVE_eu_seat_dot_651 = { frame = DVE_eu_seat_fr^651 }
+			DVE_eu_seat_dot_652 = { frame = DVE_eu_seat_fr^652 }
+			DVE_eu_seat_dot_653 = { frame = DVE_eu_seat_fr^653 }
+			DVE_eu_seat_dot_654 = { frame = DVE_eu_seat_fr^654 }
+			DVE_eu_seat_dot_655 = { frame = DVE_eu_seat_fr^655 }
+			DVE_eu_seat_dot_656 = { frame = DVE_eu_seat_fr^656 }
+			DVE_eu_seat_dot_657 = { frame = DVE_eu_seat_fr^657 }
+			DVE_eu_seat_dot_658 = { frame = DVE_eu_seat_fr^658 }
+			DVE_eu_seat_dot_659 = { frame = DVE_eu_seat_fr^659 }
+			DVE_eu_seat_dot_660 = { frame = DVE_eu_seat_fr^660 }
+			DVE_eu_seat_dot_661 = { frame = DVE_eu_seat_fr^661 }
+			DVE_eu_seat_dot_662 = { frame = DVE_eu_seat_fr^662 }
+			DVE_eu_seat_dot_663 = { frame = DVE_eu_seat_fr^663 }
+			DVE_eu_seat_dot_664 = { frame = DVE_eu_seat_fr^664 }
+			DVE_eu_seat_dot_665 = { frame = DVE_eu_seat_fr^665 }
+			DVE_eu_seat_dot_666 = { frame = DVE_eu_seat_fr^666 }
+			DVE_eu_seat_dot_667 = { frame = DVE_eu_seat_fr^667 }
+			DVE_eu_seat_dot_668 = { frame = DVE_eu_seat_fr^668 }
+			DVE_eu_seat_dot_669 = { frame = DVE_eu_seat_fr^669 }
+			DVE_eu_seat_dot_670 = { frame = DVE_eu_seat_fr^670 }
+			DVE_eu_seat_dot_671 = { frame = DVE_eu_seat_fr^671 }
+			DVE_eu_seat_dot_672 = { frame = DVE_eu_seat_fr^672 }
+			DVE_eu_seat_dot_673 = { frame = DVE_eu_seat_fr^673 }
+			DVE_eu_seat_dot_674 = { frame = DVE_eu_seat_fr^674 }
+			DVE_eu_seat_dot_675 = { frame = DVE_eu_seat_fr^675 }
+			DVE_eu_seat_dot_676 = { frame = DVE_eu_seat_fr^676 }
+			DVE_eu_seat_dot_677 = { frame = DVE_eu_seat_fr^677 }
+			DVE_eu_seat_dot_678 = { frame = DVE_eu_seat_fr^678 }
+			DVE_eu_seat_dot_679 = { frame = DVE_eu_seat_fr^679 }
+			DVE_eu_seat_dot_680 = { frame = DVE_eu_seat_fr^680 }
+			DVE_eu_seat_dot_681 = { frame = DVE_eu_seat_fr^681 }
+			DVE_eu_seat_dot_682 = { frame = DVE_eu_seat_fr^682 }
+			DVE_eu_seat_dot_683 = { frame = DVE_eu_seat_fr^683 }
+			DVE_eu_seat_dot_684 = { frame = DVE_eu_seat_fr^684 }
+			DVE_eu_seat_dot_685 = { frame = DVE_eu_seat_fr^685 }
+			DVE_eu_seat_dot_686 = { frame = DVE_eu_seat_fr^686 }
+			DVE_eu_seat_dot_687 = { frame = DVE_eu_seat_fr^687 }
+			DVE_eu_seat_dot_688 = { frame = DVE_eu_seat_fr^688 }
+			DVE_eu_seat_dot_689 = { frame = DVE_eu_seat_fr^689 }
+			DVE_eu_seat_dot_690 = { frame = DVE_eu_seat_fr^690 }
+			DVE_eu_seat_dot_691 = { frame = DVE_eu_seat_fr^691 }
+			DVE_eu_seat_dot_692 = { frame = DVE_eu_seat_fr^692 }
+			DVE_eu_seat_dot_693 = { frame = DVE_eu_seat_fr^693 }
+			DVE_eu_seat_dot_694 = { frame = DVE_eu_seat_fr^694 }
+			DVE_eu_seat_dot_695 = { frame = DVE_eu_seat_fr^695 }
+			DVE_eu_seat_dot_696 = { frame = DVE_eu_seat_fr^696 }
+			DVE_eu_seat_dot_697 = { frame = DVE_eu_seat_fr^697 }
+			DVE_eu_seat_dot_698 = { frame = DVE_eu_seat_fr^698 }
+			DVE_eu_seat_dot_699 = { frame = DVE_eu_seat_fr^699 }
+			DVE_eu_seat_dot_700 = { frame = DVE_eu_seat_fr^700 }
+			DVE_eu_seat_dot_701 = { frame = DVE_eu_seat_fr^701 }
+			DVE_eu_seat_dot_702 = { frame = DVE_eu_seat_fr^702 }
+			DVE_eu_seat_dot_703 = { frame = DVE_eu_seat_fr^703 }
+			DVE_eu_seat_dot_704 = { frame = DVE_eu_seat_fr^704 }
+			DVE_eu_council_dot_0 = { frame = DVE_eu_cnl_fr^0 }
+			DVE_eu_council_dot_1 = { frame = DVE_eu_cnl_fr^1 }
+			DVE_eu_council_dot_2 = { frame = DVE_eu_cnl_fr^2 }
+			DVE_eu_council_dot_3 = { frame = DVE_eu_cnl_fr^3 }
+			DVE_eu_council_dot_4 = { frame = DVE_eu_cnl_fr^4 }
+			DVE_eu_council_dot_5 = { frame = DVE_eu_cnl_fr^5 }
+			DVE_eu_council_dot_6 = { frame = DVE_eu_cnl_fr^6 }
+			DVE_eu_council_dot_7 = { frame = DVE_eu_cnl_fr^7 }
+			DVE_eu_council_dot_8 = { frame = DVE_eu_cnl_fr^8 }
+			DVE_eu_council_dot_9 = { frame = DVE_eu_cnl_fr^9 }
+			DVE_eu_council_dot_10 = { frame = DVE_eu_cnl_fr^10 }
+			DVE_eu_council_dot_11 = { frame = DVE_eu_cnl_fr^11 }
+			DVE_eu_council_dot_12 = { frame = DVE_eu_cnl_fr^12 }
+			DVE_eu_council_dot_13 = { frame = DVE_eu_cnl_fr^13 }
+			DVE_eu_council_dot_14 = { frame = DVE_eu_cnl_fr^14 }
+			DVE_eu_council_dot_15 = { frame = DVE_eu_cnl_fr^15 }
+			DVE_eu_council_dot_16 = { frame = DVE_eu_cnl_fr^16 }
+			DVE_eu_council_dot_17 = { frame = DVE_eu_cnl_fr^17 }
+			DVE_eu_council_dot_18 = { frame = DVE_eu_cnl_fr^18 }
+			DVE_eu_council_dot_19 = { frame = DVE_eu_cnl_fr^19 }
+			DVE_eu_council_dot_20 = { frame = DVE_eu_cnl_fr^20 }
+			DVE_eu_council_dot_21 = { frame = DVE_eu_cnl_fr^21 }
+			DVE_eu_council_dot_22 = { frame = DVE_eu_cnl_fr^22 }
+			DVE_eu_council_dot_23 = { frame = DVE_eu_cnl_fr^23 }
+			DVE_eu_council_dot_24 = { frame = DVE_eu_cnl_fr^24 }
+			DVE_eu_council_dot_25 = { frame = DVE_eu_cnl_fr^25 }
+			DVE_eu_council_dot_26 = { frame = DVE_eu_cnl_fr^26 }
 		}
 	}
 }
-

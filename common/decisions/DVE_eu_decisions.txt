@@ -1,0 +1,361 @@
+# ============================================================
+#   DvE - European Union Decisions (ONU / Council / Europarl Model)
+# ============================================================
+
+DVE_eu_member_category = {
+
+	# Toggle European Parliament Window
+	DVE_eu_open_parliament = {
+		icon = GFX_decision_generic_political_address
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = DVE_eu_parliament_open }
+				clr_country_flag = DVE_eu_parliament_open
+			}
+			else = {
+				set_country_flag = DVE_eu_parliament_open
+			}
+			DVE_eu_parliament_recalc_effect = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# Vote FOR in Council of the EU
+	DVE_eu_vote_council_for = {
+		icon = GFX_decision_generic_agreement
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			NOT = { check_variable = { DVE_eu_council_vote = 2 } }
+		}
+		cost = 10
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			set_variable = { DVE_eu_council_vote = 2 }
+			DVE_eu_qmv_check_effect = yes
+			add_political_power = 15
+		}
+		ai_will_do = { base = 5 }
+	}
+
+	# Vote AGAINST in Council of the EU
+	DVE_eu_vote_council_against = {
+		icon = GFX_decision_generic_break_treaty
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			NOT = { check_variable = { DVE_eu_council_vote = 3 } }
+		}
+		cost = 10
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			set_variable = { DVE_eu_council_vote = 3 }
+			DVE_eu_qmv_check_effect = yes
+			add_stability = 0.02
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	# ABSTAIN in Council of the EU
+	DVE_eu_vote_council_abstain = {
+		icon = GFX_decision_generic_speech
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			NOT = { check_variable = { DVE_eu_council_vote = 1 } }
+		}
+		cost = 5
+		fire_only_once = no
+		days_re_enable = 30
+		complete_effect = {
+			set_variable = { DVE_eu_council_vote = 1 }
+			DVE_eu_qmv_check_effect = yes
+		}
+		ai_will_do = { base = 1 }
+	}
+
+	# Single Market Directive
+	DVE_eu_single_market_directive = {
+		icon = GFX_decision_generic_trade
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 25
+		}
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 180
+		modifier = {
+			production_factory_max_efficiency_factor = 0.05
+			trade_laws_cost_factor = -0.15
+		}
+		days_remove = 120
+		complete_effect = {
+			add_political_power = 20
+			DVE_eu_parliament_recalc_effect = yes
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# Energy Union Infrastructure
+	DVE_eu_green_transition = {
+		icon = GFX_decision_generic_construction
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 40
+		}
+		cost = 40
+		fire_only_once = no
+		days_re_enable = 180
+		modifier = {
+			production_speed_infrastructure_factor = 0.10
+			fuel_gain_factor = 0.05
+		}
+		days_remove = 120
+		complete_effect = {
+			add_stability = 0.03
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# Digital Europe & AI Innovation Framework
+	DVE_eu_digital_framework = {
+		icon = GFX_decision_generic_research
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 35
+		}
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 180
+		modifier = {
+			research_speed_factor = 0.05
+		}
+		days_remove = 120
+		complete_effect = {
+			add_political_power = 10
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# PESCO / Common Foreign & Security Policy Defense Integration
+	DVE_eu_pesco_defense = {
+		icon = GFX_decision_generic_military
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+		modifier = {
+			production_speed_arms_factory_factor = 0.08
+			army_org_factor = 0.03
+		}
+		days_remove = 120
+		complete_effect = {
+			add_war_support = 0.03
+		}
+		ai_will_do = { base = 2 }
+	}
+
+	# Cohesion Fund / NextGenerationEU Funding
+	DVE_eu_cohesion_fund = {
+		icon = GFX_decision_generic_fundraising
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 30
+		}
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 360
+		modifier = {
+			consumer_goods_factor = -0.04
+			production_speed_industrial_complex_factor = 0.08
+		}
+		days_remove = 180
+		complete_effect = {
+			add_stability = 0.04
+		}
+		ai_will_do = { base = 3 }
+	}
+
+	# Subsidiarity Check: National Parliament Review (Yellow/Orange Card)
+	DVE_eu_subsidiarity_check = {
+		icon = GFX_decision_generic_parliament
+		allowed = { has_country_flag = DVE_eu_member }
+		visible = { has_country_flag = DVE_eu_member }
+		available = {
+			has_political_power > 20
+		}
+		cost = 20
+		fire_only_once = no
+		days_re_enable = 120
+		complete_effect = {
+			add_political_power = 40
+			add_stability = 0.02
+		}
+		ai_will_do = { base = 1 }
+	}
+}
+
+DVE_eu_candidate_category = {
+
+	# Toggle European Parliament Projection Window
+	DVE_eu_cand_open_parliament = {
+		icon = GFX_decision_generic_political_address
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = { has_country_flag = DVE_eu_candidate }
+		available = { always = yes }
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = DVE_eu_parliament_open }
+				clr_country_flag = DVE_eu_parliament_open
+			}
+			else = {
+				set_country_flag = DVE_eu_parliament_open
+			}
+			DVE_eu_parliament_recalc_effect = yes
+		}
+		ai_will_do = { factor = 0 }
+	}
+
+	# Copenhagen Criterion 1: Judicial Reform & Rule of Law
+	DVE_eu_copenhagen_rule_of_law = {
+		icon = GFX_decision_generic_police_action
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = { has_country_flag = DVE_eu_candidate }
+		available = {
+			check_variable = { DVE_eu_integration < 100 }
+			has_political_power > 30
+		}
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			add_to_variable = { DVE_eu_integration = 10 }
+			if = { limit = { check_variable = { DVE_eu_integration > 100 } } set_variable = { DVE_eu_integration = 100 } }
+			add_stability = 0.03
+			add_political_power = 15
+		}
+		ai_will_do = { base = 3 }
+	}
+
+	# Copenhagen Criterion 2: Market Economy & Transparency
+	DVE_eu_copenhagen_market_economy = {
+		icon = GFX_decision_generic_trade
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = { has_country_flag = DVE_eu_candidate }
+		available = {
+			check_variable = { DVE_eu_integration < 100 }
+			has_political_power > 30
+		}
+		cost = 30
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			add_to_variable = { DVE_eu_integration = 10 }
+			if = { limit = { check_variable = { DVE_eu_integration > 100 } } set_variable = { DVE_eu_integration = 100 } }
+			add_ideas = DVE_eu_candidate_spirit
+		}
+		ai_will_do = { base = 3 }
+	}
+
+	# Copenhagen Criterion 3: Transposition of Acquis Communautaire
+	DVE_eu_copenhagen_acquis = {
+		icon = GFX_decision_generic_agreement
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = { has_country_flag = DVE_eu_candidate }
+		available = {
+			check_variable = { DVE_eu_integration < 100 }
+			has_political_power > 35
+		}
+		cost = 35
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			add_to_variable = { DVE_eu_integration = 10 }
+			if = { limit = { check_variable = { DVE_eu_integration > 100 } } set_variable = { DVE_eu_integration = 100 } }
+			add_political_power = 15
+		}
+		ai_will_do = { base = 3 }
+	}
+
+	# Copenhagen Criterion 4: Common Foreign & Security Policy Alignment
+	DVE_eu_copenhagen_pesc = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = { has_country_flag = DVE_eu_candidate }
+		available = {
+			check_variable = { DVE_eu_integration < 100 }
+			has_political_power > 25
+		}
+		cost = 25
+		fire_only_once = no
+		days_re_enable = 60
+		complete_effect = {
+			add_to_variable = { DVE_eu_integration = 10 }
+			if = { limit = { check_variable = { DVE_eu_integration > 100 } } set_variable = { DVE_eu_integration = 100 } }
+			add_stability = 0.02
+		}
+		ai_will_do = { base = 3 }
+	}
+
+	# Open Negotiation Chapters (at 50% Integration)
+	DVE_eu_open_negotiation_chapters = {
+		icon = GFX_decision_generic_intelligence_exchange
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = {
+			has_country_flag = DVE_eu_candidate
+			NOT = { has_country_flag = DVE_eu_chapters_opened }
+		}
+		available = {
+			check_variable = { DVE_eu_integration > 49 }
+			has_political_power > 50
+		}
+		cost = 50
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = DVE_eu_chapters_opened
+			add_political_power = 50
+			add_stability = 0.05
+		}
+		ai_will_do = { base = 5 }
+	}
+
+	# Sign EU Accession Treaty (at 100% Integration)
+	DVE_eu_sign_accession_treaty = {
+		icon = GFX_decision_generic_unification
+		allowed = { has_country_flag = DVE_eu_candidate }
+		visible = {
+			has_country_flag = DVE_eu_candidate
+			has_country_flag = DVE_eu_chapters_opened
+		}
+		available = {
+			check_variable = { DVE_eu_integration > 99 }
+			check_variable = { global.DVE_eu_council_qmv_pass = 1 }
+			has_political_power > 100
+		}
+		cost = 100
+		fire_only_once = yes
+		complete_effect = {
+			DVE_eu_accept_accession_effect = yes
+		}
+		ai_will_do = { base = 10 }
+	}
+}

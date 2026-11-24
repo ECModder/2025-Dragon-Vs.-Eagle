@@ -1,0 +1,30 @@
+# DvE - European Union Decision Categories (ONU Model)
+# DVE_eu_member_category for EU Member States
+# DVE_eu_candidate_category for Candidate Countries
+
+DVE_eu_member_category = {
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_eu_member_banner_ui
+	priority = 85
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		has_country_flag = DVE_eu_member
+	}
+}
+
+DVE_eu_candidate_category = {
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_eu_candidate_banner_ui
+	priority = 85
+	visible_when_empty = yes
+
+	allowed = { always = yes }
+
+	visible = {
+		has_country_flag = DVE_eu_candidate
+		NOT = { has_country_flag = DVE_eu_member }
+	}
+}
