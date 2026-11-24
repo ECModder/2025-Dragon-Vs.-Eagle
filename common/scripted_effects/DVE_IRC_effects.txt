@@ -1,0 +1,90 @@
+# ============================================================
+#   DvE - Italian Revolutionary Communist Republic (IRC) and the
+#   end of the Italian civil war: effects used by
+#   events/DVE_ITA_civil_war.txt, common/on_actions/
+#   DVE_ITA_civil_war_on_actions.txt and the IRC focus trees.
+# ============================================================
+
+# Every faction gets a wargoal on TYR from the first day of the
+# civil war (ITA is already at war with it). Any scope.
+ITA_cw_tyr_wargoals_effect = {
+	if = {
+		limit = { country_exists = TYR }
+		if = { limit = { country_exists = INT } INT = { create_wargoal = { type = annex_everything target = TYR expire = 0 } } }
+		if = { limit = { country_exists = SRI } SRI = { create_wargoal = { type = annex_everything target = TYR expire = 0 } } }
+		if = { limit = { country_exists = RSI } RSI = { create_wargoal = { type = annex_everything target = TYR expire = 0 } } }
+		if = { limit = { country_exists = LOM } LOM = { create_wargoal = { type = annex_everything target = TYR expire = 0 } } }
+		if = { limit = { country_exists = IRC } IRC = { create_wargoal = { type = annex_everything target = TYR expire = 0 } } }
+	}
+}
+
+# Runs once when the Italian state falls (on_capitulation, with a weekly
+# safety net in DVE_ITA_civil_war_on_actions.txt). Any scope.
+#   - the Leninists (INT) send the IRC an annexation ultimatum
+#   - Padania declares war on every other faction
+ITA_cw_ita_defeated_effect = {
+	if = {
+		limit = {
+			has_global_flag = ITA_civil_war_active
+			NOT = { has_global_flag = ITA_cw_defeat_done }
+		}
+		set_global_flag = ITA_cw_defeat_done
+
+		if = {
+			limit = {
+				country_exists = IRC
+				country_exists = INT
+				IRC = { is_subject = no }
+			}
+			IRC = { country_event = { id = dve_itacw.3 days = 2 } }
+		}
+		else_if = {
+			# No Leninists to ask: the IRC simply goes on alone.
+			limit = { country_exists = IRC }
+			IRC = { IRC_load_main_tree_effect = yes }
+		}
+
+		# Padania moves a few days later, once the ultimatum is settled.
+		if = {
+			limit = { country_exists = LOM }
+			LOM = { country_event = { id = dve_itacw.6 days = 5 } }
+		}
+	}
+}
+
+# LOM scope: war on every other faction that exists and is not at war with it yet.
+LOM_cw_war_on_factions_effect = {
+	if = { limit = { country_exists = INT NOT = { has_war_with = INT } } declare_war_on = { target = INT type = annex_everything } }
+	if = { limit = { country_exists = SRI NOT = { has_war_with = SRI } } declare_war_on = { target = SRI type = annex_everything } }
+	if = { limit = { country_exists = RSI NOT = { has_war_with = RSI } } declare_war_on = { target = RSI type = annex_everything } }
+	if = { limit = { country_exists = IRC NOT = { has_war_with = IRC } } declare_war_on = { target = IRC type = annex_everything } }
+	if = { limit = { country_exists = TYR NOT = { has_war_with = TYR } } declare_war_on = { target = TYR type = annex_everything } }
+}
+
+# IRC scope: swaps the war tree for the main one, once.
+IRC_load_main_tree_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = IRC_main_tree_loaded } }
+		set_country_flag = IRC_main_tree_loaded
+		load_focus_tree = { tree = IRC_focus keep_completed = no }
+	}
+}
+
+# IRC scope: creates the "Guardia Rivoluzionaria" template if missing.
+IRC_cw_guard_template_effect = {
+	hidden_effect = {
+		if = {
+			limit = { NOT = { has_template = "Guardia Rivoluzionaria" } }
+			division_template = {
+				name = "Guardia Rivoluzionaria"
+				regiments = {
+					infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+				}
+				support = {
+					engineer = { x = 0 y = 0 }
+				}
+			}
+		}
+	}
+}

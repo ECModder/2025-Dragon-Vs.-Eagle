@@ -995,6 +995,43 @@ DVE_debug_italy_category = {
 		ai_will_do = { base = 0 }
 	}
 
+	DVE_debug_italy_spawn_irc = {
+		icon = GFX_decision_generic_form_nation
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_spawn_IRC_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
+	# --- the fall of Italy: IRC ultimatum + Padania war ---------
+	# Fires what happens when ITA is defeated, without having to
+	# win the war. Needs the civil war started.
+	DVE_debug_italy_ita_defeated = {
+		icon = GFX_decision_revolt
+		allowed = { original_tag = ITA }
+		visible = {
+			is_ai = no
+			is_debug = yes
+			has_global_flag = ITA_civil_war_active
+		}
+		available = {
+			NOT = { has_global_flag = ITA_cw_defeat_done }
+		}
+		cost = 0
+		fire_only_once = no
+		complete_effect = {
+			ITA_cw_ita_defeated_effect = yes
+		}
+		ai_will_do = { base = 0 }
+	}
+
 	# --- solo gli eserciti (e la guarnigione di Roma) ----------
 	# Da usare dopo gli spawn singoli, che il territorio lo danno
 	# ma le divisioni no.

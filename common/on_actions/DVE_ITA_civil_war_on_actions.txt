@@ -1,0 +1,32 @@
+# DvE - Italian civil war: when ITA falls the Leninists send the IRC an
+# annexation ultimatum and Padania declares war on the other factions
+# (ITA_cw_ita_defeated_effect, common/scripted_effects/DVE_IRC_effects.txt).
+on_actions = {
+	on_capitulation = {
+		effect = {
+			if = {
+				limit = {
+					tag = ITA
+					has_global_flag = ITA_civil_war_active
+				}
+				ITA_cw_ita_defeated_effect = yes
+			}
+		}
+	}
+	# Safety net: ITA annexed or wiped out without a capitulation.
+	on_weekly = {
+		effect = {
+			if = {
+				limit = {
+					has_global_flag = ITA_civil_war_active
+					NOT = { has_global_flag = ITA_cw_defeat_done }
+					OR = {
+						NOT = { country_exists = ITA }
+						ITA = { has_capitulated = yes }
+					}
+				}
+				ITA_cw_ita_defeated_effect = yes
+			}
+		}
+	}
+}
