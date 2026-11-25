@@ -31,8 +31,8 @@
 #     LOM  3  Est Lombardia(1177) Padania(1179) Veneto(160)
 #              capital 160
 #     TYR  1  South Tyrol(39)
-#     IRC  3  Bologna-Ovest(1213) Massa-Carrara(1214) Vallesina(1215)
-#              capital 1213; Trotskyist split of INT, cut from 161/162/1185
+#     IRC  3  Bologna-Ovest(1225) Massa-Carrara(1226) Vallesina(1227)
+#              capital 1225; Trotskyist split of INT, cut from 161/162/1185
 #
 #   Armies (ITA_civil_war_army_effect): INT 36, SRI 16, RSI 14, LOM 8,
 #   TYR 4, IRC 10, spread province by province; ITA 3 in Rome and 8 garrisons.
@@ -245,9 +245,9 @@ ITA_cw_spawn_IRC_effect = {
 	every_owned_state = {
 		limit = {
 			OR = {
-				state = 1213 # Bologna-Ovest
-				state = 1214 # Massa-Carrara
-				state = 1215 # Vallesina
+				state = 1225 # Bologna-Ovest
+				state = 1226 # Massa-Carrara
+				state = 1227 # Vallesina
 			}
 		}
 		add_core_of = IRC
@@ -259,8 +259,8 @@ ITA_cw_spawn_IRC_effect = {
 		IRC = {
 			DVE_cw_new_faction_setup_effect = yes
 			if = {
-				limit = { owns_state = 1213 }
-				set_capital = { state = 1213 }
+				limit = { owns_state = 1225 }
+				set_capital = { state = 1225 }
 			}
 			# Civil war tree, loaded once (a re-spawn must not reset it).
 			if = {
@@ -544,12 +544,12 @@ ITA_civil_war_army_effect = {
 			}
 			# 10 divisions, spread over the provinces of its states
 			# Bologna-Ovest
-			1213 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13488 count = 4 allow_spawning_on_enemy_provs = yes } }
+			1225 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13506 count = 4 allow_spawning_on_enemy_provs = yes } }
 			# Massa-Carrara
-			1214 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13489 count = 1 allow_spawning_on_enemy_provs = yes } }
-			1214 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13490 count = 2 allow_spawning_on_enemy_provs = yes } }
+			1226 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13507 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1226 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13508 count = 2 allow_spawning_on_enemy_provs = yes } }
 			# Vallesina (the front with ITA)
-			1215 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13491 count = 3 allow_spawning_on_enemy_provs = yes } }
+			1227 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13509 count = 3 allow_spawning_on_enemy_provs = yes } }
 		}
 	}
 

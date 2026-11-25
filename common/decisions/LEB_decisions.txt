@@ -1,0 +1,99 @@
+LEB_crisis_management = {
+
+	LEB_raid_hostile_militias = {
+		icon = GFX_decision_oppression
+
+		allowed = {
+			original_tag = LEB
+		}
+
+		state_target = any_owned_state
+		on_map_mode = map_and_decisions_view
+
+		target_root_trigger = {
+			has_country_flag = LEB_crisis_management_unlocked
+		}
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				NOT = { has_state_flag = LEB_militias_dismantled }
+			}
+		}
+		visible = {
+			has_country_flag = LEB_crisis_management_unlocked
+		}
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = LEB_militia_raids_locked_tt
+				has_country_flag = LEB_militia_raids_unlocked
+			}
+			FROM = { is_controlled_by = ROOT }
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_remove = 30
+
+		remove_effect = {
+			FROM = { set_state_flag = LEB_militias_dismantled }
+			add_stability = 0.02
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	LEB_internal_security_sweep = {
+		icon = GFX_decision_generic_police_action
+
+		allowed = {
+			original_tag = LEB
+		}
+		visible = {
+			has_country_flag = LEB_internal_security_unlocked
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 90
+
+		complete_effect = {
+			add_stability = 0.02
+			add_popularity = { ideology = fundamentalism popularity = -0.02 }
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+
+	LEB_seek_foreign_support = {
+		icon = GFX_decision_generic_political_address
+
+		allowed = {
+			original_tag = LEB
+		}
+		visible = {
+			has_country_flag = LEB_diplomatic_branch_unlocked
+		}
+
+		cost = 50
+		fire_only_once = no
+		days_re_enable = 180
+
+		complete_effect = {
+			custom_effect_tooltip = LEB_foreign_support_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
+					add_opinion_modifier = { target = ROOT modifier = LEB_security_cooperation }
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+		}
+	}
+}

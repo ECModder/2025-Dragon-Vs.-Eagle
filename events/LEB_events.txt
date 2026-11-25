@@ -1,0 +1,211 @@
+add_namespace = leb
+
+news_event = {
+	id = leb.1
+	title = leb.1.t
+	desc = leb.1.d
+	picture = GFX_news_event_LEB_aoun_elected
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.1.a
+		if = {
+			limit = {
+				NOT = { has_completed_focus = LEB_the_state_of_lebanese_politics }
+			}
+			complete_national_focus = LEB_the_state_of_lebanese_politics
+		}
+	}
+}
+
+news_event = {
+	id = leb.2
+	title = leb.2.t
+	desc = leb.2.d
+	picture = GFX_news_event_LEB_douma_award
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.2.a
+		add_political_power = 200
+		add_timed_idea = { idea = LEB_douma_award days = 365 }
+	}
+}
+
+country_event = {
+	id = leb.3
+	title = leb.3.t
+	desc = leb.3.d
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.3.a
+		ai_chance = { base = 0 }
+		complete_national_focus = LEB_call_of_the_yellow_warriors
+	}
+
+	option = {
+		name = leb.3.b
+		ai_chance = { base = 100 }
+		complete_national_focus = LEB_the_elections_are_cancelled
+	}
+
+	option = {
+		name = leb.3.c
+		ai_chance = { base = 0 }
+		complete_national_focus = LEB_defenders_of_the_holy_cedar
+	}
+}
+
+country_event = {
+	id = leb.10
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_completed_focus = LEB_the_parliamentary_elections_of_2026 }
+			}
+			complete_national_focus = LEB_the_parliamentary_elections_of_2026
+		}
+	}
+
+	option = {
+		name = leb.10.a
+	}
+}
+
+news_event = {
+	id = leb.20
+	title = leb.20.t
+	desc = leb.20.d
+	picture = GFX_news_event_LEB_aoun_elected
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.20.a
+	}
+}
+
+country_event = {
+	id = leb.21
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = {
+				has_completed_focus = LEB_re_ratify_agreement_1701
+				has_completed_focus = LEB_mobilize_army_and_gendarmerie
+			}
+			random_list = {
+				25 = { news_event = { id = leb.22 } }
+				75 = { news_event = { id = leb.20 } }
+			}
+		}
+		else = {
+			random_list = {
+				40 = { news_event = { id = leb.22 } }
+				60 = { news_event = { id = leb.20 } }
+			}
+		}
+	}
+
+	option = {
+		name = leb.21.a
+	}
+}
+
+news_event = {
+	id = leb.22
+	title = leb.22.t
+	desc = leb.22.d
+	picture = GFX_news_event_LEB_army_clashes
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.22.a
+		hidden_effect = {
+			country_event = { id = leb.23 days = 3 random_days = 4 }
+		}
+	}
+}
+
+country_event = {
+	id = leb.23
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		if = {
+			limit = { has_idea = LEB_one_state_one_army }
+			remove_ideas = LEB_one_state_one_army
+		}
+		LEB_civil_war_start_effect = yes
+	}
+
+	option = {
+		name = leb.23.a
+	}
+}
+
+news_event = {
+	id = leb.30
+	title = leb.30.t
+	desc = leb.30.d
+	picture = GFX_news_event_LEB_geagea_wins
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.30.a
+		set_country_flag = LEB_geagea_won
+		add_political_power = 200
+		add_stability = -0.15
+		add_ideas = LEB_geagea_presidency
+	}
+}
+
+news_event = {
+	id = leb.31
+	title = leb.31.t
+	desc = leb.31.d
+	picture = GFX_news_event_LEB_assassination
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.31.a
+		set_country_flag = LEB_geagea_assassinated
+		remove_ideas = LEB_geagea_presidency
+		add_stability = -0.30
+		add_war_support = -0.30
+		LEB_civil_war_start_effect = yes
+	}
+}
+
+news_event = {
+	id = leb.40
+	title = leb.40.t
+	desc = leb.40.d
+	picture = GFX_news_event_LEB_holy_land
+
+	is_triggered_only = yes
+
+	option = {
+		name = leb.40.a
+		set_country_flag = LEB_al_quds_taken
+		add_political_power = 300
+		add_war_support = 0.10
+		every_other_country = {
+			limit = { OR = { tag = USA tag = ENG tag = FRA tag = GER tag = ITA tag = CAN is_in_faction_with = USA } }
+			add_opinion_modifier = { target = ROOT modifier = LEB_al_quds_condemnation }
+		}
+	}
+}

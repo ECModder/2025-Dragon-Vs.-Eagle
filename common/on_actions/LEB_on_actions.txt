@@ -1,0 +1,42 @@
+on_actions = {
+
+	on_startup = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = LEB_events_scheduled }
+					LEB = { exists = yes }
+				}
+				set_global_flag = LEB_events_scheduled
+				LEB = {
+					news_event = { id = leb.1 hours = 144 }
+					news_event = { id = leb.2 hours = 3624 }
+					country_event = { id = leb.10 hours = 9456 }
+				}
+			}
+		}
+	}
+
+	on_monthly = {
+		effect = {
+		if = {
+			limit = {
+				has_country_flag = LEB_path_cedar
+				date > 2028.5.15
+				NOT = { has_country_flag = LEB_geagea_fired }
+				NOT = { has_global_flag = LEB_civil_war }
+			}
+			set_country_flag = LEB_geagea_fired
+			news_event = { id = leb.30 hours = 1 }
+		}
+			if = {
+				limit = { has_country_flag = LEB_paralysis_drain }
+				add_stability = -0.005
+			}
+			if = {
+				limit = { has_country_flag = LEB_polarization_drain }
+				add_stability = -0.005
+			}
+		}
+	}
+}

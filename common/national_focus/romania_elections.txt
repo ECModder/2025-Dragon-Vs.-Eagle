@@ -1433,7 +1433,7 @@ focus_tree = {
 		completion_reward = {
 			if = {
 				limit = { country_exists = UKR }
-				create_wargoal = { type = take_state_focus target = UKR generator = { 80 } }
+				ROM_exp_claim_bukovina = yes
 				if = {
 					limit = { country_exists = UKR }
 					UKR = { add_opinion_modifier = { target = ROOT modifier = ROM_bukovina_demand } }
@@ -7905,6 +7905,279 @@ focus_tree = {
 				add_stability = 0.03
 			}
 			mark_focus_tree_layout_dirty = yes
+		}
+	}
+
+	# ------------------------------------------------------------
+	# Simion path: the Unionist ladder (x 55-67, y 11-14), under
+	# ROM_greater_romania. Moldova first (energy pressure, then union
+	# by force if Chisinau refuses), the Romanians of Ukraine (a deal
+	# with Kyiv, or a war goal only once Ukraine's front breaks), the
+	# Timok (a sovereigntist bargain with Belgrade, never a war), and
+	# riding out the West's reaction.
+	# Effects: common/scripted_effects/ROM_expansion_effects.txt
+	# ------------------------------------------------------------
+	focus = {
+		id = ROM_sim_energy_lever
+		icon = GFX_focus_DvE_ROM_sim_energy_lever
+		x = 55
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_greater_romania }
+		available = {
+			country_exists = MOL
+			NOT = { has_war_with = MOL }
+		}
+		bypass = {
+			OR = {
+				NOT = { country_exists = MOL }
+				78 = { is_owned_by = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 2
+		}
+		completion_reward = {
+			set_country_flag = ROM_sim_energy_pressure
+			custom_effect_tooltip = ROM_sim_energy_lever_tt
+			MOL = {
+				add_stability = -0.05
+				add_opinion_modifier = { target = ROOT modifier = ROM_union_pressure }
+			}
+			custom_effect_tooltip = ROM_union_offer_tt
+			hidden_effect = { ROM_offer_union_to_moldova = yes }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_unirea
+		icon = GFX_focus_DvE_ROM_sim_unirea
+		x = 55
+		y = 12
+		cost = 7
+		prerequisite = { focus = ROM_sim_energy_lever }
+		available = {
+			country_exists = MOL
+			NOT = { has_war_with = MOL }
+			custom_trigger_tooltip = { tooltip = ROM_sim_union_refused_tt has_country_flag = ROM_union_refused }
+		}
+		bypass = {
+			OR = {
+				NOT = { country_exists = MOL }
+				78 = { is_owned_by = ROOT }
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			create_wargoal = { type = annex_everything target = MOL }
+			if = {
+				limit = { country_exists = TNS }
+				create_wargoal = { type = annex_everything target = TNS }
+			}
+			add_war_support = 0.05
+			army_experience = 15
+		}
+	}
+
+	focus = {
+		id = ROM_sim_romanians_beyond_prut
+		icon = GFX_focus_DvE_ROM_sim_romanians_beyond_prut
+		x = 59
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_greater_romania }
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_claim_bukovina = yes
+			add_war_support = 0.03
+			if = { limit = { country_exists = UKR } UKR = { add_opinion_modifier = { target = ROOT modifier = ROM_fp_suspicion } } }
+			if = { limit = { country_exists = HUN } HUN = { add_opinion_modifier = { target = ROOT modifier = ROM_fp_partner } } }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_deal_with_kyiv
+		icon = GFX_focus_DvE_ROM_sim_deal_with_kyiv
+		x = 58
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_sim_romanians_beyond_prut }
+		mutually_exclusive = { focus = ROM_sim_front_breaks }
+		available = {
+			country_exists = UKR
+			NOT = { has_war_with = UKR }
+			OR = { 80 = { is_owned_by = UKR } 766 = { is_owned_by = UKR } }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 2
+		}
+		completion_reward = {
+			set_country_flag = ROM_sim_kyiv_deal
+			add_political_power = -50
+			UKR = {
+				add_equipment_to_stockpile = { type = infantry_equipment_1 amount = 3000 producer = ROM }
+				add_equipment_to_stockpile = { type = artillery_equipment_1 amount = 100 producer = ROM }
+			}
+			custom_effect_tooltip = ROM_sim_kyiv_deal_tt
+			custom_effect_tooltip = ROM_exp_demand_ukr_tt
+			hidden_effect = { ROM_exp_demand_bukovina = yes }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_front_breaks
+		icon = GFX_focus_DvE_ROM_sim_front_breaks
+		x = 60
+		y = 12
+		cost = 7
+		prerequisite = { focus = ROM_sim_romanians_beyond_prut }
+		mutually_exclusive = { focus = ROM_sim_deal_with_kyiv }
+		available = {
+			country_exists = UKR
+			NOT = { has_war_with = UKR }
+			OR = { 80 = { is_owned_by = UKR } 766 = { is_owned_by = UKR } }
+			custom_trigger_tooltip = {
+				tooltip = ROM_sim_front_breaks_tt
+				UKR = { surrender_progress > 0.15 }
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_wargoal_bukovina = yes
+			army_experience = 25
+			add_war_support = 0.05
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_news.5 days = 1 } } }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_bukovina_returns
+		icon = GFX_focus_DvE_ROM_sim_bukovina_returns
+		x = 59
+		y = 13
+		cost = 7
+		prerequisite = { focus = ROM_sim_deal_with_kyiv focus = ROM_sim_front_breaks }
+		available = {
+			OR = { 80 = { is_owned_by = ROOT } 766 = { is_owned_by = ROOT } }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_integrate_bukovina = yes
+			add_stability = 0.03
+		}
+	}
+
+	focus = {
+		id = ROM_sim_timok_romanians
+		icon = GFX_focus_DvE_ROM_sim_timok_romanians
+		x = 63
+		y = 11
+		cost = 5
+		prerequisite = { focus = ROM_greater_romania }
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			108 = { add_claim_by = ROOT }
+			add_political_power = 25
+			add_stability = 0.02
+		}
+	}
+
+	focus = {
+		id = ROM_sim_belgrade_bargain
+		icon = GFX_focus_DvE_ROM_sim_belgrade_bargain
+		x = 63
+		y = 12
+		cost = 5
+		prerequisite = { focus = ROM_sim_timok_romanians }
+		available = {
+			country_exists = SER
+			NOT = { has_war_with = SER }
+			OR = { 108 = { is_owned_by = SER } 764 = { is_owned_by = SER } }
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			set_country_flag = ROM_sim_serbia_bargain
+			SER = { add_opinion_modifier = { target = ROOT modifier = ROM_fp_strategic_partner } }
+			custom_effect_tooltip = ROM_sim_belgrade_bargain_tt
+			custom_effect_tooltip = ROM_exp_demand_ser_tt
+			hidden_effect = { ROM_exp_demand_timok = yes }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_ride_out_sanctions
+		icon = GFX_focus_DvE_ROM_sim_ride_out_sanctions
+		x = 67
+		y = 11
+		cost = 7
+		prerequisite = { focus = ROM_greater_romania }
+		available = {
+			has_idea = ROM_alliance_pariah_idea
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = {
+			factor = 2
+		}
+		completion_reward = {
+			remove_ideas = ROM_alliance_pariah_idea
+			add_ideas = ROM_sim_sovereign_isolation_idea
+			if = { limit = { country_exists = HUN } HUN = { add_opinion_modifier = { target = ROOT modifier = ROM_fp_partner } } }
+			if = { limit = { country_exists = SVK } SVK = { add_opinion_modifier = { target = ROOT modifier = ROM_fp_partner } } }
+		}
+	}
+
+	focus = {
+		id = ROM_sim_lost_provinces_return
+		icon = GFX_focus_DvE_ROM_sim_lost_provinces_return
+		x = 59
+		y = 14
+		cost = 10
+		prerequisite = { focus = ROM_sim_unirea focus = ROM_sim_bukovina_returns focus = ROM_sim_belgrade_bargain }
+		available = {
+			custom_trigger_tooltip = {
+				tooltip = ROM_sim_two_provinces_tt
+				count_triggers = {
+					amount = 2
+					78 = { is_owned_by = ROOT }
+					1066 = { is_owned_by = ROOT }
+					80 = { is_owned_by = ROOT }
+					766 = { is_owned_by = ROOT }
+					108 = { is_owned_by = ROOT }
+					764 = { is_owned_by = ROOT }
+				}
+			}
+		}
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		ai_will_do = {
+			factor = 1
+		}
+		completion_reward = {
+			ROM_exp_integrate_bessarabia = yes
+			ROM_exp_integrate_bukovina = yes
+			ROM_exp_integrate_timok = yes
+			add_stability = 0.05
+			add_political_power = 100
+			hidden_effect = { every_country = { limit = { NOT = { tag = ROM } } news_event = { id = ROM_exp.10 days = 1 } } }
 		}
 	}
 }

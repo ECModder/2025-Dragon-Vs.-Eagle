@@ -69,6 +69,7 @@ LEB_cw_spawn_HZB_effect = {
 		HZB = {
 			DVE_cw_new_faction_setup_effect = yes
 			if = { limit = { NOT = { has_character = HZB_naiim_qassem } } recruit_character = HZB_naiim_qassem }
+			HZB_recruit_staff_effect = yes
 			if = { limit = { NOT = { has_country_leader = { character = HZB_naiim_qassem ruling_only = yes } } } promote_character = { character = HZB_naiim_qassem ideology = islamic_fundamentalism } }
 			if = {
 				limit = { owns_state = 1113 }
@@ -132,6 +133,11 @@ LEB_cw_spawn_DUZ_effect = {
 # Runs in LEB's scope from dve_lebcw.1 (ROOT = LEB).
 LEB_civil_war_effect = {
 	set_global_flag = LEB_civil_war
+	mark_focus_tree_layout_dirty = yes
+	if = {
+		limit = { NOT = { has_completed_focus = LEB_the_lebanese_civil_war } }
+		complete_national_focus = LEB_the_lebanese_civil_war
+	}
 	# wartime name and flag of the government (cosmetic tag LEB_GNU)
 	set_cosmetic_tag = LEB_GNU
 	add_stability = -0.20
@@ -490,16 +496,16 @@ LEB_civil_war_reset_effect = {
 			authoritarian_socialism = 0
 			vanguard_socialism = 0
 			revolutionary_socialism = 0
-			progressive = 11
-			liberal = 0
-			centrist = 22
-			conservative = 20
-			reactionary = 12
-			authoritarianism = 4
-			autocracy = 12
+			progressive = 0
+			liberal = 9
+			centrist = 21
+			conservative = 18
+			reactionary = 15
+			authoritarianism = 6
+			autocracy = 11
 			absolutism = 0
 			ultranationalism = 1
-			fundamentalism = 18
+			fundamentalism = 19
 		}
 		set_party_name = { ideology = fundamentalism name = "Hezbollah" long_name = "Hezbollah" }
 		if = { limit = { has_character = LEB_georges_adwan } retire_character = LEB_georges_adwan }
@@ -622,6 +628,8 @@ LEB_civil_war_reset_effect = {
 	}
 
 	clr_global_flag = LEB_civil_war
+
+	mark_focus_tree_layout_dirty = yes
 	clr_global_flag = LEB_emergency_coalition
 	drop_cosmetic_tag = yes
 	clr_country_flag = LEB_emergency_administration
