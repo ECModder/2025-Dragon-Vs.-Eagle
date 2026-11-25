@@ -1,0 +1,111 @@
+# DvE - US electoral balance: the 'internal power struggle' bar of the presidential race.
+# Value = (GOP electoral votes - Democratic camp electoral votes) / 538, updated by USA_race_bop_effect.
+
+USA_electoral_balance = {
+	initial_value = 0.0
+	left_side = USA_bop_dem
+	right_side = USA_bop_gop
+	decision_category = DVE_USA_balance_category
+
+	side = {
+		id = USA_bop_dem
+		icon = GFX_USA_bop_dem
+
+		range = {
+			id = USA_dem_range_4
+			min = -0.15
+			max = 0.0
+			modifier = {
+				research_speed_factor = 0.01
+				war_support_factor = -0.01
+			}
+		}
+
+		range = {
+			id = USA_dem_range_3
+			min = -0.4
+			max = -0.15
+			modifier = {
+				research_speed_factor = 0.02
+				stability_factor = 0.01
+				war_support_factor = -0.02
+			}
+		}
+
+		range = {
+			id = USA_dem_range_2
+			min = -0.7
+			max = -0.4
+			modifier = {
+				research_speed_factor = 0.04
+				stability_factor = 0.02
+				war_support_factor = -0.04
+				production_speed_industrial_complex_factor = -0.02
+			}
+		}
+
+		range = {
+			id = USA_dem_range_1
+			min = -1.0
+			max = -0.7
+			modifier = {
+				research_speed_factor = 0.06
+				stability_factor = 0.03
+				war_support_factor = -0.06
+				production_speed_industrial_complex_factor = -0.04
+			}
+		}
+
+	}
+
+	side = {
+		id = USA_bop_gop
+		icon = GFX_USA_bop_gop
+
+		range = {
+			id = USA_gop_range_1
+			min = 0.0
+			max = 0.15
+			modifier = {
+				production_speed_industrial_complex_factor = 0.01
+				war_support_factor = 0.01
+			}
+		}
+
+		range = {
+			id = USA_gop_range_2
+			min = 0.15
+			max = 0.4
+			modifier = {
+				production_speed_industrial_complex_factor = 0.02
+				war_support_factor = 0.02
+				research_speed_factor = -0.01
+			}
+		}
+
+		range = {
+			id = USA_gop_range_3
+			min = 0.4
+			max = 0.7
+			modifier = {
+				production_speed_industrial_complex_factor = 0.04
+				war_support_factor = 0.04
+				research_speed_factor = -0.02
+				stability_factor = 0.01
+			}
+		}
+
+		range = {
+			id = USA_gop_range_4
+			min = 0.7
+			max = 1.0
+			modifier = {
+				production_speed_industrial_complex_factor = 0.06
+				war_support_factor = 0.06
+				research_speed_factor = -0.04
+				stability_factor = 0.02
+			}
+		}
+
+	}
+}

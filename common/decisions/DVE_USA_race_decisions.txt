@@ -1,0 +1,241 @@
+# DvE - US presidential race: choose the bloc and candidate to push (shown while USA_pick_open is set).
+# The first pick is free; changing bloc later costs 100 political power and resets the campaign gains.
+
+DVE_USA_balance_category = {
+
+	USA_pick_soc = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 1 } }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 1 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_pick_ld = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 2 } }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 2 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_pick_cd = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 3 } }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 3 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_pick_gn = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 4 } }
+			check_variable = { USA_phase > 1 }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 4 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_pick_gt = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 5 } }
+			check_variable = { USA_phase < 2 }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 5 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_pick_gt3 = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_pick_open
+			NOT = { check_variable = { USA_chosen = 5 } }
+			check_variable = { USA_phase > 1 }
+		}
+		available = {
+			is_ai = no
+			OR = {
+				NOT = { has_country_flag = USA_has_picked }
+				has_political_power > 99
+			}
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 1
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			if = {
+				limit = { has_country_flag = USA_has_picked }
+				add_political_power = -100
+			}
+			set_variable = { USA_pick_choice = 5 }
+			USA_pick_bloc_effect = yes
+		}
+	}
+
+	USA_fund_grass_1 = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_race_active
+			OR = { check_variable = { USA_chosen = 1 } check_variable = { USA_chosen = 2 } }
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+	USA_fund_grass_2 = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_race_active
+			OR = { check_variable = { USA_chosen = 1 } check_variable = { USA_chosen = 2 } }
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+	USA_fund_corp_1 = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_race_active
+			check_variable = { USA_chosen > 2 }
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+	USA_fund_corp_2 = {
+		icon = GFX_decision_generic_political_discourse
+		allowed = { original_tag = USA }
+		visible = {
+			has_country_flag = USA_race_active
+			check_variable = { USA_chosen > 2 }
+		}
+		cost = 0
+		fire_only_once = no
+		days_re_enable = 30
+		ai_will_do = { factor = 0 }
+		complete_effect = {
+			add_political_power = 30
+		}
+	}
+
+}

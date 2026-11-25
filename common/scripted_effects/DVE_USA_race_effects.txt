@@ -1,0 +1,1584 @@
+# DvE - US presidential race: scripted effects (midterms 2026, presidential election 2028).
+# Written once by a generator; edit this file by hand. All effects run in the USA scope (the window reads the USA variables).
+# Arrays (index = state number 0..50, order of USA_election_data_effect): USA_ev, USA_m0, USA_mw, USA_ldf, USA_gtf, USA_soc, USA_iss1, USA_iss2, USA_el, USA_swing, USA_ax, USA_ay.
+# Shares: USA_sh^(state*5 + bloc-1), baseline USA_bs^same index. Blocs: 1 Socialist, 2 Left Dems, 3 Centrist Dems, 4 GOP Neoconservatives, 5 GOP Trumpists.
+
+# ---- STATE DATA (edit the numbers here to rebalance a state) -------------------------------
+# EV = electoral votes | m0 = 2024 margin, R minus D, in points | mw = weight of the national mood drift
+# ldf = share of the Democratic vote that follows the Left Democrats (if chosen) | gtf = share of the Republican vote that follows the Trumpists (if chosen)
+# soc = starting share of the Socialist bloc (if chosen) | iss1/iss2 = top issues: 1 economy, 2 energy, 3 immigration, 4 rights/health, 5 foreign policy
+USA_election_data_effect = {
+	# AL Alabama
+	set_variable = { USA_ev^0 = 9 }
+	set_variable = { USA_m0^0 = 30 }
+	set_variable = { USA_mw^0 = 0.9 }
+	set_variable = { USA_ldf^0 = 0.14 }
+	set_variable = { USA_gtf^0 = 0.66 }
+	set_variable = { USA_soc^0 = 0.5 }
+	set_variable = { USA_iss1^0 = 4 }
+	set_variable = { USA_iss2^0 = 1 }
+	set_variable = { USA_el^0 = 0.6 }
+	set_variable = { USA_swing^0 = 0 }
+	set_variable = { USA_ax^0 = 521 }
+	set_variable = { USA_ay^0 = 398 }
+	# AK Alaska
+	set_variable = { USA_ev^1 = 3 }
+	set_variable = { USA_m0^1 = 13 }
+	set_variable = { USA_mw^1 = 2.4 }
+	set_variable = { USA_ldf^1 = 0.2 }
+	set_variable = { USA_gtf^1 = 0.58 }
+	set_variable = { USA_soc^1 = 0.8 }
+	set_variable = { USA_iss1^1 = 2 }
+	set_variable = { USA_iss2^1 = 5 }
+	set_variable = { USA_el^1 = 0.98 }
+	set_variable = { USA_swing^1 = 0 }
+	set_variable = { USA_ax^1 = 85 }
+	set_variable = { USA_ay^1 = 590 }
+	# AZ Arizona
+	set_variable = { USA_ev^2 = 11 }
+	set_variable = { USA_m0^2 = 5.5 }
+	set_variable = { USA_mw^2 = 1.4 }
+	set_variable = { USA_ldf^2 = 0.27 }
+	set_variable = { USA_gtf^2 = 0.58 }
+	set_variable = { USA_soc^2 = 1.0 }
+	set_variable = { USA_iss1^2 = 3 }
+	set_variable = { USA_iss2^2 = 1 }
+	set_variable = { USA_el^2 = 1.16 }
+	set_variable = { USA_swing^2 = 1 }
+	set_variable = { USA_ax^2 = 177 }
+	set_variable = { USA_ay^2 = 377 }
+	# AR Arkansas
+	set_variable = { USA_ev^3 = 6 }
+	set_variable = { USA_m0^3 = 30 }
+	set_variable = { USA_mw^3 = 0.9 }
+	set_variable = { USA_ldf^3 = 0.14 }
+	set_variable = { USA_gtf^3 = 0.66 }
+	set_variable = { USA_soc^3 = 0.5 }
+	set_variable = { USA_iss1^3 = 4 }
+	set_variable = { USA_iss2^3 = 1 }
+	set_variable = { USA_el^3 = 0.6 }
+	set_variable = { USA_swing^3 = 0 }
+	set_variable = { USA_ax^3 = 440 }
+	set_variable = { USA_ay^3 = 370 }
+	# CA California
+	set_variable = { USA_ev^4 = 54 }
+	set_variable = { USA_m0^4 = -20 }
+	set_variable = { USA_mw^4 = 0.3 }
+	set_variable = { USA_ldf^4 = 0.36 }
+	set_variable = { USA_gtf^4 = 0.52 }
+	set_variable = { USA_soc^4 = 2.2 }
+	set_variable = { USA_iss1^4 = 4 }
+	set_variable = { USA_iss2^4 = 2 }
+	set_variable = { USA_el^4 = 0.8 }
+	set_variable = { USA_swing^4 = 0 }
+	set_variable = { USA_ax^4 = 78 }
+	set_variable = { USA_ay^4 = 308 }
+	# CO Colorado
+	set_variable = { USA_ev^5 = 10 }
+	set_variable = { USA_m0^5 = -11 }
+	set_variable = { USA_mw^5 = 0.6 }
+	set_variable = { USA_ldf^5 = 0.31 }
+	set_variable = { USA_gtf^5 = 0.54 }
+	set_variable = { USA_soc^5 = 1.6 }
+	set_variable = { USA_iss1^5 = 4 }
+	set_variable = { USA_iss2^5 = 2 }
+	set_variable = { USA_el^5 = 1.02 }
+	set_variable = { USA_swing^5 = 0 }
+	set_variable = { USA_ax^5 = 267 }
+	set_variable = { USA_ay^5 = 304 }
+	# CT Connecticut
+	set_variable = { USA_ev^6 = 7 }
+	set_variable = { USA_m0^6 = -14 }
+	set_variable = { USA_mw^6 = 0.4 }
+	set_variable = { USA_ldf^6 = 0.28 }
+	set_variable = { USA_gtf^6 = 0.5 }
+	set_variable = { USA_soc^6 = 1.4 }
+	set_variable = { USA_iss1^6 = 1 }
+	set_variable = { USA_iss2^6 = 4 }
+	set_variable = { USA_el^6 = 0.95 }
+	set_variable = { USA_swing^6 = 0 }
+	set_variable = { USA_ax^6 = 737 }
+	set_variable = { USA_ay^6 = 365 }
+	# DE Delaware
+	set_variable = { USA_ev^7 = 3 }
+	set_variable = { USA_m0^7 = -15 }
+	set_variable = { USA_mw^7 = 0.4 }
+	set_variable = { USA_ldf^7 = 0.24 }
+	set_variable = { USA_gtf^7 = 0.52 }
+	set_variable = { USA_soc^7 = 1.0 }
+	set_variable = { USA_iss1^7 = 1 }
+	set_variable = { USA_iss2^7 = 4 }
+	set_variable = { USA_el^7 = 0.93 }
+	set_variable = { USA_swing^7 = 0 }
+	set_variable = { USA_ax^7 = 737 }
+	set_variable = { USA_ay^7 = 417 }
+	# DC District of Columbia
+	set_variable = { USA_ev^8 = 3 }
+	set_variable = { USA_m0^8 = -84 }
+	set_variable = { USA_mw^8 = 0.1 }
+	set_variable = { USA_ldf^8 = 0.42 }
+	set_variable = { USA_gtf^8 = 0.48 }
+	set_variable = { USA_soc^8 = 4.0 }
+	set_variable = { USA_iss1^8 = 4 }
+	set_variable = { USA_iss2^8 = 5 }
+	set_variable = { USA_el^8 = 0.6 }
+	set_variable = { USA_swing^8 = 0 }
+	set_variable = { USA_ax^8 = 737 }
+	set_variable = { USA_ay^8 = 469 }
+	# FL Florida
+	set_variable = { USA_ev^9 = 30 }
+	set_variable = { USA_m0^9 = 13 }
+	set_variable = { USA_mw^9 = 1.0 }
+	set_variable = { USA_ldf^9 = 0.17 }
+	set_variable = { USA_gtf^9 = 0.6 }
+	set_variable = { USA_soc^9 = 0.8 }
+	set_variable = { USA_iss1^9 = 3 }
+	set_variable = { USA_iss2^9 = 4 }
+	set_variable = { USA_el^9 = 0.98 }
+	set_variable = { USA_swing^9 = 0 }
+	set_variable = { USA_ax^9 = 596 }
+	set_variable = { USA_ay^9 = 459 }
+	# GA Georgia
+	set_variable = { USA_ev^10 = 16 }
+	set_variable = { USA_m0^10 = 2.2 }
+	set_variable = { USA_mw^10 = 1.4 }
+	set_variable = { USA_ldf^10 = 0.2 }
+	set_variable = { USA_gtf^10 = 0.6 }
+	set_variable = { USA_soc^10 = 0.9 }
+	set_variable = { USA_iss1^10 = 1 }
+	set_variable = { USA_iss2^10 = 4 }
+	set_variable = { USA_el^10 = 1.25 }
+	set_variable = { USA_swing^10 = 1 }
+	set_variable = { USA_ax^10 = 570 }
+	set_variable = { USA_ay^10 = 392 }
+	# HI Hawaii
+	set_variable = { USA_ev^11 = 4 }
+	set_variable = { USA_m0^11 = -25 }
+	set_variable = { USA_mw^11 = 0.2 }
+	set_variable = { USA_ldf^11 = 0.3 }
+	set_variable = { USA_gtf^11 = 0.5 }
+	set_variable = { USA_soc^11 = 1.5 }
+	set_variable = { USA_iss1^11 = 5 }
+	set_variable = { USA_iss2^11 = 2 }
+	set_variable = { USA_el^11 = 0.68 }
+	set_variable = { USA_swing^11 = 0 }
+	set_variable = { USA_ax^11 = 246 }
+	set_variable = { USA_ay^11 = 672 }
+	# ID Idaho
+	set_variable = { USA_ev^12 = 4 }
+	set_variable = { USA_m0^12 = 37 }
+	set_variable = { USA_mw^12 = 0.6 }
+	set_variable = { USA_ldf^12 = 0.14 }
+	set_variable = { USA_gtf^12 = 0.68 }
+	set_variable = { USA_soc^12 = 0.4 }
+	set_variable = { USA_iss1^12 = 4 }
+	set_variable = { USA_iss2^12 = 1 }
+	set_variable = { USA_el^12 = 0.6 }
+	set_variable = { USA_swing^12 = 0 }
+	set_variable = { USA_ax^12 = 164 }
+	set_variable = { USA_ay^12 = 202 }
+	# IL Illinois
+	set_variable = { USA_ev^13 = 19 }
+	set_variable = { USA_m0^13 = -11 }
+	set_variable = { USA_mw^13 = 0.5 }
+	set_variable = { USA_ldf^13 = 0.31 }
+	set_variable = { USA_gtf^13 = 0.54 }
+	set_variable = { USA_soc^13 = 1.8 }
+	set_variable = { USA_iss1^13 = 4 }
+	set_variable = { USA_iss2^13 = 2 }
+	set_variable = { USA_el^13 = 1.02 }
+	set_variable = { USA_swing^13 = 0 }
+	set_variable = { USA_ax^13 = 474 }
+	set_variable = { USA_ay^13 = 279 }
+	# IN Indiana
+	set_variable = { USA_ev^14 = 11 }
+	set_variable = { USA_m0^14 = 19 }
+	set_variable = { USA_mw^14 = 1.1 }
+	set_variable = { USA_ldf^14 = 0.17 }
+	set_variable = { USA_gtf^14 = 0.66 }
+	set_variable = { USA_soc^14 = 0.6 }
+	set_variable = { USA_iss1^14 = 1 }
+	set_variable = { USA_iss2^14 = 3 }
+	set_variable = { USA_el^14 = 0.83 }
+	set_variable = { USA_swing^14 = 0 }
+	set_variable = { USA_ax^14 = 511 }
+	set_variable = { USA_ay^14 = 276 }
+	# IA Iowa
+	set_variable = { USA_ev^15 = 6 }
+	set_variable = { USA_m0^15 = 13 }
+	set_variable = { USA_mw^15 = 2.4 }
+	set_variable = { USA_ldf^15 = 0.21 }
+	set_variable = { USA_gtf^15 = 0.66 }
+	set_variable = { USA_soc^15 = 0.8 }
+	set_variable = { USA_iss1^15 = 1 }
+	set_variable = { USA_iss2^15 = 5 }
+	set_variable = { USA_el^15 = 0.98 }
+	set_variable = { USA_swing^15 = 0 }
+	set_variable = { USA_ax^15 = 416 }
+	set_variable = { USA_ay^15 = 252 }
+	# KS Kansas
+	set_variable = { USA_ev^16 = 6 }
+	set_variable = { USA_m0^16 = 16 }
+	set_variable = { USA_mw^16 = 3.0 }
+	set_variable = { USA_ldf^16 = 0.18 }
+	set_variable = { USA_gtf^16 = 0.62 }
+	set_variable = { USA_soc^16 = 0.6 }
+	set_variable = { USA_iss1^16 = 1 }
+	set_variable = { USA_iss2^16 = 3 }
+	set_variable = { USA_el^16 = 0.9 }
+	set_variable = { USA_swing^16 = 0 }
+	set_variable = { USA_ax^16 = 359 }
+	set_variable = { USA_ay^16 = 314 }
+	# KY Kentucky
+	set_variable = { USA_ev^17 = 8 }
+	set_variable = { USA_m0^17 = 30 }
+	set_variable = { USA_mw^17 = 0.9 }
+	set_variable = { USA_ldf^17 = 0.13 }
+	set_variable = { USA_gtf^17 = 0.68 }
+	set_variable = { USA_soc^17 = 0.5 }
+	set_variable = { USA_iss1^17 = 4 }
+	set_variable = { USA_iss2^17 = 1 }
+	set_variable = { USA_el^17 = 0.6 }
+	set_variable = { USA_swing^17 = 0 }
+	set_variable = { USA_ax^17 = 531 }
+	set_variable = { USA_ay^17 = 314 }
+	# LA Louisiana
+	set_variable = { USA_ev^18 = 8 }
+	set_variable = { USA_m0^18 = 22 }
+	set_variable = { USA_mw^18 = 0.9 }
+	set_variable = { USA_ldf^18 = 0.15 }
+	set_variable = { USA_gtf^18 = 0.66 }
+	set_variable = { USA_soc^18 = 0.6 }
+	set_variable = { USA_iss1^18 = 2 }
+	set_variable = { USA_iss2^18 = 4 }
+	set_variable = { USA_el^18 = 0.75 }
+	set_variable = { USA_swing^18 = 0 }
+	set_variable = { USA_ax^18 = 453 }
+	set_variable = { USA_ay^18 = 435 }
+	# ME Maine
+	set_variable = { USA_ev^19 = 4 }
+	set_variable = { USA_m0^19 = -7 }
+	set_variable = { USA_mw^19 = 1.4 }
+	set_variable = { USA_ldf^19 = 0.32 }
+	set_variable = { USA_gtf^19 = 0.56 }
+	set_variable = { USA_soc^19 = 1.8 }
+	set_variable = { USA_iss1^19 = 1 }
+	set_variable = { USA_iss2^19 = 2 }
+	set_variable = { USA_el^19 = 1.12 }
+	set_variable = { USA_swing^19 = 0 }
+	set_variable = { USA_ax^19 = 692 }
+	set_variable = { USA_ay^19 = 125 }
+	# MD Maryland
+	set_variable = { USA_ev^20 = 10 }
+	set_variable = { USA_m0^20 = -29 }
+	set_variable = { USA_mw^20 = 0.3 }
+	set_variable = { USA_ldf^20 = 0.24 }
+	set_variable = { USA_gtf^20 = 0.5 }
+	set_variable = { USA_soc^20 = 1.5 }
+	set_variable = { USA_iss1^20 = 5 }
+	set_variable = { USA_iss2^20 = 4 }
+	set_variable = { USA_el^20 = 0.6 }
+	set_variable = { USA_swing^20 = 0 }
+	set_variable = { USA_ax^20 = 737 }
+	set_variable = { USA_ay^20 = 443 }
+	# MA Massachusetts
+	set_variable = { USA_ev^21 = 11 }
+	set_variable = { USA_m0^21 = -25 }
+	set_variable = { USA_mw^21 = 0.2 }
+	set_variable = { USA_ldf^21 = 0.38 }
+	set_variable = { USA_gtf^21 = 0.48 }
+	set_variable = { USA_soc^21 = 2.6 }
+	set_variable = { USA_iss1^21 = 4 }
+	set_variable = { USA_iss2^21 = 5 }
+	set_variable = { USA_el^21 = 0.68 }
+	set_variable = { USA_swing^21 = 0 }
+	set_variable = { USA_ax^21 = 737 }
+	set_variable = { USA_ay^21 = 313 }
+	# MI Michigan
+	set_variable = { USA_ev^22 = 15 }
+	set_variable = { USA_m0^22 = 1.4 }
+	set_variable = { USA_mw^22 = 1.4 }
+	set_variable = { USA_ldf^22 = 0.26 }
+	set_variable = { USA_gtf^22 = 0.62 }
+	set_variable = { USA_soc^22 = 1.2 }
+	set_variable = { USA_iss1^22 = 1 }
+	set_variable = { USA_iss2^22 = 2 }
+	set_variable = { USA_el^22 = 1.27 }
+	set_variable = { USA_swing^22 = 1 }
+	set_variable = { USA_ax^22 = 508 }
+	set_variable = { USA_ay^22 = 199 }
+	# MN Minnesota
+	set_variable = { USA_ev^23 = 10 }
+	set_variable = { USA_m0^23 = -4 }
+	set_variable = { USA_mw^23 = 0.8 }
+	set_variable = { USA_ldf^23 = 0.3 }
+	set_variable = { USA_gtf^23 = 0.58 }
+	set_variable = { USA_soc^23 = 1.8 }
+	set_variable = { USA_iss1^23 = 4 }
+	set_variable = { USA_iss2^23 = 1 }
+	set_variable = { USA_el^23 = 1.2 }
+	set_variable = { USA_swing^23 = 0 }
+	set_variable = { USA_ax^23 = 402 }
+	set_variable = { USA_ay^23 = 180 }
+	# MS Mississippi
+	set_variable = { USA_ev^24 = 6 }
+	set_variable = { USA_m0^24 = 21 }
+	set_variable = { USA_mw^24 = 3.6 }
+	set_variable = { USA_ldf^24 = 0.14 }
+	set_variable = { USA_gtf^24 = 0.66 }
+	set_variable = { USA_soc^24 = 0.5 }
+	set_variable = { USA_iss1^24 = 4 }
+	set_variable = { USA_iss2^24 = 1 }
+	set_variable = { USA_el^24 = 0.78 }
+	set_variable = { USA_swing^24 = 0 }
+	set_variable = { USA_ax^24 = 482 }
+	set_variable = { USA_ay^24 = 401 }
+	# MO Missouri
+	set_variable = { USA_ev^25 = 10 }
+	set_variable = { USA_m0^25 = 18 }
+	set_variable = { USA_mw^25 = 1.0 }
+	set_variable = { USA_ldf^25 = 0.17 }
+	set_variable = { USA_gtf^25 = 0.66 }
+	set_variable = { USA_soc^25 = 0.7 }
+	set_variable = { USA_iss1^25 = 4 }
+	set_variable = { USA_iss2^25 = 1 }
+	set_variable = { USA_el^25 = 0.85 }
+	set_variable = { USA_swing^25 = 0 }
+	set_variable = { USA_ax^25 = 435 }
+	set_variable = { USA_ay^25 = 312 }
+	# MT Montana
+	set_variable = { USA_ev^26 = 4 }
+	set_variable = { USA_m0^26 = 20 }
+	set_variable = { USA_mw^26 = 1.0 }
+	set_variable = { USA_ldf^26 = 0.22 }
+	set_variable = { USA_gtf^26 = 0.62 }
+	set_variable = { USA_soc^26 = 1.0 }
+	set_variable = { USA_iss1^26 = 2 }
+	set_variable = { USA_iss2^26 = 4 }
+	set_variable = { USA_el^26 = 0.8 }
+	set_variable = { USA_swing^26 = 0 }
+	set_variable = { USA_ax^26 = 228 }
+	set_variable = { USA_ay^26 = 165 }
+	# NE Nebraska
+	set_variable = { USA_ev^27 = 5 }
+	set_variable = { USA_m0^27 = 20 }
+	set_variable = { USA_mw^27 = 1.0 }
+	set_variable = { USA_ldf^27 = 0.19 }
+	set_variable = { USA_gtf^27 = 0.62 }
+	set_variable = { USA_soc^27 = 0.6 }
+	set_variable = { USA_iss1^27 = 1 }
+	set_variable = { USA_iss2^27 = 3 }
+	set_variable = { USA_el^27 = 0.8 }
+	set_variable = { USA_swing^27 = 0 }
+	set_variable = { USA_ax^27 = 340 }
+	set_variable = { USA_ay^27 = 264 }
+	# NV Nevada
+	set_variable = { USA_ev^28 = 6 }
+	set_variable = { USA_m0^28 = 3 }
+	set_variable = { USA_mw^28 = 1.4 }
+	set_variable = { USA_ldf^28 = 0.26 }
+	set_variable = { USA_gtf^28 = 0.58 }
+	set_variable = { USA_soc^28 = 1.2 }
+	set_variable = { USA_iss1^28 = 1 }
+	set_variable = { USA_iss2^28 = 3 }
+	set_variable = { USA_el^28 = 1.23 }
+	set_variable = { USA_swing^28 = 1 }
+	set_variable = { USA_ax^28 = 124 }
+	set_variable = { USA_ay^28 = 282 }
+	# NH New Hampshire
+	set_variable = { USA_ev^29 = 4 }
+	set_variable = { USA_m0^29 = -3 }
+	set_variable = { USA_mw^29 = 0.7 }
+	set_variable = { USA_ldf^29 = 0.28 }
+	set_variable = { USA_gtf^29 = 0.56 }
+	set_variable = { USA_soc^29 = 1.2 }
+	set_variable = { USA_iss1^29 = 1 }
+	set_variable = { USA_iss2^29 = 3 }
+	set_variable = { USA_el^29 = 1.23 }
+	set_variable = { USA_swing^29 = 0 }
+	set_variable = { USA_ax^29 = 737 }
+	set_variable = { USA_ay^29 = 287 }
+	# NJ New Jersey
+	set_variable = { USA_ev^30 = 14 }
+	set_variable = { USA_m0^30 = -6 }
+	set_variable = { USA_mw^30 = 0.5 }
+	set_variable = { USA_ldf^30 = 0.26 }
+	set_variable = { USA_gtf^30 = 0.54 }
+	set_variable = { USA_soc^30 = 1.4 }
+	set_variable = { USA_iss1^30 = 1 }
+	set_variable = { USA_iss2^30 = 3 }
+	set_variable = { USA_el^30 = 1.15 }
+	set_variable = { USA_swing^30 = 0 }
+	set_variable = { USA_ax^30 = 737 }
+	set_variable = { USA_ay^30 = 391 }
+	# NM New Mexico
+	set_variable = { USA_ev^31 = 5 }
+	set_variable = { USA_m0^31 = -6 }
+	set_variable = { USA_mw^31 = 0.6 }
+	set_variable = { USA_ldf^31 = 0.28 }
+	set_variable = { USA_gtf^31 = 0.54 }
+	set_variable = { USA_soc^31 = 1.5 }
+	set_variable = { USA_iss1^31 = 2 }
+	set_variable = { USA_iss2^31 = 3 }
+	set_variable = { USA_el^31 = 1.15 }
+	set_variable = { USA_swing^31 = 0 }
+	set_variable = { USA_ax^31 = 254 }
+	set_variable = { USA_ay^31 = 380 }
+	# NY New York
+	set_variable = { USA_ev^32 = 28 }
+	set_variable = { USA_m0^32 = -13 }
+	set_variable = { USA_mw^32 = 0.4 }
+	set_variable = { USA_ldf^32 = 0.36 }
+	set_variable = { USA_gtf^32 = 0.52 }
+	set_variable = { USA_soc^32 = 2.4 }
+	set_variable = { USA_iss1^32 = 1 }
+	set_variable = { USA_iss2^32 = 4 }
+	set_variable = { USA_el^32 = 0.98 }
+	set_variable = { USA_swing^32 = 0 }
+	set_variable = { USA_ax^32 = 631 }
+	set_variable = { USA_ay^32 = 192 }
+	# NC North Carolina
+	set_variable = { USA_ev^33 = 16 }
+	set_variable = { USA_m0^33 = 3.2 }
+	set_variable = { USA_mw^33 = 2.0 }
+	set_variable = { USA_ldf^33 = 0.22 }
+	set_variable = { USA_gtf^33 = 0.6 }
+	set_variable = { USA_soc^33 = 0.9 }
+	set_variable = { USA_iss1^33 = 1 }
+	set_variable = { USA_iss2^33 = 4 }
+	set_variable = { USA_el^33 = 1.22 }
+	set_variable = { USA_swing^33 = 1 }
+	set_variable = { USA_ax^33 = 620 }
+	set_variable = { USA_ay^33 = 331 }
+	# ND North Dakota
+	set_variable = { USA_ev^34 = 3 }
+	set_variable = { USA_m0^34 = 36 }
+	set_variable = { USA_mw^34 = 0.7 }
+	set_variable = { USA_ldf^34 = 0.16 }
+	set_variable = { USA_gtf^34 = 0.68 }
+	set_variable = { USA_soc^34 = 0.4 }
+	set_variable = { USA_iss1^34 = 2 }
+	set_variable = { USA_iss2^34 = 1 }
+	set_variable = { USA_el^34 = 0.6 }
+	set_variable = { USA_swing^34 = 0 }
+	set_variable = { USA_ax^34 = 331 }
+	set_variable = { USA_ay^34 = 165 }
+	# OH Ohio
+	set_variable = { USA_ev^35 = 17 }
+	set_variable = { USA_m0^35 = 11 }
+	set_variable = { USA_mw^35 = 2.2 }
+	set_variable = { USA_ldf^35 = 0.2 }
+	set_variable = { USA_gtf^35 = 0.64 }
+	set_variable = { USA_soc^35 = 0.8 }
+	set_variable = { USA_iss1^35 = 1 }
+	set_variable = { USA_iss2^35 = 3 }
+	set_variable = { USA_el^35 = 1.02 }
+	set_variable = { USA_swing^35 = 0 }
+	set_variable = { USA_ax^35 = 555 }
+	set_variable = { USA_ay^35 = 261 }
+	# OK Oklahoma
+	set_variable = { USA_ev^36 = 7 }
+	set_variable = { USA_m0^36 = 34 }
+	set_variable = { USA_mw^36 = 0.8 }
+	set_variable = { USA_ldf^36 = 0.13 }
+	set_variable = { USA_gtf^36 = 0.68 }
+	set_variable = { USA_soc^36 = 0.4 }
+	set_variable = { USA_iss1^36 = 2 }
+	set_variable = { USA_iss2^36 = 4 }
+	set_variable = { USA_el^36 = 0.6 }
+	set_variable = { USA_swing^36 = 0 }
+	set_variable = { USA_ax^36 = 371 }
+	set_variable = { USA_ay^36 = 362 }
+	# OR Oregon
+	set_variable = { USA_ev^37 = 8 }
+	set_variable = { USA_m0^37 = -14 }
+	set_variable = { USA_mw^37 = 0.4 }
+	set_variable = { USA_ldf^37 = 0.36 }
+	set_variable = { USA_gtf^37 = 0.52 }
+	set_variable = { USA_soc^37 = 2.0 }
+	set_variable = { USA_iss1^37 = 4 }
+	set_variable = { USA_iss2^37 = 2 }
+	set_variable = { USA_el^37 = 0.95 }
+	set_variable = { USA_swing^37 = 0 }
+	set_variable = { USA_ax^37 = 90 }
+	set_variable = { USA_ay^37 = 193 }
+	# PA Pennsylvania
+	set_variable = { USA_ev^38 = 19 }
+	set_variable = { USA_m0^38 = 1.7 }
+	set_variable = { USA_mw^38 = 1.4 }
+	set_variable = { USA_ldf^38 = 0.24 }
+	set_variable = { USA_gtf^38 = 0.62 }
+	set_variable = { USA_soc^38 = 1.1 }
+	set_variable = { USA_iss1^38 = 2 }
+	set_variable = { USA_iss2^38 = 1 }
+	set_variable = { USA_el^38 = 1.26 }
+	set_variable = { USA_swing^38 = 1 }
+	set_variable = { USA_ax^38 = 616 }
+	set_variable = { USA_ay^38 = 238 }
+	# RI Rhode Island
+	set_variable = { USA_ev^39 = 4 }
+	set_variable = { USA_m0^39 = -14 }
+	set_variable = { USA_mw^39 = 0.4 }
+	set_variable = { USA_ldf^39 = 0.32 }
+	set_variable = { USA_gtf^39 = 0.52 }
+	set_variable = { USA_soc^39 = 1.8 }
+	set_variable = { USA_iss1^39 = 1 }
+	set_variable = { USA_iss2^39 = 4 }
+	set_variable = { USA_el^39 = 0.95 }
+	set_variable = { USA_swing^39 = 0 }
+	set_variable = { USA_ax^39 = 737 }
+	set_variable = { USA_ay^39 = 339 }
+	# SC South Carolina
+	set_variable = { USA_ev^40 = 9 }
+	set_variable = { USA_m0^40 = 18 }
+	set_variable = { USA_mw^40 = 3.2 }
+	set_variable = { USA_ldf^40 = 0.16 }
+	set_variable = { USA_gtf^40 = 0.66 }
+	set_variable = { USA_soc^40 = 0.6 }
+	set_variable = { USA_iss1^40 = 4 }
+	set_variable = { USA_iss2^40 = 1 }
+	set_variable = { USA_el^40 = 0.85 }
+	set_variable = { USA_swing^40 = 0 }
+	set_variable = { USA_ax^40 = 602 }
+	set_variable = { USA_ay^40 = 365 }
+	# SD South Dakota
+	set_variable = { USA_ev^41 = 3 }
+	set_variable = { USA_m0^41 = 29 }
+	set_variable = { USA_mw^41 = 0.8 }
+	set_variable = { USA_ldf^41 = 0.16 }
+	set_variable = { USA_gtf^41 = 0.66 }
+	set_variable = { USA_soc^41 = 0.5 }
+	set_variable = { USA_iss1^41 = 1 }
+	set_variable = { USA_iss2^41 = 4 }
+	set_variable = { USA_el^41 = 0.6 }
+	set_variable = { USA_swing^41 = 0 }
+	set_variable = { USA_ax^41 = 334 }
+	set_variable = { USA_ay^41 = 216 }
+	# TN Tennessee
+	set_variable = { USA_ev^42 = 11 }
+	set_variable = { USA_m0^42 = 30 }
+	set_variable = { USA_mw^42 = 0.9 }
+	set_variable = { USA_ldf^42 = 0.14 }
+	set_variable = { USA_gtf^42 = 0.68 }
+	set_variable = { USA_soc^42 = 0.5 }
+	set_variable = { USA_iss1^42 = 4 }
+	set_variable = { USA_iss2^42 = 1 }
+	set_variable = { USA_el^42 = 0.6 }
+	set_variable = { USA_swing^42 = 0 }
+	set_variable = { USA_ax^42 = 522 }
+	set_variable = { USA_ay^42 = 344 }
+	# TX Texas
+	set_variable = { USA_ev^43 = 40 }
+	set_variable = { USA_m0^43 = 14 }
+	set_variable = { USA_mw^43 = 2.8 }
+	set_variable = { USA_ldf^43 = 0.2 }
+	set_variable = { USA_gtf^43 = 0.62 }
+	set_variable = { USA_soc^43 = 0.9 }
+	set_variable = { USA_iss1^43 = 3 }
+	set_variable = { USA_iss2^43 = 2 }
+	set_variable = { USA_el^43 = 0.95 }
+	set_variable = { USA_swing^43 = 0 }
+	set_variable = { USA_ax^43 = 347 }
+	set_variable = { USA_ay^43 = 433 }
+	# UT Utah
+	set_variable = { USA_ev^44 = 6 }
+	set_variable = { USA_m0^44 = 21 }
+	set_variable = { USA_mw^44 = 0.7 }
+	set_variable = { USA_ldf^44 = 0.17 }
+	set_variable = { USA_gtf^44 = 0.52 }
+	set_variable = { USA_soc^44 = 0.7 }
+	set_variable = { USA_iss1^44 = 4 }
+	set_variable = { USA_iss2^44 = 1 }
+	set_variable = { USA_el^44 = 0.78 }
+	set_variable = { USA_swing^44 = 0 }
+	set_variable = { USA_ax^44 = 188 }
+	set_variable = { USA_ay^44 = 292 }
+	# VT Vermont
+	set_variable = { USA_ev^45 = 3 }
+	set_variable = { USA_m0^45 = -31 }
+	set_variable = { USA_mw^45 = 0.2 }
+	set_variable = { USA_ldf^45 = 0.4 }
+	set_variable = { USA_gtf^45 = 0.46 }
+	set_variable = { USA_soc^45 = 3.5 }
+	set_variable = { USA_iss1^45 = 2 }
+	set_variable = { USA_iss2^45 = 4 }
+	set_variable = { USA_el^45 = 0.6 }
+	set_variable = { USA_swing^45 = 0 }
+	set_variable = { USA_ax^45 = 737 }
+	set_variable = { USA_ay^45 = 261 }
+	# VA Virginia
+	set_variable = { USA_ev^46 = 13 }
+	set_variable = { USA_m0^46 = -6 }
+	set_variable = { USA_mw^46 = 0.7 }
+	set_variable = { USA_ldf^46 = 0.22 }
+	set_variable = { USA_gtf^46 = 0.56 }
+	set_variable = { USA_soc^46 = 1.0 }
+	set_variable = { USA_iss1^46 = 5 }
+	set_variable = { USA_iss2^46 = 1 }
+	set_variable = { USA_el^46 = 1.15 }
+	set_variable = { USA_swing^46 = 0 }
+	set_variable = { USA_ax^46 = 618 }
+	set_variable = { USA_ay^46 = 295 }
+	# WA Washington
+	set_variable = { USA_ev^47 = 12 }
+	set_variable = { USA_m0^47 = -18 }
+	set_variable = { USA_mw^47 = 0.3 }
+	set_variable = { USA_ldf^47 = 0.35 }
+	set_variable = { USA_gtf^47 = 0.52 }
+	set_variable = { USA_soc^47 = 2.0 }
+	set_variable = { USA_iss1^47 = 1 }
+	set_variable = { USA_iss2^47 = 4 }
+	set_variable = { USA_el^47 = 0.85 }
+	set_variable = { USA_swing^47 = 0 }
+	set_variable = { USA_ax^47 = 106 }
+	set_variable = { USA_ay^47 = 135 }
+	# WV West Virginia
+	set_variable = { USA_ev^48 = 4 }
+	set_variable = { USA_m0^48 = 42 }
+	set_variable = { USA_mw^48 = 0.8 }
+	set_variable = { USA_ldf^48 = 0.12 }
+	set_variable = { USA_gtf^48 = 0.7 }
+	set_variable = { USA_soc^48 = 0.4 }
+	set_variable = { USA_iss1^48 = 2 }
+	set_variable = { USA_iss2^48 = 1 }
+	set_variable = { USA_el^48 = 0.6 }
+	set_variable = { USA_swing^48 = 0 }
+	set_variable = { USA_ax^48 = 588 }
+	set_variable = { USA_ay^48 = 285 }
+	# WI Wisconsin
+	set_variable = { USA_ev^49 = 10 }
+	set_variable = { USA_m0^49 = 0.9 }
+	set_variable = { USA_mw^49 = 1.4 }
+	set_variable = { USA_ldf^49 = 0.28 }
+	set_variable = { USA_gtf^49 = 0.6 }
+	set_variable = { USA_soc^49 = 1.3 }
+	set_variable = { USA_iss1^49 = 1 }
+	set_variable = { USA_iss2^49 = 4 }
+	set_variable = { USA_el^49 = 1.28 }
+	set_variable = { USA_swing^49 = 1 }
+	set_variable = { USA_ax^49 = 454 }
+	set_variable = { USA_ay^49 = 205 }
+	# WY Wyoming
+	set_variable = { USA_ev^50 = 3 }
+	set_variable = { USA_m0^50 = 46 }
+	set_variable = { USA_mw^50 = 0.6 }
+	set_variable = { USA_ldf^50 = 0.12 }
+	set_variable = { USA_gtf^50 = 0.68 }
+	set_variable = { USA_soc^50 = 0.3 }
+	set_variable = { USA_iss1^50 = 2 }
+	set_variable = { USA_iss2^50 = 1 }
+	set_variable = { USA_el^50 = 0.6 }
+	set_variable = { USA_swing^50 = 0 }
+	set_variable = { USA_ax^50 = 246 }
+	set_variable = { USA_ay^50 = 236 }
+
+	# campaign fit: how credible each bloc is on each theme (index (bloc-1)*5 + theme-1)
+	set_variable = { USA_fit^0 = 1.2 }
+	set_variable = { USA_fit^1 = 1.0 }
+	set_variable = { USA_fit^2 = 0.8 }
+	set_variable = { USA_fit^3 = 1.3 }
+	set_variable = { USA_fit^4 = 0.5 }
+	set_variable = { USA_fit^5 = 1.2 }
+	set_variable = { USA_fit^6 = 1.2 }
+	set_variable = { USA_fit^7 = 0.6 }
+	set_variable = { USA_fit^8 = 1.5 }
+	set_variable = { USA_fit^9 = 0.7 }
+	set_variable = { USA_fit^10 = 1.1 }
+	set_variable = { USA_fit^11 = 0.9 }
+	set_variable = { USA_fit^12 = 0.8 }
+	set_variable = { USA_fit^13 = 1.2 }
+	set_variable = { USA_fit^14 = 1.2 }
+	set_variable = { USA_fit^15 = 1.2 }
+	set_variable = { USA_fit^16 = 1.2 }
+	set_variable = { USA_fit^17 = 1.2 }
+	set_variable = { USA_fit^18 = 0.9 }
+	set_variable = { USA_fit^19 = 1.3 }
+	set_variable = { USA_fit^20 = 1.3 }
+	set_variable = { USA_fit^21 = 1.3 }
+	set_variable = { USA_fit^22 = 1.5 }
+	set_variable = { USA_fit^23 = 1.0 }
+	set_variable = { USA_fit^24 = 0.6 }
+	# handicap of each bloc (index = bloc)
+	set_variable = { USA_hcap^1 = 0.8 }
+	set_variable = { USA_hcap^2 = 0.85 }
+	set_variable = { USA_hcap^3 = 0.7 }
+	set_variable = { USA_hcap^4 = 0.7 }
+	set_variable = { USA_hcap^5 = 0.9 }
+}
+
+# Runs once at game start (called from on_startup inside a USA scope).
+USA_election_init_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = USA_election_inited } }
+		set_country_flag = USA_election_inited
+		USA_election_data_effect = yes
+		set_variable = { USA_chosen = 0 }
+		set_variable = { USA_phase = 0 }
+		set_variable = { USA_mood = 0 }
+		set_variable = { USA_week_ctr = 0 }
+		set_variable = { USA_weeks_left = 0 }
+		set_variable = { USA_sel = 0 }
+		set_variable = { USA_has_sel = 0 }
+		set_variable = { USA_marker_x = -100 }
+		set_variable = { USA_marker_y = -100 }
+		set_variable = { USA_bop_step = 99 }
+		set_variable = { USA_c_ev = 0 }
+		set_variable = { USA_c_cool = 0 }
+		USA_race_baseline_effect = yes
+		USA_race_reset_shares_effect = yes
+		USA_race_recalc_effect = yes
+	}
+}
+
+# Baseline shares of every state from its 2024 margin, the national mood and the chosen bloc.
+# Until the midterms (USA_phase < 2) every Republican is a Trumpist (bloc 5); afterwards the GOP is the neoconservatives (bloc 4) unless the Trumpist third-mandate ticket is chosen.
+USA_race_baseline_effect = {
+	for_loop_effect = {
+		start = 0
+		end = 51
+		value = i
+		set_temp_variable = { usb_me = USA_mood }
+		set_temp_variable = { usb_w = USA_mw^i }
+		multiply_temp_variable = { usb_me = usb_w }
+		set_temp_variable = { usb_m = USA_m0^i }
+		subtract_from_temp_variable = { usb_m = usb_me }
+		set_temp_variable = { usb_r = usb_m }
+		divide_temp_variable = { usb_r = 2 }
+		add_to_temp_variable = { usb_r = 50 }
+		clamp_temp_variable = { var = usb_r min = 4 max = 96 }
+		set_temp_variable = { usb_d = 100 }
+		subtract_from_temp_variable = { usb_d = usb_r }
+		set_temp_variable = { usb_so = 0 }
+		set_temp_variable = { usb_ld = 0 }
+		set_temp_variable = { usb_cd = usb_d }
+		set_temp_variable = { usb_gt = usb_r }
+		set_temp_variable = { usb_gn = 0 }
+		if = {
+			limit = { check_variable = { USA_phase > 1 } }
+			set_temp_variable = { usb_gt = 0 }
+			set_temp_variable = { usb_gn = usb_r }
+		}
+		if = {
+			limit = { check_variable = { USA_chosen = 1 } }
+			set_temp_variable = { usb_so = USA_soc^i }
+			set_temp_variable = { usb_cd = usb_d }
+			subtract_from_temp_variable = { usb_cd = usb_so }
+		}
+		if = {
+			limit = { check_variable = { USA_chosen = 2 } }
+			set_temp_variable = { usb_ld = usb_d }
+			multiply_temp_variable = { usb_ld = USA_ldf^i }
+			set_temp_variable = { usb_cd = usb_d }
+			subtract_from_temp_variable = { usb_cd = usb_ld }
+		}
+		if = {
+			limit = {
+				check_variable = { USA_chosen = 5 }
+				check_variable = { USA_phase > 1 }
+			}
+			set_temp_variable = { usb_gt = usb_r }
+			multiply_temp_variable = { usb_gt = USA_gtf^i }
+			set_temp_variable = { usb_gn = usb_r }
+			subtract_from_temp_variable = { usb_gn = usb_gt }
+		}
+		set_temp_variable = { usb_k = i }
+		multiply_temp_variable = { usb_k = 5 }
+		set_variable = { USA_bs^usb_k = usb_so }
+		add_to_temp_variable = { usb_k = 1 }
+		set_variable = { USA_bs^usb_k = usb_ld }
+		add_to_temp_variable = { usb_k = 1 }
+		set_variable = { USA_bs^usb_k = usb_cd }
+		add_to_temp_variable = { usb_k = 1 }
+		set_variable = { USA_bs^usb_k = usb_gn }
+		add_to_temp_variable = { usb_k = 1 }
+		set_variable = { USA_bs^usb_k = usb_gt }
+	}
+}
+
+# Shares := baseline (used when a bloc is picked).
+USA_race_reset_shares_effect = {
+	for_loop_effect = {
+		start = 0
+		end = 255
+		value = k
+		set_temp_variable = { usr_v = USA_bs^k }
+		set_variable = { USA_sh^k = usr_v }
+	}
+}
+
+# Keeps a copy of the old baseline, recomputes it, and moves the shares by the difference (mood drift).
+USA_race_mood_step_effect = {
+	for_loop_effect = {
+		start = 0
+		end = 255
+		value = k
+		set_temp_variable = { usd_v = USA_bs^k }
+		set_variable = { USA_bo^k = usd_v }
+	}
+	USA_race_baseline_effect = yes
+	for_loop_effect = {
+		start = 0
+		end = 255
+		value = k
+		set_temp_variable = { usd_n = USA_bs^k }
+		set_temp_variable = { usd_o = USA_bo^k }
+		subtract_from_temp_variable = { usd_n = usd_o }
+		add_to_variable = { USA_sh^k = usd_n }
+		clamp_variable = { var = USA_sh^k min = 0 }
+	}
+}
+
+# Gains fade: every month the shares move 10% of the way back to the baseline.
+USA_race_fade_effect = {
+	for_loop_effect = {
+		start = 0
+		end = 255
+		value = k
+		set_temp_variable = { usf_d = USA_bs^k }
+		set_temp_variable = { usf_s = USA_sh^k }
+		subtract_from_temp_variable = { usf_d = usf_s }
+		multiply_temp_variable = { usf_d = 0.10 }
+		add_to_variable = { USA_sh^k = usf_d }
+	}
+}
+
+# Winners, electoral votes, the EV bar, the balance of power and the selected-state card.
+# A state goes to the camp (Democratic = blocs 1-3, Republican = blocs 4-5) whose shares add up to more; it takes the colour of the strongest bloc inside that camp.
+USA_race_recalc_effect = {
+	for_loop_effect = {
+		start = 1
+		end = 6
+		value = b
+		set_variable = { USA_evb^b = 0 }
+		set_variable = { USA_stb^b = 0 }
+	}
+	for_loop_effect = {
+		start = 0
+		end = 51
+		value = i
+		set_temp_variable = { usw_best = -1 }
+		set_temp_variable = { usw_bw = 1 }
+		set_temp_variable = { usw_ix = i }
+		multiply_temp_variable = { usw_ix = 5 }
+		set_temp_variable = { usw_k = usw_ix }
+		set_temp_variable = { usw_dm = USA_sh^usw_k }
+		add_to_temp_variable = { usw_k = 1 }
+		add_to_temp_variable = { usw_dm = USA_sh^usw_k }
+		add_to_temp_variable = { usw_k = 1 }
+		add_to_temp_variable = { usw_dm = USA_sh^usw_k }
+		for_loop_effect = {
+			start = 0
+			end = 5
+			value = b
+			set_temp_variable = { usw_ok = 0 }
+			if = {
+				limit = {
+					check_variable = { usw_dm > 50 }
+					check_variable = { b < 3 }
+				}
+				set_temp_variable = { usw_ok = 1 }
+			}
+			if = {
+				limit = {
+					NOT = { check_variable = { usw_dm > 50 } }
+					check_variable = { b > 2 }
+				}
+				set_temp_variable = { usw_ok = 1 }
+			}
+			set_temp_variable = { usw_k = usw_ix }
+			add_to_temp_variable = { usw_k = b }
+			set_temp_variable = { usw_v = USA_sh^usw_k }
+			if = {
+				limit = {
+					check_variable = { usw_ok = 1 }
+					check_variable = { usw_v > usw_best }
+				}
+				set_temp_variable = { usw_best = usw_v }
+				set_temp_variable = { usw_bw = b }
+				add_to_temp_variable = { usw_bw = 1 }
+			}
+		}
+		set_variable = { USA_win^i = usw_bw }
+		set_variable = { USA_fr^i = usw_bw }
+		set_temp_variable = { usw_ev = USA_ev^i }
+		add_to_variable = { USA_evb^usw_bw = usw_ev }
+		add_to_variable = { USA_stb^usw_bw = 1 }
+	}
+	set_variable = { USA_ev_soc = USA_evb^1 }
+	set_variable = { USA_ev_ld = USA_evb^2 }
+	set_variable = { USA_ev_cd = USA_evb^3 }
+	set_variable = { USA_ev_gn = USA_evb^4 }
+	set_variable = { USA_ev_gt = USA_evb^5 }
+	set_variable = { USA_st_soc = USA_stb^1 }
+	set_variable = { USA_st_ld = USA_stb^2 }
+	set_variable = { USA_st_cd = USA_stb^3 }
+	set_variable = { USA_st_gn = USA_stb^4 }
+	set_variable = { USA_st_gt = USA_stb^5 }
+	set_variable = { USA_dem_ev = USA_ev_soc }
+	add_to_variable = { USA_dem_ev = USA_ev_ld }
+	add_to_variable = { USA_dem_ev = USA_ev_cd }
+	set_variable = { USA_gop_ev = USA_ev_gn }
+	add_to_variable = { USA_gop_ev = USA_ev_gt }
+	# EV bar: 54 cells of 10 votes, coloured by cumulative votes (left to right: socialist, left dems, centrist dems, neocons, trumpists)
+	set_temp_variable = { usc_1 = USA_ev_soc }
+	set_temp_variable = { usc_2 = usc_1 }
+	add_to_temp_variable = { usc_2 = USA_ev_ld }
+	set_temp_variable = { usc_3 = usc_2 }
+	add_to_temp_variable = { usc_3 = USA_ev_cd }
+	set_temp_variable = { usc_4 = usc_3 }
+	add_to_temp_variable = { usc_4 = USA_ev_gn }
+	for_loop_effect = {
+		start = 0
+		end = 54
+		value = j
+		set_temp_variable = { usc_mid = j }
+		multiply_temp_variable = { usc_mid = 10 }
+		add_to_temp_variable = { usc_mid = 5 }
+		set_temp_variable = { usc_f = 5 }
+		if = {
+			limit = { check_variable = { usc_mid < usc_4 } }
+			set_temp_variable = { usc_f = 4 }
+		}
+		if = {
+			limit = { check_variable = { usc_mid < usc_3 } }
+			set_temp_variable = { usc_f = 3 }
+		}
+		if = {
+			limit = { check_variable = { usc_mid < usc_2 } }
+			set_temp_variable = { usc_f = 2 }
+		}
+		if = {
+			limit = { check_variable = { usc_mid < usc_1 } }
+			set_temp_variable = { usc_f = 1 }
+		}
+		set_variable = { USA_evbar_fr^j = usc_f }
+	}
+	# highlight of the chosen bloc in the table (frame 1 clear, 2 lit)
+	set_variable = { USA_hl1 = 1 }
+	set_variable = { USA_hl2 = 1 }
+	set_variable = { USA_hl3 = 1 }
+	set_variable = { USA_hl4 = 1 }
+	set_variable = { USA_hl5 = 1 }
+	if = { limit = { check_variable = { USA_chosen = 1 } } set_variable = { USA_hl1 = 2 } }
+	if = { limit = { check_variable = { USA_chosen = 2 } } set_variable = { USA_hl2 = 2 } }
+	if = { limit = { check_variable = { USA_chosen = 3 } } set_variable = { USA_hl3 = 2 } }
+	if = { limit = { check_variable = { USA_chosen = 4 } } set_variable = { USA_hl4 = 2 } }
+	if = { limit = { check_variable = { USA_chosen = 5 } } set_variable = { USA_hl5 = 2 } }
+	USA_race_bop_effect = yes
+	USA_card_refresh_effect = yes
+}
+
+# Balance-of-power bar: value = (GOP votes - Democratic votes) / 538, in steps of 0.1.
+USA_race_bop_effect = {
+	if = {
+		limit = { has_country_flag = USA_race_active }
+		set_temp_variable = { usp_v = USA_gop_ev }
+		subtract_from_temp_variable = { usp_v = USA_dem_ev }
+		divide_temp_variable = { usp_v = 538 }
+		multiply_temp_variable = { usp_v = 10 }
+		round_temp_variable = usp_v
+		clamp_temp_variable = { var = usp_v min = -10 max = 10 }
+		if = {
+			limit = { NOT = { check_variable = { USA_bop_step = usp_v } } }
+			set_variable = { USA_bop_step = usp_v }
+
+			if = { limit = { check_variable = { USA_bop_step = -10 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.98 } }
+			if = { limit = { check_variable = { USA_bop_step = -9 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.9 } }
+			if = { limit = { check_variable = { USA_bop_step = -8 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.8 } }
+			if = { limit = { check_variable = { USA_bop_step = -7 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.7 } }
+			if = { limit = { check_variable = { USA_bop_step = -6 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.6 } }
+			if = { limit = { check_variable = { USA_bop_step = -5 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.5 } }
+			if = { limit = { check_variable = { USA_bop_step = -4 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.4 } }
+			if = { limit = { check_variable = { USA_bop_step = -3 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.3 } }
+			if = { limit = { check_variable = { USA_bop_step = -2 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.2 } }
+			if = { limit = { check_variable = { USA_bop_step = -1 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = -0.1 } }
+			if = { limit = { check_variable = { USA_bop_step = 0 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.0 } }
+			if = { limit = { check_variable = { USA_bop_step = 1 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.1 } }
+			if = { limit = { check_variable = { USA_bop_step = 2 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.2 } }
+			if = { limit = { check_variable = { USA_bop_step = 3 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.3 } }
+			if = { limit = { check_variable = { USA_bop_step = 4 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.4 } }
+			if = { limit = { check_variable = { USA_bop_step = 5 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.5 } }
+			if = { limit = { check_variable = { USA_bop_step = 6 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.6 } }
+			if = { limit = { check_variable = { USA_bop_step = 7 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.7 } }
+			if = { limit = { check_variable = { USA_bop_step = 8 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.8 } }
+			if = { limit = { check_variable = { USA_bop_step = 9 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.9 } }
+			if = { limit = { check_variable = { USA_bop_step = 10 } } set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0.98 } }
+		}
+	}
+}
+
+# Copies the selected state into plain variables for the card (loc cannot index arrays).
+USA_card_refresh_effect = {
+	if = {
+		limit = { check_variable = { USA_has_sel = 1 } }
+		set_temp_variable = { usk_s = USA_sel }
+		set_variable = { USA_c_ev = USA_ev^usk_s }
+		set_variable = { USA_c_iss1 = USA_iss1^usk_s }
+		set_variable = { USA_c_iss2 = USA_iss2^usk_s }
+		set_variable = { USA_c_swing = USA_swing^usk_s }
+		set_variable = { USA_c_cool = USA_cool^usk_s }
+		set_variable = { USA_c_win = USA_win^usk_s }
+		set_temp_variable = { usk_ix2 = usk_s }
+		multiply_temp_variable = { usk_ix2 = 5 }
+		set_temp_variable = { usk_k2 = usk_ix2 }
+		set_variable = { USA_c_dem = USA_sh^usk_k2 }
+		add_to_temp_variable = { usk_k2 = 1 }
+		add_to_variable = { USA_c_dem = USA_sh^usk_k2 }
+		add_to_temp_variable = { usk_k2 = 1 }
+		add_to_variable = { USA_c_dem = USA_sh^usk_k2 }
+		set_variable = { USA_c_gop = 100 }
+		subtract_from_variable = { USA_c_gop = USA_c_dem }
+		round_variable = USA_c_dem
+		round_variable = USA_c_gop
+		set_temp_variable = { usk_ix = usk_s }
+		multiply_temp_variable = { usk_ix = 5 }
+		set_temp_variable = { usk_k = usk_ix }
+		set_variable = { USA_c_s1 = USA_sh^usk_k }
+		add_to_temp_variable = { usk_k = 1 }
+		set_variable = { USA_c_s2 = USA_sh^usk_k }
+		add_to_temp_variable = { usk_k = 1 }
+		set_variable = { USA_c_s3 = USA_sh^usk_k }
+		add_to_temp_variable = { usk_k = 1 }
+		set_variable = { USA_c_s4 = USA_sh^usk_k }
+		add_to_temp_variable = { usk_k = 1 }
+		set_variable = { USA_c_s5 = USA_sh^usk_k }
+		round_variable = USA_c_s1
+		round_variable = USA_c_s2
+		round_variable = USA_c_s3
+		round_variable = USA_c_s4
+		round_variable = USA_c_s5
+	}
+}
+
+# Click on a state (USA_sel already set by the button).
+USA_select_effect = {
+	set_variable = { USA_has_sel = 1 }
+	set_temp_variable = { usl_s = USA_sel }
+	set_variable = { USA_marker_x = USA_ax^usl_s }
+	set_variable = { USA_marker_y = USA_ay^usl_s }
+	subtract_from_variable = { USA_marker_x = 23 }
+	subtract_from_variable = { USA_marker_y = 23 }
+	USA_card_refresh_effect = yes
+}
+
+# One campaign action in the selected state (USA_sel) on a theme (USA_theme 1..5) for the chosen bloc (USA_chosen 1..5).
+USA_campaign_effect = {
+	set_temp_variable = { uca_s = USA_sel }
+	set_temp_variable = { uca_t = USA_theme }
+	set_temp_variable = { uca_c = USA_chosen }
+	set_temp_variable = { uca_p = 6 }
+	set_temp_variable = { uca_i1 = USA_iss1^uca_s }
+	set_temp_variable = { uca_i2 = USA_iss2^uca_s }
+	if = {
+		limit = { check_variable = { uca_i1 = uca_t } }
+		multiply_temp_variable = { uca_p = 1.5 }
+	}
+	else_if = {
+		limit = { check_variable = { uca_i2 = uca_t } }
+		multiply_temp_variable = { uca_p = 1.15 }
+	}
+	else = {
+		multiply_temp_variable = { uca_p = 0.6 }
+	}
+	set_temp_variable = { uca_f = uca_c }
+	subtract_from_temp_variable = { uca_f = 1 }
+	multiply_temp_variable = { uca_f = 5 }
+	add_to_temp_variable = { uca_f = uca_t }
+	subtract_from_temp_variable = { uca_f = 1 }
+	multiply_temp_variable = { uca_p = USA_fit^uca_f }
+	multiply_temp_variable = { uca_p = USA_hcap^uca_c }
+	set_temp_variable = { uca_e = USA_el^uca_s }
+	if = {
+		limit = {
+			OR = {
+				check_variable = { uca_c = 1 }
+				check_variable = { uca_c = 2 }
+				check_variable = { uca_c = 5 }
+			}
+		}
+		clamp_temp_variable = { var = uca_e min = 0.85 }
+	}
+	multiply_temp_variable = { uca_p = uca_e }
+	# Strength = 6 points x issue match x bloc credibility on the theme x bloc handicap x state elasticity (minor blocs ignore the low elasticity of safe states)
+	# x distance factor: the further the state sits from the bloc on the left-right axis, the harder it is
+	set_temp_variable = { uca_ix = uca_s }
+	multiply_temp_variable = { uca_ix = 5 }
+	set_temp_variable = { uca_cg = 0 }
+	for_loop_effect = {
+		start = 0
+		end = 5
+		value = b
+		set_temp_variable = { uca_k = uca_ix }
+		add_to_temp_variable = { uca_k = b }
+		set_temp_variable = { uca_v = USA_sh^uca_k }
+		set_temp_variable = { uca_pos = b }
+		add_to_temp_variable = { uca_pos = 1 }
+		multiply_temp_variable = { uca_v = uca_pos }
+		add_to_temp_variable = { uca_cg = uca_v }
+	}
+	divide_temp_variable = { uca_cg = 100 }
+	set_temp_variable = { uca_d = uca_c }
+	subtract_from_temp_variable = { uca_d = uca_cg }
+	if = {
+		limit = { check_variable = { uca_d < 0 } }
+		multiply_temp_variable = { uca_d = -1 }
+	}
+	multiply_temp_variable = { uca_d = 0.2 }
+	set_temp_variable = { uca_m = 1 }
+	subtract_from_temp_variable = { uca_m = uca_d }
+	clamp_temp_variable = { var = uca_m min = 0.25 max = 1 }
+	multiply_temp_variable = { uca_p = uca_m }
+	# apply: the chosen bloc gains, the others lose proportionally
+	set_temp_variable = { uca_kc = uca_ix }
+	add_to_temp_variable = { uca_kc = uca_c }
+	subtract_from_temp_variable = { uca_kc = 1 }
+	set_temp_variable = { uca_old = USA_sh^uca_kc }
+	set_temp_variable = { uca_new = uca_old }
+	add_to_temp_variable = { uca_new = uca_p }
+	clamp_temp_variable = { var = uca_new max = 92 }
+	if = {
+		limit = { check_variable = { uca_new > uca_old } }
+		set_temp_variable = { uca_num = 100 }
+		subtract_from_temp_variable = { uca_num = uca_new }
+		set_temp_variable = { uca_den = 100 }
+		subtract_from_temp_variable = { uca_den = uca_old }
+		divide_temp_variable = { uca_num = uca_den }
+		set_temp_variable = { uca_cb = uca_c }
+		subtract_from_temp_variable = { uca_cb = 1 }
+		for_loop_effect = {
+			start = 0
+			end = 5
+			value = b
+			set_temp_variable = { uca_k = uca_ix }
+			add_to_temp_variable = { uca_k = b }
+			if = {
+				limit = { check_variable = { b = uca_cb } }
+				set_variable = { USA_sh^uca_k = uca_new }
+			}
+			else = {
+				multiply_variable = { USA_sh^uca_k = uca_num }
+			}
+		}
+	}
+	set_variable = { USA_cool^uca_s = 6 }
+	add_political_power = -25
+	USA_race_recalc_effect = yes
+}
+
+# ---- weekly / monthly -------------------------------------------------
+USA_election_weekly_effect = {
+	if = {
+		limit = { has_country_flag = USA_race_active }
+		for_loop_effect = {
+			start = 0
+			end = 51
+			value = i
+			set_temp_variable = { usy_c = USA_cool^i }
+			if = {
+				limit = { check_variable = { usy_c > 0 } }
+				subtract_from_variable = { USA_cool^i = 1 }
+			}
+		}
+		if = {
+			limit = { check_variable = { USA_weeks_left > 0 } }
+			subtract_from_variable = { USA_weeks_left = 1 }
+		}
+		add_to_variable = { USA_week_ctr = 1 }
+		if = {
+			limit = { check_variable = { USA_week_ctr > 3 } }
+			set_variable = { USA_week_ctr = 0 }
+			USA_race_monthly_effect = yes
+		}
+		USA_race_recalc_effect = yes
+	}
+}
+
+USA_race_monthly_effect = {
+	# the national mood (cost of living, the Iran war) drifts towards the Democrats until the midterms, then eases back
+	if = {
+		limit = {
+			check_variable = { USA_phase = 1 }
+			check_variable = { USA_mood < 4.4 }
+		}
+		add_to_variable = { USA_mood = 0.2 }
+		USA_race_mood_step_effect = yes
+	}
+	if = {
+		limit = {
+			check_variable = { USA_phase > 1 }
+			check_variable = { USA_mood > 1.5 }
+		}
+		subtract_from_variable = { USA_mood = 0.1 }
+		USA_race_mood_step_effect = yes
+	}
+	USA_race_fade_effect = yes
+}
+
+# ---- picking a bloc -------------------------------------------------------
+USA_pick_bloc_effect = {
+	set_variable = { USA_chosen = USA_pick_choice }
+	USA_race_baseline_effect = yes
+	USA_race_reset_shares_effect = yes
+	clr_country_flag = USA_pick_open
+	set_country_flag = USA_has_picked
+	USA_race_recalc_effect = yes
+}
+
+# ---- race start / phases ---------------------------------------------------
+USA_race_start_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = USA_race_active } }
+		set_country_flag = USA_race_active
+		set_country_flag = USA_pick_open
+		set_variable = { USA_phase = 1 }
+		set_variable = { USA_weeks_left = 93 }
+		set_variable = { USA_week_ctr = 0 }
+		set_power_balance = { id = USA_electoral_balance set_default = no set_value = 0 }
+		USA_create_candidates_effect = yes
+		if = {
+			limit = { is_ai = yes }
+			set_variable = { USA_pick_choice = 5 }
+			USA_pick_bloc_effect = yes
+		}
+		USA_race_recalc_effect = yes
+	}
+}
+
+# Candidates that are not in the history file yet.
+USA_create_candidates_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = USA_candidates_created } }
+		set_country_flag = USA_candidates_created
+		create_country_leader = {
+			name = "Gavin Newsom"
+			desc = "POLITICS_LEADER_DESC"
+			picture = "portrait_large_newsom.dds"
+			expire = "2100.1.1"
+			ideology = neo_liberalism
+		}
+		create_country_leader = {
+			name = "Marco Rubio"
+			desc = "POLITICS_LEADER_DESC"
+			picture = "portrait_large_rubio.dds"
+			expire = "2100.1.1"
+			ideology = conservatism
+		}
+	}
+}
+
+
+# ---- 20 January 2025, noon: Trump takes office and the race begins -------------
+USA_trump_inauguration_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = USA_trump_in_office } }
+		set_country_flag = USA_trump_in_office
+		USA_create_candidates_effect = yes
+		if = {
+			limit = { has_government = centrist }
+			retire_country_leader = yes
+		}
+		set_politics = { ruling_party = reactionary elections_allowed = yes }
+		USA_race_start_effect = yes
+	}
+}
+
+# ---- 3 November 2026: midterm elections ------------------------------------------
+USA_midterm_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = USA_midterm_done } }
+		set_global_flag = USA_midterm_done
+		USA_race_recalc_effect = yes
+		set_variable = { USA_house_d = 0 }
+		set_variable = { USA_senate_d = 0 }
+		for_loop_effect = {
+			start = 0
+			end = 51
+			value = i
+			set_temp_variable = { usm_ev = USA_ev^i }
+			set_temp_variable = { usm_ix = i }
+			multiply_temp_variable = { usm_ix = 5 }
+			set_temp_variable = { usm_k = usm_ix }
+			set_temp_variable = { usm_dm = USA_sh^usm_k }
+			add_to_temp_variable = { usm_k = 1 }
+			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
+			add_to_temp_variable = { usm_k = 1 }
+			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
+			set_temp_variable = { usm_hs = usm_ev }
+			subtract_from_temp_variable = { usm_hs = 2 }
+			multiply_temp_variable = { usm_hs = usm_dm }
+			divide_temp_variable = { usm_hs = 100 }
+			add_to_variable = { USA_house_d = usm_hs }
+			if = {
+				limit = {
+					NOT = { check_variable = { i = 8 } }
+					check_variable = { usm_dm > 50 }
+				}
+				add_to_variable = { USA_senate_d = 2 }
+			}
+		}
+		round_variable = USA_house_d
+		set_variable = { USA_house_gop = 435 }
+		subtract_from_variable = { USA_house_gop = USA_house_d }
+		set_variable = { USA_senate_gop = 100 }
+		subtract_from_variable = { USA_senate_gop = USA_senate_d }
+		set_variable = { global.USA_res_house_d = USA_house_d }
+		set_variable = { global.USA_res_house_r = USA_house_gop }
+		set_variable = { global.USA_res_senate_d = USA_senate_d }
+		set_variable = { global.USA_res_senate_r = USA_senate_gop }
+		set_variable = { global.USA_res_dem_ev = USA_dem_ev }
+		set_variable = { global.USA_res_gop_ev = USA_gop_ev }
+		set_variable = { representatives_support = USA_house_gop }
+		set_variable = { senators_support = USA_senate_gop }
+		clr_global_flag = USA_midterm_wave
+		clr_global_flag = USA_midterm_hold
+		clr_global_flag = USA_midterm_divided
+		if = {
+			limit = { has_idea = USA_congress_gop_hold }
+			remove_ideas = USA_congress_gop_hold
+		}
+		if = {
+			limit = { has_idea = USA_congress_divided }
+			remove_ideas = USA_congress_divided
+		}
+		if = {
+			limit = { has_idea = USA_congress_dem_wave }
+			remove_ideas = USA_congress_dem_wave
+		}
+		if = {
+			limit = {
+				check_variable = { USA_house_d > 217 }
+				check_variable = { USA_senate_d > 50 }
+			}
+			set_global_flag = USA_midterm_wave
+			add_ideas = USA_congress_dem_wave
+		}
+		else_if = {
+			limit = {
+				check_variable = { USA_house_d < 218 }
+				check_variable = { USA_senate_d < 51 }
+			}
+			set_global_flag = USA_midterm_hold
+			add_ideas = USA_congress_gop_hold
+		}
+		else = {
+			set_global_flag = USA_midterm_divided
+			add_ideas = USA_congress_divided
+		}
+		set_variable = { USA_phase = 2 }
+		set_variable = { USA_weeks_left = 105 }
+		# the Republican party splits: baseline and shares are recomputed with the new phase
+		USA_race_mood_step_effect = yes
+		set_country_flag = { flag = USA_pick_open days = 45 value = 1 }
+		for_loop_effect = {
+			start = 0
+			end = 51
+			value = i
+			set_variable = { USA_cool^i = 0 }
+		}
+		if = {
+			limit = { is_ai = yes }
+			set_variable = { USA_pick_choice = 4 }
+			USA_pick_bloc_effect = yes
+		}
+		USA_race_recalc_effect = yes
+	}
+}
+
+# ---- 7 November 2028: presidential election -----------------------------------------
+# The camp with more electoral votes wins; the president is the strongest bloc (by votes) inside that camp.
+USA_presidential_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = USA_election_done } }
+		set_global_flag = USA_election_done
+		USA_race_recalc_effect = yes
+		set_temp_variable = { upw_camp = 2 }
+		set_temp_variable = { upw_cev = USA_gop_ev }
+		if = {
+			limit = { check_variable = { USA_dem_ev > USA_gop_ev } }
+			set_temp_variable = { upw_camp = 1 }
+			set_temp_variable = { upw_cev = USA_dem_ev }
+		}
+		set_temp_variable = { upw_best = -1 }
+		set_temp_variable = { upw_w = 4 }
+		if = {
+			limit = { check_variable = { upw_camp = 1 } }
+			set_temp_variable = { upw_w = 3 }
+		}
+		for_loop_effect = {
+			start = 1
+			end = 6
+			value = b
+			set_temp_variable = { upw_ok = 0 }
+			if = {
+				limit = {
+					check_variable = { upw_camp = 1 }
+					check_variable = { b < 4 }
+				}
+				set_temp_variable = { upw_ok = 1 }
+			}
+			if = {
+				limit = {
+					check_variable = { upw_camp = 2 }
+					check_variable = { b > 3 }
+				}
+				set_temp_variable = { upw_ok = 1 }
+			}
+			set_temp_variable = { upw_v = USA_evb^b }
+			if = {
+				limit = {
+					check_variable = { upw_ok = 1 }
+					check_variable = { upw_v > upw_best }
+				}
+				set_temp_variable = { upw_best = upw_v }
+				set_temp_variable = { upw_w = b }
+			}
+		}
+		set_variable = { USA_winner = upw_w }
+		set_variable = { USA_win_ev = upw_cev }
+		set_variable = { global.USA_res_win_ev = upw_cev }
+		set_variable = { global.USA_res_dem_ev = USA_dem_ev }
+		set_variable = { global.USA_res_gop_ev = USA_gop_ev }
+		clr_global_flag = USA_winner_1
+		clr_global_flag = USA_winner_2
+		clr_global_flag = USA_winner_3
+		clr_global_flag = USA_winner_4
+		clr_global_flag = USA_winner_5
+		clr_global_flag = USA_hung
+		clr_global_flag = USA_landslide
+		clr_global_flag = USA_player_won
+		if = { limit = { check_variable = { USA_winner = 1 } } set_global_flag = USA_winner_1 }
+		if = { limit = { check_variable = { USA_winner = 2 } } set_global_flag = USA_winner_2 }
+		if = { limit = { check_variable = { USA_winner = 3 } } set_global_flag = USA_winner_3 }
+		if = { limit = { check_variable = { USA_winner = 4 } } set_global_flag = USA_winner_4 }
+		if = { limit = { check_variable = { USA_winner = 5 } } set_global_flag = USA_winner_5 }
+		if = {
+			limit = { check_variable = { USA_dem_ev = USA_gop_ev } }
+			set_global_flag = USA_hung
+		}
+		if = {
+			limit = { check_variable = { USA_win_ev > 349 } }
+			set_global_flag = USA_landslide
+		}
+		if = {
+			limit = { check_variable = { USA_winner = USA_chosen } }
+			set_global_flag = USA_player_won
+		}
+		set_variable = { USA_phase = 3 }
+		set_variable = { USA_weeks_left = 11 }
+		clr_country_flag = USA_pick_open
+	}
+}
+
+# ---- 20 January 2029, noon: the winner is sworn in ----------------------------------
+USA_president_inauguration_effect = {
+	if = {
+		limit = { NOT = { has_country_flag = USA_president_inaugurated } }
+		set_country_flag = USA_president_inaugurated
+		if = {
+			limit = { has_idea = USA_mandate_landslide }
+			remove_ideas = USA_mandate_landslide
+		}
+		if = {
+			limit = { has_idea = USA_mandate_narrow }
+			remove_ideas = USA_mandate_narrow
+		}
+		if = {
+			limit = { has_idea = USA_mandate_contested }
+			remove_ideas = USA_mandate_contested
+		}
+		if = {
+			limit = { check_variable = { USA_winner = 1 } }
+			set_politics = { ruling_party = authoritarian_socialism last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = authoritarian_socialism popularity = 0.10 }
+		}
+		else_if = {
+			limit = { check_variable = { USA_winner = 2 } }
+			set_politics = { ruling_party = progressive last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = progressive popularity = 0.10 }
+		}
+		else_if = {
+			limit = { check_variable = { USA_winner = 3 } }
+			set_politics = { ruling_party = centrist last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = centrist popularity = 0.10 }
+			if = {
+				limit = { has_country_leader = { name = "Joe Biden" ruling_only = yes } }
+				retire_country_leader = yes
+			}
+		}
+		else_if = {
+			limit = { check_variable = { USA_winner = 4 } }
+			set_politics = { ruling_party = conservative last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = conservative popularity = 0.10 }
+			if = {
+				limit = { has_country_leader = { name = "J.D. Vance" ruling_only = yes } }
+				retire_country_leader = yes
+			}
+		}
+		else = {
+			set_politics = { ruling_party = reactionary last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = reactionary popularity = 0.10 }
+			add_ideas = USA_third_mandate_crisis
+		}
+		if = {
+			limit = { has_global_flag = USA_hung }
+			add_ideas = USA_mandate_contested
+		}
+		else_if = {
+			limit = { has_global_flag = USA_landslide }
+			add_ideas = USA_mandate_landslide
+		}
+		else = {
+			add_ideas = USA_mandate_narrow
+		}
+		set_variable = { USA_phase = 4 }
+		clr_country_flag = USA_race_active
+		clr_country_flag = USA_pick_open
+		remove_power_balance = { id = USA_electoral_balance }
+	}
+}
+
+
+# ---- dated events (checked every day in the USA scope) ------------------------------------
+# Each date: a hidden event in the USA scope does the work, then the news goes to every country one or two hours later.
+USA_election_daily_effect = {
+	if = {
+		limit = {
+			date > 2025.1.19
+			date < 2025.3.1
+			NOT = { has_global_flag = USA_inauguration_2025_sent }
+		}
+		set_global_flag = USA_inauguration_2025_sent
+		country_event = { id = dve_usa_send.1 hours = 11 }
+		every_country = { news_event = { id = dve_usa.1 hours = 12 } }
+	}
+	if = {
+		limit = {
+			date > 2026.11.2
+			date < 2026.12.15
+			NOT = { has_global_flag = USA_midterm_sent }
+		}
+		set_global_flag = USA_midterm_sent
+		country_event = { id = dve_usa_send.2 hours = 12 }
+		every_country = { news_event = { id = dve_usa.2 hours = 13 } }
+	}
+	if = {
+		limit = {
+			date > 2028.11.6
+			date < 2028.12.15
+			NOT = { has_global_flag = USA_election_sent }
+		}
+		set_global_flag = USA_election_sent
+		country_event = { id = dve_usa_send.3 hours = 12 }
+		every_country = { news_event = { id = dve_usa.3 hours = 13 } }
+	}
+	if = {
+		limit = {
+			date > 2029.1.19
+			date < 2029.3.1
+			NOT = { has_global_flag = USA_inauguration_2029_sent }
+		}
+		set_global_flag = USA_inauguration_2029_sent
+		country_event = { id = dve_usa_send.4 hours = 11 }
+		every_country = { news_event = { id = dve_usa.4 hours = 12 } }
+	}
+}

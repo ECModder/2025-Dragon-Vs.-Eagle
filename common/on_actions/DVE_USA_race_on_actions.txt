@@ -1,0 +1,25 @@
+# DvE - US presidential race: start-up, weekly tick and the dated events.
+on_actions = {
+
+	on_startup = {
+		effect = {
+			USA = { USA_election_init_effect = yes }
+		}
+	}
+
+	on_weekly = {
+		effect = {
+			if = {
+				limit = { original_tag = USA }
+				USA_election_weekly_effect = yes
+			}
+		}
+	}
+
+	on_daily_USA = {
+		effect = {
+			USA_election_init_effect = yes
+			USA_election_daily_effect = yes
+		}
+	}
+}
