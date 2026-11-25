@@ -3,7 +3,7 @@
 # ============================================================
 
 # Used by the delayed reward of "Crack Down on Opposition":
-# boosts whichever of the mod's 14 ideologies is currently ruling,
+# boosts whichever of the mod's 15 ideologies is currently ruling,
 # since add_popularity needs a literal ideology token and there is
 # no "current ruling party" shortcut for it.
 DVE_boost_ruling_party_popularity_effect = {
@@ -22,6 +22,7 @@ DVE_boost_ruling_party_popularity_effect = {
 	else_if = { limit = { has_government = absolutism }  add_popularity = { ideology = absolutism popularity = 0.03 } }
 	else_if = { limit = { has_government = ultranationalism }  add_popularity = { ideology = ultranationalism popularity = 0.03 } }
 	else_if = { limit = { has_government = fundamentalism }  add_popularity = { ideology = fundamentalism popularity = 0.03 } }
+	else_if = { limit = { has_government = anarchism }  add_popularity = { ideology = anarchism popularity = 0.03 } }
 
 	add_stability = -0.03
 }

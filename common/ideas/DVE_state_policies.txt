@@ -187,6 +187,7 @@ ideas = {
 				OR = {
 					has_government = revolutionary_socialism
 					has_government = vanguard_socialism
+					has_government = anarchism
 				}
 			}
 			cost = 100
@@ -420,7 +421,12 @@ ideas = {
 
 		syndicalist_economy = {
 
-			available = { has_government = revolutionary_socialism }
+			available = {
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = anarchism
+				}
+			}
 
 			cost = 100
 			removal_cost = -1
@@ -568,6 +574,7 @@ ideas = {
 				OR = {
 					has_government = progressive
 					has_government = liberal
+					has_government = anarchism
 				}
 			}
 
