@@ -1244,17 +1244,17 @@ USA_race_start_effect = {
 	}
 }
 
-# Candidates that are not in the history file yet.
+# Candidates that are not in the history file yet (Newsom and AOC are there; Harris takes over the establishment after Biden retires).
 USA_create_candidates_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = USA_candidates_created } }
 		set_country_flag = USA_candidates_created
 		create_country_leader = {
-			name = "Gavin Newsom"
+			name = "Kamala Harris"
 			desc = "POLITICS_LEADER_DESC"
-			picture = "portrait_large_newsom.dds"
+			picture = "portrait_large_harris.dds"
 			expire = "2100.1.1"
-			ideology = neo_liberalism
+			ideology = ultra_liberalism
 		}
 		create_country_leader = {
 			name = "Marco Rubio"
@@ -1272,12 +1272,15 @@ USA_trump_inauguration_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = USA_trump_in_office } }
 		set_country_flag = USA_trump_in_office
-		USA_create_candidates_effect = yes
 		if = {
 			limit = { has_government = centrist }
 			retire_country_leader = yes
 		}
+		USA_create_candidates_effect = yes
 		set_politics = { ruling_party = reactionary elections_allowed = yes }
+		# after the defeat the party splits: Modern Liberals (Newsom) rise, the Establishment (Harris) shrinks
+		add_popularity = { ideology = liberal popularity = 0.16 }
+		add_popularity = { ideology = centrist popularity = -0.16 }
 		USA_race_start_effect = yes
 	}
 }
@@ -1498,12 +1501,8 @@ USA_president_inauguration_effect = {
 		}
 		else_if = {
 			limit = { check_variable = { USA_winner = 3 } }
-			set_politics = { ruling_party = centrist last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
-			add_popularity = { ideology = centrist popularity = 0.10 }
-			if = {
-				limit = { has_country_leader = { name = "Joe Biden" ruling_only = yes } }
-				retire_country_leader = yes
-			}
+			set_politics = { ruling_party = liberal last_election = "2028.11.7" election_frequency = 48 elections_allowed = yes }
+			add_popularity = { ideology = liberal popularity = 0.10 }
 		}
 		else_if = {
 			limit = { check_variable = { USA_winner = 4 } }
