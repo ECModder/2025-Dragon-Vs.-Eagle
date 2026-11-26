@@ -1,4 +1,5 @@
-# DvE - US presidential race: Trump's inauguration (20 Jan 2025), midterms (3 Nov 2026), presidential election (7 Nov 2028), inauguration (20 Jan 2029).
+# DvE - US presidential race: Trump's inauguration (20 Jan 2025), then a repeating four-year cycle: midterms, presidential election, inauguration.
+# dve_usa.2-4 are the texts of the first cycle (2026, 2028, 2029); dve_usa.5-7 are the generic ones of every later cycle.
 # News events (picture panels in interface/DVE_event_panels.gfx) go to every country; the hidden dve_usa_send events do the work in the USA scope.
 
 add_namespace = dve_usa
@@ -81,5 +82,38 @@ news_event = {
 	is_triggered_only = yes
 	option = {
 		name = dve_usa.4.a
+	}
+}
+
+news_event = {
+	id = dve_usa.5
+	title = dve_usa.5.t
+	desc = dve_usa.5.d
+	picture = GFX_news_event_DVE_usa_midterms
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.5.a
+	}
+}
+
+news_event = {
+	id = dve_usa.6
+	title = dve_usa.6.t
+	desc = dve_usa.6.d
+	picture = GFX_news_event_DVE_usa_election
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.6.a
+	}
+}
+
+news_event = {
+	id = dve_usa.7
+	title = dve_usa.7.t
+	desc = dve_usa.7.d
+	picture = GFX_news_event_DVE_usa_inauguration
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.7.a
 	}
 }

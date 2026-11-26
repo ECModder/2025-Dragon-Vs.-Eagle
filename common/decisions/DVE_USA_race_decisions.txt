@@ -93,7 +93,10 @@ DVE_USA_balance_category = {
 		visible = {
 			has_country_flag = USA_pick_open
 			NOT = { check_variable = { USA_chosen = 4 } }
-			check_variable = { USA_phase > 1 }
+			OR = {
+				check_variable = { USA_phase > 1 }
+				check_variable = { USA_cycle > 0 }
+			}
 		}
 		available = {
 			is_ai = no
@@ -123,6 +126,7 @@ DVE_USA_balance_category = {
 			has_country_flag = USA_pick_open
 			NOT = { check_variable = { USA_chosen = 5 } }
 			check_variable = { USA_phase < 2 }
+			check_variable = { USA_cycle = 0 }
 		}
 		available = {
 			is_ai = no
@@ -152,6 +156,7 @@ DVE_USA_balance_category = {
 			has_country_flag = USA_pick_open
 			NOT = { check_variable = { USA_chosen = 5 } }
 			check_variable = { USA_phase > 1 }
+			check_variable = { USA_cycle = 0 }
 		}
 		available = {
 			is_ai = no

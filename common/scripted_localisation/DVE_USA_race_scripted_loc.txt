@@ -338,6 +338,10 @@ defined_text = {
 defined_text = {
 	name = GetUSARow4
 	text = {
+		trigger = { check_variable = { USA_cycle > 0 } }
+		localization_key = USA_ROW4_ON
+	}
+	text = {
 		trigger = { check_variable = { USA_phase > 1 } }
 		localization_key = USA_ROW4_ON
 	}
@@ -349,6 +353,10 @@ defined_text = {
 defined_text = {
 	name = GetUSARow5
 	text = {
+		trigger = { check_variable = { USA_cycle > 0 } }
+		localization_key = USA_ROW5_DORMANT
+	}
+	text = {
 		trigger = { check_variable = { USA_phase > 1 } }
 		localization_key = USA_ROW5_ON
 	}
@@ -359,6 +367,10 @@ defined_text = {
 
 defined_text = {
 	name = GetUSAChosenCandidate
+	text = {
+		trigger = { check_variable = { USA_cycle > 1 } check_variable = { USA_chosen > 0 } }
+		localization_key = USA_CAND_GEN
+	}
 	text = {
 		trigger = { check_variable = { USA_chosen = 1 } }
 		localization_key = USA_CAND_1
@@ -410,6 +422,10 @@ defined_text = {
 defined_text = {
 	name = GetUSAMoodText
 	text = {
+		trigger = { check_variable = { USA_mood < -0.1 } }
+		localization_key = USA_MOOD_TILT_R
+	}
+	text = {
 		trigger = { check_variable = { USA_mood > 0.1 } }
 		localization_key = USA_MOOD_TILT
 	}
@@ -458,6 +474,14 @@ defined_text = {
 
 defined_text = {
 	name = GetUSAMidtermResult
+	text = {
+		trigger = { check_variable = { global.USA_g_cycle > 0 } has_global_flag = USA_midterm_wave }
+		localization_key = USA_MID_WAVE2
+	}
+	text = {
+		trigger = { check_variable = { global.USA_g_cycle > 0 } has_global_flag = USA_midterm_hold }
+		localization_key = USA_MID_HOLD2
+	}
 	text = {
 		trigger = { has_global_flag = USA_midterm_wave }
 		localization_key = USA_MID_WAVE
@@ -548,5 +572,70 @@ defined_text = {
 	}
 	text = {
 		localization_key = DVE_BOP_TITLE_DEFAULT
+	}
+}
+
+defined_text = {
+	name = GetUSAElectionResult2
+	text = {
+		trigger = { has_global_flag = USA_winner_1 }
+		localization_key = USA_ELE2_1
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_2 }
+		localization_key = USA_ELE2_2
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_3 }
+		localization_key = USA_ELE2_3
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_4 }
+		localization_key = USA_ELE2_4
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_5 }
+		localization_key = USA_ELE2_5
+	}
+	text = {
+		localization_key = USA_ELE2_0
+	}
+}
+
+defined_text = {
+	name = GetUSAInaugurationText2
+	text = {
+		trigger = { has_global_flag = USA_winner_1 }
+		localization_key = USA_INA2_1
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_2 }
+		localization_key = USA_INA2_2
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_3 }
+		localization_key = USA_INA2_3
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_4 }
+		localization_key = USA_INA2_4
+	}
+	text = {
+		trigger = { has_global_flag = USA_winner_5 }
+		localization_key = USA_INA2_5
+	}
+	text = {
+		localization_key = USA_INA2_0
+	}
+}
+
+defined_text = {
+	name = GetUSAElectionTurnover
+	text = {
+		trigger = { has_global_flag = USA_turnover }
+		localization_key = USA_TURN_YES
+	}
+	text = {
+		localization_key = USA_TURN_NO
 	}
 }

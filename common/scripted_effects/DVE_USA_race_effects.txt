@@ -724,6 +724,15 @@ USA_election_init_effect = {
 		set_variable = { USA_bop_step = 99 }
 		set_variable = { USA_c_ev = 0 }
 		set_variable = { USA_c_cool = 0 }
+		# 4-year cycle: USA_y = inauguration year of the cycle, USA_stage = next dated event (0 Trump, 1 midterms, 2 election, 3 inauguration)
+		set_variable = { USA_cycle = 0 }
+		set_variable = { USA_y = 2025 }
+		set_variable = { USA_stage = 0 }
+		set_variable = { USA_ev_lock = 0 }
+		set_variable = { USA_inc = 2 }
+		set_variable = { USA_mood_dir = 1 }
+		set_variable = { USA_mood_r = 0 }
+		USA_cycle_dates_effect = yes
 		USA_race_baseline_effect = yes
 		USA_race_reset_shares_effect = yes
 		USA_race_recalc_effect = yes
@@ -731,7 +740,7 @@ USA_election_init_effect = {
 }
 
 # Baseline shares of every state from its 2024 margin, the national mood and the chosen bloc.
-# Until the midterms (USA_phase < 2) every Republican is a Trumpist (bloc 5); afterwards the GOP is the neoconservatives (bloc 4) unless the Trumpist third-mandate ticket is chosen.
+# In the first cycle, until the midterms (USA_phase < 2) every Republican is a Trumpist (bloc 5); in later cycles the GOP is always bloc 4. Afterwards the GOP is the neoconservatives (bloc 4) unless the Trumpist third-mandate ticket is chosen.
 USA_race_baseline_effect = {
 	for_loop_effect = {
 		start = 0
@@ -759,6 +768,11 @@ USA_race_baseline_effect = {
 			set_temp_variable = { usb_gn = usb_r }
 		}
 		if = {
+			limit = { check_variable = { USA_cycle > 0 } }
+			set_temp_variable = { usb_gt = 0 }
+			set_temp_variable = { usb_gn = usb_r }
+		}
+		if = {
 			limit = { check_variable = { USA_chosen = 1 } }
 			set_temp_variable = { usb_so = USA_soc^i }
 			set_temp_variable = { usb_cd = usb_d }
@@ -775,6 +789,7 @@ USA_race_baseline_effect = {
 			limit = {
 				check_variable = { USA_chosen = 5 }
 				check_variable = { USA_phase > 1 }
+				check_variable = { USA_cycle = 0 }
 			}
 			set_temp_variable = { usb_gt = usb_r }
 			multiply_temp_variable = { usb_gt = USA_gtf^i }
@@ -1194,24 +1209,40 @@ USA_election_weekly_effect = {
 }
 
 USA_race_monthly_effect = {
-	# the national mood (cost of living, the Iran war) drifts towards the Democrats until the midterms, then eases back
+	# the national mood drifts against the party in the White House (USA_mood_dir +1: towards the Democrats) until the midterms, then eases back
+	set_temp_variable = { urm_t = USA_mood }
+	multiply_temp_variable = { urm_t = USA_mood_dir }
 	if = {
 		limit = {
 			check_variable = { USA_phase = 1 }
-			check_variable = { USA_mood < 4.4 }
+			check_variable = { urm_t < 4.4 }
 		}
-		add_to_variable = { USA_mood = 0.2 }
+		set_temp_variable = { urm_s = 0.2 }
+		multiply_temp_variable = { urm_s = USA_mood_dir }
+		add_to_variable = { USA_mood = urm_s }
 		USA_race_mood_step_effect = yes
 	}
 	if = {
 		limit = {
 			check_variable = { USA_phase > 1 }
-			check_variable = { USA_mood > 1.5 }
+			check_variable = { urm_t > 1.5 }
 		}
-		subtract_from_variable = { USA_mood = 0.1 }
+		set_temp_variable = { urm_s = -0.1 }
+		multiply_temp_variable = { urm_s = USA_mood_dir }
+		add_to_variable = { USA_mood = urm_s }
 		USA_race_mood_step_effect = yes
 	}
+	USA_mood_abs_effect = yes
 	USA_race_fade_effect = yes
+}
+
+# Absolute value of the mood for the window text.
+USA_mood_abs_effect = {
+	set_variable = { USA_mood_r = USA_mood }
+	if = {
+		limit = { check_variable = { USA_mood < 0 } }
+		multiply_variable = { USA_mood_r = -1 }
+	}
 }
 
 # ---- picking a bloc -------------------------------------------------------
@@ -1238,6 +1269,10 @@ USA_race_start_effect = {
 		if = {
 			limit = { is_ai = yes }
 			set_variable = { USA_pick_choice = 5 }
+			if = {
+				limit = { check_variable = { USA_cycle > 0 } }
+				set_variable = { USA_pick_choice = 4 }
+			}
 			USA_pick_bloc_effect = yes
 		}
 		USA_race_recalc_effect = yes
@@ -1281,7 +1316,11 @@ USA_trump_inauguration_effect = {
 		# after the defeat the party splits: Modern Liberals (Newsom) rise, the Establishment (Harris) shrinks
 		add_popularity = { ideology = liberal popularity = 0.16 }
 		add_popularity = { ideology = centrist popularity = -0.16 }
+		set_variable = { USA_inc = 2 }
+		set_variable = { USA_mood_dir = 1 }
 		USA_race_start_effect = yes
+		set_variable = { USA_stage = 1 }
+		set_variable = { USA_ev_lock = 0 }
 	}
 }
 
@@ -1291,82 +1330,8 @@ USA_midterm_effect = {
 		limit = { NOT = { has_global_flag = USA_midterm_done } }
 		set_global_flag = USA_midterm_done
 		USA_race_recalc_effect = yes
-		set_variable = { USA_house_d = 0 }
-		set_variable = { USA_senate_d = 0 }
-		for_loop_effect = {
-			start = 0
-			end = 51
-			value = i
-			set_temp_variable = { usm_ev = USA_ev^i }
-			set_temp_variable = { usm_ix = i }
-			multiply_temp_variable = { usm_ix = 5 }
-			set_temp_variable = { usm_k = usm_ix }
-			set_temp_variable = { usm_dm = USA_sh^usm_k }
-			add_to_temp_variable = { usm_k = 1 }
-			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
-			add_to_temp_variable = { usm_k = 1 }
-			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
-			set_temp_variable = { usm_hs = usm_ev }
-			subtract_from_temp_variable = { usm_hs = 2 }
-			multiply_temp_variable = { usm_hs = usm_dm }
-			divide_temp_variable = { usm_hs = 100 }
-			add_to_variable = { USA_house_d = usm_hs }
-			if = {
-				limit = {
-					NOT = { check_variable = { i = 8 } }
-					check_variable = { usm_dm > 50 }
-				}
-				add_to_variable = { USA_senate_d = 2 }
-			}
-		}
-		round_variable = USA_house_d
-		set_variable = { USA_house_gop = 435 }
-		subtract_from_variable = { USA_house_gop = USA_house_d }
-		set_variable = { USA_senate_gop = 100 }
-		subtract_from_variable = { USA_senate_gop = USA_senate_d }
-		set_variable = { global.USA_res_house_d = USA_house_d }
-		set_variable = { global.USA_res_house_r = USA_house_gop }
-		set_variable = { global.USA_res_senate_d = USA_senate_d }
-		set_variable = { global.USA_res_senate_r = USA_senate_gop }
-		set_variable = { global.USA_res_dem_ev = USA_dem_ev }
-		set_variable = { global.USA_res_gop_ev = USA_gop_ev }
-		set_variable = { representatives_support = USA_house_gop }
-		set_variable = { senators_support = USA_senate_gop }
-		clr_global_flag = USA_midterm_wave
-		clr_global_flag = USA_midterm_hold
-		clr_global_flag = USA_midterm_divided
-		if = {
-			limit = { has_idea = USA_congress_gop_hold }
-			remove_ideas = USA_congress_gop_hold
-		}
-		if = {
-			limit = { has_idea = USA_congress_divided }
-			remove_ideas = USA_congress_divided
-		}
-		if = {
-			limit = { has_idea = USA_congress_dem_wave }
-			remove_ideas = USA_congress_dem_wave
-		}
-		if = {
-			limit = {
-				check_variable = { USA_house_d > 217 }
-				check_variable = { USA_senate_d > 50 }
-			}
-			set_global_flag = USA_midterm_wave
-			add_ideas = USA_congress_dem_wave
-		}
-		else_if = {
-			limit = {
-				check_variable = { USA_house_d < 218 }
-				check_variable = { USA_senate_d < 51 }
-			}
-			set_global_flag = USA_midterm_hold
-			add_ideas = USA_congress_gop_hold
-		}
-		else = {
-			set_global_flag = USA_midterm_divided
-			add_ideas = USA_congress_divided
-		}
+		USA_congress_seats_effect = yes
+		USA_congress_spirit_effect = yes
 		set_variable = { USA_phase = 2 }
 		set_variable = { USA_weeks_left = 105 }
 		# the Republican party splits: baseline and shares are recomputed with the new phase
@@ -1384,16 +1349,19 @@ USA_midterm_effect = {
 			USA_pick_bloc_effect = yes
 		}
 		USA_race_recalc_effect = yes
+		set_variable = { USA_stage = 2 }
+		set_variable = { USA_ev_lock = 0 }
 	}
 }
 
-# ---- 7 November 2028: presidential election -----------------------------------------
+# ---- presidential election: presidential election -----------------------------------------
 # The camp with more electoral votes wins; the president is the strongest bloc (by votes) inside that camp.
 USA_presidential_effect = {
 	if = {
 		limit = { NOT = { has_global_flag = USA_election_done } }
 		set_global_flag = USA_election_done
 		USA_race_recalc_effect = yes
+		USA_congress_seats_effect = yes
 		set_temp_variable = { upw_camp = 2 }
 		set_temp_variable = { upw_cev = USA_gop_ev }
 		if = {
@@ -1466,17 +1434,38 @@ USA_presidential_effect = {
 			limit = { check_variable = { USA_winner = USA_chosen } }
 			set_global_flag = USA_player_won
 		}
+		clr_global_flag = USA_turnover
+		if = {
+			limit = {
+				check_variable = { USA_winner < 4 }
+				check_variable = { USA_inc = 2 }
+			}
+			set_global_flag = USA_turnover
+		}
+		if = {
+			limit = {
+				check_variable = { USA_winner > 3 }
+				check_variable = { USA_inc = 1 }
+			}
+			set_global_flag = USA_turnover
+		}
 		set_variable = { USA_phase = 3 }
 		set_variable = { USA_weeks_left = 11 }
 		clr_country_flag = USA_pick_open
+		set_variable = { USA_stage = 3 }
+		set_variable = { USA_ev_lock = 0 }
 	}
 }
 
-# ---- 20 January 2029, noon: the winner is sworn in ----------------------------------
+# ---- 20 January, noon: the winner is sworn in and the next cycle starts ----------------------------------
 USA_president_inauguration_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = USA_president_inaugurated } }
 		set_country_flag = USA_president_inaugurated
+		if = {
+			limit = { has_idea = USA_third_mandate_crisis }
+			remove_ideas = USA_third_mandate_crisis
+		}
 		if = {
 			limit = { has_idea = USA_mandate_landslide }
 			remove_ideas = USA_mandate_landslide
@@ -1533,51 +1522,836 @@ USA_president_inauguration_effect = {
 		clr_country_flag = USA_race_active
 		clr_country_flag = USA_pick_open
 		remove_power_balance = { id = USA_electoral_balance }
+		# the camp of the winner is now the party in the White House; the new Congress is seated
+		set_variable = { USA_inc = 2 }
+		set_variable = { USA_mood_dir = 1 }
+		if = {
+			limit = { check_variable = { USA_winner < 4 } }
+			set_variable = { USA_inc = 1 }
+			set_variable = { USA_mood_dir = -1 }
+		}
+		USA_congress_spirit_effect = yes
+		USA_cycle_restart_effect = yes
 	}
 }
 
+# A new four-year cycle: new midterms, a new presidential race, a new inauguration.
+USA_cycle_restart_effect = {
+	add_to_variable = { USA_cycle = 1 }
+	add_to_variable = { USA_y = 4 }
+	USA_cycle_dates_effect = yes
+	clr_global_flag = USA_midterm_done
+	clr_global_flag = USA_election_done
+	clr_country_flag = USA_president_inaugurated
+	clr_country_flag = USA_has_picked
+	clr_country_flag = USA_pick_open
+	set_variable = { USA_chosen = 0 }
+	set_variable = { USA_mood = 0 }
+	set_variable = { USA_has_sel = 0 }
+	set_variable = { USA_sel = 0 }
+	set_variable = { USA_marker_x = -100 }
+	set_variable = { USA_marker_y = -100 }
+	set_variable = { USA_bop_step = 99 }
+	for_loop_effect = {
+		start = 0
+		end = 51
+		value = i
+		set_variable = { USA_cool^i = 0 }
+	}
+	USA_mood_abs_effect = yes
+	USA_race_baseline_effect = yes
+	USA_race_reset_shares_effect = yes
+	USA_race_start_effect = yes
+	set_variable = { USA_stage = 1 }
+	set_variable = { USA_ev_lock = 0 }
+}
 
-# ---- dated events (checked every day in the USA scope) ------------------------------------
-# Each date: a hidden event in the USA scope does the work, then the news goes to every country one or two hours later.
-USA_election_daily_effect = {
+# Year and day of the dated events of the current cycle (USA_y = inauguration year): midterms in Y+1, election in Y+3, next inauguration in Y+4.
+# Election day is the Tuesday after the first Monday of November. The globals feed the localisation of every country.
+USA_cycle_dates_effect = {
+	set_variable = { USA_y_mid = USA_y }
+	add_to_variable = { USA_y_mid = 1 }
+	set_variable = { USA_y_el = USA_y }
+	add_to_variable = { USA_y_el = 3 }
+	set_variable = { USA_y_inn = USA_y }
+	add_to_variable = { USA_y_inn = 4 }
+	set_variable = { USA_d_mid = 3 }
+	set_variable = { USA_d_el = 7 }
 	if = {
-		limit = {
-			date > 2025.1.19
-			date < 2025.3.1
-			NOT = { has_global_flag = USA_inauguration_2025_sent }
-		}
-		set_global_flag = USA_inauguration_2025_sent
-		country_event = { id = dve_usa_send.1 hours = 11 }
-		every_country = { news_event = { id = dve_usa.1 hours = 12 } }
+		limit = { check_variable = { USA_y = 2025 } }
+		set_variable = { USA_d_mid = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2029 } }
+		set_variable = { USA_d_mid = 5 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2033 } }
+		set_variable = { USA_d_mid = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2037 } }
+		set_variable = { USA_d_mid = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2041 } }
+		set_variable = { USA_d_mid = 4 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2045 } }
+		set_variable = { USA_d_mid = 6 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2049 } }
+		set_variable = { USA_d_mid = 8 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2053 } }
+		set_variable = { USA_d_mid = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2057 } }
+		set_variable = { USA_d_mid = 5 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2061 } }
+		set_variable = { USA_d_mid = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2065 } }
+		set_variable = { USA_d_mid = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2069 } }
+		set_variable = { USA_d_mid = 4 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2073 } }
+		set_variable = { USA_d_mid = 6 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2077 } }
+		set_variable = { USA_d_mid = 8 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2081 } }
+		set_variable = { USA_d_mid = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2085 } }
+		set_variable = { USA_d_mid = 5 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2089 } }
+		set_variable = { USA_d_mid = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2093 } }
+		set_variable = { USA_d_mid = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2097 } }
+		set_variable = { USA_d_mid = 4 }
 	}
 	if = {
-		limit = {
-			date > 2026.11.2
-			date < 2026.12.15
-			NOT = { has_global_flag = USA_midterm_sent }
+		limit = { check_variable = { USA_y = 2025 } }
+		set_variable = { USA_d_el = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2029 } }
+		set_variable = { USA_d_el = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2033 } }
+		set_variable = { USA_d_el = 4 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2037 } }
+		set_variable = { USA_d_el = 6 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2041 } }
+		set_variable = { USA_d_el = 8 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2045 } }
+		set_variable = { USA_d_el = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2049 } }
+		set_variable = { USA_d_el = 5 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2053 } }
+		set_variable = { USA_d_el = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2057 } }
+		set_variable = { USA_d_el = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2061 } }
+		set_variable = { USA_d_el = 4 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2065 } }
+		set_variable = { USA_d_el = 6 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2069 } }
+		set_variable = { USA_d_el = 8 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2073 } }
+		set_variable = { USA_d_el = 3 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2077 } }
+		set_variable = { USA_d_el = 5 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2081 } }
+		set_variable = { USA_d_el = 7 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2085 } }
+		set_variable = { USA_d_el = 2 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2089 } }
+		set_variable = { USA_d_el = 4 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2093 } }
+		set_variable = { USA_d_el = 6 }
+	}
+	else_if = {
+		limit = { check_variable = { USA_y = 2097 } }
+		set_variable = { USA_d_el = 2 }
+	}
+	set_variable = { global.USA_g_ymid = USA_y_mid }
+	set_variable = { global.USA_g_yel = USA_y_el }
+	set_variable = { global.USA_g_yinn = USA_y_inn }
+	set_variable = { global.USA_g_dmid = USA_d_mid }
+	set_variable = { global.USA_g_del = USA_d_el }
+	set_variable = { global.USA_g_cycle = USA_cycle }
+}
+
+# House and Senate seats from the Democratic share of every state (called after the midterms and after the presidential election).
+USA_congress_seats_effect = {
+		set_variable = { USA_house_d = 0 }
+		set_variable = { USA_senate_d = 0 }
+		for_loop_effect = {
+			start = 0
+			end = 51
+			value = i
+			set_temp_variable = { usm_ev = USA_ev^i }
+			set_temp_variable = { usm_ix = i }
+			multiply_temp_variable = { usm_ix = 5 }
+			set_temp_variable = { usm_k = usm_ix }
+			set_temp_variable = { usm_dm = USA_sh^usm_k }
+			add_to_temp_variable = { usm_k = 1 }
+			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
+			add_to_temp_variable = { usm_k = 1 }
+			add_to_temp_variable = { usm_dm = USA_sh^usm_k }
+			set_temp_variable = { usm_hs = usm_ev }
+			subtract_from_temp_variable = { usm_hs = 2 }
+			multiply_temp_variable = { usm_hs = usm_dm }
+			divide_temp_variable = { usm_hs = 100 }
+			add_to_variable = { USA_house_d = usm_hs }
+			if = {
+				limit = {
+					NOT = { check_variable = { i = 8 } }
+					check_variable = { usm_dm > 50 }
+				}
+				add_to_variable = { USA_senate_d = 2 }
+			}
 		}
-		set_global_flag = USA_midterm_sent
-		country_event = { id = dve_usa_send.2 hours = 12 }
+		round_variable = USA_house_d
+		set_variable = { USA_house_gop = 435 }
+		subtract_from_variable = { USA_house_gop = USA_house_d }
+		set_variable = { USA_senate_gop = 100 }
+		subtract_from_variable = { USA_senate_gop = USA_senate_d }
+		set_variable = { global.USA_res_house_d = USA_house_d }
+		set_variable = { global.USA_res_house_r = USA_house_gop }
+		set_variable = { global.USA_res_senate_d = USA_senate_d }
+		set_variable = { global.USA_res_senate_r = USA_senate_gop }
+		set_variable = { global.USA_res_dem_ev = USA_dem_ev }
+		set_variable = { global.USA_res_gop_ev = USA_gop_ev }
+		set_variable = { representatives_support = USA_house_gop }
+		set_variable = { senators_support = USA_senate_gop }
+}
+
+# Congress spirit seen from the White House: the president's camp (USA_inc 1 = Democratic, 2 = Republican) holding both chambers is friendly, the other camp holding both is hostile.
+# The ids keep their old names: gop_hold = friendly Congress, dem_wave = hostile Congress.
+USA_congress_spirit_effect = {
+	clr_global_flag = USA_midterm_wave
+	clr_global_flag = USA_midterm_hold
+	clr_global_flag = USA_midterm_divided
+	if = {
+		limit = { has_idea = USA_congress_gop_hold }
+		remove_ideas = USA_congress_gop_hold
+	}
+	if = {
+		limit = { has_idea = USA_congress_divided }
+		remove_ideas = USA_congress_divided
+	}
+	if = {
+		limit = { has_idea = USA_congress_dem_wave }
+		remove_ideas = USA_congress_dem_wave
+	}
+	set_temp_variable = { ucs_k = 0 }
+	if = {
+		limit = {
+			check_variable = { USA_house_d > 217 }
+			check_variable = { USA_senate_d > 50 }
+		}
+		set_global_flag = USA_midterm_wave
+		set_temp_variable = { ucs_k = 1 }
+	}
+	else_if = {
+		limit = {
+			check_variable = { USA_house_d < 218 }
+			check_variable = { USA_senate_d < 51 }
+		}
+		set_global_flag = USA_midterm_hold
+		set_temp_variable = { ucs_k = 2 }
+	}
+	else = {
+		set_global_flag = USA_midterm_divided
+	}
+	if = {
+		limit = { check_variable = { ucs_k = 0 } }
+		add_ideas = USA_congress_divided
+	}
+	else_if = {
+		limit = { check_variable = { ucs_k = USA_inc } }
+		add_ideas = USA_congress_gop_hold
+	}
+	else = {
+		add_ideas = USA_congress_dem_wave
+	}
+}
+
+# ---- dated events -------------------------------------------------------------------------
+# Each date: a hidden event in the USA scope does the work, then the news goes to every country one or two hours later.
+# USA_ev_lock stops the daily check from firing twice before the hidden event has run.
+USA_fire_trump_effect = {
+	set_variable = { USA_ev_lock = 1 }
+	country_event = { id = dve_usa_send.1 hours = 11 }
+	every_country = { news_event = { id = dve_usa.1 hours = 12 } }
+}
+USA_fire_midterm_effect = {
+	set_variable = { USA_ev_lock = 1 }
+	country_event = { id = dve_usa_send.2 hours = 12 }
+	if = {
+		limit = { check_variable = { USA_cycle = 0 } }
 		every_country = { news_event = { id = dve_usa.2 hours = 13 } }
 	}
+	else = {
+		every_country = { news_event = { id = dve_usa.5 hours = 13 } }
+	}
+}
+USA_fire_election_effect = {
+	set_variable = { USA_ev_lock = 1 }
+	country_event = { id = dve_usa_send.3 hours = 12 }
 	if = {
-		limit = {
-			date > 2028.11.6
-			date < 2028.12.15
-			NOT = { has_global_flag = USA_election_sent }
-		}
-		set_global_flag = USA_election_sent
-		country_event = { id = dve_usa_send.3 hours = 12 }
+		limit = { check_variable = { USA_cycle = 0 } }
 		every_country = { news_event = { id = dve_usa.3 hours = 13 } }
 	}
+	else = {
+		every_country = { news_event = { id = dve_usa.6 hours = 13 } }
+	}
+}
+USA_fire_inauguration_effect = {
+	set_variable = { USA_ev_lock = 1 }
+	set_variable = { global.USA_g_yend = USA_y_inn }
+	country_event = { id = dve_usa_send.4 hours = 11 }
 	if = {
-		limit = {
-			date > 2029.1.19
-			date < 2029.3.1
-			NOT = { has_global_flag = USA_inauguration_2029_sent }
-		}
-		set_global_flag = USA_inauguration_2029_sent
-		country_event = { id = dve_usa_send.4 hours = 11 }
+		limit = { check_variable = { USA_cycle = 0 } }
 		every_country = { news_event = { id = dve_usa.4 hours = 12 } }
+	}
+	else = {
+		every_country = { news_event = { id = dve_usa.7 hours = 12 } }
+	}
+}
+
+# Dated events of every cycle, generated for the inauguration years 2025-2097 (checked every day in the USA scope).
+USA_election_daily_effect = {
+	if = {
+		limit = { check_variable = { USA_ev_lock = 0 } }
+		if = {
+			limit = {
+				check_variable = { USA_stage = 0 }
+				date > 2025.1.19
+				date < 2025.3.1
+			}
+			USA_fire_trump_effect = yes
+		}
+		if = {
+			limit = { check_variable = { USA_stage = 1 } }
+			if = {
+				limit = {
+					check_variable = { USA_y = 2025 }
+					date > 2026.11.2
+					date < 2026.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2029 }
+					date > 2030.11.4
+					date < 2030.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2033 }
+					date > 2034.11.6
+					date < 2034.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2037 }
+					date > 2038.11.1
+					date < 2038.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2041 }
+					date > 2042.11.3
+					date < 2042.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2045 }
+					date > 2046.11.5
+					date < 2046.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2049 }
+					date > 2050.11.7
+					date < 2050.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2053 }
+					date > 2054.11.2
+					date < 2054.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2057 }
+					date > 2058.11.4
+					date < 2058.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2061 }
+					date > 2062.11.6
+					date < 2062.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2065 }
+					date > 2066.11.1
+					date < 2066.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2069 }
+					date > 2070.11.3
+					date < 2070.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2073 }
+					date > 2074.11.5
+					date < 2074.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2077 }
+					date > 2078.11.7
+					date < 2078.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2081 }
+					date > 2082.11.2
+					date < 2082.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2085 }
+					date > 2086.11.4
+					date < 2086.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2089 }
+					date > 2090.11.6
+					date < 2090.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2093 }
+					date > 2094.11.1
+					date < 2094.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2097 }
+					date > 2098.11.3
+					date < 2098.12.15
+				}
+				USA_fire_midterm_effect = yes
+			}
+		}
+		if = {
+			limit = { check_variable = { USA_stage = 2 } }
+			if = {
+				limit = {
+					check_variable = { USA_y = 2025 }
+					date > 2028.11.6
+					date < 2028.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2029 }
+					date > 2032.11.1
+					date < 2032.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2033 }
+					date > 2036.11.3
+					date < 2036.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2037 }
+					date > 2040.11.5
+					date < 2040.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2041 }
+					date > 2044.11.7
+					date < 2044.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2045 }
+					date > 2048.11.2
+					date < 2048.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2049 }
+					date > 2052.11.4
+					date < 2052.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2053 }
+					date > 2056.11.6
+					date < 2056.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2057 }
+					date > 2060.11.1
+					date < 2060.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2061 }
+					date > 2064.11.3
+					date < 2064.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2065 }
+					date > 2068.11.5
+					date < 2068.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2069 }
+					date > 2072.11.7
+					date < 2072.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2073 }
+					date > 2076.11.2
+					date < 2076.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2077 }
+					date > 2080.11.4
+					date < 2080.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2081 }
+					date > 2084.11.6
+					date < 2084.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2085 }
+					date > 2088.11.1
+					date < 2088.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2089 }
+					date > 2092.11.3
+					date < 2092.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2093 }
+					date > 2096.11.5
+					date < 2096.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2097 }
+					date > 2100.11.1
+					date < 2100.12.15
+				}
+				USA_fire_election_effect = yes
+			}
+		}
+		if = {
+			limit = { check_variable = { USA_stage = 3 } }
+			if = {
+				limit = {
+					check_variable = { USA_y = 2025 }
+					date > 2029.1.19
+					date < 2029.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2029 }
+					date > 2033.1.19
+					date < 2033.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2033 }
+					date > 2037.1.19
+					date < 2037.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2037 }
+					date > 2041.1.19
+					date < 2041.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2041 }
+					date > 2045.1.19
+					date < 2045.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2045 }
+					date > 2049.1.19
+					date < 2049.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2049 }
+					date > 2053.1.19
+					date < 2053.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2053 }
+					date > 2057.1.19
+					date < 2057.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2057 }
+					date > 2061.1.19
+					date < 2061.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2061 }
+					date > 2065.1.19
+					date < 2065.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2065 }
+					date > 2069.1.19
+					date < 2069.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2069 }
+					date > 2073.1.19
+					date < 2073.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2073 }
+					date > 2077.1.19
+					date < 2077.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2077 }
+					date > 2081.1.19
+					date < 2081.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2081 }
+					date > 2085.1.19
+					date < 2085.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2085 }
+					date > 2089.1.19
+					date < 2089.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2089 }
+					date > 2093.1.19
+					date < 2093.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2093 }
+					date > 2097.1.19
+					date < 2097.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+			if = {
+				limit = {
+					check_variable = { USA_y = 2097 }
+					date > 2101.1.19
+					date < 2101.3.1
+				}
+				USA_fire_inauguration_effect = yes
+			}
+		}
 	}
 }

@@ -1,0 +1,170 @@
+add_namespace = dve_almasri
+
+# ============================================================
+#   DvE - Italy, the Almasri case (2025-2026). news_event/country_event, only
+#   Italy receives it. Scheduled in
+#   common/on_actions/DVE_ITA_almasri_on_actions.txt.
+# ============================================================
+
+# 2025.01.19 12:00 - arrest in Turin
+news_event = {
+	id = dve_almasri.1
+	title = dve_almasri.1.t
+	desc = dve_almasri.1.d
+	picture = GFX_news_event_DVE_ita_almasri_general
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.1.a
+	}
+}
+
+# 2025.01.21 12:00 - release and repatriation
+news_event = {
+	id = dve_almasri.2
+	title = dve_almasri.2.t
+	desc = dve_almasri.2.d
+	picture = GFX_news_event_DVE_ita_almasri_flown_home
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.2.a
+		add_stability = -0.02
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		add_popularity = { ideology = reactionary popularity = 0.01 }
+		add_popularity = { ideology = liberal popularity = -0.01 }
+		add_popularity = { ideology = progressive popularity = -0.01 }
+		if = {
+			limit = { country_exists = LBA }
+			LBA = { add_opinion_modifier = { target = ROOT modifier = DVE_almasri_repatriation } }
+		}
+	}
+	option = {
+		name = dve_almasri.2.b
+		add_political_power = -25
+		add_popularity = { ideology = liberal popularity = 0.01 }
+		add_popularity = { ideology = centrist popularity = 0.01 }
+		add_popularity = { ideology = reactionary popularity = -0.01 }
+	}
+}
+
+# 2025.08.01 12:00 - Ministers' Tribunal asks the Chamber
+country_event = {
+	id = dve_almasri.3
+	title = dve_almasri.3.t
+	desc = dve_almasri.3.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.3.a
+		add_political_power = -25
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		add_popularity = { ideology = reactionary popularity = 0.01 }
+		add_popularity = { ideology = liberal popularity = -0.01 }
+	}
+	option = {
+		name = dve_almasri.3.b
+		add_political_power = -25
+		add_popularity = { ideology = centrist popularity = 0.01 }
+		add_popularity = { ideology = liberal popularity = 0.01 }
+	}
+}
+
+# 2025.10.09 12:00 - the Chamber refuses
+news_event = {
+	id = dve_almasri.4
+	title = dve_almasri.4.t
+	desc = dve_almasri.4.d
+	picture = GFX_news_event_DVE_ita_almasri_chamber
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.4.a
+		add_stability = 0.01
+		add_popularity = { ideology = conservative popularity = 0.01 }
+	}
+	option = {
+		name = dve_almasri.4.b
+		add_stability = -0.01
+		add_popularity = { ideology = progressive popularity = 0.01 }
+		add_popularity = { ideology = liberal popularity = 0.01 }
+	}
+}
+
+# 2026.06.20 12:00 - sentence in Tripoli
+country_event = {
+	id = dve_almasri.5
+	title = dve_almasri.5.t
+	desc = dve_almasri.5.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.5.a
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		if = {
+			limit = { country_exists = LBA }
+			LBA = { add_opinion_modifier = { target = ROOT modifier = DVE_almasri_trial } }
+		}
+	}
+	option = {
+		name = dve_almasri.5.b
+		add_popularity = { ideology = liberal popularity = 0.01 }
+		add_popularity = { ideology = progressive popularity = 0.01 }
+	}
+}
+
+# 2026.07.23 12:00 - Constitutional Court, judgment 143
+country_event = {
+	id = dve_almasri.6
+	title = dve_almasri.6.t
+	desc = dve_almasri.6.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.6.a
+		add_popularity = { ideology = liberal popularity = 0.01 }
+		add_popularity = { ideology = centrist popularity = 0.01 }
+	}
+	option = {
+		name = dve_almasri.6.b
+		add_popularity = { ideology = conservative popularity = 0.01 }
+		add_popularity = { ideology = reactionary popularity = 0.01 }
+	}
+}
+
+# 2026.07.30 12:00 (date of the report) - report that the ICC file goes to the Prosecutor General
+country_event = {
+	id = dve_almasri.7
+	title = dve_almasri.7.t
+	desc = dve_almasri.7.d
+	picture = GFX_report_event_journalists_speech
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.7.a
+	}
+}
+
+# 2026.11.06 12:00 - Constitutional Court, judgment 190
+country_event = {
+	id = dve_almasri.8
+	title = dve_almasri.8.t
+	desc = dve_almasri.8.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_almasri.8.a
+	}
+}
