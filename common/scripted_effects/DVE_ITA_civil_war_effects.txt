@@ -11,7 +11,7 @@
 #   fazione a se') mantiene automaticamente tutto cio' che non e'
 #   nella lista di nessuno.
 #
-#   Partition of the 35 Italian states (ITA keeps what no list names):
+#   Partition of the 38 Italian states (ITA keeps what no list names):
 #     ITA 18  Roma(2) Cagliari(114) Sicily(115) Abruzzo(157)
 #              Trentino(850) Nord Lombardia(1088) Aosta(1173)
 #              Sud Piemonte(1174) Nord Piemonte(1175)
@@ -31,9 +31,11 @@
 #     LOM  3  Est Lombardia(1177) Padania(1179) Veneto(160)
 #              capital 160
 #     TYR  1  South Tyrol(39)
+#     IRC  3  Bologna-Ovest(1225) Massa-Carrara(1226) Vallesina(1227)
+#              capital 1225; Trotskyist split of INT, cut from 161/162/1185
 #
 #   Armies (ITA_civil_war_army_effect): INT 36, SRI 16, RSI 14, LOM 8,
-#   TYR 4, spread province by province; ITA 3 in Rome and 8 garrisons.
+#   TYR 4, IRC 10, spread province by province; ITA 3 in Rome and 8 garrisons.
 #
 #   Guerre dichiarate quando scoppia tutto:
 #     ITA contro tutte e cinque le fazioni (il governo legittimo
@@ -41,6 +43,8 @@
 #     INT contro RSI e SRI (comunisti contro fascisti, e le due
 #       correnti socialiste rivali - vedi le rispettive history)
 #     SRI contro RSI (comunisti contro fascisti)
+#     IRC fights ITA only; every faction gets a wargoal on TYR;
+#       when ITA falls: IRC ultimatum + Padania war (DVE_IRC_effects.txt)
 #     LOM e TYR restano fuori dalle guerre ideologiche: vogliono
 #       l'indipendenza, non conquistare il resto del paese.
 # ============================================================
@@ -233,12 +237,49 @@ ITA_cw_spawn_TYR_effect = {
 
 
 # ============================================================
+#   IRC - Italian Revolutionary Communist Republic (Trotskyist PCR).
+#   3 states, capital Bologna-Ovest.
+# ============================================================
+ITA_cw_spawn_IRC_effect = {
+
+	every_owned_state = {
+		limit = {
+			OR = {
+				state = 1225 # Bologna-Ovest
+				state = 1226 # Massa-Carrara
+				state = 1227 # Vallesina
+			}
+		}
+		add_core_of = IRC
+		IRC = { transfer_state = PREV }
+	}
+
+	if = {
+		limit = { country_exists = IRC }
+		IRC = {
+			DVE_cw_new_faction_setup_effect = yes
+			if = {
+				limit = { owns_state = 1225 }
+				set_capital = { state = 1225 }
+			}
+			# Civil war tree, loaded once (a re-spawn must not reset it).
+			if = {
+				limit = { NOT = { has_country_flag = IRC_cw_tree_loaded } }
+				set_country_flag = IRC_cw_tree_loaded
+				load_focus_tree = { tree = IRC_civil_war_focus keep_completed = no }
+			}
+		}
+	}
+}
+
+# ============================================================
 #   LA GUERRA CIVILE COMPLETA
 # ============================================================
 ITA_civil_war_effect = {
 
 	set_country_flag = ITA_civil_war
 	set_country_flag = DVE_civil_war_active
+	set_global_flag = ITA_civil_war_active
 
 	# --- l'Italia esce dalla NATO: un governo che si sta
 	#     sgretolando non puo' restare in un'alleanza militare ---
@@ -256,6 +297,7 @@ ITA_civil_war_effect = {
 	ITA_cw_spawn_RSI_effect = yes
 	ITA_cw_spawn_LOM_effect = yes
 	ITA_cw_spawn_TYR_effect = yes
+	ITA_cw_spawn_IRC_effect = yes
 
 	# --- eserciti e guarnigione di Roma ---
 	ITA_civil_war_army_effect = yes
@@ -270,6 +312,7 @@ ITA_civil_war_effect = {
 	if = { limit = { country_exists = RSI } declare_war_on = { target = RSI type = annex_everything } }
 	if = { limit = { country_exists = LOM } declare_war_on = { target = LOM type = annex_everything } }
 	if = { limit = { country_exists = TYR } declare_war_on = { target = TYR type = annex_everything } }
+	if = { limit = { country_exists = IRC } declare_war_on = { target = IRC type = annex_everything } }
 
 	# --- comunisti contro fascisti ---
 	if = {
@@ -286,6 +329,9 @@ ITA_civil_war_effect = {
 		limit = { country_exists = INT country_exists = SRI }
 		INT = { declare_war_on = { target = SRI type = annex_everything } }
 	}
+
+	# --- every faction gets a wargoal on TYR (ITA is already at war with it) ---
+	ITA_cw_tyr_wargoals_effect = yes
 
 	# A human player picks the faction to play (dve_itacw.2).
 	if = {
@@ -478,6 +524,35 @@ ITA_civil_war_army_effect = {
 		}
 	}
 
+	if = {
+		limit = { country_exists = IRC }
+		IRC = {
+			hidden_effect = {
+				if = {
+					limit = { NOT = { has_template = "Guardia Rivoluzionaria" } }
+					division_template = {
+						name = "Guardia Rivoluzionaria"
+						regiments = {
+							infantry = { x = 0 y = 0 }  infantry = { x = 0 y = 1 }  infantry = { x = 0 y = 2 }
+							infantry = { x = 1 y = 0 }  infantry = { x = 1 y = 1 }  infantry = { x = 1 y = 2 }
+						}
+						support = {
+							engineer = { x = 0 y = 0 }
+						}
+					}
+				}
+			}
+			# 10 divisions, spread over the provinces of its states
+			# Bologna-Ovest
+			1225 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13506 count = 4 allow_spawning_on_enemy_provs = yes } }
+			# Massa-Carrara
+			1226 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13507 count = 1 allow_spawning_on_enemy_provs = yes } }
+			1226 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13508 count = 2 allow_spawning_on_enemy_provs = yes } }
+			# Vallesina (the front with ITA)
+			1227 = { create_unit = { division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.25 start_equipment_factor = 0.85" owner = IRC prioritize_location = 13509 count = 3 allow_spawning_on_enemy_provs = yes } }
+		}
+	}
+
 	# Rome stays with ITA: garrison of the capital.
 	hidden_effect = {
 		if = {
@@ -591,6 +666,7 @@ ITA_civil_war_reset_effect = {
 	if = { limit = { country_exists = RSI } RSI = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
 	if = { limit = { country_exists = LOM } LOM = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
 	if = { limit = { country_exists = TYR } TYR = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
+	if = { limit = { country_exists = IRC } IRC = { every_owned_state = { ROOT = { transfer_state = PREV } } } }
 
 	every_owned_state = {
 		remove_core_of = INT
@@ -598,6 +674,9 @@ ITA_civil_war_reset_effect = {
 		remove_core_of = RSI
 		remove_core_of = LOM
 		remove_core_of = TYR
+		remove_core_of = IRC
 	}
 	INT = { clr_country_flag = INT_italy_cores }
+	clr_global_flag = ITA_civil_war_active
+	clr_global_flag = ITA_cw_defeat_done
 }

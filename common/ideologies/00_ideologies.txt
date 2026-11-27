@@ -213,7 +213,7 @@ rules = {
         ai_ideology_wanted_units_factor = 1.05
     }
 
-    # shown in game as "Reformist Socialism" (loc keys progressive, progressive_noun)
+    # shown in game as "Reformist Socialism"
     progressive = {
         types = {
             # GFX: GFX_ideology_progressivism_icon
@@ -259,10 +259,6 @@ rules = {
         ai_ideology_wanted_units_factor = 0.95
     }
 
-    # ============================================================
-    #   LIBERAL
-    #   GFX base: GFX_ideology_liberal_icon
-    # ============================================================
     liberal = {
         types = {
             # GFX: GFX_ideology_social_liberal_icon
@@ -306,10 +302,6 @@ rules = {
         ai_ideology_wanted_units_factor = 0.90
     }
 
-    # ============================================================
-    #   CENTRIST
-    #   GFX base: GFX_ideology_centrist_icon
-    # ============================================================
     centrist = {
         types = {
             # GFX: GFX_ideology_green_liberalism_icon
@@ -329,6 +321,9 @@ rules = {
 
             # GFX: GFX_ideology_techno_zionism_icon
             techno_zionism = {}
+
+            # GFX: GFX_ideology_anarco_capitalism_icon
+            anarco_capitalism = {}
         }
 
         dynamic_faction_names = {
@@ -355,10 +350,6 @@ rules = {
         ai_ideology_wanted_units_factor = 0.90
     }
 
-    # ============================================================
-    #   conservative
-    #   GFX base: GFX_ideology_conservative_icon
-    # ============================================================
     conservative = {
         types = {
             # GFX: GFX_ideology_conservatism_icon
@@ -764,5 +755,44 @@ rules = {
 
 
         ai_ideology_wanted_units_factor = 1.15
+    }
+
+    #   ANARCHISM  (SUB-Group!! Not Present in the Party Panel.)
+    anarchism = {
+        types = {
+            # GFX: GFX_ideology_mutualism_icon
+            mutualism = {}
+
+            # GFX: GFX_ideology_anarcho_syndicalism_icon
+            anarcho_syndicalism = {}
+
+            # GFX: GFX_ideology_anarco_communism_icon
+            anarco_communism = {}
+
+            # GFX: GFX_ideology_collectivist_anarchism_icon
+            collectivist_anarchism = {}
+        }
+
+        dynamic_faction_names = {
+            "FACTION_ANARCHIST_1"
+            "FACTION_ANARCHIST_2"
+        }
+
+        color = { 30 30 30 }
+
+        war_impact_on_world_tension = 0.10
+
+        can_be_boosted = yes
+        can_collaborate = no
+        can_host_government_in_exile = yes
+        rules = {
+            can_create_collaboration_government = no
+            can_puppet = no
+            can_lower_tension = yes
+            can_join_factions = no
+            can_send_volunteers = yes
+        }
+
+        ai_ideology_wanted_units_factor = 0.80
     }
 }

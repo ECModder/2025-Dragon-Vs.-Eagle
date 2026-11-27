@@ -65,6 +65,11 @@ DVE_set_economic_model_effect = {
 		clr_country_flag = DVE_econ_upgraded_communist
 		add_ideas = socialist_economy
 	}
+	else_if = {
+		limit = { has_government = anarchism }
+		clr_country_flag = DVE_econ_upgraded_socialist
+		add_ideas = syndicalist_economy
+	}
 }
 
 
@@ -142,6 +147,20 @@ DVE_set_state_policies_effect = {
 		add_ideas = workers_labour_union
 		add_ideas = equal_justice
 		add_ideas = draconian_discipline
+	}
+	else_if = {
+		limit = { has_government = anarchism }
+		add_ideas = low_taxation
+		add_ideas = tolerated_dissent
+		add_ideas = minimal_propaganda
+		add_ideas = free_press
+		add_ideas = direct_councils_democracy
+		add_ideas = extensive_welfare
+		add_ideas = sporadic_corruption
+		add_ideas = six_hour_workday
+		add_ideas = workers_labour_union
+		add_ideas = equal_justice
+		add_ideas = codified_discipline
 	}
 	else_if = {
 		limit = { has_government = progressive }

@@ -83,7 +83,7 @@ DVE_rf_package_religion_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_religion } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism } } add_ideas = rf_religion_state_atheism }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal } } add_ideas = rf_religion_secular_state }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal } } add_ideas = rf_religion_secular_state }
 		else_if = { limit = { OR = { has_government = centrist has_government = authoritarianism has_government = autocracy } } add_ideas = rf_religion_recognised_faiths }
 		else_if = { limit = { OR = { has_government = conservative has_government = reactionary has_government = absolutism has_government = ultranationalism } } add_ideas = rf_religion_state_church }
 		else_if = { limit = { has_government = fundamentalism } add_ideas = rf_religion_theocratic_law }
@@ -184,7 +184,7 @@ DVE_rf_package_education_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_education } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = authoritarianism has_government = autocracy has_government = ultranationalism } } add_ideas = rf_education_state_curriculum }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = liberal } } add_ideas = rf_education_comprehensive }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = liberal } } add_ideas = rf_education_comprehensive }
 		else_if = { limit = { has_government = progressive } add_ideas = rf_education_open_science }
 		else_if = { limit = { OR = { has_government = centrist has_government = conservative } } add_ideas = rf_education_public_schooling }
 		else_if = { limit = { OR = { has_government = reactionary has_government = absolutism has_government = fundamentalism } } add_ideas = rf_education_elite_schooling }
@@ -268,7 +268,7 @@ DVE_rf_package_assembly_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_assembly } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = authoritarianism has_government = autocracy has_government = absolutism has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_assembly_banned }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal } } add_ideas = rf_assembly_free }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal } } add_ideas = rf_assembly_free }
 		else_if = { limit = { OR = { has_government = centrist has_government = conservative } } add_ideas = rf_assembly_regulated }
 		else_if = { limit = { has_government = reactionary } add_ideas = rf_assembly_licensed }
 	}
@@ -616,7 +616,7 @@ DVE_rf_package_trade_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_trade } NOT = { DVE_rf_trade_locked_trigger = yes } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = reactionary has_government = autocracy has_government = absolutism has_government = fundamentalism } } add_ideas = restricted_trade }
-		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive } } add_ideas = managed_trade }
+		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive } } add_ideas = managed_trade }
 		else_if = { limit = { has_government = liberal } add_ideas = free_trade }
 		else_if = { limit = { OR = { has_government = centrist has_government = conservative has_government = authoritarianism } } add_ideas = export_focus }
 		else_if = { limit = { has_government = ultranationalism } add_ideas = limited_exports }
@@ -778,7 +778,7 @@ DVE_rf_package_child_labour_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_child_labour } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = ultranationalism } } add_ideas = rf_cl_youth_service }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal has_government = centrist } } add_ideas = rf_cl_banned }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal has_government = centrist } } add_ideas = rf_cl_banned }
 		else_if = { limit = { OR = { has_government = conservative has_government = reactionary has_government = authoritarianism has_government = fundamentalism } } add_ideas = rf_cl_restricted }
 		else_if = { limit = { OR = { has_government = autocracy has_government = absolutism } } add_ideas = rf_cl_tolerated }
 	}
@@ -952,7 +952,7 @@ DVE_rf_package_land_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_land } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism } } add_ideas = rf_land_state }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism } } add_ideas = rf_land_commons }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism } } add_ideas = rf_land_commons }
 		else_if = { limit = { OR = { has_government = progressive has_government = conservative has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_land_smallholder }
 		else_if = { limit = { OR = { has_government = liberal has_government = centrist } } add_ideas = rf_land_freehold }
 		else_if = { limit = { OR = { has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism } } add_ideas = rf_land_estates }
@@ -1049,7 +1049,7 @@ DVE_rf_package_military_spending_effect = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_military_spending } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = autocracy has_government = ultranationalism } } add_ideas = rf_milspend_5pct }
 		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = conservative has_government = reactionary has_government = authoritarianism has_government = absolutism has_government = fundamentalism } } add_ideas = rf_milspend_3pct }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal has_government = centrist } } add_ideas = rf_milspend_2pct }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal has_government = centrist } } add_ideas = rf_milspend_2pct }
 	}
 }
 
@@ -1141,7 +1141,7 @@ DVE_rf_package_growth_effect = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_growth } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = progressive } } add_ideas = rf_growth_family_planning }
 		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = conservative has_government = reactionary has_government = absolutism } } add_ideas = rf_growth_family_incentives }
-		else_if = { limit = { OR = { has_government = revolutionary_socialism has_government = liberal has_government = centrist has_government = authoritarianism has_government = autocracy } } add_ideas = rf_growth_natural }
+		else_if = { limit = { OR = { has_government = revolutionary_socialism has_government = anarchism has_government = liberal has_government = centrist has_government = authoritarianism has_government = autocracy } } add_ideas = rf_growth_natural }
 		else_if = { limit = { OR = { has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_growth_pronatalist }
 	}
 }
@@ -1224,7 +1224,7 @@ DVE_rf_package_borders_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_borders } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism } } add_ideas = rf_borders_strict }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = centrist has_government = conservative } } add_ideas = rf_borders_managed }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = centrist has_government = conservative } } add_ideas = rf_borders_managed }
 		else_if = { limit = { OR = { has_government = progressive has_government = liberal } } add_ideas = rf_borders_free_movement }
 		else_if = { limit = { OR = { has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_borders_sealed }
 	}
@@ -1319,7 +1319,7 @@ DVE_rf_package_equality_effect = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_equality } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = reactionary has_government = authoritarianism has_government = autocracy } } add_ideas = rf_equality_assimilation }
 		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = conservative has_government = absolutism } } add_ideas = rf_equality_limited_rights }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = liberal has_government = centrist } } add_ideas = rf_equality_equal_citizenship }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = liberal has_government = centrist } } add_ideas = rf_equality_equal_citizenship }
 		else_if = { limit = { has_government = progressive } add_ideas = rf_equality_pluralism }
 		else_if = { limit = { OR = { has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_equality_hierarchy }
 	}
@@ -1438,7 +1438,7 @@ DVE_rf_reapply_mobilization_effect = {
 DVE_rf_package_mobilization_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_mobilization } NOT = { DVE_rf_mobilization_locked_trigger = yes } }
-		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = conservative has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism } } add_ideas = limited_conscription }
+		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = conservative has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism } } add_ideas = limited_conscription }
 		else_if = { limit = { OR = { has_government = progressive has_government = liberal has_government = centrist } } add_ideas = volunteer_only }
 		else_if = { limit = { OR = { has_government = ultranationalism has_government = fundamentalism } } add_ideas = extensive_conscription }
 	}
@@ -1537,7 +1537,7 @@ DVE_rf_package_suffrage_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_suffrage } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = ultranationalism } } add_ideas = rf_suffrage_managed }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism } } add_ideas = rf_suffrage_direct }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism } } add_ideas = rf_suffrage_direct }
 		else_if = { limit = { OR = { has_government = progressive has_government = liberal has_government = centrist has_government = conservative } } add_ideas = rf_suffrage_universal }
 		else_if = { limit = { OR = { has_government = reactionary has_government = authoritarianism has_government = fundamentalism } } add_ideas = rf_suffrage_restricted }
 		else_if = { limit = { OR = { has_government = autocracy has_government = absolutism } } add_ideas = rf_suffrage_appointed }
@@ -1703,7 +1703,7 @@ DVE_rf_package_healthcare_effect = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_healthcare } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = centrist } } add_ideas = rf_hc_mandatory_insurance }
 		else_if = { limit = { has_government = vanguard_socialism } add_ideas = rf_hc_socialised_medicine }
-		else_if = { limit = { OR = { has_government = revolutionary_socialism has_government = progressive has_government = liberal } } add_ideas = rf_hc_universal_service }
+		else_if = { limit = { OR = { has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal } } add_ideas = rf_hc_universal_service }
 		else_if = { limit = { OR = { has_government = conservative has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism } } add_ideas = rf_hc_safety_net }
 		else_if = { limit = { OR = { has_government = ultranationalism has_government = fundamentalism } } add_ideas = rf_hc_private_only }
 	}
@@ -1798,7 +1798,7 @@ DVE_rf_package_law_order_effect = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_law_order } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = autocracy has_government = ultranationalism } } add_ideas = rf_lo_political_police }
 		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = reactionary has_government = authoritarianism has_government = absolutism has_government = fundamentalism } } add_ideas = rf_lo_gendarmerie }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive } } add_ideas = rf_lo_community_policing }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive } } add_ideas = rf_lo_community_policing }
 		else_if = { limit = { OR = { has_government = liberal has_government = centrist has_government = conservative } } add_ideas = rf_lo_professional_police }
 	}
 }
@@ -1886,7 +1886,7 @@ DVE_rf_package_infrastructure_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_infrastructure } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = vanguard_socialism has_government = ultranationalism } } add_ideas = rf_im_steady_expansion }
-		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal has_government = centrist has_government = authoritarianism } } add_ideas = rf_im_maintained_network }
+		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal has_government = centrist has_government = authoritarianism } } add_ideas = rf_im_maintained_network }
 		else_if = { limit = { OR = { has_government = conservative has_government = reactionary has_government = autocracy has_government = absolutism } } add_ideas = rf_im_basic_upkeep }
 		else_if = { limit = { has_government = fundamentalism } add_ideas = rf_im_deferred_maintenance }
 	}
@@ -1978,7 +1978,7 @@ DVE_rf_package_naval_infrastructure_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_naval_infrastructure } any_owned_state = { is_coastal = yes } }
 		if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = progressive has_government = liberal has_government = centrist has_government = conservative has_government = authoritarianism } } add_ideas = rf_ni_commercial_ports }
-		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = reactionary has_government = autocracy has_government = absolutism has_government = fundamentalism } } add_ideas = rf_ni_basic_port_upkeep }
+		else_if = { limit = { OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = reactionary has_government = autocracy has_government = absolutism has_government = fundamentalism } } add_ideas = rf_ni_basic_port_upkeep }
 		else_if = { limit = { has_government = ultranationalism } add_ideas = rf_ni_naval_yard_programme }
 	}
 }
@@ -2093,7 +2093,7 @@ DVE_rf_reapply_econ_mobilization_effect = {
 
 # Slot econ_mobilization: government package (package_apply = never); skipped when the slot was voted, locked.
 DVE_rf_package_econ_mobilization_effect = {
-	if = { limit = { NOT = { has_country_flag = DVE_rf_voted_econ_mobilization } NOT = { DVE_rf_econ_mobilization_locked_trigger = yes } } if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = liberal has_government = centrist has_government = conservative has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism has_government = ultranationalism has_government = fundamentalism } } add_ideas = civilian_economy } }
+	if = { limit = { NOT = { has_country_flag = DVE_rf_voted_econ_mobilization } NOT = { DVE_rf_econ_mobilization_locked_trigger = yes } } if = { limit = { OR = { has_government = totalitarian_socialism has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = liberal has_government = centrist has_government = conservative has_government = reactionary has_government = authoritarianism has_government = autocracy has_government = absolutism has_government = ultranationalism has_government = fundamentalism } } add_ideas = civilian_economy } }
 }
 
 # GUI click on the plate of slot econ_mobilization.
@@ -2171,7 +2171,7 @@ DVE_rf_package_research_effect = {
 	if = {
 		limit = { NOT = { has_country_flag = DVE_rf_voted_research } }
 		if = { limit = { has_government = totalitarian_socialism } add_ideas = rf_rs_state_directed_science }
-		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = progressive has_government = ultranationalism } } add_ideas = rf_rs_national_programme }
+		else_if = { limit = { OR = { has_government = authoritarian_socialism has_government = vanguard_socialism has_government = revolutionary_socialism has_government = anarchism has_government = progressive has_government = ultranationalism } } add_ideas = rf_rs_national_programme }
 		else_if = { limit = { OR = { has_government = liberal has_government = centrist has_government = conservative has_government = authoritarianism } } add_ideas = rf_rs_targeted_grants }
 		else_if = { limit = { OR = { has_government = reactionary has_government = autocracy has_government = absolutism has_government = fundamentalism } } add_ideas = rf_rs_market_driven }
 	}
@@ -7435,7 +7435,7 @@ DVE_rf_package_restore_effect = {
 	if = { limit = { NOT = { has_war = yes } } DVE_rf_package_mobilization_effect = yes }
 }
 
-# DVE_rf_gi = index 1..14 of the ideology group in power.
+# DVE_rf_gi = index 1..15 of the ideology group in power.
 DVE_rf_calc_gov_idx_effect = {
 	set_variable = { DVE_rf_gi = 0 }
 	if = { limit = { has_government = totalitarian_socialism } set_variable = { DVE_rf_gi = 1 } }
@@ -7452,6 +7452,7 @@ DVE_rf_calc_gov_idx_effect = {
 	if = { limit = { has_government = absolutism } set_variable = { DVE_rf_gi = 12 } }
 	if = { limit = { has_government = ultranationalism } set_variable = { DVE_rf_gi = 13 } }
 	if = { limit = { has_government = fundamentalism } set_variable = { DVE_rf_gi = 14 } }
+	if = { limit = { has_government = anarchism } set_variable = { DVE_rf_gi = 15 } }
 }
 
 # After the existing packages ran (on_ruling_party_change): ideology package wins only when the group changed to revolutionary_socialism,
@@ -7459,7 +7460,7 @@ DVE_rf_calc_gov_idx_effect = {
 DVE_rf_government_changed_effect = {
 	DVE_rf_calc_gov_idx_effect = yes
 	if = {
-		limit = { NOT = { check_variable = { DVE_rf_gov_idx = DVE_rf_gi } } OR = { has_government = revolutionary_socialism has_government = vanguard_socialism has_government = fundamentalism } }
+		limit = { NOT = { check_variable = { DVE_rf_gov_idx = DVE_rf_gi } } OR = { has_government = revolutionary_socialism has_government = vanguard_socialism has_government = fundamentalism has_government = anarchism } }
 		DVE_rf_clear_voted_effect = yes
 		DVE_rf_package_effect = yes
 		DVE_rf_package_restore_effect = yes

@@ -74,7 +74,6 @@ create_country_leader = { name = "Gloria Estela La Riva" desc = "POLITICS_LEADER
 create_country_leader = { name = "Central Council" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = leninist_internationalism }
 create_country_leader = { name = "Central Committee" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_Central_Council.dds" expire = "2500.1.1" ideology = trotskyism }
 create_country_leader = { name = "Alexandria Ocasio-Cortez" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_AOC.dds" expire = "2120.1.1" ideology = social_democracy }
-create_country_leader = { name = "Joe Biden" desc = "POLITICS_LEADER_DESC" picture = "GFX_portrait_usa_joe_biden" expire = "2075.1.1" ideology = ultra_liberalism }
 create_country_leader = { name = "J.D. Vance" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_vance.dds" expire = "2075.1.1" ideology = americanism }
 create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2045.1.1" ideology = paternalism }
 create_country_leader = { name = "Donald Trump" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_trump.dds" expire = "2500.1.1" ideology = oligarchy }
@@ -82,6 +81,7 @@ create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "por
 create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = absolute_monarchy }
 create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_dds" expire = "2075.1.1" ideology = fascist }
 create_country_leader = { name = "" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_.dds" expire = "2075.1.1" ideology = religious_nationalism }
+create_country_leader = { name = "Gavin Newsom" desc = "POLITICS_LEADER_DESC" picture = "portrait_large_newsom.dds" expire = "2105.1.1" ideology = social_liberal }
 
 
 
@@ -314,6 +314,12 @@ set_popularities = {
 	fundamentalism = 1
 }
 
+set_party_name = { ideology = vanguard_socialism name = "I - CS" long_name = "Internationalism - Communist Struggle" }
+set_party_name = { ideology = revolutionary_socialism name = "RCA, Antifa" long_name = "Revolutionary Communist of America - Antifa Action" }
+set_party_name = { ideology = progressive name = "DEM (Left - DSA)" long_name = "Bread & Roses, Red Star, R&R, Socialist M.C., Marxist U.G., LSC, SR" }
+set_party_name = { ideology = liberal name = "DEM (Modern Liberals)" long_name = "DEM (Modern Liberals)" }
+set_party_name = { ideology = centrist name = "DEM (Establishment)" long_name = "DEM (Establishment)" }
+
 add_ideas = {
 	american_economy 
 	political_polarization 
@@ -322,18 +328,6 @@ add_ideas = {
 	political_establishment 
 }
 
-
-
-1939.1.1 = {
-	# DvE: disattivato - si eseguiva anche a partita 2025 e sovrascriveva
-		# il governo moderno.
-#set_politics = {
-#		ruling_party = centrist
-#		last_election = "1936.11.3"
-#		election_frequency = 48
-#		elections_allowed = yes
-#	}
-}
 
 recruit_character = USA_joe_biden
 

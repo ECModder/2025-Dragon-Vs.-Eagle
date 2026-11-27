@@ -1,0 +1,281 @@
+# DvE - US presidential race: decision banner and the electoral map window.
+# The scripted gui (common/scripted_guis/DVE_USA_race_scripted_gui.txt) only supplies frames (colours) and the marker position.
+guiTypes = {
+
+	# ---- decision banner (480x236 panel) ----
+	containerWindowType = {
+		name = "DVE_USA_race_banner_window"
+		position = { x = 0 y = 0 }
+		size = { width = 100% height = 236 }
+		iconType = { name = "usa_banner_bg" spriteType = "GFX_USA_race_panel" position = { x = -240 y = 0 } orientation = "CENTER_UP" }
+		instantTextBoxType = { name = "usa_banner_title" position = { x = -220 y = 13 } orientation = "CENTER_UP" font = "hoi_20b" text = "USA_BANNER_TITLE" format = center maxWidth = 440 maxHeight = 24 }
+		instantTextBoxType = { name = "usa_banner_phase" position = { x = -220 y = 47 } orientation = "CENTER_UP" font = "hoi_16mbs" text = "USA_BANNER_PHASE" format = center maxWidth = 440 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_banner_bloc" position = { x = -220 y = 69 } orientation = "CENTER_UP" font = "hoi_16mbs" text = "USA_BANNER_BLOC" format = center maxWidth = 440 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_banner_ev" position = { x = -220 y = 91 } orientation = "CENTER_UP" font = "hoi_16mbs" text = "USA_BANNER_EV" format = center maxWidth = 440 maxHeight = 22 }
+		buttonType = { name = "usa_open_race_button" quadTextureSprite = "GFX_USA_btn_open" position = { x = -110 y = 122 } orientation = "CENTER_UP" buttonFont = "hoi_16mbs" buttonText = "USA_BANNER_BTN" pdx_tooltip = "USA_BANNER_BTN_TT" }
+		instantTextBoxType = { name = "usa_banner_tip" position = { x = -220 y = 196 } orientation = "CENTER_UP" font = "hoi_16mbs" text = "USA_BANNER_TIP" format = center maxWidth = 440 maxHeight = 20 }
+	}
+
+	# ---- main window 1100x720 ----
+	containerWindowType = {
+		name = "DVE_USA_race_window"
+		size = { width = 1100 height = 720 }
+		position = { x = 130 y = 24 }
+		moveable = yes
+		background = {
+			name = "Background"
+			spriteType = "GFX_tiled_bg"
+		}
+		buttonType = { name = "close_button" position = { x = -45 y = 14 } quadTextureSprite = "GFX_closebutton" buttonFont = "hoi_24header" shortcut = "ESCAPE" Orientation = "UPPER_RIGHT" clicksound = click_close pdx_tooltip = "CLOSE" }
+		instantTextBoxType = { name = "usa_win_title" position = { x = 24 y = 6 } font = "hoi_24header" text = "USA_RACE_WIN_TITLE" format = left maxWidth = 480 maxHeight = 28 }
+		instantTextBoxType = { name = "usa_win_phase" position = { x = 24 y = 34 } font = "hoi_16mbs" text = "USA_RACE_WIN_PHASE" format = left maxWidth = 440 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_win_270" position = { x = 489 y = 27 } font = "hoi_16mbs" text = "USA_RACE_270" format = center maxWidth = 120 maxHeight = 20 }
+		iconType = { name = "usa_plate_map" spriteType = "GFX_USA_plate_map" position = { x = 16 y = 78 } }
+		iconType = { name = "usa_plate_table" spriteType = "GFX_USA_plate_table" position = { x = 16 y = 548 } }
+		iconType = { name = "usa_plate_side" spriteType = "GFX_USA_plate_side" position = { x = 788 y = 78 } }
+
+		# EV bar: 54 cells of 10 votes
+		iconType = { name = "usa_evcell_0" spriteType = "GFX_USA_ev_cell" position = { x = 37 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_1" spriteType = "GFX_USA_ev_cell" position = { x = 56 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_2" spriteType = "GFX_USA_ev_cell" position = { x = 75 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_3" spriteType = "GFX_USA_ev_cell" position = { x = 94 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_4" spriteType = "GFX_USA_ev_cell" position = { x = 113 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_5" spriteType = "GFX_USA_ev_cell" position = { x = 132 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_6" spriteType = "GFX_USA_ev_cell" position = { x = 151 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_7" spriteType = "GFX_USA_ev_cell" position = { x = 170 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_8" spriteType = "GFX_USA_ev_cell" position = { x = 189 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_9" spriteType = "GFX_USA_ev_cell" position = { x = 208 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_10" spriteType = "GFX_USA_ev_cell" position = { x = 227 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_11" spriteType = "GFX_USA_ev_cell" position = { x = 246 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_12" spriteType = "GFX_USA_ev_cell" position = { x = 265 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_13" spriteType = "GFX_USA_ev_cell" position = { x = 284 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_14" spriteType = "GFX_USA_ev_cell" position = { x = 303 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_15" spriteType = "GFX_USA_ev_cell" position = { x = 322 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_16" spriteType = "GFX_USA_ev_cell" position = { x = 341 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_17" spriteType = "GFX_USA_ev_cell" position = { x = 360 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_18" spriteType = "GFX_USA_ev_cell" position = { x = 379 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_19" spriteType = "GFX_USA_ev_cell" position = { x = 398 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_20" spriteType = "GFX_USA_ev_cell" position = { x = 417 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_21" spriteType = "GFX_USA_ev_cell" position = { x = 436 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_22" spriteType = "GFX_USA_ev_cell" position = { x = 455 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_23" spriteType = "GFX_USA_ev_cell" position = { x = 474 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_24" spriteType = "GFX_USA_ev_cell" position = { x = 493 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_25" spriteType = "GFX_USA_ev_cell" position = { x = 512 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_26" spriteType = "GFX_USA_ev_cell" position = { x = 531 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_27" spriteType = "GFX_USA_ev_cell" position = { x = 550 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_28" spriteType = "GFX_USA_ev_cell" position = { x = 569 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_29" spriteType = "GFX_USA_ev_cell" position = { x = 588 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_30" spriteType = "GFX_USA_ev_cell" position = { x = 607 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_31" spriteType = "GFX_USA_ev_cell" position = { x = 626 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_32" spriteType = "GFX_USA_ev_cell" position = { x = 645 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_33" spriteType = "GFX_USA_ev_cell" position = { x = 664 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_34" spriteType = "GFX_USA_ev_cell" position = { x = 683 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_35" spriteType = "GFX_USA_ev_cell" position = { x = 702 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_36" spriteType = "GFX_USA_ev_cell" position = { x = 721 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_37" spriteType = "GFX_USA_ev_cell" position = { x = 740 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_38" spriteType = "GFX_USA_ev_cell" position = { x = 759 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_39" spriteType = "GFX_USA_ev_cell" position = { x = 778 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_40" spriteType = "GFX_USA_ev_cell" position = { x = 797 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_41" spriteType = "GFX_USA_ev_cell" position = { x = 816 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_42" spriteType = "GFX_USA_ev_cell" position = { x = 835 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_43" spriteType = "GFX_USA_ev_cell" position = { x = 854 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_44" spriteType = "GFX_USA_ev_cell" position = { x = 873 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_45" spriteType = "GFX_USA_ev_cell" position = { x = 892 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_46" spriteType = "GFX_USA_ev_cell" position = { x = 911 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_47" spriteType = "GFX_USA_ev_cell" position = { x = 930 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_48" spriteType = "GFX_USA_ev_cell" position = { x = 949 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_49" spriteType = "GFX_USA_ev_cell" position = { x = 968 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_50" spriteType = "GFX_USA_ev_cell" position = { x = 987 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_51" spriteType = "GFX_USA_ev_cell" position = { x = 1006 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_52" spriteType = "GFX_USA_ev_cell" position = { x = 1025 y = 50 } frame = 6 }
+		iconType = { name = "usa_evcell_53" spriteType = "GFX_USA_ev_cell" position = { x = 1044 y = 50 } frame = 6 }
+		iconType = { name = "usa_ev_mid" spriteType = "GFX_USA_ev_mid" position = { x = 549 y = 50 } }
+
+		# state shapes (frames are driven by the scripted gui)
+		iconType = { name = "usa_map_AL" spriteType = "GFX_USA_st_AL" position = { x = 497 y = 355 } frame = 6 }
+		iconType = { name = "usa_map_AK" spriteType = "GFX_USA_st_AK" position = { x = 34 y = 548 } frame = 6 }
+		iconType = { name = "usa_map_AZ" spriteType = "GFX_USA_st_AZ" position = { x = 125 y = 323 } frame = 6 }
+		iconType = { name = "usa_map_AR" spriteType = "GFX_USA_st_AR" position = { x = 408 y = 338 } frame = 6 }
+		iconType = { name = "usa_map_CA" spriteType = "GFX_USA_st_CA" position = { x = 23 y = 212 } frame = 6 }
+		iconType = { name = "usa_map_CO" spriteType = "GFX_USA_st_CO" position = { x = 215 y = 266 } frame = 6 }
+		iconType = { name = "usa_map_CT" spriteType = "GFX_USA_st_CT" position = { x = 661 y = 193 } frame = 6 }
+		iconType = { name = "usa_map_DE" spriteType = "GFX_USA_st_DE" position = { x = 648 y = 246 } frame = 6 }
+		iconType = { name = "usa_map_DC" spriteType = "GFX_USA_st_DC" position = { x = 636 y = 263 } frame = 6 }
+		iconType = { name = "usa_map_FL" spriteType = "GFX_USA_st_FL" position = { x = 511 y = 417 } frame = 6 }
+		iconType = { name = "usa_map_GA" spriteType = "GFX_USA_st_GA" position = { x = 532 y = 350 } frame = 6 }
+		iconType = { name = "usa_map_HI" spriteType = "GFX_USA_st_HI" position = { x = 173 y = 591 } frame = 6 }
+		iconType = { name = "usa_map_ID" spriteType = "GFX_USA_st_ID" position = { x = 125 y = 115 } frame = 6 }
+		iconType = { name = "usa_map_IL" spriteType = "GFX_USA_st_IL" position = { x = 442 y = 234 } frame = 6 }
+		iconType = { name = "usa_map_IN" spriteType = "GFX_USA_st_IN" position = { x = 489 y = 240 } frame = 6 }
+		iconType = { name = "usa_map_IA" spriteType = "GFX_USA_st_IA" position = { x = 374 y = 223 } frame = 6 }
+		iconType = { name = "usa_map_KS" spriteType = "GFX_USA_st_KS" position = { x = 310 y = 286 } frame = 6 }
+		iconType = { name = "usa_map_KY" spriteType = "GFX_USA_st_KY" position = { x = 478 y = 284 } frame = 6 }
+		iconType = { name = "usa_map_LA" spriteType = "GFX_USA_st_LA" position = { x = 420 y = 398 } frame = 6 }
+		iconType = { name = "usa_map_ME" spriteType = "GFX_USA_st_ME" position = { x = 658 y = 85 } frame = 6 }
+		iconType = { name = "usa_map_MD" spriteType = "GFX_USA_st_MD" position = { x = 594 y = 252 } frame = 6 }
+		iconType = { name = "usa_map_MA" spriteType = "GFX_USA_st_MA" position = { x = 659 y = 178 } frame = 6 }
+		iconType = { name = "usa_map_MI" spriteType = "GFX_USA_st_MI" position = { x = 442 y = 151 } frame = 6 }
+		iconType = { name = "usa_map_MN" spriteType = "GFX_USA_st_MN" position = { x = 364 y = 130 } frame = 6 }
+		iconType = { name = "usa_map_MS" spriteType = "GFX_USA_st_MS" position = { x = 454 y = 359 } frame = 6 }
+		iconType = { name = "usa_map_MO" spriteType = "GFX_USA_st_MO" position = { x = 388 y = 272 } frame = 6 }
+		iconType = { name = "usa_map_MT" spriteType = "GFX_USA_st_MT" position = { x = 157 y = 118 } frame = 6 }
+		iconType = { name = "usa_map_NE" spriteType = "GFX_USA_st_NE" position = { x = 285 y = 237 } frame = 6 }
+		iconType = { name = "usa_map_NV" spriteType = "GFX_USA_st_NV" position = { x = 78 y = 225 } frame = 6 }
+		iconType = { name = "usa_map_NH" spriteType = "GFX_USA_st_NH" position = { x = 665 y = 135 } frame = 6 }
+		iconType = { name = "usa_map_NJ" spriteType = "GFX_USA_st_NJ" position = { x = 646 y = 217 } frame = 6 }
+		iconType = { name = "usa_map_NM" spriteType = "GFX_USA_st_NM" position = { x = 207 y = 331 } frame = 6 }
+		iconType = { name = "usa_map_NY" spriteType = "GFX_USA_st_NY" position = { x = 580 y = 141 } frame = 6 }
+		iconType = { name = "usa_map_NC" spriteType = "GFX_USA_st_NC" position = { x = 549 y = 298 } frame = 6 }
+		iconType = { name = "usa_map_ND" spriteType = "GFX_USA_st_ND" position = { x = 289 y = 134 } frame = 6 }
+		iconType = { name = "usa_map_OH" spriteType = "GFX_USA_st_OH" position = { x = 523 y = 223 } frame = 6 }
+		iconType = { name = "usa_map_OK" spriteType = "GFX_USA_st_OK" position = { x = 296 y = 335 } frame = 6 }
+		iconType = { name = "usa_map_OR" spriteType = "GFX_USA_st_OR" position = { x = 32 y = 143 } frame = 6 }
+		iconType = { name = "usa_map_PA" spriteType = "GFX_USA_st_PA" position = { x = 572 y = 208 } frame = 6 }
+		iconType = { name = "usa_map_RI" spriteType = "GFX_USA_st_RI" position = { x = 682 y = 192 } frame = 6 }
+		iconType = { name = "usa_map_SC" spriteType = "GFX_USA_st_SC" position = { x = 563 y = 341 } frame = 6 }
+		iconType = { name = "usa_map_SD" spriteType = "GFX_USA_st_SD" position = { x = 286 y = 188 } frame = 6 }
+		iconType = { name = "usa_map_TN" spriteType = "GFX_USA_st_TN" position = { x = 469 y = 319 } frame = 6 }
+		iconType = { name = "usa_map_TX" spriteType = "GFX_USA_st_TX" position = { x = 241 y = 345 } frame = 6 }
+		iconType = { name = "usa_map_UT" spriteType = "GFX_USA_st_UT" position = { x = 150 y = 240 } frame = 6 }
+		iconType = { name = "usa_map_VT" spriteType = "GFX_USA_st_VT" position = { x = 646 y = 142 } frame = 6 }
+		iconType = { name = "usa_map_VA" spriteType = "GFX_USA_st_VA" position = { x = 559 y = 258 } frame = 6 }
+		iconType = { name = "usa_map_WA" spriteType = "GFX_USA_st_WA" position = { x = 57 y = 97 } frame = 6 }
+		iconType = { name = "usa_map_WV" spriteType = "GFX_USA_st_WV" position = { x = 562 y = 258 } frame = 6 }
+		iconType = { name = "usa_map_WI" spriteType = "GFX_USA_st_WI" position = { x = 415 y = 164 } frame = 6 }
+		iconType = { name = "usa_map_WY" spriteType = "GFX_USA_st_WY" position = { x = 197 y = 196 } frame = 6 }
+
+		# small states as boxes next to the Atlantic coast
+		iconType = { name = "usa_inset_VT" spriteType = "GFX_USA_inset_VT" position = { x = 708 y = 250 } frame = 6 }
+		iconType = { name = "usa_inset_NH" spriteType = "GFX_USA_inset_NH" position = { x = 708 y = 276 } frame = 6 }
+		iconType = { name = "usa_inset_MA" spriteType = "GFX_USA_inset_MA" position = { x = 708 y = 302 } frame = 6 }
+		iconType = { name = "usa_inset_RI" spriteType = "GFX_USA_inset_RI" position = { x = 708 y = 328 } frame = 6 }
+		iconType = { name = "usa_inset_CT" spriteType = "GFX_USA_inset_CT" position = { x = 708 y = 354 } frame = 6 }
+		iconType = { name = "usa_inset_NJ" spriteType = "GFX_USA_inset_NJ" position = { x = 708 y = 380 } frame = 6 }
+		iconType = { name = "usa_inset_DE" spriteType = "GFX_USA_inset_DE" position = { x = 708 y = 406 } frame = 6 }
+		iconType = { name = "usa_inset_MD" spriteType = "GFX_USA_inset_MD" position = { x = 708 y = 432 } frame = 6 }
+		iconType = { name = "usa_inset_DC" spriteType = "GFX_USA_inset_DC" position = { x = 708 y = 458 } frame = 6 }
+
+		# selection marker
+		iconType = { name = "usa_marker" spriteType = "GFX_USA_marker" position = { x = -100 y = -100 } }
+
+		# click areas
+		buttonType = { name = "usa_st_AL" quadTextureSprite = "GFX_USA_hit_1" position = { x = 508 y = 390 } pdx_tooltip = "DVE_USA_TT_AL" }
+		buttonType = { name = "usa_st_AK" quadTextureSprite = "GFX_USA_hit_4" position = { x = 53 y = 572 } pdx_tooltip = "DVE_USA_TT_AK" }
+		buttonType = { name = "usa_st_AZ" quadTextureSprite = "GFX_USA_hit_3" position = { x = 153 y = 363 } pdx_tooltip = "DVE_USA_TT_AZ" }
+		buttonType = { name = "usa_st_AR" quadTextureSprite = "GFX_USA_hit_2" position = { x = 422 y = 359 } pdx_tooltip = "DVE_USA_TT_AR" }
+		buttonType = { name = "usa_st_CA" quadTextureSprite = "GFX_USA_hit_4" position = { x = 46 y = 290 } pdx_tooltip = "DVE_USA_TT_CA" }
+		buttonType = { name = "usa_st_CO" quadTextureSprite = "GFX_USA_hit_3" position = { x = 243 y = 290 } pdx_tooltip = "DVE_USA_TT_CO" }
+		buttonType = { name = "usa_st_CT" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 354 } pdx_tooltip = "DVE_USA_TT_CT" }
+		buttonType = { name = "usa_st_DE" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 406 } pdx_tooltip = "DVE_USA_TT_DE" }
+		buttonType = { name = "usa_st_DC" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 458 } pdx_tooltip = "DVE_USA_TT_DC" }
+		buttonType = { name = "usa_st_FL" quadTextureSprite = "GFX_USA_hit_4" position = { x = 564 y = 441 } pdx_tooltip = "DVE_USA_TT_FL" }
+		buttonType = { name = "usa_st_GA" quadTextureSprite = "GFX_USA_hit_2" position = { x = 552 y = 381 } pdx_tooltip = "DVE_USA_TT_GA" }
+		buttonType = { name = "usa_st_HI" quadTextureSprite = "GFX_USA_hit_4" position = { x = 214 y = 654 } pdx_tooltip = "DVE_USA_TT_HI" }
+		buttonType = { name = "usa_st_ID" quadTextureSprite = "GFX_USA_hit_3" position = { x = 140 y = 188 } pdx_tooltip = "DVE_USA_TT_ID" }
+		buttonType = { name = "usa_st_IL" quadTextureSprite = "GFX_USA_hit_1" position = { x = 461 y = 271 } pdx_tooltip = "DVE_USA_TT_IL" }
+		buttonType = { name = "usa_st_IN" quadTextureSprite = "GFX_USA_hit_1" position = { x = 498 y = 268 } pdx_tooltip = "DVE_USA_TT_IN" }
+		buttonType = { name = "usa_st_IA" quadTextureSprite = "GFX_USA_hit_3" position = { x = 392 y = 238 } pdx_tooltip = "DVE_USA_TT_IA" }
+		buttonType = { name = "usa_st_KS" quadTextureSprite = "GFX_USA_hit_3" position = { x = 335 y = 300 } pdx_tooltip = "DVE_USA_TT_KS" }
+		buttonType = { name = "usa_st_KY" quadTextureSprite = "GFX_USA_hit_3" position = { x = 507 y = 300 } pdx_tooltip = "DVE_USA_TT_KY" }
+		buttonType = { name = "usa_st_LA" quadTextureSprite = "GFX_USA_hit_2" position = { x = 435 y = 424 } pdx_tooltip = "DVE_USA_TT_LA" }
+		buttonType = { name = "usa_st_ME" quadTextureSprite = "GFX_USA_hit_2" position = { x = 674 y = 114 } pdx_tooltip = "DVE_USA_TT_ME" }
+		buttonType = { name = "usa_st_MD" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 432 } pdx_tooltip = "DVE_USA_TT_MD" }
+		buttonType = { name = "usa_st_MA" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 302 } pdx_tooltip = "DVE_USA_TT_MA" }
+		buttonType = { name = "usa_st_MI" quadTextureSprite = "GFX_USA_hit_4" position = { x = 476 y = 181 } pdx_tooltip = "DVE_USA_TT_MI" }
+		buttonType = { name = "usa_st_MN" quadTextureSprite = "GFX_USA_hit_3" position = { x = 378 y = 166 } pdx_tooltip = "DVE_USA_TT_MN" }
+		buttonType = { name = "usa_st_MS" quadTextureSprite = "GFX_USA_hit_1" position = { x = 469 y = 393 } pdx_tooltip = "DVE_USA_TT_MS" }
+		buttonType = { name = "usa_st_MO" quadTextureSprite = "GFX_USA_hit_3" position = { x = 411 y = 298 } pdx_tooltip = "DVE_USA_TT_MO" }
+		buttonType = { name = "usa_st_MT" quadTextureSprite = "GFX_USA_hit_5" position = { x = 188 y = 143 } pdx_tooltip = "DVE_USA_TT_MT" }
+		buttonType = { name = "usa_st_NE" quadTextureSprite = "GFX_USA_hit_3" position = { x = 316 y = 250 } pdx_tooltip = "DVE_USA_TT_NE" }
+		buttonType = { name = "usa_st_NV" quadTextureSprite = "GFX_USA_hit_3" position = { x = 100 y = 268 } pdx_tooltip = "DVE_USA_TT_NV" }
+		buttonType = { name = "usa_st_NH" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 276 } pdx_tooltip = "DVE_USA_TT_NH" }
+		buttonType = { name = "usa_st_NJ" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 380 } pdx_tooltip = "DVE_USA_TT_NJ" }
+		buttonType = { name = "usa_st_NM" quadTextureSprite = "GFX_USA_hit_3" position = { x = 230 y = 366 } pdx_tooltip = "DVE_USA_TT_NM" }
+		buttonType = { name = "usa_st_NY" quadTextureSprite = "GFX_USA_hit_4" position = { x = 599 y = 174 } pdx_tooltip = "DVE_USA_TT_NY" }
+		buttonType = { name = "usa_st_NC" quadTextureSprite = "GFX_USA_hit_3" position = { x = 596 y = 317 } pdx_tooltip = "DVE_USA_TT_NC" }
+		buttonType = { name = "usa_st_ND" quadTextureSprite = "GFX_USA_hit_3" position = { x = 307 y = 151 } pdx_tooltip = "DVE_USA_TT_ND" }
+		buttonType = { name = "usa_st_OH" quadTextureSprite = "GFX_USA_hit_1" position = { x = 542 y = 253 } pdx_tooltip = "DVE_USA_TT_OH" }
+		buttonType = { name = "usa_st_OK" quadTextureSprite = "GFX_USA_hit_3" position = { x = 347 y = 348 } pdx_tooltip = "DVE_USA_TT_OK" }
+		buttonType = { name = "usa_st_OR" quadTextureSprite = "GFX_USA_hit_4" position = { x = 58 y = 175 } pdx_tooltip = "DVE_USA_TT_OR" }
+		buttonType = { name = "usa_st_PA" quadTextureSprite = "GFX_USA_hit_3" position = { x = 592 y = 224 } pdx_tooltip = "DVE_USA_TT_PA" }
+		buttonType = { name = "usa_st_RI" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 328 } pdx_tooltip = "DVE_USA_TT_RI" }
+		buttonType = { name = "usa_st_SC" quadTextureSprite = "GFX_USA_hit_2" position = { x = 584 y = 354 } pdx_tooltip = "DVE_USA_TT_SC" }
+		buttonType = { name = "usa_st_SD" quadTextureSprite = "GFX_USA_hit_3" position = { x = 310 y = 202 } pdx_tooltip = "DVE_USA_TT_SD" }
+		buttonType = { name = "usa_st_TN" quadTextureSprite = "GFX_USA_hit_2" position = { x = 504 y = 333 } pdx_tooltip = "DVE_USA_TT_TN" }
+		buttonType = { name = "usa_st_TX" quadTextureSprite = "GFX_USA_hit_5" position = { x = 307 y = 411 } pdx_tooltip = "DVE_USA_TT_TX" }
+		buttonType = { name = "usa_st_UT" quadTextureSprite = "GFX_USA_hit_2" position = { x = 170 y = 281 } pdx_tooltip = "DVE_USA_TT_UT" }
+		buttonType = { name = "usa_st_VT" quadTextureSprite = "GFX_USA_hit_6" position = { x = 708 y = 250 } pdx_tooltip = "DVE_USA_TT_VT" }
+		buttonType = { name = "usa_st_VA" quadTextureSprite = "GFX_USA_hit_3" position = { x = 594 y = 281 } pdx_tooltip = "DVE_USA_TT_VA" }
+		buttonType = { name = "usa_st_WA" quadTextureSprite = "GFX_USA_hit_3" position = { x = 82 y = 121 } pdx_tooltip = "DVE_USA_TT_WA" }
+		buttonType = { name = "usa_st_WV" quadTextureSprite = "GFX_USA_hit_1" position = { x = 575 y = 277 } pdx_tooltip = "DVE_USA_TT_WV" }
+		buttonType = { name = "usa_st_WI" quadTextureSprite = "GFX_USA_hit_2" position = { x = 436 y = 194 } pdx_tooltip = "DVE_USA_TT_WI" }
+		buttonType = { name = "usa_st_WY" quadTextureSprite = "GFX_USA_hit_3" position = { x = 222 y = 222 } pdx_tooltip = "DVE_USA_TT_WY" }
+
+		# right panel: selected state
+		instantTextBoxType = { name = "usa_card_hdr" position = { x = 800 y = 88 } font = "hoi_16mbs" text = "USA_CARD_HEADER" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_name" position = { x = 800 y = 108 } font = "hoi_24header" text = "USA_CARD_NAME" format = left maxWidth = 270 maxHeight = 30 }
+		instantTextBoxType = { name = "usa_card_ev" position = { x = 800 y = 142 } font = "hoi_16mbs" text = "USA_CARD_EV" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_issues" position = { x = 800 y = 164 } font = "hoi_16mbs" text = "USA_CARD_ISSUES" format = left maxWidth = 270 maxHeight = 40 }
+		iconType = { name = "usa_card_dot_1" spriteType = "GFX_USA_bloc_dot" position = { x = 802 y = 210 } frame = 1 }
+		instantTextBoxType = { name = "usa_card_name_1" position = { x = 824 y = 208 } font = "hoi_16mbs" text = "USA_BLOC_SHORT_1" format = left maxWidth = 170 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_val_1" position = { x = 996 y = 208 } font = "hoi_16mbs" text = "USA_CARD_V_1" format = right maxWidth = 70 maxHeight = 20 }
+		iconType = { name = "usa_card_dot_2" spriteType = "GFX_USA_bloc_dot" position = { x = 802 y = 232 } frame = 2 }
+		instantTextBoxType = { name = "usa_card_name_2" position = { x = 824 y = 230 } font = "hoi_16mbs" text = "USA_BLOC_SHORT_2" format = left maxWidth = 170 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_val_2" position = { x = 996 y = 230 } font = "hoi_16mbs" text = "USA_CARD_V_2" format = right maxWidth = 70 maxHeight = 20 }
+		iconType = { name = "usa_card_dot_3" spriteType = "GFX_USA_bloc_dot" position = { x = 802 y = 254 } frame = 3 }
+		instantTextBoxType = { name = "usa_card_name_3" position = { x = 824 y = 252 } font = "hoi_16mbs" text = "USA_BLOC_SHORT_3" format = left maxWidth = 170 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_val_3" position = { x = 996 y = 252 } font = "hoi_16mbs" text = "USA_CARD_V_3" format = right maxWidth = 70 maxHeight = 20 }
+		iconType = { name = "usa_card_dot_4" spriteType = "GFX_USA_bloc_dot" position = { x = 802 y = 276 } frame = 4 }
+		instantTextBoxType = { name = "usa_card_name_4" position = { x = 824 y = 274 } font = "hoi_16mbs" text = "USA_BLOC_SHORT_4" format = left maxWidth = 170 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_val_4" position = { x = 996 y = 274 } font = "hoi_16mbs" text = "USA_CARD_V_4" format = right maxWidth = 70 maxHeight = 20 }
+		iconType = { name = "usa_card_dot_5" spriteType = "GFX_USA_bloc_dot" position = { x = 802 y = 298 } frame = 5 }
+		instantTextBoxType = { name = "usa_card_name_5" position = { x = 824 y = 296 } font = "hoi_16mbs" text = "USA_BLOC_SHORT_5" format = left maxWidth = 170 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_val_5" position = { x = 996 y = 296 } font = "hoi_16mbs" text = "USA_CARD_V_5" format = right maxWidth = 70 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_camps" position = { x = 800 y = 322 } font = "hoi_16mbs" text = "USA_CARD_CAMPS" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_lead" position = { x = 800 y = 342 } font = "hoi_16mbs" text = "USA_CARD_LEAD" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_card_status" position = { x = 800 y = 364 } font = "hoi_16mbs" text = "USA_CARD_STATUS" format = left maxWidth = 270 maxHeight = 40 }
+
+		buttonType = { name = "usa_theme_1" quadTextureSprite = "GFX_USA_btn_theme" position = { x = 802 y = 408 } buttonFont = "hoi_16mbs" buttonText = "USA_THEME_1_BTN" pdx_tooltip = "USA_THEME_1_TT" }
+		buttonType = { name = "usa_theme_2" quadTextureSprite = "GFX_USA_btn_theme" position = { x = 802 y = 444 } buttonFont = "hoi_16mbs" buttonText = "USA_THEME_2_BTN" pdx_tooltip = "USA_THEME_2_TT" }
+		buttonType = { name = "usa_theme_3" quadTextureSprite = "GFX_USA_btn_theme" position = { x = 802 y = 480 } buttonFont = "hoi_16mbs" buttonText = "USA_THEME_3_BTN" pdx_tooltip = "USA_THEME_3_TT" }
+		buttonType = { name = "usa_theme_4" quadTextureSprite = "GFX_USA_btn_theme" position = { x = 802 y = 516 } buttonFont = "hoi_16mbs" buttonText = "USA_THEME_4_BTN" pdx_tooltip = "USA_THEME_4_TT" }
+		buttonType = { name = "usa_theme_5" quadTextureSprite = "GFX_USA_btn_theme" position = { x = 802 y = 552 } buttonFont = "hoi_16mbs" buttonText = "USA_THEME_5_BTN" pdx_tooltip = "USA_THEME_5_TT" }
+
+		instantTextBoxType = { name = "usa_st_bloc" position = { x = 800 y = 596 } font = "hoi_16mbs" text = "USA_ST_BLOC" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_st_cand" position = { x = 800 y = 614 } font = "hoi_16mbs" text = "USA_ST_CAND" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_st_mood" position = { x = 800 y = 632 } font = "hoi_16mbs" text = "USA_ST_MOOD" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_st_weeks" position = { x = 800 y = 650 } font = "hoi_16mbs" text = "USA_ST_WEEKS" format = left maxWidth = 270 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_st_help" position = { x = 800 y = 668 } font = "hoi_16mbs" text = "USA_ST_HELP" format = left maxWidth = 274 maxHeight = 50 }
+
+		# bottom table: the five blocs
+		instantTextBoxType = { name = "usa_tbl_hdr" position = { x = 296 y = 554 } font = "hoi_16mbs" text = "USA_TBL_HEADER" format = left maxWidth = 280 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_tbl_camps" position = { x = 480 y = 554 } font = "hoi_16mbs" text = "USA_TBL_CAMPS" format = right maxWidth = 286 maxHeight = 20 }
+		instantTextBoxType = { name = "usa_tbl_ev_hdr" position = { x = 588 y = 574 } font = "hoi_16mbs" text = "USA_TBL_EV" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_st_hdr" position = { x = 650 y = 574 } font = "hoi_16mbs" text = "USA_TBL_ST" format = center maxWidth = 60 maxHeight = 18 }
+		iconType = { name = "usa_row_hl_1" spriteType = "GFX_USA_row_hl" position = { x = 280 y = 592 } frame = 1 }
+		iconType = { name = "usa_tbl_dot_1" spriteType = "GFX_USA_bloc_dot" position = { x = 290 y = 595 } frame = 1 }
+		instantTextBoxType = { name = "usa_tbl_row_1" position = { x = 312 y = 594 } font = "hoi_16mbs" text = "USA_TBL_ROW_1" format = left maxWidth = 270 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_evv_1" position = { x = 588 y = 594 } font = "hoi_16mbs" text = "USA_TBL_EVV_1" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_stv_1" position = { x = 650 y = 594 } font = "hoi_16mbs" text = "USA_TBL_STV_1" format = center maxWidth = 60 maxHeight = 18 }
+		iconType = { name = "usa_row_hl_2" spriteType = "GFX_USA_row_hl" position = { x = 280 y = 611 } frame = 1 }
+		iconType = { name = "usa_tbl_dot_2" spriteType = "GFX_USA_bloc_dot" position = { x = 290 y = 614 } frame = 2 }
+		instantTextBoxType = { name = "usa_tbl_row_2" position = { x = 312 y = 613 } font = "hoi_16mbs" text = "USA_TBL_ROW_2" format = left maxWidth = 270 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_evv_2" position = { x = 588 y = 613 } font = "hoi_16mbs" text = "USA_TBL_EVV_2" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_stv_2" position = { x = 650 y = 613 } font = "hoi_16mbs" text = "USA_TBL_STV_2" format = center maxWidth = 60 maxHeight = 18 }
+		iconType = { name = "usa_row_hl_3" spriteType = "GFX_USA_row_hl" position = { x = 280 y = 630 } frame = 1 }
+		iconType = { name = "usa_tbl_dot_3" spriteType = "GFX_USA_bloc_dot" position = { x = 290 y = 633 } frame = 3 }
+		instantTextBoxType = { name = "usa_tbl_row_3" position = { x = 312 y = 632 } font = "hoi_16mbs" text = "USA_TBL_ROW_3" format = left maxWidth = 270 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_evv_3" position = { x = 588 y = 632 } font = "hoi_16mbs" text = "USA_TBL_EVV_3" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_stv_3" position = { x = 650 y = 632 } font = "hoi_16mbs" text = "USA_TBL_STV_3" format = center maxWidth = 60 maxHeight = 18 }
+		iconType = { name = "usa_row_hl_4" spriteType = "GFX_USA_row_hl" position = { x = 280 y = 649 } frame = 1 }
+		iconType = { name = "usa_tbl_dot_4" spriteType = "GFX_USA_bloc_dot" position = { x = 290 y = 652 } frame = 4 }
+		instantTextBoxType = { name = "usa_tbl_row_4" position = { x = 312 y = 651 } font = "hoi_16mbs" text = "USA_TBL_ROW_4" format = left maxWidth = 270 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_evv_4" position = { x = 588 y = 651 } font = "hoi_16mbs" text = "USA_TBL_EVV_4" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_stv_4" position = { x = 650 y = 651 } font = "hoi_16mbs" text = "USA_TBL_STV_4" format = center maxWidth = 60 maxHeight = 18 }
+		iconType = { name = "usa_row_hl_5" spriteType = "GFX_USA_row_hl" position = { x = 280 y = 668 } frame = 1 }
+		iconType = { name = "usa_tbl_dot_5" spriteType = "GFX_USA_bloc_dot" position = { x = 290 y = 671 } frame = 5 }
+		instantTextBoxType = { name = "usa_tbl_row_5" position = { x = 312 y = 670 } font = "hoi_16mbs" text = "USA_TBL_ROW_5" format = left maxWidth = 270 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_evv_5" position = { x = 588 y = 670 } font = "hoi_16mbs" text = "USA_TBL_EVV_5" format = center maxWidth = 60 maxHeight = 18 }
+		instantTextBoxType = { name = "usa_tbl_stv_5" position = { x = 650 y = 670 } font = "hoi_16mbs" text = "USA_TBL_STV_5" format = center maxWidth = 60 maxHeight = 18 }
+	}
+}

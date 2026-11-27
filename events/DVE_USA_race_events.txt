@@ -1,0 +1,119 @@
+# DvE - US presidential race: Trump's inauguration (20 Jan 2025), then a repeating four-year cycle: midterms, presidential election, inauguration.
+# dve_usa.2-4 are the texts of the first cycle (2026, 2028, 2029); dve_usa.5-7 are the generic ones of every later cycle.
+# News events (picture panels in interface/DVE_event_panels.gfx) go to every country; the hidden dve_usa_send events do the work in the USA scope.
+
+add_namespace = dve_usa
+add_namespace = dve_usa_send
+
+country_event = {
+	id = dve_usa_send.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		USA_trump_inauguration_effect = yes
+	}
+}
+
+country_event = {
+	id = dve_usa_send.2
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		USA_midterm_effect = yes
+	}
+}
+
+country_event = {
+	id = dve_usa_send.3
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		USA_presidential_effect = yes
+	}
+}
+
+country_event = {
+	id = dve_usa_send.4
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		USA_president_inauguration_effect = yes
+	}
+}
+
+news_event = {
+	id = dve_usa.1
+	title = dve_usa.1.t
+	desc = dve_usa.1.d
+	picture = GFX_news_event_DVE_usa_inauguration_2025
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.1.a
+	}
+}
+
+news_event = {
+	id = dve_usa.2
+	title = dve_usa.2.t
+	desc = dve_usa.2.d
+	picture = GFX_news_event_DVE_usa_midterms_2026
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.2.a
+	}
+}
+
+news_event = {
+	id = dve_usa.3
+	title = dve_usa.3.t
+	desc = dve_usa.3.d
+	picture = GFX_news_event_DVE_usa_election_2028
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.3.a
+	}
+}
+
+news_event = {
+	id = dve_usa.4
+	title = dve_usa.4.t
+	desc = dve_usa.4.d
+	picture = GFX_news_event_DVE_usa_inauguration_2029
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.4.a
+	}
+}
+
+news_event = {
+	id = dve_usa.5
+	title = dve_usa.5.t
+	desc = dve_usa.5.d
+	picture = GFX_news_event_DVE_usa_midterms
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.5.a
+	}
+}
+
+news_event = {
+	id = dve_usa.6
+	title = dve_usa.6.t
+	desc = dve_usa.6.d
+	picture = GFX_news_event_DVE_usa_election
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.6.a
+	}
+}
+
+news_event = {
+	id = dve_usa.7
+	title = dve_usa.7.t
+	desc = dve_usa.7.d
+	picture = GFX_news_event_DVE_usa_inauguration
+	is_triggered_only = yes
+	option = {
+		name = dve_usa.7.a
+	}
+}

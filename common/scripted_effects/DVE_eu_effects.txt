@@ -1,821 +1,953 @@
-# DvE - European Union: effects (membership, Parliament, Council, Commission, Budget, Laws).
-# No parametrized effects on purpose. Every action ends with DVE_eu_refresh_effect.
+# ============================================================
+#   DvE - European Union Core Scripted Effects
+#   Fully compliant with HOI4 Clausewitz script syntax
+# ============================================================
 
-DVE_eu_clear_member_effect = {
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_opt_out_euro
-	clr_country_flag = DVE_eu_opt_out_justice
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_opt_out_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_opt_out_euro
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_opt_out_charter
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
-	clr_country_flag = DVE_eu_member
-	clr_country_flag = DVE_eu_candidate
-	clr_country_flag = DVE_eu_application_pending
-	clr_country_flag = DVE_eu_application_cooldown
-	clr_country_flag = DVE_eu_eurozone_member
-	clr_country_flag = DVE_eu_schengen
+# Initialization effect (run at game start)
+DVE_eu_init_effect = {
+	if = {
+		limit = { NOT = { has_global_flag = DVE_eu_initialized } }
+		set_global_flag = DVE_eu_initialized
+		set_variable = { global.DVE_eu_member_count = 27 }
+		set_variable = { global.DVE_eu_total_pop_weight = 4480 }
+		set_variable = { global.DVE_eu_qmv_pop_threshold = 2912 }
+		set_variable = { global.DVE_eu_qmv_states_threshold = 15 }
+		set_variable = { global.DVE_eu_council_presidency = 1 }
+		set_variable = { global.DVE_eu_council_proposal_active = 1 }
+		set_variable = { global.DVE_eu_council_proposal_type = 1 }
+
+		# Initialize Member States
+		GER = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 96 }
+			set_variable = { DVE_eu_council_weight = 832 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		FRA = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 79 }
+			set_variable = { DVE_eu_council_weight = 678 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		ITA = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 76 }
+			set_variable = { DVE_eu_council_weight = 590 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		SPA = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 59 }
+			set_variable = { DVE_eu_council_weight = 474 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		POL = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 52 }
+			set_variable = { DVE_eu_council_weight = 378 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		ROM = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 33 }
+			set_variable = { DVE_eu_council_weight = 191 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		HOL = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 29 }
+			set_variable = { DVE_eu_council_weight = 176 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		BEL = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 116 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		CZE = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 107 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		GRE = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 104 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		HUN = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 96 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		POR = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 103 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		SWE = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 21 }
+			set_variable = { DVE_eu_council_weight = 104 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		AUS = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 19 }
+			set_variable = { DVE_eu_council_weight = 90 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		BUL = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 17 }
+			set_variable = { DVE_eu_council_weight = 65 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		DEN = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 14 }
+			set_variable = { DVE_eu_council_weight = 58 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_schengen_member
+		}
+		FIN = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 14 }
+			set_variable = { DVE_eu_council_weight = 55 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		SLO = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 14 }
+			set_variable = { DVE_eu_council_weight = 54 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		IRE = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 13 }
+			set_variable = { DVE_eu_council_weight = 51 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+		}
+		CRO = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 12 }
+			set_variable = { DVE_eu_council_weight = 39 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		LIT = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 11 }
+			set_variable = { DVE_eu_council_weight = 28 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		LAT = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 8 }
+			set_variable = { DVE_eu_council_weight = 19 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		SLV = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 8 }
+			set_variable = { DVE_eu_council_weight = 21 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		EST = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 7 }
+			set_variable = { DVE_eu_council_weight = 13 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		CYP = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 6 }
+			set_variable = { DVE_eu_council_weight = 9 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+		}
+		LUX = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 6 }
+			set_variable = { DVE_eu_council_weight = 6 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+		MLT = {
+			set_country_flag = DVE_eu_member
+			add_ideas = DVE_eu_member_spirit
+			set_variable = { DVE_eu_ep_seats = 6 }
+			set_variable = { DVE_eu_council_weight = 5 }
+			set_variable = { DVE_eu_integration = 100 }
+			set_variable = { DVE_eu_council_vote = 2 }
+			set_country_flag = DVE_eu_eurozone_member
+			add_ideas = DVE_eu_eurozone_spirit
+			set_country_flag = DVE_eu_schengen_member
+		}
+
+		# Initialize Candidate States
+		UKR = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 65 }
+			set_variable = { DVE_eu_crit_rule_of_law = 65 }
+			set_variable = { DVE_eu_crit_democracy = 70 }
+			set_variable = { DVE_eu_crit_market = 65 }
+			set_variable = { DVE_eu_crit_acquis = 60 }
+		}
+		MOL = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 55 }
+			set_variable = { DVE_eu_crit_rule_of_law = 55 }
+			set_variable = { DVE_eu_crit_democracy = 60 }
+			set_variable = { DVE_eu_crit_market = 55 }
+			set_variable = { DVE_eu_crit_acquis = 50 }
+		}
+		GEO = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 45 }
+			set_variable = { DVE_eu_crit_rule_of_law = 45 }
+			set_variable = { DVE_eu_crit_democracy = 50 }
+			set_variable = { DVE_eu_crit_market = 45 }
+			set_variable = { DVE_eu_crit_acquis = 40 }
+		}
+		MNT = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 70 }
+			set_variable = { DVE_eu_crit_rule_of_law = 70 }
+			set_variable = { DVE_eu_crit_democracy = 75 }
+			set_variable = { DVE_eu_crit_market = 70 }
+			set_variable = { DVE_eu_crit_acquis = 65 }
+		}
+		SER = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 50 }
+			set_variable = { DVE_eu_crit_rule_of_law = 50 }
+			set_variable = { DVE_eu_crit_democracy = 55 }
+			set_variable = { DVE_eu_crit_market = 50 }
+			set_variable = { DVE_eu_crit_acquis = 45 }
+		}
+		ALB = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 50 }
+			set_variable = { DVE_eu_crit_rule_of_law = 50 }
+			set_variable = { DVE_eu_crit_democracy = 55 }
+			set_variable = { DVE_eu_crit_market = 50 }
+			set_variable = { DVE_eu_crit_acquis = 45 }
+		}
+		MAC = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 50 }
+			set_variable = { DVE_eu_crit_rule_of_law = 50 }
+			set_variable = { DVE_eu_crit_democracy = 55 }
+			set_variable = { DVE_eu_crit_market = 50 }
+			set_variable = { DVE_eu_crit_acquis = 45 }
+		}
+		BOS = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 40 }
+			set_variable = { DVE_eu_crit_rule_of_law = 40 }
+			set_variable = { DVE_eu_crit_democracy = 45 }
+			set_variable = { DVE_eu_crit_market = 40 }
+			set_variable = { DVE_eu_crit_acquis = 35 }
+		}
+		TUR = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 30 }
+			set_variable = { DVE_eu_crit_rule_of_law = 30 }
+			set_variable = { DVE_eu_crit_democracy = 35 }
+			set_variable = { DVE_eu_crit_market = 30 }
+			set_variable = { DVE_eu_crit_acquis = 25 }
+		}
+		KOS = {
+			set_country_flag = DVE_eu_candidate
+			add_ideas = DVE_eu_candidate_spirit
+			set_variable = { DVE_eu_integration = 30 }
+			set_variable = { DVE_eu_crit_rule_of_law = 30 }
+			set_variable = { DVE_eu_crit_democracy = 35 }
+			set_variable = { DVE_eu_crit_market = 30 }
+			set_variable = { DVE_eu_crit_acquis = 25 }
+		}
+
+		# Calculate seats and Council votes
+		DVE_eu_parliament_recalc_effect = yes
+		DVE_eu_qmv_check_effect = yes
+	}
 }
 
-DVE_eu_clear_ep_delegation_effect = {
-	set_variable = { DVE_eu_ep_delegation_epp = 0 }
-	set_variable = { DVE_eu_ep_delegation_sd = 0 }
-	set_variable = { DVE_eu_ep_delegation_re = 0 }
-	set_variable = { DVE_eu_ep_delegation_greens = 0 }
-	set_variable = { DVE_eu_ep_delegation_id = 0 }
-	set_variable = { DVE_eu_ep_delegation_ecr = 0 }
-	set_variable = { DVE_eu_ep_delegation_left = 0 }
-	set_variable = { DVE_eu_ep_delegation_ni = 0 }
+# Country-level delegation seat calculation based on national party popularities
+DVE_eu_country_delegation_calc_effect = {
+	# Raw party popularities mapped to ideological shares
+	set_temp_variable = { p_tot_soc = party_popularity@totalitarian_socialism }
+	set_temp_variable = { p_auth_soc = party_popularity@authoritarian_socialism }
+	set_temp_variable = { p_vang_soc = party_popularity@vanguard_socialism }
+	set_temp_variable = { p_rev_soc = party_popularity@revolutionary_socialism }
+	set_temp_variable = { p_prog = party_popularity@progressive }
+	set_temp_variable = { p_lib = party_popularity@liberal }
+	set_temp_variable = { p_cent = party_popularity@centrist }
+	set_temp_variable = { p_cons = party_popularity@conservative }
+	set_temp_variable = { p_react = party_popularity@reactionary }
+	set_temp_variable = { p_auth = party_popularity@authoritarianism }
+	set_temp_variable = { p_ultra = party_popularity@ultranationalism }
+	set_temp_variable = { p_abs = party_popularity@absolutism }
+	set_temp_variable = { p_auto = party_popularity@autocracy }
+	set_temp_variable = { p_fund = party_popularity@fundamentalism }
+
+	# Group 1: The Left (Frame 2)
+	set_variable = { eu_sh_1 = p_rev_soc }
+	add_to_variable = { eu_sh_1 = p_vang_soc }
+	set_temp_variable = { half_auth_soc = p_auth_soc }
+	multiply_variable = { half_auth_soc = 0.5 }
+	add_to_variable = { eu_sh_1 = half_auth_soc }
+
+	# Group 2: Greens/EFA (Frame 3)
+	set_variable = { eu_sh_2 = p_prog }
+	multiply_variable = { eu_sh_2 = 0.4 }
+
+	# Group 3: S&D (Frame 4)
+	set_variable = { eu_sh_3 = p_prog }
+	multiply_variable = { eu_sh_3 = 0.6 }
+	add_to_variable = { eu_sh_3 = half_auth_soc }
+
+	# Group 4: Renew (Frame 5)
+	set_variable = { eu_sh_4 = p_lib }
+	set_temp_variable = { half_cent = p_cent }
+	multiply_variable = { half_cent = 0.4 }
+	add_to_variable = { eu_sh_4 = half_cent }
+
+	# Group 5: EPP (Frame 6)
+	set_variable = { eu_sh_5 = p_cons }
+	multiply_variable = { eu_sh_5 = 0.7 }
+	set_temp_variable = { epp_cent = p_cent }
+	multiply_variable = { epp_cent = 0.6 }
+	add_to_variable = { eu_sh_5 = epp_cent }
+
+	# Group 6: ECR (Frame 7)
+	set_variable = { eu_sh_6 = p_cons }
+	multiply_variable = { eu_sh_6 = 0.3 }
+	set_temp_variable = { ecr_react = p_react }
+	multiply_variable = { ecr_react = 0.5 }
+	add_to_variable = { eu_sh_6 = ecr_react }
+	set_temp_variable = { ecr_auth = p_auth }
+	multiply_variable = { ecr_auth = 0.4 }
+	add_to_variable = { eu_sh_6 = ecr_auth }
+
+	# Group 7: ID (Frame 8)
+	set_variable = { eu_sh_7 = p_react }
+	multiply_variable = { eu_sh_7 = 0.5 }
+	add_to_variable = { eu_sh_7 = p_ultra }
+	set_temp_variable = { id_auth = p_auth }
+	multiply_variable = { id_auth = 0.4 }
+	add_to_variable = { eu_sh_7 = id_auth }
+
+	# Group 8: NI (Frame 9)
+	set_variable = { eu_sh_8 = p_tot_soc }
+	add_to_variable = { eu_sh_8 = p_abs }
+	add_to_variable = { eu_sh_8 = p_auto }
+	add_to_variable = { eu_sh_8 = p_fund }
+	set_temp_variable = { ni_auth = p_auth }
+	multiply_variable = { ni_auth = 0.2 }
+	add_to_variable = { eu_sh_8 = ni_auth }
+
+	# Total share
+	set_variable = { eu_sh_tot = 0 }
+	add_to_variable = { eu_sh_tot = eu_sh_1 }
+	add_to_variable = { eu_sh_tot = eu_sh_2 }
+	add_to_variable = { eu_sh_tot = eu_sh_3 }
+	add_to_variable = { eu_sh_tot = eu_sh_4 }
+	add_to_variable = { eu_sh_tot = eu_sh_5 }
+	add_to_variable = { eu_sh_tot = eu_sh_6 }
+	add_to_variable = { eu_sh_tot = eu_sh_7 }
+	add_to_variable = { eu_sh_tot = eu_sh_8 }
+	if = { limit = { check_variable = { eu_sh_tot < 0.01 } } set_variable = { eu_sh_tot = 1.0 } }
+
+	# If country has seats, distribute them proportionately
+	set_variable = { my_seats = DVE_eu_ep_seats }
+	if = { limit = { check_variable = { my_seats < 1 } } set_variable = { my_seats = 20 } }
+
+	set_variable = { my_allocated = 0 }
+	set_variable = { DVE_eu_ep_del_1 = eu_sh_1 }
+	divide_variable = { DVE_eu_ep_del_1 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_1 = my_seats }
+	round_variable = DVE_eu_ep_del_1
+	add_to_variable = { my_allocated = DVE_eu_ep_del_1 }
+	set_variable = { DVE_eu_ep_del_2 = eu_sh_2 }
+	divide_variable = { DVE_eu_ep_del_2 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_2 = my_seats }
+	round_variable = DVE_eu_ep_del_2
+	add_to_variable = { my_allocated = DVE_eu_ep_del_2 }
+	set_variable = { DVE_eu_ep_del_3 = eu_sh_3 }
+	divide_variable = { DVE_eu_ep_del_3 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_3 = my_seats }
+	round_variable = DVE_eu_ep_del_3
+	add_to_variable = { my_allocated = DVE_eu_ep_del_3 }
+	set_variable = { DVE_eu_ep_del_4 = eu_sh_4 }
+	divide_variable = { DVE_eu_ep_del_4 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_4 = my_seats }
+	round_variable = DVE_eu_ep_del_4
+	add_to_variable = { my_allocated = DVE_eu_ep_del_4 }
+	set_variable = { DVE_eu_ep_del_5 = eu_sh_5 }
+	divide_variable = { DVE_eu_ep_del_5 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_5 = my_seats }
+	round_variable = DVE_eu_ep_del_5
+	add_to_variable = { my_allocated = DVE_eu_ep_del_5 }
+	set_variable = { DVE_eu_ep_del_6 = eu_sh_6 }
+	divide_variable = { DVE_eu_ep_del_6 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_6 = my_seats }
+	round_variable = DVE_eu_ep_del_6
+	add_to_variable = { my_allocated = DVE_eu_ep_del_6 }
+	set_variable = { DVE_eu_ep_del_7 = eu_sh_7 }
+	divide_variable = { DVE_eu_ep_del_7 = eu_sh_tot }
+	multiply_variable = { DVE_eu_ep_del_7 = my_seats }
+	round_variable = DVE_eu_ep_del_7
+	add_to_variable = { my_allocated = DVE_eu_ep_del_7 }
+	# Group 8 (NI) gets the remainder so total is exact
+	set_variable = { DVE_eu_ep_del_8 = my_seats }
+	subtract_from_variable = { DVE_eu_ep_del_8 = my_allocated }
+	if = { limit = { check_variable = { DVE_eu_ep_del_8 < 0 } } set_variable = { DVE_eu_ep_del_8 = 0 } }
 }
 
-# Recalculates EU state for a country. Runs on_daily (human), on_weekly (AI), on_startup.
-DVE_eu_refresh_effect = {
-	# Integration level (0-100)
-	if = {
-		limit = { has_country_flag = DVE_eu_member }
-		set_variable = { DVE_eu_integration = 100 }
+# Parliament European totals recalculation effect
+DVE_eu_parliament_recalc_effect = {
+	# Reset global seat totals
+	set_variable = { global.DVE_eu_ep_group_seats_1 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_2 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_3 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_4 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_5 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_6 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_7 = 0 }
+	set_variable = { global.DVE_eu_ep_group_seats_8 = 0 }
+
+	# Recalculate each member state and accumulate
+	GER = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
 	}
-	else_if = {
-		limit = { has_country_flag = DVE_eu_candidate }
-		# Integration variable already set by decisions/events
-		clamp_variable = { var = DVE_eu_integration min = 0 max = 100 }
+	FRA = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
 	}
-	else = {
-		set_variable = { DVE_eu_integration = 0 }
+	ITA = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	SPA = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	POL = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	ROM = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	HOL = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	BEL = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	CZE = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	GRE = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	HUN = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	POR = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	SWE = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	AUS = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	BUL = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	DEN = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	FIN = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	SLO = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	IRE = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	CRO = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	LIT = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	LAT = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	SLV = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	EST = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	CYP = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	LUX = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
+	}
+	MLT = {
+		DVE_eu_country_delegation_calc_effect = yes
+		add_to_variable = { global.DVE_eu_ep_group_seats_1 = DVE_eu_ep_del_1 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_2 = DVE_eu_ep_del_2 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_3 = DVE_eu_ep_del_3 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_4 = DVE_eu_ep_del_4 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_5 = DVE_eu_ep_del_5 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_6 = DVE_eu_ep_del_6 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_7 = DVE_eu_ep_del_7 }
+		add_to_variable = { global.DVE_eu_ep_group_seats_8 = DVE_eu_ep_del_8 }
 	}
 
-	# Rounded integration for display
-	set_variable = { DVE_eu_integration_pct = DVE_eu_integration }
-	round_variable = DVE_eu_integration_pct
+	# Make sure the sum equals exactly 705 by adjusting Group 8 (NI)
+	set_variable = { global.eu_sum_allocated = 0 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_1 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_2 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_3 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_4 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_5 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_6 }
+	add_to_variable = { global.eu_sum_allocated = global.DVE_eu_ep_group_seats_7 }
+	set_variable = { global.DVE_eu_ep_group_seats_8 = 705 }
+	subtract_from_variable = { global.DVE_eu_ep_group_seats_8 = global.eu_sum_allocated }
+	if = { limit = { check_variable = { global.DVE_eu_ep_group_seats_8 < 0 } } set_variable = { global.DVE_eu_ep_group_seats_8 = 0 } }
 
-	# EP seats for this country (fixed)
-	if = {
-		limit = { tag = BEL }
-		set_variable = { DVE_eu_ep_seats = 22 }
-	}
-	if = {
-		limit = { tag = GER }
-		set_variable = { DVE_eu_ep_seats = 96 }
-	}
-	if = {
-		limit = { tag = FRA }
-		set_variable = { DVE_eu_ep_seats = 81 }
-	}
-	if = {
-		limit = { tag = ITA }
-		set_variable = { DVE_eu_ep_seats = 76 }
-	}
-	if = {
-		limit = { tag = LUX }
-		set_variable = { DVE_eu_ep_seats = 6 }
-	}
-	if = {
-		limit = { tag = HOL }
-		set_variable = { DVE_eu_ep_seats = 31 }
-	}
-	if = {
-		limit = { tag = DEN }
-		set_variable = { DVE_eu_ep_seats = 15 }
-	}
-	if = {
-		limit = { tag = IRE }
-		set_variable = { DVE_eu_ep_seats = 14 }
-	}
-	if = {
-		limit = { tag = GRE }
-		set_variable = { DVE_eu_ep_seats = 21 }
-	}
-	if = {
-		limit = { tag = SPA }
-		set_variable = { DVE_eu_ep_seats = 61 }
-	}
-	if = {
-		limit = { tag = POR }
-		set_variable = { DVE_eu_ep_seats = 21 }
-	}
-	if = {
-		limit = { tag = AUS }
-		set_variable = { DVE_eu_ep_seats = 20 }
-	}
-	if = {
-		limit = { tag = FIN }
-		set_variable = { DVE_eu_ep_seats = 15 }
-	}
-	if = {
-		limit = { tag = SWE }
-		set_variable = { DVE_eu_ep_seats = 21 }
-	}
-	if = {
-		limit = { tag = CZE }
-		set_variable = { DVE_eu_ep_seats = 21 }
-	}
-	if = {
-		limit = { tag = EST }
-		set_variable = { DVE_eu_ep_seats = 7 }
-	}
-	if = {
-		limit = { tag = CYP }
-		set_variable = { DVE_eu_ep_seats = 6 }
-	}
-	if = {
-		limit = { tag = LAT }
-		set_variable = { DVE_eu_ep_seats = 9 }
-	}
-	if = {
-		limit = { tag = LIT }
-		set_variable = { DVE_eu_ep_seats = 11 }
-	}
-	if = {
-		limit = { tag = HUN }
-		set_variable = { DVE_eu_ep_seats = 21 }
-	}
-	if = {
-		limit = { tag = MAL }
-		set_variable = { DVE_eu_ep_seats = 6 }
-	}
-	if = {
-		limit = { tag = POL }
-		set_variable = { DVE_eu_ep_seats = 53 }
-	}
-	if = {
-		limit = { tag = SLO }
-		set_variable = { DVE_eu_ep_seats = 9 }
-	}
-	if = {
-		limit = { tag = SLK }
-		set_variable = { DVE_eu_ep_seats = 15 }
-	}
-	if = {
-		limit = { tag = ROM }
-		set_variable = { DVE_eu_ep_seats = 33 }
-	}
-	if = {
-		limit = { tag = BUL }
-		set_variable = { DVE_eu_ep_seats = 17 }
-	}
-	if = {
-		limit = { tag = CRO }
-		set_variable = { DVE_eu_ep_seats = 12 }
-	}
+	# Calculate Cumulative thresholds for seat coloring
+	set_variable = { global.DVE_eu_ep_cum_1 = global.DVE_eu_ep_group_seats_1 }
+	set_variable = { global.DVE_eu_ep_cum_2 = global.DVE_eu_ep_cum_1 }
+	add_to_variable = { global.DVE_eu_ep_cum_2 = global.DVE_eu_ep_group_seats_2 }
+	set_variable = { global.DVE_eu_ep_cum_3 = global.DVE_eu_ep_cum_2 }
+	add_to_variable = { global.DVE_eu_ep_cum_3 = global.DVE_eu_ep_group_seats_3 }
+	set_variable = { global.DVE_eu_ep_cum_4 = global.DVE_eu_ep_cum_3 }
+	add_to_variable = { global.DVE_eu_ep_cum_4 = global.DVE_eu_ep_group_seats_4 }
+	set_variable = { global.DVE_eu_ep_cum_5 = global.DVE_eu_ep_cum_4 }
+	add_to_variable = { global.DVE_eu_ep_cum_5 = global.DVE_eu_ep_group_seats_5 }
+	set_variable = { global.DVE_eu_ep_cum_6 = global.DVE_eu_ep_cum_5 }
+	add_to_variable = { global.DVE_eu_ep_cum_6 = global.DVE_eu_ep_group_seats_6 }
+	set_variable = { global.DVE_eu_ep_cum_7 = global.DVE_eu_ep_cum_6 }
+	add_to_variable = { global.DVE_eu_ep_cum_7 = global.DVE_eu_ep_group_seats_7 }
 
-	# Council population weight (fixed)
-	if = {
-		limit = { tag = BEL }
-		set_variable = { DVE_eu_council_weight = 116 }
-	}
-	if = {
-		limit = { tag = GER }
-		set_variable = { DVE_eu_council_weight = 832 }
-	}
-	if = {
-		limit = { tag = FRA }
-		set_variable = { DVE_eu_council_weight = 678 }
-	}
-	if = {
-		limit = { tag = ITA }
-		set_variable = { DVE_eu_council_weight = 590 }
-	}
-	if = {
-		limit = { tag = LUX }
-		set_variable = { DVE_eu_council_weight = 6 }
-	}
-	if = {
-		limit = { tag = HOL }
-		set_variable = { DVE_eu_council_weight = 176 }
-	}
-	if = {
-		limit = { tag = DEN }
-		set_variable = { DVE_eu_council_weight = 58 }
-	}
-	if = {
-		limit = { tag = IRE }
-		set_variable = { DVE_eu_council_weight = 51 }
-	}
-	if = {
-		limit = { tag = GRE }
-		set_variable = { DVE_eu_council_weight = 104 }
-	}
-	if = {
-		limit = { tag = SPA }
-		set_variable = { DVE_eu_council_weight = 474 }
-	}
-	if = {
-		limit = { tag = POR }
-		set_variable = { DVE_eu_council_weight = 103 }
-	}
-	if = {
-		limit = { tag = AUS }
-		set_variable = { DVE_eu_council_weight = 90 }
-	}
-	if = {
-		limit = { tag = FIN }
-		set_variable = { DVE_eu_council_weight = 55 }
-	}
-	if = {
-		limit = { tag = SWE }
-		set_variable = { DVE_eu_council_weight = 104 }
-	}
-	if = {
-		limit = { tag = CZE }
-		set_variable = { DVE_eu_council_weight = 107 }
-	}
-	if = {
-		limit = { tag = EST }
-		set_variable = { DVE_eu_council_weight = 13 }
-	}
-	if = {
-		limit = { tag = CYP }
-		set_variable = { DVE_eu_council_weight = 9 }
-	}
-	if = {
-		limit = { tag = LAT }
-		set_variable = { DVE_eu_council_weight = 19 }
-	}
-	if = {
-		limit = { tag = LIT }
-		set_variable = { DVE_eu_council_weight = 28 }
-	}
-	if = {
-		limit = { tag = HUN }
-		set_variable = { DVE_eu_council_weight = 96 }
-	}
-	if = {
-		limit = { tag = MAL }
-		set_variable = { DVE_eu_council_weight = 5 }
-	}
-	if = {
-		limit = { tag = POL }
-		set_variable = { DVE_eu_council_weight = 378 }
-	}
-	if = {
-		limit = { tag = SLO }
-		set_variable = { DVE_eu_council_weight = 21 }
-	}
-	if = {
-		limit = { tag = SLK }
-		set_variable = { DVE_eu_council_weight = 54 }
-	}
-	if = {
-		limit = { tag = ROM }
-		set_variable = { DVE_eu_council_weight = 191 }
-	}
-	if = {
-		limit = { tag = BUL }
-		set_variable = { DVE_eu_council_weight = 65 }
-	}
-	if = {
-		limit = { tag = CRO }
-		set_variable = { DVE_eu_council_weight = 39 }
-	}
+	# Calculate percentages for display (seats * 100 / 705)
+	set_variable = { global.DVE_eu_ep_group_pct_1 = global.DVE_eu_ep_group_seats_1 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_1 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_1 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_1
+	set_variable = { global.DVE_eu_ep_group_pct_2 = global.DVE_eu_ep_group_seats_2 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_2 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_2 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_2
+	set_variable = { global.DVE_eu_ep_group_pct_3 = global.DVE_eu_ep_group_seats_3 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_3 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_3 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_3
+	set_variable = { global.DVE_eu_ep_group_pct_4 = global.DVE_eu_ep_group_seats_4 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_4 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_4 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_4
+	set_variable = { global.DVE_eu_ep_group_pct_5 = global.DVE_eu_ep_group_seats_5 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_5 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_5 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_5
+	set_variable = { global.DVE_eu_ep_group_pct_6 = global.DVE_eu_ep_group_seats_6 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_6 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_6 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_6
+	set_variable = { global.DVE_eu_ep_group_pct_7 = global.DVE_eu_ep_group_seats_7 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_7 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_7 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_7
+	set_variable = { global.DVE_eu_ep_group_pct_8 = global.DVE_eu_ep_group_seats_8 }
+	multiply_variable = { global.DVE_eu_ep_group_pct_8 = 100 }
+	divide_variable = { global.DVE_eu_ep_group_pct_8 = 705 }
+	round_variable = global.DVE_eu_ep_group_pct_8
 
-	# Eurozone / Schengen flags
-	if = { limit = { tag = BEL } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = BEL } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = GER } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = GER } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = FRA } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = FRA } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = ITA } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = ITA } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = LUX } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = LUX } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = HOL } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = HOL } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = DEN } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = DEN } set_country_flag = DVE_eu_opt_out_euro }
-	if = { limit = { tag = DEN } set_country_flag = DVE_eu_opt_out_justice }
-	if = { limit = { tag = IRE } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = IRE } set_country_flag = DVE_eu_opt_out_schengen }
-	if = { limit = { tag = GRE } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = GRE } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = SPA } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = SPA } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = POR } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = POR } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = AUS } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = AUS } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = FIN } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = FIN } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = SWE } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = SWE } set_country_flag = DVE_eu_opt_out_euro }
-	if = { limit = { tag = CZE } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = EST } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = EST } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = CYP } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = LAT } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = LAT } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = LIT } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = LIT } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = HUN } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = MAL } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = MAL } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = POL } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = POL } set_country_flag = DVE_eu_opt_out_charter }
-	if = { limit = { tag = SLO } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = SLO } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = SLK } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = SLK } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = ROM } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = BUL } set_country_flag = DVE_eu_schengen }
-	if = { limit = { tag = CRO } set_country_flag = DVE_eu_eurozone_member }
-	if = { limit = { tag = CRO } set_country_flag = DVE_eu_schengen }
+	# Pro-European Coalition seats (S&D 3 + Renew 4 + EPP 5)
+	set_variable = { global.DVE_eu_ep_coalition_seats = global.DVE_eu_ep_group_seats_3 }
+	add_to_variable = { global.DVE_eu_ep_coalition_seats = global.DVE_eu_ep_group_seats_4 }
+	add_to_variable = { global.DVE_eu_ep_coalition_seats = global.DVE_eu_ep_group_seats_5 }
 
-	# EP delegation: map national party popularity to EP groups
-	DVE_eu_clear_ep_delegation_effect = yes
-	DVE_eu_calc_ep_delegation_effect = yes
+	# Apply seat frames to all 705 dots
+	DVE_eu_parliament_seat_frames_effect = yes
 
-	# Budget contribution (simplified: net contributor if GDP per capita > EU average)
-	set_variable = { DVE_eu_budget_contribution = 0 }
+	# Colour the 27 Council dots with the Member State votes
+	DVE_eu_council_frames_effect = yes
+
+	# Copy national delegation to ROOT for GUI display
+	DVE_eu_country_delegation_calc_effect = yes
+	set_variable = { DVE_eu_group_nat_1 = DVE_eu_ep_del_1 }
+	set_variable = { DVE_eu_group_total_1 = global.DVE_eu_ep_group_seats_1 }
+	set_variable = { DVE_eu_group_share_1 = global.DVE_eu_ep_group_pct_1 }
+	set_variable = { DVE_eu_group_nat_2 = DVE_eu_ep_del_2 }
+	set_variable = { DVE_eu_group_total_2 = global.DVE_eu_ep_group_seats_2 }
+	set_variable = { DVE_eu_group_share_2 = global.DVE_eu_ep_group_pct_2 }
+	set_variable = { DVE_eu_group_nat_3 = DVE_eu_ep_del_3 }
+	set_variable = { DVE_eu_group_total_3 = global.DVE_eu_ep_group_seats_3 }
+	set_variable = { DVE_eu_group_share_3 = global.DVE_eu_ep_group_pct_3 }
+	set_variable = { DVE_eu_group_nat_4 = DVE_eu_ep_del_4 }
+	set_variable = { DVE_eu_group_total_4 = global.DVE_eu_ep_group_seats_4 }
+	set_variable = { DVE_eu_group_share_4 = global.DVE_eu_ep_group_pct_4 }
+	set_variable = { DVE_eu_group_nat_5 = DVE_eu_ep_del_5 }
+	set_variable = { DVE_eu_group_total_5 = global.DVE_eu_ep_group_seats_5 }
+	set_variable = { DVE_eu_group_share_5 = global.DVE_eu_ep_group_pct_5 }
+	set_variable = { DVE_eu_group_nat_6 = DVE_eu_ep_del_6 }
+	set_variable = { DVE_eu_group_total_6 = global.DVE_eu_ep_group_seats_6 }
+	set_variable = { DVE_eu_group_share_6 = global.DVE_eu_ep_group_pct_6 }
+	set_variable = { DVE_eu_group_nat_7 = DVE_eu_ep_del_7 }
+	set_variable = { DVE_eu_group_total_7 = global.DVE_eu_ep_group_seats_7 }
+	set_variable = { DVE_eu_group_share_7 = global.DVE_eu_ep_group_pct_7 }
+	set_variable = { DVE_eu_group_nat_8 = DVE_eu_ep_del_8 }
+	set_variable = { DVE_eu_group_total_8 = global.DVE_eu_ep_group_seats_8 }
+	set_variable = { DVE_eu_group_share_8 = global.DVE_eu_ep_group_pct_8 }
 }
 
-# Calculates national EP delegation by mapping 14 DvE ideologies to 8 EP groups.
-DVE_eu_calc_ep_delegation_effect = {
-	# Total seats for this country
-	set_temp_variable = { DVE_eu_total_seats = DVE_eu_ep_seats }
-	# For each DvE ideology, distribute its share to EP groups
-	set_temp_variable = { DVE_eu_share = party_popularity@totalitarian_socialism }
-	multiply_temp_variable = { DVE_eu_share = 1 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarian_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.6 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarian_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.4 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_left = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@vanguard_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.5 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_left = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@vanguard_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_greens = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@vanguard_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@revolutionary_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.7 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_left = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@revolutionary_socialism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@progressive }
-	multiply_temp_variable = { DVE_eu_share = 0.4 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@progressive }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_greens = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@progressive }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_re = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@progressive }
-	multiply_temp_variable = { DVE_eu_share = 0.1 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@liberal }
-	multiply_temp_variable = { DVE_eu_share = 0.7 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_re = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@liberal }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@liberal }
-	multiply_temp_variable = { DVE_eu_share = 0.1 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@centrist }
-	multiply_temp_variable = { DVE_eu_share = 0.5 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@centrist }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_re = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@centrist }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_sd = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@conservative }
-	multiply_temp_variable = { DVE_eu_share = 0.5 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@conservative }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@conservative }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_id = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@reactionary }
-	multiply_temp_variable = { DVE_eu_share = 0.4 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@reactionary }
-	multiply_temp_variable = { DVE_eu_share = 0.4 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_id = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@reactionary }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarianism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_epp = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarianism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarianism }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_id = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@authoritarianism }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@autocracy }
-	multiply_temp_variable = { DVE_eu_share = 0.6 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@autocracy }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@autocracy }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_id = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@absolutism }
-	multiply_temp_variable = { DVE_eu_share = 0.7 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@absolutism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@ultranationalism }
-	multiply_temp_variable = { DVE_eu_share = 0.5 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_id = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@ultranationalism }
-	multiply_temp_variable = { DVE_eu_share = 0.3 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@ultranationalism }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@fundamentalism }
-	multiply_temp_variable = { DVE_eu_share = 0.8 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ni = DVE_eu_share }
-	set_temp_variable = { DVE_eu_share = party_popularity@fundamentalism }
-	multiply_temp_variable = { DVE_eu_share = 0.2 }
-	multiply_temp_variable = { DVE_eu_share = DVE_eu_total_seats }
-	divide_temp_variable = { DVE_eu_share = 100 }
-	round_temp_variable = DVE_eu_share
-	add_to_variable = { DVE_eu_ep_delegation_ecr = DVE_eu_share }
-}
-
-# Apply for EU membership: candidate with 100 integration, costs PP, starts process.
-DVE_eu_apply_effect = {
-	if = {
-		limit = { DVE_eu_can_apply = yes }
-		add_political_power = -50
-		set_country_flag = DVE_eu_application_pending
-		set_temp_variable = { DVE_eu_delta = 5 }
-		DVE_eu_change_integration_effect = yes
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-# Accept application: Council unanimous + EP consent -> membership.
-DVE_eu_accept_effect = {
-	if = {
-		limit = { DVE_eu_can_join = yes }
-		clr_country_flag = DVE_eu_application_pending
-		clr_country_flag = DVE_eu_candidate
-		set_country_flag = DVE_eu_member
-		remove_ideas = DVE_eu_candidate_spirit
-		add_ideas = DVE_eu_member_spirit
-		set_variable = { DVE_eu_integration = 100 }
-		set_temp_variable = { DVE_eu_delta = 20 }
-		DVE_eu_change_integration_effect = yes
-		DVE_eu_global_refresh_effect = yes
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-# Reject application: -15 integration, 180-day cooldown.
-DVE_eu_reject_effect = {
-	if = {
-		limit = { has_country_flag = DVE_eu_application_pending }
-		clr_country_flag = DVE_eu_application_pending
-		set_country_flag = { flag = DVE_eu_application_cooldown days = 180 value = 1 }
-		set_temp_variable = { DVE_eu_delta = -15 }
-		DVE_eu_change_integration_effect = yes
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-DVE_eu_change_integration_effect = {
-	add_to_variable = { DVE_eu_integration = DVE_eu_delta }
-	clamp_variable = { var = DVE_eu_integration min = 0 max = 100 }
-	set_variable = { DVE_eu_integration_pct = DVE_eu_integration }
-	round_variable = DVE_eu_integration_pct
-}
-
-# Global EU state refresh: member count, total population, EP group totals.
-DVE_eu_global_refresh_effect = {
-	set_variable = { global.DVE_eu_member_count = 0 }
-	set_variable = { global.DVE_eu_total_population = 0 }
-	set_variable = { global.DVE_eu_ep_composition_epp = 0 }
-	set_variable = { global.DVE_eu_ep_composition_sd = 0 }
-	set_variable = { global.DVE_eu_ep_composition_re = 0 }
-	set_variable = { global.DVE_eu_ep_composition_greens = 0 }
-	set_variable = { global.DVE_eu_ep_composition_id = 0 }
-	set_variable = { global.DVE_eu_ep_composition_ecr = 0 }
-	set_variable = { global.DVE_eu_ep_composition_left = 0 }
-	set_variable = { global.DVE_eu_ep_composition_ni = 0 }
-
-	every_country = {
-		limit = { has_country_flag = DVE_eu_member }
-		add_to_variable = { global.DVE_eu_member_count = 1 }
-		add_to_variable = { global.DVE_eu_total_population = DVE_eu_council_weight }
-		add_to_variable = { global.DVE_eu_ep_composition_epp = DVE_eu_ep_delegation_epp }
-		add_to_variable = { global.DVE_eu_ep_composition_sd = DVE_eu_ep_delegation_sd }
-		add_to_variable = { global.DVE_eu_ep_composition_re = DVE_eu_ep_delegation_re }
-		add_to_variable = { global.DVE_eu_ep_composition_greens = DVE_eu_ep_delegation_greens }
-		add_to_variable = { global.DVE_eu_ep_composition_id = DVE_eu_ep_delegation_id }
-		add_to_variable = { global.DVE_eu_ep_composition_ecr = DVE_eu_ep_delegation_ecr }
-		add_to_variable = { global.DVE_eu_ep_composition_left = DVE_eu_ep_delegation_left }
-		add_to_variable = { global.DVE_eu_ep_composition_ni = DVE_eu_ep_delegation_ni }
-	}
-
-	# Council QMV thresholds
-	set_variable = { global.DVE_eu_council_qmv_threshold_states = 15 }
-	set_variable = { global.DVE_eu_council_qmv_threshold_pop = 2900 }
-	set_variable = { global.DVE_eu_council_blocking_minority_states = 4 }
-	set_variable = { global.DVE_eu_council_blocking_minority_pop = 1561 }
-}
-
-# Council voting: calculates QMV result for current proposal.
-DVE_eu_council_vote_effect = {
-	if = {
-		limit = { has_country_flag = DVE_eu_member }
-		# Each member votes: 1=abstain, 2=for, 3=against (stored in DVE_eu_council_vote)
-		# Result calculated in global scope
-		DVE_eu_council_tally_effect = yes
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-# Tallies Council votes: counts states for/against, population for/against.
-DVE_eu_council_tally_effect = {
+# Council QMV Voting Calculation Effect
+DVE_eu_qmv_check_effect = {
 	set_variable = { global.DVE_eu_council_states_for = 0 }
 	set_variable = { global.DVE_eu_council_states_against = 0 }
 	set_variable = { global.DVE_eu_council_pop_for = 0 }
 	set_variable = { global.DVE_eu_council_pop_against = 0 }
+	set_variable = { global.DVE_eu_council_states_abstain = 0 }
 
 	every_country = {
 		limit = { has_country_flag = DVE_eu_member }
@@ -829,173 +961,73 @@ DVE_eu_council_tally_effect = {
 			add_to_variable = { global.DVE_eu_council_states_against = 1 }
 			add_to_variable = { global.DVE_eu_council_pop_against = DVE_eu_council_weight }
 		}
+		else_if = {
+			limit = { check_variable = { DVE_eu_council_vote = 1 } }
+			add_to_variable = { global.DVE_eu_council_states_abstain = 1 }
+		}
 	}
 
-	# QMV check: 55% states (15) AND 65% population
+	# Calculate Pop percentage (weight / 4480 * 100)
+	set_variable = { global.DVE_eu_council_pop_for_pct = global.DVE_eu_council_pop_for }
+	multiply_variable = { global.DVE_eu_council_pop_for_pct = 100 }
+	divide_variable = { global.DVE_eu_council_pop_for_pct = 4480 }
+	round_variable = global.DVE_eu_council_pop_for_pct
+
+	set_variable = { global.DVE_eu_council_pop_against_pct = global.DVE_eu_council_pop_against }
+	multiply_variable = { global.DVE_eu_council_pop_against_pct = 100 }
+	divide_variable = { global.DVE_eu_council_pop_against_pct = 4480 }
+	round_variable = global.DVE_eu_council_pop_against_pct
+
+	# QMV Pass Check: states_for > 14 (i.e. >=15) AND pop_for > 2911 (i.e. >=65% of 4480)
 	set_variable = { global.DVE_eu_council_qmv_pass = 0 }
 	if = {
 		limit = {
-			check_variable = { global.DVE_eu_council_states_for >= 15 }
-			check_variable = { global.DVE_eu_council_pop_for >= global.DVE_eu_council_qmv_threshold_pop }
+			check_variable = { global.DVE_eu_council_states_for > 14 }
+			check_variable = { global.DVE_eu_council_pop_for > 2911 }
 		}
 		set_variable = { global.DVE_eu_council_qmv_pass = 1 }
 	}
-	# Blocking minority check: >=4 states AND >35% population
+
+	# Blocking Minority Check: states_against > 3 (>=4) AND pop_against > 1568 (>35%)
 	set_variable = { global.DVE_eu_council_blocking_minority = 0 }
 	if = {
 		limit = {
-			check_variable = { global.DVE_eu_council_states_against >= 4 }
-			check_variable = { global.DVE_eu_council_pop_against > global.DVE_eu_council_blocking_minority_pop }
+			check_variable = { global.DVE_eu_council_states_against > 3 }
+			check_variable = { global.DVE_eu_council_pop_against > 1568 }
 		}
 		set_variable = { global.DVE_eu_council_blocking_minority = 1 }
 	}
+
+	# Refresh the Council dots of the parliament window
+	DVE_eu_council_frames_effect = yes
 }
 
-# Parliament vote: simple majority of cast votes (for > against).
-DVE_eu_ep_vote_effect = {
-	set_variable = { global.DVE_eu_ep_votes_for = 0 }
-	set_variable = { global.DVE_eu_ep_votes_against = 0 }
-	set_variable = { global.DVE_eu_ep_votes_abstain = 0 }
-
-	every_country = {
-		limit = { has_country_flag = DVE_eu_member }
-		# Each country's delegation votes as a block (simplified)
-		if = {
-			limit = { check_variable = { DVE_eu_ep_vote = 2 } }
-			add_to_variable = { global.DVE_eu_ep_votes_for = DVE_eu_ep_seats }
-		}
-		else_if = {
-			limit = { check_variable = { DVE_eu_ep_vote = 3 } }
-			add_to_variable = { global.DVE_eu_ep_votes_against = DVE_eu_ep_seats }
-		}
-		else = {
-			add_to_variable = { global.DVE_eu_ep_votes_abstain = DVE_eu_ep_seats }
-		}
-	}
-
-	# EP passes if for > against
-	set_variable = { global.DVE_eu_ep_pass = 0 }
+# Routine refresh (daily/weekly)
+DVE_eu_refresh_effect = {
 	if = {
-		limit = { check_variable = { global.DVE_eu_ep_votes_for > global.DVE_eu_ep_votes_against } }
-		set_variable = { global.DVE_eu_ep_pass = 1 }
+		limit = { NOT = { has_global_flag = DVE_eu_initialized } }
+		DVE_eu_init_effect = yes
 	}
+	DVE_eu_country_delegation_calc_effect = yes
+	set_variable = { DVE_eu_group_nat_1 = DVE_eu_ep_del_1 }
+	set_variable = { DVE_eu_group_nat_2 = DVE_eu_ep_del_2 }
+	set_variable = { DVE_eu_group_nat_3 = DVE_eu_ep_del_3 }
+	set_variable = { DVE_eu_group_nat_4 = DVE_eu_ep_del_4 }
+	set_variable = { DVE_eu_group_nat_5 = DVE_eu_ep_del_5 }
+	set_variable = { DVE_eu_group_nat_6 = DVE_eu_ep_del_6 }
+	set_variable = { DVE_eu_group_nat_7 = DVE_eu_ep_del_7 }
+	set_variable = { DVE_eu_group_nat_8 = DVE_eu_ep_del_8 }
 }
 
-# Ordinary legislative procedure: Commission proposes -> EP 1st -> Council 1st -> EP 2nd -> Council 2nd -> Conciliation -> 3rd.
-DVE_eu_legislative_ordinary_effect = {
-	if = {
-		limit = { check_variable = { global.DVE_eu_legislative_stage = 0 } }
-		# Stage 1: Commission proposal
-		set_variable = { global.DVE_eu_legislative_stage = 1 }
-		set_global_flag = DVE_eu_legislative_procedure_active
-		# Commission adopts proposal
-		country_event = { id = dve_eu.10 }
-	}
+# Candidate Accession Treaty Effect (full integration reached)
+DVE_eu_accept_accession_effect = {
+	clr_country_flag = DVE_eu_candidate
+	remove_ideas = DVE_eu_candidate_spirit
+	set_country_flag = DVE_eu_member
+	add_ideas = DVE_eu_member_spirit
+	set_variable = { DVE_eu_integration = 100 }
+	set_variable = { DVE_eu_council_vote = 2 }
+	add_to_variable = { global.DVE_eu_member_count = 1 }
+	DVE_eu_parliament_recalc_effect = yes
+	DVE_eu_qmv_check_effect = yes
 }
-
-DVE_eu_toggle_panel_effect = {
-	if = {
-		limit = { has_country_flag = DVE_eu_panel_open }
-		clr_country_flag = DVE_eu_panel_open
-	}
-	else = {
-		set_country_flag = DVE_eu_panel_open
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-DVE_eu_toggle_tab_effect = {
-	if = {
-		limit = { check_variable = { DVE_eu_selected_tab = DVE_eu_new_tab } }
-		set_variable = { DVE_eu_selected_tab = 0 }
-	}
-	else = {
-		set_variable = { DVE_eu_selected_tab = DVE_eu_new_tab }
-	}
-	DVE_eu_refresh_effect = yes
-}
-
-# Annual EU budget procedure: Commission draft -> Council position -> EP amendments -> Conciliation -> Adoption.
-DVE_eu_budget_annual_effect = {
-	set_global_flag = DVE_eu_budget_negotiation
-	set_variable = { global.DVE_eu_budget_stage = 1 }
-	country_event = { id = dve_eu.20 }
-}
-
-# Enlargement: Commission opinion -> Council unanimous -> EP consent -> Accession Treaty.
-DVE_eu_enlargement_process_effect = {
-	if = {
-		limit = { check_variable = { global.DVE_eu_enlargement_stage = 0 } }
-		# Stage 1: Commission opinion
-		set_variable = { global.DVE_eu_enlargement_stage = 1 }
-		country_event = { id = dve_eu.30 }
-	}
-}
-
-# Subsidiarity: national parliaments 8-week review, yellow/orange card.
-DVE_eu_subsidiarity_check_effect = {
-	set_global_flag = { flag = DVE_eu_subsidiarity_review value = 1 days = 56 }
-	every_country = {
-		limit = { has_country_flag = DVE_eu_member }
-		country_event = { id = dve_eu.40 }
-	}
-}
-
-# ECI: 1M signatures from 7 countries -> Commission response.
-DVE_eu_eci_effect = {
-	if = {
-		limit = { check_variable = { global.DVE_eu_eci_signatures >= 1000000 } check_variable = { global.DVE_eu_eci_countries >= 7 } }
-		country_event = { id = dve_eu.50 }
-	}
-}
-
-# EDP: deficit >3% GDP -> Council recommendation -> sanctions if persistent.
-DVE_eu_edp_check_effect = {
-	every_country = {
-		limit = { has_country_flag = DVE_eu_eurozone_member }
-		if = {
-			limit = { check_variable = { budget_deficit_pct_gdp > 3 } }
-			if = {
-				limit = { NOT = { has_country_flag = DVE_eu_edp_active } }
-				set_country_flag = DVE_eu_edp_active
-				add_to_array = { global.DVE_eu_edp_countries = THIS }
-				country_event = { id = dve_eu.60 }
-			}
-		}
-		else = {
-			limit = { has_country_flag = DVE_eu_edp_active }
-			clr_country_flag = DVE_eu_edp_active
-			remove_from_array = { global.DVE_eu_edp_countries = THIS }
-			country_event = { id = dve_eu.61 }
-		}
-	}
-}
-
-# Article 7 TEU: 4/5 Council + EP consent -> sanctions (voting rights suspension).
-DVE_eu_article7_effect = {
-	if = {
-		limit = { check_variable = { global.DVE_eu_article7_stage = 1 } }
-		# Council 4/5 majority
-		set_variable = { global.DVE_eu_council_article7_for = 0 }
-		every_country = {
-			limit = { has_country_flag = DVE_eu_member }
-			if = { limit = { check_variable = { DVE_eu_council_vote = 2 } } add_to_variable = { global.DVE_eu_council_article7_for = 1 } }
-		}
-		if = {
-			limit = { check_variable = { global.DVE_eu_council_article7_for >= 22 } }
-			set_variable = { global.DVE_eu_article7_stage = 2 }
-			country_event = { id = dve_eu.70 }
-		}
-	}
-	else_if = {
-		limit = { check_variable = { global.DVE_eu_article7_stage = 2 } }
-		# EP consent
-		DVE_eu_ep_vote_effect = yes
-		if = {
-			limit = { check_variable = { global.DVE_eu_ep_pass = 1 } }
-			set_variable = { global.DVE_eu_article7_stage = 3 }
-			country_event = { id = dve_eu.71 }
-		}
-	}
-}
-

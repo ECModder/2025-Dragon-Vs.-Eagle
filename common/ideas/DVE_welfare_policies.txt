@@ -113,7 +113,12 @@ ideas = {
 		}
 
 		extensive_welfare = {
-			available = { has_government = revolutionary_socialism }
+			available = {
+				OR = {
+					has_government = revolutionary_socialism
+					has_government = anarchism
+				}
+			}
 
 			cost = 100
 			removal_cost = -1
@@ -271,6 +276,7 @@ ideas = {
 				OR = {
 					has_government = revolutionary_socialism
 					has_government = vanguard_socialism
+					has_government = anarchism
 				}
 			}
 
@@ -557,6 +563,7 @@ ideas = {
 		codified_discipline = {
 			available = {
 				OR = {
+					has_government = anarchism
 					has_government = absolutism
 					has_government = conservative
 					has_government = centrist

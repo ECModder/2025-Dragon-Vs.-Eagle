@@ -1,0 +1,31 @@
+# DvE - US presidential race: decision categories.
+# DVE_USA_race_category holds the banner that opens the electoral map (scripted gui DVE_USA_race_banner_ui).
+# DVE_USA_balance_category shows the balance-of-power bar (Democratic camp vs Republican camp, common/bop/USA_electoral_balance.txt) and the candidate decisions.
+
+DVE_USA_race_category = {
+
+	icon = GFX_decision_category_generic_political_actions
+	scripted_gui = DVE_USA_race_banner_ui
+	priority = 90
+	visible_when_empty = yes
+
+	allowed = { original_tag = USA }
+
+	visible = {
+		original_tag = USA
+	}
+}
+
+DVE_USA_balance_category = {
+
+	icon = GFX_decision_category_power_struggle
+	priority = 89
+	visible_when_empty = yes
+
+	allowed = { original_tag = USA }
+
+	visible = {
+		original_tag = USA
+		has_country_flag = USA_race_active
+	}
+}

@@ -1,0 +1,41 @@
+ideas = {
+	country = {
+		# Member of the European Union
+		DVE_eu_member_spirit = {
+			picture = GFX_DVE_eu_flag
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.05
+				research_speed_factor = 0.05
+				trade_laws_cost_factor = -0.25
+				economy_cost_factor = -0.15
+				stability_factor = 0.05
+			}
+		}
+
+		# Candidate for EU Membership (Pre-accession)
+		DVE_eu_candidate_spirit = {
+			picture = GFX_DVE_eu_flag
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				political_power_gain = 0.15
+				stability_factor = 0.05
+				drift_defence_factor = 0.10
+			}
+		}
+
+		# Eurozone Monetary Union
+		DVE_eu_eurozone_spirit = {
+			picture = GFX_DVE_eu_bce_euro
+			allowed = { always = yes }
+			removal_cost = -1
+			modifier = {
+				consumer_goods_factor = -0.03
+				production_speed_industrial_complex_factor = 0.05
+				production_speed_infrastructure_factor = 0.05
+			}
+		}
+	}
+}

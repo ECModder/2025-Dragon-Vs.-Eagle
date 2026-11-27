@@ -1,0 +1,426 @@
+# DvE - US presidential race: scripted GUIs (decision banner + electoral map window).
+scripted_gui = {
+
+	DVE_USA_race_banner_ui = {
+		context_type = decision_category
+		window_name = "DVE_USA_race_banner_window"
+		visible = { original_tag = USA }
+		effects = {
+			usa_open_race_button_click = {
+				if = {
+					limit = { has_country_flag = USA_race_open }
+					clr_country_flag = USA_race_open
+				}
+				else = {
+					set_country_flag = USA_race_open
+				}
+				USA_race_recalc_effect = yes
+			}
+		}
+		ai_enabled = { always = no }
+	}
+
+	DVE_USA_race_ui = {
+		context_type = player_context
+		window_name = "DVE_USA_race_window"
+		visible = {
+			original_tag = USA
+			has_country_flag = USA_race_open
+		}
+		effects = {
+			close_button_click = {
+				clr_country_flag = USA_race_open
+			}
+			usa_st_AL_click = {
+				set_variable = { USA_sel = 0 }
+				USA_select_effect = yes
+			}
+			usa_st_AK_click = {
+				set_variable = { USA_sel = 1 }
+				USA_select_effect = yes
+			}
+			usa_st_AZ_click = {
+				set_variable = { USA_sel = 2 }
+				USA_select_effect = yes
+			}
+			usa_st_AR_click = {
+				set_variable = { USA_sel = 3 }
+				USA_select_effect = yes
+			}
+			usa_st_CA_click = {
+				set_variable = { USA_sel = 4 }
+				USA_select_effect = yes
+			}
+			usa_st_CO_click = {
+				set_variable = { USA_sel = 5 }
+				USA_select_effect = yes
+			}
+			usa_st_CT_click = {
+				set_variable = { USA_sel = 6 }
+				USA_select_effect = yes
+			}
+			usa_st_DE_click = {
+				set_variable = { USA_sel = 7 }
+				USA_select_effect = yes
+			}
+			usa_st_DC_click = {
+				set_variable = { USA_sel = 8 }
+				USA_select_effect = yes
+			}
+			usa_st_FL_click = {
+				set_variable = { USA_sel = 9 }
+				USA_select_effect = yes
+			}
+			usa_st_GA_click = {
+				set_variable = { USA_sel = 10 }
+				USA_select_effect = yes
+			}
+			usa_st_HI_click = {
+				set_variable = { USA_sel = 11 }
+				USA_select_effect = yes
+			}
+			usa_st_ID_click = {
+				set_variable = { USA_sel = 12 }
+				USA_select_effect = yes
+			}
+			usa_st_IL_click = {
+				set_variable = { USA_sel = 13 }
+				USA_select_effect = yes
+			}
+			usa_st_IN_click = {
+				set_variable = { USA_sel = 14 }
+				USA_select_effect = yes
+			}
+			usa_st_IA_click = {
+				set_variable = { USA_sel = 15 }
+				USA_select_effect = yes
+			}
+			usa_st_KS_click = {
+				set_variable = { USA_sel = 16 }
+				USA_select_effect = yes
+			}
+			usa_st_KY_click = {
+				set_variable = { USA_sel = 17 }
+				USA_select_effect = yes
+			}
+			usa_st_LA_click = {
+				set_variable = { USA_sel = 18 }
+				USA_select_effect = yes
+			}
+			usa_st_ME_click = {
+				set_variable = { USA_sel = 19 }
+				USA_select_effect = yes
+			}
+			usa_st_MD_click = {
+				set_variable = { USA_sel = 20 }
+				USA_select_effect = yes
+			}
+			usa_st_MA_click = {
+				set_variable = { USA_sel = 21 }
+				USA_select_effect = yes
+			}
+			usa_st_MI_click = {
+				set_variable = { USA_sel = 22 }
+				USA_select_effect = yes
+			}
+			usa_st_MN_click = {
+				set_variable = { USA_sel = 23 }
+				USA_select_effect = yes
+			}
+			usa_st_MS_click = {
+				set_variable = { USA_sel = 24 }
+				USA_select_effect = yes
+			}
+			usa_st_MO_click = {
+				set_variable = { USA_sel = 25 }
+				USA_select_effect = yes
+			}
+			usa_st_MT_click = {
+				set_variable = { USA_sel = 26 }
+				USA_select_effect = yes
+			}
+			usa_st_NE_click = {
+				set_variable = { USA_sel = 27 }
+				USA_select_effect = yes
+			}
+			usa_st_NV_click = {
+				set_variable = { USA_sel = 28 }
+				USA_select_effect = yes
+			}
+			usa_st_NH_click = {
+				set_variable = { USA_sel = 29 }
+				USA_select_effect = yes
+			}
+			usa_st_NJ_click = {
+				set_variable = { USA_sel = 30 }
+				USA_select_effect = yes
+			}
+			usa_st_NM_click = {
+				set_variable = { USA_sel = 31 }
+				USA_select_effect = yes
+			}
+			usa_st_NY_click = {
+				set_variable = { USA_sel = 32 }
+				USA_select_effect = yes
+			}
+			usa_st_NC_click = {
+				set_variable = { USA_sel = 33 }
+				USA_select_effect = yes
+			}
+			usa_st_ND_click = {
+				set_variable = { USA_sel = 34 }
+				USA_select_effect = yes
+			}
+			usa_st_OH_click = {
+				set_variable = { USA_sel = 35 }
+				USA_select_effect = yes
+			}
+			usa_st_OK_click = {
+				set_variable = { USA_sel = 36 }
+				USA_select_effect = yes
+			}
+			usa_st_OR_click = {
+				set_variable = { USA_sel = 37 }
+				USA_select_effect = yes
+			}
+			usa_st_PA_click = {
+				set_variable = { USA_sel = 38 }
+				USA_select_effect = yes
+			}
+			usa_st_RI_click = {
+				set_variable = { USA_sel = 39 }
+				USA_select_effect = yes
+			}
+			usa_st_SC_click = {
+				set_variable = { USA_sel = 40 }
+				USA_select_effect = yes
+			}
+			usa_st_SD_click = {
+				set_variable = { USA_sel = 41 }
+				USA_select_effect = yes
+			}
+			usa_st_TN_click = {
+				set_variable = { USA_sel = 42 }
+				USA_select_effect = yes
+			}
+			usa_st_TX_click = {
+				set_variable = { USA_sel = 43 }
+				USA_select_effect = yes
+			}
+			usa_st_UT_click = {
+				set_variable = { USA_sel = 44 }
+				USA_select_effect = yes
+			}
+			usa_st_VT_click = {
+				set_variable = { USA_sel = 45 }
+				USA_select_effect = yes
+			}
+			usa_st_VA_click = {
+				set_variable = { USA_sel = 46 }
+				USA_select_effect = yes
+			}
+			usa_st_WA_click = {
+				set_variable = { USA_sel = 47 }
+				USA_select_effect = yes
+			}
+			usa_st_WV_click = {
+				set_variable = { USA_sel = 48 }
+				USA_select_effect = yes
+			}
+			usa_st_WI_click = {
+				set_variable = { USA_sel = 49 }
+				USA_select_effect = yes
+			}
+			usa_st_WY_click = {
+				set_variable = { USA_sel = 50 }
+				USA_select_effect = yes
+			}
+			usa_theme_1_click = {
+				set_variable = { USA_theme = 1 }
+				USA_campaign_effect = yes
+			}
+			usa_theme_2_click = {
+				set_variable = { USA_theme = 2 }
+				USA_campaign_effect = yes
+			}
+			usa_theme_3_click = {
+				set_variable = { USA_theme = 3 }
+				USA_campaign_effect = yes
+			}
+			usa_theme_4_click = {
+				set_variable = { USA_theme = 4 }
+				USA_campaign_effect = yes
+			}
+			usa_theme_5_click = {
+				set_variable = { USA_theme = 5 }
+				USA_campaign_effect = yes
+			}
+		}
+		triggers = {
+			usa_theme_1_click_enabled = {
+				has_country_flag = USA_race_active
+				check_variable = { USA_chosen > 0 }
+				check_variable = { USA_has_sel = 1 }
+				check_variable = { USA_c_cool = 0 }
+				has_political_power > 24
+			}
+			usa_theme_2_click_enabled = {
+				has_country_flag = USA_race_active
+				check_variable = { USA_chosen > 0 }
+				check_variable = { USA_has_sel = 1 }
+				check_variable = { USA_c_cool = 0 }
+				has_political_power > 24
+			}
+			usa_theme_3_click_enabled = {
+				has_country_flag = USA_race_active
+				check_variable = { USA_chosen > 0 }
+				check_variable = { USA_has_sel = 1 }
+				check_variable = { USA_c_cool = 0 }
+				has_political_power > 24
+			}
+			usa_theme_4_click_enabled = {
+				has_country_flag = USA_race_active
+				check_variable = { USA_chosen > 0 }
+				check_variable = { USA_has_sel = 1 }
+				check_variable = { USA_c_cool = 0 }
+				has_political_power > 24
+			}
+			usa_theme_5_click_enabled = {
+				has_country_flag = USA_race_active
+				check_variable = { USA_chosen > 0 }
+				check_variable = { USA_has_sel = 1 }
+				check_variable = { USA_c_cool = 0 }
+				has_political_power > 24
+			}
+			usa_marker_visible = {
+				check_variable = { USA_has_sel = 1 }
+			}
+		}
+		properties = {
+			usa_map_AL = { frame = USA_fr^0 }
+			usa_map_AK = { frame = USA_fr^1 }
+			usa_map_AZ = { frame = USA_fr^2 }
+			usa_map_AR = { frame = USA_fr^3 }
+			usa_map_CA = { frame = USA_fr^4 }
+			usa_map_CO = { frame = USA_fr^5 }
+			usa_map_CT = { frame = USA_fr^6 }
+			usa_map_DE = { frame = USA_fr^7 }
+			usa_map_DC = { frame = USA_fr^8 }
+			usa_map_FL = { frame = USA_fr^9 }
+			usa_map_GA = { frame = USA_fr^10 }
+			usa_map_HI = { frame = USA_fr^11 }
+			usa_map_ID = { frame = USA_fr^12 }
+			usa_map_IL = { frame = USA_fr^13 }
+			usa_map_IN = { frame = USA_fr^14 }
+			usa_map_IA = { frame = USA_fr^15 }
+			usa_map_KS = { frame = USA_fr^16 }
+			usa_map_KY = { frame = USA_fr^17 }
+			usa_map_LA = { frame = USA_fr^18 }
+			usa_map_ME = { frame = USA_fr^19 }
+			usa_map_MD = { frame = USA_fr^20 }
+			usa_map_MA = { frame = USA_fr^21 }
+			usa_map_MI = { frame = USA_fr^22 }
+			usa_map_MN = { frame = USA_fr^23 }
+			usa_map_MS = { frame = USA_fr^24 }
+			usa_map_MO = { frame = USA_fr^25 }
+			usa_map_MT = { frame = USA_fr^26 }
+			usa_map_NE = { frame = USA_fr^27 }
+			usa_map_NV = { frame = USA_fr^28 }
+			usa_map_NH = { frame = USA_fr^29 }
+			usa_map_NJ = { frame = USA_fr^30 }
+			usa_map_NM = { frame = USA_fr^31 }
+			usa_map_NY = { frame = USA_fr^32 }
+			usa_map_NC = { frame = USA_fr^33 }
+			usa_map_ND = { frame = USA_fr^34 }
+			usa_map_OH = { frame = USA_fr^35 }
+			usa_map_OK = { frame = USA_fr^36 }
+			usa_map_OR = { frame = USA_fr^37 }
+			usa_map_PA = { frame = USA_fr^38 }
+			usa_map_RI = { frame = USA_fr^39 }
+			usa_map_SC = { frame = USA_fr^40 }
+			usa_map_SD = { frame = USA_fr^41 }
+			usa_map_TN = { frame = USA_fr^42 }
+			usa_map_TX = { frame = USA_fr^43 }
+			usa_map_UT = { frame = USA_fr^44 }
+			usa_map_VT = { frame = USA_fr^45 }
+			usa_map_VA = { frame = USA_fr^46 }
+			usa_map_WA = { frame = USA_fr^47 }
+			usa_map_WV = { frame = USA_fr^48 }
+			usa_map_WI = { frame = USA_fr^49 }
+			usa_map_WY = { frame = USA_fr^50 }
+			usa_inset_CT = { frame = USA_fr^6 }
+			usa_inset_DE = { frame = USA_fr^7 }
+			usa_inset_DC = { frame = USA_fr^8 }
+			usa_inset_MD = { frame = USA_fr^20 }
+			usa_inset_MA = { frame = USA_fr^21 }
+			usa_inset_NH = { frame = USA_fr^29 }
+			usa_inset_NJ = { frame = USA_fr^30 }
+			usa_inset_RI = { frame = USA_fr^39 }
+			usa_inset_VT = { frame = USA_fr^45 }
+			usa_evcell_0 = { frame = USA_evbar_fr^0 }
+			usa_evcell_1 = { frame = USA_evbar_fr^1 }
+			usa_evcell_2 = { frame = USA_evbar_fr^2 }
+			usa_evcell_3 = { frame = USA_evbar_fr^3 }
+			usa_evcell_4 = { frame = USA_evbar_fr^4 }
+			usa_evcell_5 = { frame = USA_evbar_fr^5 }
+			usa_evcell_6 = { frame = USA_evbar_fr^6 }
+			usa_evcell_7 = { frame = USA_evbar_fr^7 }
+			usa_evcell_8 = { frame = USA_evbar_fr^8 }
+			usa_evcell_9 = { frame = USA_evbar_fr^9 }
+			usa_evcell_10 = { frame = USA_evbar_fr^10 }
+			usa_evcell_11 = { frame = USA_evbar_fr^11 }
+			usa_evcell_12 = { frame = USA_evbar_fr^12 }
+			usa_evcell_13 = { frame = USA_evbar_fr^13 }
+			usa_evcell_14 = { frame = USA_evbar_fr^14 }
+			usa_evcell_15 = { frame = USA_evbar_fr^15 }
+			usa_evcell_16 = { frame = USA_evbar_fr^16 }
+			usa_evcell_17 = { frame = USA_evbar_fr^17 }
+			usa_evcell_18 = { frame = USA_evbar_fr^18 }
+			usa_evcell_19 = { frame = USA_evbar_fr^19 }
+			usa_evcell_20 = { frame = USA_evbar_fr^20 }
+			usa_evcell_21 = { frame = USA_evbar_fr^21 }
+			usa_evcell_22 = { frame = USA_evbar_fr^22 }
+			usa_evcell_23 = { frame = USA_evbar_fr^23 }
+			usa_evcell_24 = { frame = USA_evbar_fr^24 }
+			usa_evcell_25 = { frame = USA_evbar_fr^25 }
+			usa_evcell_26 = { frame = USA_evbar_fr^26 }
+			usa_evcell_27 = { frame = USA_evbar_fr^27 }
+			usa_evcell_28 = { frame = USA_evbar_fr^28 }
+			usa_evcell_29 = { frame = USA_evbar_fr^29 }
+			usa_evcell_30 = { frame = USA_evbar_fr^30 }
+			usa_evcell_31 = { frame = USA_evbar_fr^31 }
+			usa_evcell_32 = { frame = USA_evbar_fr^32 }
+			usa_evcell_33 = { frame = USA_evbar_fr^33 }
+			usa_evcell_34 = { frame = USA_evbar_fr^34 }
+			usa_evcell_35 = { frame = USA_evbar_fr^35 }
+			usa_evcell_36 = { frame = USA_evbar_fr^36 }
+			usa_evcell_37 = { frame = USA_evbar_fr^37 }
+			usa_evcell_38 = { frame = USA_evbar_fr^38 }
+			usa_evcell_39 = { frame = USA_evbar_fr^39 }
+			usa_evcell_40 = { frame = USA_evbar_fr^40 }
+			usa_evcell_41 = { frame = USA_evbar_fr^41 }
+			usa_evcell_42 = { frame = USA_evbar_fr^42 }
+			usa_evcell_43 = { frame = USA_evbar_fr^43 }
+			usa_evcell_44 = { frame = USA_evbar_fr^44 }
+			usa_evcell_45 = { frame = USA_evbar_fr^45 }
+			usa_evcell_46 = { frame = USA_evbar_fr^46 }
+			usa_evcell_47 = { frame = USA_evbar_fr^47 }
+			usa_evcell_48 = { frame = USA_evbar_fr^48 }
+			usa_evcell_49 = { frame = USA_evbar_fr^49 }
+			usa_evcell_50 = { frame = USA_evbar_fr^50 }
+			usa_evcell_51 = { frame = USA_evbar_fr^51 }
+			usa_evcell_52 = { frame = USA_evbar_fr^52 }
+			usa_evcell_53 = { frame = USA_evbar_fr^53 }
+			usa_row_hl_1 = { frame = USA_hl1 }
+			usa_row_hl_2 = { frame = USA_hl2 }
+			usa_row_hl_3 = { frame = USA_hl3 }
+			usa_row_hl_4 = { frame = USA_hl4 }
+			usa_row_hl_5 = { frame = USA_hl5 }
+			usa_marker = {
+				x = USA_marker_x
+				y = USA_marker_y
+			}
+		}
+		ai_enabled = { always = no }
+	}
+}

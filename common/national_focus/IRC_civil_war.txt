@@ -1,0 +1,186 @@
+# ============================================================
+#   ITALIAN REVOLUTIONARY COMMUNIST REPUBLIC (IRC) - "Civilwar IRC Path"
+#
+#   The IRC's tree while it fights the Italian civil war, where
+#   its only enemy is ITA. Six focuses, all of them buffs.
+#   The main tree (IRC_focus) is loaded once Italy has fallen and
+#   the IRC turns down the Internationale's ultimatum
+#   (events/DVE_ITA_civil_war.txt, dve_itacw.3).
+#   Icons are the ones of the INT civil war tree.
+# ============================================================
+
+focus_tree = {
+	id = IRC_civil_war_focus
+
+	country = {
+		factor = 0
+		modifier = {
+			add = 10
+			tag = IRC
+		}
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 50 y = 1000 }
+
+	# ========================================================
+	#   ROW 0
+	# ========================================================
+	focus = {
+		id = IRC_cw_hold_the_three_pockets
+		icon = GFX_goal_INT_cw_against_stalinists_and_black_barons
+		x = 3
+		y = 0
+		cost = 3.58
+		available_if_capitulated = yes
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 10 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.10
+			add_war_support = 0.10
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.03 }
+			IRC_cw_guard_template_effect = yes
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Guardia Rivoluzionaria\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.40 start_equipment_factor = 0.90"
+					owner = ROOT
+					count = 4
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			set_country_flag = IRC_cw_hold_the_three_pockets_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 1
+	# ========================================================
+	focus = {
+		id = IRC_cw_workers_militias
+		icon = GFX_goal_INT_cw_red_guards
+		x = 1
+		y = 1
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = IRC_cw_hold_the_three_pockets }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_manpower = 25000
+			add_war_support = 0.03
+			army_experience = 20
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 1500 producer = ROOT }
+			set_country_flag = IRC_cw_workers_militias_done
+		}
+	}
+
+	focus = {
+		id = IRC_cw_factory_councils
+		icon = GFX_goal_INT_cw_rehabilitating_factories
+		x = 5
+		y = 1
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = IRC_cw_hold_the_three_pockets }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			add_tech_bonus = {
+				name = IRC_cw_factory_councils
+				bonus = 0.50
+				uses = 1
+				category = infantry_weapons
+			}
+			set_country_flag = IRC_cw_factory_councils_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 2
+	# ========================================================
+	focus = {
+		id = IRC_cw_trotskys_red_army
+		icon = GFX_goal_INT_cw_revolutionary_vanguard_army
+		x = 1
+		y = 2
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = IRC_cw_workers_militias }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			army_experience = 40
+			add_command_power = 50
+			add_tech_bonus = {
+				name = IRC_cw_trotskys_red_army
+				bonus = 0.50
+				uses = 1
+				category = land_doctrine
+			}
+			IRC_cw_guard_template_effect = yes
+			capital_scope = {
+				create_unit = {
+					division = "name = \"Armata Rossa\" division_template = \"Guardia Rivoluzionaria\" start_experience_factor = 0.50 start_equipment_factor = 0.95"
+					owner = ROOT
+					count = 2
+					allow_spawning_on_enemy_provs = yes
+				}
+			}
+			set_country_flag = IRC_cw_trotskys_red_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_cw_requisition_the_stocks
+		icon = GFX_goal_INT_cw_confiscate_means_of_production
+		x = 5
+		y = 2
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = IRC_cw_factory_councils }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_political_power = 50
+			add_stability = -0.03
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2500 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 300 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 400 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 400 producer = ROOT }
+			set_country_flag = IRC_cw_requisition_the_stocks_done
+		}
+	}
+
+	# ========================================================
+	#   ROW 3 - needs both
+	# ========================================================
+	focus = {
+		id = IRC_cw_permanent_revolution
+		icon = GFX_goal_INT_cw_revolutionary_fervor
+		x = 3
+		y = 3
+		cost = 3.58
+		available_if_capitulated = yes
+		prerequisite = { focus = IRC_cw_trotskys_red_army }
+		prerequisite = { focus = IRC_cw_requisition_the_stocks }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 5 }
+		completion_reward = {
+			add_war_support = 0.15
+			add_stability = 0.05
+			add_political_power = 100
+			army_experience = 30
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 2000 producer = ROOT }
+			set_country_flag = IRC_cw_permanent_revolution_done
+		}
+	}
+}

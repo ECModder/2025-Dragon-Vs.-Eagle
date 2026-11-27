@@ -1,0 +1,1601 @@
+# ============================================================
+#   ITALIAN REVOLUTIONARY COMMUNIST REPUBLIC (IRC) - main focus tree
+#
+#   Loaded when the IRC outlives the Italian civil war and turns
+#   down the Internationale's ultimatum (events/DVE_ITA_civil_war.txt,
+#   dve_itacw.3). Its war tree is IRC_civil_war.txt.
+#   Economy (Collectivization) and Politics (PCR) are the Trotskyist
+#   branches moved here from INT_focus.txt, with their focus ids,
+#   icons and text unchanged; the Military branch is a full copy of
+#   the INT one (ids IRC_mil_*, same icons). Positions were shifted
+#   to sit side by side; the two roots lost their old prerequisite
+#   and mutual exclusion with the Leninist choice.
+# ============================================================
+
+focus_tree = {
+	id = IRC_focus
+
+	# Not auto-selected: the IRC starts on IRC_civil_war_focus.
+	country = {
+		factor = 0
+	}
+
+	default = no
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		x = 8
+		y = 0
+	}
+
+	continuous_focus_position = { x = 50 y = 1250 }
+
+#|================================================|#
+#|                 ECONOMIC FOCUS                 |#
+#|================================================|#
+
+	focus = {
+		id = INT_eco_collectivization_means
+		icon = GFX_goal_INT_eco_collectivization_means
+		x = 2
+		y = 0
+		cost = 5
+		available_if_capitulated = no
+		available = {
+			has_completed_focus = INT_pol_pcr_majority
+		}
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 3 }
+		completion_reward = {
+			add_ideas = INT_collectivized_economy
+			add_political_power = 50
+			set_country_flag = INT_eco_collectivization_means_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_nationalize_private
+		icon = GFX_goal_INT_eco_nationalize_private
+		x = 0
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			add_stability = -0.03
+			set_country_flag = INT_eco_nationalize_private_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_state_unions_economy
+		icon = GFX_goal_INT_eco_state_unions_economy
+		x = 2
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_POLITICAL FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_state_unions_economy_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_work_coercion
+		icon = GFX_goal_INT_eco_work_coercion
+		x = 4
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collectivization_means }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_timed_idea = { idea = INT_work_coercion days = 365 }
+			set_country_flag = INT_eco_work_coercion_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_seize_the_wealth
+		icon = GFX_goal_INT_eco_seize_the_wealth
+		x = 0
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_nationalize_private }
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 150
+			add_stability = -0.05
+			set_country_flag = INT_eco_seize_the_wealth_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_militarization_economy
+		icon = GFX_goal_INT_eco_militarization_economy
+		x = 2
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 4 instant_build = yes }
+			}
+			set_country_flag = INT_eco_militarization_economy_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_labor_mobilization
+		icon = GFX_goal_INT_eco_labor_mobilization
+		x = 4
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_work_coercion }
+		prerequisite = { focus = INT_eco_state_unions_economy }
+		search_filters = { FOCUS_FILTER_MANPOWER FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 30000
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_labor_mobilization_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_collective_economic_outlook
+		icon = GFX_goal_INT_eco_collective_economic_outlook
+		x = 2
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_seize_the_wealth }
+		prerequisite = { focus = INT_eco_militarization_economy }
+		prerequisite = { focus = INT_eco_labor_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_collectivized_economy add_idea = INT_collectivized_economy_2 }
+			set_country_flag = INT_eco_collective_economic_outlook_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_recreate_sovkhozes
+		icon = GFX_goal_INT_eco_recreate_sovkhozes
+		x = 0
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			set_country_flag = INT_eco_recreate_sovkhozes_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_restart_five_year_plans
+		icon = GFX_goal_INT_eco_restart_five_year_plans
+		x = 2
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_restart_five_year_plans bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_eco_restart_five_year_plans_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_meritocratic_socialism
+		icon = GFX_goal_INT_eco_meritocratic_socialism
+		x = 4
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_collective_economic_outlook }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_meritocratic_socialism bonus = 0.5 uses = 1 category = computing_tech }
+			add_political_power = 50
+			set_country_flag = INT_eco_meritocratic_socialism_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_socialist_modernization
+		icon = GFX_goal_INT_eco_socialist_modernization
+		x = 0
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_recreate_sovkhozes }
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_core_of = ROOT
+					free_building_slots = { building = infrastructure size > 0 include_locked = yes }
+				}
+				add_building_construction = { type = infrastructure level = 2 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_socialist_modernization_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_centralize_economic_planning
+		icon = GFX_goal_INT_eco_centralize_economic_planning
+		x = 2
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_centralized_planning
+			set_country_flag = INT_eco_centralize_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_network_computer_servers
+		icon = GFX_goal_INT_eco_network_computer_servers
+		x = 4
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_meritocratic_socialism }
+		prerequisite = { focus = INT_eco_restart_five_year_plans }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_network_computer_servers bonus = 0.5 uses = 1 category = computing_tech }
+			add_tech_bonus = { name = INT_eco_network_computer_servers bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = INT_eco_network_computer_servers_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_ecological_development
+		icon = GFX_goal_INT_eco_ecological_development
+		x = 0
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_socialist_modernization focus = INT_eco_centralize_economic_planning }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_tech_bonus = { name = INT_eco_ecological_development bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = INT_eco_ecological_development_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_fight_corruption_apparatus
+		icon = GFX_goal_INT_eco_fight_corruption_apparatus
+		x = 2
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_centralize_economic_planning }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_stability = 0.05
+			set_country_flag = INT_eco_fight_corruption_apparatus_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_advanced_economic_planning
+		icon = GFX_goal_INT_eco_advanced_economic_planning
+		x = 4
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_network_computer_servers }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_advanced_economic_planning bonus = 0.5 uses = 2 category = industry }
+			set_country_flag = INT_eco_advanced_economic_planning_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_rewards_heavy_industry
+		icon = GFX_goal_INT_eco_rewards_heavy_industry
+		x = 0
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_ecological_development }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = arms_factory level = 2 instant_build = yes }
+			}
+			set_country_flag = INT_eco_rewards_heavy_industry_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_radical_redistribution
+		icon = GFX_goal_INT_eco_radical_redistribution
+		x = 2
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_fight_corruption_apparatus }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.08
+			add_war_support = 0.03
+			set_country_flag = INT_eco_radical_redistribution_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_integrated_advanced_search
+		icon = GFX_goal_INT_eco_integrated_advanced_search
+		x = 4
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_advanced_economic_planning }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = INT_eco_integrated_advanced_search bonus = 1.0 uses = 1 category = computing_tech }
+			set_country_flag = INT_eco_integrated_advanced_search_done
+		}
+	}
+
+	focus = {
+		id = INT_eco_true_trotskyist_revolution
+		icon = GFX_goal_INT_eco_true_trotskyist_revolution
+		x = 2
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_eco_rewards_heavy_industry }
+		prerequisite = { focus = INT_eco_radical_redistribution }
+		prerequisite = { focus = INT_eco_integrated_advanced_search }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_collectivized_economy_2 add_idea = INT_trotskyist_economy }
+			add_research_slot = 1
+			add_political_power = 100
+			set_country_flag = INT_eco_true_trotskyist_revolution_done
+		}
+	}
+
+#|================================================|#
+#|                POLITICAL FOCUS                 |#
+#|================================================|#
+
+	focus = {
+		id = INT_pol_pcr_majority
+		icon = GFX_goal_INT_pol_pcr_majority
+		x = 8
+		y = 0
+		cost = 5
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 2 }
+		completion_reward = {
+			set_politics = { ruling_party = revolutionary_socialism elections_allowed = no }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.2 }
+			add_political_power = 50
+			set_country_flag = INT_pol_pcr_majority_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_trotskyism
+		icon = GFX_goal_INT_pol_trotskyism
+		x = 6
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+			add_political_power = 75
+			set_country_flag = INT_pol_trotskyism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_united_front_tactic
+		icon = GFX_goal_INT_pol_united_front_tactic
+		x = 6
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_trotskyism }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_popularity = { ideology = progressive popularity = 0.03 }
+			add_popularity = { ideology = vanguard_socialism popularity = 0.03 }
+			set_country_flag = INT_pol_united_front_tactic_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_leninists
+		icon = GFX_goal_INT_pol_concessions_leninists
+		x = 6
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_united_front_tactic }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = vanguard_socialism popularity = 0.05 }
+			add_stability = 0.05
+			set_country_flag = INT_pol_concessions_leninists_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_leftcom
+		icon = GFX_goal_INT_pol_concessions_leftcom
+		x = 6
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_leninists }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_war_support = 0.03
+			set_country_flag = INT_pol_concessions_leftcom_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_concessions_socdem
+		icon = GFX_goal_INT_pol_concessions_socdem
+		x = 6
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_leftcom }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = progressive popularity = 0.05 }
+			add_stability = 0.05
+			set_country_flag = INT_pol_concessions_socdem_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_party_full_of_factions
+		icon = GFX_goal_INT_pol_party_full_of_factions
+		x = 6
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_concessions_socdem }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_party_of_factions
+			set_country_flag = INT_pol_party_full_of_factions_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_new_communism_new_age
+		icon = GFX_goal_INT_pol_new_communism_new_age
+		x = 8
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_political_power = 100
+			add_tech_bonus = { name = INT_pol_new_communism_new_age bonus = 0.5 uses = 1 category = computing_tech }
+			set_country_flag = INT_pol_new_communism_new_age_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_city_soviets
+		icon = GFX_goal_INT_pol_city_soviets
+		x = 8
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_new_communism_new_age }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_city_soviets
+			set_country_flag = INT_pol_city_soviets_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_militarized_labour_unions
+		icon = GFX_goal_INT_pol_militarized_labour_unions
+		x = 8
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_city_soviets }
+		search_filters = { FOCUS_FILTER_INDUSTRY FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_militarized_unions
+			set_country_flag = INT_pol_militarized_labour_unions_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_militarization_of_policy
+		icon = GFX_goal_INT_pol_militarization_of_policy
+		x = 8
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_militarized_labour_unions }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.1
+			army_experience = 25
+			set_country_flag = INT_pol_militarization_of_policy_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_complete_ideological_revolution
+		icon = GFX_goal_INT_pol_complete_ideological_revolution
+		x = 8
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_militarization_of_policy }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.1 }
+			add_stability = 0.03
+			set_country_flag = INT_pol_complete_ideological_revolution_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_absolute_loyalty
+		icon = GFX_goal_INT_pol_absolute_loyalty
+		x = 8
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_complete_ideological_revolution }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.1
+			add_war_support = 0.05
+			set_country_flag = INT_pol_absolute_loyalty_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_stalinism_degeneration
+		icon = GFX_goal_INT_pol_stalinism_degeneration
+		x = 10
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_pcr_majority }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_popularity = { ideology = totalitarian_socialism popularity = -0.1 }
+			add_popularity = { ideology = revolutionary_socialism popularity = 0.05 }
+			set_country_flag = INT_pol_stalinism_degeneration_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_china_deviated_socialism
+		icon = GFX_goal_INT_pol_china_deviated_socialism
+		x = 10
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_stalinism_degeneration }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.05
+			add_political_power = 50
+			if = {
+				limit = { country_exists = PRC }
+				PRC = { add_opinion_modifier = { target = ROOT modifier = INT_denounced_by_the_internationale } }
+			}
+			set_country_flag = INT_pol_china_deviated_socialism_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_contacts_vietnam
+		icon = GFX_goal_INT_pol_contacts_vietnam
+		x = 10
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_china_deviated_socialism }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { country_exists = VIN }
+				add_opinion_modifier = { target = VIN modifier = INT_revolutionary_contacts }
+				VIN = { add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_contacts } }
+			}
+			add_political_power = 25
+			add_tech_bonus = { name = INT_pol_contacts_vietnam bonus = 0.5 uses = 1 category = electronics }
+			set_country_flag = INT_pol_contacts_vietnam_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_contacts_african_socialists
+		icon = GFX_goal_INT_pol_contacts_african_socialists
+		x = 10
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_contacts_vietnam }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			custom_effect_tooltip = INT_pol_contacts_african_socialists_tt
+			hidden_effect = {
+				every_other_country = {
+					limit = {
+						capital_scope = { is_on_continent = africa }
+						OR = { has_government = vanguard_socialism has_government = revolutionary_socialism has_government = authoritarian_socialism has_government = totalitarian_socialism }
+					}
+					add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_contacts }
+					ROOT = { add_opinion_modifier = { target = PREV modifier = INT_revolutionary_contacts } }
+				}
+			}
+			add_political_power = 25
+			set_country_flag = INT_pol_contacts_african_socialists_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_alliance_with_cuba
+		icon = GFX_goal_INT_pol_alliance_with_cuba
+		x = 10
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_contacts_african_socialists }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			if = {
+				limit = { is_in_faction = no }
+				create_faction_from_template = faction_template_internationale
+			}
+			if = {
+				limit = {
+					country_exists = CUB
+					is_faction_leader = yes
+					CUB = { is_in_faction = no is_subject = no }
+				}
+				add_to_faction = CUB
+			}
+			if = {
+				limit = { country_exists = CUB }
+				add_opinion_modifier = { target = CUB modifier = INT_revolutionary_alliance }
+				CUB = { add_opinion_modifier = { target = ROOT modifier = INT_revolutionary_alliance } }
+			}
+			set_country_flag = INT_pol_alliance_with_cuba_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_support_comrev_world
+		icon = GFX_goal_INT_pol_support_comrev_world
+		x = 10
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_alliance_with_cuba }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_comrev_support
+			set_country_flag = INT_pol_support_comrev_world_done
+		}
+	}
+
+	focus = {
+		id = INT_pol_trotskyism_young_again
+		icon = GFX_goal_INT_pol_trotskyism_young_again
+		x = 9
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = INT_pol_party_full_of_factions }
+		prerequisite = { focus = INT_pol_absolute_loyalty }
+		prerequisite = { focus = INT_pol_support_comrev_world }
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_trotskyism_young
+			add_command_power = 100
+			set_country_flag = INT_pol_trotskyism_young_again_done
+		}
+	}
+
+#|================================================|#
+#|                 MILITARY FOCUS                 |#
+#|================================================|#
+
+	focus = {
+		id = IRC_mil_military_decision_center
+		icon = GFX_goal_INT_mil_military_decision_center
+		x = 19
+		y = 0
+		cost = 5
+		available_if_capitulated = no
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 25
+			add_command_power = 25
+			set_country_flag = IRC_mil_military_decision_center_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_red_army
+		icon = GFX_goal_INT_mil_red_army
+		x = 16
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_military_decision_center }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_red_army
+			set_country_flag = IRC_mil_red_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_military_commissars
+		icon = GFX_goal_INT_mil_military_commissars
+		x = 14
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 30
+			add_stability = 0.03
+			set_country_flag = IRC_mil_military_commissars_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_reforming_military_corps
+		icon = GFX_goal_INT_mil_reforming_military_corps
+		x = 16
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_reforming_military_corps bonus = 0.5 uses = 1 category = land_doctrine }
+			add_command_power = 50
+			set_country_flag = IRC_mil_reforming_military_corps_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_smart_military_manufacturing
+		icon = GFX_goal_INT_mil_smart_military_manufacturing
+		x = 18
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_army }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = IRC_mil_smart_military_manufacturing bonus = 0.5 uses = 1 category = infantry_weapons }
+			set_country_flag = IRC_mil_smart_military_manufacturing_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_political_commissars
+		icon = GFX_goal_INT_mil_political_commissars
+		x = 14
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_military_commissars }
+		prerequisite = { focus = IRC_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_war_support = 0.05
+			army_experience = 25
+			set_country_flag = IRC_mil_political_commissars_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_trial_corrupt_traitors
+		icon = GFX_goal_INT_mil_trial_corrupt_traitors
+		x = 16
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_STABILITY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_stability = 0.05
+			add_political_power = 50
+			set_country_flag = IRC_mil_trial_corrupt_traitors_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_peer_to_peer_production
+		icon = GFX_goal_INT_mil_peer_to_peer_production
+		x = 18
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_smart_military_manufacturing }
+		prerequisite = { focus = IRC_mil_reforming_military_corps }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = IRC_mil_peer_to_peer_production bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = IRC_mil_peer_to_peer_production_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_loyal_to_revolution
+		icon = GFX_goal_INT_mil_loyal_to_revolution
+		x = 16
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_political_commissars }
+		prerequisite = { focus = IRC_mil_trial_corrupt_traitors }
+		prerequisite = { focus = IRC_mil_peer_to_peer_production }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_red_army add_idea = INT_red_army_2 }
+			set_country_flag = IRC_mil_loyal_to_revolution_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_make_way_young
+		icon = GFX_goal_INT_mil_make_way_young
+		x = 14
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_loyal_to_revolution }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_command_power = 50
+			army_experience = 30
+			set_country_flag = IRC_mil_make_way_young_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_workers_army
+		icon = GFX_goal_INT_mil_workers_army
+		x = 16
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_loyal_to_revolution }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 50000
+			set_country_flag = IRC_mil_workers_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_cult_blitzkrieg
+		icon = GFX_goal_INT_mil_cult_blitzkrieg
+		x = 18
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_loyal_to_revolution }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_cult_blitzkrieg bonus = 0.5 uses = 1 category = armor }
+			add_tech_bonus = { name = IRC_mil_cult_blitzkrieg bonus = 0.5 uses = 1 category = motorized_equipment }
+			set_country_flag = IRC_mil_cult_blitzkrieg_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_red_airforce
+		icon = GFX_goal_INT_mil_red_airforce
+		x = 14
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_make_way_young }
+		prerequisite = { focus = IRC_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			air_experience = 50
+			add_tech_bonus = { name = IRC_mil_red_airforce bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = IRC_mil_red_airforce_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_red_navy
+		icon = GFX_goal_INT_mil_red_navy
+		x = 16
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			navy_experience = 50
+			add_tech_bonus = { name = IRC_mil_red_navy bonus = 0.5 uses = 1 category = naval_doctrine }
+			set_country_flag = IRC_mil_red_navy_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_mechanized_army
+		icon = GFX_goal_INT_mil_mechanized_army
+		x = 18
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_cult_blitzkrieg }
+		prerequisite = { focus = IRC_mil_workers_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_mechanized_army bonus = 0.5 uses = 1 category = motorized_equipment }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 800 producer = ROOT }
+			set_country_flag = IRC_mil_mechanized_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_study_new_doctrines
+		icon = GFX_goal_INT_mil_study_new_doctrines
+		x = 14
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_airforce focus = IRC_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_study_new_doctrines bonus = 0.5 uses = 2 category = land_doctrine }
+			set_country_flag = IRC_mil_study_new_doctrines_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_red_academies
+		icon = GFX_goal_INT_mil_red_academies
+		x = 16
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_navy focus = IRC_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 50
+			navy_experience = 25
+			air_experience = 25
+			set_country_flag = IRC_mil_red_academies_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_superiority_of_tanks
+		icon = GFX_goal_INT_mil_superiority_of_tanks
+		x = 18
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_mechanized_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_superiority_of_tanks bonus = 0.5 uses = 2 category = armor }
+			set_country_flag = IRC_mil_superiority_of_tanks_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_electronic_warfare
+		icon = GFX_goal_INT_mil_electronic_warfare
+		x = 14
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_study_new_doctrines }
+		prerequisite = { focus = IRC_mil_red_academies }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_electronic_warfare bonus = 0.5 uses = 2 category = electronics }
+			set_country_flag = IRC_mil_electronic_warfare_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_quality_training
+		icon = GFX_goal_INT_mil_quality_training
+		x = 16
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_academies }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 50
+			add_tech_bonus = { name = IRC_mil_quality_training bonus = 0.5 uses = 1 category = land_doctrine }
+			set_country_flag = IRC_mil_quality_training_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_overwhelming_superiority
+		icon = GFX_goal_INT_mil_overwhelming_superiority
+		x = 18
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_superiority_of_tanks }
+		prerequisite = { focus = IRC_mil_red_academies }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 40
+			add_tech_bonus = { name = IRC_mil_overwhelming_superiority bonus = 1.0 uses = 1 category = armor }
+			set_country_flag = IRC_mil_overwhelming_superiority_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_workers_of_world_unite
+		icon = GFX_goal_INT_mil_workers_of_world_unite
+		x = 19
+		y = 10
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_red_tsunami }
+		prerequisite = { focus = IRC_mil_revolution_above_all }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			swap_ideas = { remove_idea = INT_red_army_2 add_idea = INT_red_army_3 }
+			add_command_power = 100
+			set_country_flag = IRC_mil_workers_of_world_unite_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_proletarian_military_industries
+		icon = GFX_goal_INT_mil_proletarian_military_industries
+		x = 22
+		y = 1
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_military_decision_center }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			add_tech_bonus = { name = IRC_mil_proletarian_military_industries bonus = 0.5 uses = 1 category = industry }
+			set_country_flag = IRC_mil_proletarian_military_industries_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_national_academies_sciences
+		icon = GFX_goal_INT_mil_national_academies_sciences
+		x = 20
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_academies_of_sciences
+			set_country_flag = IRC_mil_national_academies_sciences_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_total_industrial_mobilization
+		icon = GFX_goal_INT_mil_total_industrial_mobilization
+		x = 22
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = IRC_mil_total_industrial_mobilization_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_ultra_engineered_equipment
+		icon = GFX_goal_INT_mil_ultra_engineered_equipment
+		x = 24
+		y = 2
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_proletarian_military_industries }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_ultra_engineered_equipment bonus = 0.5 uses = 1 category = infantry_weapons }
+			add_tech_bonus = { name = IRC_mil_ultra_engineered_equipment bonus = 0.5 uses = 1 category = armor }
+			set_country_flag = IRC_mil_ultra_engineered_equipment_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_reindustrialization
+		icon = GFX_goal_INT_mil_reindustrialization
+		x = 20
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_national_academies_sciences }
+		prerequisite = { focus = IRC_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = industrial_complex level = 1 instant_build = yes }
+			}
+			set_country_flag = IRC_mil_reindustrialization_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_optimize_production_lines
+		icon = GFX_goal_INT_mil_optimize_production_lines
+		x = 22
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_optimized_lines
+			set_country_flag = IRC_mil_optimize_production_lines_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_tsunami_military_hardware
+		icon = GFX_goal_INT_mil_tsunami_military_hardware
+		x = 24
+		y = 3
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_ultra_engineered_equipment focus = IRC_mil_total_industrial_mobilization }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 5000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 1000 producer = ROOT }
+			add_equipment_to_stockpile = { type = anti_tank_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = anti_air_equipment amount = 500 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 1000 producer = ROOT }
+			set_country_flag = IRC_mil_tsunami_military_hardware_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_centralize_military_structures
+		icon = GFX_goal_INT_mil_centralize_military_structures
+		x = 22
+		y = 4
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_reindustrialization }
+		prerequisite = { focus = IRC_mil_optimize_production_lines }
+		prerequisite = { focus = IRC_mil_tsunami_military_hardware }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_centralized_military
+			add_command_power = 100
+			set_country_flag = IRC_mil_centralize_military_structures_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_expand_red_navy
+		icon = GFX_goal_INT_mil_expand_red_navy
+		x = 20
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			set_country_flag = IRC_mil_expand_red_navy_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_expand_aircraft_industry
+		icon = GFX_goal_INT_mil_expand_aircraft_industry
+		x = 22
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			capital_scope = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			air_experience = 25
+			set_country_flag = IRC_mil_expand_aircraft_industry_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_expand_army
+		icon = GFX_goal_INT_mil_expand_army
+		x = 24
+		y = 5
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_centralize_military_structures }
+		search_filters = { FOCUS_FILTER_MANPOWER }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_manpower = 40000
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			set_country_flag = IRC_mil_expand_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_submarine_warfare
+		icon = GFX_goal_INT_mil_submarine_warfare
+		x = 20
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_expand_red_navy }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_submarine_warfare bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 25
+			set_country_flag = IRC_mil_submarine_warfare_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_increase_aircraft_production
+		icon = GFX_goal_INT_mil_increase_aircraft_production
+		x = 22
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_expand_aircraft_industry }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = { type = arms_factory level = 1 instant_build = yes }
+			}
+			air_experience = 25
+			set_country_flag = IRC_mil_increase_aircraft_production_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_start_motorizing
+		icon = GFX_goal_INT_mil_start_motorizing
+		x = 24
+		y = 6
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_expand_army }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_start_motorizing bonus = 0.5 uses = 1 category = motorized_equipment }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 1500 producer = ROOT }
+			set_country_flag = IRC_mil_start_motorizing_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_offensive_maritime_strategy
+		icon = GFX_goal_INT_mil_offensive_maritime_strategy
+		x = 20
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_submarine_warfare }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_offensive_maritime_strategy bonus = 0.5 uses = 1 category = naval_doctrine }
+			navy_experience = 50
+			set_country_flag = IRC_mil_offensive_maritime_strategy_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_automatic_aircraft_systems
+		icon = GFX_goal_INT_mil_automatic_aircraft_systems
+		x = 22
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_increase_aircraft_production }
+		search_filters = { FOCUS_FILTER_RESEARCH }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_automatic_aircraft_systems bonus = 0.5 uses = 1 category = electronics }
+			add_tech_bonus = { name = IRC_mil_automatic_aircraft_systems bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = IRC_mil_automatic_aircraft_systems_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_adaptable_red_army
+		icon = GFX_goal_INT_mil_adaptable_red_army
+		x = 24
+		y = 7
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_start_motorizing }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_tech_bonus = { name = IRC_mil_adaptable_red_army bonus = 0.5 uses = 1 category = land_doctrine }
+			army_experience = 40
+			set_country_flag = IRC_mil_adaptable_red_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_oceangoing_navy
+		icon = GFX_goal_INT_mil_oceangoing_navy
+		x = 20
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_offensive_maritime_strategy }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = { is_core_of = ROOT is_coastal = yes }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = { type = dockyard level = 2 instant_build = yes }
+			}
+			navy_experience = 50
+			set_country_flag = IRC_mil_oceangoing_navy_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_reds_in_the_sky
+		icon = GFX_goal_INT_mil_reds_in_the_sky
+		x = 22
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_automatic_aircraft_systems }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			air_experience = 75
+			add_tech_bonus = { name = IRC_mil_reds_in_the_sky bonus = 0.5 uses = 1 category = air_doctrine }
+			set_country_flag = IRC_mil_reds_in_the_sky_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_glory_red_army
+		icon = GFX_goal_INT_mil_glory_red_army
+		x = 24
+		y = 8
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_adaptable_red_army }
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			army_experience = 75
+			add_war_support = 0.05
+			set_country_flag = IRC_mil_glory_red_army_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_red_tsunami
+		icon = GFX_goal_INT_mil_red_tsunami
+		x = 22
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+		prerequisite = { focus = IRC_mil_oceangoing_navy }
+		prerequisite = { focus = IRC_mil_reds_in_the_sky }
+		prerequisite = { focus = IRC_mil_glory_red_army }
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_equipment_to_stockpile = { type = infantry_equipment amount = 10000 producer = ROOT }
+			add_equipment_to_stockpile = { type = support_equipment amount = 1000 producer = ROOT }
+			add_equipment_to_stockpile = { type = artillery_equipment amount = 2000 producer = ROOT }
+			add_equipment_to_stockpile = { type = motorized_equipment amount = 2000 producer = ROOT }
+			add_command_power = 100
+			set_country_flag = IRC_mil_red_tsunami_done
+		}
+	}
+
+	focus = {
+		id = IRC_mil_revolution_above_all
+		icon = GFX_goal_INT_mil_revolution_above_all
+		x = 16
+		y = 9
+		cost = 5
+		available_if_capitulated = no
+				prerequisite = { focus = IRC_mil_electronic_warfare }
+		prerequisite = { focus = IRC_mil_quality_training }
+		prerequisite = { focus = IRC_mil_overwhelming_superiority }
+
+		search_filters = { FOCUS_FILTER_WAR_SUPPORT }
+		ai_will_do = { factor = 1 }
+		completion_reward = {
+			add_ideas = INT_revolution_above_all
+			add_war_support = 0.1
+			set_country_flag = IRC_mil_revolution_above_all_done
+		}
+	}
+}

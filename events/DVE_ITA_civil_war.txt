@@ -6,6 +6,11 @@
 #   dve_itacw.1 days = 2 }": 2 giorni dopo lo scoppio della
 #   guerra civile, i vertici militari residui si impongono sul
 #   governo che resta - l'FF.AA. (autocracy) prende il potere.
+#
+#   3-6: once ITA falls (ITA_cw_ita_defeated_effect, common/
+#   scripted_effects/DVE_IRC_effects.txt) INT sends the IRC an
+#   annexation ultimatum (3, AI always accepts), INT is told the
+#   answer (4, 5) and Padania declares war on the other factions (6).
 # ============================================================
 
 add_namespace = dve_itacw
@@ -57,6 +62,12 @@ country_event = {
 		INT = { change_tag_from = ITA }
 	}
 	option = {
+		name = dve_itacw.2.g
+		trigger = { country_exists = IRC }
+		ai_chance = { factor = 0 }
+		IRC = { change_tag_from = ITA }
+	}
+	option = {
 		name = dve_itacw.2.c
 		trigger = { country_exists = SRI }
 		ai_chance = { factor = 0 }
@@ -79,5 +90,108 @@ country_event = {
 		trigger = { country_exists = TYR }
 		ai_chance = { factor = 0 }
 		TYR = { change_tag_from = ITA }
+	}
+}
+
+# 3: the Leninists' ultimatum to the IRC (ROOT = IRC).
+country_event = {
+	id = dve_itacw.3
+	title = dve_itacw.3.t
+	desc = dve_itacw.3.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	# Accept: the IRC dissolves into INT. A human IRC keeps playing as INT.
+	option = {
+		name = dve_itacw.3.a
+		ai_chance = { factor = 100 }
+		custom_effect_tooltip = dve_itacw.3.a_tt
+		hidden_effect = {
+			IRC_join_INT_effect = yes
+		}
+	}
+	# Refuse: the IRC goes on alone and defends itself; INT answers with war.
+	option = {
+		name = dve_itacw.3.b
+		ai_chance = { factor = 0 }
+		custom_effect_tooltip = dve_itacw.3.b_tt
+		hidden_effect = {
+			IRC_refuse_ultimatum_effect = yes
+			IRC_defensive_war_trigger_effect = yes
+		}
+	}
+	# Strike first: the IRC declares the war itself.
+	option = {
+		name = dve_itacw.3.c
+		trigger = { country_exists = INT }
+		ai_chance = { factor = 0 }
+		custom_effect_tooltip = dve_itacw.3.c_tt
+		hidden_effect = {
+			IRC_refuse_ultimatum_effect = yes
+			if = {
+				limit = { NOT = { has_war_with = INT } }
+				declare_war_on = { target = INT type = annex_everything }
+			}
+		}
+	}
+}
+
+# 4: INT is told the IRC accepted (ROOT = INT).
+country_event = {
+	id = dve_itacw.4
+	title = dve_itacw.4.t
+	desc = dve_itacw.4.d
+	picture = GFX_report_event_generic_conference
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itacw.4.a
+	}
+}
+
+# 5: INT is told the IRC refused (ROOT = INT): war or patience.
+country_event = {
+	id = dve_itacw.5
+	title = dve_itacw.5.t
+	desc = dve_itacw.5.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	option = {
+		name = dve_itacw.5.a
+		ai_chance = { factor = 100 }
+		if = {
+			limit = {
+				country_exists = IRC
+				NOT = { has_war_with = IRC }
+			}
+			declare_war_on = { target = IRC type = annex_everything }
+		}
+	}
+	option = {
+		name = dve_itacw.5.b
+		ai_chance = { factor = 0 }
+	}
+}
+
+# 6: Padania turns on every other faction (ROOT = LOM). The wars are
+# declared in "immediate", so they happen whatever the player clicks.
+country_event = {
+	id = dve_itacw.6
+	title = dve_itacw.6.t
+	desc = dve_itacw.6.d
+	picture = GFX_report_event_generic_army
+
+	is_triggered_only = yes
+
+	immediate = {
+		LOM_cw_war_on_factions_effect = yes
+	}
+
+	option = {
+		name = dve_itacw.6.a
 	}
 }

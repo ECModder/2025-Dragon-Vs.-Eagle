@@ -1,0 +1,92 @@
+# DvE - schedules the Almasri case for Italy (events/DVE_ITA_almasri.txt).
+# Checked every day; each date has a window and a one-time flag, and nothing
+# fires while Italy is in its civil war.
+on_actions = {
+	on_daily_ITA = {
+		effect = {
+			if = {
+				limit = { NOT = { has_country_flag = ITA_civil_war } }
+				# 2025.01.19 12:00
+				if = {
+					limit = {
+						date > 2025.1.18
+						date < 2025.1.21
+						NOT = { has_global_flag = dve_almasri_1_fired }
+					}
+					set_global_flag = dve_almasri_1_fired
+					news_event = { id = dve_almasri.1 hours = 12 }
+				}
+				# 2025.01.21 12:00
+				if = {
+					limit = {
+						date > 2025.1.20
+						date < 2025.2.1
+						NOT = { has_global_flag = dve_almasri_2_fired }
+					}
+					set_global_flag = dve_almasri_2_fired
+					news_event = { id = dve_almasri.2 hours = 12 }
+				}
+				# 2025.08.01 12:00
+				if = {
+					limit = {
+						date > 2025.7.31
+						date < 2025.9.1
+						NOT = { has_global_flag = dve_almasri_3_fired }
+					}
+					set_global_flag = dve_almasri_3_fired
+					country_event = { id = dve_almasri.3 hours = 12 }
+				}
+				# 2025.10.09 12:00
+				if = {
+					limit = {
+						date > 2025.10.8
+						date < 2025.11.15
+						NOT = { has_global_flag = dve_almasri_4_fired }
+					}
+					set_global_flag = dve_almasri_4_fired
+					news_event = { id = dve_almasri.4 hours = 12 }
+				}
+				# 2026.06.20 12:00
+				if = {
+					limit = {
+						date > 2026.6.19
+						date < 2026.8.1
+						NOT = { has_global_flag = dve_almasri_5_fired }
+					}
+					set_global_flag = dve_almasri_5_fired
+					country_event = { id = dve_almasri.5 hours = 12 }
+				}
+				# 2026.07.23 12:00
+				if = {
+					limit = {
+						date > 2026.7.22
+						date < 2026.9.1
+						NOT = { has_global_flag = dve_almasri_6_fired }
+					}
+					set_global_flag = dve_almasri_6_fired
+					country_event = { id = dve_almasri.6 hours = 12 }
+				}
+				# 2026.07.30 12:00 (date of the report)
+				if = {
+					limit = {
+						date > 2026.7.29
+						date < 2026.9.15
+						NOT = { has_global_flag = dve_almasri_7_fired }
+					}
+					set_global_flag = dve_almasri_7_fired
+					country_event = { id = dve_almasri.7 hours = 12 }
+				}
+				# 2026.11.06 12:00
+				if = {
+					limit = {
+						date > 2026.11.5
+						date < 2027.1.15
+						NOT = { has_global_flag = dve_almasri_8_fired }
+					}
+					set_global_flag = dve_almasri_8_fired
+					country_event = { id = dve_almasri.8 hours = 12 }
+				}
+			}
+		}
+	}
+}
